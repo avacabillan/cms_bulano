@@ -1,0 +1,28 @@
+.table_guest {
+  width: 95%;
+  margin-top: 110px;
+  margin-left: 24px;
+}
+
+thead th{
+   
+  padding: 10px 10px;
+  background: #333;
+  font-size: 15px;
+  text-transform: uppercase;
+  vertical-align: top;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+    
+}
+
+tbody tr td{
+    
+  padding: 10px;
+  background: #f8f8f8;
+  font-size: 14px;
+  color: black;
+    
+}
+

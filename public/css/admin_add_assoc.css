@@ -1,0 +1,29 @@
+
+.card {
+    
+    position: absolute;
+    left: 30%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    opacity: 0.9;
+    margin-top: 25%;
+}
+.header_info {
+    color: black;
+}
+
+.form {
+    width: 340px;
+    margin: 5px auto;
+  }
+
+
+.form-label {
+    float: left;
+    color: black;
+}
+.close {
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+.show-message{
+    padding: 0px;
+    background-color:rgb(241, 241, 241);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.cardheader{
+    padding: 10px;
+    background-color: #5D5E5E;
+    color: white;
+}
+.btn-back{
+    float:right;
+    color: white;
+}

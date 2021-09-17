@@ -1,0 +1,29 @@
+.footer{
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background-color:blue;
+    text-align: center;
+    
+
+}
+.footer p{
+    color: white;
+    margin-top: 10px;
+}
+.header {
+    margin-bottom: 500px;
+    bottom: 0;
+    position: fixed;
+    background-color: cadetblue;
+    text-align: center;
+
+}
+.container{
+    margin-top: 40px;
+}
+.card{
+    margin-top: 50px;
+    border-color: dimgrey;
+    border-radius: 10px;
+}
