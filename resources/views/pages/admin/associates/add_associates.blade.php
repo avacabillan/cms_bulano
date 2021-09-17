@@ -18,7 +18,7 @@
                         <div class="form-group">
                         <h4 class="form-label text-dark">Personal Information</h4> 
                                     <div ><br><br>
-                                        <label class="form-label">Name</label> 
+                                        <label class="form-label">Names</label> 
                                         <input type="text" class="form-control" value=""   name="clientname"  >
                                         <label class="form-label">Email</label>
                                         <input type="text" class="form-control" value="">         
