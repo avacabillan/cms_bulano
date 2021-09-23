@@ -12,7 +12,7 @@
             <div class="form-goup">
                     <div class="row ">
                         <div class="col-9 col-sm-4 ms-3">
-                            <form  class="row action=" method="post">
+                            <form action="{{route('addclient')}}" class="row action=" method="post">
                             @csrf
                             @method('PUT')
                                
@@ -22,15 +22,15 @@
                             <div class="row ">
                             <div class="col mt-2 pt-2">
                               <label class="form-label">Name</label> 
-                              <input type="text" class="form-control" value=""   name="clientname" >
+                              <input type="text" class="form-control" value=""   name="client_name" >
                               <label class="form-label">Email</label>
-                              <input type="text" class="form-control" value="">         
+                              <input type="text" class="form-control" value="" name="email">         
                               <label class="form-label">Contact Number</label>
-                              <input type="text" class="form-control" value="" > <br>
+                              <input type="text" class="form-control" value="" name="client_contact"> <br>
                               <label class="form-label">TIN No.</label>
-                              <input type="text" class="form-control" value="" > <br>
+                              <input type="text" class="form-control" value="" name= "tin" > <br>
                               <label class="form-label">OCN No.</label>
-                              <input type="text" class="form-control" value="" > <br>
+                              <input type="text" class="form-control" value="" name="ocn"> <br>
                             </div>
                             </div>
                             <h4 class="form-label text-dark">Business Information</h4> 
@@ -38,7 +38,7 @@
                             <label class="form-label">Registration Date</label>
                             <input type="date" class="form-control me-1" name="regdate"   value=""><br>
                             <label class="form-label">Trade Name</label> 
-                            <input type="text" class="form-control" name="tname"   value=""><br>
+                            <input type="text" class="form-control" name="trade_name"   value=""><br>
                             <label class="form-label">Line of Business</label> 
                             <input type="text" class="form-control" name="linebus"   value=""><br>
 

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClientsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,9 @@ use App\Http\Controllers\ClientController;
 |
 */
 
-Route::get('clients', [ClientController::class, 'index']);
+// Route::get('clients', [ClientController::class, 'index']);
 
-Route::get('clients/list', [ClientController::class, 'getClients'])->name('clients.list');
+// Route::get('clients/list', [ClientController::class, 'getClients'])->name('clients.list');
 
 
 /*---------------------- ADMIN VIEW --------------*/
@@ -39,7 +39,7 @@ Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_d
 Route::view('/compose','pages.admin.messages.compose')->name('compose');
 
 Route::view('/editclient','pages.associate.clients.edit_client')->name('editclient');
-Route::view('/addclient','pages.associate.clients.add_client')->name('addclient');
+Route::resource('/addclient',[ClientsController::class, 'addclient'])->name('addclient');
 
 
 /*---------------------- CLIENTS VIEW --------------*/

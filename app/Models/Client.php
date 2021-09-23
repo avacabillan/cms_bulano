@@ -9,6 +9,7 @@ class Client extends Model
 {   
     
     use HasFactory;
+    public $timestamps = true;
     protected $fillable = [
         'client_name',
         'email',

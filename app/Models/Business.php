@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Business extends Model
 {
-    protected $table= 'client_business';
+    
     use HasFactory;
+    public $timestamps = true;
+    protected $table= 'client_business';
+    protected $fillable = ['trade_name', 'registration_date'];
     
     public function clients(){
         return $this->hasMany(Client::class);
