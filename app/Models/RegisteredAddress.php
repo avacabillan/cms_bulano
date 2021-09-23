@@ -24,4 +24,8 @@ class RegisteredAddress extends Model
     public function client(){
         return $this->hasMany(Client::class);
     }
+    public function business(){
+        return $this->belongsTo(Business::class);
+    } 
 }
+ 

@@ -14,6 +14,6 @@ class Corporate extends Model
         return $this->belongsTo(Group::class);
     }
     public function business(){
-        return $this->belongsTo(Business::class);
+        return $this->hasMany(Business::class);
     }
 }

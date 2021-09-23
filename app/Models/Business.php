@@ -13,11 +13,11 @@ class Business extends Model
     public function clients(){
         return $this->hasMany(Client::class);
     }
-    public function BusinessAddress(){
+    public function RegisteredAddress(){
         return $this->hasMany(RegisteredAddress::class);
     }
     public function corporate(){
-        return $this->hasMany(Corporate::class);
+        return $this->belongsTo(Corporate::class);
     }
    
 }
