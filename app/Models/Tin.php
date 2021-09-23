@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ModeOfPayment extends Model
+class Tin extends Model
 {
-    protected $table= 'client_mode_of_payment';
     use HasFactory;
+    protected $table = 'client_tin';
+    protected $fillable = ['tin_no'];
     
-    public function clients(){
+    public function client(){
         return $this->belongsTo(Client::class);
     }
 }

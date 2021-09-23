@@ -16,4 +16,17 @@ class Client extends Model
         'ocn',
         
     ];  
+    public function modeofpayment(){
+        return $this->hasOne(ModeofPayment::class);
+    }
+    public function business(){
+        return $this->belongsTo(Business::class);
+    }
+    public function tin(){
+        return $this->hasMany(Tin::class);
+    }
+    public function associate(){
+        return $this->belongsTo(Associate::class);
+    }
+    
 }
