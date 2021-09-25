@@ -39,22 +39,11 @@ Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_d
 Route::view('/compose','pages.admin.messages.compose')->name('compose');
 
 Route::view('/editclient','pages.associate.clients.edit_client')->name('editclient');
-// Route::get('/List/Clients',[ClientController::class, 'newClient'])->name('listClients');
+Route::get('clients', [ClientController::class, 'index']);
+Route::get('/List/Clients',[ClientController::class, 'listClients'])->name('clients.list');
 Route::get('/insertClient',[ClientController::class, 'insertClient'])->name('insertclient');
 
-Route::get('getClient', function (Request $request) {
-    if ($request->ajax()) {
-            $data = Client::latest()->get();
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-})->name('clients.list'); 
+
 
 /*---------------------- CLIENTS VIEW --------------*/
 

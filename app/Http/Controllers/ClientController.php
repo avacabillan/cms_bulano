@@ -13,14 +13,33 @@ use App\Models\Corporate;
 use App\Models\ModeOfPayment;
 use App\Models\RegisteredAddress;
 use App\Models\LocationAddress;
+use DataTables;
+
 
 class ClientController extends Controller
 {
-    public function listClients()
+  
+    public function index()
     {
+        return view('pages.associate.clients.clients_list');
+    }
+
+    public function listClients(Request $request)
+    { 
+        if ($request->$client()) {
+            $data = Client::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '
+                        <a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> 
+                        <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
         
-        $clients = Client::all();
-        return view('pages.associate.clients.clients_list')->with('clients', $clients);
     }
     public function insertClient(Request $request)
     {
