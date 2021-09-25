@@ -24,23 +24,7 @@ class ClientController extends Controller
         return view('pages.associate.clients.clients_list');
     }
 
-    public function listClients(Request $request)
-    { 
-        if ($request->$client()) {
-            $data = Client::latest()->get();
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '
-                        <a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> 
-                        <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-        
-    }
+   
     public function insertClient(Request $request)
     {
         // CLIENT INFO
