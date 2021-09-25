@@ -9,9 +9,14 @@ class Business extends Model
 {
     
     use HasFactory;
-    public $timestamps = true;
+    // public $timestamps = true;
+
     protected $table= 'client_business';
-    protected $fillable = ['trade_name', 'registration_date'];
+
+    protected $fillable = [
+        'trade_name', 
+        'registration_date',
+    ];
     
     public function clients(){
         return $this->hasMany(Client::class);

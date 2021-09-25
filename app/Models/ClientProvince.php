@@ -7,11 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientProvince extends Model
 {
-    protected $table ='client_province';
+   
     use HasFactory;
 
+    protected $table ='client_province';
     
-    public function RegisteredAddress(){
-        return $this->belongsTo(RegisteredAddress::class);
+    protected $fillable =[
+        "province_name",
+    ];
+
+    
+    public function city(){
+        return $this->hasMany(ClientCity::class);
     }
+    
+    
 }

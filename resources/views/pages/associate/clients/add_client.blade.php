@@ -12,7 +12,7 @@
             <div class="form-goup">
                     <div class="row ">
                         <div class="col-9 col-sm-4 ms-3">
-                            <form action="{{route('addclient')}}" class="row action=" method="post">
+                            <form action="{{route('insertclient')}}" class="row action=" method="post">
                             @csrf
                             @method('PUT')
                                
@@ -118,7 +118,7 @@
                            
                             <div class="btn">
                             <button type="submit" class="btn btn-primary pt-3 mt-5 mb-3 pb-2" style="float:right;">Cancel</button>
-                            <a class="btn btn-primary pt-3 mb-3 mt-5 pb-2 me-2" value="Update" style="float:right;" href="">Update</a>
+                            <a class="btn btn-primary pt-3 mb-3 mt-5 pb-2 me-2" value="Update" style="float:right;" href="">Submit</a>
                             </div>
                         </form>
                     </div>

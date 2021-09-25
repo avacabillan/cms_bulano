@@ -12,20 +12,16 @@ class RegisteredAddress extends Model
     protected $fillable =['unit_house_no','street'];
 
 
-    public function city(){
-        return $this->hasOne(ClientCity::class);
-    }
-    public function postal(){
-        return $this->hasOne(ClientPostal::class);
-    }
-    public function province(){
-        return $this->hasOne(ClientProvince::class);
-    }
+   
     public function client(){
         return $this->hasMany(Client::class);
     }
     public function business(){
         return $this->belongsTo(Business::class);
     } 
+    public function location(){
+        return $this->belongsTo(LocationAddress::class, 'location_address_id');
+    }
+    
 }
  

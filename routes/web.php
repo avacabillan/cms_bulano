@@ -39,7 +39,8 @@ Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_d
 Route::view('/compose','pages.admin.messages.compose')->name('compose');
 
 Route::view('/editclient','pages.associate.clients.edit_client')->name('editclient');
-Route::get('/addclient',[ClientController::class, 'newClient'])->name('addclient');
+Route::get('/List/Clients',[ClientController::class, 'newClient'])->name('listClients');
+Route::get('/insertClient',[ClientController::class, 'insertClient'])->name('insertclient');
 
 
 /*---------------------- CLIENTS VIEW --------------*/

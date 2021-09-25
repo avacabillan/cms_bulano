@@ -7,12 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientPostal extends Model
 {
-    protected $table ='client_postal_no';
+   
     use HasFactory;
+
+    protected $table ='client_postal_no';
+
+    protected $fillable = [
+        "postal_no",
+    ];
 
     public function RegisteredAddress(){
         return $this->belongsTo(RegisteredAddress::class);
     }
     
+    public function location(){
+        return $this->belongsTo(LocationAddress::class);
+    }
     
 }

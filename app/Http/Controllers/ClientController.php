@@ -16,13 +16,13 @@ use App\Models\LocationAddress;
 
 class ClientController extends Controller
 {
-    public function newclient()
+    public function listClients()
     {
-        $associate= Associate::all();
+        
         $clients = Client::all();
-        return view('pages.associate.clients.add_client');
+        return view('pages.associate.clients.clients_list')->with('clients', $clients);
     }
-    public function insertclient(Request $request)
+    public function insertClient(Request $request)
     {
         // CLIENT INFO
         // $associate =new Associate();
@@ -58,8 +58,8 @@ class ClientController extends Controller
         $client_postal ->client_city =$client_city->id;
         $client_postal ->save();
 
-        $location_address =new LocatedAddress();
-        $location_address ->location =$client_postal->id;
+        $location_address =new LocationAddress();
+        $location_address ->client_postal_id =$client_postal->id;
 
 
         $registered_address =new RegisteredAddress();
@@ -76,6 +76,9 @@ class ClientController extends Controller
         // $business ->corporate_id =$corporate->id;
         $business ->business_address =$registered_address->id;
         $business ->save();
+
+        
+        return redirect()->route('pages.');
 
     }
 }
