@@ -28,12 +28,7 @@ class ClientController extends Controller
         // $associate =new Associate();
         // $associate ->assoc_id
 
-        $client =new Client();
-        $client ->client_name = $request->clientname;
-        $client ->email = $request->email;
-        $client ->contact_number = $request->client_contact;
-        $client ->ocn = $request->ocn;
-        $client ->save();
+       
 
         // $group =new Group();
         // $group ->group_name = $request->group;
@@ -77,8 +72,17 @@ class ClientController extends Controller
         $business ->business_address =$registered_address->id;
         $business ->save();
 
+        $client =new Client();
+        $client ->client_name = $request->clientname;
+        $client ->email = $request->email;
+        $client ->contact_number = $request->client_contact;
+        $client ->ocn = $request->ocn;
+        $client ->assoc_id =$associate->id;
+        $client ->mode_of_payment =$mode_payment->id;
+        $client ->save();
+
         
-        return redirect()->route('pages.');
+        return redirect()->route('pages.associates.clients.clients_list');
 
     }
 }
