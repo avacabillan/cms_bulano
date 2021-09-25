@@ -34,9 +34,9 @@ class ClientController extends Controller
         // $group ->group_name = $request->group;
         // $group ->save();
 
-        // $corporate =new Corporate();
-        // $corporate ->corporate_name = $request->corporate;
-        // $corporate ->save();
+        $corporate =new Corporate();
+        $corporate ->corporate_name = $request->corporate;
+        $corporate ->save();
 
         
         $client_province =new ClientProvince();
