@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_d
 Route::view('/compose','pages.admin.messages.compose')->name('compose');
 
 Route::view('/editclient','pages.associate.clients.edit_client')->name('editclient');
-Route::resource('/addclient',[ClientsController::class, 'addclient'])->name('addclient');
+Route::get('/addclient',[ClientController::class, 'newClient'])->name('addclient');
 
 
 /*---------------------- CLIENTS VIEW --------------*/

@@ -31,12 +31,46 @@
                               <input type="text" class="form-control" value="" name= "tin" > <br>
                               <label class="form-label">OCN No.</label>
                               <input type="text" class="form-control" value="" name="ocn"> <br>
+                              <label class="form-label">Choose asscociate</label>
+                              <div class="form-group">
+                                <select name="assoc" class="form-control">
+                                <option selected>Select Associate</option>
+                                  <option value="A">Associate 1</option>
+                                  <option value="B">Associate 2</option>
+                                </select><br>
+                              </div>
+                              <label class="form-label">Mode of filing</label>
+                              <select name="group[]" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                  <option selected>Select mode of filing</option>
+                                  <option value="A">NON-EFPS</option>
+                                  <option value="B">EFPS</option>
+                                  
+                              </select>
                             </div>
+
                             </div>
                             <h4 class="form-label text-dark">Business Information</h4> 
                             <div class="col">
                             <label class="form-label">Registration Date</label>
-                            <input type="date" class="form-control me-1" name="regdate"   value=""><br>
+                            <input type="date" class="form-control me-1" name="reg_date"   value=""><br>
+                            <label class="form-label">Group</label>
+                            <select name="group[]" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected>Open this select group</option>
+                                <option value="A">GROUP A</option>
+                                <option value="B">GROUP B</option>
+                                <option value="C">GROUP C</option>
+                                <option value="C">GROUP D</option>
+                                <option value="C">GROUP E</option>
+                            </select>
+                            <label class="form-label">Corporate</label>
+                            <select name="corporate[]" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected>Open this select group</option>
+                                <option value="A">Banking Institutions</option>
+                                <option value="B">Insurance and Pension Funding</option>
+                                <option value="C">Non-bank Financial Intermediation</option>
+                                <option value="C">Construction </option>
+                                <option value="C">Hotels and Restaurants </option>
+                            </select>
                             <label class="form-label">Trade Name</label> 
                             <input type="text" class="form-control" name="trade_name"   value=""><br>
                             <label class="form-label">Line of Business</label> 
@@ -47,23 +81,24 @@
                             <h4 class="form-label text-dark">Address</h4> 
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Unit/House No.</label>
-                                <input type="text" value="" class="form-control" id="inputEmail4">
+                                <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label">Street</label>
-                                <input type="text" value="" class="form-control" id="inputPassword4">
+                                <input type="text" value="" class="form-control" id="inputPassword4"
+                                name="street">
                             </div>
                             <div class="col-12">
                                 <label for="inputAddress" class="form-label">City/Municipality</label>
-                                <input type="text" class="form-control" id="inputAddress" value=" ">
+                                <input type="text" class="form-control" id="inputAddress" name="client_city">
                             </div>
                             <div class="col-12">
                                 <label for="inputAddress2" class="form-label">Province</label>
-                                <input type="text" class="form-control" id="inputAddress2" value=" ">
+                                <input type="text" class="form-control" id="inputAddress2" name="client_province ">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputCity" class="form-label">Postal Code</label>
-                                <input type="text" class="form-control" id="inputCity" value=""><br>
+                                <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
                             </div>
                             <h4 class="form-label text-dark">Tax Types</h4> 
                             <div class="row mt-2 me-4 text-dark">
