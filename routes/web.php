@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClientController;
-use Yajra\Datatables\Datatables;
+use App\Http\Controllers\Assoc_ClientController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,31 +36,10 @@ Route::view('/calendar','pages.admin.calendar')->name('calendar');
 
 Route::view('/associates_login','pages.associate.associates_login')->name('associates_login');
 Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_dashboard');
-
 Route::view('/compose','pages.admin.messages.compose')->name('compose');
 
-Route::view('/editclient','pages.associate.clients.edit_client')->name('editclient');
-Route::get('clients', [ClientController::class, 'index']);
-Route::get('/List/Clients',function(Request $request){
-    
-    if ($request->ajax()) {
-        $data = Client::latest()->get();
-        return DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function($row){
-                $actionBtn = '
-                    <a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> 
-                    <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                return $actionBtn;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-    }
 
 
-
-})->name('clients.list');
-Route::get('/insertClient',[ClientController::class, 'insertClient'])->name('insertclient');
 
 
 
@@ -72,13 +52,19 @@ Route::view('/client_message','pages.client.client_message')->name('client_messa
 
 /*---------------------- ASSOCIATE ROUTE CLIENTS --------------*/
 
-Route::view('/associate-add_client','pages.associate.clients.add_client')->name('associate-add_client');
+
+
+Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list');
+Route::get('/CreateNewClient',[Assoc_ClientController::class, 'createClient'])->name('CreateNewClient');
+Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertclient');
+Route::get('/showClientProfile',[Assoc_ClientController::class, 'showClientProfile'])->name('showClientProfile');
+Route::view('/editclient','pages.associate.clients.edit_client')->name('editclient');
 
 Route::view('/associate-message','pages.associate.message')->name('associate-message');
 
 
 // admin view and assoc view
-Route::view('/clientprofile/viewtax','pages.associate.clients.client_profile')->name('viewtax');
+
 
 
 Route::view('/clientprofile/viewfiles','pages.associate.clients.files_view')->name('viewfiles');

@@ -13,16 +13,54 @@ use App\Models\Corporate;
 use App\Models\ModeOfPayment;
 use App\Models\RegisteredAddress;
 use App\Models\LocationAddress;
-use DataTables;
+use Yajra\Datatables\Datatables;
 
 
-class ClientController extends Controller
+class Assoc_ClientController extends Controller
 {
   
-    public function index()
-    {
-        return view('pages.associate.clients.clients_list');
-    }
+        public function index (Request $request) {
+            
+            if ($request->ajax()) {
+                $data = Client::latest()->get();
+                return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+                        $actionBtn = '<a href="{{ route ("showClientProfil") }}" class="edit btn btn-info btn-sm">View</a>
+                                      <a href="{{ route ("showClientProfile") }}" class="edit btn btn-success btn-sm">Edit</a>
+                                      
+                                      '
+                                      ;
+                        return $actionBtn;
+                        
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+                }
+    
+            return view ('pages.associate.clients.clients_list');
+        }
+
+    // public function listClients(Request $request)
+
+    // {
+        
+        
+    //     if ($request->ajax()) {
+    //         $data = Client::latest()->get();
+    //         return DataTables::of($data)
+    //             ->addIndexColumn()
+    //             ->addColumn('action', function($row){
+    //                 $actionBtn = '
+    //                     <a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> 
+    //                     <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+    //                 return $actionBtn;
+    //             })
+    //             ->rawColumns(['action'])
+    //             ->make(true);
+    //     }
+    //     return view('pages.associate.clients.clients_list');
+    // }
 
    
     public function insertClient(Request $request)
@@ -85,7 +123,17 @@ class ClientController extends Controller
         $client ->save();
 
         
-        return redirect()->route('pages.associates.clients.clients_list');
+        // return redirect()->route('pages.associates.clients.clients_list');
 
     }
+    public function showClientProfile($id){
+        $client = Client::find ($id); 
+        return view('pages.associate.clients.client_profile')->with("client", $client);
+    }
+    public function createClient()
+    {   
+        return view ("pages.associate.clients.add_client");
+    }
+
+
 }
