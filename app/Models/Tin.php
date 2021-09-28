@@ -12,6 +12,6 @@ class Tin extends Model
     protected $fillable = ['tin_no'];
     
     public function client(){
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id');
     }
 }

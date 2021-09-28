@@ -21,5 +21,8 @@ class ClientCity extends Model
     public function clientprovince(){
         return $this->belongsTo(ClientProvince::class, 'province_id');
     }
+    public function clientpostal(){
+        return $this->hasMany(Clientpostal::class);
+    }
     
 }

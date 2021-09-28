@@ -14,7 +14,7 @@
     <table class="table table-bordered yajra-datatable">
         <thead>
             <tr>
-                <th>ID</th>
+                
                         <th>Client Name</th>
                         <th>Contact Number</th>
                         <th>Email</th>
@@ -45,7 +45,7 @@
         serverSide: true,
         ajax: "{{ route('clients.list') }}",
               columns: [
-                  {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                //   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                   {data: 'client_name', name: 'client_name'},
                   {data: 'contact_number', name: 'contact_number'},
                   {data: 'email', name: 'email'},
@@ -54,7 +54,7 @@
                   {
                       data: 'action', 
                       name: 'action', 
-                      orderable: true, 
+                      
                       searchable: true
                   },
         ]

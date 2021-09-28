@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModeOfPayment extends Model
 {
-    protected $table= 'client_mode_of_payment';
     use HasFactory;
+    protected $table= 'client_mode_of_payment';
+    
     
     public function clients(){
         return $this->belongsTo(Client::class);

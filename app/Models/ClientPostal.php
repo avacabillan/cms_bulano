@@ -16,12 +16,12 @@ class ClientPostal extends Model
         "postal_no",
     ];
 
-    public function RegisteredAddress(){
-        return $this->belongsTo(RegisteredAddress::class);
-    }
     
     public function location(){
-        return $this->belongsTo(LocationAddress::class);
+        return $this->hasMany(LocationAddress::class);
+    }
+    public function clientcity(){
+        return $this->belongsTo(ClientPostal::class, 'client_city_id');
     }
     
 }

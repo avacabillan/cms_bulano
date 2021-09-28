@@ -19,13 +19,13 @@ class Business extends Model
     ];
     
     public function clients(){
-        return $this->hasMany(Client::class);
+        return $this->belongsTo(Client::class);
     }
     public function RegisteredAddress(){
         return $this->hasMany(RegisteredAddress::class);
     }
-    public function corporate(){
-        return $this->belongsTo(Corporate::class);
-    }
+    // public function corporate(){
+    //     return $this->belongsTo(Corporate::class);
+    // }
    
 }

@@ -56,7 +56,7 @@ Route::view('/client_message','pages.client.client_message')->name('client_messa
 
 Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list');
 Route::get('/CreateNewClient',[Assoc_ClientController::class, 'createClient'])->name('CreateNewClient');
-Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertclient');
+Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient');
 Route::get('/showClientProfile',[Assoc_ClientController::class, 'showClientProfile'])->name('showClientProfile');
 Route::view('/editclient','pages.associate.clients.edit_client')->name('editclient');
 

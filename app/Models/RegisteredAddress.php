@@ -13,11 +13,9 @@ class RegisteredAddress extends Model
 
 
    
-    public function client(){
-        return $this->hasMany(Client::class);
-    }
+   
     public function business(){
-        return $this->belongsTo(Business::class);
+        return $this->belongsTo(Business::class,'business_id');
     } 
     public function location(){
         return $this->belongsTo(LocationAddress::class, 'location_address_id');

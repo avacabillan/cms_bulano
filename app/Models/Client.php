@@ -18,16 +18,16 @@ class Client extends Model
         
     ];  
     public function modeofpayment(){
-        return $this->hasOne(ModeofPayment::class);
+        return $this->hasMany(ModeofPayment::class);
     }
     public function business(){
-        return $this->belongsTo(Business::class);
+        return $this->hasMany(Business::class);
     }
     public function tin(){
         return $this->hasMany(Tin::class);
     }
-    public function associate(){
-        return $this->belongsTo(Associate::class);
-    }
+    // public function associate(){
+    //     return $this->hasMany(Associate::class);
+    // }
     
 }
