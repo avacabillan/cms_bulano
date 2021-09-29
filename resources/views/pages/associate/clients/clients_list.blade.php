@@ -3,9 +3,9 @@
 <head>
     <title>Clients</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <body>
     
@@ -14,7 +14,7 @@
     <table class="table table-bordered yajra-datatable">
         <thead>
             <tr>
-                
+                        <th>Client ID</th>
                         <th>Client Name</th>
                         <th>Contact Number</th>
                         <th>Email</th>
@@ -31,11 +31,11 @@
    
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>  
 
 <script type="text/javascript">
   $(function () {
@@ -45,17 +45,17 @@
         serverSide: true,
         ajax: "{{ route('clients.list') }}",
               columns: [
-                //   {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                  {data: 'client_name', name: 'client_name'},
-                  {data: 'contact_number', name: 'contact_number'},
-                  {data: 'email', name: 'email'},
-                  {data: 'ocn', name: 'ocn'},
-                  {data: 'mode_of_payment_id', name: 'mode_of_payment'},
-                  {
-                      data: 'action', 
-                      name: 'action', 
-                      
-                      searchable: true
+                  {data: 'id', name: 'id', orderable: false},
+                  {data: 'client_name', name: 'client_name', orderable: false},
+                  {data: 'contact_number', name: 'contact_number', orderable: false},
+                  {data: 'email', name: 'email', orderable: false},
+                  {data: 'ocn', name: 'ocn', orderable: false},
+                  {data: 'mode_of_payment_id', name: 'mode_of_payment', orderable: false},
+                  {data: 
+                    'actions',
+                    name: 'actions', 
+                    orderable: false, 
+                    searchable: true
                   },
         ]
     });

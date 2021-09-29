@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
-    protected $table ='tbl_group';
+    protected $table ='tbl_groups';
 
     public function corporate(){
         return $this->hasMany(Corporate::class);

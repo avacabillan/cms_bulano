@@ -13,7 +13,7 @@ use App\Models\Corporate;
 use App\Models\ModeOfPayment;
 use App\Models\RegisteredAddress;
 use App\Models\LocationAddress;
-
+use App\Models\Group;
 
 
 class Assoc_ClientController extends Controller
@@ -23,21 +23,20 @@ class Assoc_ClientController extends Controller
             
             if ($request->ajax()) {
                 $data = Client::latest()->get();
-                return Datatables::of($data)
-                ->addColumn('check', '<input type="checkbox" name="selected_users[]" value="{{ $id }}">')
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row){
-                        $actionBtn = '<a href="{{ route ("showClientProfil") }}" class="edit btn btn-info btn-sm">View</a>
-                                      <a href="{{ route ("showClientProfile") }}" class="edit btn btn-success btn-sm">Edit</a>
-                                      
-                                      '
-                                      ;
-                        return $actionBtn;
+                return Datatables::of($data) 
+                ->addIndexColumn()
+                ->addColumn('actions', function($row){
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editClient">Edit</a>';
+   
+                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-success btn-sm viewClient">View</a>';
+
+                     return $btn;
                         
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-                }
+                })
+           
+                ->rawColumns(['actions'])
+                ->make(true);
+            }
     
             return view ('pages.associate.clients.clients_list');
         }
@@ -117,7 +116,8 @@ class Assoc_ClientController extends Controller
     public function createClient()
     {   
         $modes = ModeOfPayment::all();
-        return view ("pages.associate.clients.add_client")->with ('modes', $modes);
+        $groups = Group::all();
+        return view ("pages.associate.clients.add_client")->with ('modes', $modes,'groups', $groups);
     }
 
 
