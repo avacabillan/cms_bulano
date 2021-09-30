@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Associate;
@@ -36,6 +37,8 @@ class Assoc_ClientController extends Controller
            
                 ->rawColumns(['actions'])
                 ->make(true);
+                
+        
             }
     
             return view ('pages.associate.clients.clients_list');
@@ -51,13 +54,14 @@ class Assoc_ClientController extends Controller
 
        
 
-        // $group =new Group();
-        // $group ->group_name = $request->group;
-        // $group ->save();
-
+      
         // $corporate =new Corporate();
         // $corporate ->corporate_name = $request->corporate;
         // $corporate ->save();
+
+                
+
+
 
         
         $client_province =new ClientProvince();
@@ -101,7 +105,7 @@ class Assoc_ClientController extends Controller
         $business ->client_id =$client->id;
         $business ->trade_name =$request->trade_name;
         $business ->registration_date =$request->reg_date;
-        // $business ->corporate_id =$corporate->id;
+        $business ->corporate_id =$request->corporate;
         $business ->registered_address_id =$registered_address->id;
         $business ->save();
 
@@ -115,10 +119,18 @@ class Assoc_ClientController extends Controller
     }
     public function createClient()
     {   
-        $modes = ModeOfPayment::all();
-        $groups = Group::all();
-        return view ("pages.associate.clients.add_client")->with ('modes', $modes,'groups', $groups);
+        $modes= ModeOfPayment::all();
+        $corporates= Corporate::all();
+
+        return view ("pages.associate.clients.add_client")->with( compact('modes',$modes,'corporates',$corporates));
     }
+     public function showGroups()
+     {
+        //  select corporates that is belong to specific group
+        // $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
+        // return view('welcome')->with("groups", $groups);
+    }
+    
 
 
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
+use App\Http\Controllers\TestController;
 
 
 /*
@@ -68,6 +69,11 @@ Route::view('/associate-message','pages.associate.message')->name('associate-mes
 
 
 Route::view('/clientprofile/viewfiles','pages.associate.clients.files_view')->name('viewfiles');
+
+// test
+Route::get('dropdownlist/getGroup', [TestController::class , 'getGroups']);
+Route::get('dropdownlist/getSubCorporate/{id}', [TestController::class , 'getSubCorporates']);
+
 
 
 
