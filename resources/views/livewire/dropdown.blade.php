@@ -9,7 +9,7 @@
   
         @if (!is_null($corporates))
         <label for="status">Select a Corporate</label>
-            <select class="form-control" wire:model="selectedCorp">
+            <select name="corporate" class="form-control" wire:model="selectedCorp">
                 <option value="">--Select a Corporate--</option>
                 @foreach ($corporates as $item)
                 <option value="{{ $item->id }}">{{ $item->corporate_name }}</option>
