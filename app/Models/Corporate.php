@@ -11,7 +11,7 @@ class Corporate extends Model
     protected $table = 'client_corporates';
 
     public function group(){
-        return $this->belongsTo(Group::class, 'group_id');
+        return $this->belongsTo(Group::class);
     }
     public function business(){
         return $this->hasMany(Business::class);

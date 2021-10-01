@@ -54,15 +54,7 @@
                             <label class="form-label">Registration Date</label>
                             <input type="date" class="form-control me-1" name="reg_date"   value=""><br>
                             
-                            <label class="form-label">Corporate</label>
-                              <div class="form-group">
-                                <select name="corporate" class="form-control" required>
-                                  <option value="">--Select Corporate--</option>
-                                    @foreach($corporates as $corporate)
-                                    <option value="{{$corporate->id}}">{{$corporate->corporate_name}}</option>
-                                    @endforeach
-                                </select><br>
-                              </div>
+                            <livewire:dropdown /> 
 
                               
                             <label class="form-label">Trade Name</label> 

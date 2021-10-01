@@ -1,54 +1,31 @@
-@extends('layout.master')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+   <title>Document</title>
+   @livewireStyles
+</head>
+<body>
 
-@section('content')
-<div class="form-group">
-            <label for="exampleInputEmail1"> Select Groups </label>
-            <select class="form-control" name="group" id="group" required>
-                <option value=""> Select </option>
-                @foreach($groups as $group)
-                <option value="group->id">Group{{$group}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1"> Select Corporate </label>
-            <select class="form-control" name="subCorporate" id="subCorporate" required>
-                <option value=""> Select </option>
-                @foreach($subCorporates as $subCorporate)
-                    <option value="{{$subCorporate->id}}"> {{ $subCorporate }}</option>
-                @endforeach
-            </select>
-        </div>
+   <div class="container">
+      <div class="row ">
+         <div class="col-md-12">
+               <div class="card">
+                  <div class="card-header">
+                     <h3 class="card-title">Livewire Dependent Dropdown Tutorial</h3>
 
-   
-    <script type="text/javascript">
-            jQuery(document).ready(function ()
-            {
-                    jQuery('select[name="group"]').on('change',function(){
-                       var groupID = jQuery(this).val();
-                       if(groupID)
-                       {
-                          jQuery.ajax({
-                             url : 'dropdownlist/getsubCorporate/' +groupID,
-                             type : "GET",
-                             dataType : "json",
-                             success:function(data)
-                             {
-                                console.log(data);
-                                jQuery('select[name="subCorporate"]').empty();
-                                jQuery.each(data, function(key,value){
-                                   $('select[name="subCorporate"]').append('<option value="'+ key +'">'+ value +'</option>');
-                                });
-                             }
-                          });
-                       }
-                       else
-                       {
-                          $('select[name="subCorporate"]').empty();
-                       }
-                    });
-            });
-            </script>
-
+                     
+                  </div>
+                  
+               </div>
+      
             
-@endsection​
+               
+            
+         </div>
+         
+      </div>
+   </div>
+   
+</body>
+</html>
