@@ -1,0 +1,47 @@
+
+.admin_about {
+    margin-top: 8%;
+    border-radius: 10px;
+    background-color: cornsilk;
+}
+.about_heading {
+    padding-top: 10px;
+    font-weight: bold;
+    
+}
+
+.introduction {
+    text-align: justify;
+    text-indent: 50px;
+}
+.body {
+    text-align: left;
+}
+.conclusion {
+    text-align: justify;
+    text-indent: 50px;
+}
+.admin_vmg {
+    margin-top: 3%;
+    border-radius: 10px;
+    background-color: wheat;
+}
+.vmg_heading {
+    padding-top: 10px;
+    font-weight: bold;
+}
+.vmg_vision_text {
+    text-align: justify;
+    text-indent: 50px;
+}
+.vmg_mission_text {
+    text-align: justify;
+  
+}
+.vmg_Key_to_Success_text {
+    text-align: justify;
+
+}
+.vmg_Our_values_text {
+    text-align: justify;
+}

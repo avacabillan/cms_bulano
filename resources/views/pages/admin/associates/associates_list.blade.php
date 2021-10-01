@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-  List of Associates
+  LIST OF ASSOCIATES
 @stop
 
 @section('content')
@@ -13,11 +13,10 @@
 
     <div class="assoc_list">
       <div class="d-grid gap-2 d-md-block me-5 mt-5 pt-5 mb-3" style="float: right;">
-        <button class="btn btn-primary" type="button"><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
-        <button class="btn btn-danger" type="button"><i class="fas fa-minus-circle"></i> Delete</button>
+        <button class="btn btn-outline-primary" id="btn-newAssoc"><i class="fas fa-plus-circle"></i> Add New Associate</button>
+        <button class="btn btn-danger" id="assoclist-deletebtn" type="button"><i class="fas fa-minus-circle"></i> Delete</button>
       </div>
-
-      <table class="table_guest">
+      <table class="admin_associates_table">
         <thead>
           <tr>
             <th>
@@ -29,21 +28,29 @@
             <th>Name</th>
             <th>Email</th>
             <th>Contact Number</th>
-            <th><center>Actions</center></th>      
+            <th>Action</th>
+              
           </tr>                                                                                                                        
         </thead>
         <tbody>
           <tr>
             <td>
-            <span class="custom-checkbox">
+              <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
             </td>
-            <td>Bianca Mae Cortez</td>
+            <td><div class="assocname_listed" id="assocname"><b>Bianca Cortez<b></div></td>
             <td>biancacortz123@gmail.com</td>
-            <td>0932732648643</td>
-            <td><center><i class="fas fa-eye"></i></center></td>
+            <td>0932732648643</td> 
+            <td>
+              <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                <i class="fas fa-edit me-2" data-toggle="tooltip" title="Edit" style="color:yellow;"></i>
+              </a>
+							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                <i class="fas fa-trash" data-toggle="tooltip" title="Delete" style="color:red;"></i></i>
+              </a>
+            </td> 
           </tr>
           <tr>
             <td>
@@ -52,10 +59,17 @@
 								<label for="checkbox2"></label>
 							</span>
             </td>
-            <td>Jean Jati</td>
+            <td><div class="assocname_listed">Jean Jati</div></td>
             <td>biancacortz123@gmail.com</td>
             <td>0932732648643</td>
-            <td><center><i class="fas fa-eye"></i></center></td>
+            <td>
+              <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                <i class="fas fa-edit me-2" data-toggle="tooltip" title="Edit" style="color:yellow;"></i>
+              </a>
+							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                <i class="fas fa-trash" data-toggle="tooltip" title="Delete" style="color:red;"></i></i>
+              </a>
+            </td>
           </tr>
           <tr> 
             <td>
@@ -64,10 +78,17 @@
 								<label for="checkbox2"></label>
 							</span>
             </td>
-            <td>Jean Jati</td>
+            <td><div class="assocname_listed">Mitz Castillo</div></td>
             <td>biancacortz123@gmail.com</td>
             <td>0932732648643</td>
-            <td><center><i class="fas fa-eye"></i></center></td>
+            <td>
+              <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                <i class="fas fa-edit me-2" data-toggle="tooltip" title="Edit" style="color:yellow;"></i>
+              </a>
+							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                <i class="fas fa-trash" data-toggle="tooltip" title="Delete" style="color:red;"></i></i>
+              </a>
+            </td>
           </tr>
           <tr>
             <td>
@@ -77,50 +98,30 @@
 							</span>
 
             </td>
-            <td>Jean Jati</td>
+            <td><div class="assocname_listed">Ava Gab</div></td>
             <td>biancacortz123@gmail.com</td>
             <td>0932732648643</td>
-            <td><center><i class="fas fa-eye"></i></center></td>
+            <td>
+              <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                <i class="fas fa-edit me-2" data-toggle="tooltip" title="Edit" style="color:yellow;"></i>
+              </a>
+							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                <i class="fas fa-trash" data-toggle="tooltip" title="Delete" style="color:red;"></i></i>
+              </a>
+            </td>
           </tr>
           
         </tbody> 
+        
       </table>
-      @include('pages.admin.associates.assoc_profile')
     </div>
     
   </div>
-
+  
 </div>
 
-@stop 
-
-@section('scripts')
-    <script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
+@include('pages.admin.associates.add_associates')
+@include('pages.admin.associates.assoc_profile')
 
 @stop 
+

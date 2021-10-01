@@ -8,6 +8,9 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 
+    <link rel="stylesheet" href="{{asset('css/about.css')}}">
+    <link rel="stylesheet" href="{{asset('css/service.css')}}">
+
     <!-- ADMIN -->
     <link rel="stylesheet" href="{{asset('css/admin_login.css')}}">
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
@@ -31,6 +34,7 @@
     <link rel="stylesheet" href="{{asset('css/client_login.css')}}">
 
     <link rel="stylesheet" href="{{asset('css/client_profile.css')}}">
+    
     @livewireStyles
 </head>
 <body>
@@ -44,8 +48,9 @@
     <script src="{{asset('js/navbar.js')}}"></script>
     <script src="{{asset('js/sidebar.js')}}"></script>
     <script src="{{asset('js/admin_assoc_list.js')}}"></script>
+    <script src="{{asset('js/admin_add_assoc.js')}}"></script>
     <script src="{{asset('js/admin_notification.js')}}"></script>
-    <script src="{{asset('js/admin_assoclist_checkbox.js')}}"></script>
+    <script src="{{asset('js/admin_assolist_checkbox.js')}}"></script>
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

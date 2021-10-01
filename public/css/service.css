@@ -1,0 +1,25 @@
+
+.service_heading {
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.service_text_title {
+    font-weight: bold;
+    text-indent: 25px;
+}
+.service_text {
+    text-align: justify;
+}
+.service_text_titleB {
+    font-weight: bold;
+    text-indent: 25px;
+}
+.service_text_titleC {
+    font-weight: bold;
+    text-indent: 25px;
+}
+.service_text_titleD {
+    font-weight: bold;
+    text-indent: 25px;
+}

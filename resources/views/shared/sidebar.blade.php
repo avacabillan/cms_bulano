@@ -40,25 +40,17 @@
             </li>
             <!-- END OF REGISTERED GUEST -->
             <!-- ASSOCIATES -->
-            <li class="sidebar-dropdown">
-              <a href="#"><i class="fa fa-globe"></i><span>Associates</span></a>
-              <div class="sidebar-submenu">
-                <ul>
-                  <li><a href="">Associates Profile</a></li>
-                  <li><a href="{{route('associates_list')}}">Associates List</a></li>
-                </ul>
-              </div>
+            <li>
+              <a href="{{route('associates_list')}}">
+                <i class="fa fa-globe"></i><span>Associates</span>
+              </a>
             </li>
             <!-- END OF ASSOCIATES -->
             <!-- CLIENTS -->
-            <li class="sidebar-dropdown">
-              <a href="#"><i class="fa fa-globe"></i><span>Clients</span></a>
-              <div class="sidebar-submenu">
-                <ul>
-                  <li><a href="#">Clients Profile</a></li>
-                  <li><a href="">Clients List</a></li>
-                </ul>
-              </div>
+            <li>
+              <a href="{{route('clients.list')}}">
+                <i class="fa fa-globe"></i><span>Clients</span>
+              </a>
             </li>
             <!-- END OF CLIENTS -->
 
@@ -67,12 +59,7 @@
             <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
             <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
             <li><a href="#"><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
-            <li><a href="#"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i><span>Services</span></a></li>
-            <li><a href="#"><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
-            <li><a href="#"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i><span>Services</span></a></li>
-            <li><a href="#"><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
+           
              <!-- END OF EXTRA -->
           </ul>
 
