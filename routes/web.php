@@ -23,6 +23,8 @@ use App\Http\Livewire\Dropdown;
 
 /*---------------------- ADMIN VIEW --------------*/
 
+Route::view('/about','pages.admin.about')->name('about');
+Route::view('/services','pages.admin.services')->name('services');
 Route::view('/login','pages.admin.login')->name('login');
 Route::view('/dashboard','pages.admin.dashboard')->name('dashboard');
 Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');

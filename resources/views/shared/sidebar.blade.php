@@ -64,8 +64,8 @@
 
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
-            <li><a href="#"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i><span>Services</span></a></li>
+            <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
+            <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
             <li><a href="#"><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
             <li><a href="#"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
             <li><a href="#"><i class="fa fa-calendar"></i><span>Services</span></a></li>
