@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/admin_dashboard.css')}}">
     <link rel="stylesheet" href="{{asset('css/guest_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_add_assoc.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin_assoc_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_show_msg.css')}}">
     <link rel="stylesheet" href="{{asset('css/system/admin_msg.css')}}">
     
@@ -51,6 +52,7 @@
     <script src="{{asset('js/admin_add_assoc.js')}}"></script>
     <script src="{{asset('js/admin_notification.js')}}"></script>
     <script src="{{asset('js/admin_assolist_checkbox.js')}}"></script>
+    <script src="{{asset('js/associate_profile.js')}}"></script>
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

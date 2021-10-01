@@ -1,7 +1,7 @@
 
 
 <!-- The Modal -->
-<div id="myModal" class="modal msg_show" > 
+<div  class="assoc_profile_card"> 
   <!-- Modal content -->
    <div class="col-md-8 offset-md-4"> 
 

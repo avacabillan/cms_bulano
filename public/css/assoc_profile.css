@@ -1,5 +1,14 @@
 
-
+.assoc_profile_card {
+    padding-top: 0%;
+    top: 0%;
+    width: 50%;
+    z-index: 1;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+    display: none;
+}
 #prof_border {
     border: solid 2px black
 }
