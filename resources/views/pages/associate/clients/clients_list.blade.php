@@ -4,8 +4,7 @@
 @stop
 
 @section('content')
-@include('shared.navbar')
-@include('shared.sidebar')
+
 
 <div class="siderbar_main toggled">
 
@@ -20,7 +19,7 @@
                 <span class="custom-checkbox">
                   <input type="checkbox" id="selectAll">
                   <label for="selectAll"></label>
-                </span>
+                </span>   
               </th>
               <th class="text-dark">Client ID</th>
               <th class="text-dark">Client Name</th>
@@ -33,7 +32,7 @@
           </thead>
           <tbody>
           </tbody>
-        </table>
+        </table>  
     </div>
   </div>
 </div>
