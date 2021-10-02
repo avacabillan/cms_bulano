@@ -59,7 +59,7 @@ Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->nam
 Route::get('/showClientProfile',[Assoc_ClientController::class, 'index'])->name('showClientProfile');
 Route::get('/editclient',[Assoc_ClientController::class, 'index'])->name('editClientProfile');
 
-Route::view('/associate-message','pages.associate.message')->name('associate-message');
+Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
 
 
 // admin view and assoc view

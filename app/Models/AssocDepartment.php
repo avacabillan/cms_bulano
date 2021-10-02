@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AssocDepartment extends Model
 {
     use HasFactory;
+    protected $table ='department';
+
+    public function position(){
+        return $this->hasOne(Position::class);
+    }
 }
