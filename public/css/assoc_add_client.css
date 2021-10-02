@@ -52,21 +52,20 @@
   font-weight: 500;
   
 }
+
+h4 .addClient_header_text {
+  color: black;
+  float: left;
+  padding-left: 20px;
+}
 .h1 {
     padding-right: 45%;
 }
-.cancel {
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 15px;
+.AddClient_btn {
+  float: right;
+  padding-left: 50px;
 }
-.submit {
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    padding-left: 1px;
-}
+
 .txs {
     font-weight: 300;
     color: white;

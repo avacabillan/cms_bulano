@@ -1,125 +1,110 @@
 
 <div class="addClient_form">
-   <div class="col-md-8 offset-md-2 bg-light mt-3 pt-3">
-        <div class="card-body">
-            <div class="form-goup">
-                    <div class="row ">
-                    <div class="col-9 col-sm-4 ms-3">
-                  <form action="{{route('insertClient')}}" class="row">
-                        
-                    @csrf           
-                      </div> 
-                        
-                        <h4 class="form-label text-dark">Personal Information</h4> 
-                            <div class="row ">
-                            <div class="col mt-2 pt-2">
-                              <label class="form-label">Name</label> 
-                              <input type="text" class="form-control" value=""   name="client_name" >
-                              <label class="form-label">Email</label>
-                              <input type="text" class="form-control" value="" name="email">         
-                              <label class="form-label">Contact Number</label>
-                              <input type="text" class="form-control" value="" name="client_contact"> <br>
-                              <label class="form-label">TIN No.</label>
-                              <input type="text" class="form-control" value="" name= "tin" > <br>
-                              <label class="form-label">OCN No.</label>
-                              <input type="text" class="form-control" value="" name="ocn"> <br>
-                              <!-- <label class="form-label">Choose asscociate</label>
-                              <div class="form-group">
-                                <select name="assoc" class="form-control">
-                                <option selected>Select Associate</option>
-                                  <option value="A">Associate 1</option>
-                                  <option value="B">Associate 2</option>
-                                </select><br>
-                              </div> -->
-                              
-                              <label class="form-label">Mode of filing</label>
-                              <div class="form-group">
-                                <select name="mode" class="form-control">
-                                    @foreach($modes as $mode)
-                                    <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
-                                    @endforeach
-                                </select><br>
-                              </div>
-                              
-                            </div>
-                            </div>
-                            <h4 class="form-label text-dark">Business Information</h4> 
-                            <div class="col">
-                            <label class="form-label">Registration Date</label>
-                            <input type="date" class="form-control me-1" name="reg_date"   value=""><br>
-                            
-                            <div name="corporate">
-                            <livewire:dropdown />
-                            </div> 
+  <div class="col-md-8 offset-md-2 bg-light mt-3 pt-3 mb-3">
+    <div class="card-body">
+      <div class="form-goup">
+        <div class="row ">
+          <div class="col-9 col-sm-4 ms-3">
+            <form action="{{route('insertClient')}}" class="row">
+            @csrf           
+          </div>
 
-                              
-                            <label class="form-label">Trade Name</label> 
-                            <input type="text" class="form-control" name="trade_name"   value=""><br>
-                            <label class="form-label">Line of Business</label> 
-                            <input type="text" class="form-control" name="linebus"   value=""><br>
-
-                            </div>
-                            
-                            <h4 class="form-label text-dark">Address</h4> 
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-label">Unit/House No.</label>
-                                <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPassword4" class="form-label">Street</label>
-                                <input type="text" value="" class="form-control" id="inputPassword4"
-                                name="street">
-                            </div>
-                            <div class="col-12">
-                                <label for="inputAddress" class="form-label">City/Municipality</label>
-                                <input type="text" class="form-control" id="inputAddress" name="client_city">
-                            </div>
-                            <div class="col-12">
-                                <label for="inputAddress2" class="form-label">Province</label>
-                                <input type="text" class="form-control" id="inputAddress2" name="client_province">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputCity" class="form-label">Postal Code</label>
-                                <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
-                            </div>
-                            <div>
-                            <h4 class="form-label text-dark">Tax Types</h4> 
-                            <!-- <div class="row mt-2 me-4 text-dark" name="tax">
-                            <div class="row">
-                                <div class="col-6 col-md-4 "><input type="checkbox" name="tax[]" value="Income tax">Income Tax</div>
-                                <div class="col-6 col-md-4 "><input  type="checkbox" name="tax[]" value="Registration Fee">Registration Fee</div>
-                                <div class="col-6 col-md-4 "><input type="checkbox" name="tax[]" value="VAT">VAT<br/></div>
-                                <div class="col-6 "><input  type="checkbox" name="tax[]" value="With Holding Compensation">With Holding Compensation</div>
-                                <div class="col-6 "><input  type="checkbox" name="tax[]" value="With Holding Expanded">With Holding Expanded</div>
-                            </div> -->
-
-                            
-                                
-                            
-
-                            
-                              <livewire:taxes />
-                            </div>
-
-
-                            <!-- <h4 class="form-label text-dark mt-3">Upload File</h4> 
-                            <div class="input-group mt-2">
-                              <input type="file" class="form-control" id="inputGroupFile02">
-                              <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            </div> -->
-                           
-                            <div class="btn">
-                            <button class="btn btn-primary pt-3 mt-5 mb-3 pb-2" type="submit" value="add">Submit</button>
-                            <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
-                            <!-- <button  class="btn btn-primary pt-3 mt-5 mb-3 pb-2" id="close_ClientProfile" style="float:right;">Cancel</button> -->
-                            
-                            </div>
-                    </form>
-                    </div>
-                </div>
+          <h4 class="addClient_header_text">Personal Information</h4>
+          <div class="col-md-3 ml-md-auto form-group mt-3 pb-2">
+            <label class="form-label"><b>OCN</b></label>
+            <input type="text" class="form-control" value="" name="ocn">
+          </div><br>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-label ms-3"><b>Name</b></label>
+                <input type="text" class="form-control" value="" name="client_name">
+              </div>
             </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-label"><b>Email</b></label>
+                <input type="text" class="form-control" value="" name="email">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-label"><b>TIN</b></label>
+                <input type="text" class="form-control" value="" name="tin">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-label"><b>Contact No.</b></label>
+                <input type="text" class="form-control" value="" name="client_contact">
+              </div>
+            </div>
+          </div>
+          <h4 class="addClient_header_text mt-3">Business Information</h4>
+          <div class="row mt-3">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-label"><b>Registration Date</b></label>
+                <input type="text" class="form-control" name="reg_date">
+              </div>
+            </div>
+            <div class="col">
+              <div name="corporate">
+                <b><livewire:dropdown /></b>
+              </div> 
+            </div>
+            <div class="col">
+              <div class="form-group ms-3">
+                <label class="form-label"><b>Trade Name</b></label>
+                <input type="text" class="form-control" name="trade_name">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group me-4">
+                <label class="form-label"><b>Line of Business</b></label>
+                <input type="number" class="form-control" name="linebus">
+              </div>
+            </div>
+          </div>
+          <h4 class="addClient_header_text mt-3">Address</h4>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Unit/House No.</label>
+              <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Street</label>
+              <input type="text" value="" class="form-control" id="inputPassword4" name="street">
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">City/Municipality</label>
+              <input type="text" class="form-control" id="inputAddress" name="client_city">
+            </div>
+            <div class="col-md-6">
+              <label for="inputAddress2" class="form-label">Province</label>
+              <input type="text" class="form-control" id="inputAddress2" name="client_province">
+            </div>
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">Postal Code</label>
+              <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
+            </div>
+          </div>
+          <h4 class="form-label text-dark">Tax Types</h4> 
+              <div class="row mt-2 me-4 text-dark" name="tax">
+                <livewire:taxes />
+              </div>
+          
+          <div class="AddClient_btn">
+            <button class="btn btn-primary" type="submit" value="add">Submit</button>
+            <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
+            <!-- <button  class="btn btn-primary pt-3 mt-5 mb-3 pb-2" id="close_ClientProfile" style="float:right;">Cancel</button> -->
+          </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
+</div>
 
     
 
