@@ -33,6 +33,7 @@ Route::view('/associates_list','pages.admin.associates.associates_list')->name('
 // Route::view('/add_associates','pages.admin.associates.add_associates')->name('add_associates');
 // Route::view('/assocprofile','pages.admin.associates.assoc_profile')->name('assocprofile');
 Route::get('/insertAssociate',[AdminAssocController:: class, 'insertAssociate'])->name('insertassociate');
+Route::get('/CreateNewAssociate',[AdminAssocController:: class, 'createAssociate'])->name('CreateNewAssociate');
 
 Route::view('/calendar','pages.admin.calendar')->name('calendar');
 
