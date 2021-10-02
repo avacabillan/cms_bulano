@@ -32,7 +32,16 @@
                                 </select><br>
                               </div> -->
                               
-
+                              <label class="form-label">Mode of filing</label>
+                              <div class="form-group">
+                                <select name="mode" class="form-control">
+                                    @foreach($modes as $mode)
+                                    <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
+                                    @endforeach
+                                </select><br>
+                              </div>
+                              
+                            </div>
                             </div>
                             <h4 class="form-label text-dark">Business Information</h4> 
                             <div class="col">
