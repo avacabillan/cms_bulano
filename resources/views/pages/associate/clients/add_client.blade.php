@@ -36,7 +36,7 @@
             <div class="col">
               <div class="form-group">
                 <label class="form-label"><b>Contact No.</b></label>
-                <input type="text" class="form-control" value="" name="client_contact">
+                <input type="number" class="form-control" value="" name="client_contact">
               </div>
             </div>
           </div>
@@ -48,11 +48,7 @@
                 <input type="text" class="form-control" name="reg_date">
               </div>
             </div>
-            <div class="col">
-              <div name="corporate">
-                <b><livewire:dropdown /></b>
-              </div> 
-            </div>
+            
             <div class="col">
               <div class="form-group ms-3">
                 <label class="form-label"><b>Trade Name</b></label>
@@ -65,27 +61,37 @@
                 <input type="number" class="form-control" name="linebus">
               </div>
             </div>
-          </div>
+          </div><br>
+
+          <div class="row mt-5">
+            <div class="col mt-5">
+              <div name="corporate">
+                <livewire:dropdown />
+              </div> 
+            </div>
+              
+          </div><br><br>
+
           <h4 class="addClient_header_text mt-3">ADDRESS</h4>
           <div class="row mt-3">
             <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Unit/House No.</label>
+              <label for="inputEmail4" class="form-label"><b>Unit/House No.</b></label>
               <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
             </div>
             <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Street</label>
+              <label for="inputPassword4" class="form-label"><b>Street</b></label>
               <input type="text" value="" class="form-control" id="inputPassword4" name="street">
             </div>
             <div class="col-12">
-              <label for="inputAddress" class="form-label">City/Municipality</label>
+              <label for="inputAddress" class="form-label"><b>City/Municipality</b></label>
               <input type="text" class="form-control" id="inputAddress" name="client_city">
             </div>
             <div class="col-md-6">
-              <label for="inputAddress2" class="form-label">Province</label>
+              <label for="inputAddress2" class="form-label"><b>Province</b></label>
               <input type="text" class="form-control" id="inputAddress2" name="client_province">
             </div>
             <div class="col-md-6">
-              <label for="inputCity" class="form-label">Postal Code</label>
+              <label for="inputCity" class="form-label"><b>Postal Code</b></label>
               <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
             </div>
           </div>
@@ -94,7 +100,7 @@
                 <livewire:taxes />
               </div>
           
-          <div class="AddClient_btn">
+          <div class="AddClient_btn mt-5">
             <button class="btn btn-primary" type="submit" value="add">Submit</button>
             <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
             <!-- <button  class="btn btn-primary pt-3 mt-5 mb-3 pb-2" id="close_ClientProfile" style="float:right;">Cancel</button> -->
