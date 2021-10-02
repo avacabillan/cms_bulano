@@ -82,6 +82,7 @@
                                 <label for="inputCity" class="form-label">Postal Code</label>
                                 <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
                             </div>
+                            <div>
                             <h4 class="form-label text-dark">Tax Types</h4> 
                             <!-- <div class="row mt-2 me-4 text-dark" name="tax">
                             <div class="row">
@@ -96,8 +97,8 @@
                                 
                             
 
-                            <div>
-                              <!-- <livewire:taxes /> -->
+                            
+                              <livewire:taxes />
                             </div>
 
 
