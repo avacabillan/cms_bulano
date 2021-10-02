@@ -18,6 +18,7 @@ use App\Models\Group;
 use App\Models\TaxForm;
 use App\Models\TaxType;
 use App\Models\ClientTax;
+use App\Models\Tin;
 
 class Assoc_ClientController extends Controller
 {
@@ -58,7 +59,7 @@ class Assoc_ClientController extends Controller
 
 
    
-    public function insertClient(Request $request)
+    public function insertClient(Request $request )
     {
         // CLIENT INFO
         // $associate =new Associate();
@@ -111,6 +112,11 @@ class Assoc_ClientController extends Controller
         $client ->mode_of_payment_id =$request ->mode;
         $client ->save();
 
+        $client_tin =new Tin();
+        $client_tin->client_id=$client->id;
+        $client_tin->tin_no =$request->tin;
+        $client_tin->save();
+
         $business =new Business();
         $business ->client_id =$client->id;
         $business ->trade_name =$request->trade_name;
@@ -119,11 +125,15 @@ class Assoc_ClientController extends Controller
         $business ->registered_address_id =$registered_address->id;
         $business ->save();
 
-        $client_tax_form= new ClientTax();
-        $client_tax_form->$client->id;
-        $client_tax_form->$request ->taxes;
-        $client_tax_form->save();
-
+        foreach ($request->taxesChecked as $key =>$val){
+            $client_tax_form= new ClientTax();
+                if (in_array($val, $request->taxesChecked)){
+                    $client_tax_form->tax_form_id =$request ->taxesChecked[$key];
+                    $client_tax_form->client_id =$client->id;   
+                    $client_tax_form->save();
+                }
+            
+        }
         
         return redirect()->route('clients.list');
 

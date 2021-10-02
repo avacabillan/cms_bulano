@@ -9,7 +9,7 @@
             @csrf           
           </div>
 
-          <h4 class="addClient_header_text">Personal Information</h4>
+          <h4 class="addClient_header_text">PERSONAL INFORMATION</h4>
           <div class="col-md-3 ml-md-auto form-group mt-3 pb-2">
             <label class="form-label"><b>OCN</b></label>
             <input type="text" class="form-control" value="" name="ocn">
@@ -41,54 +41,66 @@
             </div>
             
           </div>
-          </div> 
-          <h4 class="addClient_header_text mt-3">Business Information</h4>
+          <h4 class="addClient_header_text mt-3">BUSINESS INFORMATION</h4>
           <div class="row mt-3">
             <div class="col">
               <div class="form-group">
                 <label class="form-label"><b>Registration Date</b></label>
-                <input type="text" class="form-control" name="reg_date">
+                <input type="date" class="form-control" name="reg_date">
               </div>
             </div>
-            <div class="col">
-              <div name="corporate">
-                <b><livewire:dropdown /></b>
-              </div> 
-            </div>
+            
             <div class="col">
               <div class="form-group ms-3">
                 <label class="form-label"><b>Trade Name</b></label>
                 <input type="text" class="form-control" name="trade_name">
               </div>
-            </div>
+            </div><br><br>
             <div class="col">
-              <div class="form-group me-4">
-                <label class="form-label"><b>Line of Business</b></label>
-                <input type="number" class="form-control" name="linebus">
+            <div class="form-group">
+                <label class="form-label"><b>Mode of filing</b></label>
+                <select name="mode" class="form-control">
+                    @foreach($modes as $mode)
+                      <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
+                    @endforeach
+                </select>
               </div>
-            </div>
-            
+
+          </div><br>
+
+          <div class="row mt-2" style="float: left;" >
+            <div class="col " >
+              <div class="form-group" >
+                <div name="corporate">
+                  <livewire:dropdown />
+                </div>
+              </div> 
+            </div> 
           </div>
-          <h4 class="addClient_header_text mt-3">Address</h4>
+            
+              
+          </div><br><br>
+
+          <h4 class="addClient_header_text mt-3">ADDRESS</h4>
           <div class="row mt-3">
             <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Unit/House No.</label>
+              <label for="inputEmail4" class="form-label"><b>Unit/House No.</b></label>
               <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
             </div>
             <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Street</label>
+              <label for="inputPassword4" class="form-label"><b>Street</b></label>
               <input type="text" value="" class="form-control" id="inputPassword4" name="street">
             </div>
             <div class="col-12">
-              <label for="inputAddress" class="form-label">City/Municipality</label>
+              <label for="inputAddress" class="form-label"><b>City/Municipality</b></label>
               <input type="text" class="form-control" id="inputAddress" name="client_city">
             </div>
             <div class="col-md-6">
-              <label for="inputAddress2" class="form-label">Province</label>
+              <label for="inputAddress2" class="form-label"><b>Province</b></label>
               <input type="text" class="form-control" id="inputAddress2" name="client_province">
             </div>
             <div class="col-md-6">
-              <label for="inputCity" class="form-label">Postal Code</label>
+              <label for="inputCity" class="form-label"><b>Postal Code</b></label>
               <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
             </div>
           </div>
@@ -96,22 +108,17 @@
           <ul class="checkbox-grid">
           @foreach($taxForms as $taxForm)
               <li style="display: block; float: left; width: 25%;">
-                <input type="checkbox"  value="{{$taxForm->id}}" name="taxes[]"  >
+                <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]"  >
                 <span class="ml-3 text-sm">{{ $taxForm->tax_form_no }}</span>
               </li>
           @endforeach
 
 
-              <!-- <div class="col-6 col-md-4 text-white"><input type="checkbox" name="tax[]" value="Income tax">Income Tax</div>
-              <div class="col-6 col-md-4 text-white"><input  type="checkbox" name="tax[]" value="Registration Fee">Registration Fee</div>
-              <div class="col-6 col-md-4 text-white"><input type="checkbox" name="tax[]" value="VAT">VAT<br/></div>
-              <div class="col-6 text-white"><input  type="checkbox" name="tax[]" value="With Holding Compensation">With Holding Compensation</div>
-              <div class="col-6 text-white"><input  type="checkbox" name="tax[]" value="With Holding Expanded">With Holding Expanded</div> -->
           </ul>
 
             
           
-          <div class="AddClient_btn">
+          <div class="AddClient_btn mt-5">
             <button class="btn btn-primary" type="submit" value="add">Submit</button>
             <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
             <!-- <button  class="btn btn-primary pt-3 mt-5 mb-3 pb-2" id="close_ClientProfile" style="float:right;">Cancel</button> -->
