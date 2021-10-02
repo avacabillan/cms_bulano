@@ -14,7 +14,7 @@
                     <div class="col-9 col-sm-4 ms-3">
                   <form action="{{route('insertClient')}}" class="row">
                         
-                               
+                    @csrf           
                       </div> 
                         
                         <h4 class="form-label text-dark">Personal Information</h4> 
@@ -54,7 +54,9 @@
                             <label class="form-label">Registration Date</label>
                             <input type="date" class="form-control me-1" name="reg_date"   value=""><br>
                             
-                            <livewire:dropdown /> 
+                            <div name="corporate">
+                            <livewire:dropdown />
+                            </div> 
 
                               
                             <label class="form-label">Trade Name</label> 
@@ -86,17 +88,13 @@
                                 <label for="inputCity" class="form-label">Postal Code</label>
                                 <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
                             </div>
-                            <!-- <h4 class="form-label text-dark">Tax Types</h4> 
-                            <div class="row mt-2 me-4 text-dark">
-                                <div class="col-6 col-md-4 "><input class="me-2" type="checkbox" name="tax[]" value="Income tax">Income Tax</div>
-                                <div class="col-6 col-md-4 "><input class="me-2" type="checkbox" name="tax[]" value="Registration Fee">Registration Fee</div>
-                                <div class="col-6 col-md-4 "><input class="me-2" type="checkbox" name="tax[]" value="VAT">VAT<br/></div>
-                                <div class="col-6 col-md-4 "><input class="me-2" type="checkbox" name="tax[]" value="With Holding Compensation">With Holding Compensation</div>
-                                <div class="col-6 col-md-4 "><input class="me-2" type="checkbox" name="tax[]" value="With Holding Expanded">With Holding Expanded</div>
+                            <h4 class="form-label text-dark">Tax Types</h4> 
+                            <div class="row mt-2 me-4 text-dark" name="tax">
+                              <livewire:taxes />
                             </div>
 
 
-                            <h4 class="form-label text-dark mt-3">Upload File</h4> 
+                            <!-- <h4 class="form-label text-dark mt-3">Upload File</h4> 
                             <div class="input-group mt-2">
                               <input type="file" class="form-control" id="inputGroupFile02">
                               <label class="input-group-text" for="inputGroupFile02">Upload</label>

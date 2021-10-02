@@ -15,6 +15,8 @@ use App\Models\ModeOfPayment;
 use App\Models\RegisteredAddress;
 use App\Models\LocationAddress;
 use App\Models\Group;
+use App\Models\TaxForm;
+use App\Models\TaxType;
 
 
 class Assoc_ClientController extends Controller

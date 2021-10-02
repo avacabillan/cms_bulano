@@ -1,6 +1,6 @@
 <div class="col">
     <label for="status">Select Group</label>
-        <select class="form-control" wire:model="selectedGroup">
+        <select name="corporate" class="form-control" wire:model="selectedGroup">
             <option value="">--Select a Group--</option>
             @foreach ($groups as $item)
             <option value="{{ $item->id }}">{{ $item->group_name }}</option>

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Group;
 use App\Models\Corporate;
+use App\Models\TaxForm;
+use App\Models\TaxType;
 
 class TestController extends Controller
 {
@@ -24,6 +26,11 @@ class TestController extends Controller
                     ->pluck("corporate_name","id");
 
        return view('welcome')->with(compact('subCorporates',$subCorporates));
+    }
+    public function showTax(){
+        $taxTypes = TaxType::all();
+        $forms = TaxForm::orderBy('id','asc')->where('tax_type_id', 1)->get();
+        return view('welcome')-> with (compact("forms", $forms, "taxTypes",$taxTypes));
     }
     
 }
