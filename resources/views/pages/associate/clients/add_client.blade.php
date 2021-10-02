@@ -1,4 +1,4 @@
-
+@livewireStyles
 <div class="addClient_form">
   <div class="col-md-8 offset-md-2 bg-light mt-3 pt-3 mb-3">
     <div class="card-body">
@@ -39,7 +39,9 @@
                 <input type="text" class="form-control" value="" name="client_contact">
               </div>
             </div>
+            
           </div>
+          </div> 
           <h4 class="addClient_header_text mt-3">Business Information</h4>
           <div class="row mt-3">
             <div class="col">
@@ -65,6 +67,7 @@
                 <input type="number" class="form-control" name="linebus">
               </div>
             </div>
+            
           </div>
           <h4 class="addClient_header_text mt-3">Address</h4>
           <div class="row mt-3">
@@ -89,10 +92,24 @@
               <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
             </div>
           </div>
-          <h4 class="form-label text-dark">Tax Types</h4> 
-              <div class="row mt-2 me-4 text-dark" name="tax">
-                <livewire:taxes />
-              </div>
+          <h4 class="form-label text-dark">Tax Types</h4>
+          <ul class="checkbox-grid">
+          @foreach($taxForms as $taxForm)
+              <li style="display: block; float: left; width: 25%;">
+                <input type="checkbox"  value="{{$taxForm->id}}" name="taxes[]"  >
+                <span class="ml-3 text-sm">{{ $taxForm->tax_form_no }}</span>
+              </li>
+          @endforeach
+
+
+              <!-- <div class="col-6 col-md-4 text-white"><input type="checkbox" name="tax[]" value="Income tax">Income Tax</div>
+              <div class="col-6 col-md-4 text-white"><input  type="checkbox" name="tax[]" value="Registration Fee">Registration Fee</div>
+              <div class="col-6 col-md-4 text-white"><input type="checkbox" name="tax[]" value="VAT">VAT<br/></div>
+              <div class="col-6 text-white"><input  type="checkbox" name="tax[]" value="With Holding Compensation">With Holding Compensation</div>
+              <div class="col-6 text-white"><input  type="checkbox" name="tax[]" value="With Holding Expanded">With Holding Expanded</div> -->
+          </ul>
+
+            
           
           <div class="AddClient_btn">
             <button class="btn btn-primary" type="submit" value="add">Submit</button>
@@ -107,7 +124,7 @@
 </div>
 
     
-
+ @livewireScripts
 
 <!-- 
 <div class="siderbar_main toggled">

@@ -17,7 +17,7 @@ use App\Models\LocationAddress;
 use App\Models\Group;
 use App\Models\TaxForm;
 use App\Models\TaxType;
-
+use App\Models\ClientTax;
 
 class Assoc_ClientController extends Controller
 {
@@ -26,6 +26,8 @@ class Assoc_ClientController extends Controller
                         
         $modes= ModeOfPayment::all();
         $corporates= Corporate::all();
+        $taxForms= TaxForm::all();
+        
 
             if ($request->ajax()) {
                 $data = Client::latest()->get();
@@ -45,8 +47,13 @@ class Assoc_ClientController extends Controller
                 
         
             }
-    
-            return view ('pages.associate.clients.clients_list')->with( compact('modes',$modes,'corporates',$corporates));
+            
+            return view ('pages.associate.clients.clients_list')
+            ->with( compact('modes',$modes,
+                            'corporates',$corporates,
+                            'taxForms',$taxForms,
+                            
+            ));
         }
 
 
@@ -111,6 +118,11 @@ class Assoc_ClientController extends Controller
         $business ->corporate_id =$request->corporate;
         $business ->registered_address_id =$registered_address->id;
         $business ->save();
+
+        $client_tax_form= new ClientTax();
+        $client_tax_form->$client->id;
+        $client_tax_form->$request ->taxes;
+        $client_tax_form->save();
 
         
         return redirect()->route('clients.list');
