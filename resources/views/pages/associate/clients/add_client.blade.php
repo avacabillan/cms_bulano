@@ -9,7 +9,7 @@
             @csrf           
           </div>
 
-          <h4 class="addClient_header_text">Personal Information</h4>
+          <h4 class="addClient_header_text">PERSONAL INFORMATION</h4>
           <div class="col-md-3 ml-md-auto form-group mt-3 pb-2">
             <label class="form-label"><b>OCN</b></label>
             <input type="text" class="form-control" value="" name="ocn">
@@ -40,7 +40,7 @@
               </div>
             </div>
           </div>
-          <h4 class="addClient_header_text mt-3">Business Information</h4>
+          <h4 class="addClient_header_text mt-3">BUSINESS INFORMATION</h4>
           <div class="row mt-3">
             <div class="col">
               <div class="form-group">
@@ -66,7 +66,7 @@
               </div>
             </div>
           </div>
-          <h4 class="addClient_header_text mt-3">Address</h4>
+          <h4 class="addClient_header_text mt-3">ADDRESS</h4>
           <div class="row mt-3">
             <div class="col-md-6">
               <label for="inputEmail4" class="form-label">Unit/House No.</label>
@@ -89,7 +89,7 @@
               <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
             </div>
           </div>
-          <h4 class="form-label text-dark">Tax Types</h4> 
+          <h4 class="form-label text-dark">TYPE OF TAXES</h4> 
               <div class="row mt-2 me-4 text-dark" name="tax">
                 <livewire:taxes />
               </div>
