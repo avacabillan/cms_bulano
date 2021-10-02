@@ -8,13 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class AssocPostal extends Model
 {
     use HasFactory;
-    protected $table ='assoc_postal_no';
+    protected $table ='assoc_postal';
 
     protected $fillable = [
         "postal_no",
     ];
     
-    public function location(){
-        return $this->belongsTo(AssocLocationAddress::class);
+    public function assoclocation(){
+        return $this->hasMany(AssocLocation::class);
+    }
+    public function assoccity(){
+        return $this->belongsTo(AssocCity::class, 'assoc_city_id');
     }
 }

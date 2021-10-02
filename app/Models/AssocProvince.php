@@ -15,7 +15,7 @@ class AssocProvince extends Model
     ];
 
     
-    public function city(){
-        return $this->hasMany(AssoctCity::class);
+    public function AssocCity(){
+        return $this->hasMany(AssocCity::class);
     }
 }

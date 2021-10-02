@@ -13,10 +13,10 @@ class AssocCity extends Model
     protected $fillable = [
         "city_name",
     ];
-    public function location(){
-        return $this->hasMany(AssocLocationAddress::class);
+    public function AssocProvince(){
+        return $this->belongsTo(AssocProvince::class, 'assoc_province_id');
     }
-    public function assocprovince(){
-        return $this->belongsTo(AssocProvince::class, 'province_id');
+    public function AssocPostal(){
+        return $this->hasMany(AssocPostal::class);
     }
 } 

@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class AssocDepartment extends Model
 {
     use HasFactory;
-    protected $table ='department';
+    protected $table ='assoc_department';
 
-    public function position(){
-        return $this->hasOne(Position::class);
-    }
+    protected $fillable = [
+        "department_name",
+    ];
+    
+    public function Associate(){
+        return $this->belongsTo(Associate:: class, 'assoc_department_id');
+    } 
 }

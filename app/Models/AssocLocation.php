@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class AssocLocation extends Model
 {
     use HasFactory;
-    protected $table ='assoc_location_address';
+    protected $table ='assoc_location';
 
-    public function completeAddress(){
-        return $this->hasMany(AssocPostal::class);
+    public function assocpostal(){
+        return $this->belongsTo(AssocPostal::class, 'assoc_postal_id');
+    }
+    public function AssocAddress(){
+        return $this->hasMany(AssocAddress::class);
     }
 }

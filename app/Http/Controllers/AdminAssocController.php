@@ -1,21 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Models\Client;
-use App\Models\Associate;
-use App\Models\AssocCity;
-use App\Models\AssoPostal;
-use App\Models\AssotProvince;
-use App\Models\AssoDepartment;
-use App\Models\AssoPosition;
-use App\Models\AssoLocationAddress;
 use Yajra\Datatables\Datatables;
+use Illuminate\Http\Request;
+use App\Models\Associate;
+use App\Models\Client;
+use App\Models\AssocCity;
+use App\Models\AssocProvince;
+use App\Models\AssocPostal;
+use App\Models\AssocDepartment;
+use App\Models\AssocPosition;
+use App\Models\AssocLocation;
+use App\Models\AssocAddress;
+use App\Models\Guardian;
+use App\Models\GuardianLocation;
+use App\Models\GovSSS;
 
 class AdminAssocController extends Controller
 {
-    public function index (Request $request) {
+     public function index (Request $request) {
             
         if ($request->ajax()) {
             $data = Associate::latest()->get();
@@ -34,7 +37,7 @@ class AdminAssocController extends Controller
                 ->make(true);
             }
 
-        return view ('');
+        return view ('pages.admin.associates.associates_list');
     }
     public function insertAssociate(Request $request)
     {
@@ -44,37 +47,59 @@ class AdminAssocController extends Controller
         $assoc_province ->save();
 
         $assoc_city =new AssocCity();
-        $assoc_city ->assoc_name =$request->assoc_city;
-        $assoc_city ->assoc_province =$assoc_province->id;
+        $assoc_city ->city_name =$request->assoc_city;
+        $assoc_city ->assoc_province_id =$assoc_province->id;
         $assoc_city ->save();
 
         $assoc_postal =new AssocPostal();
-        $assoc_postal ->assoc_name =$request->assoc_postal;
-        $assoc_postal ->assoc_city =$assoc_city->id;
+        $assoc_postal ->postal_no =$request->assoc_postal;
+        $assoc_postal ->assoc_city_id =$assoc_city->id;
         $assoc_postal ->save();
 
-        $assoc_location_address =new AssocLocationAddress();
-        $assoc_location_address ->assoc_postal_id =$assoc_postal->id;
+        $assoc_location =new AssocLocation();
+        $assoc_location ->postal_no_id =$assoc_postal->id;
+        $assoc_location ->save();
+
+        $assoc_address =new AssocAddress();
+        $assoc_address ->house_no_and_street = $request->assoc_address;
+        $assoc_address ->assoc_location_id = $assoc_location->id;
+        $assoc_address ->save();
+
 
         $assoc =new Associate();
-        $assoc ->assoc_name = $request->assoctname;
-        $assoc ->email = $request->email;
-        $assoc ->contact_number = $request->assoc_contact;
-        $assoc ->department = $request->department->id;
-        $assoc ->position =$position->id;
-        $client ->save();
+        $assoc ->associate_name = $request->assoc_name;
+        $assoc ->email = $request->assoc_email;
+        $assoc ->contact_no = $request->assoc_contact;
+        $assoc ->birth_date = $request->assoc_birthdate;
+        $assoc ->start_date = $request->assoc_start_date;
+        $assoc ->assoc_address_id = $assoc_address->id;
+        $assoc->assoc_department_id = $request->assoc_department;
+        $assoc->assoc_position_id = $request->assoc_position;
+        $assoc ->save();
 
-        
-        // return redirect()->route('pages.associates.clients.clients_list');
+        $assoc_sss = new GovSSS();
+        $assoc_sss->sss_no = $request->assoc_sss;
+        $assoc_sss->assoc_id = $assoc->id;
+        $assoc_sss->save();
 
-    }
-    public function showAssocProfile($id){
-        $assoc = Assoc::find ($id); 
-        return view('#')->with("associate", $associate);
+        $assoc_guardian = new Guardian();
+        $assoc_guardian->name = $request->guardian_name;
+        $assoc_guardian->contact_no = $request->guardian_contact_no;
+        $assoc_guardian->address = $request->guardian_address;
+        $assoc_guardian->relationship = $request->guardian_relationship;
+        $assoc_guardian->assoc_id = $assoc->id;
+        $assoc_guardian->save();
+
+    
+        return redirect()->route('associates_list');
+
+
     }
     public function createAssociate()
     {   
-        return view ("#");
+        $positions = AssocPosition::all();
+        $departments = AssocDepartment::all();
+
+        return view ("pages.admin.associates.add_associates")->with(compact ('positions', $positions,'departments', $departments));
     }
-//
 }
