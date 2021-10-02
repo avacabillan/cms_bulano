@@ -6,30 +6,30 @@
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
             <form action="{{route('insertClient')}}" class="row">
-            @csrf           
+            @csrf   
+            <h4 class="addClient_header_text mt-3">PERSONAL INFORMATION</h4>        
           </div>
 
-          <h4 class="addClient_header_text">PERSONAL INFORMATION</h4>
-          <div class="col-md-3 ml-md-auto form-group mt-3 pb-2">
-            <label class="form-label"><b>OCN</b></label>
+          <div class="col-md-3 ml-md-auto form-group mt-5 pb-2">
+            <label class="form-label" style="float: left;"><b>OCN</b></label>
             <input type="text" class="form-control" value="" name="ocn">
           </div><br>
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label class="form-label ms-3"><b>Name</b></label>
+                <label class="form-label ms-3" style="float: left;"><b>Name</b></label>
                 <input type="text" class="form-control" value="" name="client_name">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label class="form-label"><b>Email</b></label>
+                <label class="form-label" style="float: left;"><b>Email</b></label>
                 <input type="text" class="form-control" value="" name="email">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label class="form-label"><b>TIN</b></label>
+                <label class="form-label" style="float: left;"><b>TIN</b></label>
                 <input type="text" class="form-control" value="" name="tin">
               </div>
             </div>
@@ -41,7 +41,9 @@
             </div>
             
           </div>
-          <h4 class="addClient_header_text mt-3">BUSINESS INFORMATION</h4>
+          <div class="col-9 col-sm-4 ms-3">
+          <h4 class="addClient_header_text mt-3" style="float: left;">BUSINESS INFORMATION</h4>
+          </div>
           <div class="row mt-3">
             <div class="col">
               <div class="form-group">
@@ -52,7 +54,7 @@
             
             <div class="col">
               <div class="form-group ms-3">
-                <label class="form-label"><b>Trade Name</b></label>
+                <label class="form-label" style="float: left;"><b>Trade Name</b></label>
                 <input type="text" class="form-control" name="trade_name">
               </div>
             </div><br><br>
@@ -72,35 +74,35 @@
             <div class="col " >
               <div class="form-group" >
                 <div name="corporate">
-                  <livewire:dropdown />
+                  <b><livewire:dropdown /></b>
                 </div>
               </div> 
             </div> 
           </div>
-            
               
-          </div><br><br>
-
-          <h4 class="addClient_header_text mt-3">ADDRESS</h4>
+          
+          <div class="col-9 col-sm-4 ms-3">
+          <h4 class="addClient_header_text mt-3" style="float: left;">ADDRESS</h4>
+          </div>    
           <div class="row mt-3">
-            <div class="col-md-6">
-              <label for="inputEmail4" class="form-label"><b>Unit/House No.</b></label>
+            <div class="col-md-6" style="float: left;">
+              <label class="form-label" style="float: left;"><b>Unit/House No.</b></label>
               <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
             </div>
-            <div class="col-md-6">
-              <label for="inputPassword4" class="form-label"><b>Street</b></label>
+            <div class="col-md-6 mt-4">
+              <label class="form-label" style="float: left;"><b>Street</b></label>
               <input type="text" value="" class="form-control" id="inputPassword4" name="street">
             </div>
             <div class="col-12">
-              <label for="inputAddress" class="form-label"><b>City/Municipality</b></label>
+              <label class="form-label" style="float: left;"><b>City/Municipality</b></label>
               <input type="text" class="form-control" id="inputAddress" name="client_city">
             </div>
             <div class="col-md-6">
-              <label for="inputAddress2" class="form-label"><b>Province</b></label>
+              <label class="form-label" style="float: left;"><b>Province</b></label>
               <input type="text" class="form-control" id="inputAddress2" name="client_province">
             </div>
             <div class="col-md-6">
-              <label for="inputCity" class="form-label"><b>Postal Code</b></label>
+              <label class="form-label" style="float: left;"><b>Postal Code</b></label>
               <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
             </div>
           </div>
