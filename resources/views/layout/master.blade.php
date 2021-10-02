@@ -53,6 +53,9 @@
     <script src="{{asset('js/admin_notification.js')}}"></script>
     <script src="{{asset('js/admin_assolist_checkbox.js')}}"></script>
     <script src="{{asset('js/associate_profile.js')}}"></script>
+    
+    <!-- ASSOCIATE -->
+    
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

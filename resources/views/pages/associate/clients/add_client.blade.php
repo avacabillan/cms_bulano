@@ -1,12 +1,5 @@
-@extends('layout.master')
-@section('title')
-@stop
 
-@section('content')
-
-<div class="panel">
-
-
+<div class="addClient_form">
    <div class="col-md-8 offset-md-2 bg-light mt-3 pt-3">
         <div class="card-body">
             <div class="form-goup">
@@ -38,15 +31,7 @@
                                   <option value="B">Associate 2</option>
                                 </select><br>
                               </div> -->
-                              <label class="form-label">Mode of filing</label>
-                              <div class="form-group">
-                                <select name="mode" class="form-control">
-                                    @foreach($modes as $mode)
-                                    <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
-                                    @endforeach
-                                </select><br>
-                              </div>
-                            </div>
+                              
 
                             </div>
                             <h4 class="form-label text-dark">Business Information</h4> 
@@ -102,7 +87,8 @@
                            
                             <div class="btn">
                             <button class="btn btn-primary pt-3 mt-5 mb-3 pb-2" type="submit" value="add">Submit</button>
-                            <button  class="btn btn-primary pt-3 mt-5 mb-3 pb-2" style="float:right;">Cancel</button>
+                            <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
+                            <!-- <button  class="btn btn-primary pt-3 mt-5 mb-3 pb-2" id="close_ClientProfile" style="float:right;">Cancel</button> -->
                             
                             </div>
                     </form>
@@ -113,7 +99,6 @@
     </div>
 
     
-@stop
 
 
 <!-- 

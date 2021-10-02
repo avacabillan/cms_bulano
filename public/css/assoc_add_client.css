@@ -1,5 +1,5 @@
 
-.panel {
+.addClient_form {
   width: 460px;
   height: 760px;
   border-radius: 10px;
@@ -7,12 +7,13 @@
   background-color: rgba(0,0,0,0.5);
   margin: 100px auto;
   text-align: center;
+  display: none;
 }
-.panel .form {
+.addClient_form .form {
   width: 340px;
   margin: 5px auto;
 }
-.panel input[type='date'] {
+.addClient_form input[type='date'] {
   background-color: #22232a;
   color: #656d79;;
   border-radius: 45px ;
@@ -23,7 +24,7 @@
   width: 96%;
   margin-bottom: 10px;
 }
-.panel input[type='number'] {
+.addClient_form input[type='number'] {
     background-color: #22232a;
     border-radius: 45px ;
     font-size: 15px;
@@ -35,7 +36,7 @@
     
 }
 
-.panel input[type='text'] {
+.addClient_form input[type='text'] {
     background-color: #22232a;
     border-radius: 45px ;
     font-size: 15px;
@@ -45,7 +46,7 @@
     width: 96%;
     margin-bottom: 10px;
 }
-.panel input[type='text'][placeholder] {
+.addClient_form input[type='text'][placeholder] {
   color: #656d79;
   font-size: 15px;
   font-weight: 500;
