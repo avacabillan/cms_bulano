@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
+use App\Http\Controllers\AdminAssocController;
 use App\Http\Controllers\TestController;
 use App\Http\Livewire\Dropdown;
 
