@@ -13,4 +13,8 @@ class TaxForm extends Model
     public function taxType(){
         return $this-> belongsTo(TaxType::class, 'tax_type_id'); 
     }
+    public function clientTaxes(){
+        return $this->hasMany(ClientTax::class);
+
+    }
 }

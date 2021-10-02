@@ -29,5 +29,9 @@ class Client extends Model
     // public function associate(){
     //     return $this->hasMany(Associate::class);
     // }
+    public function clientTaxes(){
+        return $this->hasMany(ClientTax::class);
+
+    }
     
 }

@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="{{asset('css/client_login.css')}}">
     <link rel="stylesheet" href="{{asset('css/client_profile.css')}}">
     
-    @livewireStyles
+    
 </head>
 <body>
     @yield('content')
@@ -75,7 +75,7 @@
   
     @yield('scripts')
 
-    @livewireScripts
+   
     
 </body>
 </html>

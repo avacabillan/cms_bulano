@@ -1,3 +1,4 @@
+@livewireStyles
 <div class="addClient_form">
   <div class="col-md-8 offset-md-2 bg-light mt-3 pt-3 mb-3">
     <div class="card-body">
@@ -34,10 +35,11 @@
             </div>
             <div class="col">
               <div class="form-group">
-                <label class="form-label" style="float: left;"><b>Contact No.</b></label>
-                <input type="number" class="form-control" value="" name="client_contact">
+                <label class="form-label"><b>Contact No.</b></label>
+                <input type="text" class="form-control" value="" name="client_contact">
               </div>
             </div>
+            
           </div>
           <div class="col-9 col-sm-4 ms-3">
           <h5 class="addClient_header_text mt-3" style="float: left;">BUSINESS INFORMATION</h5>
@@ -45,8 +47,8 @@
           <div class="row mt-3">
             <div class="col">
               <div class="form-group">
-                <label class="form-label" style="float: left;"><b>Registration Date</b></label>
-                <input type="text" class="form-control" name="reg_date">
+                <label class="form-label"><b>Registration Date</b></label>
+                <input type="date" class="form-control" name="reg_date">
               </div>
             </div>
             
@@ -55,16 +57,21 @@
                 <label class="form-label" style="float: left;"><b>Trade Name</b></label>
                 <input type="text" class="form-control" name="trade_name">
               </div>
-            </div>
+            </div><br><br>
             <div class="col">
-              <div class="form-group me-4">
-                <label class="form-label" style="float: left;"><b>Line of Business</b></label>
-                <input type="text" class="form-control" name="linebus">
+            <div class="form-group">
+                <label class="form-label"><b>Mode of filing</b></label>
+                <select name="mode" class="form-control">
+                    @foreach($modes as $mode)
+                      <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
+                    @endforeach
+                </select>
               </div>
-            </div>
-          </div>
-          <div class="rowSelect " style="float: left;" >
-            <div class="col-xs-12 col-sm-6 col-md-6">
+
+          </div><br>
+
+          <div class="row mt-2" style="float: left;" >
+            <div class="col " >
               <div class="form-group" >
                 <div name="corporate">
                   <b><livewire:dropdown /></b>
@@ -99,10 +106,19 @@
               <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
             </div>
           </div>
-          <h4 class="form-label text-dark">TYPE OF TAXES</h4> 
-              <div class="row mt-2 me-4 text-dark" name="tax">
-                <livewire:taxes />
-              </div>
+          <h4 class="form-label text-dark">Tax Types</h4>
+          <ul class="checkbox-grid">
+          @foreach($taxForms as $taxForm)
+              <li style="display: block; float: left; width: 25%;">
+                <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]"  >
+                <span class="ml-3 text-sm">{{ $taxForm->tax_form_no }}</span>
+              </li>
+          @endforeach
+
+
+          </ul>
+
+            
           
           <div class="AddClient_btn mt-5">
             <button class="btn btn-primary" type="submit" value="add">Submit</button>
@@ -115,4 +131,47 @@
   </div>
 </div>
 
-  
+    
+ @livewireScripts
+
+<!-- 
+<div class="siderbar_main toggled">
+<main class="page-content">
+<table class="table data">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Number</th>
+      <th>Actions <button class="add">Add new</button></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="data">John Doe</td>
+      <td class="data">johndoe@john.com</td>
+      <td class="data">666-666-666</td>
+      <td>
+        <button class="save">Save</button>
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="data">John Doe</td>
+      <td class="data">johndoe@john.com</td>
+      <td class="data">666-666-666</td>
+      <td>
+        <button class="save">Save</button>
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div> -->
+
+
+
+

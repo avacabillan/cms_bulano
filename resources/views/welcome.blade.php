@@ -1,7 +1,8 @@
-@foreach ($taxTypes as $taxType)
-<ul>{{$taxType->tax_type}}</ul>
-@endforeach
+@extends('layout.master')
 
-@foreach ($forms as $form)
-<ul>{{$form->tax_form_no}}</ul>
-@endforeach
+@section('content')
+    <h4 class="form-label text-dark">Tax Types</h4> 
+        <div class="row mt-2 me-4 text-dark" name="tax">
+            <livewire:taxes />
+        </div>
+@endsection

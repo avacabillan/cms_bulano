@@ -69,11 +69,11 @@ Route::view('/associate-message','pages.associate.message')->name('associate-mes
 Route::view('/clientprofile/viewfiles','pages.associate.clients.files_view')->name('viewfiles');
 
 // test
-Route::get('/taxforms', [TestController::class , 'showTax']);
+// Route::get('/taxforms', [TestController::class , 'showTax']);
 // Route::get('dropdownlist/getSubCorporate/{id}', [TestController::class , 'getSubCorporates']);
-// Route::get('/dependent_dropdown', function () {
-//     return view('welcome');
-// });
+Route::get('/checkbox', function () {
+    return view('welcome');
+});
 
 
 

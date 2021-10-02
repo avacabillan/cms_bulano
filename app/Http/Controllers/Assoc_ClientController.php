@@ -17,13 +17,19 @@ use App\Models\LocationAddress;
 use App\Models\Group;
 use App\Models\TaxForm;
 use App\Models\TaxType;
-
+use App\Models\ClientTax;
+use App\Models\Tin;
 
 class Assoc_ClientController extends Controller
 {
   
         public function index (Request $request) {
-            
+                        
+        $modes= ModeOfPayment::all();
+        $corporates= Corporate::all();
+        $taxForms= TaxForm::all();
+        
+
             if ($request->ajax()) {
                 $data = Client::latest()->get();
                 return Datatables::of($data) 
@@ -42,13 +48,18 @@ class Assoc_ClientController extends Controller
                 
         
             }
-    
-            return view ('pages.associate.clients.clients_list');
+            
+            return view ('pages.associate.clients.clients_list')
+            ->with( compact('modes',$modes,
+                            'corporates',$corporates,
+                            'taxForms',$taxForms,
+                            
+            ));
         }
 
 
    
-    public function insertClient(Request $request)
+    public function insertClient(Request $request )
     {
         // CLIENT INFO
         // $associate =new Associate();
@@ -61,9 +72,7 @@ class Assoc_ClientController extends Controller
         // $corporate ->corporate_name = $request->corporate;
         // $corporate ->save();
 
-                
-
-
+    
 
         
         $client_province =new ClientProvince();
@@ -103,6 +112,11 @@ class Assoc_ClientController extends Controller
         $client ->mode_of_payment_id =$request ->mode;
         $client ->save();
 
+        $client_tin =new Tin();
+        $client_tin->client_id=$client->id;
+        $client_tin->tin_no =$request->tin;
+        $client_tin->save();
+
         $business =new Business();
         $business ->client_id =$client->id;
         $business ->trade_name =$request->trade_name;
@@ -111,6 +125,15 @@ class Assoc_ClientController extends Controller
         $business ->registered_address_id =$registered_address->id;
         $business ->save();
 
+        foreach ($request->taxesChecked as $key =>$val){
+            $client_tax_form= new ClientTax();
+                if (in_array($val, $request->taxesChecked)){
+                    $client_tax_form->tax_form_id =$request ->taxesChecked[$key];
+                    $client_tax_form->client_id =$client->id;   
+                    $client_tax_form->save();
+                }
+            
+        }
         
         return redirect()->route('clients.list');
 
@@ -119,13 +142,13 @@ class Assoc_ClientController extends Controller
         $client = Client::find ($id); 
         return view('pages.associate.clients.client_profile')->with("client", $client);
     }
-    public function createClient()
-    {   
-        $modes= ModeOfPayment::all();
-        $corporates= Corporate::all();
+    // public function createClient()
+    // {   
+    //     $modes= ModeOfPayment::all();
+    //     $corporates= Corporate::all();
 
-        return view ("pages.associate.clients.add_client")->with( compact('modes',$modes,'corporates',$corporates));
-    }
+    //     return view ("pages.associate.clients.clients_list")->with( compact('modes',$modes,'corporates',$corporates));
+    // }
      public function showGroups()
      {
         //  select corporates that is belong to specific group
