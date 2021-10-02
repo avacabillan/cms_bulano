@@ -38,7 +38,6 @@
 
     <!-- CLIENT -->
     <link rel="stylesheet" href="{{asset('css/client_login.css')}}">
-
     <link rel="stylesheet" href="{{asset('css/client_profile.css')}}">
     
     @livewireStyles
