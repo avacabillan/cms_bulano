@@ -23,7 +23,10 @@ class Assoc_ClientController extends Controller
 {
   
         public function index (Request $request) {
-            
+                        
+        $modes= ModeOfPayment::all();
+        $corporates= Corporate::all();
+
             if ($request->ajax()) {
                 $data = Client::latest()->get();
                 return Datatables::of($data) 
@@ -43,7 +46,7 @@ class Assoc_ClientController extends Controller
         
             }
     
-            return view ('pages.associate.clients.clients_list');
+            return view ('pages.associate.clients.clients_list')->with( compact('modes',$modes,'corporates',$corporates));
         }
 
 
@@ -61,9 +64,7 @@ class Assoc_ClientController extends Controller
         // $corporate ->corporate_name = $request->corporate;
         // $corporate ->save();
 
-                
-
-
+    
 
         
         $client_province =new ClientProvince();
@@ -119,13 +120,13 @@ class Assoc_ClientController extends Controller
         $client = Client::find ($id); 
         return view('pages.associate.clients.client_profile')->with("client", $client);
     }
-    public function createClient()
-    {   
-        $modes= ModeOfPayment::all();
-        $corporates= Corporate::all();
+    // public function createClient()
+    // {   
+    //     $modes= ModeOfPayment::all();
+    //     $corporates= Corporate::all();
 
-        return view ("pages.associate.clients.add_client")->with( compact('modes',$modes,'corporates',$corporates));
-    }
+    //     return view ("pages.associate.clients.clients_list")->with( compact('modes',$modes,'corporates',$corporates));
+    // }
      public function showGroups()
      {
         //  select corporates that is belong to specific group

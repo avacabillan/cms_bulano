@@ -83,8 +83,21 @@
                                 <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
                             </div>
                             <h4 class="form-label text-dark">Tax Types</h4> 
-                            <div class="row mt-2 me-4 text-dark" name="tax">
-                              <livewire:taxes />
+                            <!-- <div class="row mt-2 me-4 text-dark" name="tax">
+                            <div class="row">
+                                <div class="col-6 col-md-4 "><input type="checkbox" name="tax[]" value="Income tax">Income Tax</div>
+                                <div class="col-6 col-md-4 "><input  type="checkbox" name="tax[]" value="Registration Fee">Registration Fee</div>
+                                <div class="col-6 col-md-4 "><input type="checkbox" name="tax[]" value="VAT">VAT<br/></div>
+                                <div class="col-6 "><input  type="checkbox" name="tax[]" value="With Holding Compensation">With Holding Compensation</div>
+                                <div class="col-6 "><input  type="checkbox" name="tax[]" value="With Holding Expanded">With Holding Expanded</div>
+                            </div> -->
+
+                            
+                                
+                            
+
+                            <div>
+                              <!-- <livewire:taxes /> -->
                             </div>
 
 
