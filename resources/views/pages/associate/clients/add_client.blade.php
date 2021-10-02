@@ -63,12 +63,16 @@
             </div>
           </div><br>
 
-          <div class="row mt-5">
-            <div class="col mt-5">
-              <div name="corporate">
-                <livewire:dropdown />
+          <div class="row mt-5" style="float: left;" >
+            <div class="col mt-5" >
+              <div class="form-group" >
+                <div name="corporate">
+                  <livewire:dropdown />
+                </div>
               </div> 
-            </div>
+            </div> 
+          </div>
+            
               
           </div><br><br>
 
