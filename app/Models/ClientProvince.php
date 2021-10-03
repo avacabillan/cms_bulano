@@ -20,6 +20,5 @@ class ClientProvince extends Model
     public function city(){
         return $this->hasMany(ClientCity::class);
     }
-    
-    
+      
 }

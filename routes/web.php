@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
+use App\Http\Controllers\AdminAssocController;
 use App\Http\Controllers\TestController;
 use App\Http\Livewire\Dropdown;
 
@@ -32,6 +33,8 @@ Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 Route::view('/associates_list','pages.admin.associates.associates_list')->name('associates_list');
 // Route::view('/add_associates','pages.admin.associates.add_associates')->name('add_associates');
 // Route::view('/assocprofile','pages.admin.associates.assoc_profile')->name('assocprofile');
+Route::get('/insertAssociate',[AdminAssocController:: class, 'insertAssociate'])->name('insertassociate');
+Route::get('/CreateNewAssociate',[AdminAssocController:: class, 'createAssociate'])->name('CreateNewAssociate');
 
 Route::view('/calendar','pages.admin.calendar')->name('calendar');
 
@@ -59,7 +62,7 @@ Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->nam
 Route::get('/showClientProfile',[Assoc_ClientController::class, 'index'])->name('showClientProfile');
 Route::get('/editclient',[Assoc_ClientController::class, 'index'])->name('editClientProfile');
 
-Route::view('/associate-message','pages.associate.message')->name('associate-message');
+Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
 
 
 // admin view and assoc view

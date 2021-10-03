@@ -23,5 +23,4 @@ class ClientPostal extends Model
     public function clientcity(){
         return $this->belongsTo(ClientPostal::class, 'client_city_id');
     }
-    
-}
+} 

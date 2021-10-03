@@ -21,7 +21,7 @@ use App\Models\ClientTax;
 use App\Models\Tin;
 
 class Assoc_ClientController extends Controller
-{
+{ 
   
         public function index (Request $request) {
                         
