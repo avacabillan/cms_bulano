@@ -46,7 +46,7 @@
         ajax: "{{ route('associates_list') }}",
               columns: [
                   {data: 'id', name: 'id', orderable: false},
-                  {data: 'associates_name', name: 'assoc_name', orderable: false},
+                  {data: 'associate_name', name: 'assoc_name', orderable: false},
                   {data: 'contact_no', name: 'contact_no', orderable: false},
                   {data: 'email', name: 'email', orderable: false},
                   {data: 'assoc_address_id', name: 'assoc_address', orderable: false},
