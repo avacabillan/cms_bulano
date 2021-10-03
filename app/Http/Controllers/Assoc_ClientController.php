@@ -35,11 +35,11 @@ class Assoc_ClientController extends Controller
                 return Datatables::of($data) 
                 ->addIndexColumn()
                 ->addColumn('actions', function($row){
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editClient">Edit</a>';
-   
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-success btn-sm viewClient">View</a>';
+                    $actionBtn = "<button class='edit btn btn-success btn-sm viewbtn' onclick='clientInfo($row->id)'>View</button>";
+                    
+                    return $actionBtn;
 
-                     return $btn;
+                    
                         
                 })
            

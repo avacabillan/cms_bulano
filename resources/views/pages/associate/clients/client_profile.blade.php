@@ -13,7 +13,7 @@
 
             <div class="card-block text-center text-white">
               <div class="m-b-25"> <img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
-                <h6 class="f-w-600"><strong>Aileen Polinio</strong></h6>
+                <h6 class="f-w-600"><strong>{{client_name}}</strong></h6>
                 <p>Coke Inc.</p>
               
             </div>
@@ -28,11 +28,11 @@
               <div class="row">
                 <div class="col-sm-6">
                   <p class="m-b-10 f-w-600">Cell Phone No.</p>
-                  <h6 class="text-muted f-w-400">098979989898</h6>
+                  <h6 class="text-muted f-w-400">{{$client_name->contact_no}}</h6>
                 </div>
                 <div class="col-sm-6">
                   <p class="m-b-10 f-w-600">Registration Date</p>
-                  <h6 class="text-muted f-w-400">Agdao Davao City</h6>
+                  <h6 class="text-muted f-w-400">{{$client->}}</h6>
                 </div>
                 <div class="col-sm-6">
                   <p class="m-b-10 f-w-600">Email</p>

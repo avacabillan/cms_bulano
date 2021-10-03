@@ -14,6 +14,7 @@ class CreateClientTable extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
+            $table->id('checkbox');
             $table->id();
             $table->string('client_name');
             $table->string('email');

@@ -42,34 +42,34 @@
             
           </div>
           <div class="col-9 col-sm-4 ms-3">
-          <h5 class="addClient_header_text mt-3" style="float: left;">BUSINESS INFORMATION</h5>
-          </div>
-          <div class="row mt-3">
-            <div class="col">
-              <div class="form-group">
-                <label class="form-label"><b>Registration Date</b></label>
-                <input type="date" class="form-control" name="reg_date">
-              </div>
+            <h5 class="addClient_header_text mt-3" style="float: left;">BUSINESS INFORMATION</h5>
             </div>
-            
-            <div class="col">
-              <div class="form-group ms-3">
-                <label class="form-label" style="float: left;"><b>Trade Name</b></label>
-                <input type="text" class="form-control" name="trade_name">
+            <div class="row mt-3">
+              <div class="col">
+                <div class="form-group">
+                  <label class="form-label"><b>Registration Date</b></label>
+                  <input type="date" class="form-control" name="reg_date">
+                </div>
               </div>
-            </div><br><br>
-            <div class="col">
-            <div class="form-group">
-                <label class="form-label"><b>Mode of filing</b></label>
-                <select name="mode" class="form-control">
-                    @foreach($modes as $mode)
-                      <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
-                    @endforeach
-                </select>
+              
+              <div class="col">
+                <div class="form-group ms-3">
+                  <label class="form-label" style="float: left;"><b>Trade Name</b></label>
+                  <input type="text" class="form-control" name="trade_name">
+                </div>
+              </div><br><br>
+              <div class="col">
+              <div class="form-group">
+                  <label class="form-label"><b>Mode of filing</b></label>
+                  <select name="mode" class="form-control">
+                  <option value="">--Select Mode of Filing--</option>
+                      @foreach($modes as $mode)
+                        <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
+                      @endforeach
+                  </select>
               </div>
-
-          </div><br>
-
+          </div>
+           
           <div class="row mt-2" style="float: left;" >
             <div class="col " >
               <div class="form-group" >
@@ -78,7 +78,8 @@
                 </div>
               </div> 
             </div> 
-          </div>
+          </div><br>
+          </div><br>
               
           
           <div class="col-9 col-sm-4 ms-3">
