@@ -1,6 +1,48 @@
 
 
-#prof_border {
+.assoc_profile_field {
+    border: black;
+}
+.card-header {
+    background-color: #EAECEE ;
+}
+.card-body {
+    background-color: #D5D8DC ;
+    margin-bottom: 5%;
+}
+.assocprofile_img {
+    width: 80px !important;
+    height: auto;
+}
+.message_btn {
+    cursor: pointer;
+    float: right;
+}
+.fa-edit {
+    float: right;
+}
+.associnfo {
+    margin-left: 6%;
+    width: 90%;
+}
+
+
+
+
+
+/* .modal_assoc_profile {
+    margin-top: 5%;
+    padding: 0px;
+    padding-right: 20%;
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    overflow-y: scroll;
+    
+}   
+    #prof_border {
     border: solid 2px black
 }
 .padding {
@@ -95,7 +137,7 @@ h6 {
 }
 
 .f-w-600 {
-    font-weight: 600;
+    font-weight: 600
 }
 
 .m-b-20 {
@@ -111,8 +153,7 @@ h6 {
 }
 
 .m-b-10 {
-    margin-bottom: 10px;
-    
+    margin-bottom: 10px
 }
 
 .m-t-40 {
@@ -128,13 +169,6 @@ h6 {
     margin: 0 10px 0 0;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out
-}
-#add_tax {
-    float: right;
-}
-p a {
-	color: #333;
-}
-.fa .fa-folder {
-    color: black;
-}
+} */
+
+ 

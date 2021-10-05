@@ -47,7 +47,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width: 30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button>
+                <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width:30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button>
                 <div class="modal-body">
                 @include('pages.associate.clients.client_profile')
                 </div>
