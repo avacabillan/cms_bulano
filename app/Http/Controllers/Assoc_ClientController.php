@@ -35,11 +35,16 @@ class Assoc_ClientController extends Controller
                 return Datatables::of($data) 
                 ->addIndexColumn()
                 ->addColumn('actions', function($row){
-                    $actionBtn = '<a href="{{route("showClientProfile")}}" class="edit btn btn-info btn-sm">View</a>';
-                    $actionBtn = $actionBtn.'<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Edit</a>';
-                    $actionBtn = $actionBtn.'<a href="javascript:void(0)" class="edit btn btn-danger btn-sm">Delete</a>';
-  
-                    return $actionBtn;
+                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editClient">Edit</a>';
+
+                    // <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-success btn-sm viewClient">View</a>
+                    $btn = $btn .
+                        '
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-route="'.route("clients.list.clienProfile", $row->id).'" data-id="'.$row->id.'" data-target="#exampleModal">
+                        View 
+                    </button>
+                    ';
+                    return $btn;
 
                     
                         
@@ -158,6 +163,11 @@ class Assoc_ClientController extends Controller
         // return view('welcome')->with("groups", $groups);
     }
     
+    public function getUser($userId)
+    {
+        $user = Client::find($userId);
+        return $user;
+    }
 
 
 }

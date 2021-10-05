@@ -42,8 +42,29 @@
     </div>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                @include('pages.associate.clients.add_client')
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-@include('pages.associate.clients.add_client')
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
@@ -56,6 +77,32 @@
 
 <script type="text/javascript">
   $(function () {
+
+    $('#exampleModal').on('shown.bs.modal', function(event) {
+            let $userId = $(event.relatedTarget).attr('data-id')
+            let $route = $(event.relatedTarget).attr('data-route');
+
+            $.ajax({
+                url: $route,
+                method: 'POST',
+                data: {
+                    _token: '{{csrf_token()}}',
+                    user_id: $userId
+                },
+                beforeSend: function() {
+
+                },
+                success: function(result) {
+                    console.log(result)
+                    $('[name="client_id"]').val(result.client_id)
+                    $('[name="trade_name"]').val(result.trade_name)
+                    $('[name="registration_data"]').val(result.registration_date)
+                },
+                error: function() {
+                    alert('Error!')
+                }
+            })
+        })
     
     var table = $('.yajra-datatable').DataTable({
         processing: true,
