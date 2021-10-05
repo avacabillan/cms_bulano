@@ -1,11 +1,5 @@
-@extends('layout.master')
-@section('title')
-@stop
 
-@section('content')
 
-<div class="row container d-flex justify-content-center">
-    <div class="col-xl-6 col-md-12 mt-3 pt-4 pb-3">
       
       <div class="row m-l-0 m-r-0" id="prof_border">
 
@@ -13,7 +7,7 @@
 
             <div class="card-block text-center text-white">
               <div class="m-b-25"> <img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
-                <h6 class="f-w-600"><strong>{{client_name}}</strong></h6>
+                <h6 class="f-w-600"><strong></strong></h6>
                 <p>Coke Inc.</p>
               
             </div>
@@ -28,11 +22,11 @@
               <div class="row">
                 <div class="col-sm-6">
                   <p class="m-b-10 f-w-600">Cell Phone No.</p>
-                  <h6 class="text-muted f-w-400">{{$client_name->contact_no}}</h6>
+                  <h6 class="text-muted f-w-400"></h6>
                 </div>
                 <div class="col-sm-6">
                   <p class="m-b-10 f-w-600">Registration Date</p>
-                  <h6 class="text-muted f-w-400">{{$client->}}</h6>
+                  <h6 class="text-muted f-w-400"></h6>
                 </div>
                 <div class="col-sm-6">
                   <p class="m-b-10 f-w-600">Email</p>
@@ -60,15 +54,15 @@
           
               <div class="row">
                 <div class="col-sm-6">
-                <p class="m-b-10 f-w-600"><a href="{{route('viewfiles')}}"><i class="fa fa-folder me-2" aria-hidden="true"></i>VAT</a></p>
+                <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true"></i>VAT</a></p>
                   <h6 class="text-muted f-w-400"></h6>
                 </div>                                              
                 <div class="col-sm-6">
-                  <p class="m-b-10 f-w-600"><a href="{{route('viewfiles')}}"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
+                  <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
                   <h6 class="text-muted f-w-400"></h6>
                 </div>
                 <div class="col-sm-6">
-                  <p class="m-b-10 f-w-600"><a href="{{route('viewfiles')}}"><i class="fa fa-folder me-2" aria-hidden="true">Rgistration Fee</i></a></p>
+                  <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true">Rgistration Fee</i></a></p>
                   <h6 class="text-muted f-w-400"></h6>
                 </div>
                 <div class="col-sm-6">
@@ -82,10 +76,5 @@
 
       </div>
    
-    </div>
-  </div>
 
 
-
- 
-@stop

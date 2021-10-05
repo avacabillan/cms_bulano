@@ -1,22 +1,16 @@
+@extends('layout.master')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="csrf-token" content="{{ csrf_token() }}"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> 
+@section('title')
+    Clients
+@endsection
 
-  <title>Client List</title>
- 
-</head>
-<body>
+@section('content')
 
 <div class="siderbar_main toggled">
 
   <div class="page-content">
     <div class="container mt-5">
-        <button class="btn btn-outline-primary" id="btn-addClient"><i class="fas fa-plus-circle"></i> Add New Client</button>
+        <button class="btn btn-outline-primary mt-3 mb-2" id="btn-addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
         <table class="table table-bordered yajra-datatable">
           <thead>
             <tr>
@@ -27,13 +21,13 @@
                 </span>
                 </span>   
               </th>
-              <th>Client ID</th>
-              <th>Client Name</th>
-              <th>Contact Number</th>
-              <th>Email</th>
-              <th>OCN</th>
-              <th>Mode of Filing</th>
-              <th>Action</th>         
+              <th class="Client-th text-dark text-center">Client ID</th>
+              <th class="Client-th text-dark text-center">Client Name</th>
+              <th class="Client-th text-dark text-center">Contact Number</th>
+              <th class="Client-th text-dark text-center">Email</th>
+              <th class="Client-th text-dark text-center">OCN</th>
+              <th class="Client-th text-dark text-center">Mode of Filing</th>
+              <th class="Client-th text-dark text-center">Action</th>         
             </tr>
           </thead>
           <tbody>
@@ -48,13 +42,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width: 30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button>
                 <div class="modal-body">
-                @include('pages.associate.clients.add_client')
+                @include('pages.associate.clients.client_profile')
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -63,10 +58,10 @@
             </div>
         </div>
     </div>
-</body>
 
+@endsection
 
-
+@section('scripts')
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -128,8 +123,6 @@
     
   });
 </script>
-  
-</body>
-</html>
+@endsection
 
 
