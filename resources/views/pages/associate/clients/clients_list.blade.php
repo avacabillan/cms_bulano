@@ -140,6 +140,18 @@
             })
     })
      
+    $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
+      if(this.checked){
+       $('input[name="client_checkbox"]').each(function(){
+         this.checked = true;
+       });
+      }else{
+        $('input[name="client_checkbox"]').each(function(){
+         this.checked = false;
+       });
+      }
+
+    });
  
     
     var table = $('.yajra-datatable').DataTable({
