@@ -35,9 +35,11 @@ class Assoc_ClientController extends Controller
                 return Datatables::of($data) 
                 ->addIndexColumn()
                 ->addColumn('actions', function($row){
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editClient"><i class="fas fa-edit"></i></a>';
-
-                    // <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-success btn-sm viewClient">View</a>
+                    $btn = '<button type="button" class="btn btn-success btn-sm" >
+                    <i class="fas fa-edit"></i>
+                    </button>
+                    ';
+                    // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#editModal"
                     $btn = $btn .
                         '
                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-route="'.route("clients.list.clienProfile", $row->id).'" data-id="'.$row->id.'" data-target="#exampleModal">
@@ -108,7 +110,7 @@ class Assoc_ClientController extends Controller
         $registered_address ->street =$request ->street;
         $registered_address ->save();
 
-
+    
         
 
         $client =new Client();
@@ -146,17 +148,11 @@ class Assoc_ClientController extends Controller
         return redirect()->route('clients.list');
 
     }
-    public function showClientProfile($id){
-        $client = Client::find ($id); 
-        return view('pages.associate.clients.client_profile')->with("client", $client);
-    }
-    // public function createClient()
-    // {   
-    //     $modes= ModeOfPayment::all();
-    //     $corporates= Corporate::all();
-
-    //     return view ("pages.associate.clients.clients_list")->with( compact('modes',$modes,'corporates',$corporates));
+    // public function showClientProfile($id){
+    //     $client = Client::find ($id); 
+    //     return view('pages.associate.clients.client_profile')->with("client", $client);
     // }
+   
      public function showGroups()
      {
         //  select corporates that is belong to specific group
@@ -167,8 +163,12 @@ class Assoc_ClientController extends Controller
     public function getUser($userId)
     {
         $user = Client::find($userId);
-        return $user;
+         return view('pages.associate.clients.client_profile')->with( $user);
     }
-
+    public function editClient($userId)
+    {
+        $client = Client::find($userId);
+        return view('pages.associate.clients.client_profile')->with("client", $client);
+    }
 
 }

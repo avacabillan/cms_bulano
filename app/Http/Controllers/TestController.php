@@ -32,6 +32,18 @@ class TestController extends Controller
         $forms = TaxForm::orderBy('id','asc')->where('tax_type_id', 1)->get();
         return view('welcome')-> with (compact("forms", $forms, "taxTypes",$taxTypes));
     }
+    // public function getUser($userId)
+    // {
+    //     $client = Client::find($userId);
+    //     return view('pages.associate.clients.clients_list')->with("client", $client);
+    // }
+    
+    public function showClientProfile($id)
+    {
+        $client = Client::find($id);
+        return view('showClientProfile')->with("client", $client);
+    }
+    
     
 }
 

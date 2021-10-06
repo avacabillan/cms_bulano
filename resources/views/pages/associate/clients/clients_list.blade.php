@@ -36,8 +36,8 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!--View Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-
+ 
 @endsection
 
 @section('scripts')
@@ -83,6 +83,7 @@
                 data: {
                     _token: '{{csrf_token()}}',
                     user_id: $userId
+                    
                 },
                 beforeSend: function() {
 
@@ -97,7 +98,9 @@
                     alert('Error!')
                 }
             })
-        })
+    })
+    
+ 
     
     var table = $('.yajra-datatable').DataTable({
         processing: true,

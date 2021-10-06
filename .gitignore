@@ -11,3 +11,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+resources/views/pages/associate/clients/client_profile.blade.php
