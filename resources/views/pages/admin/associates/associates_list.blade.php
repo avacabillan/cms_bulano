@@ -9,24 +9,48 @@
 </head>
 <body>
     
-<div class="container mt-5">
-    <a href="{{ route ('CreateNewAssociate')}}"><button type="button" class="btn btn-outline-primary mb-3">Add New Associate</button></a>
-    <table class="table table-bordered yajra-datatable">
-        <thead>
+<<div class="siderbar_main toggled">
+
+  <div class="page-content">
+    <div class="container mt-5">
+
+        <button type="button" class="btn btn-primary mt-2 mb-2 me-2" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Associate</button>
+        <table class="table table-bordered yajra-datatable">
+          <thead>
             <tr>
-                <th>ID</th>
-                <th>Associate Name</th>
-                <th>Contact Number</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Department</th>
-                <th>Action</th>
-                
+  
+              <th class="Assoc-th text-dark text-center">Asscociate ID</th>
+              <th class="Assoc-th text-dark text-center">Associate Name</th>
+              <th class="Assoc-thh text-dark text-center">Contact Number</th>
+              <th class="Assoc-th text-dark text-center">Email</th>
+              <th class="Assoc-th text-dark text-center">Department</th>
+              <th class="Assoc-th text-dark text-center">Position</th>
+              <th class="Assoc-th text-dark text-center">Action</th>  
+
             </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+<!--Add Assoc Modal -->
+<div class="modal fade" id="addAssoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 120%;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Associate</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          @include('pages.admin.associates.add_associates')
+        </div>  
+      </div> 
+    </div>
+  </div>
 </div>
    
 </body>
