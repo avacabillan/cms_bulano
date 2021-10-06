@@ -58,9 +58,7 @@
 
             <div class="card-block text-center text-white">
               <div class="m-b-25"> <img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
-                <h6 class="f-w-600"><strong name="client_name">{{$user}}
-
-                </strong></h6>
+                <h6 class="f-w-600"><strong name="client_name"></strong></h6>
                 <p>Coke Inc.</p>
               
             </div>
