@@ -10,7 +10,7 @@
 
   <div class="page-content">
     <div class="container mt-5">
-        <button type="button" class="btn btn-danger mt-5 mb-2" data-toggle="modal" data-target="#deleteClient" style="float: right;"><i class="fas fa-minus-circle"></i> Delete</button>
+        <button type="button" class="btn btn-danger d-none mt-5 mb-2" id="deleteAllClientbtn" style="float: right;"><i class="fas fa-minus-circle"></i> Delete</button>
         <button type="button" class="btn btn-primary mt-5 mb-2 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
         <table class="table table-bordered yajra-datatable">
           <thead>
@@ -139,28 +139,80 @@
                 }
             })
     })
-     
+     /*------ CHECKBOX DELETE ALL ------*/
     $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
+
       if(this.checked){
-       $('input[name="client_checkbox"]').each(function(){
-         this.checked = true;
-       });
+        $('input[name="client_checkbox"]').each(function(){
+          this.checked = true;
+        });
       }else{
         $('input[name="client_checkbox"]').each(function(){
          this.checked = false;
-       });
+        });
       }
-
+      toggledeleteAllClientbtn();
     });
- 
-    
+
+    $(document).on('change', 'input[name="client_checkbox"]', function(){
+
+      if( $('input[name="client_checkbox"]').length == $('input[name="client_checkbox"]:checked').length ){
+        $('input[name="Clientlistcheckbox"]').prop('checked', true);
+      }else{
+        $('input[name="Clientlistcheckbox"]').prop('checked', false);
+      }
+      toggledeleteAllClientbtn();
+    });
+
+    function toggledeleteAllClientbtn(){
+      
+      if( $('input[name="client_checkbox"]:checked').length > 0 ){
+          $('buttonn#deleteAllClientbtn').text('Delete ('+$('input[name="client_checkbox"]:checked').length+')').removeClass('d-none');
+      }else{
+          $('buttonn#deleteAllClientbtn').addClass('d-none');
+      }
+    }
+
+    // $(document).on('click','button#deleteAllClientbtn', function(){
+    //            var checkedClient = [];
+    //            $('input[name="client_checkbox"]:checked').each(function(){
+    //                checkedClient.push($(this).data('id'));
+    //            });
+    //            var url = '{{ route("delete.selected.client") }}';
+    //            if(checkedClient.length > 0){
+    //                swal.fire({
+    //                    title:'Are you sure?',
+    //                    html:'You want to delete <b>('+checkedClient.length+')</b> client',
+    //                    showCancelButton:true,
+    //                    showCloseButton:true,
+    //                    confirmButtonText:'Yes, Delete',
+    //                    cancelButtonText:'Cancel',
+    //                    confirmButtonColor:'#556ee6',
+    //                    cancelButtonColor:'#d33',
+    //                    width:300,
+    //                    allowOutsideClick:false
+    //                }).then(function(result){
+    //                    if(result.value){
+    //                        $.post(url,{client_ids:checkedClient},function(data){
+    //                           if(data.code == 1){
+    //                               $('#client-table').DataTable().ajax.reload(null, true);
+    //                               toastr.success(data.msg);
+    //                           }
+    //                        },'json');
+    //                    }
+    //                })
+    //            }
+    //        });
+        
+ /*------ END OF CHECKBOX DELETE ALL ------*/
+
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
         ajax: "{{ route('clients.list') }}",
               columns: [
  
-                  {data: 'checkbox', name: 'checkbox'},
+                  {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
                   {data: 'id', name: 'id', orderable: false},
                   {data: 'client_name', name: 'client_name', orderable: false},
                   {data: 'contact_number', name: 'contact_number', orderable: false},
