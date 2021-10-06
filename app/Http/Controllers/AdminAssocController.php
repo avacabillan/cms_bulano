@@ -24,7 +24,7 @@ class AdminAssocController extends Controller
             $data = Associate::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function($row){
+                ->addColumn('actions', function($row){
                     $actionBtn = '<a href="#" class="edit btn btn-info btn-sm">View</a>
                                   <a href="#" class="edit btn btn-success btn-sm">Edit</a>
                                   
@@ -33,7 +33,7 @@ class AdminAssocController extends Controller
                     return $actionBtn;
                     
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['actions'])
                 ->make(true);
             }
 
