@@ -1,81 +1,18 @@
 
 
-.assoc_profile_field {
-    border: black;
+.card-block {
+    padding: 1.25rem
 }
-.card-header {
-    background-color: #EAECEE ;
-}
-.card-body {
-    background-color: #D5D8DC ;
-    margin-bottom: 5%;
-}
-.assocprofile_img {
-    width: 80px !important;
-    height: auto;
-}
-.message_btn {
-    cursor: pointer;
-    float: right;
-}
-.fa-edit {
-    float: right;
-}
-.associnfo {
-    margin-left: 6%;
-    width: 90%;
-}
-
-
-
-
-
-/* .modal_assoc_profile {
-    margin-top: 5%;
-    padding: 0px;
-    padding-right: 20%;
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    overflow-y: scroll;
-    
-}   
-    #prof_border {
-    border: solid 2px black
-}
-.padding {
-    padding: 3rem !important
-}
-
-.user-card-full {
-    overflow: hidden
-}
-
-.m-r-0 {
-    margin-right: 0px
-}
-
-.m-l-0 {
-    margin-left: 0px
-}
-
 .user-card-full .user-profile {
     border-radius: 5px 0 0 5px
 }
-
-
 .user-profile {
     padding: 20px 0;
     background: #50A7C2 ;
- 
 }
-
 .m-b-25 {
     margin-bottom: 25px
 }
-
 .img-radius {
 
 	width: 100px;
@@ -86,89 +23,5 @@
     object-fit: cover;
 }
 
-#assoc_edit_profile {
-    float: right;
-}
 
-h6 {
-    font-size: 14px
-}
-
-.card .card-block p {
-    line-height: 25px
-}
-
-@media only screen and (min-width: 1400px) {
-    p {
-        font-size: 14px
-    }
-}
-
-.card-block {
-    padding: 1.25rem
-}
-
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0
-}
-
-.m-b-20 {
-    margin-bottom: 20px
-}
-
-.p-b-5 {
-    padding-bottom: 5px !important
-}
-
-.card .card-block p {
-    line-height: 25px
-}
-
-.m-b-10 {
-    margin-bottom: 10px
-}
-
-.text-muted {
-    color: #919aa3 !important
-}
-
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0
-}
-
-.f-w-600 {
-    font-weight: 600
-}
-
-.m-b-20 {
-    margin-bottom: 20px
-}
-
-.m-t-40 {
-    margin-top: 20px
-}
-
-.p-b-5 {
-    padding-bottom: 5px !important
-}
-
-.m-b-10 {
-    margin-bottom: 10px
-}
-
-.m-t-40 {
-    margin-top: 20px
-}
-
-.user-card-full .social-link li {
-    display: inline-block
-}
-
-.user-card-full .social-link li a {
-    font-size: 20px;
-    margin: 0 10px 0 0;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out
-} */
-
- 
+   
