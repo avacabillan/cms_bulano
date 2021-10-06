@@ -95,11 +95,11 @@ class AdminAssocController extends Controller
 
 
     }
-    public function createAssociate()
-    {   
-        $positions = AssocPosition::all();
-        $departments = AssocDepartment::all();
+    // public function createAssociate()
+    // {   
+    //     $positions = AssocPosition::all();
+    //     $departments = AssocDepartment::all();
 
-        return view ("pages.admin.associates.add_associates")->with(compact ('positions', $positions,'departments', $departments));
-    }
+    //     return view ("pages.admin.associates.add_associates")->with(compact ('positions', $positions,'departments', $departments));
+    // }
 }
