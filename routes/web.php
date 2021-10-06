@@ -61,7 +61,7 @@ Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('cli
 Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient');
 // Route::get('/clients/list/editClientProfile/{userId}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.editClientProfile');
 Route::post('/clients/list/clienProfile/{userId}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.clienProfile');
-
+Route::post('/deleteSelectedClient',[ClientsController::class,'deleteSelectedClient'])->name('delete.selected.client');
 
 Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
 
