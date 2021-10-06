@@ -1,169 +1,82 @@
-
-
-<div class="add_associate_form">
+<div class="addAssoc_form">
+  <div class="col-md-8 offset-md-2 bg-light mt-3 pt-3 mb-3">
+    <div class="card-body">
+      <div class="form-goup">
+        <div class="row "> 
+          <div class="col-9 col-sm-4 ms-3">
+            <form action="{{route('insertassociate')}}" class="row">
+            @csrf 
+                        
+            <h5 class="addAssoc_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5><br>
   
-    <div class="assoc_header col-xs-12 col-sm-6 col-md-8 offset-md-1 rounded">
-        <div class="assoc_header_text text-white">
-            <h3 class="mb-0"><strong>NEW</strong> ASSOCIATE</h3>
+                <label class="form-label">Name</label> 
+                <input type="text" class="form-control" value=""   name="assoc_name"  >
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" value="" name="assoc_email">         
+                <label class="form-label">Contact Number</label>
+                <input type="text" class="form-control" value="" name="assoc_contact" > <br>
+                <label class="form-label">SSS Number/Government ID no.</label>
+                <input type="text" class="form-control" value="" name="assoc_sss"> <br>
+                <label class="form-label">Birth Date</label>
+                <input type="date" class="form-control" value="" name="assoc_birthdate"> <br>
+
+                                   
+            <h5 class="addAssoc_header_text mt-3" style="float: left;">ADDRESS</h5><br>     
+                <div>
+                    <label for="inputEmail4" class="form-label">Unit/House No. & Street</label>
+                    <input type="text" value="" class="form-control" id="inputEmail4" name="assoc_address">
+                </div>
+                <div >
+                    <label for="inputAddress" class="form-label">City/Municipality</label>
+                    <input type="text" class="form-control" id="inputAddress" value="" name="assoc_city">
+                </div>
+                <div >
+                    <label for="inputAddress2" class="form-label">Province</label>
+                <input type="text" class="form-control" id="inputAddress2" value="" name="assoc_province">
+                    </div>
+                <div >
+                    <label for="inputCity" class="form-label">Postal Code</label>
+                    <input type="text" class="form-control" id="inputCity" value="" name="assoc_postal"><br>
+                </div>
+ 
+            <h5 class="addAssoc_header_text mt-3" style="float: left;">JOB INFORMATION</h5><br> 
+                <label class="form-label">Department</label>
+                    <div class="form-group">
+                        <select name="assoc_department" class="form-control">
+                        @foreach($departments as $department)
+                        <option value="{{$department->id}}">{{$department->department_name}}</option>
+                        @endforeach
+                        </select><br>
+                        <label class="form-label">Position</label>
+                        <div class="form-group">
+                        <select name="assoc_position" class="form-control">
+                        @foreach($positions as $position)
+                        <option value="{{$position->id}}">{{$position->position_name}}</option>
+                        @endforeach
+                        </select><br>
+                    </div>
+                <label class="form-label">Start Date</label>
+                    <input type="date" class="form-control" value="" name="assoc_start_date" ><br>
+                                    
+
+            <h5 class="addAssoc_header_text mt-3" style="float: left;">EMERGENCY CONTACT PERSON</h5><br> 
+                 <div class="col">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control me-1" value="" name="guardian_name"><br>
+                    <label class="form-label">Complete Address</label> 
+                    <input type="text" class="form-control" value="" name="guardian_address"><br>
+                    <label class="form-label">Phone Number</label> 
+                    <input type="text" class="form-control" value="" name="guardian_contact_no"><br>
+                    <label class="form-label">Relationship</label> 
+                    <input type="text" class="form-control" value="" name="guardian_relationship"><br>
+                    
+                    <button class="btn btn-success mt-4 me-2" type="submit" value="add" style="float: right">Submit</button>
+                </form>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
-    <div class="add_assoc_data col-xs-12 col-sm-6 col-md-8 offset-md-1 rounded">
-        <form action="">
-        @csrf
-        @method('post')
-            <div class="form-group" id="associate_personalinfo" style="background-color: white;">
-
-                <h3 class="assoc_head_title ms-4 pt-4">PERSONAL INFORMATION</h3>
-                <div class="col-md-3 ml-md-auto form-group pb-2" style="float:right;">
-                    <label class="assoc_govIdno"><b>SSS Number/Government ID no.</b></label>
-                    <input type="number" class="form-control" name="assoc_govIdno">
-                </div>
-                <div class="row mt-5">
-                    <div class="col">
-                        <div class="form-group mt-5">
-                            <label for="name" class=""><b>Name</b></label>
-                            <input type="text" class="form-control" name="assoc_name">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group mt-5">
-                            <label for="contact_number" class=""><b>Contact Number</b></label>
-                            <input type="number" class="form-control" style="width: 275px" name="assoc_contact_number">
-                        </div>
-                    </div>
-                </div>                                                     
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group ms-3">
-                            <label for="email" class=""><b>Email</b></label>
-                            <input type="email" class="form-control" style="width: 73%;" name="assoc_email">
-                        </div>
-                    </div>
-                    <div class="col-md-3" style="right: 240px;">
-                        <div class="form-group" >
-                            <label for="birthday" class=""><b>Date of Birth</b></label>
-                            <input type="birthday" class="form-control" name="assoc_birthday">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col">
-                        <div class="form-group  ms-3">
-                            <label for="Unit_number" class=""><b>Unit/House No. & Street</b></label>
-                            <input type="text" class="form-control" name="assoc_Unit_number">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="city" class=""><b>City/Municipality</b></label>
-                            <input type="text" class="form-control" name="assoc_city">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group me-4">
-                            <label for="province" class=""><b>Province</b></label>
-                            <input type="text" class="form-control" name="assoc_province">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-9">
-                        <div class="form-group  ms-3">
-                            <label for="address" class=""><b>Complete Address</b></label>
-                            <input type="text" class="form-control" name="assoc_address">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group me-4">
-                            <label for="postal_number" class=""><b>Postal Number</b></label>
-                            <input type="tel" class="form-control" name="assoc_postal_number">
-                        </div>
-                    </div>
-                </div><br>
-                <!-- END OF ASSOCIATE'S PERSONAL INFO -->
-                <hr class="hrJi me-2">
-                <h3 class="assoc_head_jobtitle headerhr ms-4 pt-1">JOB INFORMATION</h3><br>
-                <div class="col-md-2 form-group mt-4 ms-4">
-                    <label for="employeeId" class=""><b>Employee ID</b></label>
-                    <input type="number" class="form-control" name="assoc_employeeId">
-                </div>
-                <div class="row mt-2">
-                    <div class="col">
-                        <div class="form-group  ms-3">
-                            <label for="Unit_number" class=""><b>Title</b></label>
-                            <input type="text" class="form-control" name="assoc_Unit_number">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="city" class=""><b>Supervisor</b></label>
-                            <input type="text" class="form-control" name="assoc_city">
-                        </div>
-                    </div>
-                     <div class="col">
-                        <div class="form-group me-4">
-                            <label for="province" class=""><b>Start Date</b></label>
-                            <input type="text" class="form-control" name="assoc_province">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-9">
-                        <div class="form-group  ms-3">
-                            <label for="address" class=""><b>Work Location</b></label>
-                            <input type="text" class="form-control" name="assoc_address">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group me-4">
-                            <label for="postal_number" class=""><b>Department</b></label>
-                            <input type="tel" class="form-control" name="assoc_postal_number">
-                        </div>
-                    </div>
-                </div><br>
-                <!-- END OF ASSOCIATE'S JOB INFO -->
-                <hr class="hrIoe me-2">
-                <h3 class="assoc_head_ioe ms-4 pt-1">INCASE OF EMERGENCY</h3><br>
-                <div class="row mt-4">
-                    <div class="col-md-9">
-                        <div class="form-group ms-3">
-                            <label for="Ioename" class=""><b>Name</b></label>
-                            <input type="text" class="form-control" name="Ioename">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group me-4">
-                            <label for="Ioerelationship" class=""><b>Relationship</b></label>
-                            <input type="text" class="form-control" name="Ioerelationship">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-9">
-                        <div class="form-group ms-3">
-                            <label for="Ioeaddress" class=""><b>Address</b></label>
-                            <input type="text" class="form-control" name="Ioeaddress">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group me-4">
-                            <label for="Ioecontactno" class=""><b>Contact Number</b></label>
-                            <input type="number" class="form-control" name="Ioecontactno">
-                        </div>
-                    </div>
-                </div>
-                <!-- END OF ASSOCIATE'S IOE -->
-            </div>
-
-            <div class="d-grid gap-2 d-md-block mb-3 pb-3" style="float: right;"> 
-                <button class="btn btn-primary" type="button">Submit</button>
-                <button class="btn btn-primary" id="close_assocprofile" type="button">Cancel</button>
-            </div>
-            
-        </form>
-    </div>
-</div>
- 
-
+</div>  
 
 
