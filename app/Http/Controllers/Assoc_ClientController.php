@@ -34,26 +34,25 @@ class Assoc_ClientController extends Controller
                 $data = Client::latest()->get();
                 return Datatables::of($data) 
                 ->addIndexColumn()
+                // ->addColumn('checkbox', function($row){
+                //      return '<input type="checkbox" name="client_checbox" data-id="'.$row[id].'"><label></label>';
+                // })
                 ->addColumn('actions', function($row){
                     $btn = '<button type="button" class="btn btn-success btn-sm" >
                     <i class="fas fa-edit"></i>
                     </button>
                     ';
                     // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#editModal"
-                    $btn = $btn .
-                        '
-                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-route="'.route("clients.list.clienProfile", $row->id).'" data-id="'.$row->id.'" data-target="#exampleModal">
-                    <i class="fas fa-eye"></i>
-                    </button>
-                    ';
-                    
+                    $btn = $btn.'<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-route="'.route("clients.list.clienProfile", $row->id).'" 
+                                    data-id="'.$row->id.'" data-target="#viewClient"> <i class="fas fa-eye"></i>
+                                </button>';
+                   
                     return $btn;
 
-                    
-                        
                 })
+                 
            
-                ->rawColumns(['actions'])
+                ->rawColumns(['actions', 'checkbox'])
                 ->make(true);
                 
         

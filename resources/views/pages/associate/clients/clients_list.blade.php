@@ -5,21 +5,18 @@
 @endsection
 
 @section('content')
-
+@include('shared.sidebar')
 <div class="siderbar_main toggled">
 
   <div class="page-content">
     <div class="container mt-5">
-        <button class="btn btn-outline-primary mt-3 mb-2" id="btn-addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
+        <button type="button" class="btn btn-danger mt-5 mb-2" data-toggle="modal" data-target="#deleteClient" style="float: right;"><i class="fas fa-minus-circle"></i> Delete</button>
+        <button type="button" class="btn btn-primary mt-5 mb-2 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
         <table class="table table-bordered yajra-datatable">
           <thead>
             <tr>
               <th>
-                <span class="custom-checkbox">
-                  <input type="checkbox" id="selectAll">
-                  <label for="selectAll"></label>
-                </span>
-                </span>   
+                <input type="checkbox" id="selectAll" name="Clientlistcheckbox"><label></label>               
               </th>
               <th class="Client-th text-dark text-center">Client ID</th>
               <th class="Client-th text-dark text-center">Client Name</th>
@@ -36,25 +33,44 @@
     </div>
   </div>
 </div>
-<!--View Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content" style="width: 120%;">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!-- <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width:30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button> -->
-                <div class="modal-body">
-                @include('pages.associate.clients.client_profile')
-                </div>
-              
-            </div>
+
+<!--View Client Modal -->
+<div class="modal fade" id="viewClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 120%;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
         </div>
+        <!-- <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width:30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button> -->
+        <div class="modal-body">
+          @include('pages.associate.clients.client_profile')
+        </div>  
+      </div>
     </div>
+  </div>
+</div>
+
+<!--Add Client Modal -->
+<div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 120%;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Client</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <!-- <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width:30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button> -->
+        <div class="modal-body">
+          @include('pages.associate.clients.add_client')
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
  
 @endsection
 
@@ -70,7 +86,7 @@
 <script type="text/javascript">
   $(function () {
 
-    $('#exampleModal').on('shown.bs.modal', function(event) {
+    $('#viewClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
             let $route = $(event.relatedTarget).attr('data-route');
 
@@ -96,7 +112,34 @@
                 }
             })
     })
-    
+
+    $('#addClient').on('shown.bs.modal', function(event) {
+            let $userId = $(event.relatedTarget).attr('data-id')
+            let $route = $(event.relatedTarget).attr('data-route');
+
+            $.ajax({
+                url: $route,
+                method: 'POST',
+                data: {
+                    _token: '{{csrf_token()}}',
+                    user_id: $userId
+                    
+                },
+                beforeSend: function() {
+
+                },
+                success: function(result) {
+                    console.log(result)
+                    $('[name="client_id"]').val(result.client_id)
+                    $('[name="trade_name"]').val(result.trade_name)
+                    $('[name="registration_data"]').val(result.registration_date)
+                },
+                error: function() {
+                    alert('Error!')
+                }
+            })
+    })
+     
  
     
     var table = $('.yajra-datatable').DataTable({
@@ -105,7 +148,7 @@
         ajax: "{{ route('clients.list') }}",
               columns: [
  
-                  {data: 'checkbox', name: 'checkbox', orderable: false},
+                  {data: 'checkbox', name: 'checkbox'},
                   {data: 'id', name: 'id', orderable: false},
                   {data: 'client_name', name: 'client_name', orderable: false},
                   {data: 'contact_number', name: 'contact_number', orderable: false},
