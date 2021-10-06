@@ -4,7 +4,7 @@
 
     <div class="card-block text-center text-white">
       <div class="m-b-25"><img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
-        <h6 class="f-w-600"><strong name="client_name">Client Name</strong></h6>
+        <h4 class="f-w-600">Client Name</h4>
         <p>@clientname</p>         
       </div>
     </div>
