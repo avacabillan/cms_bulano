@@ -30,7 +30,7 @@ Route::view('/login','pages.admin.login')->name('login');
 Route::view('/dashboard','pages.admin.dashboard')->name('dashboard');
 Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 
-Route::view('/associates_list','pages.admin.associates.associates_list')->name('associates_list');
+Route::get('/associates_list',[AdminAssocController:: class, 'index'])->name('associates_list');
 // Route::view('/add_associates','pages.admin.associates.add_associates')->name('add_associates');
 // Route::view('/assocprofile','pages.admin.associates.assoc_profile')->name('assocprofile');
 Route::get('/insertAssociate',[AdminAssocController:: class, 'insertAssociate'])->name('insertassociate');
