@@ -63,6 +63,33 @@
 
 <script type="text/javascript">
   $(function () {
+
+    $('#addAssoc').on('shown.bs.modal', function(event) {
+            let $userId = $(event.relatedTarget).attr('data-id')
+            let $route = $(event.relatedTarget).attr('data-route');
+
+            $.ajax({
+                url: $route,
+                method: 'POST',
+                data: {
+                    _token: '{{csrf_token()}}',
+                    user_id: $userId
+                    
+                },
+                beforeSend: function() {
+
+                },
+                success: function(result) {
+                    console.log(result)
+                    $('[name="assoc_id"]').val(result.associate_id)
+                    $('[name="department_data"]').val(result.department_data)
+                    $('[name="position_data"]').val(result.position_data)
+                },
+                error: function() {
+                    alert('Error!')
+                }
+            })
+    })
     
     var table = $('.yajra-datatable').DataTable({
         processing: true,
