@@ -48,9 +48,9 @@ class Assoc_ClientController extends Controller
 
                 })
                  
-                // ->addColumn('checkbox', function($row){
-                //     return '<input type="checkbox" name="client_checkbox" data-id="'.$row[id].'"><label></label>';
-                // })
+                 ->addColumn('checkbox', function($row){
+                 return '<input type="checkbox" name="client_checkbox" data-id="'.$row['id'].'"><label></label>';
+                 })
 
                 ->rawColumns(['actions', 'checkbox'])
                 ->make(true);
