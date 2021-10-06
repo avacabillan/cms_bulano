@@ -34,7 +34,8 @@ Route::get('/associates_list',[AdminAssocController:: class, 'index'])->name('as
 // Route::view('/add_associates','pages.admin.associates.add_associates')->name('add_associates');
 // Route::view('/assocprofile','pages.admin.associates.assoc_profile')->name('assocprofile');
 Route::get('/insertAssociate',[AdminAssocController:: class, 'insertAssociate'])->name('insertassociate');
-Route::get('/CreateNewAssociate',[AdminAssocController:: class, 'createAssociate'])->name('CreateNewAssociate');
+// Route::get('/CreateNewAssociate',[AdminAssocController:: class, 'createAssociate'])->name('CreateNewAssociate');
+// Route::post('/associates_list/assocProfile/{userId}',[AdminAssocController:: class, 'getUser'])->name('associates_list.assocProfile');
 
 Route::view('/calendar','pages.admin.calendar')->name('calendar');
 
