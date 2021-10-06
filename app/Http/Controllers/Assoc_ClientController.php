@@ -34,9 +34,6 @@ class Assoc_ClientController extends Controller
                 $data = Client::latest()->get();
                 return Datatables::of($data) 
                 ->addIndexColumn()
-                // ->addColumn('checkbox', function($row){
-                //      return '<input type="checkbox" name="client_checbox" data-id="'.$row[id].'"><label></label>';
-                // })
                 ->addColumn('actions', function($row){
                     $btn = '<button type="button" class="btn btn-success btn-sm" >
                     <i class="fas fa-edit"></i>
@@ -51,7 +48,10 @@ class Assoc_ClientController extends Controller
 
                 })
                  
-           
+                // ->addColumn('checkbox', function($row){
+                //     return '<input type="checkbox" name="client_checkbox" data-id="'.$row[id].'"><label></label>';
+                // })
+
                 ->rawColumns(['actions', 'checkbox'])
                 ->make(true);
                 
