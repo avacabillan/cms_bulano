@@ -169,12 +169,15 @@ class Assoc_ClientController extends Controller
         $client = Client::find($userId);
         return view('pages.associate.clients.client_profile')->with("client", $client);
     }
-
+   
     public function deleteSelectedClients(Request $request){
+
         $client_ids = $request->clients_ids;
         Client::whereIn('id', $client_ids)->delete();
         return response()->json(['code'=>1, 'msg'=>'Countries have been deleted from database']); 
-    }
+    
+    }  
+
 
 
 }

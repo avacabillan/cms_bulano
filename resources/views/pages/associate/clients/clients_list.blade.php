@@ -86,6 +86,12 @@
 <script type="text/javascript">
   $(function () {
 
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $('#viewClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
             let $route = $(event.relatedTarget).attr('data-route');
@@ -180,33 +186,17 @@
       $('input[name="client_checkbox"]:checked').each(function(){
         checkedAssoc_Client.push($(this).data('id'));
       });
-       //alert(checkedAssoc_Client);     
+         
       
-       var url = '{{ route("delete.selected.clients") }}';
-       if(checkedAssoc_Client.length > 0){
-        swal.fire({
-          title:'Are you sure?',
-          html:'You want to delete <b>('+checkedAssoc_Client.length+')</b> clients',
-          showCancelButton:true,
-          showCloseButton:true,
-          confirmButtonText:'Yes, Delete',
-          cancelButtonText:'Cancel',
-          confirmButtonColor:'#556ee6',
-          cancelButtonColor:'#d33',
-          width:300,
-          allowOutsideClick:false
-        }).then(function(result){
-            if(result.value){
-              $.post(url,{clients_ids:checkedAssoc_Client},function(data){
-                if(data.code == 1){
-                  $('#clients_table').DataTable().ajax.reload(null, true);
-                  toastr.success(data.msg);
-                }
-              },'json');
-            }
-          })
-      }
-
+      var url = '{{ route("delete.selected.clients") }}';
+      $.post(url,{clients_ids:checkedAssoc_Client},function(data){
+        if(data.code == 1){
+          $('#clients_table').DataTable().ajax.reload(null, true);
+          toastr.success(data.msg);
+        }
+      },'json');
+      alert("AJAX request successfully completed");
+           
     });
 
     
