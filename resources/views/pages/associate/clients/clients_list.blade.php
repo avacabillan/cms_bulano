@@ -10,13 +10,13 @@
 
   <div class="page-content">
     <div class="container mt-5">
-        <button type="button" class="btn btn-danger d-none mt-5 mb-2" id="deleteAllClientbtn" style="float: right;"><i class="fas fa-minus-circle"></i> Delete</button>
+    <button class="btn btn-danger d-none mt-5 mb-2" id="deleteallClients" style="float: right;">Delete All</button>
         <button type="button" class="btn btn-primary mt-5 mb-2 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
-        <table class="table table-bordered yajra-datatable">
+        <table class="table table-bordered yajra-datatable" id="clients_table">
           <thead>
             <tr>
               <th>
-                <input type="checkbox" id="selectAll" name="Clientlistcheckbox"><label></label>               
+                <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
               </th>
               <th class="Client-th text-dark text-center">Client ID</th>
               <th class="Client-th text-dark text-center">Client Name</th>
@@ -76,10 +76,10 @@
 
 @section('scripts')
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> 
 
 
 
@@ -151,7 +151,7 @@
          this.checked = false;
         });
       }
-      toggledeleteAllClientbtn();
+      toggledeleteallClients();
     });
 
     $(document).on('change', 'input[name="client_checkbox"]', function(){
@@ -161,51 +161,59 @@
       }else{
         $('input[name="Clientlistcheckbox"]').prop('checked', false);
       }
-      toggledeleteAllClientbtn();
+      toggledeleteallClients();
     });
 
-    function toggledeleteAllClientbtn(){
+    function toggledeleteallClients(){
       
       if( $('input[name="client_checkbox"]:checked').length > 0 ){
-          $('buttonn#deleteAllClientbtn').text('Delete ('+$('input[name="client_checkbox"]:checked').length+')').removeClass('d-none');
+          $('button#deleteallClients').text('Delete ('+$('input[name="client_checkbox"]:checked').length+')').removeClass
+          ('d-none');
       }else{
-          $('buttonn#deleteAllClientbtn').addClass('d-none');
+          $('button#deleteallClients').addClass('d-none');
       }
     }
 
-    // $(document).on('click','button#deleteAllClientbtn', function(){
-    //            var checkedClient = [];
-    //            $('input[name="client_checkbox"]:checked').each(function(){
-    //                checkedClient.push($(this).data('id'));
-    //            });
-    //            var url = '{{ route("delete.selected.client") }}';
-    //            if(checkedClient.length > 0){
-    //                swal.fire({
-    //                    title:'Are you sure?',
-    //                    html:'You want to delete <b>('+checkedClient.length+')</b> client',
-    //                    showCancelButton:true,
-    //                    showCloseButton:true,
-    //                    confirmButtonText:'Yes, Delete',
-    //                    cancelButtonText:'Cancel',
-    //                    confirmButtonColor:'#556ee6',
-    //                    cancelButtonColor:'#d33',
-    //                    width:300,
-    //                    allowOutsideClick:false
-    //                }).then(function(result){
-    //                    if(result.value){
-    //                        $.post(url,{client_ids:checkedClient},function(data){
-    //                           if(data.code == 1){
-    //                               $('#client-table').DataTable().ajax.reload(null, true);
-    //                               toastr.success(data.msg);
-    //                           }
-    //                        },'json');
-    //                    }
-    //                })
-    //            }
-    //        });
-        
+    $(document).on('click','button#deleteallClients', function(){
+      
+      var checkedAssoc_Client = [];
+      $('input[name="client_checkbox"]:checked').each(function(){
+        checkedAssoc_Client.push($(this).data('id'));
+      });
+       //alert(checkedAssoc_Client);     
+      
+       var url = '{{ route("delete.selected.clients") }}';
+       if(checkedAssoc_Client.length > 0){
+        swal.fire({
+          title:'Are you sure?',
+          html:'You want to delete <b>('+checkedAssoc_Client.length+')</b> clients',
+          showCancelButton:true,
+          showCloseButton:true,
+          confirmButtonText:'Yes, Delete',
+          cancelButtonText:'Cancel',
+          confirmButtonColor:'#556ee6',
+          cancelButtonColor:'#d33',
+          width:300,
+          allowOutsideClick:false
+        }).then(function(result){
+            if(result.value){
+              $.post(url,{clients_ids:checkedAssoc_Client},function(data){
+                if(data.code == 1){
+                  $('#clients_table').DataTable().ajax.reload(null, true);
+                  toastr.success(data.msg);
+                }
+              },'json');
+            }
+          })
+      }
+
+    });
+
+    
  /*------ END OF CHECKBOX DELETE ALL ------*/
 
+
+    /*------ GET ALL CLIENTS ------*/
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
@@ -223,7 +231,7 @@
                     'actions',
                     name: 'actions', 
                     orderable: false, 
-                    searchable: true
+                    searchable: false
                   },
         ]
     });

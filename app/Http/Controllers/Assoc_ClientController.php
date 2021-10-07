@@ -170,21 +170,11 @@ class Assoc_ClientController extends Controller
         return view('pages.associate.clients.client_profile')->with("client", $client);
     }
 
-    // public function deleteClient(Request $request){
-    //     $client_id = $request->client_id;
-    //     $query = Country::find($client_id)->delete();
+    public function deleteSelectedClients(Request $request){
+        $client_ids = $request->clients_ids;
+        Client::whereIn('id', $client_ids)->delete();
+        return response()->json(['code'=>1, 'msg'=>'Countries have been deleted from database']); 
+    }
 
-    //     if($query){
-    //         return response()->json(['code'=>1, 'msg'=>'CLient has been deleted from database']);
-    //     }else{
-    //         return response()->json(['code'=>0, 'msg'=>'Something went wrong']);
-    //     }
-    // }
-
-    // public function deleteSelectedClient(Request $request){
-    //    $client_ids = $request->client_ids;
-    //    Client::whereIn('id', $client_ids)->delete();
-    //    return response()->json(['code'=>1, 'msg'=>'CLient have been deleted from database']); 
-    // }
 
 }
