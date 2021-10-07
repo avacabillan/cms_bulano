@@ -55,17 +55,24 @@
 
 <!--Add Client Modal -->
 <div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="width: 120%;">
+<div class="modal-dialog modal-lg" >
+    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Client</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="headingsModal"></h5>
+        
         </div>
-        <!-- <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width:30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button> -->
+      
         <div class="modal-body">
-          @include('pages.associate.clients.add_client')
+        @livewireStyles
+           
+        @include('pages.associate.clients.add_client')    
+                        
+        @livewireScripts
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
         </div>  
       </div>
     </div>
@@ -85,7 +92,11 @@
 
 <script type="text/javascript">
   $(function () {
-
+      $.ajaxSetup({
+            headers:{
+              'X-CSRF-TOKER':$('meta[name="csrf-token"]').attr('content')
+            }
+      })
     $('#viewClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
             let $route = $(event.relatedTarget).attr('data-route');
@@ -112,33 +123,38 @@
                 }
             })
     })
+    /*--------------Add Js-------*/
 
-    $('#addClient').on('shown.bs.modal', function(event) {
-            let $userId = $(event.relatedTarget).attr('data-id')
-            let $route = $(event.relatedTarget).attr('data-route');
+    $('#addClient').on('shown.bs.modal', function() {
+      $('#headingsModal').html('Add New Client');
+      $('#client_id').val('');
+      $('#addClient').modal('show');
+      $('#addClientForm').trigger('reset');
+      
+    });
+      // $('#saveBtn').click(function(e){
+      //   e.preventDefault();
+      //   $('this').html(Save);
 
-            $.ajax({
-                url: $route,
-                method: 'POST',
-                data: {
-                    _token: '{{csrf_token()}}',
-                    user_id: $userId
-                    
-                },
-                beforeSend: function() {
+      //   $.ajax({
+      //     data:$("#addClientForm").serialize();
+      //     url:"{{route('insertClient')}}",
+      //     type:"POST",
+      //     dataType:'json',
+      //     success: function(data){
+      //       $('#addClientForm').trigger('reset');
+      //       $('#addClient').modal('hide');
+      //       table.draw();
+      //     },
+      //     error:function(data){
+      //         console.log('Error:',data);
+      //         $('#saveBtn').html('Save');
+      //     }
+      //   })
+      // });
 
-                },
-                success: function(result) {
-                    console.log(result)
-                    $('[name="client_id"]').val(result.client_id)
-                    $('[name="trade_name"]').val(result.trade_name)
-                    $('[name="registration_data"]').val(result.registration_date)
-                },
-                error: function() {
-                    alert('Error!')
-                }
-            })
-    })
+
+
      /*------ CHECKBOX DELETE ALL ------*/
     $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
 

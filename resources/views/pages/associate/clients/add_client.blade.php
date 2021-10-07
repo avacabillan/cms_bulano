@@ -1,12 +1,12 @@
 @livewireStyles
-<div class="addClient_form">
-  <div class="col-md-8 offset-md-2 bg-light mt-3 pt-3 mb-3">
-    <div class="card-body">
-      <div class="form-goup">
+
+  <div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3">
+    <div class="card-body" >
+      <div class="form-goup" >
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
-            <form action="{{route('insertClient')}}" class="row">
-            @csrf 
+            <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
+            <input type="hidden" name="client_id" id="client_id">
             <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
           </div>
 
@@ -122,7 +122,7 @@
             
           
           <div class="AddClient_btn mt-5">
-            <button class="btn btn-primary" type="submit" value="add">Submit</button>
+            <button class="btn btn-primary" type="submit" name="saveBtn" id="saveBtn" value="add">Submit</button>
             <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
           </div>
           </form>
@@ -130,49 +130,7 @@
       </div>
     </div>
   </div>
-</div>
 
     
  @livewireScripts
-
-<!-- 
-<div class="siderbar_main toggled">
-<main class="page-content">
-<table class="table data">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Number</th>
-      <th>Actions <button class="add">Add new</button></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="data">John Doe</td>
-      <td class="data">johndoe@john.com</td>
-      <td class="data">666-666-666</td>
-      <td>
-        <button class="save">Save</button>
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
-      </td>
-    </tr>
-    <tr>
-      <td class="data">John Doe</td>
-      <td class="data">johndoe@john.com</td>
-      <td class="data">666-666-666</td>
-      <td>
-        <button class="save">Save</button>
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div> -->
-
-
-
 
