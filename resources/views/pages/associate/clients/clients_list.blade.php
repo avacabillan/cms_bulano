@@ -92,6 +92,7 @@
         }
     });
 
+    /*------ VIEW ALL CLIENTS ------*/
     $('#viewClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
             let $route = $(event.relatedTarget).attr('data-route');
@@ -118,7 +119,8 @@
                 }
             })
     })
-
+    /*------ END OF VIEW ALL CLIENTS ------*/
+    /*------ ADD CLIENTS ------*/
     $('#addClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
             let $route = $(event.relatedTarget).attr('data-route');
@@ -145,7 +147,8 @@
                 }
             })
     })
-     /*------ CHECKBOX DELETE ALL ------*/
+    /*------ END OF ADD CLIENTS ------*/
+    /*------ CHECKBOX DELETE ALL ------*/
     $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
 
       if(this.checked){
@@ -188,19 +191,28 @@
       });
          
       
-      var url = '{{ route("delete.selected.clients") }}';
-      $.post(url,{clients_ids:checkedAssoc_Client},function(data){
-        if(data.code == 1){
-          $('#clients_table').DataTable().ajax.reload(null, true);
-          toastr.success(data.msg);
-        }
-      },'json');
-      alert("AJAX request successfully completed");
-           
-    });
+      // var url = '{{ route("delete.selected.clients") }}';
+      // $.post(url,{clients_ids:checkedAssoc_Client},function(data){
+      //   if(data.code == 1){
+      //     $('#clients_table').DataTable().ajax.reload(null, true);
+      //     toastr.success(data.msg);
+      //   }
+      // },'json');
+      
 
-    
- /*------ END OF CHECKBOX DELETE ALL ------*/
+      if (confirm('ARE YOU SURE TO DELETE THIS CLIENT?')) {
+        var url = '{{ route("delete.selected.clients") }}';
+
+        $.post(url,{clients_ids:checkedAssoc_Client},function(data){
+          if(data.code == 1){
+            $('#clients_table').DataTable().ajax.reload(null, true);
+            $.alert(data.msg);
+          }
+        },'json');
+      }
+  
+    });
+    /*------ END OF CHECKBOX DELETE ALL ------*/
 
 
     /*------ GET ALL CLIENTS ------*/
@@ -225,7 +237,7 @@
                   },
         ]
     });
-    
+    /*------ GET ALL CLIENTS ------*/
   });
 </script>
 @endsection
