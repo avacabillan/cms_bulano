@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Clients
+    Clients List
 @endsection
 
 @section('content')
@@ -10,6 +10,7 @@
 
   <div class="page-content">
     <div class="container mt-5">
+ 
     <button class="btn btn-danger d-none mt-5 mb-2" id="deleteallClients" style="float: right;">Delete All</button>
         <button type="button" class="btn btn-primary mt-5 mb-2 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
         <table class="table table-bordered yajra-datatable" id="clients_table">
@@ -34,7 +35,7 @@
   </div>
 </div>
 
-<!--View Client Modal -->
+<!-- VIEW CLIENT MODAL -->
 <div class="modal fade" id="viewClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 120%;">
@@ -44,7 +45,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <!-- <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width:30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button> -->
         <div class="modal-body">
           @include('pages.associate.clients.client_profile')
         </div>  
@@ -52,8 +52,9 @@
     </div>
   </div>
 </div>
+<!-- END OF VIEW CLIENT MODAL -->
 
-<!--Add Client Modal -->
+<!-- ADD CLIENT MODAL -->
 <div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 120%;">
@@ -63,7 +64,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <!-- <button class="btn btn-outline-success btn-sm mt-3 mb-2" style="float: right; width:30%;"><i class="fas fa-plus-circle"></i> Add New Folder</button> -->
         <div class="modal-body">
           @include('pages.associate.clients.add_client')
         </div>  
@@ -71,7 +71,7 @@
     </div>
   </div>
 </div>
- 
+<!-- END OF ADD CLIENT MODAL -->
 @endsection
 
 @section('scripts')
@@ -200,7 +200,7 @@
       // },'json');
       
 
-      if (confirm('ARE YOU SURE TO DELETE THIS CLIENT?')) {
+      if (confirm('ARE YOU SURE? YOU WANT TO DELETE THIS CLIENT?')) {
         var url = '{{ route("delete.selected.clients") }}';
 
         $.post(url,{clients_ids:checkedAssoc_Client},function(data){
