@@ -122,7 +122,7 @@
             
           
           <div class="AddClient_btn mt-5">
-            <button class="btn btn-primary" type="submit" name="saveBtn" id="saveBtn" value="add">Submit</button>
+            <button class="btn btn-primary" type="submit" name="saveBtn" id="saveBtn" value="createClient">Submit</button>
             <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
           </div>
           </form>

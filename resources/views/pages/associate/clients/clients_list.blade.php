@@ -73,6 +73,22 @@
     </div>
   </div>
 </div>
+
+<!--Update Client Modal -->
+<div class="modal fade editModal" id="updateClientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" >
+    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="headingsModal"></h5>
+        
+        </div>
+      
+        <div class="modal-body">
+        @livewireStyles
+           
+        @include('pages.associate.clients.add_client')    
+                        
+        @livewireScripts
         </div>  
       </div>
     </div>
@@ -97,6 +113,31 @@
               'X-CSRF-TOKER':$('meta[name="csrf-token"]').attr('content')
             }
       })
+        //<------ Datatable js---------->
+      var table = $('.yajra-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('clients.list') }}",
+              columns: [
+ 
+                  {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
+                  {data: 'id', name: 'id', orderable: false},
+                  {data: 'client_name', name: 'client_name', orderable: false},
+                  {data: 'contact_number', name: 'contact_number', orderable: false},
+                  {data: 'email', name: 'email', orderable: false},
+                  {data: 'ocn', name: 'ocn', orderable: false},
+                  {data: 'mode_of_payment_id', name: 'mode_of_payment', orderable: false},
+                  {data: 
+                    'actions',
+                    name: 'actions', 
+                    orderable: false, 
+                    searchable: true
+                  },
+              ]
+      });
+//<------End Datatable js---------->
+
+//<------ View Client js---------->
     $('#viewClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
             let $route = $(event.relatedTarget).attr('data-route');
@@ -123,37 +164,50 @@
                 }
             })
     })
-    /*--------------Add Js-------*/
+    //<------End View Client js---------->
+
+    /*--------------Add Client Js-------*/
 
     $('#addClient').on('shown.bs.modal', function() {
-      $('#headingsModal').html('Add New Client');
+      $('#saveBtn').val("createClient");
       $('#client_id').val('');
-      $('#addClient').modal('show');
       $('#addClientForm').trigger('reset');
+      $('#headingsModal').html('Add New Client');
+      $('#addClient').modal('show');
+      
       
     });
-      // $('#saveBtn').click(function(e){
-      //   e.preventDefault();
-      //   $('this').html(Save);
 
-      //   $.ajax({
-      //     data:$("#addClientForm").serialize();
-      //     url:"{{route('insertClient')}}",
-      //     type:"POST",
-      //     dataType:'json',
-      //     success: function(data){
-      //       $('#addClientForm').trigger('reset');
-      //       $('#addClient').modal('hide');
-      //       table.draw();
-      //     },
-      //     error:function(data){
-      //         console.log('Error:',data);
-      //         $('#saveBtn').html('Save');
-      //     }
-      //   })
-      // });
+  /*--------------Edit Client Js-------*/
+ 
+    $('.editModal').on('shown.bs.modal', '.editbtn', function (event) {
+      let $userId = $(event.relatedTarget).attr('data-id');
+           
+           $.get("{{route('editForm')}}"+"/"+client_id+"/editClient",function(data)){
+              $("#headingsModal").html("Edit Client");
+              $("#updateClientModal").modal('show');
+              $("#client_id").val(data.id);
+              $('#ocn').val(data.ocn);
+              $('#tin').val(data.tin);
+              $('#client_name').val(data.client_name);
+              $('#email').val(data.email);
+              $('#client_contact').val(data.client_contact);
+              $('#reg_date').val(data.reg_date);
+              $('#trade_name').val(data.trade_name);
+              $('#mode').val(data.mode);
+              $('#corporate').val(data.corporate);
+              $('#unit_house_no').val(data.unit_house_no);
+              $('#street').val(data.street);
+              $('#client_city').val(data.client_city);
+              $('#client_province').val(data.client_province);
+              $('#client_postal').val(data.client_postal);
+              
 
-
+           });
+           
+           
+    });
+      
 
      /*------ CHECKBOX DELETE ALL ------*/
     $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
@@ -222,27 +276,7 @@
         
  /*------ END OF CHECKBOX DELETE ALL ------*/
 
-    var table = $('.yajra-datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('clients.list') }}",
-              columns: [
- 
-                  {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
-                  {data: 'id', name: 'id', orderable: false},
-                  {data: 'client_name', name: 'client_name', orderable: false},
-                  {data: 'contact_number', name: 'contact_number', orderable: false},
-                  {data: 'email', name: 'email', orderable: false},
-                  {data: 'ocn', name: 'ocn', orderable: false},
-                  {data: 'mode_of_payment_id', name: 'mode_of_payment', orderable: false},
-                  {data: 
-                    'actions',
-                    name: 'actions', 
-                    orderable: false, 
-                    searchable: true
-                  },
-        ]
-    });
+   
     
   });
 </script>

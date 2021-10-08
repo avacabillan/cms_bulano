@@ -35,7 +35,7 @@ class Assoc_ClientController extends Controller
                 return Datatables::of($data) 
                 ->addIndexColumn()
                 ->addColumn('actions', function($row){
-                    $btn = '<button type="button" class="btn btn-success btn-sm" >
+                    $btn = '<button type="button" class="editbtn btn-success btn-sm" data-id="'.$row->id.'"   name="updateClient" id="updateClient" value="updateClient">
                     <i class="fas fa-edit"></i>
                     </button>
                     ';
@@ -70,17 +70,7 @@ class Assoc_ClientController extends Controller
    
     public function insertClient(Request $request )
     {
-        // CLIENT INFO
-        // $associate =new Associate();
-        // $associate ->assoc_id
-
-       
-
-      
-        // $corporate =new Corporate();
-        // $corporate ->corporate_name = $request->corporate;
-        // $corporate ->save();
-
+        // Client::updateOrCreate(['id =>$request->client_id']);
     
 
         
@@ -109,8 +99,6 @@ class Assoc_ClientController extends Controller
         $registered_address ->street =$request ->street;
         $registered_address ->save();
 
-    
-        
 
         $client =new Client();
         $client ->client_name = $request->client_name;
@@ -144,7 +132,7 @@ class Assoc_ClientController extends Controller
             
         }
         
-        return redirect()->route('clients.list');
+        return redirect()->back();
 
     }
     // public function showClientProfile($id){
@@ -159,15 +147,99 @@ class Assoc_ClientController extends Controller
         // return view('welcome')->with("groups", $groups);
     }
     
-    public function getUser($userId)
-    {
-        $user = Client::find($userId);
-         return view('pages.associate.clients.client_profile')->with( $user);
+    public function editForm(){
+        return view ("pages.associate.clients.edit_client);
     }
-    public function editClient($userId)
+    
+    public function editClient($id)
     {
-        $client = Client::find($userId);
-        return view('pages.associate.clients.client_profile')->with("client", $client);
+        $client = Client::find($id);
+        return response()->json($client);
+       
+
+    }
+    public function updateClient(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'email'=>'required|email|max:191',
+            'phone'=>'required|max:10|min:10',
+        ]);
+
+        if($validator->fails())
+        {
+            return response()->json([
+                'status'=>400,
+                'errors'=>$validator->messages()
+            ]);
+        }
+        else
+        {
+            $client = Client::find($id);
+            if($client)
+            {
+                $client_province =new ClientProvince();
+                $client_province ->province_name =$request->client_province;
+                $client_province ->update();
+
+                $client_city =new ClientCity();
+                $client_city ->city_name =$request->client_city;
+                $client_city ->province_id =$client_province->id;
+                $client_city ->update();
+
+                $client_postal =new ClientPostal();
+                $client_postal ->postal_no =$request->client_postal;
+                $client_postal ->client_city_id =$client_city->id;
+                $client_postal ->update();
+
+                $location_address =new LocationAddress();
+                $location_address ->client_postal_id =$client_postal->id;
+                $location_address ->update();
+
+
+                $registered_address =new RegisteredAddress();
+                $registered_address ->location_address_id =$location_address->id;
+                $registered_address ->unit_house_no =$request ->unit_house_no;
+                $registered_address ->street =$request ->street;
+                $registered_address ->update();
+
+
+                $client =new Client();
+                $client ->client_name = $request->client_name;
+                $client ->email = $request->email;
+                $client ->contact_number = $request->client_contact;
+                $client ->ocn = $request->ocn;
+                // $client ->assoc_id =$associate->id;
+                $client ->mode_of_payment_id =$request ->mode;
+                $client ->update();
+
+                $client_tin =new Tin();
+                $client_tin->client_id=$client->id;
+                $client_tin->tin_no =$request->tin;
+                $client_tin->update();
+
+                $business =new Business();
+                $business ->client_id =$client->id;
+                $business ->trade_name =$request->trade_name;
+                $business ->registration_date =$request->reg_date;
+                $business ->corporate_id =$request->corporate;
+                $business ->registered_address_id =$registered_address->id;
+                $business ->update();
+
+                
+                return response()->json([
+                    'status'=>200,
+                    'message'=>'Client Updated Successfully.'
+                ]);
+            }
+            else
+            {
+                return response()->json([
+                    'status'=>404,
+                    'message'=>'No Client Found.'
+                ]);
+            }
+
+        }
     }
 
     // public function deleteClient(Request $request){

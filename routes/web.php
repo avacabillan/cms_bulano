@@ -59,8 +59,8 @@ Route::view('/client_message','pages.client.client_message')->name('client_messa
 Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list');
 // Route::get('/CreateNewClient',[Assoc_ClientController::class, 'createClient'])->name('CreateNewClient');
 Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient');
-// Route::get('/clients/list/editClientProfile/{userId}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.editClientProfile');
-Route::post('/clients/list/clienProfile/{userId}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.clienProfile');
+// Route::get('/clients/list/updateClientProfile/{id}',[Assoc_ClientController::class, 'updateClient'])->name('clients.list.updateClientProfile');
+// Route::post('/clients/list/clienProfile/{userId}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.clienProfile');
 Route::post('/deleteSelectedClient',[ClientsController::class,'deleteSelectedClient'])->name('delete.selected.client');
 
 Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
@@ -76,6 +76,9 @@ Route::view('/associate-message','pages.associate.message')->name('associate-mes
 // Route::get('/taxforms', [TestController::class , 'showTax']);
 // Route::get('dropdownlist/getSubCorporate/{id}', [TestController::class , 'getSubCorporates']);
 Route::get('/test', [TestController::class , 'showClientProfile'])->name('showClientProfile');
+Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name('editForm');
+Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient']);
+Route::put('update-client/{id}', [Assoc_ClientController::class, 'updateClient']);
 
 
 
