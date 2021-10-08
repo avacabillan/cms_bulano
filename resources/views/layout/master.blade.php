@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-@include('shared.navbar')
+
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="{{asset('css/system/admin_msg.css')}}">
 
     <!-- ASSOCIATE -->
-    <link rel="stylesheet" href="{{asset('css/associate_login.css')}}">
     <link rel="stylesheet" href="{{asset('css/system/assoc_edit_client.css')}}">
     <link rel="stylesheet" href="{{asset('css/assoc_profile.css')}}">
     <link rel="stylesheet" href="{{asset('css/assoc_add_client.css')}}">
@@ -37,7 +36,6 @@
     <link rel="stylesheet" href="{{asset('css/register.css')}}"> -->
 
     <!-- CLIENT -->
-    <link rel="stylesheet" href="{{asset('css/client_login.css')}}">
     <link rel="stylesheet" href="{{asset('css/client_profile.css')}}">
     
     

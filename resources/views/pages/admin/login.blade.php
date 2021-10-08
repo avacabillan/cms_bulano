@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('title')
+    Login 
 @stop
 
 @section('content')
@@ -10,7 +11,7 @@
     </div>
     <div id="right">
         <h1 class="login" id="admin_login"><b>LOGIN</b></h1><br>
-        <h5 class="admin_login_info">ADMIN</h5><br>
+        <!-- <h5 class="admin_login_info">ADMIN</h5><br> -->
         <form action="{{route('login')}}" method="post">
         @csrf
 
@@ -22,7 +23,8 @@
             <div class="alert alert-danger" style="display:none" role="alert">
                 {{$errors ->first()}}
             </div>
-                
+            <button class="client-info " type="submit"  id="submit" class="submitbtn"><a href="{{route('register')}}">Register</a></button>
+
         </form>
     </div>
 </div>

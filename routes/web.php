@@ -41,14 +41,12 @@ Route::view('/calendar','pages.admin.calendar')->name('calendar');
 
 /*---------------------- ASSOCIATES VIEW --------------*/
 
-Route::view('/associates_login','pages.associate.associates_login')->name('associates_login');
 Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_dashboard');
 Route::view('/compose','pages.admin.messages.compose')->name('compose');
 
 
 /*---------------------- CLIENTS VIEW --------------*/
 
-Route::view('/client_login','pages.client.client_login')->name('login');
 Route::view('/register','pages.admin.register')->name('register');
 
 Route::view('/client_message','pages.client.client_message')->name('client_message');

@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
 @include('shared.sidebar')
 <div class="siderbar_main toggled">
 
