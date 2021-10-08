@@ -27,7 +27,7 @@
             
             <!-- DASHBOARD -->
             <li>
-              <a href="{{route('dashboard')}}"><i class="fa fa-book position-relative"></i>
+              <a href="{{route('dashboard')}}"><i class="fad fa-analytics"></i>
                 <span>Dashboard</span>
               </a>
             </li>
@@ -35,30 +35,30 @@
             <!-- REGISTERED GUEST -->
             <li>
               <a href="{{route('guest_list')}}">
-                <i class="fa fa-user"></i><span>Registered Guest</span>
+                <i class="fal fa-users-medical"></i><span>Registered Guest</span>
               </a>
             </li>
             <!-- END OF REGISTERED GUEST -->
             <!-- ASSOCIATES -->
             <li>
               <a href="{{route('associates_list')}}">
-                <i class="fa fa-globe"></i><span>Associates</span>
+              <i class="fal fa-user"></i><span>Associates</span>
               </a>
             </li>
             <!-- END OF ASSOCIATES -->
             <!-- CLIENTS -->
             <li>
               <a href="{{route('clients.list')}}">
-                <i class="fa fa-globe"></i><span>Clients</span>
+              <i class="fal fa-users"></i><span>Clients</span>
               </a>
             </li>
             <!-- END OF CLIENTS -->
 
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
-            <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
-            <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
-            <li><a href="#"><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
+            <li><a href="{{route('about')}}"><i class="fas fa-info-circle"></i><span>About</span></a></li>
+            <li><a href="{{route('services')}}"><i class="fas fa-cogs"></i><span>Services</span></a></li>
+            <li><a href="#"><i class="far fa-id-badge"></i><span>Conatcs</span></a></li>
            
              <!-- END OF EXTRA -->
           </ul>
