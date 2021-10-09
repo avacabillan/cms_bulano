@@ -35,16 +35,18 @@ class Assoc_ClientController extends Controller
                 return Datatables::of($data) 
                 ->addIndexColumn()
                 ->addColumn('actions', function($row){
-                    $btn = '<button type="button" class="editbtn btn-success btn-sm" data-id="'.$row->id.'"   name="updateClient" id="updateClient" value="updateClient">
-                    <i class="fas fa-edit"></i>
-                    </button>
-                    ';
-                    // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#editModal"
-                    $btn = $btn.'<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-route="'.route("clients.list.clienProfile", $row->id).'" 
+                    $btn ='<button type="button" class="btn btn-success btn-sm editbtn" data-toggle="modal" data-route="'.route("editForm", $row->id).'" 
+                    data-id="'.$row->id.'" data-target="#updateClientModal"> <i class="fas fa-edit"></i>
+                </button>';
+                    // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#viewModal"
+                    $btn = $btn.'<button type="button" class="btn btn-success btn-sm viewbtn"  data-toggle="modal" data-route="'.route("showClientProfile", $row->id).'" 
                                     data-id="'.$row->id.'" data-target="#viewClient"> <i class="fas fa-eye"></i>
                                 </button>';
+                  
+               
+                 return $btn;
                    
-                    return $btn;
+                    
 
                 })
                  
@@ -135,21 +137,27 @@ class Assoc_ClientController extends Controller
         return redirect()->back();
 
     }
-    // public function showClientProfile($id){
-    //     $client = Client::find ($id); 
-    //     return view('pages.associate.clients.client_profile')->with("client", $client);
-    // }
-   
-     public function showGroups()
-     {
-        //  select corporates that is belong to specific group
-        // $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
-        // return view('welcome')->with("groups", $groups);
-    }
+    public function showClientProfile($id){
+        $client = Client::find($id);
+     return view ('pages.associate.clients.client_profile')->with ('client',$client) ; 
     
-    public function editForm(){
-        return view ("pages.associate.clients.edit_client);
+    
     }
+   
+    //  public function showProfile($id)
+    //  {
+    //      select corporates that is belong to specific group
+    //     $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
+    //     return view('welcome')->with("groups", $groups);
+      
+    // }
+    // public function getClient($id)
+    // {
+    //     $client = Client::find($id);
+    //     return response()->json($client);
+       
+
+    // }
     
     public function editClient($id)
     {
@@ -177,53 +185,53 @@ class Assoc_ClientController extends Controller
             $client = Client::find($id);
             if($client)
             {
-                $client_province =new ClientProvince();
+                $client_province = ClientProvince::find($id);
                 $client_province ->province_name =$request->client_province;
-                $client_province ->update();
+                $client_province ->save();
 
-                $client_city =new ClientCity();
+                $client_city = ClientCity::find($id);
                 $client_city ->city_name =$request->client_city;
                 $client_city ->province_id =$client_province->id;
-                $client_city ->update();
+                $client_city ->save();
 
-                $client_postal =new ClientPostal();
+                $client_postal = ClientPostal::find($id);
                 $client_postal ->postal_no =$request->client_postal;
                 $client_postal ->client_city_id =$client_city->id;
-                $client_postal ->update();
+                $client_postal ->save();
 
-                $location_address =new LocationAddress();
+                $location_address = LocationAddress::find($id);
                 $location_address ->client_postal_id =$client_postal->id;
-                $location_address ->update();
+                $location_address ->save();
 
 
-                $registered_address =new RegisteredAddress();
+                $registered_address = RegisteredAddress::find($id);
                 $registered_address ->location_address_id =$location_address->id;
                 $registered_address ->unit_house_no =$request ->unit_house_no;
                 $registered_address ->street =$request ->street;
-                $registered_address ->update();
+                $registered_address ->save();
 
 
-                $client =new Client();
+                $client =Client::find($id);
                 $client ->client_name = $request->client_name;
                 $client ->email = $request->email;
                 $client ->contact_number = $request->client_contact;
                 $client ->ocn = $request->ocn;
                 // $client ->assoc_id =$associate->id;
                 $client ->mode_of_payment_id =$request ->mode;
-                $client ->update();
+                $client ->save();
 
-                $client_tin =new Tin();
+                $client_tin = Tin::find($id);
                 $client_tin->client_id=$client->id;
                 $client_tin->tin_no =$request->tin;
-                $client_tin->update();
+                $client_tin->save();
 
-                $business =new Business();
+                $business = Business::find($id);
                 $business ->client_id =$client->id;
                 $business ->trade_name =$request->trade_name;
                 $business ->registration_date =$request->reg_date;
                 $business ->corporate_id =$request->corporate;
                 $business ->registered_address_id =$registered_address->id;
-                $business ->update();
+                $business ->save();
 
                 
                 return response()->json([
@@ -258,5 +266,10 @@ class Assoc_ClientController extends Controller
     //    Client::whereIn('id', $client_ids)->delete();
     //    return response()->json(['code'=>1, 'msg'=>'CLient have been deleted from database']); 
     // }
+    public function showTestProfile($id){
+        $client = Client::find($id);
+     return view ('pages.associate.clients.client_profile')->with ('client',$client) ; 
+    
+    }
 
 }

@@ -6,9 +6,10 @@
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
             <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
-            <input type="hidden" name="client_id" id="client_id">
+            
             <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
           </div>
+          <input type="hidden" name="client_id" id="client_id">
 
           <div class="col-md-3 ml-md-auto form-group mt-5 pb-2">
             <label class="form-label" style="float: left;"><b>OCN</b></label>

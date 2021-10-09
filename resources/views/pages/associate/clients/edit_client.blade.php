@@ -5,10 +5,12 @@
       <div class="form-goup" >
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
-            <form action="#" class="updateClientForm"  id="updateClientForm" name="updateClientForm">
-            
+            <form action="{{route('updateClient')}}" method="POST" class="updateClientForm"  id="updateClientForm" name="updateClientForm">
+            {{ csrf_field() }}
+            {{ method_field('PUT') }} 
             <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
           </div>
+          <input type="hidden" name="client_id" id="client_id">
 
           <div class="col-md-3 ml-md-auto form-group mt-5 pb-2">
             <label class="form-label" style="float: left;"><b>OCN</b></label>
@@ -122,7 +124,7 @@
             
           
           <div class="AddClient_btn mt-5">
-            <button class="btn btn-primary" type="submit" name="updateBtn" id="updateBtn" value="updateBtn">Update</button>
+            <button class="btn btn-primary" type="submit" name="updateBtn" id="updateBtn" value="updateClient">Update</button>
             <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
           </div>
           </form>

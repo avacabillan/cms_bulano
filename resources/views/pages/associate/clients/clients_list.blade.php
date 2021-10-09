@@ -12,7 +12,7 @@
     <div class="container mt-5">
         <button type="button" class="btn btn-danger d-none mt-5 mb-2" id="deleteAllClientbtn" style="float: right;"><i class="fas fa-minus-circle"></i> Delete</button>
         <button type="button" class="btn btn-primary mt-5 mb-2 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
-        <table class="table table-bordered yajra-datatable">
+        <table class="table table-bordered yajra-datatable" >
           <thead>
             <tr>
               <th>
@@ -39,7 +39,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 120%;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
+        <h5 class="modal-title" id="headingsModal">My Profile</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -86,7 +86,7 @@
         <div class="modal-body">
         @livewireStyles
            
-        @include('pages.associate.clients.add_client')    
+        @include('pages.associate.clients.edit_client')    
                         
         @livewireScripts
         </div>  
@@ -107,178 +107,167 @@
 
 
 <script type="text/javascript">
-  $(function () {
-      $.ajaxSetup({
-            headers:{
-              'X-CSRF-TOKER':$('meta[name="csrf-token"]').attr('content')
-            }
-      })
-        //<------ Datatable js---------->
-      var table = $('.yajra-datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('clients.list') }}",
-              columns: [
- 
-                  {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
-                  {data: 'id', name: 'id', orderable: false},
-                  {data: 'client_name', name: 'client_name', orderable: false},
-                  {data: 'contact_number', name: 'contact_number', orderable: false},
-                  {data: 'email', name: 'email', orderable: false},
-                  {data: 'ocn', name: 'ocn', orderable: false},
-                  {data: 'mode_of_payment_id', name: 'mode_of_payment', orderable: false},
-                  {data: 
-                    'actions',
-                    name: 'actions', 
-                    orderable: false, 
-                    searchable: true
-                  },
-              ]
-      });
-//<------End Datatable js---------->
+//<-----datatable------>
+    $(function () {
+        $.ajaxSetup({
+              headers:{
+                'X-CSRF-TOKER':$('meta[name="csrf-token"]').attr('content')
+              }
+        });
+          //<------ Datatable js---------->
+        var table = $('.yajra-datatable').DataTable({
+          processing: true,
+          serverSide: true,
+          ajax: "{{ route('clients.list') }}",
+                columns: [
+  
+                    {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
+                    {data: 'id', name: 'id', orderable: false},
+                    {data: 'client_name', name: 'client_name', orderable: false},
+                    {data: 'contact_number', name: 'contact_number', orderable: false},
+                    {data: 'email', name: 'email', orderable: false},
+                    {data: 'ocn', name: 'ocn', orderable: false},
+                    {data: 'mode_of_payment_id', name: 'mode_of_payment', orderable: false},
+                    {data: 
+                      'actions',
+                      name: 'actions', 
+                      orderable: false, 
+                      searchable: true
+                    },
+                ]
+        });
+  });
+</script>
 
-//<------ View Client js---------->
-    $('#viewClient').on('shown.bs.modal', function(event) {
+<script>
+  //<-----modal scrpts----->
+
+      //<------View Client Js----->
+      $('#viewClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
             let $route = $(event.relatedTarget).attr('data-route');
 
             $.ajax({
                 url: $route,
                 method: 'POST',
+                datatype:'json,'
                 data: {
                     _token: '{{csrf_token()}}',
                     user_id: $userId
-                    
-                },
-                beforeSend: function() {
-
                 },
                 success: function(result) {
-                    console.log(result)
-                    $('[name="client_id"]').val(result.client_id)
-                    $('[name="trade_name"]').val(result.trade_name)
-                    $('[name="registration_data"]').val(result.registration_date)
+                  alert ('result');
+                    $('#client_id').val(result.client_id);
+                    $('#headingsModal').html('Add New Client');
+                    $('#viewClient').modal('show');
                 },
                 error: function() {
                     alert('Error!')
                 }
             })
-    })
-    //<------End View Client js---------->
+        })
 
-    /*--------------Add Client Js-------*/
+      //<-------Add Client Js------->
 
-    $('#addClient').on('shown.bs.modal', function() {
-      $('#saveBtn').val("createClient");
-      $('#client_id').val('');
-      $('#addClientForm').trigger('reset');
-      $('#headingsModal').html('Add New Client');
-      $('#addClient').modal('show');
-      
-      
-    });
-
-  /*--------------Edit Client Js-------*/
- 
-    $('.editModal').on('shown.bs.modal', '.editbtn', function (event) {
-      let $userId = $(event.relatedTarget).attr('data-id');
-           
-           $.get("{{route('editForm')}}"+"/"+client_id+"/editClient",function(data)){
-              $("#headingsModal").html("Edit Client");
-              $("#updateClientModal").modal('show');
-              $("#client_id").val(data.id);
-              $('#ocn').val(data.ocn);
-              $('#tin').val(data.tin);
-              $('#client_name').val(data.client_name);
-              $('#email').val(data.email);
-              $('#client_contact').val(data.client_contact);
-              $('#reg_date').val(data.reg_date);
-              $('#trade_name').val(data.trade_name);
-              $('#mode').val(data.mode);
-              $('#corporate').val(data.corporate);
-              $('#unit_house_no').val(data.unit_house_no);
-              $('#street').val(data.street);
-              $('#client_city').val(data.client_city);
-              $('#client_province').val(data.client_province);
-              $('#client_postal').val(data.client_postal);
-              
-
-           });
-           
-           
-    });
-      
-
-     /*------ CHECKBOX DELETE ALL ------*/
-    $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
-
-      if(this.checked){
-        $('input[name="client_checkbox"]').each(function(){
-          this.checked = true;
-        });
-      }else{
-        $('input[name="client_checkbox"]').each(function(){
-         this.checked = false;
-        });
-      }
-      toggledeleteAllClientbtn();
-    });
-
-    $(document).on('change', 'input[name="client_checkbox"]', function(){
-
-      if( $('input[name="client_checkbox"]').length == $('input[name="client_checkbox"]:checked').length ){
-        $('input[name="Clientlistcheckbox"]').prop('checked', true);
-      }else{
-        $('input[name="Clientlistcheckbox"]').prop('checked', false);
-      }
-      toggledeleteAllClientbtn();
-    });
-
-    function toggledeleteAllClientbtn(){
-      
-      if( $('input[name="client_checkbox"]:checked').length > 0 ){
-          $('buttonn#deleteAllClientbtn').text('Delete ('+$('input[name="client_checkbox"]:checked').length+')').removeClass('d-none');
-      }else{
-          $('buttonn#deleteAllClientbtn').addClass('d-none');
-      }
-    }
-
-    // $(document).on('click','button#deleteAllClientbtn', function(){
-    //            var checkedClient = [];
-    //            $('input[name="client_checkbox"]:checked').each(function(){
-    //                checkedClient.push($(this).data('id'));
-    //            });
-    //            var url = '{{ route("delete.selected.client") }}';
-    //            if(checkedClient.length > 0){
-    //                swal.fire({
-    //                    title:'Are you sure?',
-    //                    html:'You want to delete <b>('+checkedClient.length+')</b> client',
-    //                    showCancelButton:true,
-    //                    showCloseButton:true,
-    //                    confirmButtonText:'Yes, Delete',
-    //                    cancelButtonText:'Cancel',
-    //                    confirmButtonColor:'#556ee6',
-    //                    cancelButtonColor:'#d33',
-    //                    width:300,
-    //                    allowOutsideClick:false
-    //                }).then(function(result){
-    //                    if(result.value){
-    //                        $.post(url,{client_ids:checkedClient},function(data){
-    //                           if(data.code == 1){
-    //                               $('#client-table').DataTable().ajax.reload(null, true);
-    //                               toastr.success(data.msg);
-    //                           }
-    //                        },'json');
-    //                    }
-    //                })
-    //            }
-    //        });
+      $('#addClient').on('shown.bs.modal', function() {
+        $('#saveBtn').val("createClient");
+        $('#client_id').val('');
+        $('#addClientForm').trigger('reset');
+        $('#headingsModal').html('Add New Client');
+        $('#addClient').modal('show');
         
- /*------ END OF CHECKBOX DELETE ALL ------*/
+        
+      })
 
-   
+
+
+      /*------ CHECKBOX DELETE ALL ------*/
+      $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
+
+        if(this.checked){
+          $('input[name="client_checkbox"]').each(function(){
+            this.checked = true;
+          });
+        }else{
+          $('input[name="client_checkbox"]').each(function(){
+          this.checked = false;
+          });
+        }
+        toggledeleteAllClientbtn();
+      })
+
+      $(document).on('change', 'input[name="client_checkbox"]', function(){
+
+        if( $('input[name="client_checkbox"]').length == $('input[name="client_checkbox"]:checked').length ){
+          $('input[name="Clientlistcheckbox"]').prop('checked', true);
+        }else{
+          $('input[name="Clientlistcheckbox"]').prop('checked', false);
+        }
+        toggledeleteAllClientbtn();
+      })
+
+      function toggledeleteAllClientbtn(){
+        
+        if( $('input[name="client_checkbox"]:checked').length > 0 ){
+            $('buttonn#deleteAllClientbtn').text('Delete ('+$('input[name="client_checkbox"]:checked').length+')').removeClass('d-none');
+        }else{
+            $('buttonn#deleteAllClientbtn').addClass('d-none');
+        }
+      }
+
+     
+
+
+      //<------Edit Client Js---------->
+
+      $('body').on(('shown.bs.modal','.editClient',function(){
+      
+          var client_id = $(this).attr('data-id');
+          $.get("{{route('editForm')}}"+ "/" + client_id + "/editClient",function(data)){
+                $('#headingsModal').html("Edit Client");
+                $('#updateClientModal').modal('show');
+                $('#updateBtn').val('updateClient');
+                $('#client_id').val(data.id);
+                $('#updateClientForm #ocn').val(data.ocn);
+                $('#updateClientForm #tin').val(data.tin);
+                $('#updateClientForm #client_name').val(data.client_name);
+                $('#updateClientForm #email').val(data.email);
+                $('#updateClientForm #client_contact').val(data.client_contact);
+                $('#updateClientForm #reg_date').val(data.reg_date);
+                $('#updateClientForm #trade_name').val(data.trade_name);
+                $('#updateClientForm #mode').val(data.mode);
+                $('#updateClientForm #corporate').val(data.corporate);
+                $('#updateClientForm #unit_house_no').val(data.unit_house_no);
+                $('#updateClientForm #street').val(data.street);
+                $('#updateClientForm #client_city').val(data.client_city);
+                $('#updateClientForm #client_province').val(data.client_province);
+                $('#updateClientForm #client_postal').val(data.client_postal);
+          }
+      })
+      $('#updateBtn').click(function (e){
+        e.preventDefault();
+        $(this).html('Save');
     
-  });
+        $.ajax({
+          data: $('#updateClientForm').serialize(),
+          url: "{{ route('updateClient') }}",
+          type: "POST",
+          dataType: 'json',
+          success: function (data) {
+     
+              $('#updateClientForm').trigger("reset");
+              $('#updateClientModal').modal('hide');
+              table.draw();
+         
+          },
+          error: function (data) {
+              console.log('Error:', data);
+              $('#updateBtn').html('Save Changes');
+          }
+        })
+
+      })
+
 </script>
 @endsection
 
