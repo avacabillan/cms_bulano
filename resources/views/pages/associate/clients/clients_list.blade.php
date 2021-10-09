@@ -138,9 +138,10 @@
                     searchable: false
                   },
         ]
-    });
-
-
+  })
+})
+</script>
+<script>
     /*------ VIEW  CLIENT ------*/
     $('#viewClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
