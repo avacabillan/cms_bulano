@@ -58,9 +58,15 @@ Route::view('/client_message','pages.client.client_message')->name('client_messa
 Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list');
 // Route::get('/CreateNewClient',[Assoc_ClientController::class, 'createClient'])->name('CreateNewClient');
 Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient');
-// Route::get('/clients/list/editClientProfile/{userId}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.editClientProfile');
+Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name('editForm');
+Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient');
+Route::put('update-client', [Assoc_ClientController::class, 'updateClient'])->name('updateClient');
 Route::post('/clients/list/clienProfile/{userId}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.clienProfile');
 Route::post('/deleteSelectedClients',[Assoc_ClientController::class,'deleteSelectedClients'])->name('delete.selected.clients');
+
+// Route::get('/test', [TestController::class , 'showTestProfile'])->name('showClientProfile');
+
+
 
 Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
 
