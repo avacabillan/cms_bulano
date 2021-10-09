@@ -7,6 +7,7 @@ use App\Models\Group;
 use App\Models\Corporate;
 use App\Models\TaxForm;
 use App\Models\TaxType;
+use App\Models\Client;
 
 class TestController extends Controller
 {
@@ -38,12 +39,15 @@ class TestController extends Controller
     //     return view('pages.associate.clients.clients_list')->with("client", $client);
     // }
     
-    public function showClientProfile($id)
-    {
-        $client = Client::find($id);
-        return view('showClientProfile')->with("client", $client);
+    // public function showClientProfile($clientId){
+    //     $client = Client::find(30)->business; 
+       
+    //     return view('welcome')->with(compact("client", $client));
+    // }
+    
+    public function test($id){
+        $client = Client::find('id', 30)->business;
+        return view('welcome')->with('client', $client);
     }
-    
-    
 }
 

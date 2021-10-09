@@ -148,9 +148,9 @@ class Assoc_ClientController extends Controller
         return redirect()->route('clients.list');
 
     }
-    public function showClientProfile($client_id){
-        $client = Client::find ($client_id); 
-        return view('pages.associate.clients.client_profile')->with("client", $client);
+    public function showClientProfile($clientId){
+        $client = Client::find ($clientId); 
+       return response()->json($client);
     }
    
      public function showGroups()

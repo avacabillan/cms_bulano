@@ -41,6 +41,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 120%;">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
         <h5 class="modal-title" id="headingsModal" name="headingsModal"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -145,24 +146,25 @@
     /*------ VIEW  CLIENT ------*/
     $('#viewClient').on('shown.bs.modal', function(event){
       
-      let $userId = $(event.relatedTarget).attr('data-id')
+      let $clientId = $(event.relatedTarget).attr('data-id')
       let $route = $(event.relatedTarget).attr('data-route');
       
-      $('#viewbtn').click(function(e){
-        e.preventDefault();
         $.ajax({
-            method: "POST",
+            method: "GET",
             url: $route,
+            dataType: "json",
             data: {
               $('#viewClient').serialize(),
-              user_id: $userId
+              clientId: $clientId
             },
-            dataType: "json",
+            
             success: function (response){
-              console.log(response)
-              $('#headingsModal').html(response)
-              $('#client_id').html(response.id)
+              
+              $('#headingsModal').html('Client Info')
+              $('#client_id').val(response.clientId)
+              $('#name').val(response.name)
               $('#viewClient').modal('show')
+             
 
 
             }
@@ -248,76 +250,73 @@
 
 
 
-    /*------ CHECKBOX DELETE ALL ------*/
-    $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
+      /*------ CHECKBOX DELETE ALL ------*/
+      $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
 
-      if(this.checked){
-        $('input[name="client_checkbox"]').each(function(){
-          this.checked = true;
+        if(this.checked){
+          $('input[name="client_checkbox"]').each(function(){
+            this.checked = true;
+          });
+        }else{
+          $('input[name="client_checkbox"]').each(function(){
+          this.checked = false;
+          });
+        }
+        toggledeleteallClients();
         });
-      }else{
-        $('input[name="client_checkbox"]').each(function(){
-         this.checked = false;
+
+        $(document).on('change', 'input[name="client_checkbox"]', function(){
+
+        if( $('input[name="client_checkbox"]').length == $('input[name="client_checkbox"]:checked').length ){
+          $('input[name="Clientlistcheckbox"]').prop('checked', true);
+        }else{
+          $('input[name="Clientlistcheckbox"]').prop('checked', false);
+        }
+        toggledeleteallClients();
         });
-      }
-      toggledeleteallClients();
-    });
 
-    $(document).on('change', 'input[name="client_checkbox"]', function(){
+        function toggledeleteallClients(){
 
-      if( $('input[name="client_checkbox"]').length == $('input[name="client_checkbox"]:checked').length ){
-        $('input[name="Clientlistcheckbox"]').prop('checked', true);
-      }else{
-        $('input[name="Clientlistcheckbox"]').prop('checked', false);
-      }
-      toggledeleteallClients();
-    });
+        if( $('input[name="client_checkbox"]:checked').length > 0 ){
+            $('button#deleteallClients').text('Delete ('+$('input[name="client_checkbox"]:checked').length+')').removeClass
+            ('d-none');
+        }else{
+            $('button#deleteallClients').addClass('d-none');
+        }
+        }
 
-    function toggledeleteallClients(){
-      
-      if( $('input[name="client_checkbox"]:checked').length > 0 ){
-          $('button#deleteallClients').text('Delete ('+$('input[name="client_checkbox"]:checked').length+')').removeClass
-          ('d-none');
-      }else{
-          $('button#deleteallClients').addClass('d-none');
-      }
-    }
+        $(document).on('click','button#deleteallClients', function(){
 
-    $(document).on('click','button#deleteallClients', function(){
-      
-      var checkedAssoc_Client = [];
-      $('input[name="client_checkbox"]:checked').each(function(){
-        checkedAssoc_Client.push($(this).data('id'));
-      });
-         
-      
-      // var url = '{{ route("delete.selected.clients") }}';
-      // $.post(url,{clients_ids:checkedAssoc_Client},function(data){
-      //   if(data.code == 1){
-      //     $('#clients_table').DataTable().ajax.reload(null, true);
-      //     toastr.success(data.msg);
-      //   }
-      // },'json');
-      
+        var checkedAssoc_Client = [];
+        $('input[name="client_checkbox"]:checked').each(function(){
+          checkedAssoc_Client.push($(this).data('id'));
+        });
+          
 
-      if (confirm('ARE YOU SURE? YOU WANT TO DELETE THIS CLIENT?')) {
-        var url = '{{ route("delete.selected.clients") }}';
-
-        $.post(url,{clients_ids:checkedAssoc_Client},function(data){
-          if(data.code == 1){
-            $('#clients_table').DataTable().ajax.reload(null, true);
-            $.alert(data.msg);
-          }
-        },'json');
-      }
-  
-    });
-    /*------ END OF CHECKBOX DELETE ALL ------*/
+        // var url = '{{ route("delete.selected.clients") }}';
+        // $.post(url,{clients_ids:checkedAssoc_Client},function(data){
+        //   if(data.code == 1){
+        //     $('#clients_table').DataTable().ajax.reload(null, true);
+        //     toastr.success(data.msg);
+        //   }
+        // },'json');
 
 
-  
-    /*------ GET ALL CLIENTS ------*/
-  });
+        if (confirm('ARE YOU SURE? YOU WANT TO DELETE THIS CLIENT?')) {
+          var url = '{{ route("delete.selected.clients") }}';
+
+          $.post(url,{clients_ids:checkedAssoc_Client},function(data){
+            if(data.code == 1){
+              $('#clients_table').DataTable().ajax.reload(null, true);
+              $.alert(data.msg);
+            }
+          },'json');
+        }
+
+        });
+
+          
+          });
 </script>
 @endsection
 

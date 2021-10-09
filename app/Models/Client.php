@@ -18,7 +18,7 @@ class Client extends Model
         
     ];  
     public function modeofpayment(){
-        return $this->hasMany(ModeofPayment::class);
+        return $this->hasOne(ModeofPayment::class);
     }
     public function business(){
         return $this->hasMany(Business::class);
