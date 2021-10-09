@@ -267,6 +267,10 @@ class Assoc_ClientController extends Controller
         }
     }
 
+    public function showClientProfile(){
+        
+    }
+
 
 
 
