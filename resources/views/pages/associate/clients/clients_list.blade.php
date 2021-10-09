@@ -143,31 +143,41 @@
 </script>
 <script>
     /*------ VIEW  CLIENT ------*/
-    $('#viewbtn').on(('shown.bs.modal','.viewClient',function(){
+    $('#viewClient').on('shown.bs.modal', function(event){
       
-      var client_id = $(this).attr('data-id');
+      let $userId = $(event.relatedTarget).attr('data-id')
+      let $route = $(event.relatedTarget).attr('data-route');
       
-      function userinfo(client_id) {
-        $(".viewClient").fadeIn();
+      $('#viewbtn').click(function(e){
+        e.preventDefault();
+        $.ajax({
+            method: "POST",
+            url: $route,
+            data: {
+              $('#viewClient').serialize(),
+              user_id: $userId
+            },
+            dataType: "json",
+            success: function (response){
+              console.log(response)
+              $('#headingsModal').html(response)
+              $('#client_id').html(response.id)
+              $('#viewClient').modal('show')
+
+
+            }
+        })
+
+
+      })
         
-        $.ajax({    
-                type:"GET",
-                url: "clients/list/clientProfile/"+client_id,             
-                dataType: "json",                  
-                success: function(response){
-                    $('.headingsModal').html(response.name);
-                                                     
-                }
-                    
-            });
+
+
+      
     };
 
 
-      $.get("{{route('clients.list.clientProfile')}}"+client_id){
-            $('#headingsModal').html("Info Client");
-            $('#viewClient').modal('show');
-            $('#closeBtn').val('updateClient');
-            $('#client_id').val(data.id);
+      
             
       }
   })
