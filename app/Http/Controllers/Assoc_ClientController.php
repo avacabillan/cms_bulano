@@ -28,7 +28,7 @@ class Assoc_ClientController extends Controller
         $modes= ModeOfPayment::all();
         $corporates= Corporate::all();
         $taxForms= TaxForm::all();
-        
+       
 
             if ($request->ajax()) {
                 $data = Client::latest()->get();
@@ -63,6 +63,7 @@ class Assoc_ClientController extends Controller
             ->with( compact('modes',$modes,
                             'corporates',$corporates,
                             'taxForms',$taxForms,
+                           
                             
             ));
         }
@@ -150,7 +151,7 @@ class Assoc_ClientController extends Controller
     }
     public function showClientProfile($clientId){
         $client = Client::find ($clientId); 
-       return response()->json($client);
+       return view('pages.associate.clients.clients_list')->with('client', $client);
     }
    
      public function showGroups()

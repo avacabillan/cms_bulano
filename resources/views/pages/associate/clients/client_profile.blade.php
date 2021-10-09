@@ -1,5 +1,4 @@
 <div class="row m-l-0 m-r-0" id="prof_border">
-<button type="button" class="btn-close" aria-label="Close"></button>
   <div class="col-sm-4 user-profile">
 
     <div class="card-block text-center text-white">

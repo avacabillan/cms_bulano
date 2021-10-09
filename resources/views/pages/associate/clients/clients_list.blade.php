@@ -26,7 +26,8 @@
               <th class="Client-th text-dark text-center">Email</th>
               <th class="Client-th text-dark text-center">OCN</th>
               <th class="Client-th text-dark text-center">Mode of Filing</th>
-              <th class="Client-th text-dark text-center">Action</th>         
+              <th class="Client-th text-dark text-center">Action</th>        
+              
             </tr>
           </thead>
           <tbody>
@@ -37,17 +38,17 @@
 </div>
 
 <!-- VIEW CLIENT MODAL -->
-<div class="modal fade" id="viewClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade viewClient" id="viewClient" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 120%;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
-        <h5 class="modal-title" id="headingsModal" name="headingsModal"></h5>
+      <div class="modal-header" id="headingsModal" name="headingsModal">
+        <h5 class="modal-title" ></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         </div>
         <div class="modal-body">
+        
           @include('pages.associate.clients.client_profile')
         </div>  
       </div>
@@ -57,11 +58,12 @@
 <!-- END OF VIEW CLIENT MODAL -->
 
 <!--Add Client Modal -->
-<div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
 <div class="modal-dialog modal-lg" >
     <div class="modal-content" style="  width: 1000px; min-height: 450px;">
       <div class="modal-header">
         <h5 class="modal-title" id="headingsModal"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         
         </div>
       
@@ -83,6 +85,7 @@
     <div class="modal-content" style="  width: 1000px; min-height: 450px;">
       <div class="modal-header">
         <h5 class="modal-title" id="headingsModal"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         
         </div>
       
@@ -144,40 +147,15 @@
 </script>
 <script>
     /*------ VIEW  CLIENT ------*/
-    $('#viewClient').on('shown.bs.modal', function(event){
-      
-      let $clientId = $(event.relatedTarget).attr('data-id')
-      let $route = $(event.relatedTarget).attr('data-route');
-      
-        $.ajax({
-            method: "GET",
-            url: $route,
-            dataType: "json",
-            data: {
-              $('#viewClient').serialize(),
-              clientId: $clientId
-            },
-            
-            success: function (response){
-              
-              $('#headingsModal').html('Client Info')
-              $('#client_id').val(response.clientId)
-              $('#name').val(response.name)
-              $('#viewClient').modal('show')
-             
-
-
-            }
-        })
-
-
-      })
-        
-
-
-      
-    };
-
+    jQuery(document).ready(function($) {
+      //jQuery Functionality
+      var table =$('.yajra-datatable').DataTable(data-id);
+      $('body').on('shown.bs.modal', '#viewClient tbody tr .viewbtn', function() {       
+        $("#clients_table tbody tr").html("");
+        $("#clients_table tbody tr").html($(this).closest("tr").html());
+        $("#viewClient").modal("show");
+      });
+    } );
 
       
             
