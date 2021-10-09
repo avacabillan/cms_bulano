@@ -38,11 +38,11 @@ class TestController extends Controller
     //     return view('pages.associate.clients.clients_list')->with("client", $client);
     // }
     
-    public function showClientProfile($id)
-    {
-        $client = Client::find($id);
-        return view('showClientProfile')->with("client", $client);
-    }
+    // public function showClientProfile($id)
+    // {
+    //     $client = Client::find($id);
+    //     return view('showClientProfile')->with("client", $client);
+    // }
     
     
 }
