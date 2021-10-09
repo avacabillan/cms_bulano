@@ -55,24 +55,49 @@
 </div>
 <!-- END OF VIEW CLIENT MODAL -->
 
-<!-- ADD CLIENT MODAL -->
+<!--Add Client Modal -->
 <div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="width: 120%;">
+<div class="modal-dialog modal-lg" >
+    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Client</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="headingsModal"></h5>
+        
         </div>
+      
         <div class="modal-body">
-          @include('pages.associate.clients.add_client')
+        @livewireStyles
+           
+        @include('pages.associate.clients.add_client')    
+                        
+        @livewireScripts
         </div>  
       </div>
     </div>
   </div>
 </div>
-<!-- END OF ADD CLIENT MODAL -->
+
+<!--Update Client Modal -->
+<div class="modal fade editModal" id="updateClientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" >
+    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="headingsModal"></h5>
+        
+        </div>
+      
+        <div class="modal-body">
+        @livewireStyles
+           
+        @include('pages.associate.clients.edit_client')    
+                        
+        @livewireScripts
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
 @endsection
 
 @section('scripts')
@@ -92,8 +117,31 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+      /*------ GET ALL CLIENTS ------*/
+      var table = $('.yajra-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('clients.list') }}",
+              columns: [
+ 
+                  {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
+                  {data: 'id', name: 'id', orderable: false},
+                  {data: 'client_name', name: 'client_name', orderable: false},
+                  {data: 'contact_number', name: 'contact_number', orderable: false},
+                  {data: 'email', name: 'email', orderable: false},
+                  {data: 'ocn', name: 'ocn', orderable: false},
+                  {data: 'mode_of_payment_id', name: 'mode_of_payment', orderable: false},
+                  {data: 
+                    'actions',
+                    name: 'actions', 
+                    orderable: false, 
+                    searchable: false
+                  },
+        ]
+    });
 
-    /*------ VIEW ALL CLIENTS ------*/
+
+    /*------ VIEW  CLIENT ------*/
     $('#viewClient').on('shown.bs.modal', function(event) {
             let $userId = $(event.relatedTarget).attr('data-id')
             let $route = $(event.relatedTarget).attr('data-route');
@@ -120,35 +168,72 @@
                 }
             })
     })
-    /*------ END OF VIEW ALL CLIENTS ------*/
-    /*------ ADD CLIENTS ------*/
-    $('#addClient').on('shown.bs.modal', function(event) {
-            let $userId = $(event.relatedTarget).attr('data-id')
-            let $route = $(event.relatedTarget).attr('data-route');
+    /*------ END OF VIEW  CLIENTS ------*/
 
-            $.ajax({
-                url: $route,
-                method: 'POST',
-                data: {
-                    _token: '{{csrf_token()}}',
-                    user_id: $userId
-                    
-                },
-                beforeSend: function() {
 
-                },
-                success: function(result) {
-                    console.log(result)
-                    $('[name="client_id"]').val(result.client_id)
-                    $('[name="trade_name"]').val(result.trade_name)
-                    $('[name="registration_data"]').val(result.registration_date)
-                },
-                error: function() {
-                    alert('Error!')
-                }
-            })
-    })
-    /*------ END OF ADD CLIENTS ------*/
+    //<-------Add Client Js------->
+
+    $('#addClient').on('shown.bs.modal', function() {
+        $('#saveBtn').val("createClient");
+        $('#client_id').val('');
+        $('#addClientForm').trigger('reset');
+        $('#headingsModal').html('Add New Client');
+        $('#addClient').modal('show');
+        
+        
+      })
+
+ //<-------Edit Client Js------->
+ $('body').on(('shown.bs.modal','.editClient',function(){
+      
+          var client_id = $(this).attr('data-id');
+          $.get("{{route('editForm')}}"+ "/" + client_id + "/editClient",function(data)){
+                $('#headingsModal').html("Edit Client");
+                $('#updateClientModal').modal('show');
+                $('#updateBtn').val('updateClient');
+                $('#client_id').val(data.id);
+                $('#updateClientForm #ocn').val(data.ocn);
+                $('#updateClientForm #tin').val(data.tin);
+                $('#updateClientForm #client_name').val(data.client_name);
+                $('#updateClientForm #email').val(data.email);
+                $('#updateClientForm #client_contact').val(data.client_contact);
+                $('#updateClientForm #reg_date').val(data.reg_date);
+                $('#updateClientForm #trade_name').val(data.trade_name);
+                $('#updateClientForm #mode').val(data.mode);
+                $('#updateClientForm #corporate').val(data.corporate);
+                $('#updateClientForm #unit_house_no').val(data.unit_house_no);
+                $('#updateClientForm #street').val(data.street);
+                $('#updateClientForm #client_city').val(data.client_city);
+                $('#updateClientForm #client_province').val(data.client_province);
+                $('#updateClientForm #client_postal').val(data.client_postal);
+          }
+      })
+      $('#updateBtn').click(function (e){
+        e.preventDefault();
+        $(this).html('Save');
+    
+        $.ajax({
+          data: $('#updateClientForm').serialize(),
+          url: "{{ route('updateClient') }}",
+          type: "POST",
+          dataType: 'json',
+          success: function (data) {
+     
+              $('#updateClientForm').trigger("reset");
+              $('#updateClientModal').modal('hide');
+              table.draw();
+         
+          },
+          error: function (data) {
+              console.log('Error:', data);
+              $('#updateBtn').html('Save Changes');
+          }
+        })
+
+      })
+
+
+
     /*------ CHECKBOX DELETE ALL ------*/
     $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
 
@@ -216,28 +301,7 @@
     /*------ END OF CHECKBOX DELETE ALL ------*/
 
 
-    /*------ GET ALL CLIENTS ------*/
-    var table = $('.yajra-datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('clients.list') }}",
-              columns: [
- 
-                  {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
-                  {data: 'id', name: 'id', orderable: false},
-                  {data: 'client_name', name: 'client_name', orderable: false},
-                  {data: 'contact_number', name: 'contact_number', orderable: false},
-                  {data: 'email', name: 'email', orderable: false},
-                  {data: 'ocn', name: 'ocn', orderable: false},
-                  {data: 'mode_of_payment_id', name: 'mode_of_payment', orderable: false},
-                  {data: 
-                    'actions',
-                    name: 'actions', 
-                    orderable: false, 
-                    searchable: false
-                  },
-        ]
-    });
+  
     /*------ GET ALL CLIENTS ------*/
   });
 </script>

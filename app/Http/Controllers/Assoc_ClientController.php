@@ -35,10 +35,11 @@ class Assoc_ClientController extends Controller
                 return Datatables::of($data) 
                 ->addIndexColumn()
                 ->addColumn('actions', function($row){
-                    $btn = '<button type="button" class="btn btn-success btn-sm" >
-                    <i class="fas fa-edit"></i>
-                    </button>
-                    ';
+                   
+                    $btn ='<button type="button" class="btn btn-success btn-sm editbtn" data-toggle="modal" data-route="'.route("editForm", $row->id).'" 
+                    data-id="'.$row->id.'" data-target="#updateClientModal"> <i class="fas fa-edit"></i>
+                    </button>';
+
                     // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#editModal"
                     $btn = $btn.'<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-route="'.route("clients.list.clienProfile", $row->id).'" 
                                     data-id="'.$row->id.'" data-target="#viewClient"> <i class="fas fa-eye"></i>
@@ -159,16 +160,12 @@ class Assoc_ClientController extends Controller
         // return view('welcome')->with("groups", $groups);
     }
     
-    public function getUser($userId)
-    {
-        $user = Client::find($userId);
-         return view('pages.associate.clients.client_profile')->with( $user);
-    }
-    public function editClient($userId)
-    {
-        $client = Client::find($userId);
-        return view('pages.associate.clients.client_profile')->with("client", $client);
-    }
+    // public function getUser($userId)
+    // {
+    //     $user = Client::find($userId);
+    //      return view('pages.associate.clients.client_profile')->with( $user);
+    // }
+   
    
     public function deleteSelectedClients(Request $request){
 
@@ -176,7 +173,99 @@ class Assoc_ClientController extends Controller
         Client::whereIn('id', $client_ids)->delete();
         return response()->json(['code'=>1, 'msg'=>'Countries have been deleted from database']); 
     
-    }  
+    } 
+    
+    public function editClient($id)
+    {
+        $client = Client::find($id);
+        return response()->json($client);
+       
+
+    }
+    public function updateClient(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'email'=>'required|email|max:191',
+            'phone'=>'required|max:10|min:10',
+        ]);
+
+        if($validator->fails())
+        {
+            return response()->json([
+                'status'=>400,
+                'errors'=>$validator->messages()
+            ]);
+        }
+        else
+        {
+            $client = Client::find($id);
+            if($client)
+            {
+                $client_province = ClientProvince::find($id);
+                $client_province ->province_name =$request->client_province;
+                $client_province ->save();
+
+                $client_city = ClientCity::find($id);
+                $client_city ->city_name =$request->client_city;
+                $client_city ->province_id =$client_province->id;
+                $client_city ->save();
+
+                $client_postal = ClientPostal::find($id);
+                $client_postal ->postal_no =$request->client_postal;
+                $client_postal ->client_city_id =$client_city->id;
+                $client_postal ->save();
+
+                $location_address = LocationAddress::find($id);
+                $location_address ->client_postal_id =$client_postal->id;
+                $location_address ->save();
+
+
+                $registered_address = RegisteredAddress::find($id);
+                $registered_address ->location_address_id =$location_address->id;
+                $registered_address ->unit_house_no =$request ->unit_house_no;
+                $registered_address ->street =$request ->street;
+                $registered_address ->save();
+
+
+                $client =Client::find($id);
+                $client ->client_name = $request->client_name;
+                $client ->email = $request->email;
+                $client ->contact_number = $request->client_contact;
+                $client ->ocn = $request->ocn;
+                // $client ->assoc_id =$associate->id;
+                $client ->mode_of_payment_id =$request ->mode;
+                $client ->save();
+
+                $client_tin = Tin::find($id);
+                $client_tin->client_id=$client->id;
+                $client_tin->tin_no =$request->tin;
+                $client_tin->save();
+
+                $business = Business::find($id);
+                $business ->client_id =$client->id;
+                $business ->trade_name =$request->trade_name;
+                $business ->registration_date =$request->reg_date;
+                $business ->corporate_id =$request->corporate;
+                $business ->registered_address_id =$registered_address->id;
+                $business ->save();
+
+                
+                return response()->json([
+                    'status'=>200,
+                    'message'=>'Client Updated Successfully.'
+                ]);
+            }
+            else
+            {
+                return response()->json([
+                    'status'=>404,
+                    'message'=>'No Client Found.'
+                ]);
+            }
+
+        }
+    }
+
 
 
 
