@@ -41,7 +41,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="width: 120%;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">My Profile</h5>
+        <h5 class="modal-title" id="headingsModal" name="headingsModal"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -116,7 +116,7 @@
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
+    })
       /*------ GET ALL CLIENTS ------*/
       var table = $('.yajra-datatable').DataTable({
         processing: true,
@@ -143,32 +143,34 @@
 </script>
 <script>
     /*------ VIEW  CLIENT ------*/
-    $('#viewClient').on('shown.bs.modal', function(event) {
-            let $userId = $(event.relatedTarget).attr('data-id')
-            let $route = $(event.relatedTarget).attr('data-route');
-
-            $.ajax({
-                url: $route,
-                method: 'POST',
-                data: {
-                    _token: '{{csrf_token()}}',
-                    user_id: $userId
-                    
-                },
-                beforeSend: function() {
-
-                },
-                success: function(result) {
-                    console.log(result)
-                    $('[name="client_id"]').val(result.client_id)
-                    $('[name="trade_name"]').val(result.trade_name)
-                    $('[name="registration_data"]').val(result.registration_date)
-                },
-                error: function() {
-                    alert('Error!')
+    $('#viewbtn').on(('shown.bs.modal','.viewClient',function(){
+      
+      var client_id = $(this).attr('data-id');
+      
+      function userinfo(client_id) {
+        $(".viewClient").fadeIn();
+        
+        $.ajax({    
+                type:"GET",
+                url: "clients/list/clientProfile/"+client_id,             
+                dataType: "json",                  
+                success: function(response){
+                    $('.headingsModal').html(response.name);
+                                                     
                 }
-            })
-    })
+                    
+            });
+    };
+
+
+      $.get("{{route('clients.list.clientProfile')}}"+client_id){
+            $('#headingsModal').html("Info Client");
+            $('#viewClient').modal('show');
+            $('#closeBtn').val('updateClient');
+            $('#client_id').val(data.id);
+            
+      }
+  })
     /*------ END OF VIEW  CLIENTS ------*/
 
 
@@ -188,6 +190,7 @@
  $('body').on(('shown.bs.modal','.editClient',function(){
       
           var client_id = $(this).attr('data-id');
+          
           $.get("{{route('editForm')}}"+ "/" + client_id + "/editClient",function(data)){
                 $('#headingsModal').html("Edit Client");
                 $('#updateClientModal').modal('show');

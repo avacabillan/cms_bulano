@@ -61,7 +61,7 @@ Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->nam
 Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name('editForm');
 Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient');
 Route::put('update-client', [Assoc_ClientController::class, 'updateClient'])->name('updateClient');
-Route::post('/clients/list/clienProfile/{userId}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.clienProfile');
+Route::post('/clients/list/clientProfile/{id}',[Assoc_ClientController::class, 'getUser'])->name('clients.list.clientProfile');
 Route::post('/deleteSelectedClients',[Assoc_ClientController::class,'deleteSelectedClients'])->name('delete.selected.clients');
 
 // Route::get('/test', [TestController::class , 'showTestProfile'])->name('showClientProfile');

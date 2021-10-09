@@ -41,7 +41,7 @@ class Assoc_ClientController extends Controller
                     </button>';
 
                     // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#editModal"
-                    $btn = $btn.'<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-route="'.route("clients.list.clienProfile", $row->id).'" 
+                    $btn = $btn.'<button type="button" class="btn btn-success btn-sm viewbtn" data-toggle="modal" data-route="'.route("clients.list.clientProfile", $row->id).'" 
                                     data-id="'.$row->id.'" data-target="#viewClient"> <i class="fas fa-eye"></i>
                                 </button>';
                    
@@ -148,10 +148,10 @@ class Assoc_ClientController extends Controller
         return redirect()->route('clients.list');
 
     }
-    // public function showClientProfile($id){
-    //     $client = Client::find ($id); 
-    //     return view('pages.associate.clients.client_profile')->with("client", $client);
-    // }
+    public function showClientProfile($id){
+        $client = Client::find ($id); 
+        return view('pages.associate.clients.client_profile')->with("client", $client);
+    }
    
      public function showGroups()
      {
