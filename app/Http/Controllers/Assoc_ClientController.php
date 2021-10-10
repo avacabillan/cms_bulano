@@ -28,41 +28,13 @@ class Assoc_ClientController extends Controller
         $modes= ModeOfPayment::all();
         $corporates= Corporate::all();
         $taxForms= TaxForm::all();
-        
-
-            if ($request->ajax()) {
-                $data = Client::latest()->get();
-                return Datatables::of($data) 
-                ->addIndexColumn()
-                ->addColumn('actions', function($row){
-                   
-                    $btn ='<button type="button" class="btn btn-success btn-sm editbtn" data-toggle="modal" data-route="'.route("editForm", $row->id).'" 
-                    data-id="'.$row->id.'" data-target="#updateClientModal"> <i class="fas fa-edit"></i>
-                    </button>';
-
-                    // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#editModal"
-                    $btn = $btn.'<button type="button" class="btn btn-success btn-sm viewbtn" data-toggle="modal" data-route="'.route("clientProfile", $row->id).'" 
-                                    data-id="'.$row->id.'" data-target="#viewClient"> <i class="fas fa-eye"></i>
-                                </button>';
-                   
-                    return $btn;
-
-                })
-                 
-                 ->addColumn('checkbox', function($row){
-                 return '<input type="checkbox" name="client_checkbox" data-id="'.$row['id'].'"><label></label>';
-                 })
-
-                ->rawColumns(['actions', 'checkbox'])
-                ->make(true);
-                
-        
-            }
+        $clients =Client::all();
             
             return view ('pages.associate.clients.clients_list')
             ->with( compact('modes',$modes,
                             'corporates',$corporates,
                             'taxForms',$taxForms,
+                            'clients',$clients
                             
             ));
         }
@@ -148,14 +120,23 @@ class Assoc_ClientController extends Controller
         return redirect()->route('clients.list');
 
     }
-    public function ClientProfile(){
-        $clients = Client::all();
-        return view('pages.associate.clients.client_profile')->with('clients', $clients);
+    public function clientProfile($id){
+        $client = Client::find($id);
+        $modes = ModeOfPayment::all();
+        $business = Business::all();
+        $address = RegisteredAddress::all();
+        
+        
+        return view('pages.associate.clients.client_profile')
+        ->with(compact(
+                    'client',$client,
+                    'modes',$modes,
+                    'business', $business,
+                    'address',$address
+
+        ));
     }
-    public function showClientProfile($clientId){
-        $client = Client::find ($clientId); 
-     return response()->json($client);
-    }
+    
   
    
      public function showGroups()
@@ -183,7 +164,19 @@ class Assoc_ClientController extends Controller
     public function editClient($id)
     {
         $client = Client::find($id);
-        return response()->json($client);
+        $modes = ModeOfPayment::all();
+        $business = Business::all();
+        $address = RegisteredAddress::all();
+        
+        
+        return view('pages.associate.clients.edit_client')
+        ->with(compact(
+                    'client',$client,
+                    'modes',$modes,
+                    'business', $business,
+                    'address',$address
+
+        ));
        
 
     }
@@ -208,28 +201,28 @@ class Assoc_ClientController extends Controller
             {
                 $client_province = ClientProvince::find($id);
                 $client_province ->province_name =$request->client_province;
-                $client_province ->save();
+                $client_province ->update();
 
                 $client_city = ClientCity::find($id);
                 $client_city ->city_name =$request->client_city;
                 $client_city ->province_id =$client_province->id;
-                $client_city ->save();
+                $client_city ->update();
 
                 $client_postal = ClientPostal::find($id);
                 $client_postal ->postal_no =$request->client_postal;
                 $client_postal ->client_city_id =$client_city->id;
-                $client_postal ->save();
+                $client_postal ->update();
 
                 $location_address = LocationAddress::find($id);
                 $location_address ->client_postal_id =$client_postal->id;
-                $location_address ->save();
+                $location_address ->update();
 
 
                 $registered_address = RegisteredAddress::find($id);
                 $registered_address ->location_address_id =$location_address->id;
                 $registered_address ->unit_house_no =$request ->unit_house_no;
                 $registered_address ->street =$request ->street;
-                $registered_address ->save();
+                $registered_address ->update();
 
 
                 $client =Client::find($id);
@@ -239,12 +232,12 @@ class Assoc_ClientController extends Controller
                 $client ->ocn = $request->ocn;
                 // $client ->assoc_id =$associate->id;
                 $client ->mode_of_payment_id =$request ->mode;
-                $client ->save();
+                $client ->update();
 
                 $client_tin = Tin::find($id);
                 $client_tin->client_id=$client->id;
                 $client_tin->tin_no =$request->tin;
-                $client_tin->save();
+                $client_tin->update();
 
                 $business = Business::find($id);
                 $business ->client_id =$client->id;
@@ -252,7 +245,7 @@ class Assoc_ClientController extends Controller
                 $business ->registration_date =$request->reg_date;
                 $business ->corporate_id =$request->corporate;
                 $business ->registered_address_id =$registered_address->id;
-                $business ->save();
+                $business ->update();
 
                 
                 return response()->json([
