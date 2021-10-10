@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
 use App\Http\Controllers\AdminAssocController;
-use App\Http\Controllers\TestController;
+
+use App\Http\Controllers\ResourceAssoc_ClientController;
 use App\Http\Livewire\Dropdown;
 
 /*
@@ -17,7 +18,7 @@ use App\Http\Livewire\Dropdown;
 |
 */
 
-// Route::get('clients', [ClientController::class, 'index']);
+// Route::resource('clients', ResourceAssoc_ClientController::class);
 
 // Route::get('clients/list', [ClientController::class, 'getClients'])->name('clients.list');
 
@@ -59,8 +60,8 @@ Route::view('/client_message','pages.client.client_message')->name('client_messa
 Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list');
 // Route::get('/CreateNewClient',[Assoc_ClientController::class, 'createClient'])->name('CreateNewClient');
 Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient');
-// Route::get('/clients/list/updateClientProfile/{id}',[Assoc_ClientController::class, 'updateClient'])->name('clients.list.updateClientProfile');
-Route::post('/clients/list/clienProfile/{userId}',[Assoc_ClientController::class, 'showClientProfile'])->name('clients.list.client.profile');
+Route::post('/clients/list/clientProfile/',[Assoc_ClientController::class, 'ClientProfile']);
+Route::post('/clients/list/clientProfile/{clientId}',[Assoc_ClientController::class, 'showClientProfile'])->name('clients.list.client.profile');
 Route::post('/deleteSelectedClient',[ClientsController::class,'deleteSelectedClient'])->name('delete.selected.client');
 
 Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
@@ -73,9 +74,12 @@ Route::view('/associate-message','pages.associate.message')->name('associate-mes
 //Route::view('/clientprofile/viewfiles','pages.associate.clients.files_view')->name('viewfiles');
 
 // test
-// Route::get('/taxforms', [TestController::class , 'showTax']);
+
 // Route::get('dropdownlist/getSubCorporate/{id}', [TestController::class , 'getSubCorporates']);
-Route::get('/test', [TestController::class , 'showTestProfile'])->name('showClientProfile');
+// Route::post('/yawa',function(){
+//     return view('test');
+// })->name('testni');
+// Route::post('/test/profile', [Assoc_ClientController::class , 'ClientProfile'])->name('ClientProfile');
 Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name('editForm');
 Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient');
 Route::put('update-client', [Assoc_ClientController::class, 'updateClient'])->name('updateClient');

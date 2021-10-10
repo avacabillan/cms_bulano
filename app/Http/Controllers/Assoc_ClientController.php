@@ -35,18 +35,17 @@ class Assoc_ClientController extends Controller
                 return Datatables::of($data) 
                 ->addIndexColumn()
                 ->addColumn('actions', function($row){
+                   
                     $btn ='<button type="button" class="btn btn-success btn-sm editbtn" data-toggle="modal" data-route="'.route("editForm", $row->id).'" 
                     data-id="'.$row->id.'" data-target="#updateClientModal"> <i class="fas fa-edit"></i>
-                </button>';
-                    // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#viewModal"
-                    $btn = $btn.'<button type="button" class="btn btn-success btn-sm viewbtn"  data-toggle="modal" data-route="'.route("showClientProfile", $row->id).'" 
+                    </button>';
+
+                    // data-toggle="modal" data-route="'.route("clients.list.editClientProfile", $row->id).'" data-id="'.$row->id.'" data-target="#editModal"
+                    $btn = $btn.'<button type="button" class="btn btn-success btn-sm viewbtn" data-toggle="modal" data-route="'.route("clientProfile", $row->id).'" 
                                     data-id="'.$row->id.'" data-target="#viewClient"> <i class="fas fa-eye"></i>
                                 </button>';
-                  
-               
-                 return $btn;
                    
-                    
+                    return $btn;
 
                 })
                  
@@ -72,7 +71,17 @@ class Assoc_ClientController extends Controller
    
     public function insertClient(Request $request )
     {
-        // Client::updateOrCreate(['id =>$request->client_id']);
+        // CLIENT INFO
+        // $associate =new Associate();
+        // $associate ->assoc_id
+
+       
+
+      
+        // $corporate =new Corporate();
+        // $corporate ->corporate_name = $request->corporate;
+        // $corporate ->save();
+
     
 
         
@@ -101,6 +110,8 @@ class Assoc_ClientController extends Controller
         $registered_address ->street =$request ->street;
         $registered_address ->save();
 
+    
+        
 
         $client =new Client();
         $client ->client_name = $request->client_name;
@@ -134,30 +145,40 @@ class Assoc_ClientController extends Controller
             
         }
         
-        return redirect()->back();
+        return redirect()->route('clients.list');
 
     }
-    public function showClientProfile($id){
-        $client = Client::find($id);
-     return view ('pages.associate.clients.client_profile')->with ('client',$client) ; 
-    
-    
+    public function ClientProfile(){
+        $clients = Client::all();
+        return view('pages.associate.clients.client_profile')->with('clients', $clients);
     }
+    public function showClientProfile($clientId){
+        $client = Client::find ($clientId); 
+     return response()->json($client);
+    }
+  
    
-    //  public function showProfile($id)
-    //  {
-    //      select corporates that is belong to specific group
-    //     $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
-    //     return view('welcome')->with("groups", $groups);
-      
-    // }
-    // public function getClient($id)
+     public function showGroups()
+     {
+        //  select corporates that is belong to specific group
+        // $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
+        // return view('welcome')->with("groups", $groups);
+    }
+    
+    // public function getUser($userId)
     // {
-    //     $client = Client::find($id);
-    //     return response()->json($client);
-       
-
+    //     $user = Client::find($userId);
+    //      return view('pages.associate.clients.client_profile')->with( $user);
     // }
+   
+   
+    public function deleteSelectedClients(Request $request){
+
+        $client_ids = $request->clients_ids;
+        Client::whereIn('id', $client_ids)->delete();
+        return response()->json(['code'=>1, 'msg'=>'Countries have been deleted from database']); 
+    
+    } 
     
     public function editClient($id)
     {
@@ -250,26 +271,7 @@ class Assoc_ClientController extends Controller
         }
     }
 
-    // public function deleteClient(Request $request){
-    //     $client_id = $request->client_id;
-    //     $query = Country::find($client_id)->delete();
 
-    //     if($query){
-    //         return response()->json(['code'=>1, 'msg'=>'CLient has been deleted from database']);
-    //     }else{
-    //         return response()->json(['code'=>0, 'msg'=>'Something went wrong']);
-    //     }
-    // }
 
-    // public function deleteSelectedClient(Request $request){
-    //    $client_ids = $request->client_ids;
-    //    Client::whereIn('id', $client_ids)->delete();
-    //    return response()->json(['code'=>1, 'msg'=>'CLient have been deleted from database']); 
-    // }
-    public function showTestProfile($id){
-        $client = Client::find($id);
-     return view ('pages.associate.clients.client_profile')->with ('client',$client) ; 
-    
-    }
 
 }

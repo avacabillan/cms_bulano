@@ -1,11 +1,11 @@
 
 <div class="row m-l-0 m-r-0" id="prof_border">
   <div class="col-sm-4 user-profile">
-
     <div class="card-block text-center text-white">
       <div class="m-b-25"><img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
+      
         <h4 class="f-w-600">Client Name</h4>
-        <p>@clientname</p>         
+        <p id="name" value="name">@clientname</p>         
       </div>
     </div>
 
@@ -63,7 +63,7 @@
             <h6 class="text-muted f-w-400"></h6>
           </div>  
         </div>
-
+      
       </div> 
     </div>
 
