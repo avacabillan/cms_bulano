@@ -84,9 +84,9 @@ Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name
 
 Route::resource('clients', ResourceAssoc_ClientController::class);
 
-Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
-Route::put('update-client', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
-Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
-Route::get('/clients/list/profile/{id}', [Assoc_ClientController::class, 'clientProfile'])->name('clientProfile'); //show
-Route::post('/deleteSelectedClient',[ClientsController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
-Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list'); //index
+// Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
+// Route::put('update-client', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
+// Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
+// Route::get('/clients/list/profile/{id}', [Assoc_ClientController::class, 'clientProfile'])->name('clientProfile'); //show
+// Route::post('/deleteSelectedClient',[ClientsController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
+// Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list'); //index
