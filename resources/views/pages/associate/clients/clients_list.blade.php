@@ -130,12 +130,12 @@
  
                   {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
                   {data: 'id', name: 'id', orderable: false},
-                  // {data: 'client_name', name: 'client_name', orderable: false, 
-                  //     render:function(data, type, row){
-                  //       return "<a class='text-dark' href='/clients/list/clientProfile/"+ row.id +"'>" + row.id + "</a>"
-                  //     }
-                  // },
-                  {data: 'client_name', name: 'client_name', orderable: false},
+                  {data: 'client_name', name: 'client_name', orderable: false, 
+                      render:function(data, type , row, meta){
+                        return "<a class='text-dark' href='/clients/list/clientProfile/"+ row.id +"'>" + row.id + "</a>"
+                      }
+                  },
+                  
                   {data: 'contact_number', name: 'contact_number', orderable: false},
                   {data: 'email', name: 'email', orderable: false},
                   {data: 'ocn', name: 'ocn', orderable: false},
