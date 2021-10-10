@@ -131,7 +131,7 @@
                   {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
                   {data: 'id', name: 'id', orderable: false},
                   {data: 'client_name', name: 'client_name', orderable: false, 
-                      render:function(data, type , row, meta){
+                      render:function(data, string , row ){
                         return "<a class='text-dark' href='/clients/list/clientProfile/"+ row.id +"'>" + row.id + "</a>"
                       }
                   },
