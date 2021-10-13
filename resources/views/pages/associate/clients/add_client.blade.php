@@ -5,7 +5,7 @@
       <div class="form-goup" >
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
-            <form action="{{route('clients.store')}}" class="row"  id="addClientForm" name="addClientForm">
+            <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
             
             <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
           </div>

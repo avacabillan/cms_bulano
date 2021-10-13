@@ -5,7 +5,7 @@
       <div class="form-goup" >
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
-            <form action="{{route('clients.update')}}" method="POST" class="updateClientForm"  id="updateClientForm" name="updateClientForm">
+            <form action="{{route('updateClient')}}" method="POST" class="updateClientForm"  id="updateClientForm" name="updateClientForm">
             {{ csrf_field() }}
             {{ method_field('PUT') }} 
             <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Client;
@@ -20,10 +19,10 @@ use App\Models\TaxType;
 use App\Models\ClientTax;
 use App\Models\Tin;
 
-class Assoc_ClientController extends Controller
-{ 
-  
-        public function index (Request $request) {
+class AssocClientController extends Controller
+{
+    
+    public function index (Request $request) {
                         
         $modes= ModeOfPayment::all();
         $corporates= Corporate::all();

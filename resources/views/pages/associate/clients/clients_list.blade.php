@@ -42,9 +42,9 @@
                         
                         
                         <td>
-                        <button  class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal"> <a href="{{route('clients.edit',$client->id)}}"><i class="fas fa-edit"></a></i>
+                        <button  class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal"> <a href="{{route('editClient',$client->id)}}"><i class="fas fa-edit"></a></i>
                         </button>
-                        <button  class="btn btn-success btn-sm viewbtn" data-toggle="modal" data-target="#viewClient"> <a href="{{route('clients.show',$client->id)}}"><i class="fas fa-eye"></a></i>
+                        <button  class="btn btn-success btn-sm viewbtn" data-toggle="modal" data-target="#viewClient"> <a href="{{route('clientProfile',$client->id)}}"><i class="fas fa-eye"></a></i>
                         </button>
                         </td>
                        
