@@ -34,7 +34,7 @@
                         <td>
                           <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
                         </td>
-                        <td>{{$client['id']}}</td>
+                        <td>{{$client->id}}</td>
                         <td>{{$client->client_name}}</td>
                         <td>{{$client->contact_number}}</td>
                         <td>{{$client->email}}</td>
@@ -199,7 +199,7 @@
 
           $.post(url,{clients_ids:checkedAssoc_Client},function(data){
             if(data.code == 1){
-              $('#clients_table').DataTable().ajax.reload(null, true);
+              $('#clients-table').DataTable().ajax.reload(null, true);
               $.alert(data.msg);
             }
           },'json');

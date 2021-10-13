@@ -4,8 +4,8 @@
     <div class="card-block text-center text-white">
       <div class="m-b-25"><img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
       
-        <h4 class="f-w-600">Client Name</h4>
-        <p id="name" value="name">{{$client->client_name}}</p>         
+        <h4 class="f-w-600">{{$client->client_name}}</h4>
+        <p id="name" value="name"></p>         
       </div>
     </div>
 
@@ -21,7 +21,7 @@
           </div>
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">TIN</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$client->tin}}</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$tins->first()->tin_no}}</h6>
           </div>
          
           
@@ -33,13 +33,13 @@
          
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Registration Date</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$client->business->registration_date}} </h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$businesses->first()->registration_date}} </h6>
           </div>
 
          
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Trade Name</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$client->business->trade_name}}</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$businesses->first()->trade_name}}</h6>
           </div>
           
           <div class="col-sm-6">

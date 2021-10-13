@@ -28,12 +28,16 @@ class Assoc_ClientController extends Controller
         $corporates= Corporate::all();
         $taxForms= TaxForm::all();
         $clients =Client::all();
+        $businesses = Business::all();
+        $tins = Tin::all();
             
             return view ('pages.associate.clients.clients_list')
             ->with( compact('modes',$modes,
                             'corporates',$corporates,
                             'taxForms',$taxForms,
-                            'clients',$clients
+                            'clients',$clients,
+                            'businesses',$businesses,
+                            'tins',$tins
                             
             ));
         }
@@ -122,14 +126,9 @@ class Assoc_ClientController extends Controller
         $client = Client::find($id);
         $modes = ModeOfPayment::all();
         $tins = Tin::all();
-        $client_business = Business::all();
+        $businesses = Business::all();
         return view('pages.associate.clients.client_profile')
-        ->with(compact  
-            ('client',$client,
-            'modes',$modes,
-            'client_business', $client_business,
-            'tins',$tins
-        ));
+        ->with( 'client',$client) ->with( 'modes',$modes)->with('tins',$tins)->with( 'businesses', $businesses);
     }
     
   
