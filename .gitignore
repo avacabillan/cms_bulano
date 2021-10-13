@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 
-.env
+
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
@@ -11,4 +11,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-resources/views/pages/associate/clients/client_profile.blade.php
+
