@@ -12,11 +12,13 @@ class Business extends Model
     // public $timestamps = true;
 
     protected $table= 'client_business';
+    public $timestamps = true;
 
     protected $fillable = [
         'trade_name', 
         'registration_date',
     ];
+    
     
     public function clients(){
         return $this->belongsTo(Client::class, 'client_id');

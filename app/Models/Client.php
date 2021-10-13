@@ -16,9 +16,10 @@ class Client extends Model
         'contact_number',
         'ocn',
         
+        
     ];  
     public function modeofpayment(){
-        return $this->hasMany(ModeofPayment::class);
+        return $this->belongsTo(ModeofPayment::class, 'mode_of_payment_id');
     }
     public function business(){
         return $this->hasMany(Business::class);

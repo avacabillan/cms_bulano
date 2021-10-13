@@ -9,9 +9,9 @@ class Tin extends Model
 {
     use HasFactory;
     protected $table = 'client_tin';
-    protected $fillable = ['tin_no'];
+    protected $fillable = ['client_id','tin_no'];
     
     public function client(){
-        return $this->belongsTo(Client::class, 'client_id');
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 }

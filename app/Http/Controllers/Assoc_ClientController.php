@@ -19,7 +19,7 @@ use App\Models\TaxType;
 use App\Models\ClientTax;
 use App\Models\Tin;
 
-class AssocClientController extends Controller
+class Assoc_ClientController extends Controller
 {
     
     public function index (Request $request) {
@@ -81,8 +81,6 @@ class AssocClientController extends Controller
         $registered_address ->street =$request ->street;
         $registered_address ->save();
 
-    
-        
 
         $client =new Client();
         $client ->client_name = $request->client_name;
@@ -93,16 +91,17 @@ class AssocClientController extends Controller
         $client ->mode_of_payment_id =$request ->mode;
         $client ->save();
 
+        
         $client_tin =new Tin();
         $client_tin->client_id=$client->id;
         $client_tin->tin_no =$request->tin;
         $client_tin->save();
 
         $business =new Business();
-        $business ->client_id =$client->id;
         $business ->trade_name =$request->trade_name;
         $business ->registration_date =$request->reg_date;
         $business ->corporate_id =$request->corporate;
+        $business ->client_id = $client->id;
         $business ->registered_address_id =$registered_address->id;
         $business ->save();
 
@@ -119,20 +118,17 @@ class AssocClientController extends Controller
         return redirect()->route('clients.list');
 
     }
-    public function clientProfile($id){
+    public function showClientProfile($id){
         $client = Client::find($id);
         $modes = ModeOfPayment::all();
-        $business = Business::all();
-        $address = RegisteredAddress::all();
-        
-        
+        $tins = Tin::all();
+        $client_business = Business::all();
         return view('pages.associate.clients.client_profile')
-        ->with(compact(
-                    'client',$client,
-                    'modes',$modes,
-                    'business', $business,
-                    'address',$address
-
+        ->with(compact  
+            ('client',$client,
+            'modes',$modes,
+            'client_business', $client_business,
+            'tins',$tins
         ));
     }
     

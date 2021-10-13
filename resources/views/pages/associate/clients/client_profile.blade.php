@@ -5,7 +5,7 @@
       <div class="m-b-25"><img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
       
         <h4 class="f-w-600">Client Name</h4>
-        <p id="name" value="name">@clientname</p>         
+        <p id="name" value="name">{{$client->client_name}}</p>         
       </div>
     </div>
 
@@ -17,20 +17,31 @@
         <div class="row">
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Cell Phone No.</p>
-            <h6 class="text-muted ms-2 f-w-400">09284264874</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->contact_number}}</h6>
           </div>
+          <div class="col-sm-6">
+            <p class="m-b-10 f-w-600">TIN</p>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->tin}}</h6>
+          </div>
+         
+          
+         
+          <div class="col-sm-6">
+            <p class="m-b-10 f-w-600">Mode of Filing</p>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->modeofpayment->mode_name}}</h6>
+          </div>
+         
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Registration Date</p>
-            <h6 class="text-muted ms-2 f-w-400">Lorem ipsum</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->business->registration_date}} </h6>
           </div>
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Line of Business</p>
-            <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>
-          </div>
+
+         
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Trade Name</p>
-            <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->business->trade_name}}</h6>
           </div>
+          
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Complete Address</p>
             <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>

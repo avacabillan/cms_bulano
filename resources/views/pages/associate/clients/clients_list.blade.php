@@ -34,18 +34,18 @@
                         <td>
                           <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
                         </td>
-                        <td>{{$client->id}}</td>
+                        <td>{{$client['id']}}</td>
                         <td>{{$client->client_name}}</td>
                         <td>{{$client->contact_number}}</td>
                         <td>{{$client->email}}</td>
                         <td>{{$client->ocn}}</td>
                         
                         
+                        
                         <td>
-                        <button  class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal"> <a href="{{route('editClient',$client->id)}}"><i class="fas fa-edit"></a></i>
-                        </button>
-                        <button  class="btn btn-success btn-sm viewbtn" data-toggle="modal" data-target="#viewClient"> <a href="{{route('clientProfile',$client->id)}}"><i class="fas fa-eye"></a></i>
-                        </button>
+                         <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal" href="{{route('editClient',$client->id)}}"><i class="fas fa-edit"></a></i>
+                         <a  class="btn btn-success btn-sm viewbtn" data-toggle="modal" data-target="#viewClient" href="{{route('clientProfile',$client->id)}}"><i class="fas fa-eye"></a></i>
+                        
                         </td>
                        
                        
