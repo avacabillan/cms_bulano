@@ -16,12 +16,20 @@ class Client extends Model
         'contact_number',
         'ocn',
         
+        
     ];  
     public function modeofpayment(){
+<<<<<<< HEAD
         return $this->hasOne(ModeofPayment::class);
+=======
+        return $this->belongsTo(ModeofPayment::class, 'mode_of_payment_id');
+>>>>>>> trial-v2
     }
     public function business(){
         return $this->hasMany(Business::class);
+    }
+    public function registeredAddress(){
+        return $this->hasMany(RegisteredAddress::class);
     }
     public function tin(){
         return $this->hasMany(Tin::class);

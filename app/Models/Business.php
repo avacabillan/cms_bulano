@@ -12,20 +12,22 @@ class Business extends Model
     // public $timestamps = true;
 
     protected $table= 'client_business';
+    public $timestamps = true;
 
     protected $fillable = [
         'trade_name', 
         'registration_date',
     ];
     
+    
     public function clients(){
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id');
     }
     public function RegisteredAddress(){
-        return $this->hasMany(RegisteredAddress::class);
+        return $this->belongsTo(RegisteredAddress::class, 'registered_address_id');
     }
-    // public function corporate(){
-    //     return $this->belongsTo(Corporate::class);
-    // }
+    public function corporate(){
+        return $this->belongsTo(Corporate::class, 'corporate_id');
+    }
    
 }

@@ -1,11 +1,15 @@
 <div class="row m-l-0 m-r-0" id="prof_border">
   <div class="col-sm-4 user-profile">
-
     <div class="card-block text-center text-white">
       <div class="m-b-25"><img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
       
+<<<<<<< HEAD
         <h4 class="f-w-600">Client Name</h4>
         <p>@clientname</p>         
+=======
+        <h4 class="f-w-600">{{$client->client_name}}</h4>
+        <p id="name" value="name">{{$client->email}}</p>         
+>>>>>>> trial-v2
       </div>
     </div>
 
@@ -17,29 +21,39 @@
         <div class="row">
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Cell Phone No.</p>
-            <h6 class="text-muted ms-2 f-w-400">09284264874</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->contact_number}}</h6>
           </div>
+          <div class="col-sm-6">
+            <p class="m-b-10 f-w-600">TIN</p>
+            <h6 class="text-muted ms-2 f-w-400">{{$tins->first()->tin_no}}</h6>
+          </div>
+         
+          
+         
+          <div class="col-sm-6">
+            <p class="m-b-10 f-w-600">Mode of Filing</p>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->modeofpayment->mode_name}}</h6>
+          </div>
+         
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Registration Date</p>
-            <h6 class="text-muted ms-2 f-w-400">Lorem ipsum</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$businesses->first()->registration_date}} </h6>
           </div>
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Line of Business</p>
-            <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>
-          </div>
+
+         
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Trade Name</p>
-            <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$businesses->first()->trade_name}}</h6>
           </div>
+          
           <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Complete Address</p>
-            <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>
+            <p class="m-b-10 f-w-600">Registered Address</p>
+            <h6 class="text-muted ms-2 f-w-400">
+              {{$registered_address->first()->unit_house_no}} {{$registered_address->first()->street}}
+              {{$registered_address->first()->city_name}} {{$registered_address->first()->province_name}}
+              {{$registered_address->first()->postal_no}}</h6>
           </div>
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Province</p>
-            <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>
-          </div>
-        </div><br> 
+        <br> 
         <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="add_tax" style="float: right;">
           <i class="fas fa-plus-circle"></i> New Folder
         </button>
@@ -47,15 +61,15 @@
     
         <div class="row">
           <div class="col-sm-6">
-            <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true"></i>VAT</a></p>
+            <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
             <h6 class="text-muted f-w-400"></h6>
           </div>                                              
           <div class="col-sm-6">
-            <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
+            <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
             <h6 class="text-muted f-w-400"></h6>
           </div>
           <div class="col-sm-6">
-            <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true">Rgistration Fee</i></a></p>
+            <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true">Registration Fee</i></a></p>
             <h6 class="text-muted f-w-400"></h6>
           </div>
           <div class="col-sm-6">
@@ -63,7 +77,10 @@
             <h6 class="text-muted f-w-400"></h6>
           </div>  
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> trial-v2
       
       </div> 
     </div>

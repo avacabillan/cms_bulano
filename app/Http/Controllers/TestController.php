@@ -39,11 +39,20 @@ class TestController extends Controller
     //     return view('pages.associate.clients.clients_list')->with("client", $client);
     // }
     
+<<<<<<< HEAD
     // public function showClientProfile($clientId){
     //     $client = Client::find(30)->business; 
        
     //     return view('welcome')->with(compact("client", $client));
     // }
+=======
+    // public function showClientProfile($id)
+    // {
+    //     $client = Client::find($id);
+    //     return view('showClientProfile')->with("client", $client);
+    // }
+    
+>>>>>>> trial-v2
     
     public function test($id){
         $client = Client::find('id', 30)->business;

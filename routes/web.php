@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
 use App\Http\Controllers\AdminAssocController;
-use App\Http\Controllers\TestController;
+// use App\Http\Controllers\ResourceAssoc_ClientController;
 use App\Http\Livewire\Dropdown;
 
 /*
@@ -17,7 +17,7 @@ use App\Http\Livewire\Dropdown;
 |
 */
 
-// Route::get('clients', [ClientController::class, 'index']);
+
 
 // Route::get('clients/list', [ClientController::class, 'getClients'])->name('clients.list');
 
@@ -51,10 +51,10 @@ Route::view('/register','pages.admin.register')->name('register');
 
 Route::view('/client_message','pages.client.client_message')->name('client_message');
 
-/*---------------------- ASSOCIATE ROUTE CLIENTS --------------*/
 
 
 
+<<<<<<< HEAD
 Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list');
 // Route::get('/CreateNewClient',[Assoc_ClientController::class, 'createClient'])->name('CreateNewClient');
 Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient');
@@ -66,6 +66,8 @@ Route::post('/deleteSelectedClients',[Assoc_ClientController::class,'deleteSelec
 
 // Route::get('/test', [TestController::class , 'showTestProfile'])->name('showClientProfile');
 
+=======
+>>>>>>> trial-v2
 
 
 Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
@@ -75,14 +77,27 @@ Route::view('/associate-message','pages.associate.message')->name('associate-mes
 
 
 
-//Route::view('/clientprofile/viewfiles','pages.associate.clients.files_view')->name('viewfiles');
 
+<<<<<<< HEAD
 // test
 // Route::get('/taxforms', [TestController::class , 'showTax']);
 // Route::get('dropdownlist/getSubCorporate/{id}', [TestController::class , 'getSubCorporates']);
 
 Route::get('/test/{id}', [TestController::class ,'test'])->name('test');
+=======
+>>>>>>> trial-v2
+
+Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name('editForm');
 
 
+/*---------------------- ASSOCIATE ROUTE CLIENTS --------------*/
 
 
+//  Route::resource('clients', ResourceAssoc_ClientController::class);
+
+Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
+Route::put('/update/client/{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
+Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
+Route::get('/clients/list/profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
+Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
+Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list'); //index
