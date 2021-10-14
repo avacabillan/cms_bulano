@@ -5,7 +5,7 @@
       <div class="m-b-25"><img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br>
       
         <h4 class="f-w-600">{{$client->client_name}}</h4>
-        <p id="name" value="name"></p>         
+        <p id="name" value="name">{{$client->email}}</p>         
       </div>
     </div>
 
@@ -43,14 +43,13 @@
           </div>
           
           <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Complete Address</p>
-            <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>
+            <p class="m-b-10 f-w-600">Registered Address</p>
+            <h6 class="text-muted ms-2 f-w-400">
+              {{$registered_address->first()->unit_house_no}} {{$registered_address->first()->street}}
+              {{$registered_address->first()->city_name}} {{$registered_address->first()->province_name}}
+              {{$registered_address->first()->postal_no}}</h6>
           </div>
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Province</p>
-            <h6 class="text-muted ms-2 f-w-400">Coke Incorporated</h6>
-          </div>
-        </div><br> 
+        <br> 
         <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="add_tax" style="float: right;">
           <i class="fas fa-plus-circle"></i> New Folder
         </button>
@@ -58,15 +57,15 @@
     
         <div class="row">
           <div class="col-sm-6">
-            <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true"></i>VAT</a></p>
+            <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
             <h6 class="text-muted f-w-400"></h6>
           </div>                                              
           <div class="col-sm-6">
-            <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
+            <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
             <h6 class="text-muted f-w-400"></h6>
           </div>
           <div class="col-sm-6">
-            <p class="m-b-10 f-w-600"><a href=""><i class="fa fa-folder me-2" aria-hidden="true">Rgistration Fee</i></a></p>
+            <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true">Registration Fee</i></a></p>
             <h6 class="text-muted f-w-400"></h6>
           </div>
           <div class="col-sm-6">

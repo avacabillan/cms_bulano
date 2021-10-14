@@ -77,7 +77,7 @@
 
     <script src="{{asset('js/associate_clientlist.js')}}"></script>
     <script src="{{asset('js/associate_addClient.js')}}"></script>
-    <script src="{{asset('js/associate_editClient.js')}}"></script>
+    <!-- <script src="{{asset('js/associate_editClient.js')}}"></script> -->
 
   
     @yield('scripts')

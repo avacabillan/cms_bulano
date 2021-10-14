@@ -24,6 +24,9 @@ class Client extends Model
     public function business(){
         return $this->hasMany(Business::class);
     }
+    public function registeredAddress(){
+        return $this->hasMany(RegisteredAddress::class);
+    }
     public function tin(){
         return $this->hasMany(Tin::class);
     }

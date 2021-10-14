@@ -24,7 +24,7 @@ class Business extends Model
         return $this->belongsTo(Client::class, 'client_id');
     }
     public function RegisteredAddress(){
-        return $this->hasMany(RegisteredAddress::class);
+        return $this->belongsTo(RegisteredAddress::class, 'registered_address_id');
     }
     public function corporate(){
         return $this->belongsTo(Corporate::class, 'corporate_id');
