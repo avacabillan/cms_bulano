@@ -191,22 +191,49 @@ class Assoc_ClientController extends Controller
         $client ->ocn = $request->ocn;
         // $client ->assoc_id =$associate->id;
         $client ->mode_of_payment_id =$request ->mode;
-        //tin
-        $client->tin()->where('client_id' ,$id)->update(['tin_no' => $request->input('tin')]);
+        // //tin
+        $client->$tin->tin_no =$request->tin;
         
         //business
-        // $client->business ->trade_name =$request->trade_name;
-        // $client->business ->registration_date =$request->reg_date;
-        // $client->business ->corporate_id =$request->corporate;
-        // //registered address
-        // $client->registeredAddress ->city_name =$request ->client_city;
-        // $client->registeredAddress ->province_name =$request ->client_province;
-        // $client->registeredAddress ->unit_house_no =$request ->unit_house_no;
-        // $client->registeredAddress ->street =$request ->street;
-        // $client->registeredAddress ->postal_no =$request ->client_postal;
+        $client->business ->trade_name =$request->trade_name;
+        $client->business ->registration_date =$request->reg_date;
+        $client->business ->corporate_id =$request->corporate;
+        //registered address
+        $client->registeredAddress ->city_name =$request ->client_city;
+        $client->registeredAddress ->province_name =$request ->client_province;
+        $client->registeredAddress ->unit_house_no =$request ->unit_house_no;
+        $client->registeredAddress ->street =$request ->street;
+        $client->registeredAddress ->postal_no =$request ->client_postal;
         
+       
+        // $client_name = $request->input('client_name');
+        // $email = $request->input('email');
+        // $contact_number = $request->input('client_contact');
+        // $ocn = $request->input('ocn');
+        // // $client ->assoc_id =$associate->id;
+        // // $client ->mode_of_payment_id =$request ->mode;
+        // DB::update('update Client set client_name = ? email=? contact_number=? ocn=? where  client_name = ? email=? contact_number=? ocn=? id=?', [$client_name,$email,$contact_number,$ocn,$id]);
+
         
-        $client ->save();
+        // $client_tin = Client::find($id)->tin;
+        // $client_tin->tin_no =$request->tin;
+        // $client_tin->save();
+
+        // $registered_address = Client::find($id)->registeredAddress;
+        // $registered_address ->city_name =$request ->client_city;
+        // $registered_address ->province_name =$request ->client_province;
+        // $registered_address ->unit_house_no =$request ->unit_house_no;
+        // $registered_address ->street =$request ->street;
+        // $registered_address ->postal_no =$request ->client_postal;
+        // $registered_address ->save();
+
+        // $business = Client::find($id)->business;;
+        // $business ->trade_name =$request->trade_name;
+        // $business ->registration_date =$request->reg_date;
+        // $business ->corporate_id =$request->corporate;
+        // $business ->registered_address_id =$registered_address->id;
+        // $business ->save();
+        
 
         
         return redirect()->route('clients.list')->with('success', 'Data Updated');

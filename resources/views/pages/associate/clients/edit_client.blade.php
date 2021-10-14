@@ -5,9 +5,10 @@
       <div class="form-goup" >
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
-            <form action="{{route('updateClient',$client->id)}}" method="post" class="updateClientForm"  id="updateClientForm" name="updateClientForm">
+            <form  method="post" action="{{route('updateClient', $client->id) }}" class="updateClientForm"  id="updateClientForm" name="updateClientForm">
+            <input type="hidden" name="_method" value="PUT">
             @csrf
-            @method('PUT')
+            @method('POST')
             <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
           </div>
           <input type="hidden" name="client_id" id="client_id">
@@ -40,7 +41,7 @@
             </div>
             
           </div>
-          <div class="col-9 col-sm-4 ms-3">
+          <!-- <div class="col-9 col-sm-4 ms-3">
             <h5 class="addClient_header_text mt-3" style="float: left;">BUSINESS INFORMATION</h5>
             </div>
             <div class="row mt-3">
@@ -95,10 +96,10 @@
             </div>
           </div>
          
-            
+             -->
           
           <div class="AddClient_btn mt-5">
-            <button class="btn btn-primary" type="submit" name="updateBtn" id="updateBtn" value="updateClient">Update</button>
+            <button class="btn btn-primary" type="submit" >Update</button>
             <button class="btn btn-primary" id="close_ClientProfile" type="button" data-dismiss="modal" aria-label="Close">Cancel</button>
           
           </div>
