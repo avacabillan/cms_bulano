@@ -50,6 +50,14 @@ class SendReminderEmails extends Command
        foreach($reminders as $reminder){
            $data[$reminder->client_id][] = $reminder->toArray();
        }
+
+       foreach( $data as $client_id=>$reminders){
+           $this->sendEmailToClient($client_id, $reminders);
+       }
        //send email
+    }
+    
+    private function sendEmailToUser($client_id, $reminders){
+        $client = Client::find($client_id);
     }
 }
