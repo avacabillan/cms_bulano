@@ -9,13 +9,15 @@ class ClientTax extends Model
 {
     use HasFactory;
     protected $table ='client_taxes';
+    protected $fillable =['client_id','tax_form_id'] ;
+
 
     public function clients(){
-        return $this->belongsTo(Client::class, 'client_id');
+        return $this->belongsTo(Client::class);
 
     }
     public function taxForms(){
-        return $this->belongsTo(TaxForm::class, 'tax_form_id');
+        return $this->belongsTo(TaxForm::class);
 
     }
 }

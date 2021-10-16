@@ -19,16 +19,18 @@
             <p class="m-b-10 f-w-600">Cell Phone No.</p>
             <h6 class="text-muted ms-2 f-w-400">{{$client->contact_number}}</h6>
           </div>
+                 
+          
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">TIN</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$tins[0]->tin_no}}</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$tins}}</h6>
           </div>
-         
+          
           
          
-          <!-- <div class="col-sm-6">
+          <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Mode of Filing</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$client->modeofpayment->mode_name}}</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$modes}}</h6>
           </div>
          
           <div class="col-sm-6">
@@ -71,7 +73,7 @@
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600"></p>
             <h6 class="text-muted f-w-400"></h6>
-          </div>   -->
+          </div>  
         </div>
       
       </div> 

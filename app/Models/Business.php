@@ -17,17 +17,20 @@ class Business extends Model
     protected $fillable = [
         'trade_name', 
         'registration_date',
+        'client_id',
+        'registered_address_id',
+        'corporate_id',
     ];
     
     
     public function clients(){
-        return $this->belongsTo(Client::class, 'client_id');
+        return $this->belongsTo(Client::class);
     }
     public function RegisteredAddress(){
-        return $this->belongsTo(RegisteredAddress::class, 'registered_address_id');
+        return $this->belongsTo(RegisteredAddress::class);
     }
     public function corporate(){
-        return $this->belongsTo(Corporate::class, 'corporate_id');
+        return $this->belongsTo(Corporate::class);
     }
    
 }

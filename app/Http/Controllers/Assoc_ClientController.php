@@ -128,16 +128,21 @@ class Assoc_ClientController extends Controller
 
     }
     public function showClientProfile($id){
-        $client = Client::find($id)->tin;
-        $modes =  ModeOfPayment::all();
-        // $tins = Client::with('tin')->get();
-        // $businesses = Client::with('business')->get();
-        // $registered_address = Client::with('registeredAddress')->get();
+        
+        $client = DB::table('clients')->find($id);
+        $modes =  DB::table('clients')
+        ->join('client_mode_of_payment', 'clients.mode_of_payment_id','=','client_mode_of_payment.id')
+        ->where('clients.mode_of_payment_id')
+        ->get();
+
+        $tins = Tin::where('client_id','=,',$client)->get();
+        $businesses = Client::with('business')->get();
+        $registered_address = Client::with('registeredAddress')->get();
         return view('pages.associate.clients.client_profile')
-        ->with( 'client',$client) 
+        ->with( 'client',$client->modeofpayment->mode_name) 
         ->with( 'modes',$modes)
-        // ->with('tins',$tins)
-        // ->with( 'registered_address', $registered_address)
+        ->with('tins',$tins)
+        ->with( 'registered_address', $registered_address)
         ;
     }
     

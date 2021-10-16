@@ -46,6 +46,12 @@ class TestController extends Controller
         // $test = DB::table('client_taxes')
         //  ->whereIn('tax_form_id',[1,2,3,4])
         //  ->get();
+
+    //
+    $test = DB::table('clients')
+    ->join('client_mode_of_payment', 'clients.mode_of_payment_id','=','client_mode_of_payment.id')
+    ->where('clients.mode_of_payment_id','2')
+    ->get();
         
         return view('welcome')->with('test', $test);
     }

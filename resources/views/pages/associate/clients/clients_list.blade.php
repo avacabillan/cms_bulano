@@ -39,7 +39,7 @@
                         <td>{{$client->contact_number}}</td>
                         <td>{{$client->email}}</td>
                         <td>{{$client->ocn}}</td>
-                        
+                      
                         
                         
                         <td>
