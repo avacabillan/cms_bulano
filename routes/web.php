@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
 use App\Http\Controllers\AdminAssocController;
 // use App\Http\Controllers\ResourceAssoc_ClientController;
+use App\Http\Controllers\TestController;
 use App\Http\Livewire\Dropdown;
 
 /*
@@ -75,8 +76,11 @@ Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name
 //  Route::resource('clients', ResourceAssoc_ClientController::class);
 
 Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
-Route::put('/update/client/{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
+Route::put('/update/client{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
 Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
 Route::get('/clients/list/profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
 Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
 Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list'); //index
+
+//test
+Route::post('/test', [TestController::class, 'showClientProfile']);

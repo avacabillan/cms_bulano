@@ -11,26 +11,43 @@ use App\Models\TaxType;
 class TestController extends Controller
 {
    
-    public function getGroups()
-    {
-        $groups = DB::table('tbl_groups')
-                ->pluck("group_name","id");
+    // public function getGroups()
+    // {
+    //     $groups = DB::table('tbl_groups')
+    //             ->pluck("group_name","id");
                
-        return view('welcome')->with(compact('groups', $groups));
-    }
+    //     return view('welcome')->with(compact('groups', $groups));
+    // }
 
-    public function getSubCorporates($id)
-    {
-        $subCorporates = DB::table("client_corporates")
-                    ->where("group_id",$id)
-                    ->pluck("corporate_name","id");
+    // public function getSubCorporates($id)
+    // {
+    //     $subCorporates = DB::table("client_corporates")
+    //                 ->where("group_id",$id)
+    //                 ->pluck("corporate_name","id");
 
-       return view('welcome')->with(compact('subCorporates',$subCorporates));
-    }
-    public function showTax(){
-        $taxTypes = TaxType::all();
-        $forms = TaxForm::orderBy('id','asc')->where('tax_type_id', 1)->get();
-        return view('welcome')-> with (compact("forms", $forms, "taxTypes",$taxTypes));
+    //    return view('welcome')->with(compact('subCorporates',$subCorporates));
+    // }
+    public function showClientProfile(){
+        //count the client who has tax form no 1701Q
+    //    $client= DB::table('client_taxes')
+    //    ->where('tax_form_id','2')
+    //    ->orderBy('client_id')
+    //    ->get();
+
+       // count the number of clients
+    //    $clients = DB::table('clients')->count();
+
+        //select tax form no by tax type if under vat form no will print
+        // $test = DB::table('client_tax_forms')
+        // ->where('tax_type_id',1)
+        // ->get();
+
+        //get lients who has tax vat include slecting specific column on blade
+        // $test = DB::table('client_taxes')
+        //  ->whereIn('tax_form_id',[1,2,3,4])
+        //  ->get();
+        
+        return view('welcome')->with('test', $test);
     }
     // public function getUser($userId)
     // {
