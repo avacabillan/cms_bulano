@@ -39,20 +39,20 @@ class SendReminderEmails extends Command
     {
        //get all reminders of VAT
        $reminders = Reminder::query()
-       ->with(['lead'])
+       ->with(['client'])
        ->where('reminder_date', now()->format('Y-m-d'))
        ->where('status','pending')
-       ->orderBy('client_id')
+       ->orderBy('tax_form_id')
        ->get();
 
        //group by client
        $data = [];
        foreach($reminders as $reminder){
-           $data[$reminder->client_id][] = $reminder->toArray();
+           $data[$reminder->tax_form_id][] = $reminder->toArray();
        }
 
-       foreach( $data as $client_id=>$reminders){
-           $this->sendEmailToClient($client_id, $reminders);
+       foreach( $data as $tax_form_id=>$reminders){
+           $this->sendEmailToClient($tax_form_id, $reminders);
        }
        //send email
     }
