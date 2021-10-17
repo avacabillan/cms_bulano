@@ -43,8 +43,8 @@
                         
                         
                         <td>
-                         <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal" href="{{route('editClient',$client->id)}}"><i class="fas fa-edit"></a></i>
-                         <a  class="btn btn-success btn-sm viewbtn" data-toggle="modal" data-target="#viewClient" href="{{route('clientProfile',$client->id)}}"><i class="fas fa-eye"></a></i>
+                         
+                         <a  class="btn btn-success btn-sm viewbtn" href="{{route('clientProfile',$client->id)}}"><i class="fas fa-eye"></a></i>
                         
                         </td>
                        
@@ -60,23 +60,7 @@
 </div>
 
 <!-- VIEW CLIENT MODAL -->
-<div class="modal fade viewClient" id="viewClient" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="width: 120%;">
-      <div class="modal-header" id="headingsModal" name="headingsModal">
-        <h5 class="modal-title" ></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-        
-          @include('pages.associate.clients.client_profile')
-        </div>  
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- END OF VIEW CLIENT MODAL -->
 
 <!--Add Client Modal -->
@@ -102,26 +86,7 @@
 </div>
 
 <!--Update Client Modal -->
-<div class="modal fade editModal" id="updateClientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg" >
-    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="headingsModal"></h5>
-        
-        
-        </div>
-      
-        <div class="modal-body">
-        @livewireStyles
-           
-        @include('pages.associate.clients.edit_client')    
-                        
-        @livewireScripts
-        </div>  
-      </div>
-    </div>
-  </div>
-</div>
+
  
 
 @endsection

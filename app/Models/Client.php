@@ -15,12 +15,12 @@ class Client extends Model
         'email',
         'contact_number',
         'ocn',
-        'mode_of_payment_id',
+        
         
         
     ];  
     public function modeofpayment(){
-        return $this->belongsTo(ModeofPayment::class);
+        return $this->belongsTo(ModeofPayment::class,'mode_of_payment_id');
     }
     public function business(){
         return $this->hasMany(Business::class);
@@ -28,7 +28,7 @@ class Client extends Model
     public function registeredAddress(){
         return $this->hasMany(RegisteredAddress::class);
     }
-    public function tins(){
+    public function tin(){
         return $this->hasMany(Tin::class);
     }
     // public function associate(){

@@ -129,20 +129,17 @@ class Assoc_ClientController extends Controller
     }
     public function showClientProfile($id){
         
-        $client = DB::table('clients')->find($id);
-        $modes =  DB::table('clients')
-        ->join('client_mode_of_payment', 'clients.mode_of_payment_id','=','client_mode_of_payment.id')
-        ->where('clients.mode_of_payment_id')
-        ->get();
-
-        $tins = Tin::where('client_id','=,',$client)->get();
-        $businesses = Client::with('business')->get();
-        $registered_address = Client::with('registeredAddress')->get();
+        $client = Client::find($id);
+        $modes =  ModeOfPayment::all();
+        $tins =  Client::find($id)->tin;
+        $businesses = Client::find($id)->business;
+        $registeredAddress = Client::find($id)->registeredAddress;
         return view('pages.associate.clients.client_profile')
-        ->with( 'client',$client->modeofpayment->mode_name) 
+        ->with( 'client',$client) 
         ->with( 'modes',$modes)
         ->with('tins',$tins)
-        ->with( 'registered_address', $registered_address)
+        ->with('businesses',$businesses)
+        ->with( 'registeredAddress', $registeredAddress)
         ;
     }
     
@@ -173,16 +170,16 @@ class Assoc_ClientController extends Controller
     public function editClient($id)
     {
         $client = Client::find($id);
-        $modes = ModeOfPayment::all();
-        $tins = Tin::all();
-        $businesses = Business::all();
-        $registered_address = RegisteredAddress::all();
-
+        $modes =  Client::find($id)->modeofpayment;
+        $tins =  Client::find($id)->tin;
+        $businesses = Client::find($id)->business;
+        $registeredAddress = Client::find($id)->registeredAddress;
         return view('pages.associate.clients.edit_client')
         ->with( 'client',$client) 
         ->with( 'modes',$modes)
         ->with('tins',$tins)
-        ->with( 'registered_address', $registered_address)
+        ->with('businesses',$businesses)
+        ->with( 'registeredAddress', $registeredAddress)
         ;
        
 
