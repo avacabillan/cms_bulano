@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Console\Commands;
-
+use Illuminate\Support\Facades\DB;
+use Mail; 
+use App\Models\Client;
 use Illuminate\Console\Command;
 
 class SendReminderEmails extends Command
@@ -37,27 +39,53 @@ class SendReminderEmails extends Command
      */
     public function handle()
     {
-       //get all reminders of VAT
-       $reminders = Reminder::query()
-       ->with(['client'])
-       ->where('reminder_date', now()->format('Y-m-d'))
-       ->where('status','pending')
-       ->orderBy('tax_form_id')
-       ->get();
+        //get all reminders of VAT
+        //    $date=date('d-m-Y', strtotime('tomorrow'));
+        //    $test = DB::table('reminders')
+        //     ->join('clients','reminders.client_id','=', 'clients.id')
+        //     ->select('clients.email')
+        //     ->where('reminders.schedule_date','=',$date)
+        //     ->get();
+        
 
-       //group by client
-       $data = [];
-       foreach($reminders as $reminder){
-           $data[$reminder->tax_form_id][] = $reminder->toArray();
-       }
+        //     dd($test);
 
-       foreach( $data as $tax_form_id=>$reminders){
-           $this->sendEmailToClient($tax_form_id, $reminders);
-       }
-       //send email
-    }
-    
-    private function sendEmailToUser($client_id, $reminders){
-        $client = Client::find($client_id);
+
+        // select the clients who has tax form 1 and their email
+        //     $reminders = DB::table('client_taxes')
+        //     ->join('clients','client_taxes.client_id','=','clients.id')
+        //     ->select('clients.email','client_taxes.client_id')
+        //     ->whereIn('tax_form_id',[1])
+        //     ->get();
+        //     // dd($reminders);
+
+           
+        //    // group by client
+        //     $data = [];
+        //     foreach($reminders as $reminder){
+        //         $data[$reminder->client_id][] = $reminder->toArray();
+        //     }
+            
+        //     foreach( $data as $client_id=>$reminders){
+        //         $this->sendEmailToClient($client_id, $reminders);
+
+        //     }
+        //      dd($data);
+        //     //send email
+        //     }
+        
+        //  private function sendEmailToUser($client_id, $reminders){
+        //     $client = Client::find($client_id);
+
+        //     Mail::to($client())->send(new TaxReminder ($reminders));
+
+        // Mail::send(['html'=> 'pages.emails.reminder'],array('test'=>$test),
+        //  function ($message) {
+        //     $message->from('test@bulano.com', 'Bulano Test');
+        //     $message->subject('Test Tax Reminder');
+        //     $message->to('ajlemluna@gmail.com')->cc('avacabillan08@gmail.com');
+        // });
+
+
     }
 }

@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Reminder extends Model
 {
     use HasFactory;
-    protected $table = 'tax_form';
+    protected $table = 'reminders';
+
+
+
+    public function clienttax(){
+        return $this->belongsTo(ClientTax::class);
+
+    }
 }

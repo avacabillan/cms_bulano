@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
 use App\Http\Controllers\AdminAssocController;
 // use App\Http\Controllers\ResourceAssoc_ClientController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\DemoEmailController;
 use App\Http\Livewire\Dropdown;
 
 /*
@@ -83,4 +83,5 @@ Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelect
 Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list'); //index
 
 //test
-Route::post('/test', [TestController::class, 'showClientProfile']);
+// Route::post('/test', [TestController::class, 'showClientProfile']);
+Route::get('/try', ([DemoEmailController::class, 'sendEmail']));
