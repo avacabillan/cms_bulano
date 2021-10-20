@@ -38,7 +38,7 @@
                 </div>
               </div>
               
-            <!-- </div>
+             <!-- </div>
             <div class="col-9 col-sm-4 ms-3">
              <h5 class="addClient_header_text mt-3" style="float: left;">BUSINESS INFORMATION</h5>
               <div class="row mt-3">
@@ -82,7 +82,7 @@
                   <label class="form-label" style="float: left;"><b>Postal Code</b></label>
                   <input type="text" class="form-control" value="{{$client->registeredAddress->first()->postal_no}}"  name="client_postal"><br>
                 </div>
-              </div>  -->
+              </div>   -->
           
               
             

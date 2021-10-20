@@ -192,14 +192,29 @@ class Assoc_ClientController extends Controller
         $client ->email = $request->email;
         $client ->contact_number = $request->client_contact;
         $client->update();
+
+
         // // //tin
-        // $client =Client::find($request->client_id)->tin;
-        // $client->tin->tin_no =$request->tin ;
-        // $tin->update();
+        // $client =Tin::find($request->client_id);
+        // $tin = DB::table('client_tin')
+        // ->join('clients','client_tin.client_id','=','clients.id')
+        // ->select('tin_no')
+        // ->get();
+        // dd($tin);
 
-        $client = Client::where('id', $request->client_id);
+        // $tin_no= $request->tin;
+        // $tin_no->update($tin);
 
-        $tin =DB::update('update client_tin set tin_no = ? where name = ?', ['$request->tin']);
+
+
+        $client =Client::find(36)->tin;
+        dd($client);
+        // $client->tin_no =$request->tin;
+        // $client->tin_no=update();
+
+        // $client = Client::where('id', $request->client_id);
+
+        // $tin =DB::update('update client_tin set tin_no = ? where name = ?', ['$request->tin']);
             
             
 
@@ -264,7 +279,7 @@ class Assoc_ClientController extends Controller
         
 
         
-        return redirect()->route('clients.list')->with('success', 'Data Updated');
+        return redirect()->route('clients.list');
     }
 
 

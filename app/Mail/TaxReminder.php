@@ -10,15 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class TaxReminder extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-    private $reminders;
+    public $test;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($reminders)
+    public function __construct($test)
     {
-        $this->reminders = $reminders;
+        $this->test = $test;
+        
     }
 
     /**
@@ -28,7 +29,9 @@ class TaxReminder extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.reminder')
-              ->with('reminders', $this->reminders);
+        return $this->from('test@bulano.com')
+                    ->to('ajlemluna@gmail.com')
+                ->markdown('pages.emails.reminder')
+                ->with('reminders', $this->test);
     }
 }
