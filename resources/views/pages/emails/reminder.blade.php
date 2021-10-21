@@ -1,5 +1,5 @@
 @component('mail::message')
-# Hi {{ $test }}
+# Hi {{ $client }}
 
 This is trial!
 

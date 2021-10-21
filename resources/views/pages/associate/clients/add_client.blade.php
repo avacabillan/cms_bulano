@@ -116,9 +116,16 @@
                 <span class="ml-3 text-sm">{{ $taxForm->tax_form_no }}</span>
               </li>
           @endforeach
-
+         
 
           </ul>
+          <div class="col">
+                <div class="form-group">
+                  <label class="form-label"><b>Reminder Date</b></label>
+                  <input type="date"  class="form-control" name="reminder_date">
+                </div>
+              </div>
+
 
             
           

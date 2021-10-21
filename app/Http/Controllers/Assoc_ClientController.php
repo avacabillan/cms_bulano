@@ -18,6 +18,7 @@ use App\Models\TaxForm;
 use App\Models\TaxType;
 use App\Models\ClientTax;
 use App\Models\Tin;
+use App\Models\Reminder;
 
 class Assoc_ClientController extends Controller
 {
@@ -42,8 +43,8 @@ class Assoc_ClientController extends Controller
                             'registered_address', $registered_address
                             
             ));
-        }
-
+    }
+ 
 
    
     public function insertClient(Request $request )
@@ -118,13 +119,22 @@ class Assoc_ClientController extends Controller
             $client_tax_form= new ClientTax();
                 if (in_array($val, $request->taxesChecked)){
                     $client_tax_form->tax_form_id =$request ->taxesChecked[$key];
-                    $client_tax_form->client_id =$client->id;   
+                    $client_tax_form->client_id =$client->id; 
+                    $client_tax_form->status = 'pending';
+                    $client_tax_form->reminder_date = $request ->reminder_date;  
                     $client_tax_form->save();
                 }
             
         }
-        
-        return redirect()->route('clients.list');
+
+        // $reminders = new Reminder();
+        // $reminders ->client_tax_id = $client_tax_form->id;
+        // $reminders ->client_id = $client->id;
+        // $reminders ->status = 'pending';
+        // $reminders ->reminder = 'Pay Tax';
+        // // $reminders ->schedule_date = '2021-20-10';
+        // $reminders->save();
+        // return redirect()->route('clients.list');
 
     }
     public function showClientProfile($id){

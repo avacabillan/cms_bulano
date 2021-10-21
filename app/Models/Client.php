@@ -38,5 +38,9 @@ class Client extends Model
         return $this->hasMany(ClientTax::class);
 
     }
+    public function reminder(){
+        return $this->hasMany(Reminder::class);
+
+    }
     
 }

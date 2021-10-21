@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
 use App\Http\Controllers\AdminAssocController;
-// use App\Http\Controllers\ResourceAssoc_ClientController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\DemoEmailController;
 use App\Http\Livewire\Dropdown;
 
@@ -84,4 +84,4 @@ Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('cli
 
 //test
 // Route::post('/test', [TestController::class, 'showClientProfile']);
-Route::get('/try', ([DemoEmailController::class, 'sendEmail']));
+// Route::post('/try',[TestController::class, 'trial']);

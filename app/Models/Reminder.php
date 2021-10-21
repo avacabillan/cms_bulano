@@ -9,11 +9,17 @@ class Reminder extends Model
 {
     use HasFactory;
     protected $table = 'reminders';
+    protected  $guarded= [];
 
 
 
     public function clienttax(){
         return $this->belongsTo(ClientTax::class);
+
+    }
+    
+    public function client(){
+        return $this->belongsTo(Client::class);
 
     }
 }

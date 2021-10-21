@@ -20,7 +20,7 @@ class ClientTax extends Model
         return $this->belongsTo(TaxForm::class);
 
     }
-    public function taxreminder(){
+    public function reminder(){
         return $this->hasMany(Reminder::class);
 
     }
