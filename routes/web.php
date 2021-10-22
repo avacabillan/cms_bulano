@@ -5,6 +5,7 @@ use App\Http\Controllers\Assoc_ClientController;
 use App\Http\Controllers\AdminAssocController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\DemoEmailController;
+use App\Http\Controllers\ReminderController;
 use App\Http\Livewire\Dropdown;
 
 /*
@@ -48,7 +49,7 @@ Route::view('/compose','pages.admin.messages.compose')->name('compose');
 
 /*---------------------- CLIENTS VIEW --------------*/
 
-Route::view('/client_login','pages.client.client_login')->name('login');
+// Route::view('/client_login','pages.client.client_login')->name('login');
 Route::view('/register','pages.admin.register')->name('register');
 
 Route::view('/client_message','pages.client.client_message')->name('client_message');
@@ -74,6 +75,9 @@ Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name
 
 
 //  Route::resource('clients', ResourceAssoc_ClientController::class);
+//Reminders 
+Route::get('/clients/list/Reminders/{id}', [ReminderController::class, 'reminderList'])->name('clientReminder'); //showReminders
+Route::get('/createReminder', [ReminderController::class, 'reminderNew'])->name('viewReminders'); //addReminder
 
 Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
 Route::post('/update/client{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update

@@ -9,7 +9,7 @@
 @include('shared.sidebar')
 <div class="siderbar_main toggled">
 <button class="btn btn-danger d-none mt-5 pt-5 mb-2" id="deleteallClients" style="float: right;">Delete All</button>
-        <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
+        <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addReminder" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Reminder</button>
   <div class="page-content "style="margin: top 160px;">
     <div class="container mt-5" style="height:50%">
         
@@ -20,31 +20,25 @@
                     <th>
                       <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
                     </th>
-                    <th class="Client-th text-dark text-center">Client ID</th>
-                    <th class="Client-th text-dark text-center">Client Name</th>
-                    <th class="Client-th text-dark text-center">Contact Number</th>
-                    <th class="Client-th text-dark text-center">Email</th>
-                    <th class="Client-th text-dark text-center">OCN</th>
+                    
+                    <th class="Client-th text-dark text-center">Reminder</th>
+                    <th class="Client-th text-dark text-center">Reminder Date</th>
                     <th class="Client-th text-dark text-center">Action</th>   
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($clients as $client)
+                @foreach($reminders as $reminder)
                     <tr>
                         <td>
                           <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
                         </td>
-                        <td>{{$client->id}}</td>
-                        <td>{{$client->client_name}}</td>
-                        <td>{{$client->contact_number}}</td>
-                        <td>{{$client->email}}</td>
-                        <td>{{$client->ocn}}</td>
+                        <td>{{$reminder->reminder}}</td>
+                        <td>{{$reminder->schedule_date}}</td>
+                        
                       
                         
                         
                         <td>
-                         
-                         <a  class="btn btn-success btn-sm viewbtn" href="{{route('clientProfile',$client->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Profile"><i class="fas fa-eye"></a></i>
                          <a  class="btn btn-primary btn-sm viewbtn " href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reminders" ><i class="fas fa-tasks fa-xl"></a></i>
                         
                         </td>
@@ -65,8 +59,8 @@
 <!-- END OF VIEW CLIENT MODAL -->
 
 <!--Add Client Modal -->
-<div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
-<div class="modal-dialog modal-lg" >
+<div class="modal fade" id="addReminder" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
+<div class="modal-dialog" >
     <div class="modal-content" style="  width: 1000px; min-height: 450px;">
       <div class="modal-header">
         <h5 class="modal-title" id="headingsModal"></h5>
@@ -75,11 +69,11 @@
         </div>
       
         <div class="modal-body">
-        @livewireStyles
+        
            
-        @include('pages.associate.clients.add_client')    
+        @include('pages.associate.clients.client_addReminder')    
                         
-        @livewireScripts
+        
         </div>  
       </div>
     </div>
