@@ -45,7 +45,7 @@
                         <td>
                          
                          <a  class="btn btn-success btn-sm viewbtn" href="{{route('clientProfile',$client->id)}}"><i class="fas fa-eye"></a></i>
-                        
+                         <a  class="btn btn-success btn-sm viewbtn" href="{{route('clientProfile',$client->id)}}"><i class="fas bell-plus"></a></i>
                         </td>
                        
                        
