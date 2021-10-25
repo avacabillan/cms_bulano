@@ -1,8 +1,6 @@
 @component('mail::message')
-# Hi {{ $client }}
-
-This is trial!
-
+# Hi {{ $clients->client_name }}
+You have some Pending Tax yo follow up.
 
 
 Thanks,<br>

@@ -12,9 +12,12 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^8.12",
+        "laravel/scout": "^9.3",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.6",
+        "meilisearch/meilisearch-php": "^0.19.2",
         "yajra/laravel-datatables-buttons": "^4.13",
         "yajra/laravel-datatables-oracle": "^9.18"
     },

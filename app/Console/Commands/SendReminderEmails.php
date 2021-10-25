@@ -53,8 +53,17 @@ class SendReminderEmails extends Command
         //     ->where('email', 'avacabillan08@gmail.com')
         //     // ->orderBy('client_id')
         //     ->get();
-        $client = Client::find(36);
+        // $clients = Client::query()
+        // ->where('mode_of_payment_id','2')
+        // ->select('email')
+        // ->get();
+        $clients = Client::all();
+        // Mail::to($clients->email)->send(new TaxReminder($clients));
+
+        foreach($clients as $client){
             Mail::send(new TaxReminder($client));
+        }
+        
 
                     // Mail::send(['html'=> 'pages.emails.reminder'],array('reminders '=>$reminders ),
                     //  function ($message) {
@@ -72,32 +81,32 @@ class SendReminderEmails extends Command
         //     // dd($reminders);
 
            
-        //    // group by client
-            // $data = [];
-            // foreach($reminders as $reminder){
-            //     $data[$reminder->client_id][] = $reminder->toArray();
-            // }
+    //     //    // group by client
+    //         $data = [];
+    //         foreach($clients as $client){
+    //             $data[$client->email][] = $client->toArray();
+    //         }
             
-            // foreach( $data as $client_id=>$reminders){
-            //     $this->sendEmailToClient($client_id, $reminders);
-
-            // }
-            //  dd($data);
-            //send email
-    }
+    //         foreach( $data as $email=>$clients){
+    //             $this->sendEmailToClient($email, $clients);
+           
+            
+    //         }
+    // //         //  dd($data);
+    // //         //send email
+    //  }
         
-        // private function sendEmailToUser($client_id, $reminders){
-        //     $client = Client::find($client_id);
+    //     private function sendEmailToUser($email, $clients){
+    //         $client = Client::find($email);
+           
+          
+    //             //  Mail::send(['html'=> 'pages.emails.reminder'],array('reminders '=>$reminders ),
+    //             //  function ($message) {
+    //             //     $message->from('test@bulano.com', 'Bulano Test');
+    //             //     $message->subject('Test Tax Reminder');
+    //             //     $message->to('ajlemluna@gmail.com')->cc('avacabillan08@gmail.com');
+    //             // });
 
-        //     Mail::to($client)->send(new TaxReminder($reminders));
 
-        //         // Mail::send(['html'=> 'pages.emails.reminder'],array('reminders '=>$reminders ),
-        //         //  function ($message) {
-        //         //     $message->from('test@bulano.com', 'Bulano Test');
-        //         //     $message->subject('Test Tax Reminder');
-        //         //     $message->to('ajlemluna@gmail.com')->cc('avacabillan08@gmail.com');
-        //         // });
-
-
-        // }
+        }
 }
