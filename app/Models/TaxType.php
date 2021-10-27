@@ -13,4 +13,7 @@ class TaxType extends Model
     public function taxForm(){
         return $this-> hasMany(TaxForm::class); 
     }
+    public function taxFile(){
+        return $this->hasMany(TaxFile::class);
+    }
 }

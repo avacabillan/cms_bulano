@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminAssocController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\DemoEmailController;
 use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\FileController;
 use App\Http\Livewire\Dropdown;
 
 /*
@@ -89,3 +90,9 @@ Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('cli
 //test
 // Route::post('/test', [TestController::class, 'showClientProfile']);
 // Route::post('/try',[TestController::class, 'trial']);
+
+//-------------Tax Files Route---------------
+Route::resource('upload', FileController::class);
+Route::get('/clienttax', [FileController::class,'showTax'])->name('showTax');
+Route::get('/filerestore', [FileController::class,'restore'])->name('restore');
+Route::get('/archivelist', [FileController::class,'getArchive'])->name('archive-list');

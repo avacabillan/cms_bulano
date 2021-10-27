@@ -63,15 +63,15 @@
       
           <div class="row">
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('showTax')}}" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>                                              
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('showTax')}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true">Registration Fee</i></a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('showTax')}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true">Registration Fee</i></a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>
             <div class="col-sm-6">
