@@ -93,6 +93,8 @@ Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('cli
 
 //-------------Tax Files Route---------------
 Route::resource('upload', FileController::class);
-Route::get('/clienttax', [FileController::class,'showTax'])->name('showTax');
+Route::get('/showTaxVat', [FileController::class,'showTaxVat'])->name('showTaxVat');
+Route::get('/showTaxItr', [FileController::class,'showTaxItr'])->name('showTaxItr');
+Route::get('/showTaxPay', [FileController::class,'showTaxPay'])->name('showTaxPay');
 Route::get('/filerestore', [FileController::class,'restore'])->name('restore');
 Route::get('/archivelist', [FileController::class,'getArchive'])->name('archive-list');

@@ -16,13 +16,7 @@ class FileController extends Controller
       
         return view('welcome')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles));
     }
-    public function showTax(){
-        $vat= TaxFile::query()
-        ->where('tax_type_id','2')
-        ->get();
-        return view('client_vat')->with('vat',$vat);
-    }
-
+ 
    
     public function create()
     {
@@ -63,8 +57,8 @@ class FileController extends Controller
 
     public function destroy($id)
     {
-        $delete = TaxFile ::find($id)->delete();
-        return redirect()->route('welcome');
+        $delete = TaxFile::find($id)->delete();
+       return redirect()-> back()->with('welcome','File save to archive succesfully');
     }
    
     public function restore($id) 
@@ -81,6 +75,27 @@ class FileController extends Controller
 
     {   
         $onlySoftDeleted = TaxFile::onlyTrashed()->get();
-        return view("welcome")->with('onlySoftDeleted', $onlySoftDeleted );
+        return view('archives',compact([ 'onlySoftDeleted' ]));
     }
+
+       //Client Tax Folders
+       public function showTaxVat(){
+        $vats= TaxFile::query()
+        ->where('tax_type_id','1')
+        ->get();
+        return view('client_vat')->with('vats',$vats);
+    }
+    public function showTaxItr(){
+        $itrs= TaxFile::query()
+        ->where('tax_type_id','2')
+        ->get();
+        return view('client_itr')->with('itrs',$itrs);
+    }
+    public function showTaxPay(){
+        $pays= TaxFile::query()
+        ->where('tax_type_id','3')
+        ->get();
+        return view('client_pays')->with('pays',$pays);
+    }
+
 }

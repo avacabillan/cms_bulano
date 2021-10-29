@@ -20,6 +20,7 @@ class CreateTaxFilesTable extends Migration
             $table->string('file_name');
             $table->string('description');
             $table->string('file_type');
+            $table->softDeletes();
             $table->timestamp('uploaded_at')->useCurrent();
             $table->timestamps();
         });

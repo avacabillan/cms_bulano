@@ -12,20 +12,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($vats as $vat)
+                @foreach($itrs as $itr)
                     <tr>
                         
                         
-                        <td>{{$vat->file_name}}</td>
-                        <td>{{$vat->description}}</td>
-                        <td>{{$vat->file_type}}</td>
+                        <td>{{$itr->file_name}}</td>
+                        <td>{{$itr->description}}</td>
+                        <td>{{$itr->file_type}}</td>
                         
                       
                         
                         
                         <td>
                          
-                         <a  class="btn btn-success btn-sm" href="{{ route('upload.destroy', $vat->id) }}" >Archive</a>
+                         <a  class="btn btn-success btn-sm" href="{{ route('upload.destroy', $itr->id) }}" >Archive</a>
                          
                         </td>
                        
