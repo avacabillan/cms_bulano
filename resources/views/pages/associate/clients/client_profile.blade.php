@@ -60,10 +60,11 @@
             <i class="fas fa-plus-circle"></i> New Folder
           </button>
           <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Type of Taxes</h6>
-      
+
+          
           <div class="row">
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="{{route('showTaxVat')}}" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('showVat')}}" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>                                              
             <div class="col-sm-6">

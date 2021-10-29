@@ -83,19 +83,19 @@ class FileController extends Controller
         $vats= TaxFile::query()
         ->where('tax_type_id','1')
         ->get();
-        return view('client_vat')->with('vats',$vats);
+        return view('pages.associate.clients.client_vat')->with('vats',$vats);
     }
     public function showTaxItr(){
         $itrs= TaxFile::query()
         ->where('tax_type_id','2')
         ->get();
-        return view('client_itr')->with('itrs',$itrs);
+        return view('pages.associate.clients.client_itr')->with('itrs',$itrs);
     }
     public function showTaxPay(){
         $pays= TaxFile::query()
         ->where('tax_type_id','3')
         ->get();
-        return view('client_pays')->with('pays',$pays);
+        return view('pages.associate.clients.client_pays')->with('pays',$pays);
     }
 
 }
