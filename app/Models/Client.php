@@ -29,7 +29,7 @@ class Client extends Model
         return $this->hasMany(RegisteredAddress::class);
     }
     public function tin(){
-        return $this->hasMany(Tin::class);
+        return $this->hasOne(Tin::class);
     }
     // public function associate(){
     //     return $this->hasMany(Associate::class);

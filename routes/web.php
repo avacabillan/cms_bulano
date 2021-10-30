@@ -37,8 +37,15 @@ Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 /*---------------------- ADMIN-ASSOC VIEW --------------*/
 
 
-Route::resource('associate', AdminAssocController::class);
-Route::resource('registered-client', RegisteredClientController::class);
+// Route::resource('associate', AdminAssocController::class);
+// Route::resource('registered-client', RegisteredClientController::class);
+Route::get('/associates_list',[AdminAssocController:: class, 'index'])->name('associates_list');
+
+Route::get('/add_associate',[AdminAssocController:: class, 'store'])->name('add_associate');
+
+Route::get('/associate/Profile/{id}',[AdminAssocController:: class, 'show'])->name('assoc_profile');
+Route::get('/updateassociate',[AdminAssocController:: class, 'update'])->name('update');
+
 
 
 /*---------------------- ASSOCIATES VIEW --------------*/
@@ -81,7 +88,7 @@ Route::get('/clients/list/Reminders/{id}', [ReminderController::class, 'reminder
 Route::get('/createReminder', [ReminderController::class, 'reminderNew'])->name('viewReminders'); //addReminder
 
 Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
-Route::post('/update/client{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
+Route::put('/update/client/{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
 Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
 Route::get('/clients/list/profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
 Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy

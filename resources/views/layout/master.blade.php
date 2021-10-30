@@ -31,13 +31,14 @@
     <link rel="stylesheet" href="{{asset('css/admin_add_assoc.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_assoc_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_edit_assoc.css')}}">
-    <link rel="stylesheet" href="{{asset('css/admin_show_msg.css')}}">
-    <link rel="stylesheet" href="{{asset('css/system/admin_msg.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/admin_msg_assoc.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin_show_msg.css')}}"> -->
+    <!-- <link rel="stylesheet" href="{{asset('css/admin_msg.css')}}"> -->
     
 
     <!-- ASSOCIATE -->
     <link rel="stylesheet" href="{{asset('css/associate_login.css')}}">
-    <link rel="stylesheet" href="{{asset('css/system/assoc_edit_client.css')}}">
+    <link rel="stylesheet" href="{{asset('css/assoc_edit_client.css')}}">
     <link rel="stylesheet" href="{{asset('css/assoc_profile.css')}}">
     <link rel="stylesheet" href="{{asset('css/assoc_add_client.css')}}">
     <!--<link rel="stylesheet" href="{{asset('css/assoc_message.css')}}">

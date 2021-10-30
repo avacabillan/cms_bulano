@@ -48,7 +48,7 @@ class AdminAssocController extends Controller
         $associate->position_id = $request->position;
         $associate->save();
 
-         return redirect()->route('pages.admin.associates.associates_list');
+        return redirect()->back();
     }
 
    
@@ -58,7 +58,7 @@ class AdminAssocController extends Controller
         $department = Department::all();
         $position = Position::all();
         
-        return view ('pages.admin.associates.associates_list')
+        return view ('pages.admin.associates.assoc_profile')
         ->with(compact('associate',$associate,
                         'department',$department,
                         'position',$position,
@@ -68,14 +68,14 @@ class AdminAssocController extends Controller
  
     public function edit($id)
     {
-       $associate = Associate::find($id);      
+        $associate = Associate::find($id);      
         $department = Department::all();
         $position = Position::all();
         
         return view ('pages.admin.associates.edit_associate')
         ->with(compact('associate',$associate,                       
                         'department',$department,
-                        'position',$position,
+                        'position',$position
                         
         )) ;
     }
@@ -108,4 +108,20 @@ class AdminAssocController extends Controller
     {
         //
     }
+    // public function insertAssoc(Request $request)
+    // {
+    //     $associate =new Associate();
+    //     $associate ->name = $request->assoc_name;
+    //     $associate ->email = $request->assoc_email;
+    //     $associate ->contact_number = $request->assoc_contact;
+    //     $associate ->birth_date = $request->assoc_birthdate;
+    //     $associate ->address = $request->assoc_address;
+    //     $associate ->sss_no = $request->assoc_sss;
+    //     $associate->department_id = $request->department;
+    //     $associate->position_id = $request->position;
+    //     $associate->save();
+
+    //    return redirect()->back();
+    // } 
+    
 }

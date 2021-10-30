@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Models\Requester;
-
+use File;
 class RegisteredClientController extends Controller
 {
   
@@ -37,7 +37,8 @@ class RegisteredClientController extends Controller
         	$file = $request->file('cor_image');
         	$extention = $file->getClientOriginalExtension();
         	$filename = time().'.'.$extention;
-        	$image->move(public_path('cor_img'), $image);
+            $destinationPath = public_path().'public/images' ;
+            $file->move($destinationPath,$fileName);
         	$requester->cor_image= $filename;
         }
         

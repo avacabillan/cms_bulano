@@ -3,9 +3,9 @@
       <div class="form-goup" >
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
-            <form action="{{route('associate.store')}}" class="row"  id="addAssocForm" name="addAssocForm">
+            <form action="{{route('add_associate')}}" class="row"  id="addAssocForm" name="addAssocForm">
               
-            @csrf
+           
             <h5 class="addAssoc_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5><br>        
           </div> 
           <input type="hidden" name="assoc_id" id="assoc_id">

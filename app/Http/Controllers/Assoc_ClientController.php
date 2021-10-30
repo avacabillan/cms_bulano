@@ -127,6 +127,7 @@ class Assoc_ClientController extends Controller
                 }
             
         }
+        return redirect()->back();
 
         // $reminders = new Reminder();
         // $reminders ->client_tax_id = $client_tax_form->id;
@@ -199,10 +200,10 @@ class Assoc_ClientController extends Controller
        
 
     }
-    public function updateClient(Request $request)
+    public function updateClient(Request $request, $id)
     {   
         
-        $client =Client::find($request->client_id);
+        $client =Client::find($id);
         $client ->client_name = $request->client_name;
         $client ->email = $request->email;
         $client ->contact_number = $request->client_contact;
@@ -222,8 +223,8 @@ class Assoc_ClientController extends Controller
 
 
 
-        $client =Client::find(36)->tin;
-        dd($client);
+        // $client =Client::find($id)->tin;
+        // dd($client);
         // $client->tin_no =$request->tin;
         // $client->tin_no=update();
 
@@ -273,9 +274,10 @@ class Assoc_ClientController extends Controller
         // DB::update('update Client set client_name = ? email=? contact_number=? ocn=? where  client_name = ? email=? contact_number=? ocn=? id=?', [$client_name,$email,$contact_number,$ocn,$id]);
 
         
-        // $client_tin = Client::find($id)->tin;
-        // $client_tin->tin_no =$request->tin;
+        $client_tin = Client::find($id)->tin;
+        $client_tin->tin_no =$request->tin;
         // $client_tin->save();
+        dd($client_tin);
 
         // $registered_address = Client::find($id)->registeredAddress;
         // $registered_address ->city_name =$request ->client_city;

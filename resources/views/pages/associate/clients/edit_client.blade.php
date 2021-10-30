@@ -7,8 +7,8 @@
           <div class="col-9 col-sm-4 ms-3">
             <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
           </div>
-          <form  method="post" action="#" >
-            <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
+          <form  method="post" action="{{route('updateClient', $client->id)}}" >
+         
             @csrf
             @method('PUT')
 

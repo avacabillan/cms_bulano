@@ -16,13 +16,17 @@
 
             <input class="client-info" type="text" name="fullname" placeholder="Enter Name" equired>
             <input class="client-info" type="text" name="contact" placeholder="Enter Contact_no" equired>
-            <input class="client-info" type="text" name="address" placeholder="Enter Address" equired>
+
             <input class="client-info" type="text" name="email" placeholder="Enter Email" equired>
+            <div class="mb-3">
+              <label for="formFileSm" class="form-label">Choose File</label>
+              <input class="form-control form-control-sm" id="formFileSm" type="file">
+            </div>
 
             <button class="client-info" type="submit"  id="submit" class="submitbtn">Register</button>
            
 
-            <button class="uploadbtn mt-5" type="upload"  id="upload" class="uploadbtn">Upload</button>
+            
         </form>
     </div>
 </div>

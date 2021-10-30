@@ -10,9 +10,9 @@ class Associate extends Model
     use HasFactory;
     public $timestamps = true;
     protected $fillable = [
-    	'id',
         'assoc_name',
         'email',
+        'sss_no',
         'contact_no',
         'birth_date',
         'start_date',

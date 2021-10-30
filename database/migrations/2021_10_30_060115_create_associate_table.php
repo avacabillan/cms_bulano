@@ -19,6 +19,8 @@ class CreateAssociateTable extends Migration
             $table->string('contact_number');
             $table->string('email');
             $table->string('address');
+            $table->string('sss_no');
+            $table->date('birth_date');
             $table->unsignedBigInteger('departments');
             $table->foreign('department_id')->references('id')->on('departments');
             $table->unsignedBigInteger('positions');

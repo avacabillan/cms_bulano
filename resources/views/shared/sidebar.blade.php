@@ -41,7 +41,7 @@
             <!-- END OF REGISTERED GUEST -->
             <!-- ASSOCIATES -->
             <li>
-              <a href="{{route('associate.index')}}">
+              <a href="{{route('associates_list')}}">
                 <i class="fa fa-globe"></i><span>Associates</span>
               </a>
             </li>
