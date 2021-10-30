@@ -14,7 +14,7 @@ class RegisteredClientController extends Controller
     {
         $requesters = Requester::all();
        
-        return view ('pages.admin.registeredclient')
+        return view ('pages.admin.requestee')
         ->with('requesters', $requesters);
     }
 
@@ -31,7 +31,7 @@ class RegisteredClientController extends Controller
         $requester->name =$request->name;
         $requester->email =$request->email;
         $requester->contact_no = $request->contact_no;
-        $requester->cor_img = $request->cor_img;
+        $requester->cor_img = $request->cor_image;
         if($request->hasfile('cor_image'))
         {
         	$file = $request->file('cor_image');
@@ -44,7 +44,7 @@ class RegisteredClientController extends Controller
         
         $requester->save();
     
-        return redirect()->back()->with('Status','Wait for Approval');
+        return back()->with('success','Wait for Approval');
     }
 
   

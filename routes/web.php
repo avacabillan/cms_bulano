@@ -38,13 +38,15 @@ Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 
 
 // Route::resource('associate', AdminAssocController::class);
-// Route::resource('registered-client', RegisteredClientController::class);
+
 Route::get('/associates_list',[AdminAssocController:: class, 'index'])->name('associates_list');
-
 Route::get('/add_associate',[AdminAssocController:: class, 'store'])->name('add_associate');
-
 Route::get('/associate/Profile/{id}',[AdminAssocController:: class, 'show'])->name('assoc_profile');
 Route::get('/updateassociate',[AdminAssocController:: class, 'update'])->name('update');
+
+// Registration routes
+Route::get('/requestee',[RegisteredClientController:: class, 'index']);
+Route::get('/storeRequest',[RegisteredClientController:: class, 'store'])->name('storeRequest');
 
 
 

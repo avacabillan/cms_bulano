@@ -15,6 +15,10 @@ class CreateRequestersTable extends Migration
     {
         Schema::create('requesters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('contact_no');
+            $table->string('cor_img');
             $table->timestamps();
         });
     }
