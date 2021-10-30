@@ -1,35 +1,40 @@
+.row {
+  margin-bottom: 20px;
+}
+   
+.button.button-small {
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 10px;
+}
 
+td input[type=text],
+td select {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  padding: 2px 8px;
+}
 
-  .admin_associates_table {
-    width: 95%;
-    margin-top: 110px;
-    margin-left: 24px;
-  }
-  
-  thead th{
-     
-    padding: 10px 10px;
-    background: #333;
-    font-size: 15px;
-    text-transform: uppercase;
-    vertical-align: top;
-    color: white;
-    font-weight: bold;
-    text-align: left;
-      
-  }
-  
-  tbody tr td{
-      
-    padding: 10px;
-    background: #f8f8f8;
-    font-size: 14px;
-    color: black;
-      
-  }
-  .assocname_listed {
-    cursor: pointer;
-    color: black;
-  }
-  
-  
+th:last-child {
+  text-align: right;
+}
+
+td:last-child {
+  text-align: right;
+}
+
+td:last-child .button {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 0px;
+  margin-bottom: 0px;
+  margin-right: 5px;
+  background-color: #FFF;
+}
+
+td:last-child .button .fa {
+  line-height: 30px;
+  width: 30px;
+}

@@ -10,7 +10,7 @@
 <div class="siderbar_main toggled">
 <button class="btn btn-danger d-none mt-5 pt-5 mb-2" id="deleteallClients" style="float: right;">Delete All</button>
         <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
-  <div class="page-content  " style="margin: top 160px;">
+  <div class="page-content mt-5 pt-3 " style="margin: top 160px;">
   
     <div class="container mt-5" style="height:50%">
         

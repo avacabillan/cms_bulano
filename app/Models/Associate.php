@@ -10,28 +10,20 @@ class Associate extends Model
     use HasFactory;
     public $timestamps = true;
     protected $fillable = [
+    	'id',
         'assoc_name',
         'email',
         'contact_no',
         'birth_date',
         'start_date',
+        'address',
 
         
     ];  
-    public function AssocDepartment(){
-        return $this->hasMany(AssocDepartment:: class, 'department_id');
+    public function Department(){
+        return $this->belongsTo(Department:: class);
     } 
-    public function AssocLocation(){
-        return $this->belongsTo(AssocLocation:: class, 'assoc_location_id');
-    }
-    public function Guardian(){
-        return $this->hasMany(Guardian:: class);
-    } 
-    public function GovSSS(){
-        return $this->hasMany(GovSSS:: class);
-    } 
-    public function AssocPosition(){
-        return $this->hasMany(AssocPosition:: class, 'assoc_position_id');
+    public function Position(){
+        return $this->belongsTo(Position:: class);
     }     
-
 }

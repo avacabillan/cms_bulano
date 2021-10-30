@@ -5,7 +5,7 @@
 @section('content')
 <div class="col-md-8 offset-md-2 mt-5">
 
-<table class="table table-light table-striped mt-3 ">
+<table class="table table-light table-striped mt-3">
     <thead>
             <tr>
                 <th  class="text-center text-dark" scope="col">File name</th>

@@ -1,78 +1,50 @@
+Bianca Medez Cortez
+@extends('layout.master')
 
+@section('title')
+    Associates Profile
+@endsection
 
-<!-- The Modal -->
-<div  class="assoc_profile_card"> 
-  <!-- Modal content -->
-   <div class="col-md-8 offset-md-4"> 
+@section('content')
 
-    <div class="row container d-flex justify-content-center">
-      <div class="col-xl-6 col-md-12 mt-3 pt-4 pb-3">
-        
-        <div class="row m-l-0 m-r-0" id="prof_border">
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+    <div class="card p-4">
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> <span class="name mt-3">{{$associate->name}}</span> <span class="idd">{{$associate->email}}</span><br><br>
+            
+            
+            <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#editAssoc" href="#"><i class="fas fa-edit"></a></i>
+            <div class="text mt-3"> <span>Personal Information </span> </div>
+            <div class="text mt-3"> <span>Contact Number : {{$associate->contact_number}} </span> </div>-date
+            <div class="text mt-3"> <span>Contact Number : {{$associate->birth}} </span> </div>
+            <div class="text mt-3"> <span>Address : {{$associate->address}}</span> </div>
+            <div class="text mt-3"> <span>SSS Number : {{$associate->sss_no}} </span> </div><br>
 
-            <div class="col-sm-4 user-profile">
+            <div class="text mt-3"> <span>Department</span> </div>
 
-              <div class="card-block text-center text-white">
-                <div class="m-b-25"> <img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div>
-                
-                <h6 class="f-w-600"><strong>Bianca Mae Cortez</strong></h6>
-                <p>Supervisor</p>
-                
-                <h6 class="text-white f-w-400">bianca@gmail.com</h6>
-              </div>
+            <div class="text mt-3"> <span>Department : {{$associate->department_id}} </span> </div>
+            <div class="text mt-3"> <span>Position : {{$associate->position_id}} </span> </div>
 
-            </div>
-
-            <div class="col-sm-8">
-              <div class="card-block">
-              <!-- <i class="fas fa-edit" id="assoc_edit_profile"></i> -->
-                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Phone</p>
-                    <h6 class="text-muted f-w-400">098979989898</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Address</p>
-                    <h6 class="text-muted f-w-400">Agdao Davao City</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Birth Date</p>
-                    <h6 class="text-muted f-w-400">October 27, 1999</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Postal Code</p>
-                    <h6 class="text-muted f-w-400">8000</h6>
-                  </div>
-              </div>
-
-              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Incase of Emergency</h6>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Name</p>
-                    <h6 class="text-muted f-w-400">Mitz Cabillan</h6>
-                  </div>                                              
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Address</p>
-                    <h6 class="text-muted f-w-400">Agdao Davao City</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Phone</p>
-                    <h6 class="text-muted f-w-400">09862575369</h6>
-                  </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Relationship</p>
-                    <h6 class="text-muted f-w-400">Mother</h6>
-                  </div>
-                </div>
-              </div>                     
-            </div>
-
+            
         </div>
-    
+    </div>
+</div>
+<!--Update Assoc Modal -->
+<div class="modal fade editAssoc" id="editAssoc" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 120%;">
+      <div class="modal-header" id="headingsModal" name="headingsModal">
+        <h5 class="modal-title" ></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        
+          @include('pages.admin.associates.edit_associate')
+        </div>  
       </div>
     </div>
-    
- <div>
-</div> 
-
+  </div>
+</div>
+<!-- END OF Edit ASSOC MODAL -->
+@endsection

@@ -1,41 +1,73 @@
-.add_associate_form{
-    padding: 0px;
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 5%;
-    margin-bottom: 5%;
-    margin-right: auto;
-    margin-left: auto;
-    overflow-y: scroll;
-  }
-  .assoc_header{
-    padding: 20px 20px 10px 20px;
-    background-color: black;
-    text-align: center;
-  }
-  .add_assoc_data{
-    margin-top: -5px;
-    padding: 10px 20px 20px 20px;
-    background-color: black;
-  }
-  
-  .hr {
-    opacity: 0.9;
-  }
-  
-  label{
+.addAssoc_form {
+  width: 100%;
+  height: 100%;
+  margin: 100px auto;
+  text-align: center;
+  display: none;
+}
+.addAssoc_form .form {
+  width: 340px; 
+  margin: 5px auto;
+}
+.addAssoc_form input[type='date'] {
+  color: #656d79;;
+  font-size: 15px;
+  height: 45px;
+  border: none;
+  padding-left: 15px;
+  width: 96%;
+  margin-bottom: 10px;
+}
+.addAssoc_form input[type='number'] {
     font-size: 15px;
-  }
-  .hrJi {
-    width: 68%;
-    float: right;
-  }
+    height: 45px;
+    border: none;
+    padding-left: 15px;
+    width: 96%;
+    margin-bottom: 10px;
+    
+}
+
+.addAssoc_form input[type='text'] {
+    font-size: 15px;
+    height: 45px;
+    border: none;
+    padding-left: 15px;
+    width: 96%;
+    margin-bottom: 10px;
+}
+h4 .addAssoc_form input[type='text'][placeholder] {
+  color: #656d79;
+  font-size: 15px;
+  font-weight: 500;
   
-  .hrIoe {
-    width: 70%;
-    float: right;
-  }
-  
+}
+.rowSelect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 10px;
+  width: 100%;
+  min-height: 200px;
+}
+
+.addAssoc_header_text {
+  color: black;
+}
+
+.h1 {
+    padding-right: 45%;
+}
+.AddAssoc_btn {
+  float: right;
+  padding-left: 50px;
+}
+
+.form-check-label {
+    color: white;
+    font-size: 15px;
+}
+.upload-btn-wrapper {
+    padding-left: 55%;
+}

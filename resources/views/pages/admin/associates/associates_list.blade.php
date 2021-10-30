@@ -1,65 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Associate</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-</head>
-<body>
+@extends('layout.master')
+
+@section('title')
+    Associates List
+@endsection
+
+@section('content')
+@include('shared.sidebar')
+
+ 
+<div class="siderbar_main toggled">
+
+        <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i>Add Associate</button>
+  <div class="page-content "style="margin: top 160px;">
+    <div class="container mt-5" style="height:50%">
+        
     
-<div class="container mt-5">
-    <a href="{{ route ('CreateNewAssociate')}}"><button type="button" class="btn btn-outline-primary mb-3">Add New Associate</button></a>
-    <table class="table table-bordered yajra-datatable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Associate Name</th>
-                <th>Contact Number</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Department</th>
-                <th>Action</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+        <table id="assoc-list" class="table table-bordered"  style="width:100% ">
+                <thead >
+                    <tr>
+                    <th class="Assoc-th text-dark text-center">ID</th>
+                    <th class="Assoc-th text-dark text-center">Name</th>
+                    <th class="Assoc-th text-dark text-center">Contact Number</th>
+                    <th class="Assoc-th text-dark text-center">Email</th>
+                    <th class="Assoc-th text-dark text-center">Action</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($associates as $associate)
+                    <tr>
+                        
+                        <td>{{$associate->id}}</td>
+                        <td>{{$associate->name}}</td>
+                        <td>{{$associate->contact_number}}</td>
+                        <td>{{$associate->email}}</td>
+                        
+                        
+                        
+                        <td>
+                         <a  class="btn btn-success btn-sm "  href="{{route('associate.show',$associate->id)}}"><i class="fas fa-eye"></a></i>
+                        
+                        </td>                                               
+                    </tr>
+                @endforeach
+                </tbody>
+              
+            </table>
+    </div>
+  </div>
 </div>
-   
-</body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!--Add Assoc Modal -->
+<div class="modal fade" id="addAssoc" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
+<div class="modal-dialog modal-lg" >
+    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="headingsModal"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        
+        </div>
+      
+        <div class="modal-body">
 
-<script type="text/javascript">
-  $(function () {
-    
-    var table = $('.yajra-datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('associates_list') }}",
-              columns: [
-                  {data: 'id', name: 'id', orderable: false},
-                  {data: 'associate_name', name: 'assoc_name', orderable: false},
-                  {data: 'contact_no', name: 'contact_no', orderable: false},
-                  {data: 'email', name: 'email', orderable: false},
-                  {data: 'assoc_address_id', name: 'assoc_address', orderable: false},
-                  {data: 'assoc_department_id', name: 'assoc_department', orderable: false},
-                  {data: 
-                    'actions',
-                    name: 'actions', 
-                    orderable: false, 
-                    searchable: true
-                  },
-        ]
-    });
-    
-  });
-</script>
-</html>
+           
+        @include('pages.admin.associates.add_associate')    
+                        
+
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Assoc Modal -->
+@stop

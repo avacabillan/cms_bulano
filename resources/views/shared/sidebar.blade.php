@@ -27,21 +27,21 @@
             
             <!-- DASHBOARD -->
             <li>
-              <a href="{{route('dashboard')}}"><i class="fa fa-book position-relative"></i>
+              <a href="#"><i class="fa fa-book position-relative"></i>
                 <span>Dashboard</span>
               </a>
             </li>
             <!-- END OF DASHBOARD -->
             <!-- REGISTERED GUEST -->
             <li>
-              <a href="{{route('guest_list')}}">
+              <a href="#">
                 <i class="fa fa-user"></i><span>Registered Guest</span>
               </a>
             </li>
             <!-- END OF REGISTERED GUEST -->
             <!-- ASSOCIATES -->
             <li>
-              <a href="{{route('associates_list')}}">
+              <a href="{{route('associate.index')}}">
                 <i class="fa fa-globe"></i><span>Associates</span>
               </a>
             </li>
@@ -56,8 +56,8 @@
 
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
-            <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
-            <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
+            <li><a href="#"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
+            <li><a href="#"><i class="fa fa-calendar"></i><span>Services</span></a></li>
             <li><a href="#"><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
            
              <!-- END OF EXTRA -->

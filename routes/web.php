@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
-use App\Http\Controllers\AdminAssocController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\DemoEmailController;
 use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\AdminAssocController;
+use App\Http\Controllers\RegisteredClientController;
 use App\Http\Livewire\Dropdown;
 
 /*
@@ -33,13 +34,12 @@ Route::view('/login','pages.admin.login')->name('login');
 Route::view('/dashboard','pages.admin.dashboard')->name('dashboard');
 Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 
-Route::get('/associates_list',[AdminAssocController:: class, 'index'])->name('associates_list');
-// Route::view('/add_associates','pages.admin.associates.add_associates')->name('add_associates');
-// Route::view('/assocprofile','pages.admin.associates.assoc_profile')->name('assocprofile');
-Route::get('/insertAssociate',[AdminAssocController:: class, 'insertAssociate'])->name('insertassociate');
-Route::get('/CreateNewAssociate',[AdminAssocController:: class, 'createAssociate'])->name('CreateNewAssociate');
+/*---------------------- ADMIN-ASSOC VIEW --------------*/
 
-Route::view('/calendar','pages.admin.calendar')->name('calendar');
+
+Route::resource('associate', AdminAssocController::class);
+Route::resource('registered-client', RegisteredClientController::class);
+
 
 /*---------------------- ASSOCIATES VIEW --------------*/
 
