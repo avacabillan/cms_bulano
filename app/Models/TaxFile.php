@@ -13,6 +13,7 @@ class TaxFile extends Model
 
     protected $table ='client_tax_files';
     protected $fillable = ['tax_type_id', 
+                           'client_id',
                            'file_name', 
                            'description', 
                            'uploaded_at'
@@ -25,5 +26,9 @@ class TaxFile extends Model
     return $this->hasMany(ArchivedForm::class);
     
    }
+   public function clients(){
+    return $this->belongsTo(Client::class);
+
+}
 
 }

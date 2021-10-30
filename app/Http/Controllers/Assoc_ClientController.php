@@ -16,6 +16,7 @@ use App\Models\LocationAddress;
 use App\Models\Group;
 use App\Models\TaxForm;
 use App\Models\TaxType;
+use App\Models\TaxFile;
 use App\Models\ClientTax;
 use App\Models\Tin;
 use App\Models\Reminder;
@@ -143,6 +144,8 @@ class Assoc_ClientController extends Controller
         $modes =  ModeOfPayment::all();
         $tins =  Client::find($id)->tin;
         $businesses = Client::find($id)->business;
+        $taxTypes =TaxType::all();
+        $taxFiles=TaxFile::all();
         $registeredAddress = Client::find($id)->registeredAddress;
         return view('pages.associate.clients.client_profile')
         ->with( 'client',$client) 
@@ -150,6 +153,8 @@ class Assoc_ClientController extends Controller
         ->with('tins',$tins)
         ->with('businesses',$businesses)
         ->with( 'registeredAddress', $registeredAddress)
+        ->with( 'taxTypes', $taxTypes)
+        ->with('taxFiles', $taxFiles)
         ;
     }
     

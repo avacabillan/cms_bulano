@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use App\Mail\TaxReminder;
 use App\Models\Client;
 use App\Models\ClientTax;
@@ -57,12 +58,14 @@ class SendReminderEmails extends Command
         // ->where('mode_of_payment_id','2')
         // ->select('email')
         // ->get();
-        $clients = Client::all();
-        // Mail::to($clients->email)->send(new TaxReminder($clients));
+        // $clients =DB::table('clients')->pluck('email');
+        // $clients =Client::all();
+        // // dd($clients);
+        // // Mail::to($clients->email)->send(new TaxReminder($clients));
 
-        foreach($clients as $client){
-            Mail::send(new TaxReminder($client));
-        }
+        // foreach($clients as $client){
+        //     Mail::send(new TaxReminder($client));
+        // }
         
 
                     // Mail::send(['html'=> 'pages.emails.reminder'],array('reminders '=>$reminders ),
@@ -108,5 +111,6 @@ class SendReminderEmails extends Command
     //             // });
 
 
+    
         }
 }

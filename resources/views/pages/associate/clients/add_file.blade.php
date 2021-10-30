@@ -1,15 +1,12 @@
 @extends('layout.master')
-@section('title')
-@stop
 
-@section('content')
-<div class="card bg-light justify-content-sm-center sticky-top" style="width: 30rem;">
-  <div class="card-header "style="text-align:left;">
-    Upload new File
-  </div>
-  <div class="card-body" style="text-align:left;">
-  <form  action="{{route('upload.store')}}" method="POST" enctype="multipart/form-data" >
 
+
+
+
+<div class="card-body mt-5" >
+  <form  action="{{route('upload.store')}}" method="POST" enctype="multipart/form-data" id="uploadFile" >
+  <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
     @csrf
     @method('POST')
       <label for="">File Name</label><br>
@@ -29,12 +26,14 @@
                     <label for="floatingTextarea">Description</label>
                 </div>
         <div class="input-group ">
-            <input class="form-control" id="inputGroupFile02" name="upload_file" type="file">
-            <label class="input-group-text"  for="inputGroupFile02">Upload</label>
+            <input class="form-control mt-3" id="inputGroupFile02" name="upload_file" type="file">
+            
+           
         </div>
+        <button class="btn btn-success mt-2 saveBtn" type="submit" value="uploadFile" >Save</button>
   </form>      
-  </div>
 </div>
 
-@stop
+
+
 

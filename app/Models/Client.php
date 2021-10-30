@@ -42,5 +42,9 @@ class Client extends Model
         return $this->hasMany(Reminder::class);
 
     }
+    public function taxFile(){
+        return $this->hasMany(TaxFile::class);
+
+    }
     
 }

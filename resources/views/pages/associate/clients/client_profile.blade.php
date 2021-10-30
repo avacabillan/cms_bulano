@@ -6,7 +6,7 @@
 <div class="row m-l-0 mt-5 m-r-0" id="prof_border">
   <div class="col-sm-4 user-profile"> 
   <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal"   href="{{route('editClient',$client->id)}}"><i class="fas fa-edit"></a></i>
-  
+  <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
     <div class="card-block text-center text-white">
       <div class="m-b-25"><img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br> 
       
@@ -56,29 +56,28 @@
                 {{$client->registeredAddress->first()->postal_no}}</h6>
             </div>
           <br> 
-          <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="add_tax" style="float: right;">
-            <i class="fas fa-plus-circle"></i> New Folder
-          </button>
+         
+          <a class="btn btn-outline-primary btn-sm mt-2 addFile" style="float: right;" href="{{route('upload.show', $client->id)}}" > 
+            <i class="fas fa-plus-circle"></i> Upload</a>
+          
+         
           <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Type of Taxes</h6>
 
           
           <div class="row">
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="{{route('showVat')}}" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('showVat', $client->id)}}" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>                                              
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="{{route('showTaxItr')}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('showTaxItr',$client->id)}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="{{route('showTaxPay')}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true">Registration Fee</i></a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('showTaxPay',$client->id)}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>Registration Fee</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>
-            <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"></p>
-              <h6 class="text-muted f-w-400"></h6>
-            </div>  
+           
 
             
         </div>
@@ -105,6 +104,27 @@
         @include('pages.associate.clients.edit_client')    
                         
         @livewireScripts
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<!--Upload File Modal -->
+<div class="modal fade addFile" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="headingsModal"></h5>
+        
+        
+        </div>
+      
+        <div class="modal-body">
+       
+           
+        @include('pages.associate.clients.add_file')    
+                        
+        
         </div>  
       </div>
     </div>

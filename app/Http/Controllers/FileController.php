@@ -5,16 +5,21 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\TaxFile;
 use App\Models\TaxType;
+use App\Models\Client;
 use App\Models\ArchivedForm;
+use Illuminate\Support\Facades\DB;
 
 class FileController extends Controller
 {
  
-    public function index()
-    {   $taxTypes =TaxType::all();
-        $taxFiles=TaxFile::all();
+    public function index($id)
+   
+     {  
+        //   $taxTypes =TaxType::all();
+    //     $taxFiles=TaxFile::all();
+    //     // $client= Client::find($id);
       
-        return view('welcome')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles));
+    //     return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles));
     }
  
    
@@ -29,18 +34,24 @@ class FileController extends Controller
        
         $taxFile = new TaxFile();
         $taxFile->tax_type_id =$request->taxtype;
+        $taxFile->client_id =$request->client_id;
         $taxFile->file_name =$request->filename;
         $taxFile->description= $request->description;
         $taxFile->file_type =  $request->file('upload_file')->guessExtension();
         $taxFile->save();
 
-        return 'Successfully Uploaded';
+        return 'Successfuly Uploaded';
 
     }
 
     public function show($id)
-    {
-        //
+    {   
+        $client = Client::find($id);
+        $taxTypes =TaxType::all();
+        $taxFiles=TaxFile::all();
+        // $client= Client::find($id);
+      
+        return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles, 'client', $client));
     }
 
    
@@ -57,8 +68,8 @@ class FileController extends Controller
 
     public function destroy($id)
     {
-        $delete = TaxFile::find($id)->delete();
-       return redirect()-> back()->with('welcome','File save to archive succesfully');
+    //     $delete = TaxFile::find($id)->delete();
+    //    return 'File save to archive succesfully';
     }
    
     public function restore($id) 
@@ -67,7 +78,7 @@ class FileController extends Controller
 
         $restores->restore();
 
-        return redirect()->route('welcome')
+        return redirect()->route('pages.associate.clients.clients_list')
             ->with('restores', $restores );
     
     }
@@ -75,27 +86,41 @@ class FileController extends Controller
 
     {   
         $onlySoftDeleted = TaxFile::onlyTrashed()->get();
-        return view('archives',compact([ 'onlySoftDeleted' ]));
+        return view('pages.associate.clients.archives',compact([ 'onlySoftDeleted' ]));
     }
 
        //Client Tax Folders
-       public function showTaxVat(){
-        $vats= TaxFile::query()
+       public function showTaxVat($id){
+        // $vats= TaxFile::query()
+        // ->where('tax_type_id','1')
+        // ->get();
+        $vats = TaxFile::query()
+        ->where('client_id','=', $id )
         ->where('tax_type_id','1')
         ->get();
-        return view('pages.associate.clients.client_vat')->with('vats',$vats);
+        
+        
+        return view('pages.associate.clients.client_vat')->with('vats',$vats) ;
     }
-    public function showTaxItr(){
-        $itrs= TaxFile::query()
+    public function showTaxItr($id){
+        $itrs = TaxFile::query()
+        ->where('client_id','=', $id )
         ->where('tax_type_id','2')
         ->get();
-        return view('pages.associate.clients.client_itr')->with('itrs',$itrs);
+        return view('pages.associate.clients.client_itr')->with('itrs',$itrs) ;
     }
-    public function showTaxPay(){
-        $pays= TaxFile::query()
+    public function showTaxPay($id){
+        $pays = TaxFile::query()
+        ->where('client_id','=', $id )
         ->where('tax_type_id','3')
         ->get();
         return view('pages.associate.clients.client_pays')->with('pays',$pays);
     }
+    public function archive($id)
+    {
+        $delete = TaxFile::find($id)->delete();
+       return 'File save to archive succesfully';
+    }
+
 
 }

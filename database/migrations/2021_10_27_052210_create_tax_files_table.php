@@ -17,6 +17,8 @@ class CreateTaxFilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('tax_type_id');
             $table->foreign('tax_type_id')->references('id')->on('client_tax_type');
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->string('file_name');
             $table->string('description');
             $table->string('file_type');
