@@ -70,6 +70,18 @@
                   </select>
               </div>
           </div>
+
+          <div class="col">
+              <div class="form-group">
+                  <label class="form-label"><b>Associate</b></label>
+                  <select name="assoc" class="form-control">
+                  <option value="">--Select Associate--</option>
+                      @foreach($assocs as $assoc)
+                        <option value="{{$assoc->id}}">{{$assoc->name}}</option>
+                      @endforeach
+                  </select>
+              </div>
+          </div>
            
           <div class="row mt-2" style="float: left;" >
             <div class="col " >

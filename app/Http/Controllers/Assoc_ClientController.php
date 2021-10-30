@@ -30,6 +30,7 @@ class Assoc_ClientController extends Controller
         $corporates= Corporate::all();
         $taxForms= TaxForm::all();
         $clients =Client::all();
+        $assocs =Associate::all();
         $businesses = Business::all();
         $tins = Tin::all();
         $registered_address = RegisteredAddress::all();
@@ -41,6 +42,7 @@ class Assoc_ClientController extends Controller
                             'clients',$clients,
                             'businesses',$businesses,
                             'tins',$tins,
+                            'assocs',$assocs,
                             'registered_address', $registered_address
                             
             ));
@@ -90,7 +92,7 @@ class Assoc_ClientController extends Controller
         $client ->email = $request->email;
         $client ->contact_number = $request->client_contact;
         $client ->ocn = $request->ocn;
-        // $client ->assoc_id =$associate->id;
+        $client ->assoc_id =$request->assoc;
         $client ->mode_of_payment_id =$request ->mode;
         $client ->save();
         

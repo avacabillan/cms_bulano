@@ -31,9 +31,9 @@ class Client extends Model
     public function tin(){
         return $this->hasOne(Tin::class);
     }
-    // public function associate(){
-    //     return $this->hasMany(Associate::class);
-    // }
+    public function associate(){
+        return $this->belongsTo(Associate::class, 'assoc_id');
+    }
     public function clientTaxes(){
         return $this->hasMany(ClientTax::class);
 

@@ -25,5 +25,8 @@ class Associate extends Model
     } 
     public function Position(){
         return $this->belongsTo(Position:: class);
-    }     
+    }
+    public function clients(){
+        return $this->hasMany(Client:: class);
+    }          
 }
