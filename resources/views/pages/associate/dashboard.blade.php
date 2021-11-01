@@ -6,7 +6,15 @@
 @include('pages.associate.navbar')
 @include('pages.associate.sidebar')
 
+<div class="card-body">
+   @if (session('status'))
+      <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+      </div>
+   @endif
 
+   {{ __('You are logged in!') }}
+</div>
 
 <div class="app">
    <aside class="nav">

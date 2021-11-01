@@ -6,6 +6,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\DemoEmailController;
 use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminAssocController;
 use App\Http\Controllers\RegisteredClientController;
 use App\Http\Livewire\Dropdown;
@@ -21,16 +22,30 @@ use App\Http\Livewire\Dropdown;
 |
 */
 
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [LoginController::class, 'login'])->name('login');
+
 
 
 // Route::get('clients/list', [ClientController::class, 'getClients'])->name('clients.list');
-
-
 /*---------------------- ADMIN VIEW --------------*/
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::view('/about','pages.admin.about')->name('about');
 Route::view('/services','pages.admin.services')->name('services');
-Route::view('/login','pages.admin.login')->name('login');
+// Route::view('/login','pages.admin.login')->name('login');
 Route::view('/dashboard','pages.admin.dashboard')->name('dashboard');
 Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 

@@ -11,6 +11,15 @@
 <div class="siderbar_main toggled">
   <div class="page-content">
     <!----- ROW form-group col-md-12 ----->
+    <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
     <div class="row">
 
         <div class="form-group col-md-12">

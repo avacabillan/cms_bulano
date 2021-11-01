@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '52892740e0965638a7e292101619702f0a991c0f',
+    'reference' => '6cfdce9587dc0031719c7723aa19c17691fd0a7d',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -440,6 +440,15 @@
         0 => 'v8.68.1',
       ),
     ),
+    'kkszymanowski/traitor' => 
+    array (
+      'pretty_version' => '0.2.5',
+      'version' => '0.2.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9770fc7de72ff585601dc9c42b31715d9fc40a24',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -472,7 +481,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '52892740e0965638a7e292101619702f0a991c0f',
+      'reference' => '6cfdce9587dc0031719c7723aa19c17691fd0a7d',
     ),
     'laravel/sail' => 
     array (
@@ -1035,6 +1044,15 @@
       array (
         0 => '4.2.3',
       ),
+    ),
+    'santigarcor/laratrust' => 
+    array (
+      'pretty_version' => '6.3.2',
+      'version' => '6.3.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9ab3bfdc06afe18b17f69b77cb77291c36dae9f6',
     ),
     'sebastian/cli-parser' => 
     array (

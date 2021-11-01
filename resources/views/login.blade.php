@@ -9,21 +9,23 @@
         <!-- Image -->
     </div>
     <div id="right">
-        <h1 class="login" id="admin_login"><b>LOGIN</b></h1><br>
-        <h5 class="admin_login_info">ADMIN</h5><br>
-        <form action="{{route('login')}}" method="post">
+        <h1 class="login" id="client_login"><b>LOGIN</b></h1><br>
+        
+        <form action="#" method="post">
         @csrf
 
             <input class="client-info" type="text" name="username" placeholder="Enter Email" equired>
             <input class="client-info" type="password" name="password" placeholder="Enter Password"equired>
 
-            <button class="client-info" type="submit"  id="submit" class="submitbtn">login</button>
+            <button class="client-info" type="submit"  id="submit" class="submitbtn"><a href="#">Login</a></button>
 
             <div class="alert alert-danger" style="display:none" role="alert">
                 {{$errors ->first()}}
             </div>
-                
+           
         </form>
+        <button class="client-info" type="submit"  id="register_submit" class="submitbtn"><a href="{{route('register')}}">Register</a></button>
+                
     </div>
 </div>
 
