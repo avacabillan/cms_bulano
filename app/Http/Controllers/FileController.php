@@ -9,6 +9,9 @@ use App\Models\Client;
 use App\Models\ArchivedForm;
 use Illuminate\Support\Facades\DB;
 
+
+use DataTables;
+
 class FileController extends Controller
 {
  

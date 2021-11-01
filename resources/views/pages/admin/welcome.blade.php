@@ -1,13 +1,13 @@
-
 @extends('layout.master')
 
 @section('title')
-    Archive
+   try
 @endsection
 
 @section('content')
 @include('shared.sidebar')
 
+ 
 <div class="siderbar_main toggled">
 
   <div class="page-content mt-5"style="margin: top 160px;">
@@ -50,6 +50,17 @@
     </div>
   </div>
 </div>
-@stop
+
+@section('scripts')
+ 
+    <!-- DATATABLE  EXTENTIONS-->
+    
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/searchbuilder/1.2.2/js/dataTables.searchBuilder.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+@endsection
 
 

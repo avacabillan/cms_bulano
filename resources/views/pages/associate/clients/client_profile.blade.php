@@ -3,20 +3,25 @@
 @section('title')
 @stop
 @section('content')
-<div class="row m-l-0 mt-5 m-r-0" id="prof_border">
+
+
+<div class="d-flex p-4 mt-3" >
   <div class="col-sm-4 user-profile"> 
-    <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal"   href="{{route('editClient',$client->id)}}"><i class="fas fa-edit"></a></i>
-  <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
+    <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
     <div class="card-block text-center text-white">
-      <div class="m-b-25"><img src="images/bulano.png" class="img-radius" alt="User-Profile-Image"></div><br> 
+      <div class="text-center">
+        <img src="images/bianca.jpg" class="rounded" alt="User-Profile-Image">
+      </div>
+      <br> 
         <h4 class="f-w-600">{{$client->client_name}}</h4>
         <p id="name" value="name">{{$client->email}}</p>         
       </div>
     </div>
 
     <div class="col-sm-8">
-      <div class="card-block"> 
-        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right;"> Upload</button>
+      <div class="card-block bg-light"> 
+        <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal" href="{{route('editClient',$client->id)}}" style="float: right;"><i class="fas fa-edit">Edit</a></i>
+        <button type="button" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right;"> Upload</button>
         <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
         <hr>
 
