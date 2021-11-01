@@ -53,7 +53,13 @@
               </a>
             </li>
             <!-- END OF CLIENTS -->
-
+            <!-- ARCHIVE -->
+            <li>
+              <a href="{{route('archive-list')}}">
+                <i class="fa fa-globe"></i><span>Archive</span>
+              </a>
+            </li>
+            <!-- END OF ARCHIVE -->
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
             <li><a href="#"><i class="fa fa-book"></i><span>About</span><span class="badge badge-pill badge-primary">Beta</span></a></li>
