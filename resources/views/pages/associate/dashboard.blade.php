@@ -5,7 +5,11 @@
 @section('content')
 @include('pages.associate.navbar')
 @include('pages.associate.sidebar')
-
+<x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard for Associaate') }}
+        </h2>
+    </x-slot>
 <div class="card-body">
    @if (session('status'))
       <div class="alert alert-success" role="alert">
@@ -13,7 +17,7 @@
       </div>
    @endif
 
-   {{ __('You are logged in!') }}
+   {{ __('You are logged in as Associate!') }}
 </div>
 
 <div class="app">

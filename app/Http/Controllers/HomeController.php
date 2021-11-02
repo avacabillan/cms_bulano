@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Requester;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -29,5 +30,6 @@ class HomeController extends Controller
     {
         return view('auth.register');
     }
+    
    
 }

@@ -11,6 +11,6 @@ class Requester extends Model
     protected $table ='requesters';
 
     protected $fillable = [
-        'name', 'email', 'contact_no', 'cor_img'
+        'name', 'email', 'contact_no','status', 'cor_img'
     ];
 }

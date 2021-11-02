@@ -27,21 +27,22 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [LoginController::class, 'login'])->name('login');
+// Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
+// Route::get('/home', [LoginController::class, 'login'])->name('login');
 
 
 
 // Route::get('clients/list', [ClientController::class, 'getClients'])->name('clients.list');
 /*---------------------- ADMIN VIEW --------------*/
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/request', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/status/{id}', [App\Http\Controllers\HomeController::class, 'status'])->name('status');
 
 Route::view('/about','pages.admin.about')->name('about');
 Route::view('/services','pages.admin.services')->name('services');
@@ -60,8 +61,11 @@ Route::get('/associate/Profile/{id}',[AdminAssocController:: class, 'show'])->na
 Route::get('/updateassociate',[AdminAssocController:: class, 'update'])->name('update');
 
 // Registration routes
-Route::get('/requestee',[RegisteredClientController:: class, 'index']);
+// Route::get('/register',[RegisteredClientController:: class, 'register'])->name('register');
 Route::get('/storeRequest',[RegisteredClientController:: class, 'store'])->name('storeRequest');
+Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requesters');
+Route::get('/request/edit{id}',[RegisteredClientController:: class, 'edit'])->name('request-edit');
+Route::get('/status-update/{id}',[RegisteredClientController:: class, 'update'])->name('status-update');
 
 
 
@@ -75,7 +79,7 @@ Route::view('/compose','pages.admin.messages.compose')->name('compose');
 /*---------------------- CLIENTS VIEW --------------*/
 
 // Route::view('/client_login','pages.client.client_login')->name('login');
-Route::view('/register','pages.admin.register')->name('register');
+// Route::view('/register','pages.admin.register')->name('register');
 
 Route::view('/client_message','pages.client.client_message')->name('client_message');
 
@@ -113,7 +117,7 @@ Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('cli
 
 //test
 // Route::post('/test', [TestController::class, 'showClientProfile']);
-// Route::post('/try',[TestController::class, 'trial']);
+Route::get('/try',[TestController::class, 'trial']);
 
 //-------------Tax Files Route---------------
 Route::resource('upload', FileController::class);

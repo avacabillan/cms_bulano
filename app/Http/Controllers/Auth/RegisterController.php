@@ -42,7 +42,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Get a validator for an incoming registration data.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -52,6 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'contact_no' => ['required', 'string', 'max:14' ],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,10 +65,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'contact_no' => $data['contact_no'],
+            'cor_img' => $data['cor_image'],
+            'status'=>false,
             'password' => Hash::make($data['password']),
         ]);
+
+        $admins = User::whereHas('roles', function($q) {
+            $q->where('display_name', 'Admin');
+        })->get();
+
+        foreach ($admins as $admin){
+            $admin->notify(new AdminNewUserNotification($user));
+        }
+        return $user;
     }
 }

@@ -12,33 +12,41 @@ Login
     </div>
     <div id="right">
         <h1 class="login" id="client_login"><b>LOGIN</b></h1><br>
-        
-        <form action="{{ route('login') }}" method="post">
-        @csrf
-            <!-- Email -->
-            <!-- <input class="client-info" type="text" name="username" placeholder="Enter Email" equired> -->
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="username" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter Email" autofocus>
-
-            @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            <!-- Password -->
-            <!-- <input class="client-info" type="password" name="password" placeholder="Enter Password"equired> -->
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror mt-3" name="password" required autocomplete="current-password" placeholder="Enter Password">
-
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            <button class="client-info" type="submit"  id="submit" class="submitbtn"><a href="#">Login</a></button>
-
-            <div class="alert alert-danger" style="display:none" role="alert">
-                {{$errors ->first()}}
+        @if(session()->has('message'))
+            <p class="alert alert-info">
+                {{ session()->get('message') }}
+            </p>
+        @endif
+        <form method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <input type="email" name="email" class="form-control" required autofocus placeholder="Enter Email" value="{{ old('email', null) }}">
+                @if($errors->has('email'))
+                    <p class="help-block">
+                        {{ $errors->first('email') }}
+                    </p>
+                @endif
             </div>
-           
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <input type="password" name="password" class="form-control" required placeholder="Enter Password">
+                @if($errors->has('password'))
+                    <p class="help-block">
+                        {{ $errors->first('password') }}
+                    </p>
+                @endif
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label><input type="checkbox" name="remember">Remember me</label>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">
+                       Login
+                    </button>
+                </div>
+            </div>
         </form>
         <button class="client-info" type="submit"  id="register_submit" class="submitbtn"><a href="{{route('register')}}">Register</a></button>
                 
@@ -47,14 +55,14 @@ Login
 
 @stop
 @section('scripts')
- <script>
-    $('document').ready(function(){
-        @if ($errors->any())
-            $(".alert").fadeIn(500).delay(3000).fadeOut(500);
-        @endif
-       
+<script>
+    $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
     });
+  });
 </script>
-
-@stop
+@endsection
 

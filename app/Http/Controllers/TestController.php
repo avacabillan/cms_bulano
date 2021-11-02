@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Mail\DemoEmail;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\ClientTax;
+use Illuminate\Support\Facades\Hash;
 // use App\Models\Group;
 // use App\Models\Corporate;
 // use App\Models\TaxForm;
@@ -87,15 +88,16 @@ class TestController extends Controller
     // //     return view('showClientProfile')->with("client", $client);
     // // }
     public function trial(){
-        $reminders = ClientTax::query()
-        ->with(['clients'])
-        ->where('reminder_date', now()->format('Y-m-d'))
-        ->where('status', 'pending')
-        ->orderBy('client_id')
-        ->get();
+        // $reminders = ClientTax::query()
+        // ->with(['clients'])
+        // ->where('reminder_date', now()->format('Y-m-d'))
+        // ->where('status', 'pending')
+        // ->orderBy('client_id')
+        // ->get();
 
-        dd($reminders);
-        return view ('welcome');
+        // dd($reminders);
+        $password = Hash::make('admin123456');
+        return ($password);
     }
 
     
