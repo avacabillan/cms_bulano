@@ -14,6 +14,7 @@
   <button type="button" class="btn btn-primary mt-3 mb-2 me-3" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i>Add Associate</button>
 
     <div class="container mt-3" style="height:50%">
+    
 
         <table id="assoc-list" class="table table-bordered mt-5"  style="width:100% ">
 

@@ -31,44 +31,39 @@
                 <span>Dashboard</span>
               </a>
             </li>
-            <!-- END OF DASHBOARD -->
             <!-- REGISTERED GUEST -->
             <li>
-              <a href="#">
+              <a href="">
                 <i class="fa fa-user"></i><span>Registered Guest</span>
               </a>
             </li>
-            <!-- END OF REGISTERED GUEST -->
             <!-- ASSOCIATES -->
             <li>
               <a href="{{route('associates_list')}}">
                 <i class="fa fa-globe"></i><span>Associates</span>
               </a>
             </li>
-            <!-- END OF ASSOCIATES -->
             <!-- CLIENTS -->
             <li>
               <a href="{{route('clients.list')}}">
                 <i class="fa fa-globe"></i><span>Clients</span>
               </a>
             </li>
-            <!-- END OF CLIENTS -->
             <!-- ARCHIVE -->
             <li>
               <a href="{{route('archive-list')}}">
                 <i class="fa fa-globe"></i><span>Archive</span>
               </a>
             </li>
-            <!-- END OF ARCHIVE -->
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
+            
+            <li><a href="{{route('about')}}"><i class="far fa-envelope"></i><span>Message</span></a></li>
             <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
             <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
             <li><a href=""><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
-           
-             <!-- END OF EXTRA -->
           </ul>
-
+          
         </div>
         <!-- END OF SIDEBAR MENU -->
 
@@ -77,10 +72,6 @@
 
       <!-- FOOTER -->
       <div class="sidebar-footer">
-        <a href="#">
-          <i class="fa fa-bell"></i>
-          <span class="badge badge-pill badge-warning notification" >3</span>
-        </a>
         <a href="#">
           <i class="fa fa-cog"></i>
           <span class="badge-sonar"></span>

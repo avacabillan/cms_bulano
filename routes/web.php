@@ -94,7 +94,7 @@ Route::view('/associate-message','pages.associate.message')->name('associate-mes
 // admin view and assoc view
 
 
-Route::view('/welcome','pages.admin.welcome')->name('welcome');
+
 
 
 Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name('editForm');
@@ -126,13 +126,4 @@ Route::get('/showTaxItr/{id}', [FileController::class,'showTaxItr'])->name('show
 Route::get('/showTaxPay/{id}', [FileController::class,'showTaxPay'])->name('showTaxPay');
 Route::get('/restore/{id}', [FileController::class,'restore'])->name('restore');
 Route::get('/archive/{id}', [FileController::class,'archive'])->name('archive');
-<<<<<<< HEAD
 Route::get('/archivelist', [FileController::class,'getArchive'])->name('archive-list');
-=======
-Route::get('/archivelist', [FileController::class,'getArchive'])->name('archive-list');
-
-
-
-
-
->>>>>>> f1d67bc8dcdb1fd462c7edac377d427ca5432b3e

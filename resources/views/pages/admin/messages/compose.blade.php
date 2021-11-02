@@ -1,30 +1,33 @@
 
-<!-- The Modal -->
-<div id="myModal" class="modal msg_compose" >
-  <!-- Modal content -->
-  <div class="col-md-8 offset-md-4">
-    
-    <div class="form_compose">
-      <button type="button" class="btn btn-primary btn-sm" id="upload_btn">Upload</button>
-      <h3 class="composehead mt-3 pt-3">Create Message</h3>
-      <hr>
-        <!-- <label for="recipient-name" class="col-form-label"><strong>Recipient:</strong></label>
-        <select class="form-select form-select-sm mb-3 bg-white"  >
-          <option>Select Recipient</option>
-          <option value="Associate">Associate name</option>
-          <option value="Admin">Admin name</option> 
-        </select> -->
-        
-        <p class="label"><strong>To:</strong><br><input type="email" class="textfield" placeholder="example@gmail.com"></p>
-        <label for="message-text" class="col-form-label"><strong>Message:</strong></label>
-        <textarea class="form-control" id="message-text"></textarea><br>
-              
-        <button type="button" class="btn btn-primary" data-dismiss="modal" style="float: right;">Cancel</button>
-        <button type="button" class="btn btn-primary me-2" style="float: right;">Send message</button>
-
+<div class="modal fade" id="compose_msg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="example@gmail.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text" placeholder="message here..." required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Default file input example</label>
+            <input class="form-control" type="file" id="formFile">
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+      
     </div>
-         
-  </div> 
+  </div>
 </div>
-
 

@@ -8,10 +8,62 @@ About
 @include('shared.sidebar')
 
 <div class="siderbar_main toggled">
-
-    <div class="page-content">
-
-        <div class="admin_about ms-3 me-3">
+    <div class="page-content"><br><br><br>
+        <div class="mx-auto col-md-10 offset-md-1 bg-light mt-5" style="margin-top: 25px;">
+            <div class="row mt-3">
+                <h3 class="text-center mt-2 mb-4"><strong>Inbox</strong></h3>
+                <div class="col-sm-3 col-md-2">
+                    <div class="" style="width:25%;right:0;"> 
+                        <button class="btn btn-sm btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#compose_msg">COMPOSE</button><br>
+                        <a href="#" class="text-decoration-none text-dark mt-5">Inbox<span class="badge pull-right">42</span></a>
+                        <a href="#" class="text-decoration-none text-dark">Sent</a>
+                        <a href="#" class="text-decoration-none text-dark">DeleteAll</a>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-md-10">
+                    <div class="mail-box">
+                        <div class="inbox-body">
+                            <table class="table table-inbox table-hover">
+                                <tbody>
+                                    <tr class="unread">
+                                        <td class="inbox-small-cells">
+                                            <input type="checkbox" class="mail-checkbox">
+                                        </td>
+                                        <!-- <td class="inbox-small-cells"><i class="fa fa-star"></i></td> -->
+                                        <td class="view-message  dont-show"><b>Sender</b></td>
+                                        <td class="view-message ">the message</td>
+                                        <!-- <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td> -->
+                                        <td class="view-message  text-right">Date/Time</td>
+                                    </tr>
+                                    <tr class="unread">
+                                        <td class="inbox-small-cells">
+                                            <input type="checkbox" class="mail-checkbox">
+                                        </td>
+                                        <!-- <td class="inbox-small-cells"><i class="fa fa-star"></i></td> -->
+                                        <td class="view-message  dont-show"><b>Sender</b></td>
+                                        <td class="view-message ">the message</td>
+                                        <!-- <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td> -->
+                                        <td class="view-message  text-right">Date/Time</td>
+                                    </tr>
+                                    <tr class="unread">
+                                        <td class="inbox-small-cells">
+                                            <input type="checkbox" class="mail-checkbox">
+                                        </td>
+                                        <!-- <td class="inbox-small-cells"><i class="fa fa-star"></i></td> -->
+                                        <td class="view-message  dont-show"><b>Sender</b></td>
+                                        <td class="view-message ">the message</td>
+                                        <!-- <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td> -->
+                                        <td class="view-message  text-right">Date/Time</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @include('pages.admin.messages.compose')
+        <!-- <div class="admin_about ms-3 me-3">
             <div class="about_heading ms-3">COMPANY PROFILE</div>
             <hr class="breakline ms-2 me-2" style="width: 98%">
             <div class="introduction ms-3 me-2">
@@ -50,12 +102,12 @@ About
                     Davao College and Davao Central College.
                 </p>
             </div>
-        </div>
+        </div> -->
 
         <!--- END OF COMPANY PROFILE --->
 
         <!--- COMPANY VMG --->
-        <div class="admin_vmg ms-3 me-3">
+        <!-- <div class="admin_vmg ms-3 me-3">
             <div class="vmg_heading ms-3">VISION, MISSION, KEYS TO SUCCESS AND VALUES</div>
             <hr class="breakline ms-2 me-2" style="width: 98%">
             <div class="vmg_vision ms-3 me-2">
@@ -96,7 +148,7 @@ About
 
                 </p> 
             </div>
-        </div>
+        </div> -->
 
         <!--- END OF VMG --->
 
