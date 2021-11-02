@@ -5,66 +5,52 @@
 @endsection
 
 @section('content')
-
 @include('shared.sidebar')
+
 <div class="siderbar_main toggled">
-<button class="btn btn-danger d-none mt-5 pt-5 mb-2" id="deleteallClients" style="float: right;">Delete All</button>
-        <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
-  <div class="page-content mt-5 pt-3 " style="margin: top 160px;">
+  <button class="btn btn-danger d-none mt-3 mb-2" id="deleteallClients" style="float: right;">Delete All</button>
+  <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
+  <div class="page-content mt-3" style="margin: top 160px;">
   
-    <div class="container mt-5" style="height:50%">
-        
-    
-        <table id="clients-list" class="table table-bordered"  style="width:100% ">
-                <thead >
-                    <tr>
-                    <th>
-                      <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
-                    </th>
-                    <th class="Client-th text-dark text-center">Client ID</th>
-                    <th class="Client-th text-dark text-center">Client Name</th>
-                    <th class="Client-th text-dark text-center">Contact Number</th>
-                    <th class="Client-th text-dark text-center">Email</th>
-                    <th class="Client-th text-dark text-center">OCN</th>
-                    <th class="Client-th text-dark text-center">Action</th>   
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($clients as $client)
-                    <tr>
-                        <td>
-                          <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
-                        </td>
-                        <td>{{$client->id}}</td>
-                        <td>{{$client->client_name}}</td>
-                        <td>{{$client->contact_number}}</td>
-                        <td>{{$client->email}}</td>
-                        <td>{{$client->ocn}}</td>
-                      
-                        
-                        
-                        <td>
-                         
-                         <a  class="btn btn-success btn-sm viewbtn" href="{{route('clientProfile',$client->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Profile"><i class="fas fa-eye"></a></i>
-                         <a  class="btn btn-primary btn-sm viewbtn " href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reminders" ><i class="fas fa-tasks fa-xl"></a></i>
-                        
-                        </td>
-                       
-                       
-                        
-                    </tr>
-                @endforeach
-                </tbody>
+    <div class="container mt-3" style="height:50%">
+      <table id="clients-list" class="table table-bordered"  style="width:100% ">
+        <thead >
+          <tr>
+            <th>
+              <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
+            </th>
+            <th class="Client-th text-dark text-center">Client ID</th>
+            <th class="Client-th text-dark text-center">Client Name</th>
+            <th class="Client-th text-dark text-center">Contact Number</th>
+            <th class="Client-th text-dark text-center">Email</th>
+            <th class="Client-th text-dark text-center">OCN</th>
+            <th class="Client-th text-dark text-center">Action</th>   
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($clients as $client)
+            <tr>
+              <td>
+                <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
+              </td>
+              <td>{{$client->id}}</td>
+              <td>{{$client->client_name}}</td>
+              <td>{{$client->contact_number}}</td>
+              <td>{{$client->email}}</td>
+              <td>{{$client->ocn}}</td>
+              <td>
+                <a  class="btn btn-success btn-sm viewbtn" href="{{route('clientProfile',$client->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Profile"><i class="fas fa-eye"></a></i>
+                <a  class="btn btn-primary btn-sm viewbtn " href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reminders" ><i class="fas fa-tasks fa-xl"></a></i>
+              </td>    
+            </tr>
+          @endforeach
+        </tbody>
               
-            </table>
-            <a href="{{route('archive-list')}}"><button  class="btn btn-primary" >Archives</button></a>
+      </table>
+      <a href="{{route('archive-list')}}"><button  class="btn btn-primary" >Archives</button></a>
     </div>
   </div>
 </div>
-
-<!-- VIEW CLIENT MODAL -->
-
-<!-- END OF VIEW CLIENT MODAL -->
 
 <!--Add Client Modal -->
 <div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
@@ -178,6 +164,7 @@
 })
 
 </script>
+
 @endsection
 
 

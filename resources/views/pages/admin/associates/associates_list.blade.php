@@ -10,12 +10,13 @@
  
 <div class="siderbar_main toggled">
 
-        <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i>Add Associate</button>
-  <div class="page-content mt-3 pt-3"style="margin: top 160px;">
-    <div class="container mt-5" style="height:50%">
-        
-    
-        <table id="assoc-list" class="table table-bordered"  style="width:100% ">
+  <div class="page-content mt-5"style="margin: top 160px;">
+  <button type="button" class="btn btn-primary mt-3 mb-2 me-3" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i>Add Associate</button>
+
+    <div class="container mt-3" style="height:50%">
+
+        <table id="assoc-list" class="table table-bordered mt-5"  style="width:100% ">
+
                 <thead >
                     <tr>
                     <th class="Assoc-th text-dark text-center">ID</th>
@@ -38,7 +39,7 @@
                         
                         <td>
                          <a  class="btn btn-success btn-sm "  href="{{route('assoc_profile',$associate->id)}}"><i class="fas fa-eye"></a></i>
-                        
+                         <a  class="btn btn-success btn-sm "><i class="fas fa-eye"></a></i>
                         </td>                                               
                     </tr>
                 @endforeach

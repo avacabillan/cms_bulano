@@ -9,7 +9,7 @@ Bianca Medez Cortez
 
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
     <div class="card p-4">
-        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> <span class="name mt-3">{{$associate->name}}</span> <span class="idd">{{$associate->email}}</span><br><br>
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="images/bianca.jpg" height="100" width="100" /></button> <span class="name mt-3">{{$associate->name}}</span> <span class="idd">{{$associate->email}}</span><br><br>
             
             
             <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#editAssoc" href="#"><i class="fas fa-edit"></a></i>

@@ -9,6 +9,9 @@ use App\Models\Client;
 use App\Models\ArchivedForm;
 use Illuminate\Support\Facades\DB;
 
+
+use DataTables;
+
 class FileController extends Controller
 {
  
@@ -40,7 +43,8 @@ class FileController extends Controller
         $taxFile->file_type =  $request->file('upload_file')->guessExtension();
         $taxFile->save();
 
-        return 'Successfuly Uploaded';
+      
+        return redirect()->back();
 
     }
 
@@ -50,7 +54,7 @@ class FileController extends Controller
         $taxTypes =TaxType::all();
         $taxFiles=TaxFile::all();
         // $client= Client::find($id);
-      
+        
         return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles, 'client', $client));
     }
 
