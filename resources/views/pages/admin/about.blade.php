@@ -16,10 +16,11 @@ About
                     <div class="" style="width:25%;right:0;"> 
                         <button class="btn btn-sm btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#compose_msg">COMPOSE</button><br>
                         <a href="#" class="text-decoration-none text-dark mt-5">Inbox<span class="badge pull-right">42</span></a>
-                        <a href="#" class="text-decoration-none text-dark">Sent</a>
+                        <a href="" class="text-decoration-none text-dark">Sent</a>
                         <a href="#" class="text-decoration-none text-dark">DeleteAll</a>
                     </div>
                 </div>
+                
                 <div class="col-sm-9 col-md-10">
                     <div class="mail-box">
                         <div class="inbox-body">

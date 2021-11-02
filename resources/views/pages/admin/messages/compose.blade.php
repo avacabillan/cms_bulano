@@ -9,15 +9,19 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name" placeholder="example@gmail.com" required>
+            <label for="recipient-name" class="col-form-label"><b>Recipient</b></label>
+            <input type="text" class="form-control" name="recipient" placeholder="example@gmail.com" required>
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text" placeholder="message here..." required></textarea>
+            <label for="recipient-name" class="col-form-label"><b>Subject</b></label>
+            <input type="text" class="form-control" name="subject" placeholder="example" required>
           </div>
           <div class="mb-3">
-            <label for="formFile" class="form-label">Default file input example</label>
+            <label for="message-text" class="col-form-label"><b>Message</b></label>
+            <textarea class="form-control" name="message-text" placeholder="message here..." required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label"><b>Upload file</b></label>
             <input class="form-control" type="file" id="formFile">
           </div>
         </form>
@@ -26,7 +30,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Send message</button>
       </div>
-      
+
     </div>
   </div>
 </div>

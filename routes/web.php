@@ -50,6 +50,9 @@ Route::view('/services','pages.admin.services')->name('services');
 Route::view('/dashboard','pages.admin.dashboard')->name('dashboard');
 Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 
+
+
+
 /*---------------------- ADMIN-ASSOC VIEW --------------*/
 
 
@@ -73,7 +76,6 @@ Route::get('/status-update/{id}',[RegisteredClientController:: class, 'update'])
 
 Route::view('/associates_login','pages.associate.associates_login')->name('associates_login');
 Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_dashboard');
-Route::view('/compose','pages.admin.messages.compose')->name('compose');
 
 
 /*---------------------- CLIENTS VIEW --------------*/
