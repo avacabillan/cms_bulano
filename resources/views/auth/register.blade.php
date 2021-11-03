@@ -1,68 +1,81 @@
-@extends('layouts.app')
-@section('content')
-<div class="login-box">
-    <div class="login-logo">
-        <a href="#">
-            {{ trans('panel.site_title') }}
-        </a>
-    </div>
-    <div class="login-box-body">
-        <p class="login-box-msg">
-            {{ trans('global.register') }}
-        </p>
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <a href="{{ route('login') }}">Back</a>
         <form method="POST" action="{{ route('register') }}">
-            {{ csrf_field() }}
+            @csrf
+
+            <!-- Name -->
             <div>
-                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <input type="text" name="name" class="form-control" required autofocus placeholder="{{ trans('global.user_name') }}" value="{{ old('name', null) }}">
-                    @if($errors->has('name'))
-                        <p class="help-block">
-                            {{ $errors->first('name') }}
-                        </p>
-                    @endif
-                </div>
-                <div class="form-group row">
+                <x-label for="name" :value="__('Name')" />
+
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            </div>
+            <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Contact Number') }}</label>
                     <div class="col-md-6">
                     <input  id="contact_no" type="text" class="form-control @error('contact_no') is-invalid @enderror" name="contact_no" required autocomplete="contact_no">
                 </div>
-                </div>
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <input type="email" name="email" class="form-control" required placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
-                    @if($errors->has('email'))
-                        <p class="help-block">
-                            {{ $errors->first('email') }}
-                        </p>
-                    @endif
-                </div>
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <input type="password" name="password" class="form-control" required placeholder="{{ trans('global.login_password') }}">
-                    @if($errors->has('password'))
-                        <p class="help-block">
-                            {{ $errors->first('password') }}
-                        </p>
-                    @endif
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password_confirmation" class="form-control" required placeholder="{{ trans('global.login_password_confirmation') }}">
-                </div>
-                <div class="mb-3">
-                            <label for="formFileSm" class="form-label">Choose File</label>
-                            <input class="form-control form-control-sm" name="cor_image" id="formFileSm" type="file">
+
+            <!-- Email Address -->
+            <div class="mt-4">
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password" />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mt-4">
+                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                <x-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required />
+            </div>
+
+                        <!-- Select Option Rol type -->
+                        <div class="mt-4">
+                            <x-label for="role_id" value="{{ __('Register as:') }}" />
+                            <select name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                                <option value="client">Client</option>
+                                <option value="admin">Admin</option>
+                                <option value="associate">Associate</option>
+                                
+                            </select>
                         </div>
 
-                <div class="row">
-                    <div class="col-xs-8">
+                        <div class="mb-3">
+                            <label for="formFileSm" class="form-label">Choose File</label>
+                            <input class="form-control form-control-sm" name="cor_img" id="formFileSm" type="file">
+                        </div>
 
-                    </div>
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">
-                            {{ trans('global.register') }}
-                        </button>
-                    </div>
-                </div>
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-button class="ml-4">
+                    {{ __('Register') }}
+                </x-button>
             </div>
         </form>
-    </div>
-</div>
-@endsection
+    </x-auth-card>
+</x-guest-layout>
+

@@ -15,4 +15,7 @@ class DashboardController extends Controller
             return view ('pages.client.dashboard');
         }
     }
+    public function countRequest(){
+        
+    }
 }

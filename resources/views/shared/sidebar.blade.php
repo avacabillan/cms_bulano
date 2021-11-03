@@ -33,7 +33,7 @@
             </li>
             <!-- REGISTERED GUEST -->
             <li>
-              <a href="">
+              <a href="{{route('requesters')}}">
                 <i class="fa fa-user"></i><span>Registered Guest</span>
               </a>
             </li>
@@ -76,7 +76,7 @@
           <i class="fa fa-cog"></i>
           <span class="badge-sonar"></span>
         </a>
-        <a href="#">
+        <a href="{{'logout'}}">
           <i class="fa fa-power-off"></i>
         </a>
       </div>

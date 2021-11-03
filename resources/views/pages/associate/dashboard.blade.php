@@ -1,10 +1,12 @@
 @extends('layout.master')
 @section('title')
-    
+    Associate Dash
 @endsection 
 @section('content')
 @include('pages.associate.navbar')
 @include('pages.associate.sidebar')
+
+
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard for Associaate') }}
@@ -21,6 +23,7 @@
 </div>
 
 <div class="app">
+<a class="text-dark" href="{{route('logout')}}">Logout</a>
    <aside class="nav">
       <div class="burger">
          <span class="line"></span>

@@ -1,68 +1,63 @@
-@extends('layout.master')
-
-@section('title')
-Login
-@stop
-
+@extends('layouts.app')
 @section('content')
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+               
+            </a>
+        </x-slot>
 
-<div id="container">
-    <div id="left">
-        <!-- Image -->
-    </div>
-    <div id="right">
-        <h1 class="login" id="client_login"><b>LOGIN</b></h1><br>
+        <!-- Session Status -->
         @if(session()->has('message'))
             <p class="alert alert-info">
                 {{ session()->get('message') }}
             </p>
         @endif
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
         <form method="POST" action="{{ route('login') }}">
-            {{ csrf_field() }}
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <input type="email" name="email" class="form-control" required autofocus placeholder="Enter Email" value="{{ old('email', null) }}">
-                @if($errors->has('email'))
-                    <p class="help-block">
-                        {{ $errors->first('email') }}
-                    </p>
-                @endif
+            @csrf
+
+            <!-- Email Address -->
+            <div>
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <input type="password" name="password" class="form-control" required placeholder="Enter Password">
-                @if($errors->has('password'))
-                    <p class="help-block">
-                        {{ $errors->first('password') }}
-                    </p>
-                @endif
+
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="current-password" />
             </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label><input type="checkbox" name="remember">Remember me</label>
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">
-                       Login
-                    </button>
-                </div>
+
+            <!-- Remember Me -->
+            <div class="block mt-4">
+                <label for="remember_me" class="inline-flex items-center">
+                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                </label>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+
+                <x-button class="ml-3">
+                    {{ __('Login') }}
+                </x-button>
             </div>
         </form>
-        <button class="client-info" type="submit"  id="register_submit" class="submitbtn"><a href="{{route('register')}}">Register</a></button>
-                
-    </div>
-</div>
-
-@stop
-@section('scripts')
-<script>
-    $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
+    </x-auth-card>
+</x-guest-layout>
 @endsection
-

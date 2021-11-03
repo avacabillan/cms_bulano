@@ -1,3 +1,7 @@
+@section('title')
+    Client Dash
+@endsection 
+
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard for Client') }}
@@ -72,7 +76,7 @@
             <span class="bi bi-chevron-down ml-1 mb-2 small"></span>
           </button>
           <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="logout-dropdown">
-            <a class="dropdown-item" href="#">Logout</a>
+          <a class="text-dark" href="{{route('logout')}}">Logout</a>
             <a class="dropdown-item" href="#">Settings</a>
           </div>
         </div>

@@ -19,8 +19,8 @@ class CreateClientsTable extends Migration
             $table->string('email');
             $table->string('contact_number');
             $table->string('ocn');
-            $table->foreignId('assoc_id');
-            $table->foreignId('mode_of_payment_id');
+            $table->foreignId('assoc_id')->constrained();
+            $table->foreignId('mode_of_payment_id')->constrained();
             $table->timestamps();
 
         });

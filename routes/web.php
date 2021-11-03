@@ -8,6 +8,8 @@ use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminAssocController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredClientController;
 use App\Http\Livewire\Dropdown;
 
@@ -22,20 +24,30 @@ use App\Http\Livewire\Dropdown;
 |
 */
 
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::group(['middleware' => ['auth']], function() { 
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
 Route::get('/', function () {
     return view('auth.login');
-});
+})->middleware('login');
 
-Route::get('/dashboard', function () {
-    return view('pages.admin.dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('pages.admin.dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
+
 
 require __DIR__.'/auth.php';
 
 Auth::routes();
 
 // Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
-// Route::get('/home', [LoginController::class, 'login'])->name('login');
+// Route::get('/dashboard', [LoginController::class, 'login'])->middleware(['auth'])->name('dashboard');
 
 
 
@@ -47,7 +59,7 @@ Auth::routes();
 Route::view('/about','pages.admin.about')->name('about');
 Route::view('/services','pages.admin.services')->name('services');
 // Route::view('/login','pages.admin.login')->name('login');
-Route::view('/dashboard','pages.admin.dashboard')->name('dashboard');
+// Route::view('/dashboard','pages.admin.dashboard')->name('dashboard');
 Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 
 
@@ -64,18 +76,22 @@ Route::get('/associate/Profile/{id}',[AdminAssocController:: class, 'show'])->na
 Route::get('/updateassociate',[AdminAssocController:: class, 'update'])->name('update');
 
 // Registration routes
-// Route::get('/register',[RegisteredClientController:: class, 'register'])->name('register');
-Route::get('/storeRequest',[RegisteredClientController:: class, 'store'])->name('storeRequest');
+// Route::get('/register',[RegisteredUserController:: class, 'create'])->name('register');
+// Route::get('/register',[RegisteredUserController:: class, 'store'])->name('create-register');
+
+// Route::get('/storeRequest',[RegisteredClientController:: class, 'store'])->name('storeRequest');
 Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requesters');
-Route::get('/request/edit{id}',[RegisteredClientController:: class, 'edit'])->name('request-edit');
-Route::get('/status-update/{id}',[RegisteredClientController:: class, 'update'])->name('status-update');
+Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
+Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');
+Route::get('/request/reject/{id}',[RegisteredClientController:: class, 'destroy'])->name('request-reject');
+Route::get('/status-update/{id}',[RegisteredClientController:: class, 'approve'])->name('update-request');
 
 
 
 /*---------------------- ASSOCIATES VIEW --------------*/
 
-Route::view('/associates_login','pages.associate.associates_login')->name('associates_login');
-Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_dashboard');
+// Route::view('/associates_login','pages.associate.associates_login')->name('associates_login');
+// Route::view('/assoc_dashboard','pages.associate.assoc_dashboard')->name('assoc_dashboard');
 
 
 /*---------------------- CLIENTS VIEW --------------*/
@@ -99,7 +115,7 @@ Route::view('/associate-message','pages.associate.message')->name('associate-mes
 
 
 
-Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name('editForm');
+// Route::get('edit-clientForm', [Assoc_ClientController::class, 'editForm'])->name('editForm');
 
 
 /*---------------------- ASSOCIATE ROUTE CLIENTS --------------*/

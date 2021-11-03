@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Models\Requester;
 use App\Models\User;
+use App\Models\Role;
 use File;
 class RegisteredClientController extends Controller
 {
@@ -34,11 +35,11 @@ class RegisteredClientController extends Controller
     }
 
     
-    public function create()
-    {
-        $roles = Role::all()->pluck('title', 'id');
+    public function create($id)
+    {   $user = User::find($id);
+        $roles = Role::all()->pluck('description', 'id');
 
-        return view('admin.users.create', compact('roles'));
+        return view('pages.admin.request_edit', compact('roles', 'user'));
     }
 
  
@@ -83,22 +84,42 @@ class RegisteredClientController extends Controller
         //
     }
 
-    public function update(Request $request, User $user)
-    {
-        $approved = $user->approved;
+    // public function update(Request $request, User $user)
+    // {
+    //     $approved = $user->approved;
 
-        $user->update($request->all());
+    //     $user->update($request->all());
        
 
-        if ($approved == 0 && $user->approved == 1) {
-            $user->notify(new UserApprovedNotification());
-        }
+    //     if ($approved == 0 && $user->approved == 1) {
+    //         $user->notify(new UserApprovedNotification());
+    //     }
 
-        return redirect()->route('pages.admin.requestee');
-    }
+    //     return 'Request Aproved';
+    // }
 
     public function destroy($id)
     {
-        //
+        $request = User::find($id);
+        $request->delete();
+
+         return redirect()->back()->with('message', 'Registration request rejected!');
+    }
+    public function approve($id){
+        $user = User::find($id);
+        if($user->approved==False){
+            $user->approved=1;
+        }else{
+            $user->approved=0;
+        }
+        $user->save();
+        // if ($approved == 0 && $user->approved == 1) {
+        //     $user->notify(new UserApprovedNotification());
+        // }
+        return redirect()->back();
+    }
+    public function roleUpdate($id){
+        $user = User::find($id);
+        
     }
 }

@@ -5,15 +5,12 @@
 @endsection
 
 @section('content')
+@include('shared.sidebar')
     
-<<div class="siderbar_main toggled"> 
+<div class="siderbar_main toggled"> 
 
   <div class="page-content">
-  @if(session()->has('message'))
-      <p class="alert alert-info">
-          {{session()->get('message')}}
-      </p>
-  @endif
+
     <div class="container mt-5">
 
         <table  id="assoc-list" class="table table-bordered table-striped"  style="width:100% ">
@@ -25,7 +22,7 @@
               <th class="Client-th text-dark text-center">Email</th>
               <th class="Client-th text-dark text-center">Contact Number</th>
               <th class="Client-th text-dark text-center">Image</th>
-              <th class="Client-th text-dark text-center">Status</th>
+              <th class="Client-th text-dark text-center">Approved</th>
               <th class="Client-th text-dark text-center">Action</th>  
 
             </tr>
@@ -40,10 +37,18 @@
                         <td>{{$requester->email}}</td>
                         <td>{{$requester->contact_no}}</td>
                         <td><img src="{{asset('public/cor_img'.$requester->cor_img)}}" alt="Image" style="max-width: 180px; margin-top:5px";></td>
-                        <td>@if($requester->status ==0) Reject @else Approved @endif</td>
-                        <td><a href="{{ route('status-update', $requester->id)}}">@if($requester->status ==1) Reject @else Approved @endif</a></td>
+                        <td class="text-dark"> 
+                       
+                           @if($requester->approved===0)
+                            <a class="btn btn-danger btn-sm" href="{{route('update-request', $requester ->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Accept Request">Pending</a>
+                           @elseif($requester->approved===1)
+                           <a class="btn btn-success btn-sm" href="{{route('update-request', $requester ->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Delete Request" >Accepted</a>
+                            @endif
+                           
+                        
+                        </td>
                         <td>
-                          <a class="btn btn-xs btn-info" href="{{ route('request-edit', $requester->id) }}">
+                          <a class="btn btn-sm btn-info" href="{{ route('role-edit', $requester->id) }}">
                             Edit
                           </a>
                         </td>

@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\AdminNewUserNotification;
 
 class RegisterController extends Controller
 {
@@ -53,6 +54,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact_no' => ['required', 'string', 'max:14' ],
+            'cor_img' => ['required', 'string','max:255'],
+            'role_id' => ['required', 'string','max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -69,18 +72,19 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'contact_no' => $data['contact_no'],
-            'cor_img' => $data['cor_image'],
+            'cor_img' => $data['cor_img'],
             'status'=>false,
             'password' => Hash::make($data['password']),
         ]);
+        $user->attachRole($data['role_id']);
 
-        $admins = User::whereHas('roles', function($q) {
-            $q->where('display_name', 'Admin');
-        })->get();
+        // $admins = User::whereHas('roles', function($q) {
+        //     $q->where('display_name', 'Admin');
+        // })->get();
 
-        foreach ($admins as $admin){
-            $admin->notify(new AdminNewUserNotification($user));
-        }
-        return $user;
+        // foreach ($admins as $admin){
+        //     $admin->notify(new AdminNewUserNotification($user));
+        // }
+        // return $user;
     }
 }
