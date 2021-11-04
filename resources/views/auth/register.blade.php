@@ -1,11 +1,12 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
 
+@extends('layout.master')
+<div id="container">
+    <div id="left">
+        <!-- Image -->
+    </div>
+    <div id="right">
+        <h1 class="login" id="client_login"><b>REGISTER</b></h1><br>
+    
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <a href="{{ route('login') }}">Back</a>
@@ -14,26 +15,26 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Name')" />
+                <x-label class="text-white" for="name" :value="__('Name')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
             <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Contact Number') }}</label>
+                    <label for="name" class="col-md-4 text-white col-form-label">{{ __('Contact Number') }}</label>
                     <div class="col-md-6">
                     <input  id="contact_no" type="text" class="form-control @error('contact_no') is-invalid @enderror" name="contact_no" required autocomplete="contact_no">
                 </div>
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                <x-label class="text-white" for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label class="text-white" for="password" :value="__('Password')" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
@@ -43,7 +44,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label class="text-white" for="password_confirmation" :value="__('Confirm Password')" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
@@ -52,7 +53,7 @@
 
                         <!-- Select Option Rol type -->
                         <div class="mt-4">
-                            <x-label for="role_id" value="{{ __('Register as:') }}" />
+                            <x-label class="text-white" for="role_id" value="{{ __('Register as:') }}" />
                             <select name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                                 <option value="client">Client</option>
                                 <option value="admin">Admin</option>
@@ -76,6 +77,6 @@
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+        
+</div>      
 
