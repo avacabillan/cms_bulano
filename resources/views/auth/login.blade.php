@@ -17,7 +17,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="text-white" :errors="$errors" />
 
-        <h1 class="login" id="client_login"><b>LOGIN</b></h1><br>
+        <h1 class="login text-white text-center mt-3" id="client_login"><b>LOGIN</b></h1><br>
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <!-- Email Address -->
