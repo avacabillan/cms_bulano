@@ -7,7 +7,7 @@
 
 @section('content')
 @include('shared.navbar')
-@include('shared.sidebar')
+@include('pages.admin.sidebar')
 <div class="siderbar_main toggled">
 
   <div class="page-content mt-5"style="margin: top 160px;">

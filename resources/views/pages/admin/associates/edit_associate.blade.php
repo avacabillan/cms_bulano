@@ -14,7 +14,7 @@
           Birthdate<input type="date" value="{{$associate->birth_date}}" class="form-control" name="assoc_birthdate" required>
           Address<input type="text" value="{{$associate->address}}" class="form-control" name="assoc_address" required>
           SSS Number<input type="number" value="{{$associate->sss_no}}" class="form-control" name="assoc_sss" required>
-          -->
+          
           <input type="submit" value="Update" class=" mt-2 btn btn-success">
         </div>
         

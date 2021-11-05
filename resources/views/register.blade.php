@@ -11,6 +11,7 @@
     </div>
     <div id="right">
         <h1 class="login pt-4" id="login"><b>CREATE ACCOUNT</b></h1><br>
+
         <form action="{{route('storeRequest')}}" method="post">
         @csrf
         @method('GET')

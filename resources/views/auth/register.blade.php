@@ -9,7 +9,7 @@
         <h1 class="login text-white text-center mt-3"><b>REGISTER</b></h1><br>
     
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="alert alert-primary text-dark"  role="alert" :errors="$errors" />
+        <x-auth-validation-errors class="alert alert-info text-dark" :errors="$errors" /> 
         <form method="POST" action="{{ route('register') }}">
             @csrf
             

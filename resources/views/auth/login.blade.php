@@ -8,16 +8,18 @@
     </div>
     <div  id="right">
         <!-- Session Status -->
-        @if(session()->has('message'))
+        <!-- @if(session()->has('message'))
             <p class="alert alert-info text-dark">
                 {{ session()->get('message') }}
             </p>
-        @endif
+        @endif -->
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="text-white" :errors="$errors" />
 
-        <h1 class="login text-white text-center mt-3" id="client_login"><b>LOGIN</b></h1><br>
+        <h1 class="login  text-white text-center mt-3" id="client_login"><b>LOGIN</b></h1><br>
+        
+         <!-- Validation Errors -->
+    
+        <x-auth-validation-errors class="alert alert-info text-dark" :errors="$errors" /> 
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <!-- Email Address -->

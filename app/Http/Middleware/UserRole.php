@@ -17,16 +17,16 @@ class UserRole
      */
     public function handle(Request $request, Closure $next, string $role)
     {
-        if($role =='employee' && Auth::user()->role !='admin'){
-            abort(code:403);
-        }
-        if($role =='employee' && Auth::user()->role !='associate'){
-            abort(code:403);
-        }
-        if($role =='student' && Auth::user()->role !='client'){
-            abort(code:403);
-        }
+        // if($role =='employee' && Auth::user()->role !='admin'){
+        //     abort(code:403);
+        // }
+        // if($role =='employee' && Auth::user()->role !='associate'){
+        //     abort(code:403);
+        // }
+        // if($role =='student' && Auth::user()->role !='client'){
+        //     abort(code:403);
+        // }
       
-        return $next($request);
+        // return $next($request);
     }
 }

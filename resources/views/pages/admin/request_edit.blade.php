@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+@include('pages.admin.sidebar')
 <div class="content ">
 
     <div class="row">

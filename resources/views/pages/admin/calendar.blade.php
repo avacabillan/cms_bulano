@@ -5,7 +5,7 @@
 @stop
  
 @section('content')
-
+@include('pages.admin.sidebar')
 <div class="calendar_container">
         <div class="date_block">
             <div class="digit">
