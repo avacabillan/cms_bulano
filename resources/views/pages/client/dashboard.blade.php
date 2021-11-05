@@ -67,41 +67,7 @@
       </div>
 
       <div class="col-md-6">
-        <h3 class="table_heading text-dark mb-3">Random List</h3>
-        <table id="example" class="table table-striped" style="width:100%">
-          <thead>
-            <tr>
-            <th class="text-dark">Name</th>
-            <th class="text-dark">Age</th>
-            <th class="text-dark">Birthday</th>
-            <th class="text-dark">Position</th>
-            <th class="text-dark">Gear</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <td>Alfonso Escobar</td>
-            <td>36 yrs. old</td>
-            <td>December 21, 1987</td>
-            <td>Videographer/Photographer</td>
-            <td>DSLR Canon</td>
-            </tr>
-            <tr>
-            <td>Michael Talavera</td>
-            <td>27 yrs. old</td>
-            <td>December 18, 1980</td>
-            <td>Photographer</td>
-            <td>DSLR Nikkon</td>
-            </tr>
-            <tr>
-            <td>Cristina Baltazar</td>
-            <td>36 yrs. old</td>
-            <td>December 21, 1987</td>
-            <td>Photographer</td>
-            <td>DSLR Nikkon</td>
-            </tr>
-          </tbody>
-        </table> 
+        
       </div>
     </div>
 
