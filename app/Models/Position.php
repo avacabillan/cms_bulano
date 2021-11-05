@@ -11,7 +11,7 @@ class Position extends Model
     protected $table ='positions';
 
     
-    public function Associate(){
+    public function associate(){
         return $this->hasMany(Associate:: class,'position_id');
     }
 }

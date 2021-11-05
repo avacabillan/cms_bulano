@@ -34,7 +34,7 @@
             <!-- REGISTERED GUEST -->
             <li>
               <a href="{{route('requesters')}}">
-                <i class="fa fa-user"></i><span>Registered Guest</span>
+                <i class="fa fa-user"></i><span>Registered Guest</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
             </li>
             <!-- ASSOCIATES -->
@@ -45,13 +45,13 @@
             </li>
             <!-- CLIENTS -->
             <li>
-              <a href="{{route('clients.list')}}">
+              <a href="{{route('admin-clients-list')}}">
                 <i class="fa fa-globe"></i><span>Clients</span>
               </a>
             </li>
             <!-- ARCHIVE -->
             <li>
-              <a href="{{route('archive-list')}}">
+              <a href="{{route('admin-archive-list')}}">
                 <i class="fa fa-globe"></i><span>Archive</span>
               </a>
             </li>

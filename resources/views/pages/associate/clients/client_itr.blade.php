@@ -3,10 +3,13 @@
     
 @endsection 
 @section('content')
-
-<div class="page-content "style="margin: top 160px;">
-    <div class="container mt-5" style="height:50%">
-    
+@include('shared.navbar')
+@include('pages.associate.sidebar')
+<div class="siderbar_main toggled">
+ 
+<div class="page-content pt-5 mt-5" style="margin: top 180px;">
+  
+  <div class="container mt-3" style="height:50%">
         <table id="files-list" class="table table-bordered"  style="width:100% ">
                 <thead >
                     <tr>
@@ -41,6 +44,7 @@
                 </tbody>
               
             </table>
+    </div>
     </div>
 </div>
 @stop

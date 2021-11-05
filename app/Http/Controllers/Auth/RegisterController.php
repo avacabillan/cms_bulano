@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact_no' => ['required', 'string', 'max:14' ],
             'cor_img' => ['required', 'string','max:255'],
-            'role_id' => ['required', 'string','max:255'],
+           
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'status'=>false,
             'password' => Hash::make($data['password']),
         ]);
-        $user->attachRole($data['role_id']);
+        $user->attachRole('client');
 
         // $admins = User::whereHas('roles', function($q) {
         //     $q->where('display_name', 'Admin');

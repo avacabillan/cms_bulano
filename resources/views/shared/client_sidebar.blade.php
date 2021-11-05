@@ -12,8 +12,8 @@
             <img class="img-responsive img-rounded" src="images/bulano.png" alt="User picture">
           </div>
           <div class="user-info">
-            <span class="user-name text-white"><b>Jovelyn Gloria</b></span>
-            <span class="user-role">Associate</span>
+            <span class="user-name text-white">Irish Bulano</span>
+            <span class="user-role">Head Administrator</span>
           </div>
         </div>
         <!-- END OF SIDEBAR HEADER -->
@@ -32,25 +32,14 @@
               </a>
             </li>
             <!-- REGISTERED GUEST -->
-            <!-- <li>
-              <a href="{{route('requesters')}}">
-                <i class="fa fa-user"></i><span>Registered Guest</span>
-              </a>
-            </li> -->
+          
             <!-- ASSOCIATES -->
-            <!-- <li>
-              <a href="{{route('associates_list')}}">
-                <i class="fa fa-globe"></i><span>Associates</span>
-              </a>
-            </li> -->
-            <!-- CLIENTS -->
-            
-            <!-- ARCHIVE -->
             <li>
-              <a href="#">
-                <i class="fa fa-user"></i><span>My Associate</span>
+              <a href="{{route('associates_list')}}">
+                <i class="fa fa-globe"></i><span>My Associate</span>
               </a>
             </li>
+           
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
             

@@ -6,8 +6,8 @@
 @endsection
 
 @section('content')
-@include('pages.associate.sidebar')
-
+@include('shared.navbar')
+@include('shared.sidebar')
 <div class="siderbar_main toggled">
 
   <div class="page-content mt-5"style="margin: top 160px;">
@@ -37,7 +37,7 @@
                 <td>{{ date_format($onlySoftDeleteds->deleted_at, 'jS M Y') }}</td>
                 <td>
                 
-                   <a class="btn btn-info text-dark" href="{{ route('restore-file', $onlySoftDeleteds->id) }}" title="restore file"> Restore</a>
+                   <a class="btn btn-info text-dark" href="{{ route('restore', $onlySoftDeleteds->id) }}" title="restore file"> Restore</a>
                 
                 </td>
             </tr>

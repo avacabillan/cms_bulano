@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('shared.sidebar')
+@include('pages.associate.sidebar')
 
 <div class="siderbar_main toggled">
   <button class="btn btn-danger d-none mt-3 mb-2" id="deleteallClients" style="float: right;">Delete All</button>

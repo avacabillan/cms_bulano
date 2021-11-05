@@ -36,7 +36,7 @@
                         <td>{{$requester->name}}</td>
                         <td>{{$requester->email}}</td>
                         <td>{{$requester->contact_no}}</td>
-                        <td><img src="{{asset('public/cor_img'.$requester->cor_img)}}" alt="Image" style="max-width: 180px; margin-top:5px";></td>
+                        <td><a href=""><img src="images/COR.png" alt="Image" style="max-width: 40px; margin-top:5px;"></td></a>
                         <td class="text-dark"> 
                        
                            @if($requester->approved===0)

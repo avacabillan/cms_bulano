@@ -16,9 +16,9 @@ class TaxReminder extends Mailable implements ShouldQueue
   
     public function __construct($client)
     {   
-        $clients =DB::table('clients')->pluck('email');
+        
         $this->client = $client;
-        $this->to($clients);
+        $this->to($client->email);
         
         // $this->subject('This is Trial!');
         

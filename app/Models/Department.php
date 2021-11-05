@@ -11,7 +11,7 @@ class Department extends Model
     protected $table ='departments';
 
     
-    public function Associate(){
+    public function associate(){
         return $this->hasMany(Associate:: class, 'department_id');
     } 
 }

@@ -159,6 +159,7 @@ class Assoc_ClientController extends Controller
         ->with( 'taxTypes', $taxTypes)
         ->with('taxFiles', $taxFiles)
         ;
+     
     }
     
   
@@ -189,7 +190,7 @@ class Assoc_ClientController extends Controller
     {
         $client = Client::find($id);
         $modes =  Client::find($id)->modeofpayment;
-        $tins =  Client::find($id)->tin;
+        $tins =  Client::find($id)->tin->get();
         $businesses = Client::find($id)->business;
         $registeredAddress = Client::find($id)->registeredAddress;
         return view('pages.associate.clients.edit_client')
@@ -199,6 +200,7 @@ class Assoc_ClientController extends Controller
         ->with('businesses',$businesses)
         ->with( 'registeredAddress', $registeredAddress)
         ;
+        
        
 
     }

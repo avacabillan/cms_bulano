@@ -6,7 +6,7 @@
 
 @section('content')
 
-@include('shared.sidebar')
+@include('pages.associate.sidebar')
 <div class="siderbar_main toggled">
 <button class="btn btn-danger d-none mt-5 pt-5 mb-2" id="deleteallClients" style="float: right;">Delete All</button>
         <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addReminder" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Reminder</button>

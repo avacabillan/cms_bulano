@@ -9,6 +9,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminAssocController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin_ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredClientController;
 use App\Http\Livewire\Dropdown;
@@ -72,7 +73,7 @@ Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
 
 Route::get('/associates_list',[AdminAssocController:: class, 'index'])->name('associates_list');
 Route::get('/add_associate',[AdminAssocController:: class, 'store'])->name('add_associate');
-Route::get('/associate/Profile/{id}',[AdminAssocController:: class, 'show'])->name('assoc_profile');
+Route::get('/associate-profile/{id}',[AdminAssocController:: class, 'show'])->name('assoc-profile');
 Route::get('/updateassociate',[AdminAssocController:: class, 'update'])->name('update');
 
 // Registration routes
@@ -129,9 +130,22 @@ Route::get('/createReminder', [ReminderController::class, 'reminderNew'])->name(
 Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
 Route::put('/update/client/{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
 Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
-Route::get('/clients/list/profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
+Route::get('/client-profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
 Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
-Route::get('/clients/list', [Assoc_ClientController::class, 'index'])->name('clients.list'); //index
+Route::get('/clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
+
+/*---------------------- ADMIN ROUTE CLIENTS --------------*/
+Route::get('/clients/list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
+Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
+
+
+
+
+
+
+
+
+
 
 //test
 // Route::post('/test', [TestController::class, 'showClientProfile']);
@@ -142,6 +156,6 @@ Route::resource('upload', FileController::class);
 Route::get('/showTaxVat/{id}', [FileController::class,'showTaxVat'])->name('showVat');
 Route::get('/showTaxItr/{id}', [FileController::class,'showTaxItr'])->name('showTaxItr');
 Route::get('/showTaxPay/{id}', [FileController::class,'showTaxPay'])->name('showTaxPay');
-Route::get('/restore/{id}', [FileController::class,'restore'])->name('restore');
+Route::get('/restore-file/{id}', [FileController::class,'restore'])->name('restore-file');
 Route::get('/archive/{id}', [FileController::class,'archive'])->name('archive');
 Route::get('/archivelist', [FileController::class,'getArchive'])->name('archive-list');

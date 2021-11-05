@@ -38,8 +38,9 @@
                         
                         
                         <td>
-                         <a  class="btn btn-success btn-sm "  href="{{route('assoc_profile',$associate->id)}}"><i class="fas fa-eye"></a></i>
-                         <a  class="btn btn-success btn-sm "><i class="fas fa-eye"></a></i>
+                        <a  class="btn btn-success btn-sm viewbtn" href="{{route('assoc-profile',$associate->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Profile"><i class="fas fa-eye"></a></i>
+                        
+                         
                         </td>                                               
                     </tr>
                 @endforeach

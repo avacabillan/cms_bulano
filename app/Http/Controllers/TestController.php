@@ -96,8 +96,12 @@ class TestController extends Controller
         // ->get();
 
         // dd($reminders);
-        $password = Hash::make('bulano');
-        return ($password);
+        // $password = Hash::make('bulano');
+        // return ($password);
+        $clients= DB::table('clients')
+        // ->where('approved','=','0')
+        ->count();
+        return $clients;
     }
 
     

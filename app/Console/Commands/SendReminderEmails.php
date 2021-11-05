@@ -54,14 +54,27 @@ class SendReminderEmails extends Command
         //     ->where('email', 'avacabillan08@gmail.com')
         //     // ->orderBy('client_id')
         //     ->get();
+        
+        // $clients =DB::table('clients')->pluck('email');
+       
+        
         // $clients = Client::query()
-        // ->where('mode_of_payment_id','2')
+        // ->where('id', '=', '3')
         // ->select('email')
         // ->get();
-        // $clients =DB::table('clients')->pluck('email');
-        // $clients =Client::all();
-        // // dd($clients);
-        // // Mail::to($clients->email)->send(new TaxReminder($clients));
+
+         // $clients =Client::find(3); to test
+        $clients = Client::query()
+        ->where('assoc_id','3')
+        ->get();
+
+        foreach($clients as $client){
+            Mail::send(new TaxReminder($client));
+            // dd($client);
+        }
+        
+
+        
 
         // foreach($clients as $client){
         //     Mail::send(new TaxReminder($client));

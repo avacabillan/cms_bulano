@@ -1,4 +1,4 @@
-Bianca Medez Cortez
+
 @extends('layout.master')
 
 @section('title')
@@ -8,8 +8,8 @@ Bianca Medez Cortez
 @section('content')
 
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-    <div class="card p-4">
-        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="images/bianca.jpg" height="100" width="100" /></button> <span class="name mt-3">{{$associate->name}}</span> <span class="idd">{{$associate->email}}</span><br><br>
+    <div class="card p-4 " >
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="images/assocprof.jpg" height="100" width="100" /></button> <span class="name mt-3">{{$associate->name}}</span> <span class="idd">{{$associate->email}}</span><br><br>
             
             
             <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#editAssoc" href="#"><i class="fas fa-edit"></a></i>
@@ -21,8 +21,8 @@ Bianca Medez Cortez
 
             <div class="text mt-3"> <span>Department</span> </div>
 
-            <div class="text mt-3"> <span>Department : {{$associate->department_id}} </span> </div>
-            <div class="text mt-3"> <span>Position : {{$associate->position_id}} </span> </div>
+            <div class="text mt-3"> <span>Department : {{$associate->department->first()->department_name}} </span> </div>
+            <div class="text mt-3"> <span>Position : {{$associate->position->first()->position_name}} </span> </div>
 
             
         </div>

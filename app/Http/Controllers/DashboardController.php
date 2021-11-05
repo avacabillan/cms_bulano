@@ -15,7 +15,20 @@ class DashboardController extends Controller
             return view ('pages.client.dashboard');
         }
     }
+    public function countClient(){
+        $clients= DB::table('users')
+        // ->where('approved','=','0')
+        ->count();
+        // $request= DB::table('users')
+        // ->where('approved','=','0')
+        // ->count();
+        return view ('pages.associate.sidebar')->with(compact('clients', $clients));
+    }
     public function countRequest(){
-        
+       
+        $request= DB::table('users')
+        ->where('approved','=','0')
+        ->count();
+        return view ('shared.sidebar')->with( 'request', $request);
     }
 }

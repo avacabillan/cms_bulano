@@ -14,21 +14,7 @@
           Birthdate<input type="date" value="{{$associate->birth_date}}" class="form-control" name="assoc_birthdate" required>
           Address<input type="text" value="{{$associate->address}}" class="form-control" name="assoc_address" required>
           SSS Number<input type="number" value="{{$associate->sss_no}}" class="form-control" name="assoc_sss" required>
-          <label class="form-label"><b>Department</b></label>
-                  <select name="department" class="form-control">
-                  <option value="">--Select Department--</option>
-                      @foreach($department as $dept)
-                        <option value="{{$dept->id}}">{{$dept->department_name}}</option>
-                      @endforeach
-                  </select>
-       
-                  <label class="form-label"><b>Position</b></label>
-                  <select name="position" class="form-control">
-                  <option value="">--Select Position--</option>
-                      @foreach($position as $postn)
-                        <option value="{{$postn->id}}">{{$postn->position_name}}</option>
-                      @endforeach
-                  </select>
+          -->
           <input type="submit" value="Update" class=" mt-2 btn btn-success">
         </div>
         

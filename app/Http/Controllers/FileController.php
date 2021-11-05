@@ -79,12 +79,10 @@ class FileController extends Controller
     public function restore($id) 
     {
         $restores = TaxFile::where('id', $id)->withTrashed()->first();
-
         $restores->restore();
 
-        return redirect()->route('pages.associate.clients.clients_list')
-            ->with('restores', $restores );
-    
+        return redirect()->back();
+           
     }
     public function getArchive() 
 
@@ -123,7 +121,7 @@ class FileController extends Controller
     public function archive($id)
     {
         $delete = TaxFile::find($id)->delete();
-       return 'File save to archive succesfully';
+        return redirect()->back();
     }
 
 

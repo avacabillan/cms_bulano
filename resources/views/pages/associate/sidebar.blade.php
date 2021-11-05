@@ -38,23 +38,19 @@
               </a>
             </li> -->
             <!-- ASSOCIATES -->
-            <li>
-              <a href="{{route('associates_list')}}">
-                <i class="fa fa-globe"></i><span>Associates</span>
-              </a>
-            </li>
+            
             <!-- CLIENTS -->
             <li>
-              <a href="{{route('clients.list')}}">
-                <i class="fa fa-globe"></i><span>Clients</span>
+              <a href="{{route('assoc-clients-list')}}">
+                <i class="fa fa-globe"></i><span>Clients</span><span class="badge pull-right bg-danger me-3 mt-2"></span></a></li>
               </a>
             </li>
             <!-- ARCHIVE -->
-            <!-- <li>
+            <li>
               <a href="{{route('archive-list')}}">
                 <i class="fa fa-globe"></i><span>Archive</span>
               </a>
-            </li> -->
+            </li>
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
             
