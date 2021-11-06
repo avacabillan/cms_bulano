@@ -12,7 +12,7 @@
             <img class="img-responsive img-rounded" src="images/bulano.png" alt="User picture">
           </div>
           <div class="user-info">
-            <span class="user-name text-white"><b>Jovelyn Gloria</b></span>
+            <span class="user-name text-white"><b>Terisy</b></span>
             <span class="user-role">Client</span>
           </div>
         </div>
@@ -54,10 +54,10 @@
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
             
-            <li><a href="{{route('about')}}"><i class="far fa-envelope"></i>Message<span class="badge pull-right bg-danger me-3 mt-2">3</span></a></li>
+            <li><a href="{{route('about')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">2</span></a></li>
             <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
             <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
-            <li><a href=""><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
+            <li><a href=""><i class="fa fa-folder"></i><span>Contacts</span></a></li>
           </ul>
           
         </div>
@@ -83,3 +83,5 @@
 
   </div>   
 </div>
+
+

@@ -5,13 +5,17 @@
 @endsection
 
 @section('content')
+@include('shared.navbar')
 @include('pages.admin.sidebar')
+
     
 <div class="siderbar_main toggled"> 
-
   <div class="page-content">
 
-    <div class="container mt-5">
+    <div class="container mt-5 pt-5">
+      <div>
+        <h2>List of <strong>Requestee</strong></h2><hr>
+      </div>
 
         <table  id="assoc-list" class="table table-bordered table-striped"  style="width:100% ">
           <thead>

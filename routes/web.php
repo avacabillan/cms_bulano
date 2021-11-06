@@ -116,4 +116,8 @@ Route::middleware(['logout'])->group(function(){
     
     Route::get('/try',[TestController::class, 'trial']);
 
+    //try
+    Route::view('/duedate','pages.associate.duedateform')->name('duedate'); 
+
+
 });

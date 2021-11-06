@@ -10,7 +10,7 @@
     <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
     <div class="card-block text-center text-white">
       <div class="text-center">
-        <img src="images/bianca.jpg" class="rounded" alt="User-Profile-Image">
+        <img src="images/bulano.png" class="rounded" alt="User-Profile-Image">
       </div>
       <br> 
         <h4 class="f-w-600">{{$client->client_name}}</h4>
