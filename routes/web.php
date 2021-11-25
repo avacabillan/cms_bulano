@@ -81,6 +81,8 @@ Route::middleware(['logout'])->group(function(){
 
     Route::view('/client_message','pages.client.client_message')->name('client_message');
     Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
+    Route::view('/client_profile','pages.client.myprofile')->name('client_profile'); 
+
 
 
     /*---------------------- ASSOCIATE REMINDER CLIENTS --------------*/

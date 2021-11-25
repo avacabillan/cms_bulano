@@ -10,7 +10,7 @@
 <div class="siderbar_main toggled">
   <div class="page-content">
 
-    <x-slot name="header pt-5">
+    <x-slot name="header">
       <h2 class="font-semibold text-xl leading-tight">
         {{ __('Dashboard for Client') }}
       </h2>

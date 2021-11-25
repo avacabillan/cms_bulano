@@ -47,6 +47,11 @@
             
             <!-- ARCHIVE -->
             <li>
+              <a href="{{route('client_profile')}}">
+                <i class="fa fa-user"></i><span>Profile</span>
+              </a>
+            </li>
+            <li>
               <a href="#">
                 <i class="fa fa-user"></i><span>My Associate</span>
               </a>
@@ -73,7 +78,7 @@
           <span class="badge-sonar"></span>
         </a>
         <a href="{{'logout'}}">
-          <i class="fa fa-power-off"></i>
+          <i class="fal fa-sign-out-alt"></i>
         </a>
       </div>
       <!-- END OF FOOTER -->
