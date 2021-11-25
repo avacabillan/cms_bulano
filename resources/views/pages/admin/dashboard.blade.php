@@ -103,7 +103,6 @@
         </div>
     </div>
     <!----- END OF ROW ----->
-        @include('pages.admin.messages.compose')
   </div>  
 </div>
 

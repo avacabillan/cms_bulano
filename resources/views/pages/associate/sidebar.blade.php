@@ -73,7 +73,7 @@
           <span class="badge-sonar"></span>
         </a>
         <a href="{{'logout'}}">
-          <i class="fa fa-power-off"></i>
+          <i class="fal fa-sign-out-alt"></i>
         </a>
       </div>
       <!-- END OF FOOTER -->
