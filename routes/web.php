@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assoc_ClientController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\DemoEmailController;
-use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\FullCalendarReminderController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminAssocController;
@@ -44,7 +44,12 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
 })->name('logout');
-
+ //fullcalendar
+ Route::get('/fullcalendar',[FullCalendarReminderController::class, 'index'])->name('fullcalendar');
+ Route::post('fullcalendarAjax', [FullCalendarReminderController::class, 'ajax']);
+ // Route::post('/create-reminder',[FullCalendarReminderController::class, 'create'])->name('create-reminder');
+ // Route::post('/update-reminder',[FullCalendarReminderController::class, 'update'])->name('update-reminder');
+ // Route::post('/delete-reminder',[FullCalendarReminderController::class, 'delete'])->name('delete-reminder');
 Route::middleware(['logout'])->group(function(){
 
     
@@ -115,5 +120,7 @@ Route::middleware(['logout'])->group(function(){
     //test
     
     Route::get('/try',[TestController::class, 'trial']);
+
+   
 
 });

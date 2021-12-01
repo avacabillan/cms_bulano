@@ -1,18 +1,15 @@
-@extends('layout.master')
+@extends('layout.mastercalendar')
 
 @section('title')
-    Admin Dashboard
+    Full Calendar
 @stop
  
 @section('content')
-@include('pages.admin.sidebar')
-<div class="calendar_container">
-        <div class="date_block">
-            <div class="digit">
-                <p>19</p>
-            </div>
-            <div class="wording"><p>JUNE</p><p>2021</p></div>
-        </div>
-    </div>
-    
-    @stop
+
+<div class="container">
+    <h1>Laravel FullCalendar </h1>
+    <div id='calendar'></div>
+</div>
+@section('scripts')
+@stop
+@stop 

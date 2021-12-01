@@ -9,7 +9,9 @@ class Reminder extends Model
 {
     use HasFactory;
     protected $table = 'reminders';
-    protected  $guarded= [];
+     protected $fillable = [
+        'reminder', 'start', 'end'
+    ];
 
 
 
