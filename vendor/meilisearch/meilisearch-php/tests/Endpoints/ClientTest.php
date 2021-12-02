@@ -27,6 +27,14 @@ final class ClientTest extends TestCase
         $this->assertEmpty($response);
     }
 
+    public function testExceptionIsThrownOnGetRawIndexWhenIndexDoesNotExist(): void
+    {
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(404);
+
+        $this->client->getRawIndex('index');
+    }
+
     public function testCreateIndexWithOnlyUid(): void
     {
         $index = $this->client->createIndex('index');
@@ -96,6 +104,17 @@ final class ClientTest extends TestCase
         $this->assertNotInstanceOf(Indexes::class, $res[0]);
     }
 
+    public function testGetRawIndex(): void
+    {
+        $indexA = 'indexA';
+        $this->client->createIndex($indexA);
+
+        $res = $this->client->getRawIndex('indexA');
+
+        $this->assertIsArray($res);
+        $this->assertArrayHasKey('uid', $res);
+    }
+
     public function testUpdateIndex(): void
     {
         $this->client->createIndex('indexA');
@@ -155,7 +174,6 @@ final class ClientTest extends TestCase
         $client = new Client(self::HOST);
 
         $this->expectException(ApiException::class);
-        $this->expectExceptionMessage('You must have an authorization token');
 
         $client->deleteIndexIfExists('index');
     }
@@ -264,21 +282,8 @@ final class ClientTest extends TestCase
         $client = new Client(self::HOST);
 
         $this->expectException(ApiException::class);
-        $this->expectExceptionMessage('You must have an authorization token');
 
         $client->getOrCreateIndex('index');
-    }
-
-    public function testExceptionIsThrownWhenOverwritingPrimaryKeyUsingUpdateIndex(): void
-    {
-        $this->client->createIndex(
-            'indexB',
-            ['primaryKey' => 'objectId']
-        );
-
-        $this->expectException(ApiException::class);
-
-        $this->client->updateIndex('indexB', ['primaryKey' => 'objectID']);
     }
 
     public function testExceptionIsThrownWhenUpdateIndexUseANoneExistingIndex(): void

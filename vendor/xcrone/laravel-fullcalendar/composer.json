@@ -1,0 +1,29 @@
+{
+    "name": "xcrone/laravel-fullcalendar",
+    "description": "Laravel 8 Calendar",
+    "license": "MIT",
+    "authors": [{
+        "name": "xcrone",
+        "email": "48623158+xcrone@users.noreply.github.com"
+    }],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "^5.0|^6.0|^7.0|^8.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "XCrone\\LaravelFullcalendar": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "XCrone\\LaravelFullcalendar\\ServiceProvider"
+            ],
+            "aliases": {
+                "Calendar": "XCrone\\LaravelFullcalendar\\Facades\\Calendar"
+            }
+        }
+    },
+    "minimum-stability": "stable"
+}

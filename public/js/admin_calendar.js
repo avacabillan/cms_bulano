@@ -23,7 +23,8 @@ $(document).ready(function () {
                         selectable: true,
                         selectHelper: true,
                         select: function (start, end, allDay) {
-                            var title = prompt('Reminder Title:');
+                            var title = prompt('Reminder Title:'); //can also create modal using shown
+                            
                             if (title) {
                                 var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
                                 var end = $.fullCalendar.formatDate(end, "Y-MM-DD");

@@ -16,6 +16,7 @@ class CreateRemindersTable extends Migration
         Schema::create('reminders', function (Blueprint $table) {
             $table->id();
             $table->string('reminder');
+            $table->string('color');
             $table->date('start');
             $table->date('end');
             $table->timestamps();
