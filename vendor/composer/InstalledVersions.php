@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3e35e9d3e1da65dc8177d98d2b977e291ec375cc',
+    'reference' => 'd2d601da11eebff8a05f75089e9a25c37ffd0577',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -158,12 +158,12 @@ private static $installed = array (
     ),
     'fakerphp/faker' => 
     array (
-      'pretty_version' => 'v1.16.0',
-      'version' => '1.16.0.0',
+      'pretty_version' => 'v1.17.0',
+      'version' => '1.17.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '271d384d216e5e5c468a6b28feedf95d49f83b35',
+      'reference' => 'b85e9d44eae8c52cca7aa0939483611f7232b669',
     ),
     'fideloper/proxy' => 
     array (
@@ -203,12 +203,12 @@ private static $installed = array (
     ),
     'guzzlehttp/guzzle' => 
     array (
-      'pretty_version' => '7.4.0',
-      'version' => '7.4.0.0',
+      'pretty_version' => '7.4.1',
+      'version' => '7.4.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '868b3571a039f0ebc11ac8f344f4080babe2cb94',
+      'reference' => 'ee0a041b1760e6a53d2a39c8c34115adc2af2c79',
     ),
     'guzzlehttp/promises' => 
     array (
@@ -504,7 +504,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3e35e9d3e1da65dc8177d98d2b977e291ec375cc',
+      'reference' => 'd2d601da11eebff8a05f75089e9a25c37ffd0577',
     ),
     'laravel/sail' => 
     array (
@@ -589,21 +589,21 @@ private static $installed = array (
     ),
     'livewire/livewire' => 
     array (
-      'pretty_version' => 'v2.8.0',
-      'version' => '2.8.0.0',
+      'pretty_version' => 'v2.8.1',
+      'version' => '2.8.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'fc8c315babf8d42c2a25f207b3931b1bc8eb5e70',
+      'reference' => '0f846a93369109e445f0e5009741b1e19e6fa6f6',
     ),
     'maatwebsite/excel' => 
     array (
-      'pretty_version' => '3.1.33',
-      'version' => '3.1.33.0',
+      'pretty_version' => '3.1.34',
+      'version' => '3.1.34.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b2de5ba92c5c1ad9415f0eb7c72838fb3eaaa5b8',
+      'reference' => 'd7446f0e808d83be128835c4b403c9e4a65b20f3',
     ),
     'maennchen/zipstream-php' => 
     array (
@@ -690,12 +690,12 @@ private static $installed = array (
     ),
     'nesbot/carbon' => 
     array (
-      'pretty_version' => '2.54.0',
-      'version' => '2.54.0.0',
+      'pretty_version' => '2.55.2',
+      'version' => '2.55.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'eed83939f1aed3eee517d03a33f5ec587ac529b5',
+      'reference' => '8c2a18ce3e67c34efc1b29f64fe61304368259a2',
     ),
     'nikic/php-parser' => 
     array (
@@ -841,12 +841,12 @@ private static $installed = array (
     ),
     'phpoption/phpoption' => 
     array (
-      'pretty_version' => '1.8.0',
-      'version' => '1.8.0.0',
+      'pretty_version' => '1.8.1',
+      'version' => '1.8.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5455cb38aed4523f99977c4a12ef19da4bfe2a28',
+      'reference' => 'eab7a0df01fe2344d172bff4cd6dbd3f8b84ad15',
     ),
     'phpspec/prophecy' => 
     array (
@@ -859,21 +859,21 @@ private static $installed = array (
     ),
     'phpunit/php-code-coverage' => 
     array (
-      'pretty_version' => '9.2.9',
-      'version' => '9.2.9.0',
+      'pretty_version' => '9.2.10',
+      'version' => '9.2.10.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f301eb1453c9e7a1bc912ee8b0ea9db22c60223b',
+      'reference' => 'd5850aaf931743067f4bfc1ae4cbd06468400687',
     ),
     'phpunit/php-file-iterator' => 
     array (
-      'pretty_version' => '3.0.5',
-      'version' => '3.0.5.0',
+      'pretty_version' => '3.0.6',
+      'version' => '3.0.6.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'aa4be8575f26070b100fccb67faabb28f21f66f8',
+      'reference' => 'cf1c2e7c203ac650e352f4cc675a7021e7d1b3cf',
     ),
     'phpunit/php-invoker' => 
     array (

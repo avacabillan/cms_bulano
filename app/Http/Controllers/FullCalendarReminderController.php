@@ -10,33 +10,28 @@ class FullCalendarReminderController extends Controller
 {
     public function index()
     {
-    //     if($request->ajax()) {
-       
-            // $calendar = Reminder::whereDate('start', '>=', $request->start)
-            //           ->whereDate('end',   '<=', $request->end)
-            //           ->get(['id', 'reminder', 'start', 'end']);
- 
-    //         return response()->json($calendar);
-    //    }
-        $reminders = Reminder::all();
-        $reminder =[];
-        
-            foreach ($reminders as $row){
-                $endDate = $row->end."24:00:00";
-                $reminder[] = Calendar::event(
-                    $row->reminder,
+    
+        $events = [];
+        $data = Reminder::all();
+        if($data->count())
+        {
+            foreach ($data as $key => $value) 
+            {
+                $events[] = Calendar::event(
+                    $value->reminder,
                     true,
-                    new \DateTime($row->start),
-                    new \DateTime($row->end),
-                    $row->id,
-                    [
-                        'color'=>$row->color,
-                    ]
-
-                    );
+                    new \DateTime($value->start),
+                    new \DateTime($value->end.'+1 day'),
+                    // new \Color($value->color),
+                    null,
+                    // Add color
+                
+                );
             }
-        $calendar = Calendar::addEvents($reminder);
-        return view('pages.admin.calendar', compact('reminders','calendar'));
+        }
+        $calendar = Calendar::addEvents($events);
+        return view('pages.admin.calendar.fullcalendar', compact('calendar'));
+        
        
     }
 
@@ -76,15 +71,17 @@ class FullCalendarReminderController extends Controller
     //     }
     // }
 
-    // public function create(Request $request)
-    // {  
-    //     $insertReminder = [ 'reminder' => $request->reminder,
-    //                    'start' => $request->start,
-    //                    'end' => $request->end
-    //                 ];
-    //     $reminder = Reminder::insert($insertReminder);   
-    //     return Response::json($reminder);
-    // }
+    public function storeEvent(Request $request)
+     {  
+  
+            $reminder= new Reminder();
+            $reminder->reminder=$request->title;
+            $reminder->color=$request->color;
+            $reminder->start=$request->startdate;
+            $reminder->end=$request->enddate;
+            $reminder->save();
+            return redirect('fullcalendar')->with('success', 'Reminder has been added');
+  }
 
     // public function update(Request $request)
     // {   
@@ -95,11 +92,30 @@ class FullCalendarReminderController extends Controller
     //     return Response::json($reminder);
     // } 
 
-    // public function destroy($id)
-    // {
-    //     $reminder = Reminder::find($id)->delete();
-   
-    //     return Response::json($reminder);
-    // }    
-     
+    public function deleteEvent($id)
+    {
+        $reminder = Reminder::find($id)->delete();
+         return redirect()->back()->with('success', 'Reminder has been deleted');
+        
+    }    
+    public function createEvent(){
+        return view ('pages.admin.calendar.add-deadline');
+    }
+    public function viewEvent(){
+        $reminders = Reminder::all();
+        return view ('pages.admin.calendar.reminder-list')->with('reminders', $reminders);
+    }
+    public function editEvent($id){
+        $reminder = Reminder::find($id);
+        return view ('pages.admin.calendar.edit-reminder')->with('reminder', $reminder);
+    }
+    public function updateEvent(Request $request, $id){
+        $reminder = Reminder::find($id);
+        $reminder->reminder =$request->reminder;
+        $reminder->color =$request->color;
+        $reminder->start =$request->start_date;
+        $reminder->end =$request->end_date;
+        $reminder->update();
+        return redirect()->route('view-reminders')->with('success', 'Reminder has been updated');
+    }
 }

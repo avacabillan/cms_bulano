@@ -46,10 +46,13 @@ Route::get('/logout', function () {
 })->name('logout');
  //fullcalendar
  Route::get('/fullcalendar',[FullCalendarReminderController::class, 'index'])->name('fullcalendar');
- Route::post('fullcalendarAjax', [FullCalendarReminderController::class, 'ajax']);
- // Route::post('/create-reminder',[FullCalendarReminderController::class, 'create'])->name('create-reminder');
- // Route::post('/update-reminder',[FullCalendarReminderController::class, 'update'])->name('update-reminder');
- // Route::post('/delete-reminder',[FullCalendarReminderController::class, 'delete'])->name('delete-reminder');
+//  Route::post('fullcalendarAjax', [FullCalendarReminderController::class, 'ajax']);
+ Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
+ Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');
+ Route::get('/view-reminder',[FullCalendarReminderController::class, 'viewEvent'])->name('view-reminders');
+ Route::get('/edit-reminder/id={id}',[FullCalendarReminderController::class, 'editEvent'])->name('edit-reminder');
+ Route::put('/update-reminder/id={id}',[FullCalendarReminderController::class, 'updateEvent'])->name('update-reminder');
+ Route::get('/delete-reminder/id={id}',[FullCalendarReminderController::class, 'deleteEvent'])->name('delete-reminder');
 Route::middleware(['logout'])->group(function(){
 
     
