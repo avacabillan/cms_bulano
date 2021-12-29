@@ -15,19 +15,22 @@
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron">
-   
+    <div class="jumbotron" >
+    
         <a class="btn btn-success" href="{{route('create-reminder')}}"  data-toggle="modal" data-target="#add-event">Add Reminder</a>
-        <a class="btn btn-info" href="{{route('view-reminders')}}">View Reminders</a><br><br>
+        <a class="btn btn-info" href="{{route('view-reminders')}}">View Reminders</a>
+    
             @if (\Session::has('success'))
                 <div class="alert alert-success" style="fade: out 0.5em;">
                 <p>{{ \Session::get('success') }}</p>
                 </div><br />
             @endif
         <div class="row">
+
+        
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="background: #2e6da4; color:white;">
+                    <div class="panel-heading" style="background: #2e6da4; color:white;" >
                         Full Calendar
                     </div>
 
