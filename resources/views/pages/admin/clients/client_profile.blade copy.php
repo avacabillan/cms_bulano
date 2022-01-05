@@ -20,8 +20,8 @@
 
     <div class="col-sm-8">
       <div class="card-block bg-light"> 
-        
-        
+        <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal" href="{{route('editClient',$client->id)}}" style="float: right;"><i class="fas fa-edit">Edit</a></i>
+        <button type="button" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right;"> Upload</button>
         <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
         <hr>
 

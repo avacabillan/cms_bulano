@@ -14,16 +14,14 @@
   <div class="page-content mt-3" style="margin: top 160px;">
   
     <div class="container mt-3" style="height:50%">
-      <table id="clients-list" class="table table-bordered"  style="width:100% ">
+      <table id="clients-list" class="table table-bordered"  style="width:100% " >
         <thead >
           <tr>
-            <th>
+            <!-- <th>
               <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
-            </th>
-            <th class="Client-th text-dark text-center">Client ID</th>
+            </th> -->
+            
             <th class="Client-th text-dark text-center">Client Name</th>
-            <th class="Client-th text-dark text-center">Contact Number</th>
-            <th class="Client-th text-dark text-center">Email</th>
             <th class="Client-th text-dark text-center">OCN</th>
             <th class="Client-th text-dark text-center">Action</th>   
           </tr>
@@ -31,16 +29,14 @@
         <tbody>
           @foreach($clients as $client)
             <tr>
-              <td>
+              <!-- <td>
                 <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
-              </td>
-              <td>{{$client->id}}</td>
+              </td> -->
+              
               <td>{{$client->client_name}}</td>
-              <td>{{$client->contact_number}}</td>
-              <td>{{$client->email}}</td>
               <td>{{$client->ocn}}</td>
               <td>
-                <a  class="btn btn-success btn-sm viewbtn" href="{{route('clientProfile',$client->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Profile"><i class="fas fa-eye"></a></i>
+                <a  class="btn btn-success btn-sm viewbtn" href="{{route('client-profile',$client->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Profile"><i class="fas fa-eye"></a></i>
                 <a  class="btn btn-primary btn-sm viewbtn " href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reminders" ><i class="fas fa-tasks fa-xl"></a></i>
               </td>    
             </tr>
@@ -48,7 +44,7 @@
         </tbody>
               
       </table>
-      <a href="{{route('archive-list')}}"><button  class="btn btn-primary" >Archives</button></a>
+      
     </div>
   </div>
 </div>

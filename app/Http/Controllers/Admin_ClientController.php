@@ -45,13 +45,14 @@ class Admin_ClientController extends Controller
                             'assocs',$assocs,
                             'registered_address', $registered_address
                             
-            ));
+        ));
+        
     }
  
 
    
    
-    public function showClientProfile($id){
+    public function ClientProfile($id){
         
         $client = Client::find($id);
         $modes =  ModeOfPayment::all();
@@ -60,7 +61,7 @@ class Admin_ClientController extends Controller
         $taxTypes =TaxType::all();
         $taxFiles=TaxFile::all();
         $registeredAddress = Client::find($id)->registeredAddress;
-        return view('pages.associate.clients.client_profile')
+        return view('pages.admin.clients.client_profile')
         ->with( 'client',$client) 
         ->with( 'modes',$modes)
         ->with('tins',$tins)

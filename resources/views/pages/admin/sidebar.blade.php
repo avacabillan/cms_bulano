@@ -37,6 +37,12 @@
                 <i class="fa fa-user"></i><span>Registered Guest</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
             </li>
+            <!-- CALENDAR -->
+            <li>
+              <a href="{{route('fullcalendar')}}" >
+                <i class="fa fa-calendar" ></i><span>Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
+              </a>
+            </li>
             <!-- ASSOCIATES -->
             <li>
               <a href="{{route('associates_list')}}">
