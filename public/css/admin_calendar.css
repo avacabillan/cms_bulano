@@ -1,0 +1,32 @@
+.vertical-scrollable> .row {
+    position: absolute;
+    top: 95px;
+    left: 80%;
+    width: 20%;
+    overflow-y: scroll;
+    border: black 0.5px solid;
+    background-color: #f0fff0;
+  }
+    .pb-2 {
+        padding-bottom: 0.5rem!important;
+    }
+    
+    .my-2 {
+        margin-top: 0.5rem!important;
+        margin-bottom: 0.5rem!important;
+    
+    }.d-block {
+        display: block!important;
+    }
+   
+  li { 
+      color: black; 
+      font-size: .875rem; 
+      padding-bottom: 3px; 
+      padding-top: 3px; 
+  } 
+    
+  
+  .text-muted {
+color: #6c757d!important;
+  }

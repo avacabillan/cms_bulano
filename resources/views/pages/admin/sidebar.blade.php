@@ -43,6 +43,12 @@
                 <i class="fa fa-calendar" ></i><span>Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
             </li>
+            <li>
+            <a  href="{{route('view-reminders')}}">
+                <i class="fa fa-bell" ></i><span>Reminders</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
+              </a>
+            </li>
+            
             <!-- ASSOCIATES -->
             <li>
               <a href="{{route('associates_list')}}">

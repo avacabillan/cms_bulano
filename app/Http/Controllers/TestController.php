@@ -98,10 +98,10 @@ class TestController extends Controller
         // dd($reminders);
         // $password = Hash::make('bulano');
         // return ($password);
-        $clients= DB::table('clients')
+        // $clients= DB::table('clients')
         // ->where('approved','=','0')
-        ->count();
-        return $clients;
+       
+        return view('test');
     }
 
     

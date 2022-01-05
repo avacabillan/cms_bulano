@@ -126,8 +126,9 @@ Route::middleware(['logout'])->group(function(){
 
     //test
     
-    Route::get('/try',[TestController::class, 'trial']);
+
 
    
 
 });
+Route::get('/try',[TestController::class, 'trial']);

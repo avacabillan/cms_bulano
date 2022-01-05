@@ -1,24 +1,25 @@
 @extends('layout.master')
 
 @section('title')
-    Reminder List
+    Reminders
 @endsection
 
 @section('content')
-<div class="container mt-3" style="height:50%">
+@include('pages.admin.sidebar')
+<div class="siderbar_main toggled"> 
+<div class="page-content mt-5 m-3" style="height: 50px; width:90%; ">
             @if (\Session::has('success'))
                 <div class="alert alert-success" style="fade: out 0.5em;">
                 <p>{{ \Session::get('success') }}</p>
                 </div><br />
             @endif
-      <a class="btn btn-success mb-3" href="{{route('fullcalendar')}}">View Calendar</a>
-      <table id="clients-list" class="table table-bordered"  style="width:50% ">
+      <table id="clients-list" class="table table-bordered"  style="width:60% ">
         <thead >
           <tr>
         
             <th class="Client-th text-dark text-center">Reminder</th>
-            <th class="Client-th text-dark text-center">Edit</th>
-            <th class="Client-th text-dark text-center">Delete</th>   
+            <th class="Client-th text-dark text-center">Action</th>
+              
           </tr>
         </thead>
         <tbody>
@@ -27,11 +28,9 @@
              
               <td>{{$reminder->reminder}}</td>
               <td>
-                <a  class="btn btn-success btn-sm viewbtn" href="{{route('edit-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-edit"></a></i>
-              </td>
-              <td>
-                <a  class="btn btn-success btn-sm viewbtn" href="{{route('delete-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-trash"></a></i>
-              </td>       
+                <center><a  class="btn btn-success btn-sm viewbtn mr-2 " href="{{route('edit-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-edit  text-center"></a></i>
+                <a  class="btn btn-success btn-sm viewbtn " href="{{route('delete-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-trash  text-center"></a></i>
+                </center</td>       
             </tr>
           @endforeach
         </tbody>
@@ -39,6 +38,7 @@
       </table>
      
     </div>
+  </div>
 @endsection
 @section('scripts')
  

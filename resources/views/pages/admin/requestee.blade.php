@@ -9,11 +9,11 @@
     
 <div class="siderbar_main toggled"> 
 
-  <div class="page-content">
+  <div class="page-content" style="height: 50px; ">
 
     <div class="container mt-5">
 
-        <table  id="assoc-list" class="table table-bordered table-striped"  style="width:100% ">
+        <table  id="assoc-list" class="table table-bordered table-striped"  style="width: 80% ">
           <thead>
             <tr>
           
@@ -22,7 +22,7 @@
               <th class="Client-th text-dark text-center">Email</th>
               <th class="Client-th text-dark text-center">Contact Number</th>
               <th class="Client-th text-dark text-center">Image</th>
-              <th class="Client-th text-dark text-center">Approved</th>
+              <th class="Client-th text-dark text-center">Status</th>
               <th class="Client-th text-dark text-center">Action</th>  
 
             </tr>

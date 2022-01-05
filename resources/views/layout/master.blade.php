@@ -26,6 +26,7 @@
     <!-- ADMIN -->
     <link rel="stylesheet" href="{{asset('css/admin_login.css')}}">
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin_calendar.css')}}">
     <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_dashboard.css')}}">
     <link rel="stylesheet" href="{{asset('css/guest_list.css')}}">
@@ -48,8 +49,10 @@
     <!-- CLIENT -->
     <link rel="stylesheet" href="{{asset('css/client_login.css')}}">
     <link rel="stylesheet" href="{{asset('css/client_profile.css')}}">
-    
-    
+   
+    <!-- CALENDAR -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" />
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     
 </head>
 <body>
@@ -87,8 +90,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
     @yield('scripts')
 
+    <!-- CALENDAR -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
    
     
 </body>

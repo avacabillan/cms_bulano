@@ -30,7 +30,7 @@ class FullCalendarReminderController extends Controller
             }
         }
         $calendar = Calendar::addEvents($events);
-        return view('pages.admin.calendar.fullcalendar', compact('calendar'));
+        return view('pages.admin.calendar.fullcalendar', compact('calendar', 'data',$data));
         
        
     }
@@ -118,4 +118,5 @@ class FullCalendarReminderController extends Controller
         $reminder->update();
         return redirect()->route('view-reminders')->with('success', 'Reminder has been updated');
     }
+    
 }
