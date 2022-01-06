@@ -11,7 +11,6 @@
 
 @section('scripts')
 <div class="siderbar_main toggled "> 
-    
     <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
     <a class="btn btn-success" href="{{route('create-reminder')}}">Add reminder</a>
         
@@ -44,8 +43,8 @@
         <div class="container vertical-scrollable" > 
        
             <div class="row text-muted">
-            <strong class="d-block h6 my-2 pb-2 border-bottom">Reminders</strong>
-               @foreach ($data as $reminder)
+            <strong class="d-block h6 my-2 pb-2 border-bottom">Deadlines for this month</strong>
+               @foreach ($dates as $reminder)
                 <li>{{$reminder->reminder}}</li>
                 @endforeach
                 
@@ -57,5 +56,43 @@
 
 </div>
 
+
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+       
+        $('#calendar').fullCalendar().on('dateClick',function(){ 
+            console.log('1')
+        })
+       
+    
+
+
+        // dateClick: function(info) {
+        // alert('Clicked on: ' + info.dateStr);
+        // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+        // alert('Current view: ' + info.view.type);
+        // // change the day's background color just for fun
+        // info.dayEl.style.backgroundColor = 'red';
+    
+
+        $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        })
+
+
+        $.ajax({
+        method: "POST",
+        url: "{{route('fullcalendar.ajax')}}",
+        data: { month: "01",
+                year:"2022"
+            }
+        }).done(function() {
+        $( this ).addClass( "done" );
+        });
+    })
+   
+</script>
 @endsection

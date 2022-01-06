@@ -115,6 +115,7 @@ Route::middleware(['logout'])->group(function(){
 
      //fullcalendar
  Route::get('/fullcalendar',[FullCalendarReminderController::class, 'index'])->name('fullcalendar');
+ Route::post('/fullcalendar/ajax',[FullCalendarReminderController::class, 'ajax'])->name('fullcalendar.ajax');
  //  Route::post('fullcalendarAjax', [FullCalendarReminderController::class, 'ajax']);
   Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
   Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');

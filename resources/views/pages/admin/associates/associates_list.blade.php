@@ -73,6 +73,7 @@
   </div>
 </div>
 <!--End Assoc Modal -->
+
 @section('scripts')
  
     <!-- DATATABLE  EXTENTIONS-->

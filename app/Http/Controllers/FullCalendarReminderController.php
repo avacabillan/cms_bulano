@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Reminder;
+use App\Models\TaxForm;
 use Illuminate\Http\Request;
 use Redirect,Response;
 use Calendar;
@@ -12,7 +13,18 @@ class FullCalendarReminderController extends Controller
     {
     
         $events = [];
+        // $dates = Reminder::select('id', 'start')
+        // ->get()
+        // ->groupBy(function($date) {
+        //     //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+        //     return Carbon::parse($date->start)->format('m'); // grouping by months
+        // });
+        $month ='';
+        $dates = Reminder::whereMonth('start', date('m'))
+        ->whereYear('start', date('Y'))
+        ->get(['reminder']);
         $data = Reminder::all();
+        
         if($data->count())
         {
             foreach ($data as $key => $value) 
@@ -30,9 +42,24 @@ class FullCalendarReminderController extends Controller
             }
         }
         $calendar = Calendar::addEvents($events);
-        return view('pages.admin.calendar.fullcalendar', compact('calendar', 'data',$data));
+        return view('pages.admin.calendar.fullcalendar', compact('calendar', 'data',$data,'dates',$dates));
         
        
+    }
+    public function ajax(Request $request){
+        $month =$request->month;
+        $year =$request->year;
+        $dates = Reminder::whereMonth('start', date($month))
+        ->whereYear('start', date($year))
+        ->get(['reminder']);
+        $data = Reminder::all();
+        
+        dd($dates);
+
+        return view('pages.admin.calendar.fullcalendar', compact('data',$data,'dates',$dates));
+        
+       
+        
     }
 
     // public function ajax(Request $request)
@@ -99,7 +126,8 @@ class FullCalendarReminderController extends Controller
         
     }    
     public function createEvent(){
-        return view ('pages.admin.calendar.add-deadline');
+        $taxForms = TaxForm::all();
+        return view ('pages.admin.calendar.add-deadline')->with('taxForms',  $taxForms);
     }
     public function viewEvent(){
         $reminders = Reminder::all();

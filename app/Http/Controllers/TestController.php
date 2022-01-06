@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Mail\DemoEmail;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\ClientTax;
+use App\Models\Reminder;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 // use App\Models\Group;
 // use App\Models\Corporate;
 // use App\Models\TaxForm;
@@ -100,8 +102,16 @@ class TestController extends Controller
         // return ($password);
         // $clients= DB::table('clients')
         // ->where('approved','=','0')
-       
-        return view('test');
+        // $dates = Reminder::select('id', 'start', 'reminder')
+        // ->get()
+        // ->groupBy(function($date) {
+        //     //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+        //     return Carbon::parse($date->start)->format('m'); // grouping by months
+        // });
+        $dates = Reminder::whereMonth('start', date('m'))
+        ->whereYear('start', date('Y'))
+        ->get(['reminder','reminder']);
+        return view('test')->with('dates', $dates);
     }
 
     

@@ -58,12 +58,27 @@
 <body>
     @yield('content')
     
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->
+    <!-- <script defer src="{{asset('js/jquery.min.js')}}"></script> -->
+    <!-- <script defer src="{{asset('js/bootstrap.bundle.min.js')}}"></script> -->
+    <script defer src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->
 
-
+     <!-- ASSOCIATE -->
     
+
+    <!-- <script defer src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+    
+    <!-- <script defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     -->
+    <!-- <script  src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <script  src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script  src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script  src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script  src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+     <!-- CALENDAR -->
+     <!-- <script defer src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
+    <script defer src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+    <script defer  src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
 
     <!-- ADMIN -->
     <script src="{{asset('js/navbar.js')}}"></script>
@@ -75,28 +90,19 @@
     <script src="{{asset('js/admin_assolist_checkbox.js')}}"></script>
     <script src="{{asset('js/associate_profile.js')}}"></script>
     
-    <!-- ASSOCIATE -->
-    
-
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
     <!-- DataTable CRUD Script -->
-
+    
     <script src="{{asset('js/associate_clientlist.js')}}"></script>
     <script src="{{asset('js/associate_addClient.js')}}"></script>
     <script src="{{asset('js/associate_addfile.js')}}"></script>
     <!-- <script src="{{asset('js/associate_editClient.js')}}"></script> -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+   
 
     @yield('scripts')
 
-    <!-- CALENDAR -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
+   
    
     
 </body>
