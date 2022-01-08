@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin_ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredClientController;
+use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Dropdown;
 
 /*
@@ -133,3 +134,6 @@ Route::middleware(['logout'])->group(function(){
 
 });
 Route::get('/try',[TestController::class, 'trial']);
+Route::get('/get_users', [MessageController::class, 'getUsers']);
+Route::get('/get_messages',  [MessageController::class, 'getMessages']);
+Route::post('notifications',  [MessageController::class, 'sendMail']);

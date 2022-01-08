@@ -9,6 +9,12 @@ use App\Mail\TaxReminder;
 use App\Models\Client;
 use App\Models\ClientTax;
 
+use App\Models\Message;
+use Carbon\Carbon;
+use App\Jobs\SendMailJob;
+use App\Models\User;
+use App\Mail\NewArrivals;
+
 class SendReminderEmails extends Command
 {
     /**
@@ -64,14 +70,14 @@ class SendReminderEmails extends Command
         // ->get();
 
          // $clients =Client::find(3); to test
-        $clients = Client::query()
-        ->where('assoc_id','3')
-        ->get();
+        // $clients = Client::query()
+        // ->where('assoc_id','3')
+        // ->get();
 
-        foreach($clients as $client){
-            Mail::send(new TaxReminder($client));
-            // dd($client);
-        }
+        // foreach($clients as $client){
+        //     Mail::send(new TaxReminder($client));
+        //     // dd($client);
+        // }
         
 
         
@@ -124,6 +130,28 @@ class SendReminderEmails extends Command
     //             // });
 
 
+    //One hour is added to compensate for PHP being one hour faster 
+    $now = date("Y-m-d H:i", strtotime(Carbon::now()->addHour()));
+    logger($now);
+
+    $messages = Message::get();
+    if($messages !== null){
+        //Get all messages that their dispatch date is due
+        $messages->where('date_string',  $now)->each(function($message) {
+            if($message->delivered == 'NO')
+            {
+                $users = User::all();
+                foreach($users as $user) {
+                    dispatch(new SendMailJob(
+                        $user->email, 
+                        new NewArrivals($user, $message))
+                    );
+                }
+                $message->delivered = 'YES';
+                $message->save();   
+            }
+        });
+    }
     
         }
 }
