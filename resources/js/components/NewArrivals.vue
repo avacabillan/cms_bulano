@@ -71,7 +71,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('sendMail')}}" @submit.prevent="sendEmail">
+            <form @submit.prevent="sendEmail">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Title of Email</label>

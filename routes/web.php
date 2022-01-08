@@ -134,6 +134,6 @@ Route::middleware(['logout'])->group(function(){
 
 });
 Route::get('/try',[TestController::class, 'trial']);
-Route::get('/get_users', [MessageController::class, 'getUsers']);
-Route::get('/get_messages',  [MessageController::class, 'getMessages']);
-Route::post('notifications',  [MessageController::class, 'sendMail']);
+Route::get('/getusers', [MessageController::class, 'getUsers'])->name('getUsers');
+Route::get('/get_messages',  [MessageController::class, 'getMessages'])->name('getMessages');
+Route::post('notifications',  [MessageController::class, 'sendMail'])->name('sendMail');

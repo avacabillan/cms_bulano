@@ -53,7 +53,7 @@ class NotifyUsers extends Command
             $messages->where('date_string',  $now)->each(function($message) {
                 if($message->delivered == 'NO')
                 {
-                    $users = User::all();
+                    $users = Client::all();
                     foreach($users as $user) {
                         dispatch(new SendMailJob(
                             $user->email, 

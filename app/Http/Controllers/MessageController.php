@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Message;
+use App\Models\Message;
 use App\Jobs\SendMailJob;
 use Carbon\Carbon;
-use App\Models\User;
+use App\Models\Client;
 use App\Mail\NewArrivals;
 
 class MessageController extends Controller
@@ -13,12 +13,15 @@ class MessageController extends Controller
     
     public function getUsers(){
 
-        return User::all();
+      $users =  Client::all();
+
+        return view ('test')->with('users', '$users');
     }
 
     public function getMessages(){
 
-        return Message::orderBy('created_at', 'desc')->get();
+       $messages = Message::orderBy('created_at', 'desc')->get();
+        return view('test')->with('messages', '$messages');
     }
 
     public function sendMail(Request $request)
@@ -35,7 +38,7 @@ class MessageController extends Controller
             $message->send_date = Carbon::now();
             $message->save();   
 
-            $users = User::all();
+            $users = Client::all();
 
             foreach($users as $user) {
                 dispatch(new SendMailJob($user->email, new NewArrivals($user, $message)));

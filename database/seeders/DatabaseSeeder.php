@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Support\Facades\DB;
+
 use Faker\Factory as Faker;
 
 use Illuminate\Database\Seeder;
