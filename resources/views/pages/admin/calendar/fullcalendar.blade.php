@@ -58,11 +58,12 @@
 
 
 @endsection
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded',function(){
        
         $('#calendar').fullCalendar().on('dateClick',function(){ 
             console.log('1')
+            
         })
        
     
@@ -94,5 +95,5 @@
         });
     })
    
-</script>
+</script> -->
 @endsection

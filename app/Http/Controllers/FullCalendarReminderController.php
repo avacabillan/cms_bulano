@@ -12,14 +12,14 @@ class FullCalendarReminderController extends Controller
     public function index()
     {
     
-        $events = [];
+      
         // $dates = Reminder::select('id', 'start')
         // ->get()
         // ->groupBy(function($date) {
         //     //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
         //     return Carbon::parse($date->start)->format('m'); // grouping by months
         // });
-        $month ='';
+        $events = [];
         $dates = Reminder::whereMonth('start', date('m'))
         ->whereYear('start', date('Y'))
         ->get(['reminder']);
