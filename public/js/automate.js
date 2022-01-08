@@ -358,7 +358,7 @@
       !*** ./node_modules/axios/lib/cancel/Cancel.js ***!
       \*************************************************/
     /*! no static exports found */
-    /***/ (function(module, _require__) {
+    /***/ (function(module, _) {
     
     "use strict";
     
@@ -458,7 +458,7 @@
       !*** ./node_modules/axios/lib/cancel/isCancel.js ***!
       \***************************************************/
     /*! no static exports found */
-    /***/ (function(module, _require__) {
+    /***/ (function(module, _) {
     
     "use strict";
     
@@ -758,7 +758,7 @@
       !*** ./node_modules/axios/lib/core/enhanceError.js ***!
       \*****************************************************/
     /*! no static exports found */
-    /***/ (function(module, _require__) {
+    /***/ (function(module, _) {
     
     "use strict";
     
@@ -970,7 +970,7 @@
       !*** ./node_modules/axios/lib/helpers/bind.js ***!
       \************************************************/
     /*! no static exports found */
-    /***/ (function(module, _require__) {
+    /***/ (function(module, _) {
     
     "use strict";
     
@@ -993,7 +993,7 @@
       !*** ./node_modules/axios/lib/helpers/btoa.js ***!
       \************************************************/
     /*! no static exports found */
-    /***/ (function(module, _require__) {
+    /***/ (function(module, _) {
     
     "use strict";
     
@@ -1119,7 +1119,7 @@
       !*** ./node_modules/axios/lib/helpers/combineURLs.js ***!
       \*******************************************************/
     /*! no static exports found */
-    /***/ (function(module, _require__) {
+    /***/ (function(module, _) {
     
     "use strict";
     
@@ -1210,7 +1210,7 @@
       !*** ./node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
       \*********************************************************/
     /*! no static exports found */
-    /***/ (function(module, _require__) {
+    /***/ (function(module, _) {
     
     "use strict";
     
@@ -1405,7 +1405,7 @@
       !*** ./node_modules/axios/lib/helpers/spread.js ***!
       \**************************************************/
     /*! no static exports found */
-    /***/ (function(module, _require__) {
+    /***/ (function(module, _) {
     
     "use strict";
     
@@ -6596,13 +6596,6 @@
         if (  true && typeof module.exports === "object" ) {
     
 
-        } else {
-            factory( global );
-        }
-    
-    // Pass this if window is not defined yet
-    } )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
-    
     // Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
     // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
     // arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
@@ -36727,14 +36720,10 @@
        */
       function Popper(reference, popper) {
         var _this = this;
-    
-        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-        classCallCheck(this, Popper);
+       classCallCheck(this, Popper);
     
         this.scheduleUpdate = function () {
-          return requestAnimationFrame(_this.update);
-        };
-    
+       
         // make update() debounced, so that it only runs at most once-per-tick
         this.update = debounce(this.update.bind(this));
     
@@ -36903,7 +36892,7 @@
     (function () {
         try {
             if (typeof setTimeout === 'function') {
-                cachedSetTimeout = setTimeout;
+                cachedSetTsetTimeout;
             } else {
                 cachedSetTimeout = defaultSetTimout;
             }
@@ -37078,14 +37067,14 @@
     /*! no static exports found */
     /***/ (function(module, exports, __webpack_require__) {
     
-    /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
+    /* WEBPACK VAR INJECTION */(fuon(global, process) {(function (global, undefined) {
         "use strict";
     
         if (global.setImmediate) {
             return;
         }
     
-        var nextHandle = 1; // Spec says greater than zero
+        var nextHandle = 1; //ec says greater than zero
         var tasksByHandle = {};
         var currentlyRunningATask = false;
         var doc = global.document;
@@ -37304,7 +37293,6 @@
     
     /*
         MIT License http://www.opensource.org/licenses/mit-license.php
-        Author Tobias Koppers @sokra
     */
     
     var stylesInDom = {};
@@ -37313,7 +37301,6 @@
         var memo;
     
         return function () {
-            if (typeof memo === "undefined") memo = fn.apply(this, arguments);
             return memo;
         };
     };
@@ -37835,14 +37822,14 @@
     }
     
     function _classCallCheck(instance, Constructor) {
-      if (!(instance instanceof Constructor)) {
+      if (!(instance instancructor)) {
         throw new TypeError("Cannot call a class as a function");
       }
     }
     
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
+        var des[i];
         descriptor.enumerable = descriptor.enumerable || false;
         descriptor.configurable = true;
         if ("value" in descriptor) descriptor.writable = true;
@@ -41734,7 +41721,7 @@
     /***/ (function(module, exports, __webpack_require__) {
     
     // 20.1.2.3 Number.isInteger(number)
-    var isObject = __webpack_require__("f772");
+    var isObject = __webpack_require_
     var floor = Math.floor;
     module.exports = function isInteger(it) {
       return !isObject(it) && isFinite(it) && floor(it) === it;
@@ -42355,7 +42342,7 @@
                 hh: ['сат', 'сата', 'сати'],
                 dd: ['дан', 'дана', 'дана'],
                 MM: ['месец', 'месеца', 'месеци'],
-                yy: ['година', 'године', 'година']
+                yy: е', 'година']
             },
             correctGrammaticalCase: function (number, wordKey) {
                 return number === 1 ? wordKey[0] : (number >= 2 && number <= 4 ? wordKey[1] : wordKey[2]);
@@ -42522,7 +42509,7 @@
     
     //! moment.js locale configuration
     
-    ;(function (global, factory) {
+    ;(function (global, fa
         true ? factory(__webpack_require__("c1df")) :
        undefined
     }(this, (function (moment) { 'use strict';
@@ -42658,7 +42645,7 @@
         var arLy = moment.defineLocale('ar-ly', {
             months : months,
             monthsShort : months,
-            weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
+            weekdays : 'الأحد_الإثنين_الثلاثاء_الأة_السبت'.split('_'),
             weekdaysShort : 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
             weekdaysMin : 'ح_ن_ث_ر_خ_ج_س'.split('_'),
             weekdaysParseExact : true,
@@ -43116,7 +43103,7 @@
             longDateFormat : {
                 LT : 'A h:mm',
                 LTS : 'A h:mm:ss',
-                L : 'YYYY.MM.DD.',
+                L : 
                 LL : 'YYYY년 MMMM D일',
                 LLL : 'YYYY년 MMMM D일 A h:mm',
                 LLLL : 'YYYY년 MMMM D일 dddd A h:mm',
@@ -43542,7 +43529,7 @@
             'ss' : 'sekundė_sekundžių_sekundes',
             'm' : 'minutė_minutės_minutę',
             'mm': 'minutės_minučių_minutes',
-            'h' : 'valanda_valandos_valandą',
+            'h' : 'valanda_valandą',
             'hh': 'valandos_valandų_valandas',
             'd' : 'diena_dienos_dieną',
             'dd': 'dienos_dienų_dienas',
@@ -44017,7 +44004,7 @@
     var TPL = ('' + $toString).split(TO_STRING);
     
     __webpack_require__("8378").inspectSource = function (it) {
-      return $toString.call(it);
+      return $toSt(it);
     };
     
     (module.exports = function (O, key, val, safe) {
@@ -44124,7 +44111,6 @@
     //! moment.js locale configuration
     
     ;(function (global, factory) {
-        true ? factory(__webpack_require__("c1df")) :
        undefined
     }(this, (function (moment) { 'use strict';
     
@@ -44232,7 +44218,7 @@
             weekdays : 'Якшанба_Душанба_Сешанба_Чоршанба_Пайшанба_Жума_Шанба'.split('_'),
             weekdaysShort : 'Якш_Душ_Сеш_Чор_Пай_Жум_Шан'.split('_'),
             weekdaysMin : 'Як_Ду_Се_Чо_Па_Жу_Ша'.split('_'),
-            longDateFormat : {
+            longDateFormat
                 LT : 'HH:mm',
                 LTS : 'HH:mm:ss',
                 L : 'DD/MM/YYYY',
@@ -44440,7 +44426,7 @@
     // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
     
     var toObject = __webpack_require__("4bf8");
-    var toAbsoluteIndex = __webpack_require__("77f1");
+    var toAbsoluteInequire__("77f1");
     var toLength = __webpack_require__("9def");
     module.exports = function fill(value /* , start = 0, end = @length */) {
       var O = toObject(this);
@@ -45834,7 +45820,7 @@
         "./ar-ly": "1cfd",
         "./ar-ly.js": "1cfd",
         "./ar-ma": "0a84",
-        "./ar-ma.js": "0a84",
+        "./ar-ma.js": "0a8
         "./ar-sa": "8230",
         "./ar-sa.js": "8230",
         "./ar-tn": "6d83",
@@ -47320,14 +47306,14 @@
     
         var months = [
             'ޖެނުއަރީ',
-            'ފެބްރުއަރީ',
+            'ފެބްރުއ
             'މާރިޗު',
             'އޭޕްރީލު',
             'މޭ',
             'ޖޫން',
             'ޖުލައި',
             'އޯގަސްޓު',
-            'ސެޕްޓެމްބަރު',
+            'ސެޕްޓެމްބަރު'
             'އޮކްޓޯބަރު',
             'ނޮވެމްބަރު',
             'ޑިސެމްބަރު'
@@ -48122,7 +48108,7 @@
             });
             Object.definePodule, "id", {
                 enumerable: true,
-                get: function() {
+                get: funct
                     return module.i;
                 }
             });
@@ -48832,7 +48818,7 @@
     
     for (var i = 0; i < DOMIterables.length; i++) {
       var NAME = DOMIterables[i];
-      var Collection = global[NAME];
+      var Collection = glo;
       var proto = Collection && Collection.prototype;
       if (proto && !proto[TO_STRING_TAG]) hide(proto, TO_STRING_TAG, NAME);
       Iterators[NAME] = Iterators.Array;
@@ -49326,7 +49312,6 @@
                 }
             },
             monthsParseExact : true,
-            weekdays : 'snein_moandei_tiisdei_woansdei_tongersdei_freed_sneon'.split('_'),
             weekdaysShort : 'si._mo._ti._wo._to._fr._so.'.split('_'),
             weekdaysMin : 'Si_Mo_Ti_Wo_To_Fr_So'.split('_'),
             weekdaysParseExact : true,
@@ -49640,7 +49625,7 @@
     //! moment.js locale configuration
     
     ;(function (global, factory) {
-        true ? factory(__webpack_require__("c1df")) :
+        true ? factory(__wquire__("c1df")) :
        undefined
     }(this, (function (moment) { 'use strict';
     
@@ -49651,7 +49636,7 @@
             return (n > 1) && (n < 5);
         }
         function translate(number, withoutSuffix, key, isFuture) {
-            var result = number + ' ';
+            var result = n ';
             switch (key) {
                 case 's':  // a few seconds / in a few seconds / a few seconds ago
                     return (withoutSuffix || isFuture) ? 'pár sekúnd' : 'pár sekundami';
@@ -50350,7 +50335,7 @@
         var bg = moment.defineLocale('bg', {
             months : 'януари_февруари_март_април_май_юни_юли_август_септември_октомври_ноември_декември'.split('_'),
             monthsShort : 'янр_фев_мар_апр_май_юни_юли_авг_сеп_окт_ное_дек'.split('_'),
-            weekdays : 'неделя_понеделник_вторник_сряда_четвъртък_петък_събота'.split('_'),
+            weekdays : 'неделник_вторник_сряда_четвъртък_петък_събота'.split('_'),
             weekdaysShort : 'нед_пон_вто_сря_чет_пет_съб'.split('_'),
             weekdaysMin : 'нд_пн_вт_ср_чт_пт_сб'.split('_'),
             longDateFormat : {
@@ -50359,7 +50344,7 @@
                 L : 'D.MM.YYYY',
                 LL : 'D MMMM YYYY',
                 LLL : 'D MMMM YYYY H:mm',
-                LLLL : 'dddd, D MMMM YYYY H:mm'
+                LLLL : 'ddM YYYY H:mm'
             },
             calendar : {
                 sameDay : '[Днес в] LT',
@@ -50461,7 +50446,7 @@
     
     //! moment.js locale configuration
     
-    ;(function (global, factory) {
+    ;(function (global, fa
         true ? factory(__webpack_require__("c1df")) :
        undefined
     }(this, (function (moment) { 'use strict';
@@ -50825,7 +50810,7 @@
                 } else if (typeof format === 'string' && /D/.test(format.substring(0, format.indexOf('MMMM')))) { // if there is a day number before 'MMMM'
                     return this._monthsGenitiveEl[momentToFormat.month()];
                 } else {
-                    return this._monthsNominativeEl[momentToFormat.month()];
+                    hsNominativeEl[momentToFormat.month()];
                 }
             },
             monthsShort : 'Ιαν_Φεβ_Μαρ_Απρ_Μαϊ_Ιουν_Ιουλ_Αυγ_Σεπ_Οκτ_Νοε_Δεκ'.split('_'),
@@ -51455,7 +51440,7 @@
     /***/ (function(module, exports, __webpack_require__) {
     
     // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-    var $keys = __webpack_require__("ce10");
+    var $keys = __webpack_require__("
     var hiddenKeys = __webpack_require__("e11e").concat('length', 'prototype');
     
     exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -52241,7 +52226,7 @@
                 LTS : 'HH:mm:ss',
                 L : 'DD/MM/YYYY',
                 LL : 'D MMMM YYYY',
-                LLL : 'D MMMM YYYY HH:mm',
+                LLL :mm',
                 LLLL : 'dddd D MMMM YYYY HH:mm'
             },
             calendar : {
@@ -52341,7 +52326,6 @@
       iframeDocument.open();
       iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
       iframeDocument.close();
-      createDict = iframeDocument.F;
       while (i--) delete createDict[PROTOTYPE][enumBugKeys[i]];
       return createDict();
     };
@@ -52435,7 +52419,7 @@
             monthsShort : 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
             weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
             weekdaysShort : 'احد_اثنين_ثلاثاء_اربعاء_خميس_جمعة_سبت'.split('_'),
-            weekdaysMin : 'أح_إث_ثلا_أر_خم_جم_سب'.split('_'),
+            weekdaysMin : 'أح_إث_ثلا_أر__جم_سب'.split('_'),
             weekdaysParseExact : true,
             longDateFormat : {
                 LT : 'HH:mm',
@@ -52443,7 +52427,7 @@
                 L : 'DD/MM/YYYY',
                 LL : 'D MMMM YYYY',
                 LLL : 'D MMMM YYYY HH:mm',
-                LLLL : 'dddd D MMMM YYYY HH:mm'
+                LLLL : 'ddddYYY HH:mm'
             },
             calendar : {
                 sameDay: '[اليوم على الساعة] LT',
@@ -52528,7 +52512,6 @@
                 nextDay : '[Sini lɛrɛ] LT',
                 nextWeek : 'dddd [don lɛrɛ] LT',
                 lastDay : '[Kunu lɛrɛ] LT',
-                lastWeek : 'dddd [tɛmɛnen lɛrɛ] LT',
                 sameElse : 'L'
             },
             relativeTime : {
@@ -52870,7 +52853,7 @@
     /***/ "b0dc":
     /***/ (function(module, exports, __webpack_require__) {
     
-    // call something on iterator step with safe closing on error
+    // call something on itep with safe closing on error
     var anObject = __webpack_require__("e4ae");
     module.exports = function (iterator, fn, value, entries) {
       try {
@@ -53380,7 +53363,7 @@
         /**
          * @param withoutSuffix boolean true = a length of time; false = before/after a period of time.
          */
-        function format(forms, number, withoutSuffix) {
+        function format(foer, withoutSuffix) {
             if (withoutSuffix) {
                 // E.g. "21 minūte", "3 minūtes".
                 return number % 10 === 1 && number % 100 !== 11 ? forms[2] : forms[3];
@@ -53495,7 +53478,6 @@
                 'yy': [number + ' Jahre', number + ' Jahren']
             };
             return withoutSuffix ? format[key][0] : format[key][1];
-        }
     
         var deCh = moment.defineLocale('de-ch', {
             months : 'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
@@ -53668,7 +53650,7 @@
                         return false;
                     }
                 }
-                return true;
+               
             }
         }
     
@@ -55515,7 +55497,6 @@
     
         function defineLocale (name, config) {
             if (config !== null) {
-                var locale, parentConfig = baseConfig;
                 config.abbr = name;
                 if (locales[name] != null) {
                     deprecateSimple('defineLocaleOverride',
@@ -58574,7 +58555,7 @@
             dayOfMonthOrdinalParse: /\d{1,2}\./,
             ordinal : '%d.',
             week : {
-                dow : 1, // Monday is the first day of the week.
+                dow : 1, // Monday is he week.
                 doy : 4  // The week that contains Jan 4th is the first week of the year.
             }
         });
@@ -58625,7 +58606,7 @@
         this._t = undefined;
         return step(1);
       }
-      if (kind == 'keys') return step(0, index);
+      if (kind == 'keys') ep(0, index);
       if (kind == 'values') return step(0, O[index]);
       return step(0, [index, O[index]]);
     }, 'values');
@@ -59141,7 +59122,6 @@
             '༠': '0'
         };
     
-        var bo = moment.defineLocale('bo', {
             months : 'ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ'.split('_'),
             monthsShort : 'ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ'.split('_'),
             weekdays : 'གཟའ་ཉི་མ་_གཟའ་ཟླ་བ་_གཟའ་མིག་དམར་_གཟའ་ལྷག་པ་_གཟའ་ཕུར་བུ_གཟའ་པ་སངས་_གཟའ་སྤེན་པ་'.split('_'),
@@ -59359,7 +59339,7 @@
     "use strict";
     /* harmony import */ vmodules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_08e12a5e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5783");
     /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_08e12a5e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_08e12a5e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-    /* unused harmony reexport * */
+    /* unused harmony reex
     
     /***/ }),
     
@@ -59371,13 +59351,13 @@
     ;(function (global, factory) {
         true ? factory(__webpack_require__("c1df")) :
        undefined
-    }(this, (function (moment) { 'use strict';
+    }(this, (function (motrict';
     
     
         var hyAm = moment.defineLocale('hy-am', {
             months : {
                 format: 'հունվարի_փետրվարի_մարտի_ապրիլի_մայիսի_հունիսի_հուլիսի_օգոստոսի_սեպտեմբերի_հոկտեմբերի_նոյեմբերի_դեկտեմբերի'.split('_'),
-                standalone: 'հունվար_փետրվար_մարտ_ապրիլ_մայիս_հունիս_հուլիս_օգոստոս_սեպտեմբեր_հոկտեմբեր_նոյեմբեր_դեկտեմբեր'.split('_')
+                standaloneր_փետրվար_մարտ_ապրիլ_մայիս_հունիս_հուլիս_օգոստոս_սեպտեմբեր_հոկտեմբեր_նոյեմբեր_դեկտեմբեր'.split('_')
             },
             monthsShort : 'հնվ_փտր_մրտ_ապր_մյս_հնս_հլս_օգս_սպտ_հկտ_նմբ_դկտ'.split('_'),
             weekdaysShort : 'կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ'.split('_'),
@@ -59387,7 +59367,7 @@
                 LTS : 'HH:mm:ss',
                 L : 'DD.MM.YYYY',
                 LL : 'D MMMM YYYY թ.',
-                LLL : 'D MMMM YYYY թ., HH:mm',
+                LLL , HH:mm',
                 LLLL : 'dddd, D MMMM YYYY թ., HH:mm'
             },
             calendar : {
@@ -59400,7 +59380,6 @@
                 lastWeek: function () {
                     return '[անցած] dddd [օրը ժամը] LT';
                 },
-                sameElse: 'L'
             },
             relativeTime : {
                 future : '%s հետո',
@@ -59640,7 +59619,6 @@
             monthsParseExact : true,
             weekdays : 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
             weekdaysShort : 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
-            weekdaysMin : 'di_lu_ma_me_je_ve_sa'.split('_'),
             weekdaysParseExact : true,
             longDateFormat : {
                 LT : 'HH:mm',
@@ -59752,7 +59730,6 @@
             weekdaysShort : 'zo._ma._di._wo._do._vr._za.'.split('_'),
             weekdaysMin : 'zo_ma_di_wo_do_vr_za'.split('_'),
             weekdaysParseExact : true,
-            longDateFormat : {
                 LT : 'HH:mm',
                 LTS : 'HH:mm:ss',
                 L : 'DD/MM/YYYY',
@@ -60123,7 +60100,7 @@
             relativeTime : {
                 future : 'in %s',
                 past : '%s ago',
-                s : 'a few seconds',
+                s : 'a few,
                 ss : '%d seconds',
                 m : 'a minute',
                 mm : '%d minutes',
@@ -60420,7 +60397,6 @@
             weekdaysMin : 'Ah_Is_Sl_Rb_Km_Jm_Sb'.split('_'),
             longDateFormat : {
                 LT : 'HH.mm',
-                LTS : 'HH.mm.ss',
                 L : 'DD/MM/YYYY',
                 LL : 'D MMMM YYYY',
                 LLL : 'D MMMM YYYY [pukul] HH.mm',
@@ -60431,7 +60407,6 @@
                 if (hour === 12) {
                     hour = 0;
                 }
-                if (meridiem === 'pagi') {
                     return hour;
                 } else if (meridiem === 'tengahari') {
                     return hour >= 11 ? hour : hour + 12;
@@ -60766,7 +60741,7 @@
             weekdaysShort : 'ਐਤ_ਸੋਮ_ਮੰਗਲ_ਬੁਧ_ਵੀਰ_ਸ਼ੁਕਰ_ਸ਼ਨੀ'.split('_'),
             weekdaysMin : 'ਐਤ_ਸੋਮ_ਮੰਗਲ_ਬੁਧ_ਵੀਰ_ਸ਼ੁਕਰ_ਸ਼ਨੀ'.split('_'),
             longDateFormat : {
-                LT : 'A h:mm ਵਜੇ',
+                LT :
                 LTS : 'A h:mm:ss ਵਜੇ',
                 L : 'DD/MM/YYYY',
                 LL : 'D MMMM YYYY',
@@ -60874,7 +60849,7 @@
     ;(function (global, factory) {
         true ? factory(__webpack_require__("c1df")) :
        undefined
-    }(this, (function (moment) { 'use strict';
+    }(this, (function (moment) { 'use
     
     
         var months = [
@@ -60997,7 +60972,7 @@
             monthsRegex: monthsRegex,
             monthsShortRegex: monthsRegex,
             monthsStrictRegex: /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december)/i,
-            monthsShortStrictRegex: /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
+            monthsShortStr /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
     
             monthsParse : monthsParse,
             longMonthsParse : monthsParse,
@@ -61149,8 +61124,6 @@
     //
     //
     //
-    //
-    //
     /* harmony default export */ var CustomButtonvue_type_script_lang_js_ = ({
       name: 'CustomButton',
       props: {
@@ -61251,7 +61224,6 @@
           // inject component styles
           if (injectStyles) {
             injectStyles.call(this, context)
-          }
           // register component module identifier for async chunk inferrence
           if (context && context._registeredComponents) {
             context._registeredComponents.add(moduleIdentifier)
@@ -61503,7 +61475,6 @@
     // CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js
     
     function _arrayWithoutHoles(arr) {
-      if (is_array_default()(arr)) {
         for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
           arr2[i] = arr[i];
     
@@ -61535,13 +61506,10 @@
     }
     // CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js
     function _classCallCheck(instance, Constructor) {
-      if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
       }
-    }
     // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js
     var define_property = __webpack_require__("85f2");
-    var define_property_default = /*#__PURE__*/__webpack_require__.n(define_property);
     
     // CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js
     
@@ -61703,7 +61671,6 @@
         },
         height: {
           type: Number,
-          default: Number,
           required: true
         }
       },
@@ -61949,7 +61916,6 @@
     //
     //
     //
-    //
     
     
     
@@ -61971,7 +61937,6 @@
           default: String
         },
         dark: {
-          type: Boolean,
           default: Boolean
         },
         color: {
@@ -62107,7 +62072,6 @@
     
     
     
-    /* normalize component */
     
     var WeekDays_component = normalizeComponent(
       _subs_WeekDaysvue_type_script_lang_js_,
@@ -62171,7 +62135,6 @@
     
           if (this.isKeyboardActive) {
             try {
-              if (e.keyCode === 38) {
                 this.previousWeek();
               } else if (e.keyCode === 37) {
                 this.previousDay();
@@ -62741,7 +62704,6 @@
     //
     //
     //
-    //
     
     
     var ArrayHourRange = function ArrayHourRange(start, end, twoDigit, isAfternoon, disabledHours) {
@@ -62760,7 +62722,6 @@
     var ArrayMinuteRange = function ArrayMinuteRange(end, twoDigit) {
       var step = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
       var len = Math.floor(end / step);
-      return Array(len).fill().map(function (_, idx) {
         var number = idx * step;
         return {
           value: number,
@@ -63171,7 +63132,6 @@
     //
     //
     //
-    //
     
     /* harmony default export */ var HeaderPickervue_type_script_lang_js_ = ({
       name: 'HeaderPicker',
@@ -63344,7 +63304,6 @@
     //
     //
     //
-    //
     
     /* harmony default export */ var ButtonValidatevue_type_script_lang_js_ = ({
       name: 'ButtonValidate',
@@ -63431,7 +63390,6 @@
     
     
     
-    //
     //
     //
     //
@@ -63829,7 +63787,6 @@
     // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/VueCtkDateTimePicker/index.vue?vue&type=script&lang=js&
     
     
-    //
     //
     //
     //
@@ -64423,7 +64380,6 @@
                     (b === 1) ? 'st' :
                     (b === 2) ? 'nd' :
                     (b === 3) ? 'rd' : 'th';
-                return number + output;
             },
             week : {
                 dow : 1, // Monday is the first day of the week.
@@ -64450,7 +64406,6 @@
     
     /***/ "ffff":
     /***/ (function(_module, _exports, __webpack_require__) {
-    
     //! moment.js locale configuration
     
     ;(function (_global, factory) {
@@ -64627,7 +64582,6 @@
             staticStyle: { "margin-top": "30px" }
           },
           [
-            _vm._m(1),
             _vm._v(" "),
             _c("div", { staticStyle: { "margin-top": "20px" } }, [
               _c("table", { staticClass: "table table-bordered" }, [
@@ -64880,7 +64834,7 @@
                           ? _c(
                               "button",
                               {
-                                staticClass: "btn  btn-success",
+                                staticClass: "btn  btess",
                                 attrs: { disabled: _vm.disabled, type: "submit" }
                               },
                               [
@@ -65710,10 +65664,7 @@
           console.error(("[Vue warn]: " + msg + trace));
         }
       };
-    
       tip = function (msg, vm) {
-        if (hasConsole && (!config.silent)) {
-          console.warn("[Vue tip]: " + msg + (
             vm ? generateComponentTrace(vm) : ''
           ));
         }
@@ -77004,7 +76955,6 @@
     function getOuterHTML (el) {
       if (el.outerHTML) {
         return el.outerHTML
-      } else {
         var container = document.createElement('div');
         container.appendChild(el.cloneNode(true));
         return container.innerHTML
@@ -77115,7 +77065,7 @@ return module.l;
     __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
     window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
     
-    window.swal = sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a;
+sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a;
     
     
     Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_1___default.a);
@@ -77129,7 +77079,7 @@ return module.l;
       \***********************************/
     /*! no static exports found */
     /***/ (function(module, exports, __webpack_require__) {
-    
+
     window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
     /**
      * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -77171,7 +77121,7 @@ return module.l;
      */
     // import Echo from 'laravel-echo'
     // window.Pusher = require('pusher-js');
-    // window.Echo = new Echo({
+    // window.Echo = new E
     //     broadcaster: 'pusher',
     // });
     
@@ -77213,7 +77163,6 @@ return module.l;
     component.options.__file = "resources/js/components/NewArrivals.vue"
     /* harmony deport */ __webpack_exports__["default"] = (component.exports);
     
-    /***/ }),
     
     /***/ "./resources/js/components/NewArrivals.vue?vue&type=script&lang=js&":
     /*!**************************************************************************!*\
@@ -77223,9 +77172,6 @@ return module.l;
     /***/ (function(module, __webpack_exports__, __webpack_require__) {
     
     "use strict";
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewArrivals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./NewArrivals.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NewArrivals.vue?vue&type=script&lang=js&");
-    /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewArrivals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
     
     /***/ }),
     
