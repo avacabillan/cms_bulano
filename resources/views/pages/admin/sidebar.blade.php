@@ -40,7 +40,12 @@
             <!-- CALENDAR -->
             <li>
               <a href="{{route('fullcalendar')}}" >
-                <i class="fa fa-calendar" ></i><span>Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
+                <i class="fa fa-calendar" ></i><span>BIR Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('taxcalendar')}}" >
+                <i class="fa fa-calendar" ></i><span>Reminder Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
             </li>
             <li>

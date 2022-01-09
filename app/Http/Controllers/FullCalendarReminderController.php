@@ -49,14 +49,15 @@ class FullCalendarReminderController extends Controller
     public function ajax(Request $request){
         $month =$request->month;
         $year =$request->year;
-        $dates = Reminder::whereMonth('start', date($month))
-        ->whereYear('start', date($year))
-        ->get(['reminder']);
-        $data = Reminder::all();
+        // $dates = Reminder::select('reminder')
+        // ->where('start', date($month))
+        // ->where('start', date($year))
+        // ->get(['reminder']);
+        $dates = DB::select('select * from reminders where saart = ?', [1]);
         
-        dd($dates);
+        // dd($dates);
 
-        return view('pages.admin.calendar.fullcalendar', compact('data',$data,'dates',$dates));
+        return view('pages.admin.calendar.fullcalendar', compact('dates',$dates));
         
        
         
