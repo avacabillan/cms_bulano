@@ -20,9 +20,9 @@ class FullCalendarReminderController extends Controller
         //     return Carbon::parse($date->start)->format('m'); // grouping by months
         // });
         $events = [];
-        // $dates = Reminder::whereMonth('start', date('m'))
-        // ->whereYear('start', date('Y'))
-        // ->get(['reminder']);
+        $dates = Reminder::whereMonth('start', date('m'))
+        ->whereYear('start', date('Y'))
+        ->get(['reminder']);
         $data = Reminder::all();
         
         if($data->count())
