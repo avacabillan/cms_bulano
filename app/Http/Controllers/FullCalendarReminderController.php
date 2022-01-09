@@ -20,9 +20,9 @@ class FullCalendarReminderController extends Controller
         //     return Carbon::parse($date->start)->format('m'); // grouping by months
         // });
         $events = [];
-        $dates = Reminder::whereMonth('start', date('m'))
-        ->whereYear('start', date('Y'))
-        ->get(['reminder']);
+        // $dates = Reminder::whereMonth('start', date('m'))
+        // ->whereYear('start', date('Y'))
+        // ->get(['reminder']);
         $data = Reminder::all();
         
         if($data->count())
@@ -42,7 +42,8 @@ class FullCalendarReminderController extends Controller
             }
         }
         $calendar = Calendar::addEvents($events);
-        return view('pages.admin.calendar.fullcalendar', compact('calendar', 'data',$data,'dates',$dates));
+        // return view('pages.admin.calendar.fullcalendar', compact('calendar', 'data',$data));
+        return view('pages.admin.calendar.fullcalendar')->with('calendar')->with('data',$data)->with('dates',$dates) ;
         
        
     }
