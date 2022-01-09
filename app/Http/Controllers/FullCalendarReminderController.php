@@ -62,41 +62,7 @@ class FullCalendarReminderController extends Controller
         
     }
 
-    // public function ajax(Request $request)
-    // {
- 
-    //     switch ($request->type) {
-    //        case 'add':
-    //           $reminder = Reminder::create([
-    //               'title' => $request->title,
-    //               'start' => $request->start,
-    //               'end' => $request->end,
-    //           ]);
- 
-    //           return response()->json($reminder);
-    //          break;
-  
-    //        case 'update':
-    //           $reminder = Reminder::find($request->id)->update([
-    //               'title' => $request->title,
-    //               'start' => $request->start,
-    //               'end' => $request->end,
-    //           ]);
- 
-    //           return response()->json($reminder);
-    //          break;
-  
-    //        case 'delete':
-    //           $reminder = Reminder::find($request->id)->delete();
-  
-    //           return response()->json($reminder);
-    //          break;
-             
-    //        default:
-    //          # code...
-    //          break;
-    //     }
-    // }
+    
 
     public function storeEvent(Request $request)
      {  
@@ -146,5 +112,22 @@ class FullCalendarReminderController extends Controller
         $reminder->update();
         return redirect()->route('view-reminders')->with('success', 'Reminder has been updated');
     }
-    
+    public function tax(){
+        return view('pages.admin.calendar.tax-calendar');
+    }
+    public function getTaxEvent(){
+        $reminders = Reminder::select('reminder', 'start')->get();
+        return response()->json($reminders);
+    }
+    public function createTaxEvent(Request $request)
+     {  
+  
+            $reminder= new Reminder();
+            $reminder->reminder=$request->title;
+            $reminder->color=$request->color;
+            $reminder->start=$request->startdate;
+            $reminder->end=$request->enddate;
+            $reminder->save();
+            
+  }
 }

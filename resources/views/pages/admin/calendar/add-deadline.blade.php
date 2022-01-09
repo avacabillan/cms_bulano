@@ -15,7 +15,15 @@
   <body>
     <div class="container">
       <br/>
-      <form method="POST" action="{{route('post-reminder')}}">
+      <div class="modal" tabindex="-1">
+  <div class="modal-dialog " id="add-reminder">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form method="POST" action="{{route('post-reminder')}}" id="addReminderForm">
         @csrf
         @method('GET')
         <div class="row">
@@ -50,7 +58,7 @@
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
-            <button type="submit" class="btn btn-success">Add Event</button>
+            <button type="submit" class="btn btn-success saveBtn"  value="createReminder">Add Event</button>
           </div>
         </div>
       </form>
@@ -65,5 +73,14 @@
             format: 'yyyy-mm-dd'
          }); 
     </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+     
   </body>
 </html>
