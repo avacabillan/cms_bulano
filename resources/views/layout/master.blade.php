@@ -49,6 +49,8 @@
     <!-- CLIENT -->
     <link rel="stylesheet" href="{{asset('css/client_login.css')}}">
     <link rel="stylesheet" href="{{asset('css/client_profile.css')}}">
+    <link rel="stylesheet" href="{{asset('css/c_peofile.css')}}">
+
     
     <!-- CALENDAR -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" />

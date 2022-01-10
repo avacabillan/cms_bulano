@@ -82,6 +82,8 @@ Route::middleware(['logout'])->group(function(){
 
     Route::view('/client_message','pages.client.client_message')->name('client_message');
     Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
+    Route::view('/client_profile','pages.client.myprofile')->name('client_profile'); 
+
 
 
     /*---------------------- ASSOCIATE REMINDER CLIENTS --------------*/
@@ -140,3 +142,8 @@ Route::get('/try',[TestController::class, 'trial']);
 Route::get('/getusers', [MessageController::class, 'getUsers'])->name('getUsers');
 Route::get('/get_messages',  [MessageController::class, 'getMessages'])->name('getMessages');
 Route::post('notifications',  [MessageController::class, 'sendMail'])->name('sendMail');
+    //try
+    Route::view('/duedate','pages.associate.duedateform')->name('duedate'); 
+
+
+

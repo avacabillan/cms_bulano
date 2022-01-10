@@ -5,14 +5,17 @@
 @endsection
 
 @section('content')
+@include('shared.navbar')
 @include('pages.associate.sidebar')
 
 <div class="siderbar_main toggled">
-  <button class="btn btn-danger d-none mt-3 mb-2" id="deleteallClients" style="float: right;">Delete All</button>
-  <button type="button" class="btn btn-primary mt-5 mb-5 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
-  <div class="page-content mt-3" style="margin: top 160px;">
+  <div class="page-content mt-5" style="margin: top 160px;">
   
-    <div class="container mt-3" style="height:50%">
+    <div class="container mt-3 pt-5" style="height:50%">
+    <button type="button" class="btn btn-primary mt-2 mb-5 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
+    <div>
+            <h2>List of <strong>Clients</strong></h2><hr>
+        </div>
       <table id="clients-list" class="table table-bordered"  style="width:100% ">
         <thead >
           <tr>
@@ -47,7 +50,6 @@
         </tbody>
               
       </table>
-      <a href="{{route('archive-list')}}"><button  class="btn btn-primary" >Archives</button></a>
     </div>
   </div>
 </div>

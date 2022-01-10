@@ -6,15 +6,16 @@
 @endsection
 
 @section('content')
+@include('shared.navbar')
 @include('pages.associate.sidebar')
 
 <div class="siderbar_main toggled">
-
   <div class="page-content mt-5"style="margin: top 160px;">
-  <button type="button" class="btn btn-primary mt-3 mb-2 me-3" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i>Add Associate</button>
 
-    <div class="container mt-3" style="height:50%">
-    
+    <div class="container mt-3 pt-5" style="height:50%">
+        <div>
+            <h2>List of <strong>Archives</strong></h2><hr>
+        </div>
 
         <table id="assoc-list" class="table table-bordered mt-5"  style="width:100% ">
 

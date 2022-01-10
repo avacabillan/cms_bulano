@@ -34,7 +34,7 @@
             <!-- REGISTERED GUEST -->
             <li>
               <a href="{{route('requesters')}}">
-                <i class="fa fa-user"></i><span>Registered Guest</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
+                <i class="fa fa-user"></i><span>Registered Guest</span><span class="badge pull-right bg-danger ms-2 mt-2">NEW</span>
               </a>
             </li>
             <!-- CALENDAR -->
@@ -75,10 +75,10 @@
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
             
-            <li><a href="{{route('about')}}"><i class="far fa-envelope"></i>Message<span class="badge pull-right bg-danger me-3 mt-2">3</span></a></li>
+            <li><a href="{{route('about')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">99+</span></a></li>
             <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
             <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
-            <li><a href=""><i class="fa fa-folder"></i><span>Conatcs</span></a></li>
+            <li><a href=""><i class="fa fa-folder"></i><span>Contacts</span></a></li>
           </ul>
           
         </div>
@@ -94,7 +94,7 @@
           <span class="badge-sonar"></span>
         </a>
         <a href="{{'logout'}}">
-          <i class="fa fa-power-off"></i>
+          <i class="fal fa-sign-out-alt"></i>
         </a>
       </div>
       <!-- END OF FOOTER -->

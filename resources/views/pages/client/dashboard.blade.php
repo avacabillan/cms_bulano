@@ -4,18 +4,18 @@
     Client Dash
 @endsection 
 @section('content')
-
 @include('shared.navbar')
 @include('pages.client.sidebar')
 
 <div class="siderbar_main toggled">
   <div class="page-content">
+
     <x-slot name="header">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+      <h2 class="font-semibold text-xl leading-tight">
         {{ __('Dashboard for Client') }}
       </h2>
     </x-slot>
-    <div class="card-body">
+    <div class="card-body text-dark-800 text-center bg-light">
       @if (session('status'))
         <div class="alert alert-success" role="alert">
           {{ session('status') }}
@@ -31,8 +31,8 @@
       </div>
     </div>
 
-    <div class="row mt-5">
-      <div class="col-md-6">
+    <div class="form-group col-md-12 mt-5">
+  
         <h3 class="table_heading text-dark mb-3">Type of Taxes</h3>
         <table id="example" class="table table-striped" style="width:100%">
           <thead class="text-dark">
@@ -64,11 +64,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <div class="col-md-6">
-        
-      </div>
+ 
     </div>
 
   </div>
