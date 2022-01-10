@@ -16,12 +16,11 @@ class AdminAssocController extends Controller
         $positions = Position::all();               
         $associates= Associate::all();
             
-            return view ('pages.admin.associates.associates_list')
-            ->with( compact('departments',$departments,
-                            'positions',$positions,
-                            'associates',$associates,
-                                                     
-            ));
+           
+            return view ('pages.admin.associates.associates_list', compact('departments',
+                            'positions',
+                            'associates'
+                                ));
     }
 
 
