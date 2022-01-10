@@ -35,7 +35,7 @@
        
             <div class="row text-muted">
             <strong class="d-block h6 my-2 pb-2 border-bottom">Deadlines for this month</strong>
-                @foreach ($dates as $reminder)
+                @foreach ($data as $reminder)
 
                 <li>{{$reminder->reminder}}</li>
                 @endforeach
@@ -56,57 +56,87 @@
 
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+       
+            $.ajaxSetup({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            })
 
-      document.addEventListener('DOMContentLoaded', function() {
-
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+             var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
          
-            selectable: true,
-            initialView: 'dayGridMonth',
-            eventSources:[{
-            url: '/getTaxEvent',
-            
-            }],
-      
+                selectable: true,
+                initialView: 'dayGridMonth',
+                
             select:function(startDate){
-                let eventDate = startDate.startStr
-                let reminder = prompt ('Add new reminder!')
-                const month = new Date(eventDate);
-                console.log(month.getMonth(),month.getFullYear()); // (January gives 0)
-               
+                console.log(startDate)
+                var eventDate = startDate.startStr
                 
+                // var reminder = prompt ('Add new reminder!')
+                const date = new Date(eventDate);
+                var month =(date.getMonth())
+                var year = (date.getFullYear()); // (January gives 0)
 
-                if(reminder == null || reminder == ''){
-                    return;
+                console.log(year);  
+                console.log(month);  
+                
+                // if(reminder == null || reminder == ''){
+                //     return;
+                // }
+                $.ajax({
+                method: "POST",
+                url: "{{route('fullcalendar.ajax')}}",
+                data: { month: month,
+                        year: year,
                 }
-                fetch('/createTaxEvent',{
-                    method:'post',
-                    data:{
-                            month: month.getMonth(),
-                            year: month.getFullYear(),
-                    },
-                    body: JSON.stringify({reminder, eventDate}),
-                    headers:{
-                        'Content-Type': 'application/json',
-                        'X-CSRF': csrfToken
-                        
-                    },
+            
                 })
-               
-                
-                .then(e=> {
-                    console.log(data);
-
-                    calendar.refetchEvents();
-                })
-               
-           
+            calendar.refetchEvents();
             },
-
-        });
+        })
         calendar.render();
-      });
 
-    </script>
+
+        // var calendarEl = document.getElementById('calendar');
+        // var calendar = new FullCalendar.Calendar(calendarEl, {
+       
+        //   selectable: true,
+        //   initialView: 'dayGridMonth',
+        //   eventSources:[{
+        //       url: '/fullcalendar',
+              
+        //   }],
+        // select:function(startDate){
+        //     let eventDate = startDate.startStr
+        //     let reminder = prompt ('Add new reminder!')
+        //     const month = new Date(eventDate);
+        //     console.log(month.getMonth(),month.getFullYear()); // (January gives 0)
+            
+
+        //     if(reminder == null || reminder == ''){
+        //         return;
+        //     }
+        //     fetch('/createTaxEvent',{
+        //         method:'post',
+        //         body: JSON.stringify({reminder, eventDate}),
+        //         headers:{
+        //             'Content-Type': 'application/json',
+        //             'X-CSRF': csrfToken
+        //         },
+        //     })
+        //     .then(e=> {
+        //         console.log('success!');
+
+        //         calendar.refetchEvents();
+        //     })
+        // }
+
+
+        // });
+        // calendar.render();
+        // calendar.getEventSources()
+    });
+</script>
 @endsection

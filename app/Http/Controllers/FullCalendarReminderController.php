@@ -6,23 +6,17 @@ use App\Models\TaxForm;
 use Illuminate\Http\Request;
 use Redirect,Response;
 use Calendar;
+use DB;
+use Carbon\Carbon;
 
 class FullCalendarReminderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
     
       
-        // $dates = Reminder::select('id', 'start')
-        // ->get()
-        // ->groupBy(function($date) {
-        //     //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
-        //     return Carbon::parse($date->start)->format('m'); // grouping by months
-        // });
+        
         $events = [];
-        $dates = Reminder::whereMonth('start', date('m'))
-        ->whereYear('start', date('Y'))
-        ->get(['reminder']);
         $data = Reminder::all();
         
         if($data->count())
@@ -41,23 +35,24 @@ class FullCalendarReminderController extends Controller
                 );
             }
         }
+        // dd($data);
         $calendar = Calendar::addEvents($events);
-        return view('pages.admin.calendar.fullcalendar', compact('calendar', 'data',$data,'dates',$dates));
+        return view('pages.admin.calendar.fullcalendar', compact('calendar', 'data',$data));
         
        
     }
     public function ajax(Request $request){
+        // dd($request);
         $month =$request->month;
         $year =$request->year;
-        // $dates = Reminder::select('reminder')
-        // ->where('start', date($month))
-        // ->where('start', date($year))
-        // ->get(['reminder']);
-        $dates = DB::select('select * from reminders where saart = ?', [1]);
+        $dates = Reminder::whereMonth('start', $month +1)
+        ->whereYear('start',$year)
+        ->get();
+        // $dates = DB::select('select * from reminders where saart = ?', [1]);
         
-        // dd($dates);
+        dd($dates);
 
-        return view('pages.admin.calendar.fullcalendar', compact('dates',$dates));
+        return view('pages.admin.calendar.fullcalendar') ->with('dates',$dates);
         
        
         
