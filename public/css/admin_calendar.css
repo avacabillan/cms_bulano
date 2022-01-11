@@ -1,8 +1,8 @@
 .vertical-scrollable> .row {
     position: absolute;
     top: 95px;
-    left: 60%;
-    width: 40%;
+    left: 68%;
+    width: 30%;
     overflow-y: scroll;
     border: black 0.5px solid;
     background-color: #f0fff0;
@@ -65,4 +65,15 @@ color: #6c757d!important;
     margin-top: 50px;
     border-color: dimgrey;
     border-radius: 10px;
+}
+html, body {
+  margin: 0;
+  
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#calendar {
+  width: 550px;
+ 
 }

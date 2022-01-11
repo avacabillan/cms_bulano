@@ -11,7 +11,7 @@ use Carbon\Carbon;
 
 class FullCalendarReminderController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
     
       
@@ -36,24 +36,20 @@ class FullCalendarReminderController extends Controller
             }
         }
         // dd($data);
-        $calendar = Calendar::addEvents($events);
-        return view('pages.admin.calendar.fullcalendar', compact('calendar', 'data',$data));
+        // $calendar = Calendar::addEvents($events);
+        
+        
+        return view('pages.admin.calendar.fullcalendar', compact( 'data',$data));
         
        
     }
     public function ajax(Request $request){
-        // dd($request);
         $month =$request->month;
         $year =$request->year;
         $dates = Reminder::whereMonth('start', $month +1)
         ->whereYear('start',$year)
         ->get();
-        // $dates = DB::select('select * from reminders where saart = ?', [1]);
-        
-        dd($dates);
-
-        return view('pages.admin.calendar.fullcalendar') ->with('dates',$dates);
-        
+        return response()->json($dates);
        
         
     }
@@ -79,7 +75,7 @@ class FullCalendarReminderController extends Controller
     //     $reminder  = Reminder::where($where)->update($updateReminder);
  
     //     return Response::json($reminder);
-    // } 
+    // } Z
 
     public function deleteEvent($id)
     {
@@ -111,10 +107,7 @@ class FullCalendarReminderController extends Controller
     public function tax(){
         return view('pages.admin.calendar.tax-calendar');
     }
-    public function getTaxEvent(){
-        $reminders = Reminder::select('reminder', 'start')->get();
-        return response()->json($reminders);
-    }
+    
     public function createTaxEvent(Request $request)
      {  
   

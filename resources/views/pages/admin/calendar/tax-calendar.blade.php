@@ -17,9 +17,10 @@
           initialView: 'dayGridMonth',
           eventSources:[{
               url: '/getTaxEvent',
-              
+              color: 'yellow',    // an option!
+              textColor: 'black'  // an option!
           }],
-        select:function(startDate){
+          select:function(startDate){
             let eventDate = startDate.startStr
             let reminder = prompt ('Add new reminder!')
             const month = new Date(eventDate);
