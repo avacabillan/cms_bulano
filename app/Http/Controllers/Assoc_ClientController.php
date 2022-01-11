@@ -35,7 +35,7 @@ class Assoc_ClientController extends Controller
         $tins = Tin::all();
         $registered_address = RegisteredAddress::all();
             
-            return view ('pages.associate.clients.clients_list', compact ('modes', 
+            return view ('pages.associate.clients.clients_list', compact('modes', 
                 'corporates', 
                 'taxForms', 
                 'clients', 
