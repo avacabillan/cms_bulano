@@ -57,7 +57,7 @@ Route::middleware(['logout'])->group(function(){
     Route::view('/about','pages.admin.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
     Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
-
+    Route::view('/adminmessage','pages.admin.message')->name('adminmessage');
 
 
 
