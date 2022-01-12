@@ -36,10 +36,8 @@
        
             <div class="row text-muted">
             <strong class="d-block h6 my-2 pb-2 border-bottom">Deadlines for this month</strong>
-                @foreach ($data as $reminder)
-
-                <li class="reminders">{{$reminder->reminder}}</li>
-                @endforeach
+              
+               <li id="try"></li>
                 
             </div> 
         </div> 
@@ -57,8 +55,7 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-       
+    document.addEventListener('DOMContentLoaded', function() {       
             $.ajaxSetup({
             headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -68,35 +65,62 @@
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 
-                 
+                
+                lazyFetching:true,
                 selectable: true,
+                eventSources: [
+
+                    // your event source
+                    {
+                    url: '/fullcalendar/ajax', // use the `url` property
+                    color: 'yellow',    // an option!
+                    textColor: 'black'  // an option!
+                    }
+
+                    // any other sources...
+
+                ],
                 select:function(startDate){
-                    console.log(startDate);
+                    // console.log(startDate);
                     var eventDate = startDate.startStr;
                     const date = new Date(eventDate);
                     var month =(date.getMonth())
                     var year = (date.getFullYear()); // (January gives 0)
-                    
-                    // console.log(year);  
-                    // console.log(month);  
-                    
-                    $.ajax({
-                        method: "POST",
-                        url: "{{route('fullcalendar.ajax')}}",
-                        data: { month: month,
-                                year: year,
-                        }
-                        
-                      
-                    })
                    
-                    calendar.refetchEvents();
+
+                    // console.log(year);  
+                    // console.log(month);                      
+                    $.ajax({
+                        url: '/fullcalendar/ajax',
+                        method: "get", 
+                        dataType: 'JSON',          
+                        data: {
+                            'month' : month,
+                            'year': year,        
+                        },
+                        success: function (response) {//once the request successfully process to the server side it will return result here
+                        var stringified = JSON.stringify(response);
+                        var parsedObj = JSON.parse(stringified);
+
+                        console.log(parsedObj);
+                        $("#try").html("Reminder:" + parsedObj.reminder);
+                        
+                       
+
+                       
+                      
+                                    
+                    }
+                       
+
+                    });
+                                       // calendar.refetchEvents();
                 }
     
                
             });
         calendar.render();
-               
+         
     
 });
 </script>

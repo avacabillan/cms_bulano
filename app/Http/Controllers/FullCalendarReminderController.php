@@ -16,40 +16,50 @@ class FullCalendarReminderController extends Controller
     
       
         
-        $events = [];
-        $data = Reminder::all();
+        // $events = [];
+        // $data = Reminder::all();
         
-        if($data->count())
-        {
-            foreach ($data as $key => $value) 
-            {
-                $events[] = Calendar::event(
-                    $value->reminder,
-                    true,
-                    new \DateTime($value->start),
-                    new \DateTime($value->end.'+1 day'),
-                    // new \Color($value->color),
-                    null,
-                    // Add color
+        // if($data->count())
+        // {
+        //     foreach ($data as $key => $value) 
+        //     {
+        //         $events[] = Calendar::event(
+        //             $value->reminder,
+        //             true,
+        //             new \DateTime($value->start),
+        //             new \DateTime($value->end.'+1 day'),
+        //             // new \Color($value->color),
+        //             null,
+        //             // Add color
                 
-                );
-            }
-        }
-        // dd($data);
-        // $calendar = Calendar::addEvents($events);
+        //         );
+        //     }
+        // }
+        // // dd($data);
+        // // $calendar = Calendar::addEvents($events);
         
         
-        return view('pages.admin.calendar.fullcalendar', compact( 'data',$data));
+     return view('pages.admin.calendar.fullcalendar');
         
        
     }
     public function ajax(Request $request){
         $month =$request->month;
         $year =$request->year;
-        $dates = Reminder::whereMonth('start', $month +1)
+        $reminders = Reminder::whereMonth('start', $month+1)
         ->whereYear('start',$year)
         ->get();
-        return response()->json($dates);
+        
+        // return view('pages.admin.calendar.fullcalendar',compact('reminders', $reminders));
+        //  return response()->json($reminders);
+        return json_encode(['data' => $reminders]);
+        
+    }
+    public function getTaxEvent(Request $request){
+        
+        $reminders = Reminder::select('reminder')
+        ->get();
+        return response()->json($reminders);
        
         
     }
@@ -107,6 +117,7 @@ class FullCalendarReminderController extends Controller
     public function tax(){
         return view('pages.admin.calendar.tax-calendar');
     }
+
     
     public function createTaxEvent(Request $request)
      {  
