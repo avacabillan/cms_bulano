@@ -98,12 +98,12 @@
                             'month' : month,
                             'year': year,        
                         },
-                        success: function (response) {//once the request successfully process to the server side it will return result here
-                        var stringified = JSON.stringify(response);
+                        success: function (data) {//once the request successfully process to the server side it will return result here
+                        var stringified = JSON.stringify(data);
                         var parsedObj = JSON.parse(stringified);
 
-                        console.log(parsedObj);
-                        $("#try").html("Reminder:" + parsedObj.reminder);
+                        console.log(data);
+                        $("#try").html("Reminder:" + (Object.values(parsedObj)));
                         
                        
 
