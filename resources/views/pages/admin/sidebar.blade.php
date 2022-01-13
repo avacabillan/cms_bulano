@@ -48,11 +48,11 @@
                 <i class="fa fa-calendar" ></i><span>Reminder Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
             </li>
-            <li>
+            <!-- <li>
             <a  href="{{route('view-reminders')}}">
                 <i class="fa fa-bell" ></i><span>Reminders</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
-            </li>
+            </li> -->
             
             <!-- ASSOCIATES -->
             <li>

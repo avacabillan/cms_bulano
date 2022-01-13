@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminAssocController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin_ClientController;
+use App\Http\Controllers\AdminCalendarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredClientController;
 use App\Http\Controllers\MessageController;
@@ -105,7 +106,13 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
     Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
     Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
-
+    /*---------------------- ADMIN ROUTE TO BIR CALENDAR --------------*/
+    Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
+    Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');
+    Route::get('/view-reminder',[FullCalendarReminderController::class, 'viewEvent'])->name('view-reminders');
+    Route::get('/edit-reminder/id={id}',[FullCalendarReminderController::class, 'editEvent'])->name('edit-reminder');
+    Route::put('/update-reminder/id={id}',[FullCalendarReminderController::class, 'updateEvent'])->name('update-reminder');
+    Route::get('/delete-reminder/id={id}',[FullCalendarReminderController::class, 'deleteEvent'])->name('delete-reminder');
     //-------------Tax Files Route---------------//
 
     Route::resource('upload', FileController::class);

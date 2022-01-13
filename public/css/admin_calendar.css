@@ -1,23 +1,17 @@
-.vertical-scrollable> .row {
+.vertical-scrollable>.card{
     position: absolute;
+    padding-left: 10px;
+    padding-top: 15px;
     top: 95px;
     left: 68%;
     width: 30%;
+    height: 60%;
     overflow-y: scroll;
     border: black 0.5px solid;
     background-color: #f0fff0;
   }
-    .pb-2 {
-        padding-bottom: 0.5rem!important;
-    }
+  
     
-    .my-2 {
-        margin-top: 0.5rem!important;
-        margin-bottom: 0.5rem!important;
-    
-    }.d-block {
-        display: block!important;
-    }
    
   li { 
       color: black; 

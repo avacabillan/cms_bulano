@@ -49,17 +49,16 @@ class FullCalendarReminderController extends Controller
         $reminders = Reminder::whereMonth('start', $month+1)
         ->whereYear('start',$year)
         ->get();
-        
+       
         // return view('pages.admin.calendar.fullcalendar',compact('reminders', $reminders));
         //  return response()->json($reminders);
-        return json_encode(['data' => $reminders]);
+        return response()->json($reminders);
         
     }
-    public function getTaxEvent(Request $request){
+    public function getTaxEvent(){
         
-        $reminders = Reminder::select('reminder')
-        ->get();
-        return response()->json($reminders);
+        $events = Reminder::select('reminder')->get();
+        return response()->json($events);
        
         
     }
