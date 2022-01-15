@@ -25,7 +25,9 @@
             @endif
         <div class="row">
             <div class="mt-5" style ="width: 58%" >
-                <div  id='calendar'></div>      
+            
+                <div  id='calendar'></div> 
+                 
             </div>
         </div>
         <div class="container vertical-scrollable" > 
@@ -50,18 +52,17 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
             })
-
+            
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl,{
-                eventSources: {
-                    url:'/getTaxEvent',
-                    color: 'blue'
-                },
+                
                 lazyFetching:true,
-                selectable: true,
-                select:function(startDate){
-                    // console.log(startDate);
-                    var eventDate = startDate.startStr;
+                selectable: true,     
+                events:function(startDate){
+                    
+                   
+                    var eventDate = startDate.end;
+                    console.log(eventDate);
                     const date = new Date(eventDate);
                     var month =(date.getMonth())
                     var year = (date.getFullYear()); // (January gives 0)
@@ -80,28 +81,41 @@
                         success: function (response) { 
                             var events = [];
                             if ($.trim(response) == '' ) {
-                                $('#try').append(('<li>')+ 'No deadlines for this month');
+                                // $('#try').append(('<li>')+ 'No deadlines for this month');
+                                document.getElementById("try").innerHTML = (('<li>')+ 'No deadlines for this month');
                             } 
-                            else { 
+                            else  { 
                                 
                                 $.each(response, function(index, element) {                            
                                     events.push({
                                         title: element.reminder,
                                         start: element.start, 
                                     });
+                                    
                                     $('#try').append(('<li>')  + element.reminder + " " +element.start );
-                                    console.log(events);                            
+                                    
+                                    document.getElementById("try").innerHTML = (('<li>')  + element.reminder + " " + element.start );
+                                  
+                                    // console.log(events);   
+                                                   
                                 });
                             } 
                            
-                            
-                        }
+                          
+                        },
+                        
                     });
                     
-                }              
+                },
+               
+              
+               
+                    
             });
-        calendar.render();
-        calendar.refetchEvents();
+         
+        calendar.render();     
+        
+        // calendar.refetchEvents();
         
  
 });

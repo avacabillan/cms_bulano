@@ -15,38 +15,26 @@ class FullCalendarReminderController extends Controller
     {
     
       
+        $events =array();
+        $deadlines = Reminder::all();
+        foreach ($deadlines as $deadline){
+            $events[] = [
+                'reminder' => $deadline ->reminder,
+                'start' => $deadline ->start,
+                'end' => $deadline ->end,
+
+            ];
+        }
+        // dd($events);
         
-        // $events = [];
-        // $data = Reminder::all();
-        
-        // if($data->count())
-        // {
-        //     foreach ($data as $key => $value) 
-        //     {
-        //         $events[] = Calendar::event(
-        //             $value->reminder,
-        //             true,
-        //             new \DateTime($value->start),
-        //             new \DateTime($value->end.'+1 day'),
-        //             // new \Color($value->color),
-        //             null,
-        //             // Add color
-                
-        //         );
-        //     }
-        // }
-        // // dd($data);
-        // // $calendar = Calendar::addEvents($events);
-        
-        
-     return view('pages.admin.calendar.fullcalendar');
+        return view('pages.admin.calendar.bir-calendar')->with('events', $events);
         
        
     }
     public function ajax(Request $request){
         $month =$request->month;
         $year =$request->year;
-        $reminders = Reminder::whereMonth('start', $month+1)
+        $reminders = Reminder::whereMonth('start', $month)
         ->whereYear('start',$year)
         ->get();
        
