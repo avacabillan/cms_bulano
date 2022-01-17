@@ -18,6 +18,7 @@
           <tr>
         
             <th class="Client-th text-dark text-center">Reminder</th>
+            <th class="Client-th text-dark text-center">Deadline</th>
             <th class="Client-th text-dark text-center">Action</th>
               
           </tr>
@@ -27,6 +28,7 @@
             <tr>
              
               <td>{{$reminder->reminder}}</td>
+              <td >{{$reminder->start}}</td>
               <td>
                 <center><a  class="btn btn-success btn-sm viewbtn mr-2 " href="{{route('edit-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-edit  text-center"></a></i>
                 <a  class="btn btn-success btn-sm viewbtn " href="{{route('delete-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-trash  text-center"></a></i>

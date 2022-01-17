@@ -10,7 +10,7 @@ class Reminder extends Model
     use HasFactory;
     protected $table = 'reminders';
      protected $fillable = [
-        'reminder','color', 'start', 'end'
+        'reminder', 'start', 'end'
     ];
 
 

@@ -44,7 +44,7 @@
               </a>
             </li>
             <li>
-              <a href="{{route('taxcalendar')}}" >
+              <a href="{{route('display-calendar')}}" >
                 <i class="fa fa-calendar" ></i><span>Reminder Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
             </li>

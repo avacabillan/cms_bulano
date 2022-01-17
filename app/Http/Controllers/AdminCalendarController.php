@@ -3,27 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Reminder;
+use App\Models\Deadline;
 
 class AdminCalendarController extends Controller
 {
-    public function index(){
-        return view ('pages.admin.calendar.bir-deadline');
-    }
-    public function showDeadline(){
-        return view ('pages.admin.calendar.deadline-list');
-    }
-    public function createDeadline(){
-        return view ('pages.admin.calendar.add-deadline');
-    }
-    public function editDeadline(){
-        return view ('pages.admin.calendar.edit-deadline');
-    }
-    public function bulanoDeadline(){
-        return view ('pages.admin.calendar.bulano-calendar');
-    }
-   
+    public function index()
+    {
+        if(request()->ajax()) 
+        {
 
+        $deadline = (!empty($_GET["deadline"])) ? ($_GET["deadline"]) : ('');
+        $data = Deadline::whereDate('deadline', '>=', $deadline)->get(['id','title','deadline']);
+        return Response::json($data);
+        }
+    
+        return view ('test');
+    }
+    
+   
+    public function create(Request $request)
+    {  
+        $insertArr = [ 'title' => $request->title,
+                       'deadline' => $request->start,
+                       'taxform_id' => $request->taxform
+                    ];
+        $event = Deadline::insert($insertArr);   
+        return Response::json($event);
+    }
+     
+ 
+    public function update(Request $request)
+    {   
+        $where = array('id' => $request->id);
+        $updateArr = ['title' => $request->title,
+                      'deadline' => $request->start,
+                      'taxform_id' => $request->taxform];
+        $event  = Deadline::where($where)->update($updateArr);
+ 
+        return Response::json($event);
+    } 
+ 
+ 
+    public function destroy(Request $request)
+    {
+        $event = Deadline::where('id',$request->id)->delete();
+   
+        return Response::json($event);
+    }    
 
 
 }
