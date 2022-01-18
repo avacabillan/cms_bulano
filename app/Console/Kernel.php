@@ -11,19 +11,19 @@ class Kernel extends ConsoleKernel
 
     protected $commands = [
        
-        // 'App\Console\Commands\SendReminderEmails',
-        'App\Console\Commands\NotifyUsers',
+        'App\Console\Commands\SendReminderEmails',
+        // 'App\Console\Commands\NotifyUsers',
     ];
 
    
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        // $schedule->command('reminder:emails')
-        // ->everyMinute();
-
-        $schedule->command('notify:users')
+        $schedule->command('reminder:emails')
         ->everyMinute();
+
+        // $schedule->command('notify:users')
+        // ->everyMinute();
     }
 
     

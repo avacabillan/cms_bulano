@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Mail\TaxReminder;
 use App\Models\Client;
 use App\Models\ClientTax;
-
+use App\Models\Deadline;
 use App\Models\Message;
 use Carbon\Carbon;
 use App\Jobs\SendMailJob;
@@ -44,6 +44,48 @@ class SendReminderEmails extends Command
    
     public function handle()
     {
+            // ------ fetch clients with 1701 form 
+        $deadlines = DB::table('bulano_deadline')
+            ->join('client_taxes', 'bulano_deadline.taxform_id', '=', 'client_taxes.tax_form_id')
+             ->join('clients', 'client_taxes.client_id', '=', 'clients.id')
+             ->where( 'bulano_deadline.taxform_id', '=', 1)
+            // ->orderBy('bulano_deadline.taxform_id', 'asc')
+            ->select ('client_taxes.client_id', 'bulano_deadline.title', 'clients.email')
+            ->get();
+               if($deadlines != ''){
+                Mail::send(['html'=> 'pages.emails.reminder'],array('deadlines '=>$deadlines ),
+                 function ($message) {
+                    $message->from('test@bulano.com', 'Bulano Test');
+                    $message->subject('Test Tax Reminder');
+                    $message->to('$deadlines->email');
+                });
+                dd($message);
+               }
+            // $dues = Deadline::whereNotNull('deadline')
+            // ->get();
+            // foreach($dues as $due) {
+            //   $diffInDays = $due->deadline->diff(Carbon::now())->days;
+          
+           
+          
+              
+            // }
+        // ------ fetch deadline titles 
+        //  $deadlines = DB::table('bulano_deadline')
+        //  ->orderBy('taxform_id', 'asc')
+        //  ->select('title')
+        //  ->get();
+        
+           
+
+
+
+
+
+
+
+
+
         //get all reminders of VAT
         //    $date=date('d-m-Y', strtotime('tomorrow'));
         //    $test = DB::table('reminders')
@@ -61,9 +103,9 @@ class SendReminderEmails extends Command
         //     // ->orderBy('client_id')
         //     ->get();
         
-        // $clients =DB::table('clients')->pluck('email');
+        //  $clients =DB::table('clients')->pluck('email');
        
-        
+            // dd($clients);
         // $clients = Client::query()
         // ->where('id', '=', '3')
         // ->select('email')
@@ -131,27 +173,27 @@ class SendReminderEmails extends Command
 
 
     //One hour is added to compensate for PHP being one hour faster 
-    $now = date("Y-m-d H:i", strtotime(Carbon::now()->addHour()));
-    logger($now);
+        // $now = date("Y-m-d H:i", strtotime(Carbon::now()->addHour()));
+        // logger($now);
 
-    $messages = Message::get();
-    if($messages !== null){
-        //Get all messages that their dispatch date is due
-        $messages->where('date_string',  $now)->each(function($message) {
-            if($message->delivered == 'NO')
-            {
-                $users = User::all();
-                foreach($users as $user) {
-                    dispatch(new SendMailJob(
-                        $user->email, 
-                        new NewArrivals($user, $message))
-                    );
-                }
-                $message->delivered = 'YES';
-                $message->save();   
-            }
-        });
+        // $messages = Message::get();
+        // if($messages !== null){
+        //     //Get all messages that their dispatch date is due
+        //     $messages->where('date_string',  $now)->each(function($message) {
+        //         if($message->delivered == 'NO')
+        //         {
+        //             $users = User::all();
+        //             foreach($users as $user) {
+        //                 dispatch(new SendMailJob(
+        //                     $user->email, 
+        //                     new NewArrivals($user, $message))
+        //                 );
+        //             }
+        //             $message->delivered = 'YES';
+        //             $message->save();   
+        //         }
+        //     });
+        // }
+        
     }
-    
-        }
 }

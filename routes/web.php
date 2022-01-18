@@ -98,6 +98,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
     Route::put('/update/client/{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
     Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
+    Route::get('/createClient',[Assoc_ClientController::class, 'createClient'])->name('createClient'); //create view
     Route::get('/client-profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
     Route::get('/assoc-clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
