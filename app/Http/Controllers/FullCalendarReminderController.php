@@ -13,54 +13,54 @@ use Carbon\Carbon;
 class FullCalendarReminderController extends Controller
 {
     //BIR FULLCALENDAR
-    public function index()
+    public function index(Request $request)
     {
 
-        $events = [];
-        $dates = Reminder::whereMonth('start', date('m'))
-        ->whereYear('start', date('Y'))
-        ->get(['reminder']);
-        $data = Reminder::all();
-        
-        if($data->count())
-        {
-            foreach ($data as $key => $value) 
-            {
-                $events[] = Calendar::event(
-                    $value->reminder,
-                    true,
-                    new \DateTime($value->start),
-                    new \DateTime($value->end.'+1 day'),
-                    // new \Color($value->color),
-                    null,
-                    // Add color
-                
-                );
-            }
-        }
-        // dd($data);
-        $calendar = Calendar::addEvents($events);
-        return view('pages.admin.calendar.tax-calendar.bir-calendar', compact('calendar', 'data',$data,'dates',$dates));
+        if($request->ajax()) {
+       
+            $data = Reminder::whereDate('start', '>=', $request->start)
+                      ->whereDate('end',   '<=', $request->end)
+                      ->get(['id', 'reminder', 'start', 'end']);
+ 
+            return response()->json($data);
+       }
+       
+        return view('pages.admin.calendar.tax-calendar.bir-calendar');
         
        
     }
     public function ajax(Request $request){
         $month =$request->month;
-        $year =$request->year;
+        $year =$request->year;    
         $reminders = Reminder::whereMonth('start', $month)
         ->whereYear('start',$year)
         ->get();
-       
-        // return view('pages.admin.calendar.fullcalendar',compact('reminders', $reminders));
-        //  return response()->json($reminders);
+
         return response()->json($reminders);
         
     }
+    // public function fetchDate(Request $request)
+    // {
+    //     if($request->ajax())
+    //     {
+    //     if($request->from_date != '' && $request->to_date != '')
+    //     {
+    //     $data = DB::table('reminders')
+    //         ->whereBetween('start', array($request->from_date, $request->to_date))
+    //         ->get();
+    //     }
+    //     else
+    //     {
+    //     $data = DB::table('reminders')->orderBy('start', 'desc')->get();
+    //     }
+    //     echo json_encode($data);
+    //     }
+    // }
     public function getTaxEvent(){
         
       
-            $reminders = Reminder::select('reminder', 'start')->get();
-            return response()->json($reminders);
+        $reminders = Reminder::select('reminder')->get();
+        return response()->json($reminders);
   
     }
     public function createEvent(){
@@ -103,18 +103,6 @@ class FullCalendarReminderController extends Controller
     }
     
 
-    
-//     public function createTaxEvent(Request $request)
-//      {  
-  
-//             $reminder= new Reminder();
-//             $reminder->reminder=$request->title;
-//             $reminder->color=$request->color;
-//             $reminder->start=$request->startdate;
-//             $reminder->end=$request->enddate;
-//             $reminder->save();
-            
-//   }
 
 
 
@@ -133,11 +121,11 @@ class FullCalendarReminderController extends Controller
             $year =$request->year;
             $deadlines = Deadline::whereMonth('deadline', $month)
             ->whereYear('deadline',$year)
+            ->orderBy('deadline')
             ->get();
             
             return response()->json($deadlines);
                      
-            // return view ('pages.admin.calendar.deadline-calendar.bulano-calendar',compact('deadlines', $deadlines));
         }
         public function listDeadline(){
             $deadlines = Deadline::all();

@@ -13,44 +13,60 @@
                 <p>{{ \Session::get('success') }}</p>
                 </div><br />
             @endif
-      <table id="clients-list" class="table table-bordered"  style="width:60% ">
-        <thead >
-          <tr>
-        
-            <th class="Client-th text-dark text-center">Reminder</th>
-            <th class="Client-th text-dark text-center">Deadline</th>
-            <th class="Client-th text-dark text-center">Action</th>
+            <!-- <div class="panel panel-default">
+              <div class="panel-heading">
+              <div class="row">
+              <div class="col-md-5">Sample Data - Total Records - <b><span id="total_records"></span></b></div>
+              <div class="col-md-5">
+              <div class="input-group input-daterange">
+                  <input type="text" name="from_date" id="from_date"  class="form-control" />
+                  <strong class="input-group-addon mt-2" style="margin-left:10px; margin-right:10px;">To</strong>
+                  <input type="text"  name="to_date" id="to_date"  class="form-control" />
+              </div>
+              </div>
+              <div class="col-md-2">
+              <button type="button" name="filter" id="filter" class="btn btn-info btn-sm">Filter</button>
+              <button type="button" name="refresh" id="refresh" class="btn btn-warning btn-sm">Refresh</button>
+              </div>
+            </div> -->
+            <div class="panel-body">
+            <div class="table">
+            <table id="clients-list" class="table table-striped table-bordered"  style="width:60%; ">
+              <thead >
+                <tr>
               
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($reminders as $reminder)
-            <tr>
-             
-              <td>{{$reminder->reminder}}</td>
-              <td >{{$reminder->start}}</td>
-              <td>
-                <center><a  class="btn btn-success btn-sm viewbtn mr-2 " href="{{route('edit-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-edit  text-center"></a></i>
-                <a  class="btn btn-success btn-sm viewbtn " href="{{route('delete-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-trash  text-center"></a></i>
-                </center</td>       
-            </tr>
-          @endforeach
-        </tbody>
-              
-      </table>
+                  <th class="Client-th text-dark text-center">Reminder</th>
+                  <th class="Client-th text-dark text-center">Deadline</th>
+                  <th class="Client-th text-dark text-center">Action</th>
+                    
+                </tr>
+              </thead>
+              <tbody>
+
+                @foreach($reminders as $reminder)
+                  <tr>
+                  
+                    <td>{{$reminder->reminder}}</td>
+                    <td >{{$reminder->start}}</td>
+                    <td>
+                      <center><a  class="btn btn-success btn-sm viewbtn mr-2 " href="{{route('edit-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-edit  text-center"></a></i>
+                      <a  class="btn btn-success btn-sm viewbtn " href="{{route('delete-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-trash  text-center"></a></i>
+                      </center</td>       
+                  </tr>
+                @endforeach
+              </tbody>
+                    
+            </table>
+              {{ csrf_field() }}
+            </div>
+            </div>
+           
      
-    </div>
   </div>
-@endsection
-@section('scripts')
- 
-    <!-- DATATABLE  EXTENTIONS-->
-    
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/searchbuilder/1.2.2/js/dataTables.searchBuilder.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+</div>
 
 @endsection
+
+ 
+ 
+  

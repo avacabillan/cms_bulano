@@ -44,23 +44,34 @@ class SendReminderEmails extends Command
    
     public function handle()
     {
-            // ------ fetch clients with 1701 form 
-        $deadlines = DB::table('bulano_deadline')
+            // ------ group clients email with deadlines 
+        $clients = DB::table('bulano_deadline')
             ->join('client_taxes', 'bulano_deadline.taxform_id', '=', 'client_taxes.tax_form_id')
              ->join('clients', 'client_taxes.client_id', '=', 'clients.id')
-             ->where( 'bulano_deadline.taxform_id', '=', 1)
-            // ->orderBy('bulano_deadline.taxform_id', 'asc')
-            ->select ('client_taxes.client_id', 'bulano_deadline.title', 'clients.email')
+            //  ->where( 'bulano_deadline.taxform_id', '=', 1)
+            ->orderBy('bulano_deadline.taxform_id')
+            ->select ('bulano_deadline.taxform_id','clients.email', 'clients.id')
             ->get();
-               if($deadlines != ''){
-                Mail::send(['html'=> 'pages.emails.reminder'],array('deadlines '=>$deadlines ),
-                 function ($message) {
-                    $message->from('test@bulano.com', 'Bulano Test');
-                    $message->subject('Test Tax Reminder');
-                    $message->to('$deadlines->email');
-                });
-                dd($message);
-               }
+            // dd($clients);
+
+        // ------ send emails with deadline now 
+        $emails = Deadline::where('deadline', '<=', Carbon::now()->toDateTimeString())           
+            ->get();
+        $date =Carbon::now();
+        if($emails == $date){
+            foreach ($emails as $email){
+                Mail::to($clients)->send(new TaxReminder($clients,$emails));
+                return "Email sent";
+            }
+        }
+          
+        $users = Deadline::whereNotNull('deadline')->get();
+        foreach($users as $user) {
+          $diffInDays = $user->deadline->diff(Carbon::now());
+      
+          $user-> Mail::to($clients)->send(new TaxReminder($clients,$emails));
+        }
+           
             // $dues = Deadline::whereNotNull('deadline')
             // ->get();
             // foreach($dues as $due) {

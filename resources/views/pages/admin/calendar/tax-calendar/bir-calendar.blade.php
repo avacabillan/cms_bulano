@@ -24,6 +24,7 @@
                 <p>{{ \Session::get('success') }}</p>
                 </div><br />
             @endif
+           
         <div class="row">
             <div class="mt-5" style ="width: 58%" >
             
@@ -111,16 +112,30 @@
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl,{
                 
-                events: '/getTaxEvent',
-                eventDisplay: true,
+               
+            eventSources: {
+
+              
+                
+                    url: '/getTaxEvent', // use the `url` property
+                    color: 'yellow',    // an option!
+                    textColor: 'black'  // an option!
+                
+
+                // any other sources...
+
+            },
+                
                 initialView: 'dayGridMonth',
                 selectable: true,     
                 events:function(startDate){
-
+                   
                     var eventDate = startDate.end;
-                    console.log(eventDate);
+                    // console.log(eventDate);
                     const date = new Date(eventDate);
-                    var month =(date.getMonth())
+
+                    var month =(date.getMonth());
+                    // var day =(date.getDate());
                     var year = (date.getFullYear()); // (January gives 0)
                     // console.log(year);  
                     // console.log(month);                      
@@ -129,8 +144,10 @@
                         method: "GET", 
                         dataType: 'JSON',          
                         data: {
+                            // 'day': day,
                             'month' : month,
                             'year': year,
+                            
                         },
                         success: function (response) { 
                             var events = [];
@@ -153,7 +170,8 @@
                                     // const content = list.innerHTML;
                                     // element.innerHTML = content ;                 
                                         //document.getElementById("try").innerHTML =  (('<li>')  + element.reminder + " " + element.start );
-                                    // console.log(events);                                  
+                                    // console.log(events);
+                                                                          
                                 });                            
                             }                          
                         },                    
@@ -162,7 +180,7 @@
             });
             
         calendar.render();     
-        calendar.addEventSource( '/getTaxEvent' )
+        
         // calendar.refetchEvents();
         
 
