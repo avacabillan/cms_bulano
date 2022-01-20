@@ -5,11 +5,12 @@ $('#addClient').on('shown.bs.modal', function() {
     $('#headingsModal').html('Add New Client');
     $('#addClient').modal('show');
 
-
+    
 })
 
 $(document).ready(function(){
     $("#btn-addClient").click(function(){
+        
         $(".addClient_form").fadeIn(500);
     });
     $("#close_ClientProfile").click(function(){

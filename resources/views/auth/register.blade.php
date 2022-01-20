@@ -20,11 +20,7 @@
                 <x-input style="width:20rem;" class="form-control form-control-sm" id="name"  type="text" name="name" placeholder="Name" :value="old('name')" required autofocus />
             </div>
             
-            <div class="form-group">
-                
-                <input style="width:20rem;" class="form-control form-control-sm"  id="contact_no" type="text" placeholder="Contact Number" class="form-control @error('contact_no') is-invalid @enderror" name="contact_no" required autocomplete="contact_no">
-            </div>
-
+           
             <!-- Email Address -->
             <div class="form-group">
               
@@ -33,18 +29,7 @@
 
             <!-- Password -->
            
-                
-            <div class="form-group">
-              
-              <x-input style="width:20rem;" class="form-control form-control-sm" id="password"  type="password" placeholder="Password" name="password"  required />
-          </div>
-            
-
-            <!-- Confirm Password -->
-            <div class="form-group">
-                
-                <x-input style="width:20rem;" class="form-control form-control-sm" id="password_confirmation" placeholder="Confirm Password" type="password" name="password_confirmation" required />
-            </div>
+           
 
             <!-- Select Option Rol type -->
             <!-- <div class="mt-2">

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Mail\TaxReminder;
 use App\Models\Client;
 use App\Models\ClientTax;
-
+use App\Models\Deadline;
 use App\Models\Message;
 use Carbon\Carbon;
 use App\Jobs\SendMailJob;
@@ -44,6 +44,59 @@ class SendReminderEmails extends Command
    
     public function handle()
     {
+            // ------ group clients email with deadlines 
+        $clients = DB::table('bulano_deadline')
+            ->join('client_taxes', 'bulano_deadline.taxform_id', '=', 'client_taxes.tax_form_id')
+             ->join('clients', 'client_taxes.client_id', '=', 'clients.id')
+            //  ->where( 'bulano_deadline.taxform_id', '=', 1)
+            ->orderBy('bulano_deadline.taxform_id')
+            ->select ('bulano_deadline.taxform_id','clients.email', 'clients.id')
+            ->get();
+            // dd($clients);
+
+        // ------ send emails with deadline now 
+        $emails = Deadline::where('deadline', '<=', Carbon::now()->toDateTimeString())           
+            ->get();
+        $date =Carbon::now();
+        if($emails == $date){
+            foreach ($emails as $email){
+                Mail::to($clients)->send(new TaxReminder($clients,$emails));
+                return "Email sent";
+            }
+        }
+          
+        $users = Deadline::whereNotNull('deadline')->get();
+        foreach($users as $user) {
+          $diffInDays = $user->deadline->diff(Carbon::now());
+      
+          $user-> Mail::to($clients)->send(new TaxReminder($clients,$emails));
+        }
+           
+            // $dues = Deadline::whereNotNull('deadline')
+            // ->get();
+            // foreach($dues as $due) {
+            //   $diffInDays = $due->deadline->diff(Carbon::now())->days;
+          
+           
+          
+              
+            // }
+        // ------ fetch deadline titles 
+        //  $deadlines = DB::table('bulano_deadline')
+        //  ->orderBy('taxform_id', 'asc')
+        //  ->select('title')
+        //  ->get();
+        
+           
+
+
+
+
+
+
+
+
+
         //get all reminders of VAT
         //    $date=date('d-m-Y', strtotime('tomorrow'));
         //    $test = DB::table('reminders')
@@ -61,9 +114,9 @@ class SendReminderEmails extends Command
         //     // ->orderBy('client_id')
         //     ->get();
         
-        // $clients =DB::table('clients')->pluck('email');
+        //  $clients =DB::table('clients')->pluck('email');
        
-        
+            // dd($clients);
         // $clients = Client::query()
         // ->where('id', '=', '3')
         // ->select('email')
@@ -131,27 +184,27 @@ class SendReminderEmails extends Command
 
 
     //One hour is added to compensate for PHP being one hour faster 
-    $now = date("Y-m-d H:i", strtotime(Carbon::now()->addHour()));
-    logger($now);
+        // $now = date("Y-m-d H:i", strtotime(Carbon::now()->addHour()));
+        // logger($now);
 
-    $messages = Message::get();
-    if($messages !== null){
-        //Get all messages that their dispatch date is due
-        $messages->where('date_string',  $now)->each(function($message) {
-            if($message->delivered == 'NO')
-            {
-                $users = User::all();
-                foreach($users as $user) {
-                    dispatch(new SendMailJob(
-                        $user->email, 
-                        new NewArrivals($user, $message))
-                    );
-                }
-                $message->delivered = 'YES';
-                $message->save();   
-            }
-        });
+        // $messages = Message::get();
+        // if($messages !== null){
+        //     //Get all messages that their dispatch date is due
+        //     $messages->where('date_string',  $now)->each(function($message) {
+        //         if($message->delivered == 'NO')
+        //         {
+        //             $users = User::all();
+        //             foreach($users as $user) {
+        //                 dispatch(new SendMailJob(
+        //                     $user->email, 
+        //                     new NewArrivals($user, $message))
+        //                 );
+        //             }
+        //             $message->delivered = 'YES';
+        //             $message->save();   
+        //         }
+        //     });
+        // }
+        
     }
-    
-        }
 }

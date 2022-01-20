@@ -18,4 +18,7 @@ class TaxForm extends Model
         return $this->hasMany(ClientTax::class);
 
     }
+    public function deadline(){
+        return $this-> hasMany(Deadline::class); 
+    }
 }

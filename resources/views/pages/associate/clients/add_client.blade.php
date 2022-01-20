@@ -1,4 +1,12 @@
-@livewireStyles
+@extends('layout.master')
+
+@section('title')
+    Add Client
+@endsection
+
+@section('content')
+
+
 
   <div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3">
     <div class="card-body" >
@@ -82,7 +90,7 @@
                   </select>
               </div>
           </div>
-           
+          @livewireStyles
           <div class="row mt-2" style="float: left;" >
             <div class="col " >
               <div class="form-group" >
@@ -93,7 +101,7 @@
             </div> 
           </div><br>
           </div><br>
-              
+          @livewireScripts   
           
           <div class="col-9 col-sm-4 ms-3">
           <h5 class="addClient_header_text mt-3" style="float: left;">ADDRESS</h5>
@@ -102,15 +110,15 @@
             <div class="col-md-6 mt-4" style="float: left;">
               <label class="form-label" style="float: left;"><b>Unit/House No.</b></label>
               <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
-            </div>
+            </div><br>
             <div class="col-md-6 mt-4">
               <label class="form-label" style="float: left;"><b>Street</b></label>
               <input type="text" value="" class="form-control" id="inputPassword4" name="street">
-            </div>
+            </div><br><br>
             <div class="col-12">
               <label class="form-label" style="float: left;"><b>City/Municipality</b></label>
               <input type="text" class="form-control" id="inputAddress" name="client_city">
-            </div>
+            </div><br>
             <div class="col-md-6">
               <label class="form-label" style="float: left;"><b>Province</b></label>
               <input type="text" class="form-control" id="inputAddress2" name="client_province">
@@ -131,15 +139,6 @@
          
 
           </ul>
-          <div class="col">
-                <div class="form-group">
-                  <label class="form-label"><b>Reminder Date</b></label>
-                  <input type="date"  class="form-control" name="reminder_date">
-                </div>
-              </div>
-
-
-            
           
           <div class="AddClient_btn mt-5">
             <button class="btn btn-primary" type="submit" name="saveBtn" id="saveBtn" value="createClient">Submit</button>
@@ -152,5 +151,6 @@
   </div>
 
     
- @livewireScripts
 
+
+@endsection
