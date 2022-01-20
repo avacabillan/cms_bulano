@@ -14,6 +14,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredClientController;
 use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Dropdown;
+use App\Http\Controllers\MessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,8 +58,19 @@ Route::middleware(['logout'])->group(function(){
     Route::view('/about','pages.admin.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
     Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
-    Route::view('/adminmessage','pages.admin.message')->name('adminmessage');
+    
 
+    /*---------------------- INTERNAL MESSAGES --------------*/
+
+    Route::get('/admin_messages', [MessagesController::class, "adminIndex"])->name("admin_messages");
+    Route::post('/admin_composemsg', [MessagesController::class, "insertAdminMsg"])->name("admin_composemsg");
+    Route::post('/admin_showmsg', [MessagesController::class, "adminMessageShow"])->name("admin_showmsg");
+
+
+
+    Route::get('/associate_messages', [MessagesController::class, "associateIndex"])->name("associate_messages");
+    Route::post('/associate_composemsg', [MessagesController::class, "insertAssociateMsg"])->name("associate_composemsg");
+    Route::post('/associate_showmsg', [MessagesController::class, "associateMessageShow"])->name("associate_showmsg");
 
 
     /*---------------------- ADMIN-ASSOC VIEW CRUD--------------*/
