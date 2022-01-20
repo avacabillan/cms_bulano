@@ -65,15 +65,15 @@
 
           <div class="row">
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="{{route('showVat', $client->id)}}" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('client-showVat', $client->id)}}" class="text-dark"><i class="fa fa-folder me-2 " aria-hidden="true"></i>VAT</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>                                              
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="{{route('showTaxItr',$client->id)}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('client-showTaxItr',$client->id)}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600"><a href="{{route('showTaxPay',$client->id)}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>Registration Fee</a></p>
+              <p class="m-b-10 f-w-600"><a href="{{route('client-showTaxPay',$client->id)}}" class="text-dark"><i class="fa fa-folder me-2" aria-hidden="true"></i>Registration Fee</a></p>
               <h6 class="text-muted f-w-400"></h6>
             </div>
 
@@ -84,63 +84,6 @@
 
   </div>
 </div>
-<!--add file Client Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add file</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      @include('pages.associate.clients.add_file')    
-      </div>
-    
-    </div>
-  </div>
-</div>
 
-<!--Update Client Modal -->
-<div class="modal fade editModal" id="updateClientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" >
-    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="headingsModal"></h5>
-      </div>
-      
-      <div class="modal-body">
-        @livewireStyles
-           
-        @include('pages.associate.clients.edit_client')    
-                        
-        @livewireScripts
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!--Upload File Modal -->
-<div class="modal fade addFile" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" >
-    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="headingsModal"></h5>
-        
-        
-        </div>
-      
-        <div class="modal-body">
-       
-           
-        @include('pages.associate.clients.add_file')    
-                        
-        
-        </div>  
-      </div>
-    </div>
-  </div>
-</div>
- 
 
 @stop

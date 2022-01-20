@@ -1,16 +1,16 @@
-<div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3">
+
+
+<div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3" style="width:45rem;">
     <div class="card-body" >
       <div class="form-goup" >
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
-            <form action="{{route('add_associate')}}" class="row"  id="addAssocForm" name="addAssocForm">
-              
-           
-            <h5 class="addAssoc_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5><br>        
-          </div> 
-          <input type="hidden" name="assoc_id" id="assoc_id">
+          <h4>Personal Information</h4>
+            <form action="{{route('add_associate')}}" class="row" style="width:35rem;" id="addAssocForm" name="addAssocForm">
 
-          <label class="form-label">Name</label> 
+            
+
+                <label class="form-label">Name</label> 
                 <input type="text" class="form-control" value=""   name="assoc_name"  >
                 <label class="form-label">Email</label>
                 <input type="text" class="form-control" value="" name="assoc_email">         
@@ -22,13 +22,13 @@
                 <input type="date" class="form-control" value="" name="assoc_birthdate"> <br>
 
                                    
-            <h5 class="addAssoc_header_text mt-3" style="float: left;">ADDRESS</h5><br>     
-                <div>
+                    
+                
                     <label for="inputEmail4" class="form-label">Complete Address</label>
                     <input type="text" value="" class="form-control" id="inputEmail4" name="assoc_address">
 
  
-            <h5 class="addAssoc_header_text mt-3" style="float: left;">JOB INFORMATION</h5><br><br> 
+            <div><h5 class="addAssoc_header_text mt-3" style="float: left;">JOB INFORMATION</h5><br><br> 
                 <div class="form-group">
                   <label class="form-label"><b>Department</b></label>
                   <select name="department" class="form-control">
@@ -46,9 +46,10 @@
                         <option value="{{$position->id}}">{{$position->position_name}}</option>
                       @endforeach
                   </select>
-              </div>                                              
-                    
-                    <button class="btn btn-success mt-4 me-2" type="submit" value="add" style="float: right">Submit</button>
+              </div>    
+              <button class="btn btn-success mt-4 me-2" type="submit" value="add" style="float: right">Submit</button>                                                                              
+              </div>        
+              </div>      
                 </form>
         </div>
       </div>

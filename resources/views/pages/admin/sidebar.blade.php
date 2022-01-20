@@ -56,7 +56,7 @@
             
             <!-- ASSOCIATES -->
             <li>
-              <a href="{{route('associates_list')}}">
+              <a href="{{route('assoc_table')}}">
                 <i class="fa fa-globe"></i><span>Associates</span>
               </a>
             </li>

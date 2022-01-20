@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\NotifyUsers' => $baseDir . '/app/Console/Commands/NotifyUsers.php',
     'App\\Console\\Commands\\SendReminderEmails' => $baseDir . '/app/Console/Commands/SendReminderEmails.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -54,7 +55,9 @@ return array(
     'App\\Http\\Middleware\\UserRole' => $baseDir . '/app/Http/Middleware/UserRole.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\Auth\\LoginRequest' => $baseDir . '/app/Http/Requests/Auth/LoginRequest.php',
+    'App\\Jobs\\SendMailJob' => $baseDir . '/app/Jobs/SendMailJob.php',
     'App\\Mail\\DemoEmail' => $baseDir . '/app/Mail/DemoEmail.php',
+    'App\\Mail\\NewArrivals' => $baseDir . '/app/Mail/NewArrivals.php',
     'App\\Mail\\TaxReminder' => $baseDir . '/app/Mail/TaxReminder.php',
     'App\\Models\\AssocAddress' => $baseDir . '/app/Models/AssocAddress.php',
     'App\\Models\\AssocCity' => $baseDir . '/app/Models/AssocCity.php',
@@ -69,6 +72,7 @@ return array(
     'App\\Models\\ClientTax' => $baseDir . '/app/Models/ClientTax.php',
     'App\\Models\\Corporate' => $baseDir . '/app/Models/Corporate.php',
     'App\\Models\\Department' => $baseDir . '/app/Models/Department.php',
+    'App\\Models\\File' => $baseDir . '/app/Models/File.php',
     'App\\Models\\Group' => $baseDir . '/app/Models/Group.php',
     'App\\Models\\Message' => $baseDir . '/app/Models/Message.php',
     'App\\Models\\ModeOfPayment' => $baseDir . '/app/Models/ModeOfPayment.php',
@@ -212,6 +216,7 @@ return array(
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
     'Database\\Seeders\\LaratrustSeeder' => $baseDir . '/database/seeders/LaratrustSeeder.php',
+    'Database\\Seeders\\UsersTableSeeder' => $baseDir . '/database/seeders/UsersTableSeeder.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
     'DeepCopy\\Exception\\PropertyException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -902,6 +907,7 @@ return array(
     'Faker\\Provider\\nl_BE\\Payment' => $vendorDir . '/fakerphp/faker/src/Faker/Provider/nl_BE/Payment.php',
     'Faker\\Provider\\nl_BE\\Person' => $vendorDir . '/fakerphp/faker/src/Faker/Provider/nl_BE/Person.php',
     'Faker\\Provider\\nl_BE\\PhoneNumber' => $vendorDir . '/fakerphp/faker/src/Faker/Provider/nl_BE/PhoneNumber.php',
+    'Faker\\Provider\\nl_BE\\Text' => $vendorDir . '/fakerphp/faker/src/Faker/Provider/nl_BE/Text.php',
     'Faker\\Provider\\nl_NL\\Address' => $vendorDir . '/fakerphp/faker/src/Faker/Provider/nl_NL/Address.php',
     'Faker\\Provider\\nl_NL\\Color' => $vendorDir . '/fakerphp/faker/src/Faker/Provider/nl_NL/Color.php',
     'Faker\\Provider\\nl_NL\\Company' => $vendorDir . '/fakerphp/faker/src/Faker/Provider/nl_NL/Company.php',
