@@ -29,36 +29,36 @@
 
         <div class="form-group col-md-12">
           <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
-              <h4 class="alert-heading" id="heading_text">Welcome to Dashboard</h4>
-              <p id="heading_text">Hello! I am Irish.</p>
+              <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->name}}</h4>
+              
             </div>
           </div>
           
           <div class="admin_dashboard_container">
             <div class="admin_dashboard_card ms-3 bg-light">
               <div class="admin_user_info">
-                <small class="associate_name">Bianca Cortez</small>
+                <small class="associate_name">{{$assocs_1->name}}</small>
               </div>
               <div class="admin_total">
-                <h2 class="admin_total_counts">58</h2>
+                <h2 class="admin_total_counts">{{$assocClient1}}</h2>
                 <small class="admin_total_text">CLIENTS</small>
               </div>
             </div>
             <div class="admin_dashboard_card ms-2 bg-light">
               <div class="admin_user_info">
-                <small class="associate_name">Jean Jati</small>
+                <small class="associate_name">{{$assocs_2->name}}</small>
               </div>
               <div class="admin_total">
-                <h2 class="admin_total_counts">38</h2>
+                <h2 class="admin_total_counts">{{$assocClient2}}</h2>
                 <small class="admin_total_text">CLIENTS</small>
               </div>
             </div>
             <div class="admin_dashboard_card me-3 bg-light">
               <div class="admin_user_info">
-                <small class="associate_name">Ava Cabillan</small>
+                <small class="associate_name">{{$assocs_3->name}}</small>
               </div>
               <div class="admin_total">
-                <h2 class="admin_total_counts">28</h2>
+                <h2 class="admin_total_counts">{{$assocClient3}}</h2>
                 <small class="admin_total_text">CLIENTS</small>
               </div>
             </div>

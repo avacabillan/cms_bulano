@@ -46,6 +46,20 @@ class Assoc_ClientController extends Controller
             ));
             
     }
+    public function ajaxClient(Request $request){
+        if ($request->ajax()) {
+            $data = Client::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view ('pages.associate.clients.clients_list');
+    }
  
     public function createClient(Request $request )
     {
@@ -73,40 +87,7 @@ class Assoc_ClientController extends Controller
     }
     public function insertClient(Request $request )
     {
-        // CLIENT INFO
-        // $associate =new Associate();
-        // $associate ->assoc_id
-
-       
-
-      
-        // $corporate =new Corporate();
-        // $corporate ->corporate_name = $request->corporate;
-        // $corporate ->save();
-
-    
-
         
-        // $client_province =new ClientProvince();
-        // $client_province ->province_name =$request->client_province;
-        // $client_province ->save();
-
-        // $client_city =new ClientCity();
-        // $client_city ->city_name =$request->client_city;
-        // $client_city ->province_id =$client_province->id;
-        // $client_city ->save();
-
-        // $client_postal =new ClientPostal();
-        // $client_postal ->postal_no =$request->client_postal;
-        // $client_postal ->client_city_id =$client_city->id;
-        // $client_postal ->save();
-
-        // $location_address =new LocationAddress();
-        // $location_address ->client_postal_id =$client_postal->id;
-        // $location_address ->save();
-
-
-   
 
         $client =new Client();
         $client ->client_name = $request->client_name;
@@ -151,14 +132,6 @@ class Assoc_ClientController extends Controller
         }
         return redirect()->route('assoc-clients-list');
 
-        // $reminders = new Reminder();
-        // $reminders ->client_tax_id = $client_tax_form->id;
-        // $reminders ->client_id = $client->id;
-        // $reminders ->status = 'pending';
-        // $reminders ->reminder = 'Pay Tax';
-        // // $reminders ->schedule_date = '2021-20-10';
-        // $reminders->save();
-        // return redirect()->route('clients.list');
 
     }
     public function showClientProfile($id){
@@ -184,11 +157,13 @@ class Assoc_ClientController extends Controller
     
   
    
-     public function showGroups()
-     {
-        //  select corporates that is belong to specific group
-        // $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
-        // return view('welcome')->with("groups", $groups);
+     public function assocCLients(Request $request)
+    {
+        $assocId = $request->id;
+        $ownClient = DB::table('clients')
+        ->where('assoc_id', '=', $assocId )
+        ->get();
+        
     }
     
     // public function getUser($userId)

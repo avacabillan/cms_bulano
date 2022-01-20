@@ -32,7 +32,7 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
@@ -51,9 +51,10 @@ Route::get('/logout', function () {
 
 Route::middleware(['logout'])->group(function(){
 
-    
+    /*---------------------- Dashboard Stat--------------*/
+    // Route::get('/dashboard', [DashboardController::class, 'getCount'])->name('dashboard');
 
-
+   
      /*---------------------- EXTRA PAGES --------------*/
 
 
@@ -121,6 +122,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/client-profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
     Route::get('/assoc-clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
+    Route::get('/ajax-clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
 
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
     Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
