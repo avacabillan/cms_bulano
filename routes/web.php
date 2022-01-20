@@ -122,7 +122,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/fullcalendar',[FullCalendarReminderController::class, 'index'])->name('fullcalendar');
     Route::get('/fullcalendar/ajax',[FullCalendarReminderController::class, 'ajax'])->name('fullcalendar.ajax');
     Route::get('/getTaxEvent',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvent');
-    // Route::post('/daterange.fetch_date',[FullCalendarReminderController::class, 'fetchDate'])->name('daterange.fetch_date');
+    Route::get('/view-reminder/result',[FullCalendarReminderController::class, 'resultList'])->name('fetch_date');
 
     Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
     Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');

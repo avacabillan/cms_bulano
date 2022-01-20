@@ -39,23 +39,22 @@ class FullCalendarReminderController extends Controller
         return response()->json($reminders);
         
     }
-    // public function fetchDate(Request $request)
-    // {
-    //     if($request->ajax())
-    //     {
-    //     if($request->from_date != '' && $request->to_date != '')
-    //     {
-    //     $data = DB::table('reminders')
-    //         ->whereBetween('start', array($request->from_date, $request->to_date))
-    //         ->get();
-    //     }
-    //     else
-    //     {
-    //     $data = DB::table('reminders')->orderBy('start', 'desc')->get();
-    //     }
-    //     echo json_encode($data);
-    //     }
-    // }
+    public function fetchDate(Request $request)
+    {
+        $fromDates = date("Y-m-d", strtotime($request->fromDate));
+        $toDates = date("Y-m-d", strtotime($request->toDate));
+        // $fetch = DB::table('reminders')->select()
+        // ->where("start", '=', $fromDates)
+        // ->where("end", '=', $toDates)
+        // ->get();  
+        
+        
+        $fetch = DB::table('reminders')
+                ->whereBetween('start', [$fromDates, $toDates])->get();
+                // dd($fetch);
+                  return response()->json($data, 200, $headers);
+        // dd($fetch);
+    }
     public function getTaxEvent(){
         
       
@@ -85,9 +84,14 @@ class FullCalendarReminderController extends Controller
         
     }    
    
-    public function viewEvent(){
-        $reminders = Reminder::all();
-        return view ('pages.admin.calendar.tax-calendar.reminder-list')->with('reminders', $reminders);
+    public function viewEvent(Request $request){
+        $reminders =Reminder::all();
+        $fromDates = $request->fromDate;
+        $toDates = $request->toDate;
+        
+        return view ('pages.admin.calendar.tax-calendar.reminder-list')->with('reminders', $reminders)  ;
+    
+        
     }
     public function editEvent($id){
         $reminder = Reminder::find($id);
@@ -101,7 +105,18 @@ class FullCalendarReminderController extends Controller
         $reminder->update();
         return redirect()->route('view-reminders')->with('success', 'Reminder has been updated');
     }
-    
+    public function queryData(){
+        $clients = DB::table('bulano_deadline')
+            ->join('client_taxes', 'bulano_deadline.taxform_id', '=', 'client_taxes.tax_form_id')
+             ->join('clients', 'client_taxes.client_id', '=', 'clients.id')
+            //  ->where( 'bulano_deadline.taxform_id', '=', 1)
+            ->orderBy('bulano_deadline.taxform_id')
+            ->select ('clients.name')
+            ->get();
+            dd($clients);
+            // return view('pages.admin.calendar.tax-calendar.bir-calendar')->with('clients', $clients);
+        
+    }
 
 
 

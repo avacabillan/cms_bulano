@@ -13,25 +13,26 @@
                 <p>{{ \Session::get('success') }}</p>
                 </div><br />
             @endif
-            <!-- <div class="panel panel-default">
-              <div class="panel-heading">
-              <div class="row">
-              <div class="col-md-5">Sample Data - Total Records - <b><span id="total_records"></span></b></div>
-              <div class="col-md-5">
-              <div class="input-group input-daterange">
-                  <input type="text" name="from_date" id="from_date"  class="form-control" />
-                  <strong class="input-group-addon mt-2" style="margin-left:10px; margin-right:10px;">To</strong>
-                  <input type="text"  name="to_date" id="to_date"  class="form-control" />
+            <button class="btn btn-info" onClick="window.location.reload();"><i class="fa fa-sync-alt"></i> Refresh Page</button>
+          <form action="{{route('fetch_date')}}" method="post">
+              @csrf      
+              @method('get')        
+              <div class="col-md-9 offset-md-2">
+                <div class="input-group mb-3" style="width:60%; margin-left: 60%;">
+                  <input type="date" class="form-control" id="value1" name="value1">
+                  <span class="input-group-text">to</span>
+                  <input type="date" class="form-control" id="toDate" name="toDate">
+                  <button class="btn btn-success" type="submit" name="search" Title="Search"><i class="fas fa-search"></i></button>
+                </div> 
+
               </div>
-              </div>
-              <div class="col-md-2">
-              <button type="button" name="filter" id="filter" class="btn btn-info btn-sm">Filter</button>
-              <button type="button" name="refresh" id="refresh" class="btn btn-warning btn-sm">Refresh</button>
-              </div>
-            </div> -->
+              
+           </form>
+        
+          
             <div class="panel-body">
             <div class="table">
-            <table id="clients-list" class="table table-striped table-bordered"  style="width:60%; ">
+            <table id="clients-list" class="table table-striped table-bordered pt-5"  style="width:60%;  ">
               <thead >
                 <tr>
               
@@ -64,7 +65,14 @@
      
   </div>
 </div>
-
+<script type="text/javascript">
+  
+  function reload() {
+    reload = location.reload();
+}
+    
+  
+</script>
 @endsection
 
  
