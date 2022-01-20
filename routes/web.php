@@ -83,7 +83,8 @@ Route::middleware(['logout'])->group(function(){
     /*---------------------- ADMIN-ASSOC VIEW CRUD--------------*/
     Route::get('/assoc_table',[AdminAssocController:: class, 'index'])->name('assoc_table');
     Route::get('/associates_list',[AdminAssocController:: class, 'assocDatatable'])->name('associates_list');
-    Route::get('/add_associate',[AdminAssocController:: class, 'store'])->name('add_associate');
+    Route::get('/saveassociate',[AdminAssocController:: class, 'store'])->name('saveassociate');
+    Route::get('/add_associate',[AdminAssocController:: class, 'create'])->name('add_associate');
     Route::get('/assoc-profile/{id}',[AdminAssocController:: class, 'show'])->name('assoc-profile');
     Route::get('/editassociate/{id}',[AdminAssocController:: class, 'edit'])->name('edit');
     Route::put('/updateassociate/{id}',[AdminAssocController:: class, 'update'])->name('update');

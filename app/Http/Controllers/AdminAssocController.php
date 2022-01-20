@@ -46,10 +46,9 @@ class AdminAssocController extends Controller
         $positions = Position::all();               
         $associates= Associate::all();
 
-        return view ('pages.admin.associates.add_associate', compact('departments',$departments,
-                            'positions',$positions,
-                            'associates',$associates,
-                                ));
+        return view ('pages.admin.associates.add_associate')->with('departments', $departments)
+                            ->with ('positions', $positions)
+                            ->with('associates',$associates);
     }
 
     public function store(Request $request)

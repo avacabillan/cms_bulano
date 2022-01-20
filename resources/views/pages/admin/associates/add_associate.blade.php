@@ -1,12 +1,17 @@
+@extends('layout.master')
+@section('title')
+@stop
+@section('content')
 
+@include('pages.admin.sidebar')
 
-<div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3" style="width:45rem;">
+<div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3" style="width:45rem; margin-left:30rem;">
     <div class="card-body" >
       <div class="form-goup" >
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
           <h4>Personal Information</h4>
-            <form action="{{route('add_associate')}}" class="row" style="width:35rem;" id="addAssocForm" name="addAssocForm">
+            <form action="{{route('saveassociate')}}" class="row" style="width:35rem;" id="addAssocForm" name="addAssocForm">
 
             
 
@@ -47,11 +52,13 @@
                       @endforeach
                   </select>
               </div>    
-              <button class="btn btn-success mt-4 me-2" type="submit" value="add" style="float: right">Submit</button>                                                                              
+                                                                                            
               </div>        
               </div>      
+              <button class="btn btn-success mt-4 me-5" type="submit" value="add" style="float: right">Submit</button>
                 </form>
         </div>
       </div>
     </div>
   </div>
+@stop

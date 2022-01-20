@@ -16,8 +16,8 @@
 
 @include('pages.admin.sidebar')
   <div class="container mt-3 pt-5"  style="height:50%; width: 70%; margin-left: 25%;" >
-      <button type="button" class="btn btn-primary mt-2 mb-2 me-3" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i> Add Associate</button>
-      <div>
+  <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_associate')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add Associate</a>
+      <div> 
     
       <div>
         <h2>List of Associates</h2><hr>
@@ -37,25 +37,6 @@
   </div>
 </div>
 
-
-<!--Add Assoc Modal -->
-<div class="modal fade" id="addAssoc" tabindex="-1" role="dialog" aria-labelledby="headingsModal" >
-<div class="modal-dialog" >
-    <div class="modal-content" style="  width: 50rem; min-height: 450px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="headingsModal"></h5>
-        <button type="button" class="close"  data-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
-        
-        </div>
-      
-        <div class="modal-body">          
-            @include('pages.admin.associates.add_associate')                          
-        </div>  
-      </div>
-    </div>
-  </div>
-</div>
-<!--End Assoc Modal -->
  @endsection  
 </body>
 
