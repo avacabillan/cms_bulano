@@ -84,6 +84,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/associates_list',[AdminAssocController:: class, 'assocDatatable'])->name('associates_list');
     Route::get('/add_associate',[AdminAssocController:: class, 'store'])->name('add_associate');
     Route::get('/assoc-profile/{id}',[AdminAssocController:: class, 'show'])->name('assoc-profile');
+    Route::get('/editassociate/{id}',[AdminAssocController:: class, 'edit'])->name('edit');
     Route::put('/updateassociate/{id}',[AdminAssocController:: class, 'update'])->name('update');
     Route::get('/delete/{id}',[AdminAssocController::class,'destroy'])->name('associate.delete');
 
@@ -128,11 +129,11 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
 
     Route::get('/clientshowTaxVat/{id}', [FileController::class,'ClientshowTaxVat'])->name('client-showVat');
-    Route::get('/cliientshow-vat', [FileController::class,' vatDatatable'])->name('cliientshow-vat');
+    Route::get('/vatTax', [FileController::class, 'VATtaxTDatatable'])->name('vatTax');
     Route::get('/clientshowTaxItr/{id}', [FileController::class,'ClientshowTaxItr'])->name('client-showTaxItr');
     Route::get('/clientshowTaxPay/{id}', [FileController::class,'ClientshowTaxPay'])->name('client-showTaxPay');
 
-   
+    
     //-------------Tax Files Route---------------//
 
     Route::resource('upload', FileController::class);

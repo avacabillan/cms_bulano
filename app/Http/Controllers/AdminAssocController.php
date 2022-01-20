@@ -109,7 +109,7 @@ class AdminAssocController extends Controller
         $associate->position_id = $request->position;
         $associate->save();
 
-        return redirect()->BACK();
+        return redirect()->back();
     }
 
  

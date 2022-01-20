@@ -14,9 +14,12 @@
  
   <div class="container mt-3 pt-5"  style="height:50%; width: 70%; margin-left: 25%;" >
       
+      <div>
     
- 
-      <table class="table table-bordered vat-datatable" id="vat" style="height:50%; width: 60%; margin-left: 15%;" >
+      <div>
+        <h2>VAT</h2><hr>
+      </div>
+      <table class="table table-bordered yajra-datatable" id="assoc" style="height:50%; width: 60%; margin-left: 15%;" >
           <thead>
                 <th>File Name</th>
                 <th>Description</th>
@@ -42,20 +45,21 @@
 <script type="text/javascript">
   $(function () {
     
-    var table = $('#vat').DataTable({
+    var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('cliientshow-vat') }}",
+        ajax: "{{ route('vatTax') }}",
         columns: [
             {data: 'file_name', name: 'file_name'},
             {data: 'description', name: 'description'},           
             {data: 'file_type', name: 'file_type'},
+
             {
                 data: 'action', 
                 name: 'action', 
                 orderable: true, 
                 searchable: true
-            }
+            },
         ]
     });
     

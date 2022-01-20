@@ -22,7 +22,7 @@ class FileController extends Controller
       
     //     return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles));
     }
-    public function vatDatatable(Request $request)
+    public function VATtaxTDatatable(Request $request)
     {
         if ($request->ajax()) {
             $data = TaxFile::latest()->get();

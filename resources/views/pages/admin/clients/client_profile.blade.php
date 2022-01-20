@@ -4,8 +4,9 @@
 @stop
 @section('content')
 
-
-<div class="d-flex p-4 mt-3" >
+@include('shared.navbar')
+@include('pages.admin.sidebar')
+<div class="d-flex p-4 mt-5" style="margin-left: 20rem;">
   <div class="col-sm-4 user-profile"> 
     <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
     <div class="card-block text-center text-white">
