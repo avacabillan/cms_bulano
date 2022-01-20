@@ -12,7 +12,7 @@
   <div class="page-content mt-5" style="margin: top 160px;">
   
     <div class="container mt-3 pt-5" style="height:50%">
-    <button type="button" class="btn btn-primary mt-2 mb-5 me-2" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</button>
+    <a id="btn-addClient" class="btn btn-primary mt-2 mb-5 me-2" href="{{route('createClient')}}" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</a>
     <div>
             <h2>List of <strong>Clients</strong></h2><hr>
         </div>
@@ -55,26 +55,7 @@
 </div>
 
 <!--Add Client Modal -->
-<div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
-<div class="modal-dialog modal-lg" >
-    <div class="modal-content" style="  width: 1000px; min-height: 450px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="headingsModal"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        
-        </div>
-      
-        <div class="modal-body">
-        @livewireStyles
-           
-        @include('pages.associate.clients.add_client')    
-                        
-        @livewireScripts
-        </div>  
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!--Update Client Modal -->
 

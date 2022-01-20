@@ -1,12 +1,13 @@
+
 @extends('layout.master')
 
 @section('title')
-    Associates List
+    Calendar
 @endsection
 
 @section('content')
-@include('shared.navbar')
-@include('shared.sidebar')
+
+@include('pages.admin.sidebar')
 
  
 <div class="siderbar_main toggled">

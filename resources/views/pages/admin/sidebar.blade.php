@@ -44,17 +44,11 @@
               </a>
             </li>
             <li>
-              <a href="{{route('taxcalendar')}}" >
+              <a href="{{route('display-calendar')}}" >
                 <i class="fa fa-calendar" ></i><span>Reminder Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
             </li>
-            <li>
-            <a  href="{{route('view-reminders')}}">
-                <i class="fa fa-bell" ></i><span>Reminders</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
-              </a>
-            </li>
-            
-            <!-- ASSOCIATES -->
+         
             <li>
               <a href="{{route('assoc_table')}}">
                 <i class="fa fa-globe"></i><span>Associates</span>
@@ -75,7 +69,7 @@
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
             
-            <li><a href="{{route('about')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">99+</span></a></li>
+            <li><a href="{{route('admin_messages')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">99+</span></a></li>
             <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
             <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
             <li><a href=""><i class="fa fa-folder"></i><span>Contacts</span></a></li>

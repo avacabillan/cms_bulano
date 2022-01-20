@@ -47,8 +47,30 @@ class Assoc_ClientController extends Controller
             
     }
  
-
-   
+    public function createClient(Request $request )
+    {
+        $modes= ModeOfPayment::all();
+        $corporates= Corporate::all();
+        $taxForms= TaxForm::all();
+        $clients =Client::all();
+        $assocs =Associate::all();
+        $businesses = Business::all();
+        $tins = Tin::all();
+        $registered_address = RegisteredAddress::all();
+            
+            return view ('pages.associate.clients.add_client')
+            ->with( compact('modes',$modes,
+                            'corporates',$corporates,
+                            'taxForms',$taxForms,
+                            'clients',$clients,
+                            'businesses',$businesses,
+                            'tins',$tins,
+                            'assocs',$assocs,
+                            'registered_address', $registered_address
+                            
+            ));
+        // return view('pages.associate.clients.add_client');
+    }
     public function insertClient(Request $request )
     {
         // CLIENT INFO
@@ -123,12 +145,11 @@ class Assoc_ClientController extends Controller
                     $client_tax_form->tax_form_id =$request ->taxesChecked[$key];
                     $client_tax_form->client_id =$client->id; 
                     $client_tax_form->status = 'pending';
-                    $client_tax_form->reminder_date = $request ->reminder_date;  
                     $client_tax_form->save();
                 }
             
         }
-        return redirect()->back();
+        return redirect()->route('assoc-clients-list');
 
         // $reminders = new Reminder();
         // $reminders ->client_tax_id = $client_tax_form->id;

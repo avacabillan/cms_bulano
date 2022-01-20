@@ -38,7 +38,7 @@ class RegisteredClientController extends Controller
     public function create($id)
     {   $user = User::find($id);
         $roles = Role::all()->pluck('description', 'id');
-
+        
         return view('pages.admin.request_edit', compact('roles', 'user'));
     }
 
