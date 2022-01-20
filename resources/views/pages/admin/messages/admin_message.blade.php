@@ -39,9 +39,30 @@
         <h6 class="modal-title" id="staticBackdropLabel">Sender name</h6>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="associatemsg_card_body">
+        <div>
+          @foreach($messages as $message)
+                    @if(Auth::user()->id == $message->sender)
+                        <div class="d-flex justify-content-end">
+                            <div class="outbox">
+                                <p>{{$message->message}}</p>
+                            </div>
+                        </div><br>
+                    @elseif(Auth::user()->id == $message->receiver)
+                        <div class="d-flex justify-content-start">
+                            <div class="inbox">
+                                <p>{{$message->message}}</p>
+                            </div>
+                        </div><br>  
+                    @endif
+                @endforeach
+
+        </div>
+                
+      </div>
 
       <div class="modal-body" class="message_box">
-        <form id="Form" action="{{route('admin_showmsg',1)}}" method="post">
+        <form id="Form" action="{{route('admin_showmsg', 1)}}" method="post">
           @csrf
           @method('post')
           <div class="input-group doctor-compose">
