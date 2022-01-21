@@ -39,6 +39,35 @@ class FullCalendarReminderController extends Controller
         return response()->json($reminders);
         
     }
+
+    public function fetchIndex(Request $request)
+    {
+        if(request()->ajax()){
+           
+            if(!empty($request->from_date)){
+            $data = DB::table('reminders')
+                ->whereBetween('start', array($request->from_date, $request->to_date))
+                ->get();
+            }
+            else
+            {
+            $data = DB::table('reminders')
+                ->get();
+            
+            }
+            return datatables()->of($data)
+            ->addColumn('action', function($row){
+                $actionBtn='<a href="'.route('edit-reminder', $row->id).'" class="btn btn-success"><i class="far fa-edit"></i></a>
+                <a href="'.route('delete-reminder', $row->id).'" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>';
+                return $actionBtn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+       
+        return view('pages.admin.calendar.tax-calendar.reminder-list');
+    }
+
     public function fetchDate(Request $request)
     {
         $fromDates = date("Y-m-d", strtotime($request->fromDate));
@@ -84,15 +113,7 @@ class FullCalendarReminderController extends Controller
         
     }    
    
-    public function viewEvent(Request $request){
-        $reminders =Reminder::all();
-        $fromDates = $request->fromDate;
-        $toDates = $request->toDate;
-        
-        return view ('pages.admin.calendar.tax-calendar.reminder-list')->with('reminders', $reminders)  ;
-    
-        
-    }
+   
     public function editEvent($id){
         $reminder = Reminder::find($id);
         return view ('pages.admin.calendar.tax-calendar.edit-reminder')->with('reminder', $reminder);
@@ -142,9 +163,30 @@ class FullCalendarReminderController extends Controller
             return response()->json($deadlines);
                      
         }
-        public function listDeadline(){
-            $deadlines = Deadline::all();
-            return view ('pages.admin.calendar.deadline-calendar.deadline-list')->with('deadlines', $deadlines);
+        public function listDeadline(Request $request){
+            if(request()->ajax()){
+           
+                if(!empty($request->from_date)){
+                $data = DB::table('bulano_deadline')
+                    ->whereBetween('deadline', array($request->from_date, $request->to_date))
+                    ->get();
+                }
+                else
+                {
+                $data = DB::table('bulano_deadline')
+                    ->get();
+                
+                }
+                return datatables()->of($data)
+                ->addColumn('action', function($row){
+                    $actionBtn='<a href="'.route('edit-reminder', $row->id).'" class="btn btn-success"><i class="far fa-edit"></i></a>
+                    <a href="'.route('delete-reminder', $row->id).'" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+            }
+            return view ('pages.admin.calendar.deadline-calendar.deadline-list');
         }
         public function createDeadline(){
             $taxforms = Taxform::all();

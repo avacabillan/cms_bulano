@@ -1,80 +1,117 @@
-@extends('layout.master')
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laravel 5.8 - Daterange Filter in Datatables with Server-side Processing</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+  <script defer src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->
 
-@section('title')
-    Reminders
-@endsection
+</head>
+<body>
 
-@section('content')
-@include('pages.admin.sidebar')
-<div class="siderbar_main toggled"> 
-<div class="page-content mt-5 m-3" style="height: 50px; width:90%; ">
-            @if (\Session::has('success'))
-                <div class="alert alert-success" style="fade: out 0.5em;">
-                <p>{{ \Session::get('success') }}</p>
-                </div><br />
-            @endif
-            <button class="btn btn-info" onClick="window.location.reload();"><i class="fa fa-sync-alt"></i> Refresh Page</button>
-          <form action="{{route('fetch_date')}}" method="post">
-              @csrf      
-              @method('get')        
-              <div class="col-md-9 offset-md-2">
-                <div class="input-group mb-3" style="width:60%; margin-left: 60%;">
-                  <input type="date" class="form-control" id="value1" name="value1">
-                  <span class="input-group-text">to</span>
-                  <input type="date" class="form-control" id="toDate" name="toDate">
-                  <button class="btn btn-success" type="submit" name="search" Title="Search"><i class="fas fa-search"></i></button>
-                </div> 
-
-              </div>
-              
-           </form>
-        
-          
-            <div class="panel-body">
-            <div class="table">
-            <table id="clients-list" class="table table-striped table-bordered pt-5"  style="width:60%;  ">
-              <thead >
-                <tr>
-              
-                  <th class="Client-th text-dark text-center">Reminder</th>
-                  <th class="Client-th text-dark text-center">Deadline</th>
-                  <th class="Client-th text-dark text-center">Action</th>
-                    
-                </tr>
-              </thead>
-              <tbody>
-
-                @foreach($reminders as $reminder)
-                  <tr>
-                  
-                    <td>{{$reminder->reminder}}</td>
-                    <td >{{$reminder->start}}</td>
-                    <td>
-                      <center><a  class="btn btn-success btn-sm viewbtn mr-2 " href="{{route('edit-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-edit  text-center"></a></i>
-                      <a  class="btn btn-success btn-sm viewbtn " href="{{route('delete-reminder',$reminder->id)}}"  title="View Profile"><i class="fas fa-trash  text-center"></a></i>
-                      </center</td>       
-                  </tr>
-                @endforeach
-              </tbody>
-                    
-            </table>
-              {{ csrf_field() }}
-            </div>
-            </div>
-           
+  <div class="container" style="width: 60%; margin-left:20%; margin-top: 2%;">   
      
+            <br />
+            <div class="row input-daterange">
+                <div class="col-md-4">
+                    <input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date" readonly />
+                </div>
+                <div class="col-md-4">
+                    <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
+                </div>
+                <div class="col-md-4">
+                    <button type="button" name="filter" id="filter" class="btn btn-primary">Filter</button>
+                    <button type="button" name="refresh" id="refresh" class="btn btn-default">Refresh</button>
+                </div>
+            </div>
+            <br />
+   <div class="table-responsive" style="widht: 60%;">
+    <table class="table table-bordered table-striped" id="order_table" >
+           <thead>
+            <tr>
+                <th>Reminder</th>
+                <th>Deadline</th>
+                <th>Action</th>
+                
+            </tr>
+           </thead>
+       </table>
+   </div>
   </div>
-</div>
-<script type="text/javascript">
-  
-  function reload() {
-    reload = location.reload();
-}
-    
-  
-</script>
-@endsection
 
+</body>
+</html>
  
+<script>
+$(document).ready(function(){
+ $('.input-daterange').datepicker({
+  todayBtn:'linked',
+  format:'yyyy-mm-dd',
+  autoclose:true
+ });
  
-  
+ load_data();
+ 
+ function load_data(from_date = '', to_date = '')
+ {
+  $('#order_table').DataTable({
+   processing: true,
+   serverSide: true,
+   ajax: {
+    url:'{{ route("daterange.index") }}',
+    data:{from_date:from_date, to_date:to_date}
+    
+   },
+   columns: [
+    {
+     data:'reminder',
+     name:'reminder',
+     orderable: false
+    },
+    {
+     data:'start',
+     name:'start',
+     orderable: false
+
+    },
+    {
+     data:'action',
+     name:'action',
+     orderable: false
+    }
+    
+    
+   ]
+  });
+ }
+ 
+ $('#filter').click(function(){
+  var from_date = $('#from_date').val();
+  var to_date = $('#to_date').val();
+  if(from_date != '' &&  to_date != '')
+  {
+   $('#order_table').DataTable().destroy();
+   load_data(from_date, to_date);
+  }
+  else
+  {
+   alert('Both Date is required');
+  }
+ });
+ 
+ $('#refresh').click(function(){
+  $('#from_date').val('');
+  $('#to_date').val('');
+  $('#order_table').DataTable().destroy();
+  load_data();
+ });
+ 
+});
+</script>

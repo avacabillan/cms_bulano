@@ -13,7 +13,7 @@
 <div class="siderbar_main toggled "> 
     <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
     <a class="btn btn-success" id="smallButton" data-target="#smallModal" href="{{ route('create-reminder') }}"  data-attr="{{ route('create-reminder') }}" ><i class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#addReminder"></i><span>  Add Reminder</span></a>
-    <a class="btn btn-info"  href="{{route('view-reminders')}}">
+    <a class="btn btn-info"  href="{{route('daterange.index')}}">
         <i class="fa fa-sticky-note" ></i><span> List of BIR Deadlines </span><span class="badge pull-right bg-danger me-3 mt-2"></span>
     </a>  
     
@@ -168,7 +168,7 @@
                                         start: element.start, 
                                     });
                                     
-                                        $('#try').append(('<li>')  + element.reminder + " " +element.start );                                     
+                                    $('#try').append(('<strong>') + element.start  +('<span>')+('<li>')  + element.reminder   );                                                                                                                 
                                     // const content = list.innerHTML;
                                     // element.innerHTML = content ;                 
                                         //document.getElementById("try").innerHTML =  (('<li>')  + element.reminder + " " + element.start );
