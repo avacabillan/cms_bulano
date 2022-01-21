@@ -14,7 +14,15 @@
         <div class="row ">
           <div class="col-9 col-sm-4 ms-3">
             <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
-            
+            <div class="form-group">
+                  <label class="form-label"><b>Assign User ID</b></label>
+                  <select name="user_id" class="form-control">
+                  <option value="">--Select Assigned User ID--</option>
+                      @foreach($users as $user)
+                        <option value="{{$user->id}}">{{$user->id}}</option>
+                      @endforeach
+                  </select>
+              </div>
             <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
           </div>
           <input type="hidden" name="client_id" id="client_id">

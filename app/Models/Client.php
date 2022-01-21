@@ -11,8 +11,9 @@ class Client extends Model
     use HasFactory;
     public $timestamps = true;
     protected $fillable = [
+        'user_id',
         'client_name',
-        'email',
+        'email_address',
         'contact_number',
         'ocn',
         
@@ -21,6 +22,9 @@ class Client extends Model
     ];  
     public function modeofpayment(){
         return $this->belongsTo(ModeofPayment::class,'mode_of_payment_id');
+    }
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
     }
     public function business(){
         return $this->hasMany(Business::class);

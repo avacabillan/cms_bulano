@@ -31,6 +31,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function client(){
+        return $this->hasMany(User::class);
+    }
 
     /**
      * The attributes that should be cast to native types.

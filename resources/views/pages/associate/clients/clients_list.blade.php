@@ -18,6 +18,7 @@
       <div>
         <h2>List of All Clients</h2><hr>
       </div>
+      <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('createClient')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add Client</a>
       <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%; margin-left: 15%;">
           <thead >
                 <th >ID</th>
@@ -50,8 +51,8 @@
         ajax: "{{ route('clients_list') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'client_name', name: 'client_name'},
-            {data: 'email', name: 'email'},
+            {data: 'company_name', name: 'company_name'},
+            {data: 'email_address', name: 'email_address'},
             {
                 data: 'action', 
                 name: 'action', 

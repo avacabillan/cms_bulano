@@ -36,32 +36,20 @@
         <h3 class="table_heading text-dark mb-3">Type of Taxes</h3>
         <table id="example" class="table table-striped" style="width:100%">
           <thead class="text-dark">
+            @foreach($taxtypes as $taxtype)
             <tr>
-            <th class="text-dark">VAT</th>
-            <th class="text-dark">ITR</th>
-            <th class="text-dark">Reg. Fee</th>
-            <th class="text-dark">WHCompensation</th>
+            <th class="text-dark">{{$taxtype->tax_type}}</th>
+            
             </tr>
+            @endforeach
           </thead>
           <tbody>
+            @foreach($clientFile as $file)
             <tr>
-              <td>Alfonso Escobar</td>
-              <td>Michael Talavera</td>
-              <td>Cristina Baltazar</td>
-              <td>Michael Talavera</td>
+              <td>{{$file}}</td>
+              
             </tr>
-            <tr>
-              <td>Bianca Mae</td>
-              <td>Genelyn Cata</td>
-              <td>Mitz Mia</td>
-              <td>Ava</td>
-            </tr>
-            <tr>
-              <td>Ambayan</td>
-              <td>Marc</td>
-              <td>Gab</td>
-              <td>Lorenz</td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
  

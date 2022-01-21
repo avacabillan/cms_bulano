@@ -19,6 +19,7 @@ use App\Models\TaxType;
 use App\Models\TaxFile;
 use App\Models\ClientTax;
 use App\Models\Tin;
+use App\Models\User;
 use App\Models\Reminder;
 
 class Assoc_ClientController extends Controller
@@ -63,6 +64,7 @@ class Assoc_ClientController extends Controller
  
     public function createClient(Request $request )
     {
+        $users= User::all();
         $modes= ModeOfPayment::all();
         $corporates= Corporate::all();
         $taxForms= TaxForm::all();
@@ -74,6 +76,7 @@ class Assoc_ClientController extends Controller
             
             return view ('pages.associate.clients.add_client')
             ->with( compact('modes',$modes,
+                            'users',$users, 
                             'corporates',$corporates,
                             'taxForms',$taxForms,
                             'clients',$clients,
@@ -90,8 +93,9 @@ class Assoc_ClientController extends Controller
         
 
         $client =new Client();
-        $client ->client_name = $request->client_name;
-        $client ->email = $request->email;
+        $client ->user_id = $request->user_id;
+        $client ->company_name = $request->client_name;
+        $client ->email_address = $request->email;
         $client ->contact_number = $request->client_contact;
         $client ->ocn = $request->ocn;
         $client ->assoc_id =$request->assoc;
@@ -204,7 +208,7 @@ class Assoc_ClientController extends Controller
         
         $client =Client::find($id);
         $client ->client_name = $request->client_name;
-        $client ->email = $request->email;
+        $client ->email_address = $request->email;
         $client ->contact_number = $request->client_contact;
         $client->update();
 
@@ -295,7 +299,7 @@ class Assoc_ClientController extends Controller
         
 
         
-        return redirect()->route('clients.list');
+        return redirect()->back();
     }
 
 
