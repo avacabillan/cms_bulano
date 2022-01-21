@@ -89,11 +89,29 @@ class Admin_ClientController extends Controller
         // return view('welcome')->with("groups", $groups);
     }
     
-    // public function getUser($userId)
-    // {
-    //     $user = Client::find($userId);
-    //      return view('pages.associate.clients.client_profile')->with( $user);
-    // }
+    public function getCount()
+    {
+        $assocs_1 = Associate::find(1)->select('name');
+        $assocs_2 = Associate::find(2)->select('name');
+        $assocs_3 = Associate::find(3)->select('name');
+        $assocClient1 = DB::table('clients')
+        ->where('assoc_id', '=', 1)
+        ->count();
+        $assocClient2 = DB::table('clients')
+        ->where('assoc_id', '=', 2)
+        ->count();
+        $assocClient3 = DB::table('clients')
+        ->where('assoc_id', '=', 3)
+        ->count();
+        
+
+         return view('pages.admin.dashboard', compact('assocs_1', $assocs_1,
+                                                    'assocs_2', $assocs_2, 
+                                                    'assocs_3', $assocs_3,
+                                                    'assocClient1', $assocClient1,
+                                                    'assocClient2', $assocClient2,
+                                                    'assocClient3', $assocClient3));
+    }
    
    
     

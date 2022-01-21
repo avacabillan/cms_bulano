@@ -50,7 +50,8 @@ Route::get('/logout', function () {
 
 Route::middleware(['logout'])->group(function(){
 
-    
+    /*---------------------- Dashboard Stat--------------*/
+    Route::get('/dashboard', [DashboardController::class, 'getCount'])->name('dashboard');
 
 
      /*---------------------- EXTRA PAGES --------------*/
@@ -119,6 +120,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
     Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
     Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
+    
    
     //-------------Tax Files Route---------------//
 
