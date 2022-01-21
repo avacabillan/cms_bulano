@@ -62,7 +62,7 @@
       </div>
 
       <div class="modal-body" class="message_box">
-        <form id="Form" action="{{route('admin_showmsg', 1)}}" method="post">
+        <form id="Form" action="{{route('associate_showmsg')}}" method="post">
           @csrf
           @method('post')
           <div class="input-group doctor-compose">
