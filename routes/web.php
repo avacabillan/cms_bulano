@@ -67,7 +67,11 @@ Route::middleware(['logout'])->group(function(){
 
     Route::get('/admin_messages', [MessagesController::class, "adminIndex"])->name("admin_messages");
     Route::post('/admin_composemsg', [MessagesController::class, "insertAdminMsg"])->name("admin_composemsg");
-    Route::post('/admin_showmsg', [MessagesController::class, "adminMessageShow"])->name("admin_showmsg");
+    Route::post('/admin_showmsg/{id}', [MessagesController::class, "adminMessageShow"])->name("admin_showmsg");
+
+    Route::get('/associate_messages', [MessagesController::class, "associateIndex"])->name("associate_messages");
+    Route::post('/associate_composemsg', [MessagesController::class, "insertAssociateMsg"])->name("associate_composemsg");
+    Route::post('/associate_showmsg/{id}', [MessagesController::class, "associateMessageShow"])->name("associate_showmsg");
 
 
      /*---------------------- MULTIFILEUPLOAD --------------*/
