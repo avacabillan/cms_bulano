@@ -1,6 +1,5 @@
 <div class="modal fade" id="compose_msg" tabindex="-2" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
-
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Create New Message</h5>
@@ -97,8 +96,6 @@
             }
         });
     });
-    // function getmessage(){
-    //   $("#recipient").fadeIn();
-    // }
+    
 </script>
 

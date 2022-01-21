@@ -32,60 +32,6 @@
 </div>
 
 
-<div class="modal" id="recipient" tabindex="-2" aria-hidden="true" style="display:none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h6 class="modal-title" id="staticBackdropLabel">Sender name</h6>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="associatemsg_card_body">
-        <div>
-          @foreach($messages as $message)
-                    @if(Auth::user()->id == $message->sender)
-                        <div class="d-flex justify-content-end">
-                            <div class="outbox">
-                                <p>{{$message->message}}</p>
-                            </div>
-                        </div><br>
-                    @elseif(Auth::user()->id == $message->receiver)
-                        <div class="d-flex justify-content-start">
-                            <div class="inbox">
-                                <p>{{$message->message}}</p>
-                            </div>
-                        </div><br>  
-                    @endif
-                @endforeach
-
-        </div>
-                
-      </div>
-
-      <div class="modal-body" class="message_box">
-        <form id="Form" action="{{route('admin_showmsg', 1)}}" method="post">
-          @csrf
-          @method('post')
-          <div class="input-group doctor-compose">
-            <input type="text" name="receiver_id" id="receiver_id" style="display:none">
-            <textarea name="message" class="form-control type_msg" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
-            <div class="input-group-append">
-              <button type="submit" class="btn" id="btn-compose-msg"><i class="fas fa-location-arrow"></i></button>
-            </div>
-          </div>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script>
-  $('.user').click(function(){  
-    $('#recipient').fadeIn();  
-  });
-</script>
-
 @include('pages.admin.messages.admin_composemsg')
 @stop
 
