@@ -107,6 +107,7 @@ class RegisteredClientController extends Controller
     }
     public function approve($id){
         $user = User::find($id);
+        // $onlySoftDeleted = User::onlyTrashed()->get();
         if($user->approved==False){
             $user->approved=1;
         }else{
@@ -122,4 +123,8 @@ class RegisteredClientController extends Controller
         $user = User::find($id);
         
     }
+    // public function deleterequest(Request $request,$id){
+    //     User::where('id',$id)->delete();
+    //         return Redirect::to('request');
+    // }
 }

@@ -26,8 +26,8 @@
 
     <div class="form-group col-md-12">
       <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
-        <h4 class="alert-heading" id="heading_text">Welcome to Dashboard</h4>
-        <p id="heading_text">Hello! I am Terisy.</p>
+        <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->name}}</h4>
+        
       </div>
     </div>
 

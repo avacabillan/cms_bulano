@@ -8,8 +8,6 @@ use App\Models\TaxType;
 use App\Models\Client;
 use App\Models\ArchivedForm;
 use Illuminate\Support\Facades\DB;
-
-
 use DataTables;
 
 class FileController extends Controller
@@ -23,6 +21,23 @@ class FileController extends Controller
     //     // $client= Client::find($id);
       
     //     return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles));
+    }
+    public function VATtaxTDatatable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = TaxFile::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    
+                    $actionBtn = '<a href="#" class="edit btn btn-success btn-sm">View</a>
+                        <a href="#" class="edit btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+               
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
  
    
@@ -64,7 +79,6 @@ class FileController extends Controller
         //
     }
 
- 
     public function update(Request $request, $id)
     {
         //
@@ -122,6 +136,33 @@ class FileController extends Controller
     {
         $delete = TaxFile::find($id)->delete();
         return redirect()->back();
+    }
+
+    public function ClientshowTaxVat($id){
+        // $vats= TaxFile::query()
+        // ->where('tax_type_id','1')
+        // ->get();
+        $vats = TaxFile::query()
+        ->where('client_id','=', $id )
+        ->where('tax_type_id','1')
+        ->get();
+        
+        
+        return view('pages.admin.clients.client_vat')->with('vats',$vats) ;
+    }
+    public function ClientshowTaxItr($id){
+        $itrs = TaxFile::query()
+        ->where('client_id','=', $id )
+        ->where('tax_type_id','2')
+        ->get();
+        return view('pages.admin.clients.client_itr')->with('itrs',$itrs) ;
+    }
+    public function ClientshowTaxPay($id){
+        $pays = TaxFile::query()
+        ->where('client_id','=', $id )
+        ->where('tax_type_id','3')
+        ->get();
+        return view('pages.admin.clients.client_pays')->with('pays',$pays);
     }
 
 

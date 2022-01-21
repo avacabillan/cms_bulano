@@ -12,8 +12,8 @@
             <img class="img-responsive img-rounded" src="images/bulano.png" alt="User picture">
           </div>
           <div class="user-info">
-            <span class="user-name text-white"><b>Terisy</b></span>
-            <span class="user-role">Client</span>
+          <span class="user-name text-white">{{Auth::user()->name}}</span>
+            <span class="user-role">{{Auth::user()->roles()->first()->display_name}}</span>
           </div>
         </div>
         <!-- END OF SIDEBAR HEADER -->
@@ -59,7 +59,7 @@
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
             
-            <li><a href="{{route('client_createmsg')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">2</span></a></li>
+           
             <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
             <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
             <li><a href=""><i class="fa fa-folder"></i><span>Contacts</span></a></li>

@@ -15,6 +15,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredClientController;
 use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Dropdown;
+use App\Http\Controllers\MultiFileUploadController;
 use App\Http\Controllers\MessagesController;
 
 /*
@@ -31,7 +32,7 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
@@ -50,9 +51,10 @@ Route::get('/logout', function () {
 
 Route::middleware(['logout'])->group(function(){
 
-    
+    /*---------------------- Dashboard Stat--------------*/
+    // Route::get('/dashboard', [DashboardController::class, 'getCount'])->name('dashboard');
 
-
+   
      /*---------------------- EXTRA PAGES --------------*/
 
 
@@ -68,18 +70,25 @@ Route::middleware(['logout'])->group(function(){
     Route::post('/admin_showmsg', [MessagesController::class, "adminMessageShow"])->name("admin_showmsg");
 
 
+     /*---------------------- MULTIFILEUPLOAD --------------*/
 
+    Route::get('files-upload', [MultiFileUploadController::class, 'index']);
+    Route::post('save-multiple-files', [MultiFileUploadController::class, 'store']);
     Route::get('/associate_messages', [MessagesController::class, "associateIndex"])->name("associate_messages");
     Route::post('/associate_composemsg', [MessagesController::class, "insertAssociateMsg"])->name("associate_composemsg");
     Route::post('/associate_showmsg', [MessagesController::class, "associateMessageShow"])->name("associate_showmsg");
 
 
-    /*---------------------- ADMIN-ASSOC VIEW CRUD--------------*/
 
-    Route::get('/associates_list',[AdminAssocController:: class, 'index'])->name('associates_list');
-    Route::get('/add_associate',[AdminAssocController:: class, 'store'])->name('add_associate');
-    Route::get('/associate-profile/{id}',[AdminAssocController:: class, 'show'])->name('assoc-profile');
-    Route::get('/updateassociate',[AdminAssocController:: class, 'update'])->name('update');
+    /*---------------------- ADMIN-ASSOC VIEW CRUD--------------*/
+    Route::get('/assoc_table',[AdminAssocController:: class, 'index'])->name('assoc_table');
+    Route::get('/associates_list',[AdminAssocController:: class, 'assocDatatable'])->name('associates_list');
+    Route::get('/saveassociate',[AdminAssocController:: class, 'store'])->name('saveassociate');
+    Route::get('/add_associate',[AdminAssocController:: class, 'create'])->name('add_associate');
+    Route::get('/assoc-profile/{id}',[AdminAssocController:: class, 'show'])->name('assoc-profile');
+    Route::get('/editassociate/{id}',[AdminAssocController:: class, 'edit'])->name('edit');
+    Route::put('/updateassociate/{id}',[AdminAssocController:: class, 'update'])->name('update');
+    Route::get('/delete/{id}',[AdminAssocController::class,'destroy'])->name('associate.delete');
 
      /*---------------------- USER REGISTRATION --------------*/
 
@@ -114,12 +123,20 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/client-profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
     Route::get('/assoc-clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
+    Route::get('/ajax-clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
 
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
     Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
+    Route::get('/clients_list',[Admin_ClientController:: class, 'clientDatatable'])->name('clients_list');
     Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
     Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
-   
+
+    Route::get('/clientshowTaxVat/{id}', [FileController::class,'ClientshowTaxVat'])->name('client-showVat');
+    Route::get('/vatTax', [FileController::class, 'VATtaxTDatatable'])->name('vatTax');
+    Route::get('/clientshowTaxItr/{id}', [FileController::class,'ClientshowTaxItr'])->name('client-showTaxItr');
+    Route::get('/clientshowTaxPay/{id}', [FileController::class,'ClientshowTaxPay'])->name('client-showTaxPay');
+
+    
     //-------------Tax Files Route---------------//
 
     Route::resource('upload', FileController::class);

@@ -5,20 +5,20 @@
 @endsection
 
 @section('content')
-@include('shared.navbar')
+
 @include('pages.admin.sidebar')
 
     
-<div class="siderbar_main toggled"> 
+<div class="siderbar_main toggled" style="width: 90%;"> 
 
-  <div class="page-content" style="height: 50px; ">
+  <div class="page-content" >
 
-    <div class="container mt-5 pt-5">
+    <div class="container pt-5">
       <div>
-        <h2>List of <strong>Requestee</strong></h2><hr>
+        <h2>List of Requestee</h2><hr>
       </div>
 
-        <table  id="assoc-list" class="table table-bordered table-striped"  style="width: 80% ">
+        <table  id="assoc-list" class="table table-bordered yajra-datatable"  style="width: 60% ">
           <thead>
             <tr>
           
@@ -28,7 +28,6 @@
               <th class="Client-th text-dark text-center">Contact Number</th>
               <th class="Client-th text-dark text-center">Image</th>
               <th class="Client-th text-dark text-center">Status</th>
-              <th class="Client-th text-dark text-center">Action</th>  
 
             </tr>
           </thead>
@@ -45,22 +44,13 @@
                         <td class="text-dark"> 
                        
                            @if($requester->approved===0)
-                            <a class="btn btn-danger btn-sm" href="{{route('update-request', $requester ->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Accept Request">Pending</a>
+                            <a class="btn btn-danger btn-sm" href="{{route('update-request', $requester ->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Accept Request">Active</a>
                            @elseif($requester->approved===1)
-                           <a class="btn btn-success btn-sm" href="{{route('update-request', $requester ->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Delete Request" >Accepted</a>
+                           <a class="btn btn-success btn-sm" href="{{route('update-request', $requester ->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Delete Request" >Inactive</a>
                             @endif
                            
                         
-                        </td>
-                        <td>
-                          <a class="btn btn-sm btn-info" href="{{ route('role-edit', $requester->id) }}">
-                            Edit
-                          </a>
-                        </td>
- 
-                        
-                        
-                                           
+                        </td>                                         
                     </tr>
             @endforeach    
           </tbody>
@@ -78,6 +68,29 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
+<script>
+  $.ajaxSetup({
+             headers:{
+                 'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+             }
+         });
+         $(function(){
+                
+          //GET ALL COUNTRIES
+          var table =  $('#yajra-datatable').DataTable({
+                processing:true,
+                info:true,
+                ajax:"",
+                columns:[
+                    {data:'id', name:'id'}
+                    {data:'name', name:'name', orderable:false},
+                    {data:'email', name:'email', orderable:false},
+                    {data:'contact_no', name:'contact_no', orderable:false},
+                    {data:'actions', name:'actions', orderable:false, searchable:false},
+                ]
+        })
+      });
+</script>
 
 
 @endsection
