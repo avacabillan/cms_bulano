@@ -35,17 +35,16 @@ class Assoc_ClientController extends Controller
         $tins = Tin::all();
         $registered_address = RegisteredAddress::all();
             
-            return view ('pages.associate.clients.clients_list')
-            ->with( compact('modes',$modes,
-                            'corporates',$corporates,
-                            'taxForms',$taxForms,
-                            'clients',$clients,
-                            'businesses',$businesses,
-                            'tins',$tins,
-                            'assocs',$assocs,
-                            'registered_address', $registered_address
-                            
+            return view ('pages.associate.clients.clients_list', compact('modes', 
+                'corporates', 
+                'taxForms', 
+                'clients', 
+                'businesses', 
+                'tins',
+                'assocs', 
+                'registered_address'
             ));
+            
     }
  
     public function createClient(Request $request )
