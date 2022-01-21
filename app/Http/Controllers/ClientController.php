@@ -21,17 +21,19 @@ use App\Models\ClientTax;
 use App\Models\Tin;
 use App\Models\User;
 use App\Models\Reminder;
+use DB;
 
 class ClientController extends Controller
 {
-    public function index($id){
-        $client = Client::find($id);
-        $taxtypes = TaxType::all();
-        $clientFile = DB::table('client_tax_files')
-        ->join('clients', 'client_tax_files.client_id', '=', $client)
-        ->join('client_tax_type', 'client_tax_files.tax_type_id', '=', 'client_tax_type.tax_type_id')
-        ->select('client_tax_files.tax_type_id', 'client_tax_type.tax_type')
-        ->get();
-        return view('pages.client.dashboard', compact(' clientFile',  $clientFile, '    taxtypes', $taxtypes));
+    public function index(){
+        // $client = Client::all();
+        // $taxtypes = TaxType::all();
+        // $clientFile = DB::table('client_tax_files')
+        // ->join('clients', 'client_tax_files.client_id', '=', $client)
+        // ->join('client_tax_type', 'client_tax_files.tax_type_id', '=', 'client_tax_type.tax_type_id')
+        // ->select('client_tax_files.tax_type_id', 'client_tax_type.tax_type')
+        // ->get();
+        //  return view('pages.client.dashboard', compact(' clientFile',  $clientFile, '    taxtypes', $taxtypes));
+        return view('pages.client.dashboard');
     }
 }
