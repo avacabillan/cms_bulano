@@ -658,6 +658,7 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\NotifyUsers' => __DIR__ . '/../..' . '/app/Console/Commands/NotifyUsers.php',
         'App\\Console\\Commands\\SendReminderEmails' => __DIR__ . '/../..' . '/app/Console/Commands/SendReminderEmails.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -706,7 +707,9 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'App\\Http\\Middleware\\UserRole' => __DIR__ . '/../..' . '/app/Http/Middleware/UserRole.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
+        'App\\Jobs\\SendMailJob' => __DIR__ . '/../..' . '/app/Jobs/SendMailJob.php',
         'App\\Mail\\DemoEmail' => __DIR__ . '/../..' . '/app/Mail/DemoEmail.php',
+        'App\\Mail\\NewArrivals' => __DIR__ . '/../..' . '/app/Mail/NewArrivals.php',
         'App\\Mail\\TaxReminder' => __DIR__ . '/../..' . '/app/Mail/TaxReminder.php',
         'App\\Models\\AssocAddress' => __DIR__ . '/../..' . '/app/Models/AssocAddress.php',
         'App\\Models\\AssocCity' => __DIR__ . '/../..' . '/app/Models/AssocCity.php',
@@ -721,6 +724,7 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'App\\Models\\ClientTax' => __DIR__ . '/../..' . '/app/Models/ClientTax.php',
         'App\\Models\\Corporate' => __DIR__ . '/../..' . '/app/Models/Corporate.php',
         'App\\Models\\Department' => __DIR__ . '/../..' . '/app/Models/Department.php',
+        'App\\Models\\File' => __DIR__ . '/../..' . '/app/Models/File.php',
         'App\\Models\\Group' => __DIR__ . '/../..' . '/app/Models/Group.php',
         'App\\Models\\Message' => __DIR__ . '/../..' . '/app/Models/Message.php',
         'App\\Models\\ModeOfPayment' => __DIR__ . '/../..' . '/app/Models/ModeOfPayment.php',
@@ -864,6 +868,7 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\LaratrustSeeder' => __DIR__ . '/../..' . '/database/seeders/LaratrustSeeder.php',
+        'Database\\Seeders\\UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersTableSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -1554,6 +1559,7 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'Faker\\Provider\\nl_BE\\Payment' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Payment.php',
         'Faker\\Provider\\nl_BE\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Person.php',
         'Faker\\Provider\\nl_BE\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/PhoneNumber.php',
+        'Faker\\Provider\\nl_BE\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Text.php',
         'Faker\\Provider\\nl_NL\\Address' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Address.php',
         'Faker\\Provider\\nl_NL\\Color' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Color.php',
         'Faker\\Provider\\nl_NL\\Company' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Company.php',

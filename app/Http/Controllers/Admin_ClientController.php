@@ -20,6 +20,7 @@ use App\Models\TaxFile;
 use App\Models\ClientTax;
 use App\Models\Tin;
 use App\Models\Reminder;
+use DataTables;
 
 
 class Admin_ClientController extends Controller
@@ -36,39 +37,48 @@ class Admin_ClientController extends Controller
         $registered_address = RegisteredAddress::all();
             
             return view ('pages.admin.clients.clients_list')
-            ->with( compact('modes',$modes,
-                            'corporates',$corporates,
-                            'taxForms',$taxForms,
-                            'clients',$clients,
-                            'businesses',$businesses,
-                            'tins',$tins,
-                            'assocs',$assocs,
-                            'registered_address', $registered_address
-                            
-        ));
+            ->with('modes',$modes)
+            ->with('corporates',$corporates)
+            ->with('taxForms',$taxForms)
+            ->with('clients',$clients)
+            ->with('businesses',$businesses)
+            ->with('tins',$tins)
+            ->with('assocs',$assocs)
+            ->with('registered_address', $registered_address);
         
     }
- 
-
-   
+    public function clientDatatable(Request $request) 
+    {
+        if ($request->ajax()) {
+            $data = Client::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
    
     public function ClientProfile($id){
         
         $client = Client::find($id);
-        $modes =  ModeOfPayment::all();
-        $tins =  Client::find($id)->tin;
-        $businesses = Client::find($id)->business;
-        $taxTypes =TaxType::all();
-        $taxFiles=TaxFile::all();
+        $mode =  Client::find($id);
+        $tin =  Client::find($id)->tin;
+        $business = Client::find($id)->business;
+        $taxType = Client::find($id);
+        $taxFile= Client::find($id);
         $registeredAddress = Client::find($id)->registeredAddress;
         return view('pages.admin.clients.client_profile')
         ->with( 'client',$client) 
-        ->with( 'modes',$modes)
-        ->with('tins',$tins)
-        ->with('businesses',$businesses)
+        ->with( 'mode',$mode)
+        ->with('tin',$tin)
+        ->with('business',$business)
         ->with( 'registeredAddress', $registeredAddress)
-        ->with( 'taxTypes', $taxTypes)
-        ->with('taxFiles', $taxFiles)
+        ->with( 'taxType', $taxType)
+        ->with('taxFile', $taxFile)
         ;
      
     }

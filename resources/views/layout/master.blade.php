@@ -55,6 +55,9 @@
 
    
 
+    <!--Datatable-->
+    <!-- <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap4.min.css') }}"> -->
     
    
 </head>
@@ -94,6 +97,9 @@
     <script  src="{{asset('js/associate_addClient.js')}}"></script>
     <script src="{{asset('js/associate_addfile.js')}}"></script>
     <!-- <script src="{{asset('js/associate_editClient.js')}}"></script> -->
+    <!-- <script defer src="{{ asset('datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script defer src="{{ asset('datatable/js/dataTables.bootstrap4.min.js') }}"></script>
+     -->
 
 
     @yield('scripts')

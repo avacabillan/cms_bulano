@@ -18,41 +18,20 @@
       <div>
         <h2>List of <strong>Associates</strong></h2><hr>
       </div>
-        <table id="assoc-list" class="table table-bordered mt-5"  style="width:100% ">
-
-                <thead >
-                    <tr>
-                    <th class="Assoc-th text-dark text-center">ID</th>
-                    <th class="Assoc-th text-dark text-center">Name</th>
-                    <th class="Assoc-th text-dark text-center">Contact Number</th>
-                    <th class="Assoc-th text-dark text-center">Email</th>
-                    <th class="Assoc-th text-dark text-center">Action</th>  
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($associates as $associate)
-                    <tr>
-                        
-                        <td>{{$associate->id}}</td>
-                        <td>{{$associate->name}}</td>
-                        <td>{{$associate->contact_number}}</td>
-                        <td>{{$associate->email}}</td>
-                        
-                        
-                        
-                        <td>
-                        <a  class="btn btn-success btn-sm viewbtn" href="{{route('assoc-profile',$associate->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Profile"><i class="fas fa-eye"></a></i>
-                        
-                         
-                        </td>                                               
-                    </tr>
-                @endforeach
-                </tbody>
-              
-            </table>
+        <table class="table table-hover table-condensed" id="assoc">
+          <thead>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Actions <button class="btn btn-sm btn-danger d-none" id="deleteAllBtn">Delete All</button></th>
+          </thead>
+          <tbody></tbody>
+        </table>
     </div>
   </div>
 </div>
+
+
 
 <!--Add Assoc Modal -->
 <div class="modal fade" id="addAssoc" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
@@ -77,15 +56,27 @@
 </div>
 <!--End Assoc Modal -->
 
-@section('scripts')
- 
-    <!-- DATATABLE  EXTENTIONS-->
-    
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/searchbuilder/1.2.2/js/dataTables.searchBuilder.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+<script>
+  $.ajaxSetup({
+             headers:{
+                 'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+             }
+         });
+         $(function(){
+                
+          //GET ALL COUNTRIES
+          var table =  $('#assoc').DataTable({
+                processing:true,
+                info:true,
+                ajax:"{{ route('associates_table') }}",
+                columns:[
+                  //  {data:'id', name:'id'}
+                    {data:'name', name:'name', orderable:false},
+                    {data:'department', name:'department', orderable:false},
+                    {data:'position', name:'position', orderable:false},
+                    {data:'actions', name:'actions', orderable:false, searchable:false},
+                ]
+        })
+      });
+</script>
 @endsection
-@stop
