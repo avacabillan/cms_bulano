@@ -8,10 +8,13 @@
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <body>
-
+@extends('layout.master')
+@section('content')
 <div class="siderbar_main toggled">
   <div class="page-content mt-5" style="margin: top 160px;">
- 
+
+
+@include('pages.admin.sidebar')
   <div class="container mt-3 pt-5"  style="height:50%; width: 70%; margin-left: 25%;" >
       <button type="button" class="btn btn-primary mt-2 mb-2 me-3" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i> Add Associate</button>
       <div>
@@ -53,7 +56,7 @@
   </div>
 </div>
 <!--End Assoc Modal -->
-   
+ @endsection  
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  

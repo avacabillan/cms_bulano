@@ -1,153 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clients</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+<body>
 @extends('layout.master')
-
-@section('title')
-    Clients List
-@endsection
-
 @section('content')
-@include('shared.navbar')
+<div class="siderbar_main toggled" style="height:50%; width: 70%; margin-left: 25%;" >
+  <div class="page-content mt-5" style="margin: top 160px;">
+
 @include('pages.associate.sidebar')
 
-<div class="siderbar_main toggled">
-  <div class="page-content mt-5" style="margin: top 160px;">
-  
-    <div class="container mt-3 pt-5" style="height:50%">
-    <a id="btn-addClient" class="btn btn-primary mt-2 mb-5 me-2" href="{{route('createClient')}}" data-toggle="modal" data-target="#addClient" style="float: right;"><i class="fas fa-plus-circle"></i> Add New Client</a>
-    <div>
-            <h2>List of <strong>Clients</strong></h2><hr>
-        </div>
-      <table id="clients-list" class="table table-bordered"  style="width:100% ">
-        <thead >
-          <tr>
-            <th>
-              <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
-            </th>
-            <th class="Client-th text-dark text-center">Client ID</th>
-            <th class="Client-th text-dark text-center">Client Name</th>
-            <th class="Client-th text-dark text-center">Contact Number</th>
-            <th class="Client-th text-dark text-center">Email</th>
-            <th class="Client-th text-dark text-center">OCN</th>
-            <th class="Client-th text-dark text-center">Action</th>   
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($clients as $client)
-            <tr>
-              <td>
-                <input type="checkbox" id="selectAll" value="id" name="Clientlistcheckbox"><label></label>               
-              </td>
-              <td>{{$client->id}}</td>
-              <td>{{$client->client_name}}</td>
-              <td>{{$client->contact_number}}</td>
-              <td>{{$client->email}}</td>
-              <td>{{$client->ocn}}</td>
-              <td>
-                <a  class="btn btn-success btn-sm viewbtn" href="{{route('clientProfile',$client->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="View Profile"><i class="fas fa-eye"></a></i>
-                <a  class="btn btn-primary btn-sm viewbtn " href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reminders" ><i class="fas fa-tasks fa-xl"></a></i>
-              </td>    
-            </tr>
-          @endforeach
-        </tbody>
-              
-      </table>
+      <div>
+        <h2>List of All Clients</h2><hr>
+      </div>
+      <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%; margin-left: 15%;">
+          <thead >
+                <th >ID</th>
+                <th >Name</th>
+                <th>Email</th>
+                <th>Action</th>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
     </div>
   </div>
 </div>
-
-<!--Add Client Modal -->
-
-
-<!--Update Client Modal -->
-
- 
-
-@endsection
-
-@section('scripts')
- 
-    <!-- DATATABLE  EXTENTIONS-->
-    
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/searchbuilder/1.2.2/js/dataTables.searchBuilder.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+@endsection  
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 <script type="text/javascript">
   $(function () {
-
-    $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    })
-
-      /*------ CHECKBOX DELETE ALL ------*/
-      $(document).on('click', 'input[name="Clientlistcheckbox"]', function(){
-
-        if(this.checked){
-          $('input[name="client_checkbox"]').each(function(){
-            this.checked = true;
-          });
-        }else{
-          $('input[name="client_checkbox"]').each(function(){
-          this.checked = false;
-          });
-        }
-        toggledeleteallClients();
-      })
-
-      $(document).on('change', 'input[name="client_checkbox"]', function(){
-
-        if( $('input[name="client_checkbox"]').length == $('input[name="client_checkbox"]:checked').length ){
-          $('input[name="Clientlistcheckbox"]').prop('checked', true);
-        }else{
-          $('input[name="Clientlistcheckbox"]').prop('checked', false);
-        }
-        toggledeleteallClients();
-      })
-
-      function toggledeleteallClients(){
-
-        if( $('input[name="client_checkbox"]:checked').length > 0 ){
-            $('button#deleteallClients').text('Delete ('+$('input[name="client_checkbox"]:checked').length+')').removeClass
-            ('d-none');
-        }else{
-            $('button#deleteallClients').addClass('d-none');
-        }
-      }
-
-      $(document).on('click','button#deleteallClients', function(){
-
-        var checkedAssoc_Client = [];
-        $('input[name="client_checkbox"]:checked').each(function(){
-          checkedAssoc_Client.push($(this).data('id'));
-        })
-        // var url = '{{ route("delete.selected.client") }}';
-        // $.post(url,{clients_ids:checkedAssoc_Client},function(data){
-        //   if(data.code == 1){
-        //     $('#clients_table').DataTable().ajax.reload(null, true);
-        //     toastr.success(data.msg);
-        //   }
-        // },'json');
-        if (confirm('ARE YOU SURE? YOU WANT TO DELETE THIS CLIENT?')) {
-          var url = '{{ route("delete.selected.client") }}';
-
-          $.post(url,{clients_ids:checkedAssoc_Client},function(data){
-            if(data.code == 1){
-              $('#clients-table').DataTable().ajax.reload(null, true);
-              $.alert(data.msg);
-            }
-          },'json');
-        }
-
-      })
-       
-})
-
+    
+    var table = $('.yajra-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('clients_list') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'client_name', name: 'client_name'},
+            {data: 'email', name: 'email'},
+            {
+                data: 'action', 
+                name: 'action', 
+                orderable: true, 
+                searchable: true
+            },
+        ]
+    });
+    
+  });
 </script>
 
-@endsection
-
-
+   

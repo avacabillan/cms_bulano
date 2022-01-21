@@ -13,7 +13,7 @@
           </div>
           <div class="user-info">
             <span class="user-name text-white">{{Auth::user()->name}}</span>
-            
+            <span class="user-role">{{Auth::user()->roles()->first()->display_name}}</span>
           </div>
         </div>
         <!-- END OF SIDEBAR HEADER -->
@@ -33,7 +33,7 @@
             </li>
             <!-- CLIENTS -->
             <li>
-              <a href="{{route('assoc-clients-list')}}">
+              <a href="{{route('ajax-clients')}}">
                 <i class="fa fa-globe"></i><span>Clients</span><span class="badge pull-right bg-danger me-3 mt-2"></span></a></li>
               </a>
             </li>

@@ -5,20 +5,20 @@
 @endsection
 
 @section('content')
-@include('shared.navbar')
+
 @include('pages.admin.sidebar')
 
     
-<div class="siderbar_main toggled"> 
+<div class="siderbar_main toggled" style="width: 90%;"> 
 
-  <div class="page-content" style="height: 50px; ">
+  <div class="page-content" >
 
-    <div class="container mt-5 pt-5">
+    <div class="container pt-5">
       <div>
         <h2>List of Requestee</h2><hr>
       </div>
 
-        <table  id="assoc-list" class="table table-bordered yajra-datatable"  style="width: 80% ">
+        <table  id="assoc-list" class="table table-bordered yajra-datatable"  style="width: 60% ">
           <thead>
             <tr>
           

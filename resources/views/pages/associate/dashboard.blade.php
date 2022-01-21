@@ -26,7 +26,7 @@
 <div class="form-group col-md-12">
           <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
               <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->name}}</h4>
-              
+              <input type="hidden" value="{{Auth::user()->id}}" name="id">
             </div>
           </div>
 </div>
