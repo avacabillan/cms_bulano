@@ -50,8 +50,8 @@
         ajax: "{{ route('clients_list') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'client_name', name: 'client_name'},
-            {data: 'email', name: 'email'},
+            {data: 'company_name', name: 'company_name'},
+            {data: 'email_address', name: 'email_address'},
             {
                 data: 'action', 
                 name: 'action', 
