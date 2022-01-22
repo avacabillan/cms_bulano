@@ -103,7 +103,7 @@
         </div>
     </div> -->
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {       
             $.ajaxSetup({
             headers: {
@@ -187,33 +187,16 @@
         
 
     });
-    // $('#exampleModal').on('show.bs.modal', function (event) {
-    //     var button = $(event.relatedTarget);
-    //     event.preventDefault();
-    //     let href = $(this).attr('data-attr');
-    //     $.ajax({
-    //         url: href,
-    //         beforeSend: function() {
-    //             $('#loader').show();
-    //         },
-    //         // return the result
-    //         success: function(result) {
-    //             $('#smallModal').modal("show");
-    //             $('#addReminderForm').html(result).show();
-    //         },
-    //         complete: function() {
-    //             $('#loader').hide();
-    //         },
-    //         error: function(jqXHR, testStatus, error) {
-    //             console.log(error);
-    //             alert("Page " + href + " cannot open. Error:" + error);
-    //             $('#loader').hide();
-    //         },
-    //         timeout: 8000
-    //     })
-    // });
-
 
    
+</script> -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
 </script>
 @endsection

@@ -13,17 +13,9 @@ use Carbon\Carbon;
 class FullCalendarReminderController extends Controller
 {
     //BIR FULLCALENDAR
-    public function index(Request $request)
+    public function index()
     {
 
-        if($request->ajax()) {
-       
-            $data = Reminder::whereDate('start', '>=', $request->start)
-                      ->whereDate('end',   '<=', $request->end)
-                      ->get(['id', 'reminder', 'start', 'end']);
- 
-            return response()->json($data);
-       }
        
         return view('pages.admin.calendar.tax-calendar.bir-calendar');
         
