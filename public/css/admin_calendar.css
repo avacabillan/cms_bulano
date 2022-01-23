@@ -1,29 +1,51 @@
 .vertical-scrollable>.card{
     position: absolute;
     padding-left: 10px;
-    padding-top: 15px;
+    padding-top: 5px;
     top: 95px;
-    left: 68%;
-    width: 30%;
-    height: 60%;
+    left: 75%;
+    width: 23%;
+    height: 20%;
     overflow-y: scroll;
     border: black 0.5px solid;
     background-color: #f0fff0;
   }
-  
+/*   
+  .vertical-scrollable>.card2{
+    position: absolute;
+    padding-left: 10px;
+    padding-top: 5px;
+    top: 95px;
+    left: 75%;
+    width: 23%;
+    height: 20%;
+    overflow-y: scroll;
+    border: black 0.5px solid;
+    background-color: #f0fff0;
+    
+  } */
+  #external-events {
+    position: absolute;
+    margin-top: 20%;
+    z-index: 2;
+    top: 20px;
+    left: 75%;
+    width: 250px;
+    height: 100px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+  }
+  #external-events .fc-event {
+    cursor: move;
+    margin: 3px 0;
+  }
     
    
-  li { 
-      color: black; 
-      font-size: .875rem; 
-      padding-bottom: 3px; 
-      padding-top: 3px; 
-  } 
-    
-  
-  .text-muted {
-color: #6c757d!important;
-  }
+ strong{
+   font-size: small;
+   padding-bottom: 3px;
+ }
   #addReminderForm{
     width: 50%;
   }
@@ -67,10 +89,7 @@ html, body {
   font-size: 14px;
 }
 
-#calendar {
-  width: 550px;
- 
-}
+
 .fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
@@ -81,4 +100,29 @@ html, body {
 }
 .fade.in {
   opacity: 1;
+}
+.dot1 {
+  height: 15px;
+  width: 15px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  justify-content: center;
+  
+}
+.dot2 {
+  height: 15px;
+  width: 15px;
+  background-color: rgb(127, 156, 219);
+  border-radius: 50%;
+  display: inline-block;
+  justify-content: center;
+}
+.dot3 {
+  height: 15px;
+  width: 15px;
+  background-color: rgb(37, 223, 93);
+  border-radius: 50%;
+  display:  inline-block;
+  justify-content: center;
 }

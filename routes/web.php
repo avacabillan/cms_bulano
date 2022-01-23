@@ -153,11 +153,8 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/archivelist', [FileController::class,'getArchive'])->name('archive-list');
 
      //BIRfullcalendar
-    Route::get('/fullcalendar',[FullCalendarReminderController::class, 'index'])->name('fullcalendar');
-    Route::get('/fullcalendar/ajax',[FullCalendarReminderController::class, 'ajax'])->name('fullcalendar.ajax');
-    Route::get('/getTaxEvent',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvent');
-    Route::get('/daterange.index',[FullCalendarReminderController::class, 'fetchIndex'])->name('daterange.index');
-
+    Route::get('/taxcalendar',[FullCalendarReminderController::class, 'index'])->name('fullcalendar');
+    Route::get('/TaxEvent',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvent');
     Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
     Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');
     // Route::get('/view-reminder',[FullCalendarReminderController::class, 'viewEvent'])->name('view-reminders');
@@ -168,10 +165,9 @@ Route::middleware(['logout'])->group(function(){
     
     
     //REMINDER for bulanofullcalendar
-    Route::get('/display-deadline',[FullCalendarReminderController::class, 'indexDeadline'])->name('display-calendar');
-    Route::get('/ajax-deadline',[FullCalendarReminderController::class, 'deadlineAjax'])->name('ajax-calendar');
+    Route::get('/bulano-calendar',[FullCalendarReminderController::class, 'indexDeadline'])->name('display-calendar');
+    Route::get('/getDeadlines',[FullCalendarReminderController::class, 'getReminder'])->name('getReminder');
     Route::get('/create-deadline',[FullCalendarReminderController::class, 'createDeadline'])->name('create-deadline');
-    Route::get('/list-deadline',[FullCalendarReminderController::class, 'listDeadline'])->name('list-deadline');
     Route::get('/store-deadline',[FullCalendarReminderController::class, 'storeDeadline'])->name('store-deadline');
     Route::get('/edit-deadline/{id}',[FullCalendarReminderController::class, 'editDeadline'])->name('edit-deadline');
     Route::put('/update-deadline/{id}',[FullCalendarReminderController::class, 'updateDeadline'])->name('update-deadline');

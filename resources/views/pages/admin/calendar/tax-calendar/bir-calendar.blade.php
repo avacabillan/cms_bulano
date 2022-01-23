@@ -13,9 +13,7 @@
 <div class="siderbar_main toggled "> 
     <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
     <a class="btn btn-success" id="smallButton" data-target="#smallModal" href="{{ route('create-reminder') }}"  data-attr="{{ route('create-reminder') }}" ><i class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#addReminder"></i><span>  Add Reminder</span></a>
-    <a class="btn btn-info"  href="{{route('daterange.index')}}">
-        <i class="fa fa-sticky-note" ></i><span> List of BIR Deadlines </span><span class="badge pull-right bg-danger me-3 mt-2"></span>
-    </a>  
+     
     
     
             @if (\Session::has('success'))
@@ -26,32 +24,17 @@
             @endif
            
         <div class="row">
-            <div class="mt-5" style ="width: 58%" >
+            <div class="mt-2" style ="width: 85%; margin-left:20%" >
             
             
                 <div class="response"></div>
                 <div id='calendar'></div>  
-            
- 
-                 
+  
             </div>
         </div>
         
-      
-        <div class="container vertical-scrollable" > 
-       
-            <div class="card text-muted list">
-            <strong  >Deadlines for this month</strong>
-              <div class="cont" id="list">
-                 <div class="deads" id="try"></div>
-              </div>
-              
-                
-            </div> 
-        </div> 
-
-    </div> 
-
+   </div> 
+  
 </div>
 <!-- Add BIR REMINDER Modal -->
 <!-- <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
@@ -103,7 +86,7 @@
         </div>
     </div> -->
 
-<!-- <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {       
             $.ajaxSetup({
             headers: {
@@ -113,70 +96,49 @@
             
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl,{
-                
-               
-            eventSources: {
-
-              
-                
-                    url: '/getTaxEvent', // use the `url` property
-                    color: 'yellow',    // an option!
-                    textColor: 'black'  // an option!
-                
-
-                // any other sources...
-
-            },
-                
+                headerToolbar: {
+                    start: 'today', 
+                    center: 'title',
+                    end: 'prevYear prev,next nextYear'
+                },
                 initialView: 'dayGridMonth',
-                selectable: true,     
-                events:function(startDate){
+                selectable: true, 
+                  
+                events:function(info, successCallback, failureCallback){
                    
-                    var eventDate = startDate.end;
-                    // console.log(eventDate);
-                    const date = new Date(eventDate);
-
-                    var month =(date.getMonth());
-                    // var day =(date.getDate());
-                    var year = (date.getFullYear()); // (January gives 0)
-                    // console.log(year);  
-                    // console.log(month);                      
+                    
+                    var reminder = info.reminder;
+                    var start = info.start_date;
+                    var end = info.end_date;
+                    // console.log(reminder,start,end);
+                    
                     $.ajax({
-                        url: '/fullcalendar/ajax',
+                        url: '/TaxEvent',
                         method: "GET", 
-                        dataType: 'JSON',          
-                        data: {
-                            // 'day': day,
-                            'month' : month,
-                            'year': year,
-                            
-                        },
-                        success: function (response) { 
+                        contentType: 'application/json',          
+                       data:{
+                           'reminder': reminder,
+                           'start': start,
+                           'end': end ,
+                       },
+                        success: function (response) {
                             var events = [];
-                            if ($.trim(response) == '' ) {
-                                //$('#try').append(('<li>')+ 'No deadlines for this month');
-                                    document.getElementById("try").innerHTML = (('<li>')+ 'No deadlines for this month');
-                                //  var newElement = document.createElement("ul");
-                                //         newElement.innerHTML = (('<li>')  + element.reminder + " " + element.start );
-                                //     var myCurrentElement= document.getElementById("try");
-                                //         insertAfter(newElement, myCurrentElement);
-                            } 
-                            else  {                             
-                                $.each(response, function(index, element) {                            
-                                    events.push({
-                                        title: element.reminder,
-                                        start: element.start, 
-                                    });
+                            
+                            // console.log(response);
+
+                            $.each(response, function(index, element) {
+                                events.push({
+                                    title: element.reminder,
+                                    start: element.start,
+                                    end: element.end,
                                     
-                                    $('#try').append(('<strong>') + element.start  +('<span>')+('<li>')  + element.reminder   );                                                                                                                 
-                                    // const content = list.innerHTML;
-                                    // element.innerHTML = content ;                 
-                                        //document.getElementById("try").innerHTML =  (('<li>')  + element.reminder + " " + element.start );
-                                    // console.log(events);
-                                                                          
-                                });                            
-                            }                          
-                        },                    
+
+                                });
+                            });
+                            successCallback(events); 
+                                              
+                        },
+                                          
                     });                
                 },         
             });
@@ -189,14 +151,6 @@
     });
 
    
-</script> -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
-        });
-        calendar.render();
-      });
 </script>
+
 @endsection
