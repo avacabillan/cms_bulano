@@ -15,18 +15,18 @@ class DashboardController extends Controller
             $assocClient1 = DB::table('clients')
             ->where('assoc_id', '=', 1)
             ->count();
-            $assocClient2 = DB::table('clients')
+            $assocClient2 = DB::table('clients') 
             ->where('assoc_id', '=', 2)
             ->count();
             $assocClient3 = DB::table('clients')
             ->where('assoc_id', '=', 3)
             ->count();   
-            return view ('pages.admin.dashboard', compact('assocs_1', $assocs_1,
-                                                            'assocs_2', $assocs_2, 
-                                                            'assocs_3', $assocs_3,
-                                                            'assocClient1', $assocClient1,
-                                                            'assocClient2', $assocClient2,
-                                                            'assocClient3', $assocClient3,));
+                    return view ('pages.admin.dashboard')->with('assocs_1', $assocs_1)
+                                                        ->with('assocs_2', $assocs_2) 
+                                                        ->with('assocs_3', $assocs_3)
+                                                        ->with('assocClient1', $assocClient1)
+                                                        ->with('assocClient2', $assocClient2)
+                                                        ->with('assocClient3', $assocClient3);
         }elseif (Auth::user()->hasRole('associate')){
             return view ('pages.associate.dashboard');
         }elseif (Auth::user()->hasRole('client')){

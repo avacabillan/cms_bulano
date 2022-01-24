@@ -4,7 +4,7 @@
 @endsection 
 @section('content')
 @include('shared.navbar')
-@include('pages.admin.sidebar')
+@include('pages.associate.sidebar')
 
 <div class="siderbar_main toggled">
   <div class="page-content"><br><br><br>
