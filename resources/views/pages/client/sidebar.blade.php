@@ -1,4 +1,3 @@
-
 <div class="siderbar_main toggled">
   <div id="sidebar" class="sidebar-wrapper">
 
@@ -85,6 +84,12 @@
 
     </div>
     <!-- END OF SIDEBAR CONTENT -->
+
+  </div>   
+</div>
+
+
+
 
   </div>   
 </div>

@@ -1,10 +1,8 @@
-
 @extends('layout.master')
 @section('title')
     Client Dash
 @endsection 
 @section('content')
-@include('shared.navbar')
 @include('pages.client.sidebar')
 
 <div class="siderbar_main toggled">
