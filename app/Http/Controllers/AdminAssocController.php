@@ -13,13 +13,11 @@ class AdminAssocController extends Controller
     
     public function index(){
 
-        $departments= Department::all();
-        $positions = Position::all();               
-        $associates= Associate::all();
+        
+       
 
-        return view ('pages.admin.associates.assoc_table')->with('departments', $departments)
-                            ->with ('positions', $positions)
-                            ->with('associates',$associates);
+        return view ('pages.admin.associates.assoc_table');
+                           
     }
 
     public function assocDatatable(Request $request)

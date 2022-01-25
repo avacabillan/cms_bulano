@@ -39,7 +39,7 @@ class FullCalendarReminderController extends Controller
            $reminder->start=$request->startdate;
            $reminder->end=$request->enddate;
            $reminder->save();
-           return redirect('fullcalendar')->with('success', 'Reminder has been added');
+           return redirect()->route('bir-calendar')->with('success', 'Reminder has been added');
     }
 
     public function editEvent($id){
@@ -73,18 +73,20 @@ class FullCalendarReminderController extends Controller
                 //BULANO INTERNAL DEADLINE
         public function indexDeadline(){
             $deadlines = Deadline::all();
-            return view ('pages.admin.calendar.deadline-calendar.bulano-calendar',compact('deadlines', $deadlines));
+            $taxForms = Taxform::all();
+            return view ('pages.admin.calendar.deadline-calendar.bulano-calendar',compact('deadlines', $deadlines, 'taxForms', $taxForms));
         }
         
         public function getReminder(Request $request){
             $deadline = Deadline::select('title','start_date', 'end_date')->get();
+           
             return response()->json($deadline);
                      
         }
         
         public function createDeadline(){
-            $taxforms = Taxform::all();
-            return view ('pages.admin.calendar.deadline-calendar.add-deadline')->with('taxforms', $taxforms);
+            $taxForms = Taxform::all();
+            return view ('pages.admin.calendar.deadline-calendar.add-deadline',compact('taxForms', $taxForms));
         }
         public function storeDeadline(Request $request){
             $deadline =new Deadline();

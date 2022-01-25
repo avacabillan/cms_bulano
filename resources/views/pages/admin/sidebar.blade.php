@@ -39,7 +39,7 @@
             </li>
             <!-- CALENDAR -->
             <li>
-              <a href="{{route('fullcalendar')}}" >
+              <a href="{{route('bir-calendar')}}" >
                 <i class="fa fa-calendar" ></i><span>BIR Calendar</span><span class="badge pull-right bg-danger me-3 mt-2"></span>
               </a>
             </li>

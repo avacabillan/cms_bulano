@@ -12,7 +12,7 @@
 
 <div class="siderbar_main toggled "> 
     <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
-    <a class="btn btn-success" id="smallButton" data-target="#smallModal" href="{{ route('create-reminder') }}"  data-attr="{{ route('create-reminder') }}" ><i class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#addReminder"></i><span>  Add Reminder</span></a>
+    
      
     
     
@@ -37,46 +37,45 @@
   
 </div>
 <!-- Add BIR REMINDER Modal -->
-<!-- <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
+<div class="modal" id="addBIR" tabindex="-1" role="dialog" aria-labelledby="addBIRTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <h5 class="modal-title" id="addBIRTitle">Create Tax Deadline</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="smallBody">
+                <div class="modal-body" id="smallBody" style="margin-left: 17%;">
                     <div>
-                    <form method="POST" action="{{route('post-reminder')}}" id="addReminderForm">
+                    <form method="POST" action="{{route('post-reminder')}}" id="addBIRForm">
                         @csrf
                         @method('GET')
                         <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <label for="Title">Title:</label>
-                            <input type="text" class="form-control" name="title">
-                        </div>
+                                        
+                            <div class="form-group col-md-4">
+                                <label for="Title" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" name="title">
+                            </div>
                         </div>
                     
+                        
+                        <div class="row">
+                        
+                            <div class="form-group col-md-4">
+                                <label for="Start Date" class="col-form-label"> Start Date : </label>  
+                                <input class="date form-control" type="date"  id="startdate" name="startdate">   
+                            </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <strong> Start Date : </strong>  
-                            <input class="date form-control" type="date"  id="startdate" name="startdate">   
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <strong> End Date : </strong>  
-                            <input class="date form-control" type="date"   id="enddate" name="enddate">   
-                        </div>
+                        
+                            <div class="form-group col-md-4">
+                                <label  for="End Date" class="col-form-label"> End Date : </label>  
+                                <input class="date form-control" type="date"   id="enddate" name="enddate">   
+                            </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <button type="submit" class="btn btn-success saveBtn"  value="createReminder">Add Event</button>
+                        
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-success saveBtn"  value="createBIR">Save Deadline</button>
                         </div>
                         </div>
                     </form>
@@ -84,7 +83,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {       
@@ -103,7 +102,15 @@
                 },
                 initialView: 'dayGridMonth',
                 selectable: true, 
-                  
+                select: function(info) {
+                    
+                    $('#saveBtn').val("createReminder");
+                    $('#addBIRForm').trigger('reset');
+                    $('#headingsModal').html('Add New Reminder');
+                    $('#addBIR').modal('show');
+
+                      
+                },     
                 events:function(info, successCallback, failureCallback){
                    
                     
@@ -145,7 +152,7 @@
             
         calendar.render();     
         
-        // calendar.refetchEvents();
+        calendar.refetchResources();
         
 
     });

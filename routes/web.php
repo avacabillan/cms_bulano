@@ -153,7 +153,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/archivelist', [FileController::class,'getArchive'])->name('archive-list');
 
      //BIRfullcalendar
-    Route::get('/taxcalendar',[FullCalendarReminderController::class, 'index'])->name('fullcalendar');
+    Route::get('/taxcalendar',[FullCalendarReminderController::class, 'index'])->name('bir-calendar');
     Route::get('/TaxEvent',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvent');
     Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
     Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');

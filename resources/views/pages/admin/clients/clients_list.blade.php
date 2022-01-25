@@ -20,7 +20,7 @@
       </div>
       <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%; margin-left: 15%;">
           <thead >
-                <th >ID</th>
+               
                 <th >Name</th>
                 <th>Email</th>
                 <th>Action</th>
@@ -49,7 +49,7 @@
         serverSide: true,
         ajax: "{{ route('clients_list') }}",
         columns: [
-            {data: 'id', name: 'id'},
+            
             {data: 'company_name', name: 'company_name'},
             {data: 'email_address', name: 'email_address'},
             {
