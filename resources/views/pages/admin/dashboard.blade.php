@@ -35,37 +35,37 @@
           </div>
           
           <div class="admin_dashboard_container">
+            @foreach ($associates as $associate )
             <div class="admin_dashboard_card ms-3 bg-light">
               <div class="admin_user_info">
-                <small class="associate_name">{{$assocs_1->name}}</small>
+                <input type="hidden" value ="{{$associate->id}}" name="assoc_id">
+                <small class="associate_name" >{{$associate->name}}</small>
               </div>
+            
+            <?php
+            foreach($associates as $assoc){
+              $countClient = DB::table('clients')
+              ->join('associates', 'clients.assoc_id', '=' , 'associates.id')
+              ->where('clients.assoc_id', $assoc->id)
+              ->count();
+              echo "<h2 >$countClient</h2>";
+            }
+            ?>
+            
+              
               <div class="admin_total">
-                <h2 class="admin_total_counts">{{$assocClient1}}</h2>
+                
                 <small class="admin_total_text">CLIENTS</small>
               </div>
             </div>
-            <div class="admin_dashboard_card ms-2 bg-light">
-              <div class="admin_user_info">
-                <small class="associate_name">{{$assocs_2->name}}</small>
-              </div>
-              <div class="admin_total">
-                <h2 class="admin_total_counts">{{$assocClient2}}</h2>
-                <small class="admin_total_text">CLIENTS</small>
-              </div>
-            </div>
-            <div class="admin_dashboard_card me-3 bg-light">
-              <div class="admin_user_info">
-                <small class="associate_name">{{$assocs_3->name}}</small>
-              </div>
-              <div class="admin_total">
-                <h2 class="admin_total_counts">{{$assocClient3}}</h2>
-                <small class="admin_total_text">CLIENTS</small>
-              </div>
-            </div>
+            
+            @endforeach
+           
+            
           </div>
         </div>
         <!----- END OF ROW form-group col-md-12 ----->
-        <div class="grid">
+        <!-- <div class="grid">
           <div class="main bg-light">
             <h5>Associates Perforamance Quarterly</h5>
             <hr>

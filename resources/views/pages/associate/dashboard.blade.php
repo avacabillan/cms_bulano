@@ -29,6 +29,7 @@
               <input type="hidden" value="{{Auth::user()->id}}" name="id">
             </div>
           </div>
+          
 </div>
 
 </div>

@@ -33,7 +33,7 @@
             </li>
             <!-- CLIENTS -->
             <li>
-              <a href="{{route('ajax-clients')}}">
+              <a href="{{route('assoc-clients-list')}}">
                 <i class="fa fa-globe"></i><span>Clients</span><span class="badge pull-right bg-danger me-3 mt-2"></span></a></li>
               </a>
             </li>

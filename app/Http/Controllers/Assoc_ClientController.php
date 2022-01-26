@@ -21,30 +21,15 @@ use App\Models\ClientTax;
 use App\Models\Tin;
 use App\Models\User;
 use App\Models\Reminder;
-
+use DataTables;
 class Assoc_ClientController extends Controller
 {
     
     public function index (Request $request) {
                         
-        $modes= ModeOfPayment::all();
-        $corporates= Corporate::all();
-        $taxForms= TaxForm::all();
-        $clients =Client::all();
-        $assocs =Associate::all();
-        $businesses = Business::all();
-        $tins = Tin::all();
-        $registered_address = RegisteredAddress::all();
+     
             
-            return view ('pages.associate.clients.clients_list', compact('modes', 
-                'corporates', 
-                'taxForms', 
-                'clients', 
-                'businesses', 
-                'tins',
-                'assocs', 
-                'registered_address'
-            ));
+            return view ('pages.associate.clients.clients_list');
             
     }
     public function ajaxClient(Request $request){
@@ -59,7 +44,7 @@ class Assoc_ClientController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view ('pages.associate.clients.clients_list');
+        
     }
  
     public function createClient(Request $request )
@@ -163,10 +148,15 @@ class Assoc_ClientController extends Controller
    
      public function assocCLients(Request $request)
     {
-        $assocId = $request->id;
-        $ownClient = DB::table('clients')
-        ->where('assoc_id', '=', $assocId )
-        ->get();
+       
+            
+        $clients = DB::table('clients')
+        ->join('associates', 'clients.assoc_id', '=' , 'associates.id')
+        ->where('clients.assoc_id', $assoc->id)
+        ->select('clients')->get();
+        // dd($clients);
+        return view('pages.associate.dashboard',compact('clients'));
+            
         
     }
     
