@@ -6,19 +6,24 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
+
 
     <!-- Modal css only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
- <!-- DATATABLE EXTENTIONS-->
- 
+    <!-- DATATABLE EXTENTIONS-->
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
   
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-  
+    <link  href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css' rel='stylesheet' />
+
+     <!-- CALENDAR -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" /> -->
+     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> -->
+     
+    
     <link rel="stylesheet" href="{{asset('css/about.css')}}">
     <link rel="stylesheet" href="{{asset('css/service.css')}}">
 
@@ -47,6 +52,15 @@
      <!-- Calendar -->
      <link href="{{asset('css/main.css')}}" rel='stylesheet' />
      <link rel="stylesheet" href="{{asset('css/admin_calendar.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/admin_msg_assoc.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin_show_msg.css')}}"> -->
+    <!-- <link rel="stylesheet" href="{{asset('css/admin_msg.css')}}"> -->
+    
+
+    <!--Datatable-->
+    <!-- <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap4.min.css') }}"> -->
+    
    
 </head>
 <body>
@@ -58,17 +72,18 @@
 
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
-   
-     
 
+
+      <!-- CALENDAR -->
+    <script defer src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
     <script defer src = "https://code.jquery.com/jquery-1.10.2.js"></script>
     <script defer src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     
-   <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- ADMIN -->
-    <script src="{{asset('js/navbar.js')}}"></script>
+    <!-- <script src="{{asset('js/navbar.js')}}"></script> -->
     <script src="{{asset('js/sidebar.js')}}"></script>
     <script src="{{asset('js/admin_assoc_list.js')}}"></script>
    

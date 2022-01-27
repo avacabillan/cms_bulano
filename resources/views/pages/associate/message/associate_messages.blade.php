@@ -4,7 +4,7 @@
 @endsection 
 @section('content')
 @include('shared.navbar')
-@include('pages.admin.sidebar')
+@include('pages.associate.sidebar')
 
 <div class="siderbar_main toggled">
   <div class="page-content"><br><br><br>
@@ -61,7 +61,7 @@
       </div>
 
       <div class="modal-body" class="message_box">
-        <form id="Form" action="{{route('associate_showmsg')}}" method="post">
+        <form id="Form" action="{{route('associate_showmsg', 1)}}" method="post">
           @csrf
           @method('post')
           <div class="input-group doctor-compose">
