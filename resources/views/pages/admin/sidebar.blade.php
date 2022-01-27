@@ -69,7 +69,7 @@
             <!-- EXTRA -->
             <li class="header-menu"><span>Extra</span></li>
             
-            <li><a href="{{route('admin_messages')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">99+</span></a></li>
+            <!-- <li><a href="{{route('admin_messages')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">99+</span></a></li> -->
             <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
             <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
             <li><a href=""><i class="fa fa-folder"></i><span>Contacts</span></a></li>

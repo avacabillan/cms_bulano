@@ -59,7 +59,7 @@ Route::middleware(['logout'])->group(function(){
      /*---------------------- EXTRA PAGES --------------*/
 
 
-    Route::view('/about','pages.admin.about')->name('about');
+    Route::view('/about','shared.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
     Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
     

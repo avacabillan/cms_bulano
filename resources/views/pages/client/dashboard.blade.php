@@ -3,6 +3,7 @@
     Client Dash
 @endsection 
 @section('content')
+@include('shared.about')
 @include('pages.client.sidebar')
 
 <div class="siderbar_main toggled">
