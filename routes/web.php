@@ -31,26 +31,26 @@ use App\Http\Controllers\MessagesController;
 */
 require __DIR__.'/auth.php';
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
-// Route::group(['middleware' => ['auth']], function() { 
+Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-// });
-// Route::get('/', function () {
-//     return view('auth.login');
-// })->middleware('login');
+});
+Route::get('/', function () {
+    return view('auth.login');
+})->middleware('login');
 
 // Route::get('/dashboard', function () {
 //     return view('pages.admin.dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-// Route::get('/logout', function () {
-//     Auth::logout();
-//     return redirect('/');
-// })->name('logout');
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
 
-// Route::middleware(['logout'])->group(function(){
+Route::middleware(['logout'])->group(function(){
 
     /*---------------------- Dashboard Stat--------------*/
     // Route::get('/dashboard', [DashboardController::class, 'getCount'])->name('dashboard');
@@ -179,7 +179,7 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 
    
 
-// });
+});
 // Route::get('/try',[TestController::class, 'trial']);
 //fullcalender
 

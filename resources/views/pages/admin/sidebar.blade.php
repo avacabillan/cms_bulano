@@ -12,7 +12,8 @@
             <img class="img-responsive img-rounded" src="images/bulano.png" alt="User picture">
           </div>
           <div class="user-info">
-            
+            <span class="user-name text-white">{{Auth::user()->name}}</span>
+            <span class="user-role">{{Auth::user()->roles()->first()->display_name}}</span>
           </div>
         </div>
         <!-- END OF SIDEBAR HEADER -->
@@ -26,7 +27,7 @@
             
             <!-- DASHBOARD -->
             <li>
-              <a href=""><i class="fa fa-book position-relative"></i>
+              <a href="{{route('dashboard')}}"><i class="fa fa-book position-relative"></i>
                 <span>Dashboard</span>
               </a>
             </li>

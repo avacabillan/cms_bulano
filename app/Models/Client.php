@@ -11,8 +11,8 @@ class Client extends Model
     use HasFactory;
     public $timestamps = true;
     protected $fillable = [
-        'user_id',
-        'client_name',
+        
+        'company_name',
         'email_address',
         'contact_number',
         'ocn',

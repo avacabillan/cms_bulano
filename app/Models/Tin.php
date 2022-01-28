@@ -9,7 +9,7 @@ class Tin extends Model
 {
     use HasFactory;
     protected $table = 'client_tin';
-    protected $fillable = ['tin_no','client_id'];
+    protected $fillable = ['tin_no'];
     
     public function client(){
         return $this->belongsTo(Client::class);
