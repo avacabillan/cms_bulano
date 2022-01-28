@@ -9,6 +9,14 @@
     overflow-y: scroll;
     display: none;
 }
+
+.rounded {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    border: 5px solid #272133;
+    margin-top: 20px;
+}
 #prof_border {
     border: solid 2px black
 }
