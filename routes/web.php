@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin_ClientController;
 use App\Http\Controllers\AdminCalendarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredClientController;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\API\ClientController;
 use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Dropdown;
 use App\Http\Controllers\MultiFileUploadController;
@@ -128,12 +128,19 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/client-profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
     Route::get('/assoc-clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
-    Route::get('/ajax-clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
+    Route::get('/api/clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
 
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
-    Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
-    Route::get('/clients_list',[Admin_ClientController:: class, 'clientDatatable'])->name('clients_list');
-    Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
+     Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
+     Route::get('/clients_list',[Admin_ClientController:: class, 'clientDatatable'])->name('clients_list');
+      //Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('profile'); //index
+    Route::apiResource('client', ClientController::class);
+
+    Route::get('/api/clients', [ClientController::class, 'store'])->name('insertClient');
+      Route::get('/api/clients/{client}', [ClientController::class, 'show'])->name('client-profile');
+    Route::post('/api/clients',[ClientController::class, 'edit'])->name('editClient');
+    Route::put('/api/clients/{client}', [ClientController::class, 'update'])->name('updateClient');
+    Route::delete('/api/clients/{client}', [ClientController::class, 'delete'])->name('delete.selected.client');
     Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
 
     Route::get('/clientshowTaxVat/{id}', [FileController::class,'ClientshowTaxVat'])->name('client-showVat');

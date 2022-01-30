@@ -27,15 +27,15 @@ class Client extends Model
         return $this->belongsTo(User::class,'user_id');
     }
     public function business(){
-        return $this->hasMany(Business::class);
+        return $this->hasMany(Business::class, 'client_id');
     }
     public function registeredAddress(){
         return $this->hasMany(RegisteredAddress::class);
     }
     public function tin(){
-        return $this->hasOne(Tin::class);
+        return $this->hasMany(Tin::class, 'client_id');
     }
-    public function associate(){
+    public function associates(){
         return $this->belongsTo(Associate::class, 'assoc_id');
     }
     public function clientTaxes(){

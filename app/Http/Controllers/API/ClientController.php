@@ -5,6 +5,22 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Associate;
+use App\Models\Business;
+use App\Models\ClientCity;
+use App\Models\ClientPostal;
+use App\Models\ClientProvince;
+use App\Models\Corporate;
+use App\Models\ModeOfPayment;
+use App\Models\RegisteredAddress;
+use App\Models\LocationAddress;
+use App\Models\Group;
+use App\Models\TaxForm;
+use App\Models\TaxType;
+use App\Models\TaxFile;
+use App\Models\ClientTax;
+use App\Models\Tin;
+use App\Models\Reminder;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ClientResource;
 
@@ -17,8 +33,10 @@ class ClientController extends Controller
      */
     public function index()
     { 
+       
         
         $clients = Client::all();
+        
         return response([ 'clients' => ClientResource::collection($clients), 'message' => 'Retrieved successfully'], 200);
     }
 
@@ -57,8 +75,29 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Client $client)
-    {
-        return response(['client' => new ClientResource($client), 'message' => 'Retrieved successfully'], 200);
+    {       
+        
+
+            return response(['client' => new ClientResource(
+                $client, 
+                $client->modeofpayment,
+                $client->tin,
+                $client->business,
+                $client->registeredAddress,
+                $client->associates,
+                $client->clientTaxes,
+                )
+            , 'message' => 'Retrieved successfully'], 200);
+            // $client = Client::find($client);
+            // $client->modeofpayment;
+            //         $client->tin;
+            //         $client->business;
+            //         $client->registeredAddress;
+            //         $client->associates;
+            //         $client->clientTaxes;
+            // return view('pages.admin.clients.client_profile')
+            //  ->with( 'client',$client) ;
+           
     }
 
 /**

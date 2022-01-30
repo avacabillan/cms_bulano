@@ -6,7 +6,8 @@
 
 
 <div class="d-flex p-4 mt-3" >
-  <div class="col-sm-4 user-profile"> 
+  <div class="col-sm-4 user-profile"> a
+    <a href="{{url()->previous()}}" class="btn btn-info">Back</a>
     <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
     <div class="card-block text-center text-white">
       <div class="text-center">
@@ -33,7 +34,7 @@
           
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">TIN</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$client->tin->first()->tin_no}}</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->tin}}</h6>
           </div>
 
           
@@ -43,21 +44,21 @@
           </div>
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Registration Date</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$client->business->first()->registration_date}} </h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$client->business->registration_date}} </h6>
           </div>
 
          
             <div class="col-sm-6">
               <p class="m-b-10 f-w-600">Trade Name</p>
-              <h6 class="text-muted ms-2 f-w-400">{{$client->business->first()->trade_name}}</h6>
+              <h6 class="text-muted ms-2 f-w-400">{{$client->business->trade_name}}</h6>
             </div>
             
             <div class="col-sm-6">
               <p class="m-b-10 f-w-600">Registered Address</p>
               <h6 class="text-muted ms-2 f-w-400">
-                {{$client->registeredAddress->first()->unit_house_no}} {{$client->registeredAddress->first()->street}}
-                {{$client->registeredAddress->first()->city_name}} {{$client->registeredAddress->first()->province_name}}
-                {{$client->registeredAddress->first()->postal_no}}</h6>
+                {{$client->registeredAddress->unit_house_no}} {{$client->registeredAddress->street}}
+                {{$client->registeredAddress->city_name}} {{$client->registeredAddress->province_name}}
+                {{$client->registeredAddress->postal_no}}</h6>
             </div>
           <br> 
 

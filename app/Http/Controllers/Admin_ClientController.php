@@ -30,7 +30,7 @@ class Admin_ClientController extends Controller
         $modes= ModeOfPayment::all();
         $corporates= Corporate::all();
         $taxForms= TaxForm::all();
-        $clients =Client::all();
+        // $clients =Client::all();
         $assocs =Associate::all();
         $businesses = Business::all();
         $tins = Tin::all();
@@ -40,7 +40,7 @@ class Admin_ClientController extends Controller
             ->with('modes',$modes)
             ->with('corporates',$corporates)
             ->with('taxForms',$taxForms)
-            ->with('clients',$clients)
+            // ->with('clients',$clients)
             ->with('businesses',$businesses)
             ->with('tins',$tins)
             ->with('assocs',$assocs)
@@ -65,21 +65,14 @@ class Admin_ClientController extends Controller
     public function ClientProfile($id){
         
         $client = Client::find($id);
-        $mode =  Client::find($id);
-        $tin =  Client::find($id)->tin;
-        $business = Client::find($id)->business;
-        $taxType = Client::find($id);
-        $taxFile= Client::find($id);
-        $registeredAddress = Client::find($id)->registeredAddress;
+        $client->modeofpayment;
+                $client->tin;
+                $client->business;
+                $client->registeredAddress;
+                $client->associates;
+                $client->clientTaxes;
         return view('pages.admin.clients.client_profile')
-        ->with( 'client',$client) 
-        ->with( 'mode',$mode)
-        ->with('tin',$tin)
-        ->with('business',$business)
-        ->with( 'registeredAddress', $registeredAddress)
-        ->with( 'taxType', $taxType)
-        ->with('taxFile', $taxFile)
-        ;
+         ->with( 'client',$client) ;
      
     }
    
