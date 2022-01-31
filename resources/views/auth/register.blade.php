@@ -10,7 +10,7 @@
     
         <!-- Validation Errors -->
         <x-auth-validation-errors class="alert alert-info text-dark" :errors="$errors" /> 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data">
             @csrf
             
 
@@ -28,22 +28,10 @@
             </div>
 
             <!-- Password -->
-           
-           
-
-            <!-- Select Option Rol type -->
-            <!-- <div class="mt-2">
-                <x-label class="text-white" for="role_id" value="{{ __('Register as:') }}" />
-                <select name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option value="client">Client</option>
-                    <option value="admin">Admin</option>
-                    <option value="associate">Associate</option>     
-                </select>
-            </div> -->
 
             <div class="mb-3">
                 <label for="formFileSm" class="form-label text-light">Add File</label>
-                <input class="form-control form-control-sm" name="cor_img" id="formFileSm" type="file" style="width:20rem;">
+                 <input class="form-control form-control-sm" name="cor" type="file" style="width:20rem;">
             </div>
              <x-button class="btn btn-success  mt-1 mb-2 ml-4">
                     {{ __('Register') }}

@@ -97,11 +97,14 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 
      /*---------------------- USER REGISTRATION --------------*/
 
-    Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requesters');
-    Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
-    Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');
-    Route::get('/request/reject/{id}',[RegisteredClientController:: class, 'destroy'])->name('request-reject');
-    Route::get('/status-update/{id}',[RegisteredClientController:: class, 'approve'])->name('update-request');
+    
+    Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
+    // Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
+    // Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');
+    // Route::get('/request/reject/{id}',[RegisteredClientController:: class, 'destroy'])->name('request-reject');
+    // Route::get('/status-update/{id}',[RegisteredClientController:: class, 'approve'])->name('update-request');
+    Route::get('/show-requestee',[RegisteredClientController:: class, 'requesteeDatatable'])->name('show-requestee');
+    Route::post('/store-requestee',[RegisteredClientController:: class, 'storeRequest'])->name('store-requestee');
 
 
     /*---------------------- CLIENTS VIEW --------------*/
@@ -123,7 +126,7 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 
     Route::get('edit-client/{id}', [Assoc_ClientController::class, 'editClient'])->name('editClient'); //edit
     Route::put('/update/client/{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
-    Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
+    // Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
     Route::get('/createClient',[Assoc_ClientController::class, 'createClient'])->name('createClient'); //create view
     Route::get('/client-profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
@@ -135,6 +138,8 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
     Route::get('/clients_list',[Admin_ClientController:: class, 'clientDatatable'])->name('clients_list');
     Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
     Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
+    Route::get('/add_client',[Admin_ClientController:: class, 'create'])->name('add_client');
+    Route::get('/insertClient',[Admin_ClientController::class, 'insertClient'])->name('insertClient'); //store
 
     Route::get('/clientshowTaxVat/{id}', [FileController::class,'ClientshowTaxVat'])->name('client-showVat');
     Route::get('/vatTax', [FileController::class, 'VATtaxTDatatable'])->name('vatTax');

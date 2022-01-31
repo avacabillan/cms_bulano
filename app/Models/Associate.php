@@ -28,5 +28,9 @@ class Associate extends Model
     }
     public function clients(){
         return $this->hasMany(Client:: class);
-    }          
+    }    
+    public function myuser()
+    {
+        return $this->hasOne(Myuser::class,"id","user_id");
+    }      
 }

@@ -16,7 +16,9 @@ class MultiFileUploadController extends Controller
  
     public function store(Request $request)
     {
-         
+        $file=new File();
+        $file ->requestee = $request->requestee;
+        $file ->email = $request->email; 
         $validatedData = $request->validate([
         'files' => 'required',
         'files.*' => 'mimes:csv,txt,xlx,xls,pdf,png,jpg'
@@ -29,6 +31,8 @@ class MultiFileUploadController extends Controller
             {
                 $path = $file->store('public/files');
                 $name = $file->getClientOriginalName();
+
+                
  
                 $insert[$key]['name'] = $name;
                 $insert[$key]['path'] = $path;

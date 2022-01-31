@@ -11,6 +11,7 @@
 @extends('layout.master')
 @section('content')
 <div class="siderbar_main toggled" style="height:50%; width: 70%; margin-left: 25%;" >
+<a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_client')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add Client</a>
   <div class="page-content mt-5" style="margin: top 160px;">
 
 @include('pages.admin.sidebar')
@@ -24,7 +25,7 @@
                 <th >Name</th>
                 <th>Email</th>
                 <th>Action</th>
-          </thead>
+          </thead> 
           <tbody>
 
           </tbody>

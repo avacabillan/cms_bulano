@@ -29,6 +29,18 @@
           @csrf
                    
             <div class="row">
+                <!-- Name -->
+            <div class="form-group">
+                
+                <x-input style="width:20rem;" class="form-control form-control-sm" id="requestee"  type="text" name="requestee" placeholder="Name" :value="old('name')" required autofocus />
+            </div>
+            
+           
+            <!-- Email Address -->
+            <div class="form-group">
+              
+                <x-input style="width:20rem;" class="form-control form-control-sm" id="email"  type="email" placeholder="Email" name="email" :value="old('email')" required />
+            </div>
  
                 <div class="col-md-12">
                     <div class="form-group">

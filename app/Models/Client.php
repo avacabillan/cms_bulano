@@ -50,5 +50,9 @@ class Client extends Model
         return $this->hasMany(TaxFile::class);
 
     }
+    public function myuser()
+    {
+        return $this->hasOne(Myuser::class,"id","user_id");
+    }
     
 }

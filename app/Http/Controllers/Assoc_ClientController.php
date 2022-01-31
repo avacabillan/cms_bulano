@@ -73,56 +73,56 @@ class Assoc_ClientController extends Controller
         );
         // return view('pages.associate.clients.add_client');
     }
-    public function insertClient(Request $request )
-    {
+    // public function insertClient(Request $request )
+    // {
         
 
-        $client =new Client();
-        $client ->user_id = $request->user_id;
-        $client ->company_name = $request->client_name;
-        $client ->email_address = $request->email;
-        $client ->contact_number = $request->client_contact;
-        $client ->ocn = $request->ocn;
-        $client ->assoc_id =$request->assoc;
-        $client ->mode_of_payment_id =$request ->mode;
-        $client ->save();
+    //     $client =new Client();
+    //     $client ->user_id = $request->user_id;
+    //     $client ->company_name = $request->client_name;
+    //     $client ->email_address = $request->email;
+    //     $client ->contact_number = $request->client_contact;
+    //     $client ->ocn = $request->ocn;
+    //     $client ->assoc_id =$request->assoc;
+    //     $client ->mode_of_payment_id =$request ->mode;
+    //     $client ->save();
         
-        $client_tin =new Tin();
-        $client_tin->client_id=$client->id;
-        $client_tin->tin_no =$request->tin;
-        $client_tin->save();
+    //     $client_tin =new Tin();
+    //     $client_tin->client_id=$client->id;
+    //     $client_tin->tin_no =$request->tin;
+    //     $client_tin->save();
 
-        $registered_address =new RegisteredAddress();
-        $registered_address->client_id=$client->id;
-        $registered_address ->city_name =$request ->client_city;
-        $registered_address ->province_name =$request ->client_province;
-        $registered_address ->unit_house_no =$request ->unit_house_no;
-        $registered_address ->street =$request ->street;
-        $registered_address ->postal_no =$request ->client_postal;
-        $registered_address ->save();
+    //     $registered_address =new RegisteredAddress();
+    //     $registered_address->client_id=$client->id;
+    //     $registered_address ->city_name =$request ->client_city;
+    //     $registered_address ->province_name =$request ->client_province;
+    //     $registered_address ->unit_house_no =$request ->unit_house_no;
+    //     $registered_address ->street =$request ->street;
+    //     $registered_address ->postal_no =$request ->client_postal;
+    //     $registered_address ->save();
 
-        $business =new Business();
-        $business ->trade_name =$request->trade_name;
-        $business ->registration_date =$request->reg_date;
-        $business ->corporate_id =$request->corporate;
-        $business ->client_id = $client->id;
-        $business ->registered_address_id =$registered_address->id;
-        $business ->save();
+    //     $business =new Business();
+    //     $business ->trade_name =$request->trade_name;
+    //     $business ->registration_date =$request->reg_date;
+    //     $business ->corporate_id =$request->corporate;
+    //     $business ->client_id = $client->id;
+    //     $business ->registered_address_id =$registered_address->id;
+    //     $business ->save();
 
-        foreach ($request->taxesChecked as $key =>$val){
-            $client_tax_form= new ClientTax();
-                if (in_array($val, $request->taxesChecked)){
-                    $client_tax_form->tax_form_id =$request ->taxesChecked[$key];
-                    $client_tax_form->client_id =$client->id; 
-                    $client_tax_form->status = 'pending';
-                    $client_tax_form->save();
-                }
+    //     foreach ($request->taxesChecked as $key =>$val){
+    //         $client_tax_form= new ClientTax();
+    //             if (in_array($val, $request->taxesChecked)){
+    //                 $client_tax_form->tax_form_id =$request ->taxesChecked[$key];
+    //                 $client_tax_form->client_id =$client->id; 
+    //                 $client_tax_form->status = 'pending';
+    //                 $client_tax_form->save();
+    //             }
             
-        }
-        return redirect()->route('assoc-clients-list');
+    //     }
+    //     return redirect()->route('assoc-clients-list');
 
 
-    }
+    // }
     public function showClientProfile($id){
         
         $client = Client::find($id);

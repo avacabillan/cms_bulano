@@ -1,47 +1,50 @@
-@extends('layout.guest')
-@section('title')
-@stop
 
-@section('content')
-
-
+@extends('layout.master')
 <div id="container">
     <div id="left">
-  
+        <!-- Image -->
     </div>
-    <div id="right">
-        <h1 class="login pt-4" id="login"><b>CREATE ACCOUNT</b></h1><br>
+    <div class="" id="right">
+        
+        <h1 class="login text-white text-center mt-3"><b>REGISTERssss</b></h1><br>
+    <h1>wtf</h1>
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="alert alert-info text-dark" :errors="$errors" /> 
+        <form method="POST" action="">
+            @csrf
+            
 
-        <form action="{{route('storeRequest')}}" method="post">
-        @csrf
-        @method('GET')
-
-            <input class="client-info" type="text" name="name" placeholder="Enter Name" equired>
-            <input class="client-info" type="text" name="contact_no" placeholder="Enter Contact_no" equired>
-
-            <input class="client-info" type="text" name="email" placeholder="Enter Email" equired>
-            <div class="mb-3">
-              <label for="formFileSm" class="form-label">Choose File</label>
-              <input class="form-control form-control-sm" name="cor_image" id="formFileSm" type="file">
+            <!-- Name -->
+            <div class="form-group">
+                
+                <x-input style="width:20rem;" class="form-control form-control-sm" id="name"  type="text" name="name" placeholder="Name" :value="old('name')" required autofocus />
+            </div>
+            
+           
+            <!-- Email Address -->
+            <div class="form-group">
+              
+                <x-input style="width:20rem;" class="form-control form-control-sm" id="email"  type="email" placeholder="Email" name="email" :value="old('email')" required />
             </div>
 
-            <button class="client-info" type="submit"  id="submit" class="submitbtn">Register</button>
-           
+            <!-- Password -->
 
+            <div class="mb-3">
+                <label for="formFileSm" class="form-label text-light">Add File</label>
+                <input class="form-control form-control-sm" name="cor" id="formFileSm" type="file" style="width:20rem;">
+            </div>
+             <x-button class="btn btn-success  mt-1 mb-2 ml-4">
+                    {{ __('Register') }}
+                </x-button>+
+            <div class="footer_btn">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered? ') }}
+                </a>
+
+               
+            </div>
             
         </form>
-    </div>
-</div>
-@if ($message = Session::get('success'))
+        
+</div>      
 
-<div class="alert alert-success alert-center">
-
-    <button type="button" class="close" data-dismiss="alert">×</button>    
-
-    <strong>{{ $message }}</strong>
-
-</div>
-
-@endif
-
-@stop
