@@ -7,7 +7,7 @@
 @include('shared.navbar')
 @include('pages.admin.sidebar')
 
-<div class="siderbar_main toggled">
+<!-- <div class="siderbar_main toggled">
     <div class="page-content">
         <div class="admin_about ms-3 me-3">
             <div class="service_heading ms-3">ABOUT US</div>
@@ -50,11 +50,11 @@
                     Davao College and Davao Central College.
                 </p>
             </div>
-        </div>
+        </div> -->
         <!--- END OF COMPANY PROFILE --->
 
         <!--- COMPANY VMG --->
-        <div class="admin_vmg ms-3 me-3">
+        <!-- <div class="admin_vmg ms-3 me-3">
             <div class="vmg_heading ms-3">VISION, MISSION, KEYS TO SUCCESS AND VALUES</div>
             <hr class="breakline ms-2 me-2" style="width: 98%">
             <div class="vmg_vision ms-3 me-2">
@@ -95,13 +95,13 @@
 
                 </p> 
             </div>
-        </div>
+        </div> -->
 
         <!-- END OF VMG -->
 
-    </div>
+    <!-- </div>
 </div>  
-       
+        -->
 
 
 @stop

@@ -5,10 +5,78 @@
 @endsection
 
 @section('content')
-
+@include('shared.navbar')
 @include('pages.admin.sidebar')
 
-    
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card card-dark card-outline">
+            <div class="card-header">
+              <h3 class="card-title">List of Requestee</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+            <table  id="assoc-list" class="table table-bordered yajra-datatable " >
+          <thead>
+            <tr>
+          
+              <th class="Client-th text-dark text-center">ID</th>
+              <th class="Client-th text-dark text-center">Name</th>
+              <th class="Client-th text-dark text-center">Email</th>
+              <th class="Client-th text-dark text-center">Contact Number</th>
+              <th class="Client-th text-dark text-center">Image</th>
+              <th class="Client-th text-dark text-center">Status</th>
+
+            </tr>
+          </thead>
+          <tbody> 
+            @foreach($requesters as $requester)
+
+                    <tr>
+                        
+                        <td>{{$requester->id}}</td>
+                        <td>{{$requester->name}}</td>
+                        <td>{{$requester->email}}</td>
+                        <td>{{$requester->contact_no}}</td>
+                        <td><a href=""><img src="images/COR.png" alt="Image" style="max-width: 40px; margin-top:5px;"></td></a>
+                        <td class="text-dark"> 
+                       
+                           @if($requester->approved===0)
+                            <a class="btn btn-success btn-sm" href="{{route('update-request', $requester ->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Accept Request">Approved</a>
+                           @elseif($requester->approved===1)
+                           <a class="btn btn-danger btn-sm" href="{{route('update-request', $requester ->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Delete Request" >Pending</a>
+                            @endif
+                           
+                        
+                        </td>                                         
+                    </tr>
+            @endforeach    
+          </tbody>
+        </table>
+        </div><!-- /.card BODY-->
+          </div><!-- /.card -->
+        </div><!-- /.col -->
+        
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  
+</div>
+<!-- ./wrapper -->
+
+
+
 <div class="siderbar_main toggled" style="width: 90%;"> 
 
   <div class="page-content" >

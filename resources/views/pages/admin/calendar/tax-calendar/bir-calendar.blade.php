@@ -1,19 +1,19 @@
 
 @extends('layout.master')
-
 @section('title')
     Calendar
 @endsection
-
 @section('content')
-
+@include('shared.navbar')
 @include('pages.admin.sidebar')
 
 
-<div class="siderbar_main toggled "> 
-    <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
-    <a class="btn btn-success" id="smallButton" data-target="#smallModal" href="{{ route('create-reminder') }}"  data-attr="{{ route('create-reminder') }}" ><i class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#addReminder"></i><span>  Add Reminder</span></a>
-    <a class="btn btn-info"  href="{{route('daterange.index')}}">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <div class="content">
+    
+    <a class="btn btn-success mt-3" id="smallButton" data-target="#smallModal" href="{{ route('create-reminder') }}"  data-attr="{{ route('create-reminder') }}" ><i class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#addReminder"></i><span>  Add Reminder</span></a>
+    <a class="btn btn-info mt-3"  href="{{route('daterange.index')}}">
         <i class="fa fa-sticky-note" ></i><span> List of BIR Deadlines </span><span class="badge pull-right bg-danger me-3 mt-2"></span>
     </a>  
     
@@ -49,8 +49,7 @@
                 
             </div> 
         </div> 
-
-    </div> 
+</div>
 
 </div>
 <!-- Add BIR REMINDER Modal -->

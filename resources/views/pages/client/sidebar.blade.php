@@ -1,77 +1,91 @@
-<div class="siderbar_main toggled">
-  <div id="sidebar" class="sidebar-wrapper">
-
-    <!-- SIDEBABAR CONTENT -->
-    <div class="sidebar-content">
-
-      <!-- SIDEBAR HEADER -->
-      <div class="sidebar-header">
-      
-          <div class="user-pic">
-            <img class="img-responsive img-rounded" src="images/bulano.png" alt="User picture">
-          </div>
-          <div class="user-info">
-          <span class="user-name text-white">{{Auth::user()->name}}</span>
-            <span class="user-role">{{Auth::user()->roles()->first()->display_name}}</span>
-          </div>
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
-        <!-- END OF SIDEBAR HEADER -->
-
-        <!-- SIDEBAR MENU -->
-   
-        <div class="sidebar-menu">
-
-          <ul>
-            <li class="header-menu"><span>General</span></li>
-            
-            <!-- DASHBOARD -->
-            <li>
-              <a href="{{route('dashboard')}}"><i class="fa fa-book position-relative"></i>
-                <span>Dashboard</span>
-              </a>
-            </li>
-            <!-- REGISTERED GUEST -->
-            <!-- <li>
-              <a href="{{route('requesters')}}">
-                <i class="fa fa-user"></i><span>Registered Guest</span>
-              </a>
-            </li> -->
-            <!-- ASSOCIATES -->
-            <!-- <li>
-              <a href="{{route('associates_list')}}">
-                <i class="fa fa-globe"></i><span>Associates</span>
-              </a>
-            </li> -->
-            <!-- CLIENTS -->
-            
-            <!-- ARCHIVE -->
-            <li>
-              <a href="{{route('client_profile')}}">
-                <i class="fa fa-user"></i><span>Profile</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-user"></i><span>My Associate</span>
-              </a>
-            </li>
-            <!-- EXTRA -->
-            <li class="header-menu"><span>Extra</span></li>
-            
-           
-            <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
-            <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
-            <li><a href=""><i class="fa fa-folder"></i><span>Contacts</span></a></li>
-          </ul>
-          
+        <div class="info">
+          <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          <span class="user-role text-white">{{Auth::user()->roles()->first()->display_name}}</span>
         </div>
-        <!-- END OF SIDEBAR MENU -->
-
       </div>
-      <!-- END OF SIDEBAR HEADER -->
 
-      <!-- FOOTER -->
-      <div class="sidebar-footer">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="{{route('dashboard')}}" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                My Associate
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Archive
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Message
+                <span class="right badge badge-danger">13</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">EXTRA</li>
+          <li class="nav-item">
+            <a href="{{route('about')}}" class="nav-link">
+              <i class="nav-icon fa fa-info"></i>
+              <p>
+                About
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('services')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Services
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Contacts
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+    <!-- FOOTER -->
+    <div class="sidebar-footer">
         <a href="#">
           <i class="fa fa-cog"></i>
           <span class="badge-sonar"></span>
@@ -81,17 +95,4 @@
         </a>
       </div>
       <!-- END OF FOOTER -->
-
-    </div>
-    <!-- END OF SIDEBAR CONTENT -->
-
-  </div>   
-</div>
-
-
-
-
-  </div>   
-</div>
-
-
+  </aside>

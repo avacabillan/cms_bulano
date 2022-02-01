@@ -10,7 +10,7 @@
 <body>
 @extends('layout.master')
 @section('content')
-<div class="siderbar_main toggled" style="height:50%; width: 70%; margin-left: 25%;" >
+<div class="siderbar_main toggled" >
   <div class="page-content mt-5" style="margin: top 160px;">
 
 @include('pages.admin.sidebar')
