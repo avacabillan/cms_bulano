@@ -51,7 +51,11 @@
                         <option value="{{$position->id}}">{{$position->position_name}}</option>
                       @endforeach
                   </select>
-              </div>    
+              </div>   
+              <label class="form-label">Username</label> 
+                <input type="text" class="form-control" value=""   name="username"  >
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" value="" name="password"> 
                                                                                             
               </div>        
               </div>      

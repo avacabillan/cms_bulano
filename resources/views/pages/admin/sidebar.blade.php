@@ -33,7 +33,7 @@
             </li>
             <!-- REGISTERED GUEST -->
             <li>
-              <a href="{{route('requesters')}}">
+              <a href="{{route('requestee')}}">
                 <i class="fa fa-user"></i><span>Registered Guest</span><span class="badge pull-right bg-danger ms-2 mt-2">NEW</span>
               </a>
             </li>

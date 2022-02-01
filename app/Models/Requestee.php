@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDelete;
 
-class Requester extends Model
+class Requestee extends Model
 {
-    use HasFactory,SoftDeletes;
-    protected $table ='requesters';
+    use HasFactory;
+    protected $table ='requestee';
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name', 'email', 'contact_no','status', 'cor_img'
+        'name', 'email','cor','path'
     ];
 }
