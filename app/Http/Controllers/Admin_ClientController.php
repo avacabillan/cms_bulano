@@ -27,24 +27,24 @@ class Admin_ClientController extends Controller
 {
     public function index (Request $request) {
                         
-        $modes= ModeOfPayment::all();
-        $corporates= Corporate::all();
-        $taxForms= TaxForm::all();
-        // $clients =Client::all();
-        $assocs =Associate::all();
-        $businesses = Business::all();
-        $tins = Tin::all();
-        $registered_address = RegisteredAddress::all();
+        // $modes= ModeOfPayment::all();
+        // $corporates= Corporate::all();
+        // $taxForms= TaxForm::all();
+        // // $clients =Client::all();
+        // $assocs =Associate::all();
+        // $businesses = Business::all();
+        // $tins = Tin::all();
+        // $registered_address = RegisteredAddress::all();
             
-            return view ('pages.admin.clients.clients_list')
-            ->with('modes',$modes)
-            ->with('corporates',$corporates)
-            ->with('taxForms',$taxForms)
-            // ->with('clients',$clients)
-            ->with('businesses',$businesses)
-            ->with('tins',$tins)
-            ->with('assocs',$assocs)
-            ->with('registered_address', $registered_address);
+            return view ('pages.admin.clients.clients_list');
+            // ->with('modes',$modes)
+            // ->with('corporates',$corporates)
+            // ->with('taxForms',$taxForms)
+            // // ->with('clients',$clients)
+            // ->with('businesses',$businesses)
+            // ->with('tins',$tins)
+            // ->with('assocs',$assocs)
+            // ->with('registered_address', $registered_address);
         
     }
     public function clientDatatable(Request $request) 
@@ -64,6 +64,7 @@ class Admin_ClientController extends Controller
    
     public function ClientProfile($id){
         
+        $taxTypes = TaxType::pluck('tax_type');
         $client = Client::find($id);
         $client->modeofpayment;
                 $client->tin;
@@ -71,8 +72,10 @@ class Admin_ClientController extends Controller
                 $client->registeredAddress;
                 $client->associates;
                 $client->clientTaxes;
-        return view('pages.admin.clients.client_profile')
-         ->with( 'client',$client) ;
+                $client->taxFile;
+                
+        return view('pages.admin.clients.client_profiles', compact('client',$client,'taxTypes', $taxTypes))
+          ;
      
     }
    

@@ -17,7 +17,7 @@ class ClientTax extends Model
 
     }
     public function taxForms(){
-        return $this->belongsTo(TaxForm::class);
+        return $this->belongsTo(TaxForm::class, 'tax_form_id');
 
     }
     public function reminder(){

@@ -6,6 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\TaxFile;
 use App\Models\TaxType;
 use App\Models\Client;
+use App\Models\Associate;
+use App\Models\Business;
+use App\Models\ClientCity;
+use App\Models\ClientPostal;
+use App\Models\ClientProvince;
+use App\Models\Corporate;
+use App\Models\ModeOfPayment;
+use App\Models\RegisteredAddress;
+use App\Models\LocationAddress;
+use App\Models\Group;
+use App\Models\TaxForm;
+use App\Models\ClientTax;
+use App\Models\Tin;
+use App\Models\Reminder;
 use App\Models\ArchivedForm;
 use Illuminate\Support\Facades\DB;
 use DataTables;
@@ -142,10 +156,10 @@ class FileController extends Controller
         // $vats= TaxFile::query()
         // ->where('tax_type_id','1')
         // ->get();
-        $vats = TaxFile::query()
-        ->where('client_id','=', $id )
-        ->where('tax_type_id','1')
-        ->get();
+        // $vats = TaxFile::query()
+        // ->where('client_id','=', $id )
+        // ->select('tax_type_id','=',1)
+        // ->get();
         
         
         return view('pages.admin.clients.client_vat')->with('vats',$vats) ;
@@ -164,6 +178,26 @@ class FileController extends Controller
         ->get();
         return view('pages.admin.clients.client_pays')->with('pays',$pays);
     }
+    public function taxForms($id){
+    
+        $clientForms = TaxForm::find($id);
+        $form = ClientTax::query()
+        ->join($clientForms, 'client_tax_forms.id', '=', $clientForms)
+               ->where('client_tax_forms.id', '=', $clientForms)
+                ->select('client_tax_forms.tax_form_no')
+                ->get();
+        // $clientvats->clientTaxes;
+       
+//         $vatForm=
+//         DB::table('client_tax_forms')
+//         ->join($clientvats, 'client_tax_forms.id', '=', $clientvats)
+//         ->where('client_tax_forms.id', '=', $clientvats)
+//         ->select('client_tax_forms.tax_form_no')
+//         ->get();
+// dd($vatForm);
+        return view('pages.admin.clients.vat_forms', compact('clientvats', $clientvats));
+    }
+    
 
 
 }

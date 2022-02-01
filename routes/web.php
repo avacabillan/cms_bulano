@@ -133,23 +133,24 @@ Route::middleware(['logout'])->group(function(){
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
      Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
      Route::get('/clients_list',[Admin_ClientController:: class, 'clientDatatable'])->name('clients_list');
-      //Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('profile'); //index
+    Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
     Route::apiResource('client', ClientController::class);
 
     Route::get('/api/clients', [ClientController::class, 'store'])->name('insertClient');
-      Route::get('/api/clients/{client}', [ClientController::class, 'show'])->name('client-profile');
+      //Route::get('/api/clients/{client}', [ClientController::class, 'show'])->name('client-profile');
     Route::post('/api/clients',[ClientController::class, 'edit'])->name('editClient');
     Route::put('/api/clients/{client}', [ClientController::class, 'update'])->name('updateClient');
     Route::delete('/api/clients/{client}', [ClientController::class, 'delete'])->name('delete.selected.client');
     Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
 
     Route::get('/clientshowTaxVat/{id}', [FileController::class,'ClientshowTaxVat'])->name('client-showVat');
+    Route::get('/showVat-forms/{taxType}', [FileController::class,'taxForms'])->name('show-forms');
     Route::get('/vatTax', [FileController::class, 'VATtaxTDatatable'])->name('vatTax');
     Route::get('/clientshowTaxItr/{id}', [FileController::class,'ClientshowTaxItr'])->name('client-showTaxItr');
     Route::get('/clientshowTaxPay/{id}', [FileController::class,'ClientshowTaxPay'])->name('client-showTaxPay');
 
     
-    //-------------Tax Files Route---------------//
+    //-------------Assoc Tax Files Route---------------//
 
     Route::resource('upload', FileController::class);
     Route::get('/showTaxVat/{id}', [FileController::class,'showTaxVat'])->name('showVat');
