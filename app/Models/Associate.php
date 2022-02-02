@@ -31,6 +31,6 @@ class Associate extends Model
     }    
     public function myuser()
     {
-        return $this->hasOne(Myuser::class,"id","user_id");
+        return $this->hasOne(User::class,"id","user_id");
     }      
 }

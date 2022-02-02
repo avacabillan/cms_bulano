@@ -3,19 +3,13 @@
 @stop
 @section('content')
 
-@include('shared.navbar')
-@include('pages.admin.sidebar')
 
-<div class="siderbar_main toggled">
-
-  <div class="d-flex p-4" style="margin-left: 30%; margin-top: 5%;">
-  
-    <div class="col-sm-4 user-profile"> 
-      
+<div class="d-flex p-4 mt-3" >
+  <div class="col-sm-4 user-profile"> 
       <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
       <div class="card-block text-center text-white">
         <div class="text-center">
-          <img src="" class="rounded" alt="User-Profile-Image">
+          <img src="/images/Logo.png" class="user_profile" >
         </div>
         <br> 
           <h4 class="f-w-600">{{$client->company_name}}</h4>
@@ -93,7 +87,7 @@
       </div>
 
     </div>
-  </div>
+
   <!--VAT FORMS Modal -->
 <!-- Modal -->
 

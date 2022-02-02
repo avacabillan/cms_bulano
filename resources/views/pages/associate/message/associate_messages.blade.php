@@ -16,12 +16,12 @@
       <div class="col-md-8">
         <div class="alert alert-success text-mb-2 mt-3 me-3" role="alert">Message sent Successfully !</div>
           <h4 class="associate_inbox" id="associate_inbox">Inbox</h4>
-            @foreach($users as $user)
+            @foreach($users->message as $user)
                 @if($user->first()->id == Auth::id())
 
                 @else
                 <div class="form-group">
-                    <a class="user"  name='{{$user->first()->id}}'>{{$user->first()->name}}</a>
+                    <a class="user"  name='{{$user->first()->id}}'>{{$user->sender}}</a>
                 </div>
                 @endif
             @endforeach

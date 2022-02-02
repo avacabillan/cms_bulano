@@ -23,13 +23,17 @@ class User extends Authenticatable
     ];
    
 
-    public function client()
+    public function clients()
     {
         return $this->belongsTo(Client::class,"id", "user_id");
     }
-    public function associate()
+    public function associates()
     {
         return $this->belongsTo(Associate::class,"id", "user_id");
+    }
+    public function message()
+    {
+        return $this->belongsTo(Message::class);
     }
     /**
      * The attributes that should be hidden for arrays.

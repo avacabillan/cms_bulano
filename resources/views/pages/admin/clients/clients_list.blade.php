@@ -10,15 +10,15 @@
 <body>
 @extends('layout.master')
 @section('content')
-<div class="siderbar_main toggled" style="height:50%; width: 70%; margin-left: 25%;" >
-<a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_client')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add Client</a>
+<div class="siderbar_main toggled" style="height:50%; width: 70%;" >
+
   <div class="page-content mt-5" style="margin: top 160px;">
 
 
       <div>
         <h2>List of All Clients</h2><hr>
       </div>
-      <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%; margin-left: 15%;">
+      <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%;">
           <thead >
                
                 <th >Name</th>

@@ -82,8 +82,7 @@ class Admin_ClientController extends Controller
                 $client->clientTaxes;
                 $client->taxFile;
                 
-        return view('pages.admin.clients.client_profiles', compact('client',$client))
-          ;
+        return view('pages.admin.clients.client_profiles', compact('client',$client));
      
     }
     public function create()

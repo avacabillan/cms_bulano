@@ -5,7 +5,6 @@
 @endsection
 @section('content')
 
-@include('pages.admin.sidebar')
 
 
 <div class="siderbar_main toggled "> 

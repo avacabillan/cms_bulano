@@ -1,5 +1,4 @@
 
-
          
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -11,46 +10,12 @@
           <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="user-info">
-            <span class="user-name text-white">{{Auth::user()->associate->name}}</span>
-            <span class="user-role">{{Auth::user()->(roles)}}</span>
+            <span class="user-name text-white">{{Auth::user()->associates->name}}</span>
+            <span class="user-role">{{Auth::user()->role}}</span>
           </div>
         <!-- END OF SIDEBAR HEADER -->
 
-        <!-- SIDEBAR MENU -->
-   
-        <div class="sidebar-menu">
-
-          <ul>
-            <li class="header-menu"><span>General</span></li>
-            
-            <!-- DASHBOARD -->
-            <li>
-              <a href="{{route('dashboard')}}"><i class="fa fa-book position-relative"></i>
-                <span>Dashboard</span>
-              </a>
-            </li>
-            <!-- CLIENTS -->
-            <li>
-              <a href="{{route('assoc-clients-list')}}">
-                <i class="fa fa-globe"></i><span>Clients</span><span class="badge pull-right bg-danger me-3 mt-2"></span></a></li>
-              </a>
-            </li>
-            <!-- ARCHIVE -->
-            <li>
-              <a href="{{route('archive-list')}}">
-                <i class="fa fa-globe"></i><span>Archive</span>
-              </a>
-            </li>
-            <!-- EXTRA -->
-            <li class="header-menu"><span>Extra</span></li>
-            
-            <li><a href="{{route('associate_messages')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">5</span></a></li>
-            <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
-            <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
-            <li><a href=""><i class="fa fa-folder"></i><span>Contacts</span></a></li>
-          </ul>
-          
-        </div>
+       
       </div>
 
       <!-- Sidebar Menu -->
@@ -67,7 +32,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fad fa-users"></i>
               <p>
@@ -75,7 +40,7 @@
                 <span class="right badge badge-danger">13</span>
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="{{route('admin-archive-list')}}" class="nav-link">
               <i class="nav-icon fal fa-archive"></i>

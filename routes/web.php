@@ -97,7 +97,7 @@ Route::middleware(['logout'])->group(function(){
 
      /*---------------------- USER REGISTRATION --------------*/
 
-    
+
     Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
     // Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
     // Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');

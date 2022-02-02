@@ -6,10 +6,8 @@
 @endsection
 
 @section('content')
-@include('shared.navbar')
-@include('pages.associate.sidebar')
 
-<div class="siderbar_main toggled">
+
   <div class="page-content mt-5"style="margin: top 160px;">
 
     <div class="container mt-3 pt-5" style="height:50%">
@@ -51,7 +49,7 @@
             </table>
     </div>
   </div>
-</div>
+
 @stop
 
 

@@ -1,6 +1,5 @@
 
-@extends('layout.master')
-@section('content')
+
 
 <div id="container">
     <div id="left">
@@ -55,9 +54,8 @@
                     {{ __('Login') }}
                 </button>
         </form>
-        <a class="btn btn-info mt-3 ml-4" href="{{route('register')}}">{{ __('Register') }}</a>
+        <a class="btn btn-info mt-3 ml-4" href="#">{{ __('Register') }}</a>
        
     </div>
 </div>
 
-@endsection

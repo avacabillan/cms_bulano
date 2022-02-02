@@ -27,7 +27,7 @@
                 <x-input style="width:20rem;" class="form-control form-control-sm" id="email"  type="email" placeholder="Email" name="email" :value="old('email')" required />
             </div>
 
-            <!-- Password -->
+            <!-- File -->
 
             <div class="mb-3">
                 <label for="formFileSm" class="form-label text-light">Add File</label>

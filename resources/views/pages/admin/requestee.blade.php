@@ -12,8 +12,10 @@
 <div class="siderbar_main toggled" style="width: 100%;"> 
 
   <div class="page-content" >
-
-    <div class="container pt-5">
+  <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_client')}}" style="margin-left: 20%;"><i class="fas fa-plus-circle"></i>Add New Client</a>
+  <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_associate')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add New Associate</a>
+  <a type="button" class="btn btn-primary mt-2 mb-2 me-3" data-toggle="modal" data-target="#addAssoc"><i class="fas fa-plus-circle"></i> Add New Admin</a>
+    <div class="container ">
       <div>
         <h2>List of Requestee</h2><hr>
       </div>

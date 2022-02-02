@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-@include('pages.admin.sidebar')
+
 <div class="siderbar_main toggled">
   <div class="page-content mt-5" style="margin-top:;10%;">
    <div class="container mt-3" style="height:50%">
