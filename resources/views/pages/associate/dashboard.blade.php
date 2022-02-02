@@ -10,22 +10,24 @@
 <div class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
-      <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight">
-          {{ __('Dashboard for Client') }}
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard for Associaate') }}
         </h2>
-      </x-slot>
-      <div class="card-body text-dark-800 text-center bg-light">
-        @if (session('status'))
-          <div class="alert alert-success" role="alert">
+    </x-slot>
+<div class="card-body">
+   @if (session('status'))
+      <div class="alert alert-success" role="alert">
             {{ session('status') }}
-          </div>
-        @endif
-          {{ __('You are logged in as Client!') }}
+      </div>
+   @endif
+
+   {{ __('You are logged in as Associate!') }}
+</div>
 
         <div class="form-group col-md-12">
           <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
-            <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->name}}</h4>
+            <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->associates->name}}</h4>
         </div>
       </div>
     </div><!-- /.row -->
@@ -127,6 +129,7 @@
             </div>
             <!-- /.card -->
           </div>
+       
           
 </div>
 

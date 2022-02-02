@@ -12,8 +12,12 @@
 @section('content')
 
 <div class="siderbar_main toggled">
-  <div class="page-content mt-5" style="margin: top 160px;">
-  @include('pages.admin.sidebar') 
+@include('pages.admin.sidebar') 
+<a href="{{url()->previous()}}" class="btn btn-info" style="margin-left: 20%;">Back</a>
+  <div class="page-content mt-5">
+
+
+
   <div class="container mt-3 pt-5"  style="height:50%; width: 70%; margin-left: 25%;" >
       
       <div>

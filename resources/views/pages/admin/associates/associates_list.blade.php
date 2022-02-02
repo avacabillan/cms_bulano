@@ -9,7 +9,7 @@
 
  
     <div class="container mt-3 pt-5" style="height:50%">
-      <button type="button" class="btn btn-primary mt-2 mb-2 me-3" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i> Add Associate</button>
+      <!-- <button type="button" class="btn btn-primary mt-2 mb-2 me-3" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i> Add Associate</button> -->
       <div>
         <h2>List of <strong>Associates</strong></h2><hr>
       </div>
@@ -28,7 +28,7 @@
 
 
 <!--Add Assoc Modal -->
-<div class="modal fade" id="addAssoc" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
+<div class="modal" id="addAssoc" tabindex="-1" role="dialog" aria-labelledby="headingsModal" aria-hidden="true">
 <div class="modal-dialog modal-lg" >
     <div class="modal-content" style="  width: 1000px; min-height: 450px;">
       <div class="modal-header">

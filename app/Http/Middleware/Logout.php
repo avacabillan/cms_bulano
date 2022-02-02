@@ -17,9 +17,9 @@ class Logout
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(!Auth::check()){
-        //     return redirect()->route('login');
-        // }
-        // return $next($request);
+        if(!Auth::check()){
+            return redirect()->route('login');
+        }
+        return $next($request);
     }
 }

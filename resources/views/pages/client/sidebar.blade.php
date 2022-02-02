@@ -1,3 +1,5 @@
+
+          
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Sidebar -->
@@ -8,8 +10,8 @@
           <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->name}}</a>
-          <span class="user-role text-white">{{Auth::user()->roles()->first()->display_name}}</span>
+          <a href="#" class="d-block">{{Auth::user()->clients->company_name}}</a>
+          <span class="user-role text-white">{{Auth::user()->role}}</span>
         </div>
       </div>
 
@@ -36,7 +38,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -44,7 +46,7 @@
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>

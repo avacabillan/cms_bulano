@@ -12,8 +12,8 @@
             <label class="form-label"><b>Form Tax Type</b></label>
               <select name="taxtype" class="form-control form-control-sm">
                 <option value="">--Select Tax Type--</option>
-                  @foreach($taxTypes as $taxType)
-                <option value="{{$taxType->id}}">{{$taxType->tax_type}}</option>
+                  @foreach($taxType as $tax)
+                <option value="{{$tax->id}}">{{$tax->tax_type}}</option>
                   @endforeach
               </select>
           </div>

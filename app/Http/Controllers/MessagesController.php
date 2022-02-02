@@ -18,6 +18,7 @@ class MessagesController extends Controller
 
     public function adminIndex(){
         $recipients = User::All();
+       
         $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
         
         $users = DB::table('users')
@@ -25,7 +26,7 @@ class MessagesController extends Controller
             ->select('users.*','messages.sender')
             ->orderBy('messages.created_at','desc')
             ->get()->groupBy('sender');
-            
+        $users->message;
         return view("pages.admin.messages.admin_message")->with("messages", $messages) 
                                                          ->with("users", $users)
                                                          ->with("recipients", $recipients);

@@ -93,7 +93,7 @@
     @elseif (Auth::user()->role=='associate')
       @include('pages.associate.sidebar')
     
-    @else (Auth::user()->role=='client')
+    @else (Auth::user()->role=='client' )
       @include('pages.client.sidebar')
     @endif
     @include('shared.navbar')

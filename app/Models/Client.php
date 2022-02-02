@@ -11,8 +11,8 @@ class Client extends Model
     use HasFactory;
     public $timestamps = true;
     protected $fillable = [
-        'user_id',
-        'client_name',
+        
+        'company_name',
         'email_address',
         'contact_number',
         'ocn',
@@ -27,16 +27,19 @@ class Client extends Model
         return $this->belongsTo(User::class,'user_id');
     }
     public function business(){
-        return $this->hasMany(Business::class);
+        return $this->hasMany(Business::class, 'client_id');
     }
     public function registeredAddress(){
         return $this->hasMany(RegisteredAddress::class);
     }
     public function tin(){
-        return $this->hasOne(Tin::class);
+        return $this->hasMany(Tin::class, 'client_id');
     }
-    public function associate(){
+    public function associates(){
         return $this->belongsTo(Associate::class, 'assoc_id');
+    }
+    public function taxForms(){
+        return $this->hasMany(TaxForm::class);
     }
     public function clientTaxes(){
         return $this->hasMany(ClientTax::class);
@@ -52,7 +55,7 @@ class Client extends Model
     }
     public function myuser()
     {
-        return $this->hasOne(Myuser::class,"id","user_id");
+        return $this->hasOne(User::class,"id","user_id");
     }
     
 }
