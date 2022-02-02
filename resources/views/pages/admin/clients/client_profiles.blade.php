@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('title')
+  Client Profile
 @stop
 @section('content')
 
