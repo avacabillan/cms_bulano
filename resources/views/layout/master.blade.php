@@ -87,13 +87,13 @@
     <div class="wrapper">
     
 
-    @if (Auth::user()->hasRole('admin'))
+    @if (Auth::user()->role=='admin')
       @include('pages.admin.sidebar')
     
-    @elseif (Auth::user()->hasRole('associate'))
+    @elseif (Auth::user()->role=='associate')
       @include('pages.associate.sidebar')
     
-    @else (Auth::user()->hasRole('client'))
+    @else (Auth::user()->role=='client')
       @include('pages.client.sidebar')
     @endif
     @include('shared.navbar')
