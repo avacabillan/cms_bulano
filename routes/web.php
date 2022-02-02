@@ -149,7 +149,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/insertClient',[Admin_ClientController::class, 'insertClient'])->name('insertClient'); //store
 
     Route::get('/clientshowTaxVat/{id}', [FileController::class,'ClientshowTaxVat'])->name('client-showVat');
-    Route::get('/showVat-forms/{taxType}', [FileController::class,'taxForms'])->name('show-forms');
+    Route::get('/showVat-forms/{id}', [FileController::class,'taxForms'])->name('show-forms');
     Route::get('/vatTax', [FileController::class, 'VATtaxTDatatable'])->name('vatTax');
     Route::get('/clientshowTaxItr/{id}', [FileController::class,'ClientshowTaxItr'])->name('client-showTaxItr');
     Route::get('/clientshowTaxPay/{id}', [FileController::class,'ClientshowTaxPay'])->name('client-showTaxPay');

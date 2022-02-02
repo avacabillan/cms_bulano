@@ -20,7 +20,7 @@ use App\Models\TaxType;
 use App\Models\TaxFile;
 use App\Models\ClientTax;
 use App\Models\Tin;
-use App\Models\Myuser;
+use App\Models\User;
 use App\Models\Reminder;
 use DataTables;
 
@@ -66,8 +66,14 @@ class Admin_ClientController extends Controller
    
     public function ClientProfile($id){
         
-        $taxTypes = TaxType::pluck('tax_type');
+        // $taxTypes = TaxType::pluck('tax_type');
         $client = Client::find($id);
+        // $taxForm = DB::table('client_tax_forms')
+        // ->join('client_taxes', 'client_taxes.tax_form_id','=','client_tax_forms.id')
+        // ->pluck('tax_form_no');
+        
+        // dd( $taxForm );
+       
         $client->modeofpayment;
                 $client->tin;
                 $client->business;
@@ -76,7 +82,7 @@ class Admin_ClientController extends Controller
                 $client->clientTaxes;
                 $client->taxFile;
                 
-        return view('pages.admin.clients.client_profiles', compact('client',$client,'taxTypes', $taxTypes))
+        return view('pages.admin.clients.client_profiles', compact('client',$client))
           ;
      
     }
@@ -89,7 +95,7 @@ class Admin_ClientController extends Controller
         $assocs =Associate::all();
         $businesses = Business::all();
         $tins = Tin::all();
-        $users = Myuser::all();
+        $users = User::all();
         $registered_address = RegisteredAddress::all();
 
         return view ('pages.admin.clients.add_client')
@@ -105,10 +111,10 @@ class Admin_ClientController extends Controller
     }
     public function insertClient(Request $request )
     {
-        $myuser=New Myuser;
+        $myuser= new User;
         $myuser->role='client';
-        $myuser->username=$request->username;
-        $myuser->password=Hash::make($request->client_id);
+        $myuser->email=$request->username;
+        $myuser->password=Hash::make($request->password);
         $myuser->save();
 
         $client =new Client();
@@ -153,7 +159,7 @@ class Admin_ClientController extends Controller
                 }
             
         }
-        return redirect()->route('request');
+        return redirect()->route('requestee');
 
 
     }
@@ -176,26 +182,26 @@ class Admin_ClientController extends Controller
     
     public function getCount()
     {
-        $assocs_1 = Associate::find(1)->select('name');
-        $assocs_2 = Associate::find(2)->select('name');
-        $assocs_3 = Associate::find(3)->select('name');
-        $assocClient1 = DB::table('clients')
-        ->where('assoc_id', '=', 1)
-        ->count();
-        $assocClient2 = DB::table('clients')
-        ->where('assoc_id', '=', 2)
-        ->count();
-        $assocClient3 = DB::table('clients')
-        ->where('assoc_id', '=', 3)
-        ->count();
+        // $assocs_1 = Associate::find(1)->select('name');
+        // $assocs_2 = Associate::find(2)->select('name');
+        // $assocs_3 = Associate::find(3)->select('name');
+        // $assocClient1 = DB::table('clients')
+        // ->where('assoc_id', '=', 1)
+        // ->count();
+        // $assocClient2 = DB::table('clients')
+        // ->where('assoc_id', '=', 2)
+        // ->count();
+        // $assocClient3 = DB::table('clients')
+        // ->where('assoc_id', '=', 3)
+        // ->count();
         
 
-         return view('pages.admin.dashboard', compact('assocs_1', $assocs_1,
-                                                    'assocs_2', $assocs_2, 
-                                                    'assocs_3', $assocs_3,
-                                                    'assocClient1', $assocClient1,
-                                                    'assocClient2', $assocClient2,
-                                                    'assocClient3', $assocClient3));
+        //  return view('pages.admin.dashboard', compact('assocs_1', $assocs_1,
+        //                                             'assocs_2', $assocs_2, 
+        //                                             'assocs_3', $assocs_3,
+        //                                             'assocClient1', $assocClient1,
+        //                                             'assocClient2', $assocClient2,
+        //                                             'assocClient3', $assocClient3));
     }
    
    

@@ -145,21 +145,7 @@ class Assoc_ClientController extends Controller
     }
     
   
-   
-     public function assocCLients(Request $request)
-    {
-       
-            
-        $clients = DB::table('clients')
-        ->join('associates', 'clients.assoc_id', '=' , 'associates.id')
-        ->where('clients.assoc_id', $assoc->id)
-        ->select('clients')->get();
-        // dd($clients);
-        return view('pages.associate.dashboard',compact('clients'));
-            
-        
-    }
-    
+  
     // public function getUser($userId)
     // {
     //     $user = Client::find($userId);

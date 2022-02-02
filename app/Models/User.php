@@ -19,9 +19,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+         'email', 'password',
     ];
+   
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class,"id", "user_id");
+    }
+    public function associate()
+    {
+        return $this->belongsTo(Associate::class,"id", "user_id");
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -31,9 +40,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-    public function client(){
-        return $this->hasMany(User::class);
-    }
+   
 
     /**
      * The attributes that should be cast to native types.

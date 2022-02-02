@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Associate;
 use App\Models\Department;
 use App\Models\Position;
-use App\Models\Myuser;
+use App\Models\User;
 use DataTables;
 class AdminAssocController extends Controller
 {
@@ -53,10 +53,10 @@ class AdminAssocController extends Controller
 
     public function store(Request $request)
     {
-        $myuser=New Myuser;
+        $myuser=new User;
         $myuser->role='associate';
-        $myuser->username=$request->username;
-        $myuser->password=Hash::make($request->assoc_id);
+        $myuser->email=$request->username;
+        $myuser->password=Hash::make($request->password);
         $myuser->save();
 
         $associate =new Associate();

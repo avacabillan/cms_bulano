@@ -180,13 +180,13 @@ class FileController extends Controller
     }
     public function taxForms($id){
     
-        $clientForms = TaxForm::find($id);
-        $form = ClientTax::query()
-        ->join($clientForms, 'client_tax_forms.id', '=', $clientForms)
-               ->where('client_tax_forms.id', '=', $clientForms)
-                ->select('client_tax_forms.tax_form_no')
-                ->get();
-        // $clientvats->clientTaxes;
+        $clientvats = Client::find($id);
+        // $form = ClientTax::query()
+        // ->join($clientForms, 'client_tax_forms.id', '=', $clientForms)
+        //        ->where('client_tax_forms.id', '=', $clientForms)
+        //         ->select('client_tax_forms.tax_form_no')
+        //         ->get();
+        $clientvats->clientTaxes;
        
 //         $vatForm=
 //         DB::table('client_tax_forms')

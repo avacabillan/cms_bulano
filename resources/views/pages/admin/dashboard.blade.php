@@ -43,13 +43,11 @@
               </div>
             
             <?php
-            foreach($associates as $assoc){
               $countClient = DB::table('clients')
               ->join('associates', 'clients.assoc_id', '=' , 'associates.id')
-              ->where('clients.assoc_id', $assoc->id)
+              ->where('clients.assoc_id', $associate->id)
               ->count();
               echo "<h2 >$countClient</h2>";
-            }
             ?>
             
               

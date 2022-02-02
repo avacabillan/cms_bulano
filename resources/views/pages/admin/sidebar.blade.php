@@ -13,7 +13,7 @@
           </div>
           <div class="user-info">
             <span class="user-name text-white">{{Auth::user()->name}}</span>
-            <span class="user-role">{{Auth::user()->roles()->first()->display_name}}</span>
+            <span class="user-role">{{Auth::user()->roles}}</span>
           </div>
         </div>
         <!-- END OF SIDEBAR HEADER -->

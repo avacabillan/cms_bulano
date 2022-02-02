@@ -9,33 +9,15 @@ use DB;
 class DashboardController extends Controller
 {
     public function index(){
-        if(Auth::user()->hasRole('admin')){ 
+        if(Auth::user()->role=='admin'){ 
             $associates = Associate::all();
-             
-            
-
-            
-
-            // dd($associates); 
-          
-            // $assocs_1 = Associate::find(1);
-            // $assocs_2 = Associate::find(2);
-            // $assocs_3 = Associate::find(3);
-            // $assocClient1 = DB::table('clients')
-            // ->where('assoc_id', '=', 1)
-            // ->count();
-            // $assocClient2 = DB::table('clients')
-            // ->where('assoc_id', '=', 2)
-            // ->count();
-            // $assocClient3 = DB::table('clients')
-            // ->where('assoc_id', '=', 3)
-            // ->count();   
+      
             return view ('pages.admin.dashboard', compact('associates'));
 
 
-        }elseif (Auth::user()->hasRole('associate')){
+        }elseif (Auth::user()->role=='associate'){
             return view ('pages.associate.dashboard');
-        }elseif (Auth::user()->hasRole('client')){
+        }elseif (Auth::user()->role=='client'){
             return view ('pages.client.dashboard');
         }
     }

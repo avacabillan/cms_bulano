@@ -38,6 +38,9 @@ class Client extends Model
     public function associates(){
         return $this->belongsTo(Associate::class, 'assoc_id');
     }
+    public function taxForms(){
+        return $this->hasMany(TaxForm::class);
+    }
     public function clientTaxes(){
         return $this->hasMany(ClientTax::class);
 

@@ -18,8 +18,8 @@
           <img src="" class="rounded" alt="User-Profile-Image">
         </div>
         <br> 
-          <h4 class="f-w-600">{{$client->client_name}}</h4>
-          <p id="name" value="name">{{$client->email}}</p>         
+          <h4 class="f-w-600">{{$client->company_name}}</h4>
+          <p id="name" value="name">{{$client->email_address}}</p>         
         </div>
       </div>
 
@@ -70,9 +70,9 @@
             <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Type of Taxes</h6>
             
             <div class="row">
-            @foreach($taxTypes as $taxType)
+            @foreach($client->clientTaxes  as $taxType)
               <div class="col-sm-6">
-                <p class="m-b-10 f-w-600"><a href="{{route('show-forms', $taxType)}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType}}</a></p>
+                <p class="m-b-10 f-w-600"><a href="{{route('show-forms', $client->id)}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType->tax_form_id}}</a></p>
                 <h6 class="text-muted f-w-400"></h6>
               </div> 
             @endforeach                                    

@@ -11,8 +11,8 @@
             <img class="img-responsive img-rounded" src="images/bulano.png" alt="User picture">
           </div>
           <div class="user-info">
-          <span class="user-name text-white">{{Auth::user()->name}}</span>
-            <span class="user-role">{{Auth::user()->roles()->first()->display_name}}</span>
+          <span class="user-name text-white">{{Auth::user()->client->company_name}}</span>
+            <span class="user-role">{{Auth::user()->roles}}</span>
           </div>
         </div>
         <!-- END OF SIDEBAR HEADER -->
@@ -30,20 +30,7 @@
                 <span>Dashboard</span>
               </a>
             </li>
-            <!-- REGISTERED GUEST -->
-            <!-- <li>
-              <a href="{{route('requesters')}}">
-                <i class="fa fa-user"></i><span>Registered Guest</span>
-              </a>
-            </li> -->
-            <!-- ASSOCIATES -->
-            <!-- <li>
-              <a href="{{route('associates_list')}}">
-                <i class="fa fa-globe"></i><span>Associates</span>
-              </a>
-            </li> -->
-            <!-- CLIENTS -->
-            
+           
             <!-- ARCHIVE -->
             <li>
               <a href="{{route('client_profile')}}">

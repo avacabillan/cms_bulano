@@ -141,11 +141,7 @@
               
                 <label class="form-label " ><b>Username</b></label>
                 <input type="text" class="form-control" value="" name="username">
-           
-            
-            
-            
-              
+
                 <label class="form-label "><b>Password</b></label>
                 <input type="password" class="form-control" value="" name="password">
              
