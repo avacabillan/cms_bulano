@@ -50,12 +50,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'cor_img' => ['required', 'string','max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        // return Validator::make($data, [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'cor_img' => ['required', 'string','max:255'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        // ]);
     }
 
     /**
@@ -66,15 +66,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user= User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'contact_no' => $data['contact_no'],
-            'cor_img' => $data['cor_img'],
-            'status'=>false,
-            'password' => Hash::make($data['password']),
-        ]);
-        $user->attachRole('client');
+        // $user= User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'contact_no' => $data['contact_no'],
+        //     'cor_img' => $data['cor_img'],
+        //     'status'=>false,
+        //     'password' => Hash::make($data['password']),
+        // ]);
+        // $user->attachRole('client');
 
         // $admins = User::whereHas('roles', function($q) {
         //     $q->where('display_name', 'Admin');

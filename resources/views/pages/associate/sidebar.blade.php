@@ -10,6 +10,42 @@
         <div class="info">
           <a href="#" class="d-block">{{Auth::user()->name}}</a>
           <span class="user-role text-white">{{Auth::user()->roles()->first()->display_name}}</span>
+        <!-- END OF SIDEBAR HEADER -->
+
+        <!-- SIDEBAR MENU -->
+   
+        <div class="sidebar-menu">
+
+          <ul>
+            <li class="header-menu"><span>General</span></li>
+            
+            <!-- DASHBOARD -->
+            <li>
+              <a href="{{route('dashboard')}}"><i class="fa fa-book position-relative"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <!-- CLIENTS -->
+            <li>
+              <a href="{{route('assoc-clients-list')}}">
+                <i class="fa fa-globe"></i><span>Clients</span><span class="badge pull-right bg-danger me-3 mt-2"></span></a></li>
+              </a>
+            </li>
+            <!-- ARCHIVE -->
+            <li>
+              <a href="{{route('archive-list')}}">
+                <i class="fa fa-globe"></i><span>Archive</span>
+              </a>
+            </li>
+            <!-- EXTRA -->
+            <li class="header-menu"><span>Extra</span></li>
+            
+            <li><a href="{{route('associate_messages')}}"><i class="far fa-envelope"></i>Message<span class="badge rounded-pill pull-right bg-danger ms-2 mt-2">5</span></a></li>
+            <li><a href="{{route('about')}}"><i class="fa fa-book"></i><span>About</span></a></li>
+            <li><a href="{{route('services')}}"><i class="fa fa-calendar"></i><span>Services</span></a></li>
+            <li><a href=""><i class="fa fa-folder"></i><span>Contacts</span></a></li>
+          </ul>
+          
         </div>
       </div>
 

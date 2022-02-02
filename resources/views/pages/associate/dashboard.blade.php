@@ -127,12 +127,8 @@
             </div>
             <!-- /.card -->
           </div>
-    </div><!-- /.row -->
-  </div><!-- /.container-fluid -->
-</div><!-- /.content -->
-
-
-
+          
+</div>
 
 @stop
 

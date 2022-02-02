@@ -35,7 +35,6 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-   
     <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
     <link  href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css' rel='stylesheet' />
 
@@ -61,13 +60,17 @@
     <!-- ADMIN -->
     <link rel="stylesheet" href="{{asset('css/admin_login.css')}}">
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
-    <link rel="stylesheet" href="{{asset('css/admin_calendar.css')}}">
+   
     <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('css/admin_dashboard.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/guest_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_add_assoc.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_assoc_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_edit_assoc.css')}}">
+ 
+     <!-- Calendar -->
+     <link href="{{asset('css/main.css')}}" rel='stylesheet' />
+     <link rel="stylesheet" href="{{asset('css/admin_calendar.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('css/admin_msg_assoc.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_show_msg.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('css/admin_msg.css')}}"> -->
@@ -112,6 +115,7 @@
     <script defer src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script  src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
@@ -141,7 +145,6 @@
       <!-- CALENDAR -->
     <script defer src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
     <script defer src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script defer src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script defer src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     
     <!-- JavaScript Bundle with Popper -->
@@ -151,7 +154,7 @@
     <!-- <script src="{{asset('js/navbar.js')}}"></script> -->
     <script src="{{asset('js/sidebar.js')}}"></script>
     <script src="{{asset('js/admin_assoc_list.js')}}"></script>
-    <!-- <script src="{{asset('js/admin_calendar.js')}}"></script> -->
+   
     <script src="{{asset('js/admin_add_assoc.js')}}"></script>
     <script src="{{asset('js/admin_edit_assoc.js')}}"></script>
     <script src="{{asset('js/admin_notification.js')}}"></script>
@@ -165,11 +168,10 @@
     <script src="{{asset('js/associate_clientlist.js')}}"></script>
     <script  src="{{asset('js/associate_addClient.js')}}"></script>
     <script src="{{asset('js/associate_addfile.js')}}"></script>
-    <!-- <script src="{{asset('js/associate_editClient.js')}}"></script> -->
-    <!-- <script defer src="{{ asset('datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script defer src="{{ asset('datatable/js/dataTables.bootstrap4.min.js') }}"></script>
-     -->
-
+ 
+     <!-- Calendar  -->
+    
+    <script src="{{asset('js/main.js')}}"></script>
 
     @yield('scripts')
 

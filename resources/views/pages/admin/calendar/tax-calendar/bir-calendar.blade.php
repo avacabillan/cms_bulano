@@ -5,11 +5,13 @@
 @endsection
 @section('content')
 
-   
-    <a class="btn btn-success mt-3" id="smallButton" data-target="#smallModal" href="{{ route('create-reminder') }}"  data-attr="{{ route('create-reminder') }}" ><i class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#addReminder"></i><span>  Add Reminder</span></a>
-    <a class="btn btn-info mt-3"  href="{{route('daterange.index')}}">
-        <i class="fa fa-sticky-note" ></i><span> List of BIR Deadlines </span><span class="badge pull-right bg-danger me-3 mt-2"></span>
-    </a>  
+@include('pages.admin.sidebar')
+
+
+<div class="siderbar_main toggled "> 
+    <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
+    
+     
     
     
             @if (\Session::has('success'))
@@ -20,72 +22,58 @@
             @endif
            
         <div class="row">
-            <div class="mt-5" style ="width: 58%" >
+            <div class="mt-2" style ="width: 85%; margin-left:20%" >
             
             
                 <div class="response"></div>
                 <div id='calendar'></div>  
-            
- 
-                 
+  
             </div>
         </div>
         
-      
-        <div class="container vertical-scrollable" > 
-       
-            <div class="card text-muted list">
-            <strong  >Deadlines for this month</strong>
-              <div class="cont" id="list">
-                 <div class="deads" id="try"></div>
-              </div>
-              
-                
-            </div> 
-        </div> 
-    
-
+   </div> 
+  
+</div>
 <!-- Add BIR REMINDER Modal -->
-<!-- <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
+<div class="modal" id="addBIR" tabindex="-1" role="dialog" aria-labelledby="addBIRTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <h5 class="modal-title" id="addBIRTitle">Create Tax Deadline</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="smallBody">
+                <div class="modal-body" id="smallBody" style="margin-left: 17%;">
                     <div>
-                    <form method="POST" action="{{route('post-reminder')}}" id="addReminderForm">
+                    <form method="POST" action="{{route('post-reminder')}}" id="addBIRForm">
                         @csrf
                         @method('GET')
                         <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <label for="Title">Title:</label>
-                            <input type="text" class="form-control" name="title">
-                        </div>
+                                        
+                            <div class="form-group col-md-4">
+                                <label for="Title" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" name="title">
+                            </div>
                         </div>
                     
+                        
+                        <div class="row">
+                        
+                            <div class="form-group col-md-4">
+                                <label for="Start Date" class="col-form-label"> Start Date : </label>  
+                                <input class="date form-control" type="date"  id="startdate" name="startdate">   
+                            </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <strong> Start Date : </strong>  
-                            <input class="date form-control" type="date"  id="startdate" name="startdate">   
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <strong> End Date : </strong>  
-                            <input class="date form-control" type="date"   id="enddate" name="enddate">   
-                        </div>
+                        
+                            <div class="form-group col-md-4">
+                                <label  for="End Date" class="col-form-label"> End Date : </label>  
+                                <input class="date form-control" type="date"   id="enddate" name="enddate">   
+                            </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="form-group col-md-4">
-                            <button type="submit" class="btn btn-success saveBtn"  value="createReminder">Add Event</button>
+                        
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-success saveBtn"  value="createBIR">Save Deadline</button>
                         </div>
                         </div>
                     </form>
@@ -93,7 +81,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {       
@@ -105,107 +93,69 @@
             
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl,{
-                
-               
-            eventSources: {
-
-              
-                
-                    url: '/getTaxEvent', // use the `url` property
-                    color: 'yellow',    // an option!
-                    textColor: 'black'  // an option!
-                
-
-                // any other sources...
-
-            },
-                
+                headerToolbar: {
+                    start: 'today', 
+                    center: 'title',
+                    end: 'prevYear prev,next nextYear'
+                },
                 initialView: 'dayGridMonth',
-                selectable: true,     
-                events:function(startDate){
-                   
-                    var eventDate = startDate.end;
-                    // console.log(eventDate);
-                    const date = new Date(eventDate);
+                selectable: true, 
+                select: function(info) {
+                    
+                    $('#saveBtn').val("createReminder");
+                    $('#addBIRForm').trigger('reset');
+                    $('#headingsModal').html('Add New Reminder');
+                    $('#addBIR').modal('show');
 
-                    var month =(date.getMonth());
-                    // var day =(date.getDate());
-                    var year = (date.getFullYear()); // (January gives 0)
-                    // console.log(year);  
-                    // console.log(month);                      
+                      
+                },     
+                events:function(info, successCallback, failureCallback){
+                   
+                    
+                    var reminder = info.reminder;
+                    var start = info.start_date;
+                    var end = info.end_date;
+                    // console.log(reminder,start,end);
+                    
                     $.ajax({
-                        url: '/fullcalendar/ajax',
+                        url: '/TaxEvent',
                         method: "GET", 
-                        dataType: 'JSON',          
-                        data: {
-                            // 'day': day,
-                            'month' : month,
-                            'year': year,
-                            
-                        },
-                        success: function (response) { 
+                        contentType: 'application/json',          
+                       data:{
+                           'reminder': reminder,
+                           'start': start,
+                           'end': end ,
+                       },
+                        success: function (response) {
                             var events = [];
-                            if ($.trim(response) == '' ) {
-                                //$('#try').append(('<li>')+ 'No deadlines for this month');
-                                    document.getElementById("try").innerHTML = (('<li>')+ 'No deadlines for this month');
-                                //  var newElement = document.createElement("ul");
-                                //         newElement.innerHTML = (('<li>')  + element.reminder + " " + element.start );
-                                //     var myCurrentElement= document.getElementById("try");
-                                //         insertAfter(newElement, myCurrentElement);
-                            } 
-                            else  {                             
-                                $.each(response, function(index, element) {                            
-                                    events.push({
-                                        title: element.reminder,
-                                        start: element.start, 
-                                    });
+                            
+                            // console.log(response);
+
+                            $.each(response, function(index, element) {
+                                events.push({
+                                    title: element.reminder,
+                                    start: element.start,
+                                    end: element.end,
                                     
-                                    $('#try').append(('<strong>') + element.start  +('<span>')+('<li>')  + element.reminder   );                                                                                                                 
-                                    // const content = list.innerHTML;
-                                    // element.innerHTML = content ;                 
-                                        //document.getElementById("try").innerHTML =  (('<li>')  + element.reminder + " " + element.start );
-                                    // console.log(events);
-                                                                          
-                                });                            
-                            }                          
-                        },                    
+
+                                });
+                            });
+                            successCallback(events); 
+                                              
+                        },
+                                          
                     });                
                 },         
             });
             
         calendar.render();     
         
-        // calendar.refetchEvents();
+        calendar.refetchResources();
         
 
     });
-    // $('#exampleModal').on('show.bs.modal', function (event) {
-    //     var button = $(event.relatedTarget);
-    //     event.preventDefault();
-    //     let href = $(this).attr('data-attr');
-    //     $.ajax({
-    //         url: href,
-    //         beforeSend: function() {
-    //             $('#loader').show();
-    //         },
-    //         // return the result
-    //         success: function(result) {
-    //             $('#smallModal').modal("show");
-    //             $('#addReminderForm').html(result).show();
-    //         },
-    //         complete: function() {
-    //             $('#loader').hide();
-    //         },
-    //         error: function(jqXHR, testStatus, error) {
-    //             console.log(error);
-    //             alert("Page " + href + " cannot open. Error:" + error);
-    //             $('#loader').hide();
-    //         },
-    //         timeout: 8000
-    //     })
-    // });
-
 
    
 </script>
+
 @endsection

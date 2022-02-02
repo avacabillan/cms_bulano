@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Associate;
 use App\Models\Department;
 use App\Models\Position;
+use App\Models\Myuser;
 use DataTables;
 class AdminAssocController extends Controller
 {
@@ -13,13 +15,11 @@ class AdminAssocController extends Controller
     
     public function index(){
 
-        $departments= Department::all();
-        $positions = Position::all();               
-        $associates= Associate::all();
+        
+       
 
-        return view ('pages.admin.associates.assoc_table')->with('departments', $departments)
-                            ->with ('positions', $positions)
-                            ->with('associates',$associates);
+        return view ('pages.admin.associates.assoc_table');
+                           
     }
 
     public function assocDatatable(Request $request)
@@ -53,7 +53,14 @@ class AdminAssocController extends Controller
 
     public function store(Request $request)
     {
+        $myuser=New Myuser;
+        $myuser->role='associate';
+        $myuser->username=$request->username;
+        $myuser->password=Hash::make($request->assoc_id);
+        $myuser->save();
+
         $associate =new Associate();
+        $associate->user_id=$myuser->id;
         $associate ->name = $request->assoc_name;
         $associate ->email = $request->assoc_email;
         $associate ->contact_number = $request->assoc_contact;

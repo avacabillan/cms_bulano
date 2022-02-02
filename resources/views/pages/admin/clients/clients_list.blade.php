@@ -10,6 +10,9 @@
 <body>
 @extends('layout.master')
 @section('content')
+<div class="siderbar_main toggled" style="height:50%; width: 70%; margin-left: 25%;" >
+<a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_client')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add Client</a>
+  <div class="page-content mt-5" style="margin: top 160px;">
 
 
       <div>
@@ -17,11 +20,11 @@
       </div>
       <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%; margin-left: 15%;">
           <thead >
-                <th >ID</th>
+               
                 <th >Name</th>
                 <th>Email</th>
                 <th>Action</th>
-          </thead>
+          </thead> 
           <tbody>
 
           </tbody>
@@ -45,8 +48,8 @@
         serverSide: true,
         ajax: "{{ route('clients_list') }}",
         columns: [
-            {data: 'id', name: 'id'},
-            {data: 'user_id', name: 'user_id'},
+            
+            {data: 'company_name', name: 'company_name'},
             {data: 'email_address', name: 'email_address'},
             {
                 data: 'action', 
