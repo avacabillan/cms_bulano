@@ -78,7 +78,7 @@
                     {{ __('Login') }}
                 </button>
         </form>
-        <a class="btn btn-info mt-3 ml-4" href="{{ route('register') }}">{{ __('Register') }}</a>
+        <a class="btn btn-info mt-3 ml-4" href="{{ route('register')}}">{{ __('Register') }}</a>
        
     </div>
 </div>

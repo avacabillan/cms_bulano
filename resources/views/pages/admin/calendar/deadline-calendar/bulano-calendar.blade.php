@@ -9,8 +9,7 @@
 
 
 
-<div class="siderbar_main toggled "> 
-    <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
+    <div class="page-content mt-5 m-3 pr-2" >
    
           
             
@@ -28,7 +27,7 @@
            
    
         <div class="row">
-            <div class="mt-2" style ="width: 75%; margin-left:10%" >
+            <div class="mt-2" style ="width:65%; margin-left:2%;" >
             
             
                 <div class="response"></div>
@@ -56,7 +55,7 @@
     <div class="container2 vertical-scrollable" > 
        
        <div class="card2  list">
-       <strong class="pb-3" >Legends</strong>
+      
          <div class="cont" id="list">
          
          <div id='external-events'>
@@ -81,7 +80,7 @@
        </div> 
     </div> 
 
-</div>
+
 <!-- Add BIR REMINDER Modal -->
 <div class="modal" id="addReminder" tabindex="-1" role="dialog" aria-labelledby="addReminderTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">

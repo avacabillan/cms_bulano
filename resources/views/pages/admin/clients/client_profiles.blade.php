@@ -1,11 +1,13 @@
+
 @extends('layout.master')
 @section('title')
+  Client Profile
 @stop
 @section('content')
 
 
-<div class="d-flex p-4 mt-3" >
-  <div class="col-sm-4 user-profile"> 
+  <div class="d-flex p-4 mt-3" >
+    <div class="col-sm-4 user-profile"> 
       <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
       <div class="card-block text-center text-white">
         <div class="text-center">
@@ -82,16 +84,13 @@
             
 
           </div>
-        
         </div> 
-      </div>
-
+      </div> 
     </div>
 
-  <!--VAT FORMS Modal -->
-<!-- Modal -->
+  </div>
 
- 
+
        
      
 <script>

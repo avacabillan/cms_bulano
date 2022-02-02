@@ -99,6 +99,7 @@ Route::middleware(['logout'])->group(function(){
 
 
     Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
+    Route::get('/register-client',[RegisteredClientController:: class, 'register'])->name('subscribe');
     // Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
     // Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');
     // Route::get('/request/reject/{id}',[RegisteredClientController:: class, 'destroy'])->name('request-reject');
