@@ -17,7 +17,7 @@
     <div class="container ">
       <div>
         <h2>List of Requestee</h2>
-        <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_client')}}" ><i class="fas fa-plus-circle"></i>Add New User</a>
+        <!-- <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_client')}}" ><i class="fas fa-plus-circle"></i>Add New User</a> -->
       </div>
 
         <table  id="assoc-list" class="table table-bordered yajra-datatable mt-3"  style="width:70%; margin-left:5%; ">
@@ -43,12 +43,11 @@
                         <td>
                           <img src="{{asset('public/files/'.$requestee->cor)}}" alt="" width="70px" height="50px">
                         </td>
-                        <!-- <td><a href=""><img src="images/COR.png" alt="Image" style="max-width: 40px; margin-top:5px;"></td></a>
-                        <td class="text-dark">  -->
                         <td class="text-dark"> 
                        
                            
-                            <a class="btn btn-danger btn-sm" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Accept Request">Preview</a>
+                          <a class="btn btn-primary btn-sm" href="{{route('add_client')}}" data-bs-toggle="tooltip" data-bs-placement="top" >Accept</a>
+                          <a class="btn btn-danger btn-sm" href="{{route('delete',$requestee->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" >Delete</a>
                            
                         
                         </td>                                         
