@@ -7,11 +7,8 @@
 
 @section('content')
 
-@include('pages.admin.sidebar')
 
 
-<div class="siderbar_main toggled "> 
-    <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
     <a class="btn btn-success" id="smallButton" data-target="#smallModal" href="{{ route('create-deadline') }}"  data-attr="{{ route('create-reminder') }}" ><i class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#addReminder"></i><span>  Add Deadline</span></a>
     <a class="btn btn-info"  href="{{route('list-deadline')}}">
         <i class="fa fa-sticky-note" ></i><span> List of Internal Deadlines </span><span class="badge pull-right bg-danger me-3 mt-2"></span>
@@ -47,9 +44,6 @@
             </div> 
         </div> 
 
-    </div> 
-
-</div>
 
 
 <script>

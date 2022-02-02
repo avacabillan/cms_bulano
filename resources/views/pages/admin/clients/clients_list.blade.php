@@ -10,10 +10,7 @@
 <body>
 @extends('layout.master')
 @section('content')
-<div class="siderbar_main toggled" >
-  <div class="page-content mt-5" style="margin: top 160px;">
 
-@include('pages.admin.sidebar')
 
       <div>
         <h2>List of All Clients</h2><hr>
@@ -30,8 +27,7 @@
           </tbody>
         </table>
     </div>
-  </div>
-</div>
+
 @endsection  
 </body>
 

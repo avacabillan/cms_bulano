@@ -7,11 +7,6 @@
 
 @section('content')
 
-@include('pages.admin.sidebar')
-
- 
-<div class="siderbar_main toggled">
-  <div class="page-content mt-5" style="margin: top 160px;">
  
     <div class="container mt-3 pt-5" style="height:50%">
       <button type="button" class="btn btn-primary mt-2 mb-2 me-3" data-toggle="modal" data-target="#addAssoc" style="float: right;"><i class="fas fa-plus-circle"></i> Add Associate</button>
@@ -28,8 +23,7 @@
           <tbody></tbody>
         </table>
     </div>
-  </div>
-</div>
+
 
 
 
