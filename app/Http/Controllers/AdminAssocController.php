@@ -25,9 +25,11 @@ class AdminAssocController extends Controller
     public function assocDatatable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Associate::latest()->get();
-            return Datatables::of($data)
-                ->addIndexColumn()
+            $model = Associate::with('departments');
+            return DataTables::eloquent($model)
+                ->addColumn('departments', function (Associate $assoc) {
+                    return $assoc->departments->department_name;
+                })
                 ->addColumn('action', function($row){
                     
                     $actionBtn = '<a href="'.route('assoc-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>
@@ -35,15 +37,15 @@ class AdminAssocController extends Controller
                     return $actionBtn;
                 })
                
-                ->rawColumns(['action','delete'])
+                ->rawColumns(['action','delete','departments'])
                 ->make(true);
         }
     }
 
     public function create()
     {
-        $departments= Department::all();
-        $positions = Position::all();               
+        $departments= Department::pluck('department_name');
+        $positions = Position::pluck('position_name');               
         $associates= Associate::all();
 
         return view ('pages.admin.associates.add_associate')->with('departments', $departments)
@@ -90,13 +92,15 @@ class AdminAssocController extends Controller
  
     public function edit($id)
     {
-        $associate = Associate::find($id);      
-        $department = Department::all();
-        $position = Position::all();
+        $associate = Associate::find($id);
+        $associate->department;   
+        $associate->position;    
+        // $department = Department::all();
+        // $position = Position::all();
         
-        return view ('pages.admin.associates.edit_associate')->with('department', $department)
-                            ->with ('position', $position)
-                            ->with('associate',$associate);
+        return view ('pages.admin.associates.edit_associate')->with('associate', $associate);
+                            // ->with ('position', $position)
+                            // ->with('associate',$associate);
                         
     }
 

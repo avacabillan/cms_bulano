@@ -23,9 +23,9 @@
           Birthdate<input type="date" value="{{$associate->birth_date}}" class="form-control" style="width: 35rem;" name="assoc_birthdate" >
           Address<input type="text" value="{{$associate->address}}" class="form-control"  style="width: 35rem;"name="assoc_address">
           SSS Number<input type="text" value="{{$associate->sss_no}}" class="form-control" style="width: 35rem;" name="assoc_sss" >
-          Department<input type="text" value="{{$associate->department_id}}" style="width: 35rem;" class="form-control" name="department" >
+          Department<input type="text" value="{{$associate->department->department_name}}" style="width: 35rem;" class="form-control" name="department" >
 
-          Position<input type="text" value="{{$associate->position_id}}" class="form-control" style="width: 35rem;" name="position" >
+          Position<input type="text" value="{{$associate->position->position_name}}" class="form-control" style="width: 35rem;" name="position" >
           
           <input type="submit" value="Update" class=" mt-2 btn btn-success">
         </div>

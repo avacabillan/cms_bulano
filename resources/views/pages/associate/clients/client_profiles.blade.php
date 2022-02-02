@@ -72,14 +72,7 @@
                 <h6 class="text-muted f-w-400"></h6>
               </div> 
             @endforeach                                    
-              <!-- <div class="col-sm-6">
-                <p class="m-b-10 f-w-600"><a href="{{route('client-showTaxItr',$client->id)}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 1701, 1701Q, 1702ITR, 1702Q"><i class="fa fa-folder me-2" aria-hidden="true"></i>ITR</a></p>
-                <h6 class="text-muted f-w-400"></h6>
-              </div>
-              <div class="col-sm-6">
-                <p class="m-b-10 f-w-600"><a href="{{route('client-showTaxPay',$client->id)}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 0605, 0619E, 0601EQ, 0601C"><i class="fa fa-folder me-2" aria-hidden="true"></i>Registration Fee</a></p>
-                <h6 class="text-muted f-w-400"></h6>
-              </div> -->
+          
             </div>
             
 

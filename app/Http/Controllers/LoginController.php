@@ -14,6 +14,7 @@ class LoginController extends Controller
                 return redirect()->route('pages.admin.dashboard');
             }
             elseif(Auth::user()->role=='associate'){
+                
                 return redirect()->route('pages.associate.dashboard');
             }
             elseif(Auth::user()->role=='client'){

@@ -84,7 +84,14 @@
                   <select name="assoc" class="form-control">
                   <option value="">--Select Associate--</option>
                       @foreach($assocs as $assoc)
-                        <option value="{{$assoc->id}}">{{$assoc->name}}</option>
+                      <?php
+                          $countClient = DB::table('clients')
+                          ->join('associates', 'clients.assoc_id', '=' , 'associates.id')
+                          ->where('clients.assoc_id', $assoc->id)
+                          ->count();
+                        ?>
+                        <option value="{{$assoc->id}}">{{$assoc->name}} <?php echo " ($countClient clients)";?></option>
+                       
                       @endforeach
                   </select>
               </div>

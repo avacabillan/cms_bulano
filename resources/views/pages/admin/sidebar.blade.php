@@ -8,7 +8,7 @@
           <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
           <div class="info">
-            <span class="d-block">{{Auth::user()->name}}</span>
+            <span class="d-block text-light" >{{Auth::user()->email}}</span>
             <span class="user-role text-white">{{Auth::user()->role}}</span>
           </div>
         </div>

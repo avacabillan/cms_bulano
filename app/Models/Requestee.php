@@ -4,15 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDelete;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Requestee extends Model
 {
     use HasFactory;
-    protected $table ='requestee';
+    use SoftDeletes;
+
     protected $dates = ['deleted_at'];
+    protected $table ='requestee';
+    
 
     protected $fillable = [
-        'name', 'email','cor','path'
+        'name', 'email','cor'
     ];
 }

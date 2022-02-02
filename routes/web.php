@@ -40,6 +40,11 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('/', function () {
     return view('auth.login');
 })->middleware('login');
+Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
+Route::get('/show-requestee',[RegisteredClientController:: class, 'requesteeDatatable'])->name('show-requestee');
+Route::post('/store-requestee',[RegisteredClientController:: class, 'storeRequest'])->name('store-requestee');
+
+
 
 // Route::get('/dashboard', function () {
 //     return view('pages.admin.dashboard');
@@ -98,15 +103,13 @@ Route::middleware(['logout'])->group(function(){
      /*---------------------- USER REGISTRATION --------------*/
 
 
-    Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
+     Route::get('/request/delete/{id}',[RegisteredClientController:: class, 'delete'])->name('delete');
+    // Route::get('/register-client',[RegisteredClientController:: class, 'register'])->name('subscribe');
     // Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
     // Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');
     // Route::get('/request/reject/{id}',[RegisteredClientController:: class, 'destroy'])->name('request-reject');
     // Route::get('/status-update/{id}',[RegisteredClientController:: class, 'approve'])->name('update-request');
-    Route::get('/show-requestee',[RegisteredClientController:: class, 'requesteeDatatable'])->name('show-requestee');
-    Route::post('/store-requestee',[RegisteredClientController:: class, 'storeRequest'])->name('store-requestee');
-
-
+    
     /*---------------------- CLIENTS VIEW --------------*/
 
     // Route::get('/dashboard',[ClientController:: class, 'index'])->name('dashboard');
@@ -128,10 +131,10 @@ Route::middleware(['logout'])->group(function(){
     Route::put('/update/client/{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
     // Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
     Route::get('/createClient',[Assoc_ClientController::class, 'createClient'])->name('createClient'); //create view
-    Route::get('/client-profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
+    Route::get('/profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
     Route::get('/assoc-clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
-    Route::get('/api/clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
+    Route::get('/clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
 
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
      Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index

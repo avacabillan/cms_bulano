@@ -9,14 +9,18 @@ use DB;
 class DashboardController extends Controller
 {
     public function index(){
+
         if(Auth::user()->role=='admin'){ 
             $associates = Associate::all();
-      
             return view ('pages.admin.dashboard', compact('associates'));
 
-
         }elseif (Auth::user()->role=='associate'){
-            return view ('pages.associate.dashboard');
+            $associate = Auth::user()->associates->id;
+            $clients = Client::query()
+            ->where('assoc_id', '=', $associate )
+            ->get();
+            // dd( $clients);
+            return view ('pages.associate.dashboard',compact('clients'));
         }elseif (Auth::user()->role=='client'){
             return view ('pages.client.dashboard');
         }

@@ -8,18 +8,24 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <x-slot name="header">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-              {{ __('Dashboard for Admin') }}
-            </h2>
-          </x-slot>
-          <div class="card-body text-center">
-            @if (session('status'))
-              <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-              </div>
-            @endif
-              {{ __('You are logged in as Admin!') }}
+        <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard for Admin') }}
+        </h2>
+    </x-slot>
+    <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in as Admin!') }}
+                </div>
+            <div class="form-group col-md-12">
+              <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
+                <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->email}}</h4>
+            </div>
           </div>
           <div class="form-group col-md-12">
             <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">

@@ -53,9 +53,18 @@ class RegisteredClientController extends Controller
         
         $requestee->save();
 
-        return redirect()->route('register');
+        return redirect()->route('login');
     }
-    public function register(){
-        return view('auth.register');
+    // public function register(){
+    //     return view('auth.register');
+    // }
+
+    public function delete($id){
+
+        $requestee = Requestee::find($id);
+        if (!is_null($requestee)){
+            $requestee->delete();
+        }
+        return redirect()->route('requestee');
     }
 }
