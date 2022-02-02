@@ -2,10 +2,26 @@
 <html lang="en">
 <head>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title>@yield('title')</title>
+
+
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+
+   <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 
     <!-- Modal css only -->
@@ -14,6 +30,9 @@
     <!-- DATATABLE EXTENTIONS-->
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
   
+    <!-- DataTables ADMINLTE -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
@@ -43,7 +62,7 @@
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
    
     <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
-    <link rel="stylesheet" href="{{asset('css/admin_dashboard.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/admin_dashboard.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/guest_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_add_assoc.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_assoc_list.css')}}">
@@ -64,7 +83,35 @@
    
 </head>
 <body>
-    @yield('content')
+    <!-- Page Wrapper -->
+    <div class="wrapper">
+    
+
+    @if (Auth::user()->hasRole('admin'))
+      @include('pages.admin.sidebar')
+    
+    @elseif (Auth::user()->hasRole('associate'))
+      @include('pages.associate.sidebar')
+    
+    @else (Auth::user()->hasRole('client'))
+      @include('pages.client.sidebar')
+    @endif
+    @include('shared.navbar')
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+        @yield('content')
+        </div>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+      
+
     <script defer src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script  src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -73,6 +120,27 @@
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
 
+  
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="../../plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <!-- AdminLTE App -->
+    <!-- <script src="../../dist/js/adminlte.min.js"></script> -->
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+  
 
       <!-- CALENDAR -->
     <script defer src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
@@ -107,8 +175,5 @@
 
     @yield('scripts')
 
-   
-   
-    
 </body>
 </html>

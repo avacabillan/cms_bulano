@@ -36,7 +36,13 @@
     border: 0 solid rgba(0,0,0,.125);
     border-radius: .25rem;
 }
-
+.user_profile {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    border: 5px solid #272133;
+    margin-top: 20px;
+}
 .card-body {
     flex: 1 1 auto;
     min-height: 1px;

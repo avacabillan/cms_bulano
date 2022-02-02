@@ -1,21 +1,22 @@
 
 @extends('layout.master')
 @section('title')
-Service
+    Service
 @stop
-
 @section('content')
-@include('shared.navbar')
-@include('pages.admin.sidebar')
 
-<div class="siderbar_main toggled">
 
-    <div class="page-content">
-
-        <div class="admin_about ms-3 me-3">
-            <div class="service_heading ms-3">SERVICE</div>
-            <hr class="service_breakline ms-2 me-2" style="width: 98%">
-            <p class="text_service ms-4">The services offered for each department are as follows:</p>
+    <div class="row">
+        <div class="col-12">
+            <!-- Custom Tabs -->
+            <div class="card card-dark card-outline me-2 ms-2">
+                <div class="card-header d-flex p-0">
+                    <h3 class="card-title p-3"><b>SERVICES</b></h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                        <p class="text_service ms-4">The services offered for each department are as follows:</p>
             <div class="service ms-3 me-2">
                 <p class="service_text_title">A. Accounting and Tax Services</p>
                 <p class="service_text ms-5">
@@ -72,9 +73,12 @@ Service
                 with Business Bureau of Davao City, SEC or DTI and BIR for the retirement of business <br>
                 </p> 
             </div>
-          
+                            
+                        </div><!-- /.tab-pane -->
+                    </div>
+                </div> 
+            </div>
         </div>
     </div>
-</div>
 
 @stop

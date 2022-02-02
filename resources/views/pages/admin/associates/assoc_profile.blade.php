@@ -1,6 +1,7 @@
 
 @extends('layout.master')
 @section('title')
+  Associate's Profile
 @stop
 @section('content')
 
@@ -12,7 +13,7 @@
     <input class="form-control" type="hidden" value="{{$associate->id}}" name="associate_id">
     <div class="card-block text-center text-white">
       <div class="text-center">
-        <img src="images/bianca.jpg" class="rounded" alt="User-Profile-Image">
+        <img src="/images/Logo.png" class="user_profile" >
       </div>
       <br> 
         <h2 class="f-w-600">{{$associate->name}}</h2>

@@ -31,14 +31,14 @@
 	overflow: hidden;
   }
   
-  .admin_user_info {
+  /* .admin_user_info {
 	display: flex;
 	justify-content: center;
 	align-items: center;
     border-top: solid 3px black;
     border-bottom: solid 2px black;
     color: black;
-  }
+  } */
   
   .admin_total {
 	margin-top: 1.25rem;

@@ -1,10 +1,8 @@
 
 @extends('layout.master')
-
 @section('title')
     Calendar
 @endsection
-
 @section('content')
 
 @include('pages.admin.sidebar')

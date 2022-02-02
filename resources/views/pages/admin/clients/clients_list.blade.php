@@ -14,7 +14,6 @@
 <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_client')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add Client</a>
   <div class="page-content mt-5" style="margin: top 160px;">
 
-@include('pages.admin.sidebar')
 
       <div>
         <h2>List of All Clients</h2><hr>
@@ -31,8 +30,7 @@
           </tbody>
         </table>
     </div>
-  </div>
-</div>
+
 @endsection  
 </body>
 

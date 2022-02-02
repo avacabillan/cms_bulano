@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-body pt-5">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="images/bulano.png" alt="Admin" class="rounded-circle" width="150">
+                                    <img src="/images/Logo.png" alt="Admin" class="user_profile" width="150">
                                         <div class="mt-3">
                                             <h4>{{$client->client_name}}</h4>
                                             <p class="text-secondary mb-1">{{$client->email}}</p>

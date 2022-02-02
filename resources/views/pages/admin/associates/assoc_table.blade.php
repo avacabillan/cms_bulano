@@ -10,12 +10,8 @@
 <body>
 @extends('layout.master')
 @section('content')
-<div class="siderbar_main toggled">
-  <div class="page-content mt-5" style="margin: top 160px;">
 
-
-@include('pages.admin.sidebar')
-  <div class="container mt-3 pt-5"  style="height:50%; width: 70%; margin-left: 25%;" >
+  <div class="container mt-3 pt-5"  style="height:50%; width: 70%;">
   <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_associate')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add Associate</a>
       <div> 
     
@@ -34,9 +30,7 @@
           </tbody>
         </table>
     </div>
-  </div>
-</div>
-
+ 
  @endsection  
 </body>
 

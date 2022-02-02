@@ -6,7 +6,7 @@
 
 @section('content')
 
-@include('pages.admin.sidebar')
+      <div class="row">
 
     
 <div class="siderbar_main toggled" style="width: 100%;"> 
@@ -54,12 +54,13 @@
             @endforeach    
           </tbody>
         </table>
-    </div>
-  </div>
-</div>
+        </div><!-- /.card BODY-->
+          </div><!-- /.card -->
+        </div><!-- /.col -->
+        
+      </div>
+      <!-- /.row -->
 
-   
-</body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
