@@ -38,21 +38,12 @@
               </p>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Archive
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li> -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('client_message')}}" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 Message
-                <span class="right badge badge-danger">13</span>
+                <span class="right badge badge-danger">2</span>
               </p>
             </a>
           </li>

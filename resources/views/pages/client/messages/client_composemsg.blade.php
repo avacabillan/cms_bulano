@@ -16,7 +16,7 @@
                 <select name="name" class="form-control">
                     <option value="">Select Recepient</option>
                         @foreach($recipients as $recipient) 
-                            <option value="{{$recipient->id}}">{{$recipient->name}}</option>
+                            <option value="{{$recipient->id}}">{{$recipient->exif_thumbnail}}</option>
                         @endforeach
                 </select>
             </div>

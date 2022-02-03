@@ -1,14 +1,34 @@
 
-@extends('layout.master')
-@section('title')
-  Client Profile
-@stop
-@section('content')
 
 
-  <div class="d-flex p-4 mt-3" >
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@yield('title')</title>
+
+
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- ADMIN -->
+    <link rel="stylesheet" href="{{asset('css/client_profile.css')}}">
+
+</head>
+<body>
+<div class="d-flex p-4 mt-3" >
+
     <div class="col-sm-4 user-profile"> 
+
       <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
+      <a href="{{url()->previous()}}" class="btn btn-info ms-2" style="float: left;">Back</a>
+
       <div class="card-block text-center text-white">
         <div class="text-center">
           <img src="/images/Logo.png" class="user_profile" >
@@ -27,41 +47,41 @@
           <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
           <hr>
 
-          <div class="row mt-5">
+          <div class="row mt-2">
           
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600">Associate</p>
+              <p class="m-b-10 f-w-600"><b>Associate</b></p>
               <h6 class="text-muted ms-2 f-w-400">{{$client->associates->name}}</h6>
             </div>
           
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600">Cell Phone No.</p>
+              <p class="m-b-10 f-w-600"><b>Cell Phone No.</b></p>
               <h6 class="text-muted ms-2 f-w-400">{{$client->contact_number}}</h6>
             </div>
             @foreach ($client->tin as $tin)
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600">TIN</p>
+              <p class="m-b-10 f-w-600"><b>TIN</b></p>
               <h6 class="text-muted ms-2 f-w-400">{{$tin->tin_no}}</h6>
             </div>
             @endforeach
             
             <div class="col-sm-6">
-              <p class="m-b-10 f-w-600">Mode of Filing</p>
+              <p class="m-b-10 f-w-600"><b>Mode of Filing</b></p>
               <h6 class="text-muted ms-2 f-w-400">{{$client->modeofpayment->mode_name}}</h6>
             </div>
             @foreach ($client->business as $busi)
               <div class="col-sm-6">
-                <p class="m-b-10 f-w-600">Registration Date</p>
+                <p class="m-b-10 f-w-600"><b>Registration Date</b></p>
                 <h6 class="text-muted ms-2 f-w-400">{{$busi->registration_date}} </h6>
               </div>
               <div class="col-sm-6">
-                <p class="m-b-10 f-w-600">Trade Name</p>
+                <p class="m-b-10 f-w-600"><b>Trade Name</b></p>
                 <h6 class="text-muted ms-2 f-w-400">{{$busi->trade_name}}</h6>
               </div>
             @endforeach
             @foreach ($client->registeredAddress as $regadd)
               <div class="col-sm-6">
-                <p class="m-b-10 f-w-600">Registered Address</p>
+                <p class="m-b-10 f-w-600"><b>Registered Address</b></p>
                 <h6 class="text-muted ms-2 f-w-400">
                   {{$regadd->unit_house_no}} {{$regadd->street}}
                   {{$regadd->city_name}} {{$regadd->province_name}}
@@ -69,10 +89,10 @@
               </div>
             @endforeach
             <br> 
-
+<hr>
             <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Type of Taxes</h6>
             
-            <div class="row">
+            <div class="row mt-2">
             @foreach($client->clientTaxes  as $taxType)
               <div class="col-sm-6">
                 <p class="m-b-10 f-w-600"><a href="{{route('show-forms', $client->id)}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType->taxForms->tax_form_no}}</a></p>
@@ -107,4 +127,9 @@
       $('#staticBackdrop').modal('show');
   });
 </script>
-@endsection
+
+</body>
+</html>
+
+
+

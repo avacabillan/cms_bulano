@@ -5,34 +5,25 @@
 @endsection
 @section('content')
 
-
-
-<div class="siderbar_main toggled "> 
-    <div class="page-content mt-5 m-3 pr-2" style="height: 40px; width:80%; ">
-    
-     
-    
-    
-            @if (\Session::has('success'))
+<div class="content"> 
+    <div class="container-fluid" style="height: 40px; width:90%; ">
+   
+        @if (\Session::has('success'))
             
-                <div class="alert alert-success" style="fade: out 0.5;">
-                <p>{{ \Session::get('success') }}</p>
-                </div><br />
-            @endif
+            <div class="alert alert-success" style="fade: out 0.5;">
+            <p>{{ \Session::get('success') }}</p>
+            </div><br />
+        @endif
            
         <div class="row">
-            <div class="mt-2" style ="width: 85%; margin-left:20%" >
-            
-            
+            <div class="mt-2" style ="width: 85%;" >
                 <div class="response"></div>
                 <div id='calendar'></div>  
-  
             </div>
         </div>
-        
-   </div> 
-  
+    </div>  
 </div>
+
 <!-- Add BIR REMINDER Modal -->
 <div class="modal" id="addBIR" tabindex="-1" role="dialog" aria-labelledby="addBIRTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">

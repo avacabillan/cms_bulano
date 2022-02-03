@@ -10,27 +10,27 @@
 <body>
 @extends('layout.master')
 @section('content')
-<div class="siderbar_main toggled" style="height:50%; width: 70%;" >
 
-  <div class="page-content mt-5" style="margin: top 160px;">
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-dark card-outline me-2 ms-2">
+        <div class="card-header">
+          <h3 class="card-title">List of All <b>Clients</b></h3><br>
+          <hr>
+          <table class="table table-bordered yajra-datatable" >
+            <thead >
+              <th >Name</th>
+              <th>Email</th>
+              <th >Action</th>
+            </thead> 
+            <tbody>
 
-
-      <div>
-        <h2>List of All Clients</h2><hr>
-      </div>
-      <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%;">
-          <thead >
-               
-                <th >Name</th>
-                <th>Email</th>
-                <th>Action</th>
-          </thead> 
-          <tbody>
-
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
     </div>
-
+  </div><!-- /.row -->
 @endsection  
 </body>
 
@@ -39,7 +39,6 @@
 <script defer src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-
 
 <script type="text/javascript">
   $(function () {
@@ -69,3 +68,24 @@
 </script>
 </html>
    
+
+<!-- <div class="siderbar_main toggled">
+
+  <div class="page-content mt-5" style="margin: top 160px;">
+
+
+      <div>
+        <h2>List of All Clients</h2><hr>
+      </div>
+      <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%;">
+          <thead >
+               
+                <th >Name</th>
+                <th>Email</th>
+                <th>Action</th>
+          </thead> 
+          <tbody>
+
+          </tbody>
+        </table>
+    </div> -->

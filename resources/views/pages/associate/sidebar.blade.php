@@ -11,7 +11,7 @@
         </div>
         <div class="user-info pl-2">
             <span class="user-name text-white">{{Auth::user()->associates->name}}</span>
-            <p><span class="user-role">{{Auth::user()->role}}</span></p>
+            <p><span class="user-role text-white">{{Auth::user()->role}}</span></p>
           </div>
         <!-- END OF SIDEBAR HEADER -->
 
@@ -85,11 +85,7 @@
             </a>
           </li>
         </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-    <!-- FOOTER -->
+        <!-- FOOTER -->
     <div class="sidebar-footer fixed-bottom">
       <a href="#">
         <i class="fa fa-cog"></i>
@@ -100,4 +96,9 @@
       </a>
     </div>
       <!-- END OF FOOTER -->
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+    
   </aside>

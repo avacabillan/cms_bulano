@@ -8,8 +8,9 @@
 @section('content')
 
 
+<div class="content"> 
 
-    <div class="page-content mt-5 m-3 pr-2" >
+    <div class="container-fluid  pr-2" >
    
           
             
@@ -27,7 +28,7 @@
            
    
         <div class="row">
-            <div class="mt-2" style ="width:65%; margin-left:2%;" >
+            <div class="calendar" style ="width:65%; margin-left:2%;" >
             
             
                 <div class="response"></div>
@@ -37,7 +38,8 @@
         </div>
         
    </div> 
-      
+</div>    
+
    <div class="container vertical-scrollable" > 
        
        <div class="card  list">
@@ -52,6 +54,7 @@
            
        </div> 
     </div> 
+
     <div class="container2 vertical-scrollable" > 
        
        <div class="card2  list">
