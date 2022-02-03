@@ -1,9 +1,7 @@
 @extends('layout.master')
-
 @section('title')
     Requestee
 @endsection
-
 @section('content')
 
 
