@@ -34,14 +34,16 @@ class Assoc_ClientController extends Controller
     }
     public function ajaxClient(Request $request){
         if ($request->ajax()) {
-            $data = Client::latest()->get();
-            return Datatables::of($data)
-                ->addIndexColumn()
+            $data = Associate::with('client');
+            return Datatables::eloquent($data)
+                ->addColumn('client', function (Associate $assoc) {
+                    return $assoc->client->company_name;
+                })
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','clients'])
                 ->make(true);
         }
         
@@ -126,21 +128,13 @@ class Assoc_ClientController extends Controller
     public function showClientProfile($id){
         
         $client = Client::find($id);
-        $modes =  ModeOfPayment::all();
-        $tins =  Client::find($id)->tin;
-        $businesses = Client::find($id)->business;
-        $taxTypes =TaxType::all();
-        $taxFiles=TaxFile::all();
-        $registeredAddress = Client::find($id)->registeredAddress;
-        return view('pages.associate.clients.client_profile')
-        ->with( 'client',$client) 
-        ->with( 'modes',$modes)
-        ->with('tins',$tins)
-        ->with('businesses',$businesses)
-        ->with( 'registeredAddress', $registeredAddress)
-        ->with( 'taxTypes', $taxTypes)
-        ->with('taxFiles', $taxFiles)
-        ;
+        $client->modeofpayment;
+                $client->tin;
+                $client->business;
+                $client->registeredAddress;
+                $client->clientTaxes;
+                $client->taxFile;
+        return view('pages.associate.clients.client_profiles',compact( 'client',$client));
      
     }
     

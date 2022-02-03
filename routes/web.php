@@ -99,7 +99,6 @@ Route::middleware(['logout'])->group(function(){
 
 
     Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
-    Route::get('/register-client',[RegisteredClientController:: class, 'register'])->name('subscribe');
     // Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
     // Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');
     // Route::get('/request/reject/{id}',[RegisteredClientController:: class, 'destroy'])->name('request-reject');
@@ -129,10 +128,10 @@ Route::middleware(['logout'])->group(function(){
     Route::put('/update/client/{id}', [Assoc_ClientController::class, 'updateClient'])->name('updateClient'); //update
     // Route::get('/insertClient',[Assoc_ClientController::class, 'insertClient'])->name('insertClient'); //store
     Route::get('/createClient',[Assoc_ClientController::class, 'createClient'])->name('createClient'); //create view
-    Route::get('/client-profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
+    Route::get('/profile/{id}', [Assoc_ClientController::class, 'showClientProfile'])->name('clientProfile'); //show
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
     Route::get('/assoc-clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
-    Route::get('/api/clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
+    Route::get('/clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
 
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
      Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index

@@ -18,11 +18,12 @@
       <div>
         <h2>List of Associates</h2><hr>
       </div>
-      <table class="table table-bordered yajra-datatable" id="assoc" style="height:50%; width: 60%; margin-left: 15%;" >
+      <table class="table table-bordered yajra-datatable" id="assoc" style="height:50%; width: 80%;" >
           <thead>
-                <th>ID</th>
+                
                 <th>Name</th>
-                <th>SSS Numbert</th>
+                <th>SSS Number</th>
+                <th>Department</th>
                 <th>Action</th>
           </thead>
           <tbody>
@@ -47,10 +48,11 @@
         processing: true,
         serverSide: true,
         ajax: "{{ route('associates_list') }}",
-        columns: [
-            {data: 'id', name: 'id'},
+        columns: [   
             {data: 'name', name: 'name'},           
             {data: 'sss_no', name: 'sss_no'},
+            {data: 'departments', name: 'departments.department_name'},
+            
 
             {
                 data: 'action', 

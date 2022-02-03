@@ -36,7 +36,7 @@ class Client extends Model
         return $this->hasMany(Tin::class, 'client_id');
     }
     public function associates(){
-        return $this->belongsTo(Associate::class, 'assoc_id');
+        return $this->hasMany(Associate::class, 'assoc_id');
     }
     public function taxForms(){
         return $this->hasMany(TaxForm::class);

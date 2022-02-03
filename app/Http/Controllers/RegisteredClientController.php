@@ -55,7 +55,5 @@ class RegisteredClientController extends Controller
 
         return redirect()->route('register');
     }
-    public function register(){
-        return view('register');
-    }
+  
 }
