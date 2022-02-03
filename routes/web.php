@@ -40,6 +40,11 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('/', function () {
     return view('auth.login');
 })->middleware('login');
+Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
+Route::get('/show-requestee',[RegisteredClientController:: class, 'requesteeDatatable'])->name('show-requestee');
+Route::post('/store-requestee',[RegisteredClientController:: class, 'storeRequest'])->name('store-requestee');
+
+
 
 // Route::get('/dashboard', function () {
 //     return view('pages.admin.dashboard');
@@ -98,15 +103,13 @@ Route::middleware(['logout'])->group(function(){
      /*---------------------- USER REGISTRATION --------------*/
 
 
-    Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
+     Route::get('/request/delete/{id}',[RegisteredClientController:: class, 'delete'])->name('delete');
+    // Route::get('/register-client',[RegisteredClientController:: class, 'register'])->name('subscribe');
     // Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
     // Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');
     // Route::get('/request/reject/{id}',[RegisteredClientController:: class, 'destroy'])->name('request-reject');
     // Route::get('/status-update/{id}',[RegisteredClientController:: class, 'approve'])->name('update-request');
-    Route::get('/show-requestee',[RegisteredClientController:: class, 'requesteeDatatable'])->name('show-requestee');
-    Route::post('/store-requestee',[RegisteredClientController:: class, 'storeRequest'])->name('store-requestee');
-
-
+    
     /*---------------------- CLIENTS VIEW --------------*/
 
     // Route::get('/dashboard',[ClientController:: class, 'index'])->name('dashboard');
