@@ -28,6 +28,10 @@
 
           <div class="row mt-5">
             <div class="col-sm-6">
+              <p class="m-b-10 f-w-600">Associate</p>
+              <h6 class="text-muted ms-2 f-w-400">{{$client->associates->name}}</h6>
+            </div>
+            <div class="col-sm-6">
               <p class="m-b-10 f-w-600">Cell Phone No.</p>
               <h6 class="text-muted ms-2 f-w-400">{{$client->contact_number}}</h6>
             </div>
@@ -68,7 +72,7 @@
             <div class="row">
             @foreach($client->clientTaxes  as $taxType)
               <div class="col-sm-6">
-                <p class="m-b-10 f-w-600"><a href="{{route('show-forms', $client->id)}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType->tax_form_id}}</a></p>
+                <p class="m-b-10 f-w-600"><a href="{{route('show-forms', $client->id)}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType->taxForms->tax_form_no}}</a></p>
                 <h6 class="text-muted f-w-400"></h6>
               </div> 
             @endforeach                                    
@@ -85,12 +89,5 @@
 
 
        
-     
-<script>
-  document.addEventListener('DOMContentLoaded', function() {       
-    var myModal = new bootstrap.Modal(document.getElementById('vatModal'), options)
 
-      $('#staticBackdrop').modal('show');
-  });
-</script>
 @endsection

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Associate;
 use App\Models\Client;
+use App\Models\ClientTax;
+use App\Models\TaxForm;
 use DB;
 class DashboardController extends Controller
 {
@@ -21,8 +23,18 @@ class DashboardController extends Controller
             ->get();
             // dd( $clients);
             return view ('pages.associate.dashboard',compact('clients'));
-        }elseif (Auth::user()->role=='client'){
-            return view ('pages.client.dashboard');
+        }elseif (Auth::user()->role=='client'){ 
+            
+            $clients = Auth::user()->clients;
+            $clients->clientTaxes;
+            
+
+        //    $assoc = Auth::user()->clients->assoc_id;
+        //    $assocs = Associate::query()
+        //     ->where('id', '=', $assoc)
+        //     ->get();
+        //    dd($client);
+            return view ('pages.client.dashboard', compact('clients'));
         }
     }
     public function countClient(){

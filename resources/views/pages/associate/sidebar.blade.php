@@ -9,9 +9,9 @@
         <div class="image">
           <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="user-info">
+        <div class="user-info pl-2">
             <span class="user-name text-white">{{Auth::user()->associates->name}}</span>
-            <span class="user-role">{{Auth::user()->role}}</span>
+            <p><span class="user-role">{{Auth::user()->role}}</span></p>
           </div>
         <!-- END OF SIDEBAR HEADER -->
 
