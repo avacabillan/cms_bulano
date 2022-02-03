@@ -66,13 +66,9 @@ class Admin_ClientController extends Controller
    
     public function ClientProfile($id){
         
-        // $taxTypes = TaxType::pluck('tax_type');
+       
         $client = Client::find($id);
-        // $taxForm = DB::table('client_tax_forms')
-        // ->join('client_taxes', 'client_taxes.tax_form_id','=','client_tax_forms.id')
-        // ->pluck('tax_form_no');
         
-        // dd( $taxForm );
        
         $client->modeofpayment;
                 $client->tin;
@@ -179,30 +175,7 @@ class Admin_ClientController extends Controller
         // return view('welcome')->with("groups", $groups);
     }
     
-    public function getCount()
-    {
-        // $assocs_1 = Associate::find(1)->select('name');
-        // $assocs_2 = Associate::find(2)->select('name');
-        // $assocs_3 = Associate::find(3)->select('name');
-        // $assocClient1 = DB::table('clients')
-        // ->where('assoc_id', '=', 1)
-        // ->count();
-        // $assocClient2 = DB::table('clients')
-        // ->where('assoc_id', '=', 2)
-        // ->count();
-        // $assocClient3 = DB::table('clients')
-        // ->where('assoc_id', '=', 3)
-        // ->count();
-        
-
-        //  return view('pages.admin.dashboard', compact('assocs_1', $assocs_1,
-        //                                             'assocs_2', $assocs_2, 
-        //                                             'assocs_3', $assocs_3,
-        //                                             'assocClient1', $assocClient1,
-        //                                             'assocClient2', $assocClient2,
-        //                                             'assocClient3', $assocClient3));
-    }
-   
+  
    
     
     

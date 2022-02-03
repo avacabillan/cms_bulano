@@ -26,8 +26,8 @@ class Associate extends Model
     public function positions(){
         return $this->belongsTo(Position:: class, 'position_id','id');
     }
-    public function client(){
-        return $this->belongsTo(Client:: class);
+    public function clients(){
+        return $this->hasMany(Client:: class);
     }    
     public function myuser()
     {

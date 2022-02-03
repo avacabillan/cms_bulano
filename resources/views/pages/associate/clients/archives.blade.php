@@ -15,15 +15,15 @@
             <h2>List of <strong>Archives</strong></h2><hr>
         </div>
 
-        <table id="assoc-list" class="table table-bordered mt-5"  style="width:100% ">
+        <table id="assoc-list" class="table table-bordered mt-5">
 
                 <thead >
                     <tr>
                     <th class="text-center text-dark" scope="col">File name</th>
-            <th  class="text-center text-dark" scope="col">File type</th>
-            <th  class="text-center text-dark" scope="col">Description</th>
-            <th  class="text-center text-dark" scope="col">Delete_at</th>
-            <th  class="text-center text-dark" scope="col">aCTION</th>  
+                    <th  class="text-center text-dark" scope="col">File type</th>
+                    <th  class="text-center text-dark" scope="col">Description</th>
+                    <th  class="text-center text-dark" scope="col">Delete_at</th>
+                    <th  class="text-center text-dark" scope="col">aCTION</th>  
                     </tr>
                 </thead>
                 <tbody>

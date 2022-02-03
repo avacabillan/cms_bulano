@@ -132,6 +132,7 @@ class Assoc_ClientController extends Controller
                 $client->tin;
                 $client->business;
                 $client->registeredAddress;
+                $client->associates;
                 $client->clientTaxes;
                 $client->taxFile;
         return view('pages.associate.clients.client_profiles',compact( 'client',$client));
