@@ -9,9 +9,9 @@
         <div class="image">
           <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="user-info">
-            <span class="user-name text-white">{{Auth::user()->associates->name}}</span>
-            <span class="user-role">{{Auth::user()->role}}</span>
+        <div class="info">
+            <span class="user-name text-white">{{Auth::user()->associates->name}}</span><br>
+            <span class="user-role text-white">{{Auth::user()->role}}</span>
           </div>
         <!-- END OF SIDEBAR HEADER -->
 
@@ -90,14 +90,14 @@
     </div>
     <!-- /.sidebar -->
     <!-- FOOTER -->
-    <div class="sidebar-footer">
-        <a href="#">
-          <i class="fa fa-cog"></i>
-          <span class="badge-sonar"></span>
-        </a>
-        <a href="{{'logout'}}">
-          <i class="fal fa-sign-out-alt"></i>
-        </a>
-      </div>
+    <div class="sidebar-footer fixed-bottom">
+      <a href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a href="{{'logout'}}">
+        <i class="fal fa-sign-out-alt"></i>
+      </a>
+    </div>
       <!-- END OF FOOTER -->
   </aside>

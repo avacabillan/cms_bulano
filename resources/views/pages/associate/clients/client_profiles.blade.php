@@ -1,12 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-@extends('layout.master')
-@section('title')
-  Client Profile
-@stop
-@section('content')
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@yield('title')</title>
 
 
-  <div class="d-flex p-4 mt-3" >
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- ADMIN -->
+    <link rel="stylesheet" href="{{asset('css/client_profile.css')}}">
+
+   
+</head>
+<body>
+
+<div class="d-flex p-4 mt-3" >
     <div class="col-sm-4 user-profile"> 
       <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
       <div class="card-block text-center text-white">
@@ -93,4 +108,9 @@
       $('#staticBackdrop').modal('show');
   });
 </script>
-@endsection
+
+
+</body>
+</html>
+
+

@@ -1,6 +1,6 @@
 
 
-/* .card-block {
+.card-block {
     padding: 1.25rem
 }
 .user-card-full .user-profile {
@@ -17,8 +17,7 @@
     border-radius: 50%;
     width:200px
 } */
-
-.main-body {
+ .main-body {
     padding: 15px;
 }
 .card {
