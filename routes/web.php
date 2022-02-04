@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin_ClientController;
 use App\Http\Controllers\AdminCalendarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisteredClientController;
-use App\Http\Controllers\API\ClientController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Dropdown;
 use App\Http\Controllers\MultiFileUploadController;
@@ -116,6 +116,7 @@ Route::middleware(['logout'])->group(function(){
     Route::view('/client_message','pages.client.client_message')->name('client_message');
     Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
     Route::view('/client_profile','pages.client.myprofile')->name('client_profile'); 
+    Route::get('/my_associate',[ClientController::class,'showAssoc'])->name('my_associate');
 
 
 

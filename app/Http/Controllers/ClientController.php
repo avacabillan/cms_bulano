@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Client;
 use App\Models\Associate;
 use App\Models\Business;
@@ -35,5 +36,13 @@ class ClientController extends Controller
         // ->get();
         //  return view('pages.client.dashboard', compact(' clientFile',  $clientFile, '    taxtypes', $taxtypes));
         return view('pages.client.dashboard');
+    }
+
+    public function showAssoc(){
+        $assoc = Auth::user()->clients->assoc_id;
+           $assocs = Associate::query()
+            ->where('id', '=', $assoc)
+            ->get();
+        return view('pages.client.my_assoc')->with('assocs',$assocs);
     }
 }
