@@ -52,12 +52,12 @@
           
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Department</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$associate->department->department_name}}</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$associate->departments->department_name}}</h6>
           </div>
 
           <div class="col-sm-6">
             <p class="m-b-10 f-w-600">Position</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$associate->position->position_name}}</h6>
+            <h6 class="text-muted ms-2 f-w-400">{{$associate->positions->position_name}}</h6>
           </div>
                 
       

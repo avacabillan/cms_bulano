@@ -10,10 +10,11 @@
 
           <div class="form-group mt-2">
             <label class="form-label"><b>Form Tax Type</b></label>
-              <select name="taxtype" class="form-control form-control-sm">
-                <option value="">--Select Tax Type--</option>
-                  @foreach($taxType as $tax)
-                <option value="{{$tax->id}}">{{$tax->tax_type}}</option>
+              <select  name="taxform" class="form-control form-control-sm">
+                <option value="">--Select File Folder--</option>
+                  @foreach( $client->clientTaxes as $tax)
+                <option value="{{$tax->taxForms->id}}">{{$tax->taxForms->tax_form_no}}</option>
+                
                   @endforeach
               </select>
           </div>
@@ -30,7 +31,4 @@
     </div>
   </form>      
 </div>
-
-
-
 

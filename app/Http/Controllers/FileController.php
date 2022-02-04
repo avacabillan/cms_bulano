@@ -36,7 +36,7 @@ class FileController extends Controller
       
     //     return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles));
     }
-    public function VATtaxTDatatable(Request $request)
+    public function taxDatatable(Request $request)
     {
         if ($request->ajax()) {
             $data = TaxFile::latest()->get();
@@ -65,26 +65,36 @@ class FileController extends Controller
     {   
        
         $taxFile = new TaxFile();
-        $taxFile->tax_type_id =$request->taxtype;
+        $taxFile->tax_form_id =$request->taxform;
         $taxFile->client_id =$request->client_id;
         $taxFile->file_name =$request->filename;
         $taxFile->description= $request->description;
         $taxFile->file_type =  $request->file('upload_file')->guessExtension();
         $taxFile->save();
 
+
       
         return redirect()->back();
 
+    }
+    public function showForm($id, $client){
+        // $fileForms = Tax::find($id);
+        // $fileForms->taxFile;
+        $datas = DB::table('client_tax_files')
+        ->where('client_tax_files.tax_form_id', '=', $id)
+        ->where('client_tax_files.client_id', '=',  $client)
+        ->get();
+        // dd($datas);
+        return view('pages.admin.clients.client_files',compact('datas'));
     }
 
     public function show($id)
     {   
         $client = Client::find($id);
-        $taxTypes =TaxType::all();
-        $taxFiles=TaxFile::all();
+        $client->clientTaxes;
         // $client= Client::find($id);
-        
-        return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles, 'client', $client));
+        // dd($client);
+        return view('pages.associate.clients.add_file')->with(compact('client', $client));
     }
 
    
@@ -181,11 +191,6 @@ class FileController extends Controller
     public function taxForms($id){
     
         $clientvats = Client::find($id);
-        // $form = ClientTax::query()
-        // ->join($clientForms, 'client_tax_forms.id', '=', $clientForms)
-        //        ->where('client_tax_forms.id', '=', $clientForms)
-        //         ->select('client_tax_forms.tax_form_no')
-        //         ->get();
         $clientvats->clientTaxes;
        
 //         $vatForm=

@@ -20,10 +20,10 @@ class Associate extends Model
 
         
     ];  
-    public function department(){
+    public function departments(){
         return $this->belongsTo(Department:: class, 'department_id','id');
     } 
-    public function position(){
+    public function positions(){
         return $this->belongsTo(Position:: class, 'position_id','id');
     }
     public function clients(){

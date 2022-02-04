@@ -152,8 +152,8 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/insertClient',[Admin_ClientController::class, 'insertClient'])->name('insertClient'); //store
 
     Route::get('/clientshowTaxVat/{id}', [FileController::class,'ClientshowTaxVat'])->name('client-showVat');
-    Route::get('/showVat-forms/{id}', [FileController::class,'taxForms'])->name('show-forms');
-    Route::get('/vatTax', [FileController::class, 'VATtaxTDatatable'])->name('vatTax');
+    Route::get('/showVat-forms/{id}/{client}', [FileController::class,'showForm'])->name('show-forms');
+    Route::get('/vatTax', [FileController::class, 'taxDatatable'])->name('vatTax');
     Route::get('/clientshowTaxItr/{id}', [FileController::class,'ClientshowTaxItr'])->name('client-showTaxItr');
     Route::get('/clientshowTaxPay/{id}', [FileController::class,'ClientshowTaxPay'])->name('client-showTaxPay');
 
@@ -161,6 +161,7 @@ Route::middleware(['logout'])->group(function(){
     //-------------Assoc Tax Files Route---------------//
 
     Route::resource('upload', FileController::class);
+    Route::get('/upload-file/{id}', [FileController::class,'upload'])->name('upload-file');
     Route::get('/showTaxVat/{id}', [FileController::class,'showTaxVat'])->name('showVat');
     Route::get('/showTaxItr/{id}', [FileController::class,'showTaxItr'])->name('showTaxItr');
     Route::get('/showTaxPay/{id}', [FileController::class,'showTaxPay'])->name('showTaxPay');

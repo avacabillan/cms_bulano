@@ -1,12 +1,9 @@
 @extends('layout.master')
-
 @section('title')
-    Client Payments receipt
-@endsection
-
+    
+@endsection 
 @section('content')
-@include('shared.navbar')
-@include('pages.admin.sidebar')
+@include('pages.associate.sidebar')
 <div class="siderbar_main toggled">
  
 <div class="page-content pt-5 mt-5" style="margin: top 180px;">
@@ -22,14 +19,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($pays as $pay)
+                @foreach($datas as $pay)
                     <tr>
                         
                         
                         <td>{{$pay->file_name}}</td>
                         <td>{{$pay->description}}</td>
                         <td>{{$pay->file_type}}</td>                       
-                        
+                        <td> 
+                            <a  class="btn btn-success btn-sm" href="{{ route('archive', $vat->id) }}" >Archive</a>                           
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -40,3 +39,6 @@
 </div>
 </div>
 @stop
+
+                       
+                       
