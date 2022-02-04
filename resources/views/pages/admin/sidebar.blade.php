@@ -115,14 +115,17 @@
     </div>
     <!-- /.sidebar -->
     <!-- FOOTER -->
-    <div class="sidebar-footer">
-        <a href="#">
+    
+    <div class="sidebar-footer fixed-bottom">
+      <a href="#">
           <i class="fa fa-cog"></i>
           <span class="badge-sonar"></span>
         </a>
         <a href="{{'logout'}}">
           <i class="fal fa-sign-out-alt"></i>
         </a>
-      </div>
+      
+    </div>
+    <!-- sidebar-footer  -->
       <!-- END OF FOOTER -->
   </aside>
