@@ -1,14 +1,14 @@
 @extends('layout.master')
 @section('title')
-    Client Dash
+    My associate
 @endsection 
 @section('content')
 
 @foreach($assocs as $associate)
          
 
-<div class="d-flex p-4 mt-3" style="margin-left: 5rem;" id="assocprofile" >
-  <div class="col-sm-4 user-profile" > 
+<div class="d-flex p-4 " style="margin-left: 5rem;" id="assocprofile" >
+  <div class="col-sm-4 user-profile  pt-2"> 
     
     <input class="form-control" type="hidden" value="{{$associate->id}}" name="associate_id">
     <div class="card-block text-center text-white">

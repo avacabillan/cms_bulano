@@ -5,7 +5,6 @@
 @endsection 
 @section('content')
 
-
 <!-- Content Header (Page header) -->
 <div class="content-header">
   <div class="container-fluid">
@@ -15,15 +14,14 @@
             {{ __('Dashboard for Associaate') }}
         </h2>
     </x-slot>
-<div class="card-body">
-   @if (session('status'))
-      <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-      </div>
-   @endif
-
-   {{ __('You are logged in as Associate!') }}
-</div>
+    <div class="card-body">
+      @if (session('status'))
+        <div class="alert alert-success" role="alert">
+          {{ session('status') }}
+        </div>
+      @endif
+        {{ __('You are logged in as Associate!') }}
+    </div>
 
         <div class="form-group col-md-12">
           <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
@@ -84,20 +82,20 @@
             </div>
             <!-- /.card -->
           </div>
-       
-          
+    </div> 
+  </div>  
 </div>
+
 <!--Profile Modal -->
 <div class="modal" id="viewProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-xl" >
+  <div class="modal-dialog modal-xl" >
     <div class="modal-content" style="  width: 1000px; min-height: 450px;">
       <div class="modal-header">
      
         <h5 class="modal-title" id="headingsModal"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         
-        </div>
-      
+   
         <div class="modal-body">
        
            
@@ -111,13 +109,13 @@
 </div>
 <!--Upload File Modal -->
 <div class="modal" id="uploadFiles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" >
+  <div class="modal-dialog modal-dialog-centered" >
     <div class="modal-content" style="  width: 1000px; min-height: 450px;">
       <div class="modal-header">
         <h5 class="modal-title" id="headingsModal"></h5>
         <a class="btn btn-primary" data-bs-toggle="modal" href="#viewProfile" role="button">back</a>
         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-        </div>
+     
       
         <div class="modal-body">
        
@@ -130,7 +128,6 @@
     </div>
   </div>
 </div>
-@stop
-
+@endsection 
 
 

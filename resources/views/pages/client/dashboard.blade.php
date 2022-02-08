@@ -33,29 +33,24 @@
 
     <!-- Main content -->
     <div class="content">
+    <h5 class="pb-2 ms-3">Forms</h5>
       <div class="container-fluid">
         <div class="row">
 
-          
-
-          <!-- /.col-md-6 -->
           @foreach($clients->clientTaxes as $clientTax)
-          <div class="col-lg-6">
-          <span style="font-size: 30px; color: Black;">
-          <p class="m-b-10 f-w-600"><a href="{{route('view-form', ['id'=>$clientTax->tax_form_id,'client'=>Auth::user()->clients->id] )}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$clientTax->taxForms->tax_form_no}}</a></p>
-          </span>
-          </div><!-- /.col-md-6 -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box shadow">
+              <span class="info-box-icon bg-warning"><i class="fas fa-folder-open"></i></span>
+              <div class="info-box-content">
+                <h4 class="info-box-text"><a href="{{route('view-form', ['id'=>$clientTax->tax_form_id,'client'=>Auth::user()->clients->id] )}}" class="text-dark ms-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><b>{{$clientTax->taxForms->tax_form_no}}</b></a></h4>
+              </div>
+            </div>
+          </div>
           @endforeach
-          <!-- /.col-md-6 -->
-         
-
-          
 
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div><!-- /.content -->
     
-  
-  
 
 @stop
