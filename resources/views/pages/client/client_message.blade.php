@@ -1,35 +1,90 @@
 @extends('layout.master')
 @section('title')
+    Client Message
 @stop
-
 @section('content')
 
-<!-- The Modal -->
-<div id="myModal" class="modal msg_compose" >
-  <!-- Modal content -->
-  <div class="col-md-8 offset-md-4">
-    
-    <div class="form_compose">
-      <button type="button" class="btn btn-primary btn-sm" id="upload_btn">Upload</button>
-      <h3 class="composehead mt-3 pt-3">Create Message</h3>
-      <hr>
-        <label for="recipient-name" class="col-form-label"><strong>Recipient:</strong></label>
-        <select class="form-select form-select-sm mb-3 bg-white"  >
-          <option>Select Recipient</option>
-          <option value="Associate">Associate name</option>
-          <option value="Admin">Admin name</option> 
-        </select>
-        
-        <p class="label"><strong>To:</strong><br><input type="email" class="textfield" placeholder="example@gmail.com"></p>
-        <label for="message-text" class="col-form-label"><strong>Message:</strong></label>
-        <textarea class="form-control" id="message-text"></textarea><br>
-              
-        <button type="button" class="btn btn-primary" style="float: right;">Cancel</button>
-        <button type="button" class="btn btn-primary me-2" style="float: right;">Send message</button>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-3 pt-5 mt-2">
+        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#compose_msg" style="width:100%">Create New Message</button>
+      </div><!-- /.col -->
+      <div class="col-md-9">
+        <div class="card card-dark card-outline">
+          <div class="card-header">
+            <h3 class="card-title">Inbox</h3>
+          </div><!-- /.card-header -->
+          <div class="card-body p-0">
+            <div class="table-responsive mailbox-messages">
+              <table class=" table">
+                <tbody>
+                  <tr style="float: left;">
+                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                    </td>
+                  </tr>
+                </tbody>
+              </table><!-- /.table -->
+            </div><!-- /.mail-box-messages -->
+          </div><!-- /.card-body -->
+        </div><!-- /.card -->
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </section><!-- /.content -->
+
+<div class="modal" id="recipient" tabindex="-2" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="staticBackdropLabel">Sender name</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="clientmsg_card_body">
+        <div>
+        @foreach($messages as $message)
+            @if(Auth::user()->id == $message->sender)
+              <div class="d-flex justify-content-end">
+                <div class="outbox">
+                  <p>{{$message->message}}</p>
+                </div>
+              </div><br>
+                @elseif(Auth::user()->id == $message->receiver)
+                  <div class="d-flex justify-content-start">
+                    <div class="inbox">
+                      <p>{{$message->message}}</p>
+                    </div>
+                  </div><br>  
+                @endif
+          @endforeach
+        </div>    
+      </div><!-- /.associatemsg_card_body -->
+
+      <div class="modal-body" class="message_box">
+        <form id="Form" action="#" method="post">
+          @csrf
+          @method('post')
+          <div class="input-group doctor-compose">
+            <input type="text" name="receiver_id" id="receiver_id" style="display:none">
+            <textarea name="message" class="form-control type_msg" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
+            <div class="input-group-append">
+              <button type="submit" class="btn" id="btn-compose-msg"><i class="fas fa-location-arrow"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
 
     </div>
-         
-  </div> 
-</div>
+  </div>
+</div><!-- /.modal-->
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+  $('.user').click(function(){  
+    $('#recipient').fadeIn();  
+  });
+</script>
+
+@include('pages.client.client_composemsg')
 @stop
+
+

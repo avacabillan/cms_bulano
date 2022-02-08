@@ -1,4 +1,4 @@
-<div class="modal fade" id="compose_msg" tabindex="-2" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal" id="compose_msg" tabindex="-2" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
 
     <div class="modal-content">
@@ -8,7 +8,7 @@
       </div>
 
       <div class="modal-body" id="message_box">
-        <form action="{{route('associate_composemsg')}}" id="form" method="post">
+        <form action="{{route('client_composemsg')}}" id="form" method="post">
           @csrf
           @method('post')
             <div class="mb-3">
@@ -16,7 +16,7 @@
                 <select name="name" class="form-control">
                     <option value="">Select Recepient</option>
                         @foreach($recipients as $recipient) 
-                            <option value="{{$recipient->id}}">{{$recipient->exif_thumbnail}}</option>
+                            <option value="{{$recipient->id}}">{{$recipient->name}}</option>
                         @endforeach
                 </select>
             </div>

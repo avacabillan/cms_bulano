@@ -103,7 +103,7 @@ class MessagesController extends Controller
             ->orderBy('messages.created_at','desc')
             ->get()->groupBy('sender');
             
-        return view("pages.client.messages.client_message")->with("messages", $messages) 
+        return view("pages.client.client_message")->with("messages", $messages) 
                                                          ->with("users", $users)
                                                          ->with("recipients", $recipients);
 
@@ -114,7 +114,7 @@ class MessagesController extends Controller
         ->orderBy('created_at', 'asc')->get();
 
     
-        return view("pages.client.messages.client_message")->with("messages", $messages)
+        return view("pages.client.client_message")->with("messages", $messages)
                                                                 ->with("users", $users)
                                                                 ->with("sender", $sender);
     }

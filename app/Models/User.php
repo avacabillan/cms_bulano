@@ -33,7 +33,7 @@ class User extends Authenticatable
     }
     public function message()
     {
-        return $this->belongsTo(Message::class,"id", "user_id");
+        return $this->belongsTo(Message::class,);
     }
     /**
      * The attributes that should be hidden for arrays.

@@ -4,23 +4,33 @@
 @endsection 
 @section('content')
 
-
-<div class="siderbar_main toggled">
-  <div class="page-content"><br><br><br>
-
-    <div class="row bg-light">
-      <div class="col-md-4 pt-2">
-        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#compose_msg" style="width:100%">Create New Message</button>
-      </div>
-      <div class="col-md-8">
-        <div class="alert alert-success text-mb-2 mt-3 me-3" role="alert">Message sent Successfully !</div>
-          <h4 class="associate_inbox" id="associate_inbox">Inbox</h4>
-            
-        </div>
-    </div>
-
-  </div>
-</div>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-3 pt-5 mt-2">
+        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#compose_msg" style="width:100%">Create New Message</button>
+      </div><!-- /.col -->
+      <div class="col-md-9">
+        <div class="card card-dark card-outline">
+          <div class="card-header">
+            <h3 class="card-title">Inbox</h3>
+          </div><!-- /.card-header -->
+          <div class="card-body p-0">
+            <div class="table-responsive mailbox-messages">
+              <table class=" table">
+                <tbody>
+                  <tr style="float: left;">
+                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                    </td>
+                  </tr>
+                </tbody>
+              </table><!-- /.table -->
+            </div><!-- /.mail-box-messages -->
+          </div><!-- /.card-body -->
+        </div><!-- /.card -->
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </section><!-- /.content -->
 
 <div class="modal" id="recipient" tabindex="-2" aria-hidden="true" style="display:none;">
   <div class="modal-dialog">
@@ -32,24 +42,22 @@
       <div class="associatemsg_card_body">
         <div>
           @foreach($messages as $message)
-                    @if(Auth::user()->id == $message->sender)
-                        <div class="d-flex justify-content-end">
-                            <div class="outbox">
-                                <p>{{$message->message}}</p>
-                            </div>
-                        </div><br>
-                    @elseif(Auth::user()->id == $message->receiver)
-                        <div class="d-flex justify-content-start">
-                            <div class="inbox">
-                                <p>{{$message->message}}</p>
-                            </div>
-                        </div><br>  
-                    @endif
-                @endforeach
-
-        </div>
-                
-      </div>
+            @if(Auth::user()->id == $message->sender)
+              <div class="d-flex justify-content-end">
+                <div class="outbox">
+                  <p>{{$message->message}}</p>
+                </div>
+              </div><br>
+                @elseif(Auth::user()->id == $message->receiver)
+                  <div class="d-flex justify-content-start">
+                    <div class="inbox">
+                      <p>{{$message->message}}</p>
+                    </div>
+                  </div><br>  
+                @endif
+          @endforeach
+        </div>    
+      </div><!-- /.associatemsg_card_body -->
 
       <div class="modal-body" class="message_box">
         <form id="Form" action="{{route('associate_showmsg', 1)}}" method="post">
@@ -67,7 +75,7 @@
 
     </div>
   </div>
-</div>
+</div><!-- /.modal-->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
