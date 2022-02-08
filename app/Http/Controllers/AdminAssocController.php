@@ -80,12 +80,10 @@ class AdminAssocController extends Controller
     public function show($id)
     {
         $associate = Associate::find($id);        
-        $department = Associate::find($id)->department;
-        $position = Associate::find($id)->position;
+        $associate->departments;
+        $associate->positions;
         
-            return view ('pages.admin.associates.assoc_profile')->with('department', $department)
-                            ->with ('position', $position)
-                            ->with('associate',$associate);
+            return view ('pages.admin.associates.assoc_profile')->with('associate', $associate);
         
     }
 

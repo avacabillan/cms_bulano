@@ -46,7 +46,7 @@
               <i class="nav-icon fal fa-archive"></i>
               <p>
               Archive
-                <span class="right badge badge-danger">13</span>
+                <!-- <span class="right badge badge-danger">13</span> -->
               </p>
             </a>
           </li>
@@ -55,7 +55,7 @@
               <i class="nav-icon fal fa-archive"></i>
               <p>
               Message
-                <span class="right badge badge-danger">13</span>
+                <!-- <span class="right badge badge-danger">13</span> -->
               </p>
             </a>
           </li>

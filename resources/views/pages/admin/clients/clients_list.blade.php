@@ -10,6 +10,9 @@
 <body>
 @extends('layout.master')
 @section('content')
+<div style="height:50%;" >
+
+  <div class="page-content mt-5" style="margin-left: 5%;">
 
   <div class="row">
     <div class="col-12">
@@ -25,12 +28,23 @@
             </thead> 
             <tbody>
 
-            </tbody>
-          </table>
-        </div><!-- /.card-body -->
-      </div><!-- /.card -->
-    </div>
-  </div><!-- /.row -->
+      <div>
+        <h2>List of All Clients</h2><hr>
+      </div>
+      <table class="table table-bordered yajra-datatable" style="height:70%; width: 50%;">
+          <thead >
+               
+                <th >Name</th>
+                <th>Email</th>
+                <th>Action</th>
+          </thead> 
+          <tbody>
+
+          </tbody>
+        </table>
+      
+  </div>
+</div>
 @endsection  
 </body>
 

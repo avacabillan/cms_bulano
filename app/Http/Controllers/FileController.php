@@ -36,7 +36,7 @@ class FileController extends Controller
       
     //     return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles));
     }
-    public function VATtaxTDatatable(Request $request)
+    public function taxDatatable(Request $request)
     {
         if ($request->ajax()) {
             $data = TaxFile::latest()->get();
@@ -65,26 +65,37 @@ class FileController extends Controller
     {   
        
         $taxFile = new TaxFile();
-        $taxFile->tax_type_id =$request->taxtype;
+        $taxFile->tax_form_id =$request->taxform;
         $taxFile->client_id =$request->client_id;
         $taxFile->file_name =$request->filename;
         $taxFile->description= $request->description;
         $taxFile->file_type =  $request->file('upload_file')->guessExtension();
         $taxFile->save();
 
+
       
         return redirect()->back();
 
+    }
+    public function showForm($id, $client){
+        // $fileForms = Tax::find($id);
+        // $fileForms->taxFile;
+        $datas = DB::table('client_tax_files')
+        ->where('client_tax_files.tax_form_id', '=', $id)
+        ->where('client_tax_files.client_id', '=',  $client)
+        ->where('deleted_at', '=', null)
+        ->get();
+        // dd($datas);
+        return view('pages.client.client_files',compact('datas'));
     }
 
     public function show($id)
     {   
         $client = Client::find($id);
-        $taxTypes =TaxType::all();
-        $taxFiles=TaxFile::all();
+        $client->clientTaxes;
         // $client= Client::find($id);
-        
-        return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles, 'client', $client));
+        // dd($client);
+        return view('pages.associate.clients.add_file')->with(compact('client', $client));
     }
 
    
@@ -96,12 +107,6 @@ class FileController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
-
-    public function destroy($id)
-    {
-    //     $delete = TaxFile::find($id)->delete();
-    //    return 'File save to archive succesfully';
     }
    
     public function restore($id) 
@@ -119,84 +124,13 @@ class FileController extends Controller
         return view('pages.associate.clients.archives',compact([ 'onlySoftDeleted' ]));
     }
 
-       //Client Tax Folders
-       public function showTaxVat($id){
-        // $vats= TaxFile::query()
-        // ->where('tax_type_id','1')
-        // ->get();
-        $vats = TaxFile::query()
-        ->where('client_id','=', $id )
-        ->where('tax_type_id','1')
-        ->get();
-        
-        
-        return view('pages.associate.clients.client_vat')->with('vats',$vats) ;
-    }
-    public function showTaxItr($id){
-        $itrs = TaxFile::query()
-        ->where('client_id','=', $id )
-        ->where('tax_type_id','2')
-        ->get();
-        return view('pages.associate.clients.client_itr')->with('itrs',$itrs) ;
-    }
-    public function showTaxPay($id){
-        $pays = TaxFile::query()
-        ->where('client_id','=', $id )
-        ->where('tax_type_id','3')
-        ->get();
-        return view('pages.associate.clients.client_pays')->with('pays',$pays);
-    }
     public function archive($id)
     {
-        $delete = TaxFile::find($id)->delete();
+        $file = TaxFile::find($id);
+        $file->delete();
         return redirect()->back();
     }
 
-    public function ClientshowTaxVat($id){
-        // $vats= TaxFile::query()
-        // ->where('tax_type_id','1')
-        // ->get();
-        // $vats = TaxFile::query()
-        // ->where('client_id','=', $id )
-        // ->select('tax_type_id','=',1)
-        // ->get();
-        
-        
-        return view('pages.admin.clients.client_vat')->with('vats',$vats) ;
-    }
-    public function ClientshowTaxItr($id){
-        $itrs = TaxFile::query()
-        ->where('client_id','=', $id )
-        ->where('tax_type_id','2')
-        ->get();
-        return view('pages.admin.clients.client_itr')->with('itrs',$itrs) ;
-    }
-    public function ClientshowTaxPay($id){
-        $pays = TaxFile::query()
-        ->where('client_id','=', $id )
-        ->where('tax_type_id','3')
-        ->get();
-        return view('pages.admin.clients.client_pays')->with('pays',$pays);
-    }
-    public function taxForms($id){
-    
-        $clientvats = Client::find($id);
-        // $form = ClientTax::query()
-        // ->join($clientForms, 'client_tax_forms.id', '=', $clientForms)
-        //        ->where('client_tax_forms.id', '=', $clientForms)
-        //         ->select('client_tax_forms.tax_form_no')
-        //         ->get();
-        $clientvats->clientTaxes;
-       
-//         $vatForm=
-//         DB::table('client_tax_forms')
-//         ->join($clientvats, 'client_tax_forms.id', '=', $clientvats)
-//         ->where('client_tax_forms.id', '=', $clientvats)
-//         ->select('client_tax_forms.tax_form_no')
-//         ->get();
-// dd($vatForm);
-        return view('pages.admin.clients.vat_forms', compact('clientvats', $clientvats));
-    }
     
 
 

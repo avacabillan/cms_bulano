@@ -10,19 +10,24 @@ class TaxFile extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    protected $dates = [ 'deleted_at' ];
     protected $table ='client_tax_files';
-    protected $fillable = ['tax_type_id', 
+    protected $fillable = ['tax_form_id', 
                            'client_id',
                            'file_name', 
                            'description', 
                            'uploaded_at'
     ];
 
-   public function taxType(){
-    return $this->belongsTo(TaxType::class);
+   public function taxForms(){
+    return $this->belongsTo(TaxForm::class);
     
-   }public function archive(){
+   }
+   public function clientTax(){
+    return $this->hasMany(ClientTax::class);
+    
+   }
+   public function archive(){
     return $this->hasMany(ArchivedForm::class);
     
    }

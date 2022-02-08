@@ -20,6 +20,10 @@ class ClientTax extends Model
         return $this->belongsTo(TaxForm::class, 'tax_form_id');
 
     }
+    public function taxFile(){
+        return $this->belongsTo(TaxFile::class);
+
+    }
     public function reminder(){
         return $this->hasMany(Reminder::class);
 
