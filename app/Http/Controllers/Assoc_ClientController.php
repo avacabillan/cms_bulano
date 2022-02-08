@@ -89,15 +89,8 @@ class Assoc_ClientController extends Controller
         return view('pages.associate.clients.client_profiles',compact( 'client',$client));
      
     }
-    
-  
-  
-    // public function getUser($userId)
-    // {
-    //     $user = Client::find($userId);
-    //      return view('pages.associate.clients.client_profile')->with( $user);
-    // }
    
+
    
     public function deleteSelectedClients(Request $request){
 
@@ -109,18 +102,25 @@ class Assoc_ClientController extends Controller
     
     public function editClient($id)
     {
+        
         $client = Client::find($id);
-        $modes =  Client::find($id)->modeofpayment;
-        $tins =  Client::find($id)->tin->get();
-        $businesses = Client::find($id)->business;
-        $registeredAddress = Client::find($id)->registeredAddress;
-        return view('pages.associate.clients.edit_client')
-        ->with( 'client',$client) 
-        ->with( 'modes',$modes)
-        ->with('tins',$tins)
-        ->with('businesses',$businesses)
-        ->with( 'registeredAddress', $registeredAddress)
-        ;
+        $client->modeofpayment;
+                $client->tin;
+                $client->business;
+                $client->registeredAddress;
+                $client->associates;
+                $client->clientTaxes;
+                $client->taxFile;
+        // $modes =  Client::find($id)->modeofpayment;
+        // $tins =  Client::find($id)->tin->get();
+        // $businesses = Client::find($id)->business;
+        // $registeredAddress = Client::find($id)->registeredAddress;
+        return view('pages.associate.clients.edit_client',compact('client')); 
+        // ->with( 'modes',$modes)
+        // ->with('tins',$tins)
+        // ->with('businesses',$businesses)
+        // ->with( 'registeredAddress', $registeredAddress)
+        // ;
         
        
 

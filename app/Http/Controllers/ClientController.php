@@ -32,11 +32,10 @@ class ClientController extends Controller
     }
 
     public function showAssoc(){
-        $assoc = Auth::user()->clients->assoc_id;
-           $assocs = Associate::query()
-            ->where('id', '=', $assoc)
-            ->get();
-        return view('pages.client.my_assoc')->with('assocs',$assocs);
+        $id = Auth::user()->clients->id;
+           $client = Client::find($id);
+           $client->associates;
+        return view('pages.client.my_assoc',compact('client'));
     }
     public function showForm($id, $client){
         // $fileForms = Tax::find($id);

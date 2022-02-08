@@ -27,26 +27,14 @@
               <th >Action</th>
             </thead> 
             <tbody>
-
-      <div>
-        <h2>List of All Clients</h2><hr>
+          </table>
+        </div>
       </div>
-      <table class="table table-bordered yajra-datatable" style="height:70%; width: 50%;">
-          <thead >
-               
-                <th >Name</th>
-                <th>Email</th>
-                <th>Action</th>
-          </thead> 
-          <tbody>
-
-          </tbody>
-        </table>
-      
+    </div>
   </div>
 </div>
 @endsection  
-</body>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
@@ -60,11 +48,7 @@
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{route('clients_list')}}",
-      //   ajax: {
-      //   url: 'http://127.0.0.1:8000/api/client',
-      //   // dataSrc: 'clients'
-      // },
+        ajax: "{{route('ajax_clients_list')}}",
         columns: [
             
             {data: 'company_name', name: 'company_name'},
@@ -80,26 +64,6 @@
     
   });
 </script>
+</body>
 </html>
    
-
-<!-- <div class="siderbar_main toggled">
-
-  <div class="page-content mt-5" style="margin: top 160px;">
-
-
-      <div>
-        <h2>List of All Clients</h2><hr>
-      </div>
-      <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%;">
-          <thead >
-               
-                <th >Name</th>
-                <th>Email</th>
-                <th>Action</th>
-          </thead> 
-          <tbody>
-
-          </tbody>
-        </table>
-    </div> -->

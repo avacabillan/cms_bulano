@@ -10,7 +10,7 @@
           <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{route('client_profile', Auth::user()->clients->id)}}" class="d-block">{{Auth::user()->clients->company_name}}</a>
+          <a href="{{route('client_profile', Auth::user()->clients->id)}}" data-bs-toggle="tooltip" data-bs-placement="right" title="View Profile" class="d-block">{{Auth::user()->clients->company_name}}</a>
           <span class="user-role text-white">{{Auth::user()->role}}</span>
         </div>
       </div>

@@ -26,9 +26,7 @@
                         <td>{{$pay->file_name}}</td>
                         <td>{{$pay->description}}</td>
                         <td>{{$pay->file_type}}</td>                       
-                        <td> 
-                            <a  class="btn btn-success btn-sm" href="{{ route('archive', $vat->id) }}" >Archive</a>                           
-                        </td>
+                        
                     </tr>
                 @endforeach
                 </tbody>

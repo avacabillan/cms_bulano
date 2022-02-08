@@ -1,5 +1,8 @@
+<html lang="en">
+<head>
 
-    <meta charset="utf-8">
+  
+  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -35,6 +38,7 @@
         <div class="card-block bg-light"> 
           <!-- <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal" href="{{route('editClient',$client)}}" style="float: right;"><i class="fas fa-edit">Edit</a></i> -->
           <button type="button" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#uploadFiles" style="float: right;"> Upload</button>
+          <button type="button" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editClient" style="float: right;"> Edit</button>
           <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
           <hr>
 
@@ -58,16 +62,20 @@
               <p class="m-b-10 f-w-600">Mode of Filing</p>
               <h6 class="text-muted ms-2 f-w-400">{{$client->modeofpayment->mode_name}}</h6>
             </div>
-            @foreach ($client->business as $busi)
+            
               <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Registration Date</p>
+                @foreach ($client->business as $busi)
                 <h6 class="text-muted ms-2 f-w-400">{{$busi->registration_date}} </h6>
+                @endforeach
               </div>
               <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Trade Name</p>
+                @foreach ($client->business as $busi)
                 <h6 class="text-muted ms-2 f-w-400">{{$busi->trade_name}}</h6>
+                @endforeach
               </div>
-            @endforeach
+           
             @foreach ($client->registeredAddress as $regadd)
               <div class="col-sm-6">
                 <p class="m-b-10 f-w-600">Registered Address</p>
@@ -84,7 +92,7 @@
             <div class="row">
             @foreach($client->clientTaxes  as $taxType)
               <div class="col-sm-6">
-                <p class="m-b-10 f-w-600"><a href="{{route('show-forms', ['id'=>$taxType->tax_form_id,'client'=>$client->id] )}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType->taxForms->tax_form_no}}</a></p>
+                <p class="m-b-10 f-w-600"><a href="{{route('preview-forms', ['id'=>$taxType->tax_form_id,'client'=>$client->id] )}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType->taxForms->tax_form_no}}</a></p>
                 <h6 class="text-muted f-w-400"></h6>
               </div> 
             @endforeach                                    
@@ -100,5 +108,3 @@
   </div>
 </body>
 </html>
-
-@endsection

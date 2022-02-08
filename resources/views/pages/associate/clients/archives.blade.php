@@ -19,31 +19,27 @@
 
                 <thead >
                     <tr>
+                    <th class="text-center text-dark" scope="col">Client ID</th>
                     <th class="text-center text-dark" scope="col">File name</th>
                     <th  class="text-center text-dark" scope="col">File type</th>
                     <th  class="text-center text-dark" scope="col">Description</th>
-                    <th  class="text-center text-dark" scope="col">Delete_at</th>
-                    <th  class="text-center text-dark" scope="col">aCTION</th>  
+                    <th  class="text-center text-dark" scope="col">Archived At</th>
+                    
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($onlySoftDeleted as $onlySoftDeleteds)
-            <tr class="text-center" >
-                <td>{{  $onlySoftDeleteds->file_name }}</td>
-                <td>{{  $onlySoftDeleteds->file_type }}</td>
-                <td>{{ $onlySoftDeleteds->description }}</td>
-           
-                <td>{{ date_format($onlySoftDeleteds->deleted_at, 'jS M Y') }}</td>
-                <td>
+                    <tr class="text-center" >
+                        <td>{{  $onlySoftDeleteds->client_id }}</td>
+                        <td>{{  $onlySoftDeleteds->file_name }}</td>
+                        <td>{{  $onlySoftDeleteds->file_type }}</td>
+                        <td>{{ $onlySoftDeleteds->description }}</td>
                 
-                   <a class="btn btn-info text-dark" href="{{ route('restore-file', $onlySoftDeleteds->id) }}" title="restore file"> Restore</a>
+                        <td>{{ date_format($onlySoftDeleteds->deleted_at, 'jS M Y') }}</td>
+                        
+                    </tr>
                 
-                </td>
-            </tr>
-            <tr>
-            
-            </tr>
-        @endforeach
+                @endforeach
                 </tbody>
               
             </table>

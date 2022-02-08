@@ -42,7 +42,7 @@
             </a>
           </li> -->
           <li class="nav-item">
-            <a href="{{route('admin-archive-list')}}" class="nav-link">
+            <a href="{{route('assoc-archive-list')}}" class="nav-link">
               <i class="nav-icon fal fa-archive"></i>
               <p>
               Archive
