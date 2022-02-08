@@ -110,6 +110,9 @@ Route::middleware(['logout'])->group(function(){
     // Route::get('/request/reject/{id}',[RegisteredClientController:: class, 'destroy'])->name('request-reject');
     // Route::get('/status-update/{id}',[RegisteredClientController:: class, 'approve'])->name('update-request');
     
+     
+ 
+   
     /*---------------------- CLIENTS VIEW --------------*/
 
     // Route::get('/dashboard',[ClientController:: class, 'index'])->name('dashboard');

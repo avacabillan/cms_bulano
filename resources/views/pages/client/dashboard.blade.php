@@ -41,7 +41,7 @@
           <!-- /.col-md-6 -->
           @foreach($clients->clientTaxes as $clientTax)
           <div class="col-lg-6">
-          <span style="font-size: 48px; color: Black;">
+          <span style="font-size: 30px; color: Black;">
               <i class="fas fa-folder-open me-2 " aria-hidden="true">{{$clientTax->taxForms->tax_form_no}}</i>
           </span>
           </div><!-- /.col-md-6 -->

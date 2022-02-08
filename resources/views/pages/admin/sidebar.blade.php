@@ -8,7 +8,7 @@
           <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
           <div class="info">
-            <span class="d-block text-light" >{{Auth::user()->email}}</span>
+            <span class="d-block text-light" >{{Auth::user()->name}}</span>
             <span class="user-role text-white">{{Auth::user()->role}}</span>
           </div>
         </div>
@@ -34,7 +34,7 @@
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Registered Guest
-                <span class="right badge badge-info">New</span>
+                <span class="right badge badge-info">{{$reqs}}</span>
               </p>
             </a>
           </li>
@@ -43,7 +43,7 @@
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
               BIR Calendar
-                <span class="right badge badge-danger">New</span>
+                <span class="right badge badge-danger">{{$birs}}</span>
               </p>
             </a>
           </li>
@@ -52,7 +52,7 @@
               <i class="nav-icon fas fa-sticky-note"></i>
               <p>
               Reminder Calendar
-                <span class="right badge badge-info">13</span>
+                <span class="right badge badge-info">{{$ddlines}}</span>
               </p>
             </a>
           </li>
@@ -61,7 +61,7 @@
               <i class="nav-icon far fa-user"></i>
               <p>
               Associates
-                <span class="right badge badge-danger">13</span>
+                <span class="right badge badge-danger">{{$assocs}}</span>
               </p>
             </a>
           </li>
@@ -70,7 +70,7 @@
               <i class="nav-icon fad fa-users"></i>
               <p>
               Clients
-                <span class="right badge badge-danger">13</span>
+                <span class="right badge badge-danger">{{$clients}}</span>
               </p>
             </a>
           </li>
@@ -79,7 +79,7 @@
               <i class="nav-icon fal fa-archive"></i>
               <p>
               Archive
-                <span class="right badge badge-danger">13</span>
+                <span class="right badge badge-danger">{{$archives}}</span>
               </p>
             </a>
           </li>

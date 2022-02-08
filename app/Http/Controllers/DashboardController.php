@@ -14,7 +14,20 @@ class DashboardController extends Controller
 
         if(Auth::user()->role=='admin'){ 
             $associates = Associate::all();
-            return view ('pages.admin.dashboard', compact('associates'));
+            $reqs= DB::table('requestee')
+            ->count();
+            $birs= DB::table('reminders')
+            ->count();
+            $ddlines= DB::table('bulano_deadline')
+            ->count();
+            $assocs= DB::table('associates')
+            ->count();
+            $clients= DB::table('clients')
+            ->count();
+            $archives= DB::table('tax_archived_forms')
+            ->count();
+            return view ('pages.admin.dashboard', 
+            compact('associates', 'reqs','birs','ddlines','assocs','clients','archives'));
 
         }elseif (Auth::user()->role=='associate'){
             $associate = Auth::user()->associates->id;
@@ -37,14 +50,23 @@ class DashboardController extends Controller
             return view ('pages.client.dashboard', compact('clients'));
         }
     }
-    public function countClient(){
-        $clients= DB::table('users')
-        // ->where('approved','=','0')
+    //count request
+    public function count(){
+       
+        $reqs= DB::table('requestee')
         ->count();
-        // $request= DB::table('users')
-        // ->where('approved','=','0')
-        // ->count();
-        return view ('pages.associate.sidebar')->with(compact('clients', $clients));
+        $birs= DB::table('reminders')
+        ->count();
+        $ddlines= DB::table('bulano_deadline')
+        ->count();
+        $assocs= DB::table('associates')
+        ->count();
+        $clients= DB::table('clients')
+        ->count();
+        $archives= DB::table('tax_archived_forms')
+        ->count();
+        return view ('pages.admin.sidebar', 
+        compact('reqs','birs','ddlines','assocs','clients','archives'));
     }
     public function countRequest(){
        
