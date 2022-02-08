@@ -42,7 +42,7 @@
           @foreach($clients->clientTaxes as $clientTax)
           <div class="col-lg-6">
           <span style="font-size: 30px; color: Black;">
-              <i class="fas fa-folder-open me-2 " aria-hidden="true">{{$clientTax->taxForms->tax_form_no}}</i>
+          <p class="m-b-10 f-w-600"><a href="{{route('view-form', ['id'=>$clientTax->tax_form_id,'client'=>Auth::user()->clients->id] )}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$clientTax->taxForms->tax_form_no}}</a></p>
           </span>
           </div><!-- /.col-md-6 -->
           @endforeach

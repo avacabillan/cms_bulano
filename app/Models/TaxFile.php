@@ -10,7 +10,7 @@ class TaxFile extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    protected $dates = [ 'deleted_at' ];
     protected $table ='client_tax_files';
     protected $fillable = ['tax_form_id', 
                            'client_id',

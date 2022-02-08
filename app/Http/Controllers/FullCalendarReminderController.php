@@ -60,6 +60,22 @@ class FullCalendarReminderController extends Controller
          return redirect()->back()->with('success', 'Reminder has been deleted');
         
     }    
+    public function fetchDate(Request $request)
+    {
+        $fromDates = date("Y-m-d", strtotime($request->fromDate));
+        $toDates = date("Y-m-d", strtotime($request->toDate));
+        // $fetch = DB::table('reminders')->select()
+        // ->where("start", '=', $fromDates)
+        // ->where("end", '=', $toDates)
+        // ->get();  
+        
+        
+        $fetch = DB::table('tax_archived_forms')
+                ->whereBetween('deleted_at', [$fromDates, $toDates])->get();
+                // dd($fetch);
+                  return response()->json($data, 200, $headers);
+        // dd($fetch);
+    }
    
    
 

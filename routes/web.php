@@ -91,7 +91,7 @@ Route::middleware(['logout'])->group(function(){
 
 
     /*---------------------- ADMIN-ASSOC VIEW CRUD--------------*/
-    Route::get('/assoc_table',[AdminAssocController:: class, 'index'])->name('assoc_table');
+    Route::get('/associates',[AdminAssocController:: class, 'index'])->name('assoc_table');
     Route::get('/associates_list',[AdminAssocController:: class, 'assocDatatable'])->name('associates_list');
     Route::get('/saveassociate',[AdminAssocController:: class, 'store'])->name('saveassociate');
     Route::get('/add_associate',[AdminAssocController:: class, 'create'])->name('add_associate');
@@ -118,9 +118,10 @@ Route::middleware(['logout'])->group(function(){
     // Route::get('/dashboard',[ClientController:: class, 'index'])->name('dashboard');
     Route::view('/client_message','pages.client.client_message')->name('client_message');
     Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
-    Route::view('/client_profile','pages.client.myprofile')->name('client_profile'); 
+    Route::get('/my_profile/{id}', [ClientController::class,'showProfile'])->name('client_profile');
+    
     Route::get('/my_associate',[ClientController::class,'showAssoc'])->name('my_associate');
-
+    Route::get('/form/{id}/{client}', [ClientController::class,'showForm'])->name('view-form');
 
 
     /*---------------------- ASSOCIATE REMINDER CLIENTS --------------*/
@@ -146,17 +147,18 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
     Route::apiResource('client', ClientController::class);
 
-    Route::get('/api/clients', [ClientController::class, 'store'])->name('insertClient');
-      //Route::get('/api/clients/{client}', [ClientController::class, 'show'])->name('client-profile');
-    Route::post('/api/clients',[ClientController::class, 'edit'])->name('editClient');
-    Route::put('/api/clients/{client}', [ClientController::class, 'update'])->name('updateClient');
-    Route::delete('/api/clients/{client}', [ClientController::class, 'delete'])->name('delete.selected.client');
+    // Route::get('/api/clients', [ClientController::class, 'store'])->name('insertClient');
+    //   //Route::get('/api/clients/{client}', [ClientController::class, 'show'])->name('client-profile');
+    // Route::post('/api/clients',[ClientController::class, 'edit'])->name('editClient');
+    // Route::put('/api/clients/{client}', [ClientController::class, 'update'])->name('updateClient');
+    // Route::delete('/api/clients/{client}', [ClientController::class, 'delete'])->name('delete.selected.client');
+    
     Route::get('/archive-list', [Admin_ClientController::class,'getArchive'])->name('admin-archive-list');
-    Route::get('/add_client',[Admin_ClientController:: class, 'create'])->name('add_client');
-    Route::get('/insertClient',[Admin_ClientController::class, 'insertClient'])->name('insertClient'); //store
+     Route::get('/add_client',[Admin_ClientController:: class, 'create'])->name('add_client');
+     Route::get('/insertClient',[Admin_ClientController::class, 'insertClient'])->name('insertClient'); //store
 
     Route::get('/clientshowTaxVat/{id}', [FileController::class,'ClientshowTaxVat'])->name('client-showVat');
-    Route::get('/showVat-forms/{id}/{client}', [FileController::class,'showForm'])->name('show-forms');
+    Route::get('/forms/{id}/{client}', [FileController::class,'showForm'])->name('show-forms');
     Route::get('/vatTax', [FileController::class, 'taxDatatable'])->name('vatTax');
     Route::get('/clientshowTaxItr/{id}', [FileController::class,'ClientshowTaxItr'])->name('client-showTaxItr');
     Route::get('/clientshowTaxPay/{id}', [FileController::class,'ClientshowTaxPay'])->name('client-showTaxPay');
@@ -169,7 +171,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/showTaxVat/{id}', [FileController::class,'showTaxVat'])->name('showVat');
     Route::get('/showTaxItr/{id}', [FileController::class,'showTaxItr'])->name('showTaxItr');
     Route::get('/showTaxPay/{id}', [FileController::class,'showTaxPay'])->name('showTaxPay');
-    Route::get('/restore-file/{id}', [FileController::class,'restore'])->name('restore-file');
+    Route::get('/restore-file/{id}', [FileController::class,'restore'])->name('restore');
     Route::get('/archive/{id}', [FileController::class,'archive'])->name('archive');
     Route::get('/archivelist', [FileController::class,'getArchive'])->name('archive-list');
 
@@ -183,7 +185,7 @@ Route::middleware(['logout'])->group(function(){
     Route::put('/update-reminder/id={id}',[FullCalendarReminderController::class, 'updateEvent'])->name('update-reminder');
     Route::get('/delete-reminder/id={id}',[FullCalendarReminderController::class, 'deleteEvent'])->name('delete-reminder');
     // Route::get('/createTaxEvent',[FullCalendarReminderController::class, 'createTaxEvent'])->name('createTaxEvent');
-    
+    Route::get('/result',[FullCalendarReminderController::class, 'resultList'])->name('fetch_date');
     
     //REMINDER for bulanofullcalendar
     Route::get('/bulano-calendar',[FullCalendarReminderController::class, 'indexDeadline'])->name('display-calendar');

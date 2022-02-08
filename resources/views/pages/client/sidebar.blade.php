@@ -10,7 +10,7 @@
           <img src="dist/img/bulano.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->clients->company_name}}</a>
+          <a href="{{route('client_profile', Auth::user()->clients->id)}}" class="d-block">{{Auth::user()->clients->company_name}}</a>
           <span class="user-role text-white">{{Auth::user()->role}}</span>
         </div>
       </div>
@@ -25,7 +25,7 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <span class="right badge badge-danger">New</span>
+                
               </p>
             </a>
           </li>

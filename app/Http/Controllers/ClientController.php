@@ -27,14 +27,7 @@ use DB;
 class ClientController extends Controller
 {
     public function index(){
-        // $client = Client::all();
-        // $taxtypes = TaxType::all();
-        // $clientFile = DB::table('client_tax_files')
-        // ->join('clients', 'client_tax_files.client_id', '=', $client)
-        // ->join('client_tax_type', 'client_tax_files.tax_type_id', '=', 'client_tax_type.tax_type_id')
-        // ->select('client_tax_files.tax_type_id', 'client_tax_type.tax_type')
-        // ->get();
-        //  return view('pages.client.dashboard', compact(' clientFile',  $clientFile, '    taxtypes', $taxtypes));
+     
         return view('pages.client.dashboard');
     }
 
@@ -45,4 +38,27 @@ class ClientController extends Controller
             ->get();
         return view('pages.client.my_assoc')->with('assocs',$assocs);
     }
+    public function showForm($id, $client){
+        // $fileForms = Tax::find($id);
+        // $fileForms->taxFile;
+        $datas = DB::table('client_tax_files')
+        ->where('client_tax_files.tax_form_id', '=', $id)
+        ->where('client_tax_files.client_id', '=',  $client)
+        ->where('deleted_at', '=', null)
+        ->get();
+        // dd($datas);
+        return view('pages.client.client_form',compact('datas'));
+    }
+    public function showProfile($id){
+        $client = Client::find($id);
+        $client->modeofpayment;
+                $client->tin;
+                $client->business;
+                $client->registeredAddress;
+                $client->associates;
+                $client->clientTaxes;
+                $client->taxFile;
+        return view('pages.client.myprofile',compact('client'));
+    }
+
 }

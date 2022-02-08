@@ -9,6 +9,7 @@
 
 <div class="d-flex p-4 mt-3" style="margin-left: 5rem;" id="assocprofile" >
   <div class="col-sm-4 user-profile" > 
+    
     <input class="form-control" type="hidden" value="{{$associate->id}}" name="associate_id">
     <div class="card-block text-center text-white">
       <div class="text-center">
@@ -22,9 +23,11 @@
 
     <div class="col-sm-8">
       <div class="card-block bg-light"> 
-     
-        
+      <span style="font-size: 30px;">
+        <a href="#" style="float:right;" ><i class="fas fa-envelope-square"></i></a>
+      </span>
         <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
+       
         <hr>
 
         <div class="row mt-5">
@@ -43,10 +46,7 @@
             <h6 class="text-muted ms-2 f-w-400">{{$associate->address}}</h6>
           </div>
 
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">SSS Number</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$associate->sss_no}}</h6>
-          </div>     
+          
       </div> 
     </div>
 

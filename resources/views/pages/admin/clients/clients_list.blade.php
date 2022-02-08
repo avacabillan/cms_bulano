@@ -10,15 +10,15 @@
 <body>
 @extends('layout.master')
 @section('content')
-<div class="siderbar_main toggled" style="height:50%; width: 70%;" >
+<div style="height:50%;" >
 
-  <div class="page-content mt-5" style="margin: top 160px;">
+  <div class="page-content mt-5" style="margin-left: 5%;">
 
 
       <div>
         <h2>List of All Clients</h2><hr>
       </div>
-      <table class="table table-bordered yajra-datatable" style="height:50%; width: 80%;">
+      <table class="table table-bordered yajra-datatable" style="height:70%; width: 50%;">
           <thead >
                
                 <th >Name</th>

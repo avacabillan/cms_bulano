@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-
+use DB;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,7 +23,32 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
+    {   view()->composer(['pages.admin.sidebar', 'admin-clients-list',
+                          'clients-list','show-requestee',
+                          'bir-calendar','display-calendar',
+                          'assoc_table','archive-list'],function($view){
+
+                            $reqs= DB::table('requestee')
+                            ->count();
+                            $birs= DB::table('reminders')
+                            ->count();
+                            $ddlines= DB::table('bulano_deadline')
+                            ->count();
+                            $assocs= DB::table('associates')
+                            ->count();
+                            $clients= DB::table('clients')
+                            ->count();
+                            $archives= DB::table('client_tax_files')
+                            ->where('deleted_at', '!=', null)
+                            ->count();
+                            $view->with('reqs',$reqs)
+                                 ->with('birs',$birs)
+                                 ->with('ddlines',$ddlines)
+                                 ->with('assocs',$assocs)
+                                 ->with('clients',$clients)
+                                 ->with('archives',$archives);
+                        });
+
         Schema::defaultstringLength(191);
     }
 }
