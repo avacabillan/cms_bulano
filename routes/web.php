@@ -117,7 +117,6 @@ Route::middleware(['logout'])->group(function(){
     /*---------------------- CLIENTS VIEW --------------*/
 
     // Route::get('/dashboard',[ClientController:: class, 'index'])->name('dashboard');
-    Route::view('/client_message','pages.client.client_message')->name('client_message');
     Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
     Route::get('/my_profile/{id}', [ClientController::class,'showProfile'])->name('client_profile');
     

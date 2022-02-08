@@ -18,12 +18,19 @@
           <div class="card-body p-0">
             <div class="table-responsive mailbox-messages">
               <table class=" table">
+              @foreach($recipients as $recipient)
+
                 <tbody>
-                  <tr style="float: left;">
-                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                    </td>
-                  </tr>
-                </tbody>
+                    @if($recipient->first()->id == Auth::id())
+
+                    @else
+                      <tr style="float: left;">
+                        <td class="mailbox-name" data-bs-toggle="modal" data-bs-target="#exampleModal" name='{{$recipient->id}}'>{{$recipient->email}}</td>
+                      </tr>
+                    @endif
+                </tbody>   
+                @endforeach
+
               </table><!-- /.table -->
             </div><!-- /.mail-box-messages -->
           </div><!-- /.card-body -->
@@ -59,11 +66,11 @@
         </div>    
       </div><!-- /.associatemsg_card_body -->
 
-      <div class="modal-body" class="message_box">
+      <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
         <form id="Form" action="{{route('associate_showmsg', 1)}}" method="post">
           @csrf
           @method('post')
-          <div class="input-group doctor-compose">
+          <div class="input-group assoc-compose">
             <input type="text" name="receiver_id" id="receiver_id" style="display:none">
             <textarea name="message" class="form-control type_msg" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
             <div class="input-group-append">

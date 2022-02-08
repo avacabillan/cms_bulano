@@ -13,10 +13,10 @@
           @method('post')
             <div class="mb-3">
               <label for="recipient_name" class="col-form-label">Recipient:</label>               
-                <select name="name" class="form-control">
+                <select name="name" class="form-control text-dark">
                     <option value="">Select Recepient</option>
                         @foreach($recipients as $recipient) 
-                            <option value="{{$recipient->id}}">{{$recipient->name}}</option>
+                            <option value="{{$recipient->id}}">{{$recipient->email}}</option>
                         @endforeach
                 </select>
             </div>
