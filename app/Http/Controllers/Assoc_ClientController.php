@@ -48,34 +48,7 @@ class Assoc_ClientController extends Controller
         }
         
     }
- 
-    public function createClient(Request $request )
-    {
-        $users= User::all();
-        $modes= ModeOfPayment::all();
-        $corporates= Corporate::all();
-        $taxForms= TaxForm::all();
-        $clients =Client::all();
-        $assocs =Associate::all();
-        $businesses = Business::all();
-        $tins = Tin::all();
-        $registered_address = RegisteredAddress::all();
-            
-            return view ('pages.associate.clients.add_client', compact('modes',
-                            'users', 
-                            'corporates',
-                            'taxForms',
-                            'clients',
-                            'businesses',
-                            'tins',
-                            'assocs',
-                            'registered_address',
-                            
-            )
-        );
-        // return view('pages.associate.clients.add_client');
-    }
-   
+
     public function showClientProfile($id){
         
         $client = Client::find($id);
@@ -105,123 +78,44 @@ class Assoc_ClientController extends Controller
         
         $client = Client::find($id);
         $client->modeofpayment;
-                $client->tin;
-                $client->business;
-                $client->registeredAddress;
-                $client->associates;
-                $client->clientTaxes;
-                $client->taxFile;
-        // $modes =  Client::find($id)->modeofpayment;
-        // $tins =  Client::find($id)->tin->get();
-        // $businesses = Client::find($id)->business;
-        // $registeredAddress = Client::find($id)->registeredAddress;
+        $client->tin;
+        $client->business;
+        $client->registeredAddress;
         return view('pages.associate.clients.edit_client',compact('client')); 
-        // ->with( 'modes',$modes)
-        // ->with('tins',$tins)
-        // ->with('businesses',$businesses)
-        // ->with( 'registeredAddress', $registeredAddress)
-        // ;
-        
+
        
 
     }
     public function updateClient(Request $request, $id)
     {   
-        
         $client =Client::find($id);
-        $client ->client_name = $request->client_name;
+        $client ->company_name = $request->client_name;
         $client ->email_address = $request->email;
         $client ->contact_number = $request->client_contact;
-        $client->update();
+        $client->save();
 
+        $business =Client::find($id)->business->first();
+        // dd($business);
+        $business->trade_name =$request->trade_name;
+        $business->registration_date =$request->reg_date;
+        $business->save();
 
-        // // //tin
-        // $client =Tin::find($request->client_id);
-        // $tin = DB::table('client_tin')
-        // ->join('clients','client_tin.client_id','=','clients.id')
-        // ->select('tin_no')
-        // ->get();
-        // dd($tin);
-
-        // $tin_no= $request->tin;
-        // $tin_no->update($tin);
-
-
-
-        // $client =Client::find($id)->tin;
-        // dd($client);
-        // $client->tin_no =$request->tin;
-        // $client->tin_no=update();
-
-        // $client = Client::where('id', $request->client_id);
-
-        // $tin =DB::update('update client_tin set tin_no = ? where name = ?', ['$request->tin']);
-            
-            
+        $tin =Client::find($id)->tin->first();
+        $tin->tin_no =$request->tin;
+        $tin->save();
+        //  dd($tin);
+        
+        $address =Client::find($id)->registeredAddress->first();
+        $address->unit_house_no =$request->unit_house_no;
+        $address->street =$request->street;
+        $address->city_name =$request->client_city;
+        $address->province_name =$request->client_province;
+        $address->postal_no =$request->client_postal;
+        $address->save();
+        // dd($address);
 
         
-        //business
-        // $client =Client::find($request->client_id)->business;
-        // $business ->trade_name =$request->trade_name;
-        // $business ->registration_date =$request->reg_date;
-        // $business->update();
-        // $business = Client::where('id', $request->client_id);
-        //     DB::table('client_business')->update([
-        //         'trade_name' => $request->trade_name,
-        //         'registration_date' =>$request->reg_date
-        //     ]);
-
-        //registered address
-        // $client =Client::find($request->client_id)->registeredAddress;
-        // $registeredAddress ->city_name =$request ->client_city;
-        // $registeredAddress ->province_name =$request ->client_province;
-        // $registeredAddress ->unit_house_no =$request ->unit_house_no;
-        // $registeredAddress ->street =$request ->street;
-        // $registeredAddress ->postal_no =$request ->client_postal;
-        // $registeredAddress->update();
-
-        // $registeredAddress = Client::where('id', $request->client_id);
-        //     DB::table('client_registered_address')->update([
-        //         'city_name' => $request ->client_city,
-        //         'province_name' =>$request ->client_province,
-        //         'unit_house_no' =>$request ->unit_house_no,
-        //         'street' =>$request ->street,
-        //         'postal_no' =>$request ->client_postal
-        //     ]);
-
-       
-        // $client_name = $request->input('client_name');
-        // $email = $request->input('email');
-        // $contact_number = $request->input('client_contact');
-        // $ocn = $request->input('ocn');
-        // // $client ->assoc_id =$associate->id;
-        // // $client ->mode_of_payment_id =$request ->mode;
-        // DB::update('update Client set client_name = ? email=? contact_number=? ocn=? where  client_name = ? email=? contact_number=? ocn=? id=?', [$client_name,$email,$contact_number,$ocn,$id]);
-
-        
-        $client_tin = Client::find($id)->tin;
-        $client_tin->tin_no =$request->tin;
-        // $client_tin->save();
-        dd($client_tin);
-
-        // $registered_address = Client::find($id)->registeredAddress;
-        // $registered_address ->city_name =$request ->client_city;
-        // $registered_address ->province_name =$request ->client_province;
-        // $registered_address ->unit_house_no =$request ->unit_house_no;
-        // $registered_address ->street =$request ->street;
-        // $registered_address ->postal_no =$request ->client_postal;
-        // $registered_address ->save();
-
-        // $business = Client::find($id)->business;;
-        // $business ->trade_name =$request->trade_name;
-        // $business ->registration_date =$request->reg_date;
-        // $business ->corporate_id =$request->corporate;
-        // $business ->registered_address_id =$registered_address->id;
-        // $business ->save();
-        
-
-        
-        return redirect()->back();
+        return redirect()->route('dashboard')->with('message', 'Updated Successfully!');
     }
 
 

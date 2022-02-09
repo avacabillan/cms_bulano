@@ -38,7 +38,7 @@
         <div class="card-block bg-light"> 
           <!-- <a class="btn btn-success btn-sm editbtn" data-toggle="modal" data-target="#updateClientModal" href="{{route('editClient',$client)}}" style="float: right;"><i class="fas fa-edit">Edit</a></i> -->
           <button type="button" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#uploadFiles" style="float: right;"> Upload</button>
-          <button type="button" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editClient" style="float: right;"> Edit</button>
+          <a href="{{route('editClient', $client->id)}}" class="btn btn-primary btn-sm me-2" style="float: right;"> Edit</a>
           <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
           <hr>
 
