@@ -93,12 +93,9 @@ class AdminAssocController extends Controller
         $associate = Associate::find($id);
         $associate->department;   
         $associate->position;    
-        // $department = Department::all();
-        // $position = Position::all();
-        
+
         return view ('pages.admin.associates.edit_associate')->with('associate', $associate);
-                            // ->with ('position', $position)
-                            // ->with('associate',$associate);
+
                         
     }
 

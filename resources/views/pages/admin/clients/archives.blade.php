@@ -51,7 +51,7 @@
                 <td>{{ date_format($onlySoftDeleteds->deleted_at, 'jS M Y') }}</td>
                 <td>
                 
-                   <center><a class="btn" href="{{ route('restore', $onlySoftDeleteds->id) }}" title="restore file"> <i class="fas fa-trash-restore"></i></a>
+                   <center><a class="btn" href="{{ route('restore-file', $onlySoftDeleteds->id) }}" title="restore file"> <i class="fas fa-trash-restore"></i></a>
                    </center>    
                 </td>
             </tr>

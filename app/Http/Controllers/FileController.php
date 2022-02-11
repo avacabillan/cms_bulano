@@ -22,6 +22,7 @@ use App\Models\Tin;
 use App\Models\Reminder;
 use App\Models\ArchivedForm;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use DataTables;
 
 class FileController extends Controller
@@ -30,11 +31,7 @@ class FileController extends Controller
     public function index($id)
    
      {  
-        //   $taxTypes =TaxType::all();
-    //     $taxFiles=TaxFile::all();
-    //     // $client= Client::find($id);
-      
-    //     return view('pages.associate.clients.add_file')->with(compact('taxTypes', $taxTypes, 'taxFiles', $taxFiles));
+        
     }
     public function taxDatatable(Request $request)
     {
@@ -60,7 +57,7 @@ class FileController extends Controller
         //
     }
 
-  
+  //Assoc upload controls
     public function store(Request $request)
     {   
        
@@ -77,6 +74,55 @@ class FileController extends Controller
         return redirect()->back();
 
     }
+ 
+
+    public function show($id)
+    {   
+        $client = Client::find($id);
+        $client->clientTaxes;
+        // $client= Client::find($id);
+        // dd($client);
+        return view('pages.associate.clients.add_file')->with(compact('client', $client));
+    }
+    public function viewForm($id, $client){
+        // $fileForms = Tax::find($id);
+        // $fileForms->taxFile;
+        $datas = DB::table('client_tax_files')
+        ->where('client_tax_files.tax_form_id', '=', $id)
+        ->where('client_tax_files.client_id', '=',  $client)
+        ->where('deleted_at', '=', null)
+        ->get();
+        // dd($datas);
+        return view('pages.associate.clients.client_files',compact('datas'));
+    }
+    public function getArchives() 
+
+    {   
+        
+ 
+        $associate = Auth::user()->associates->id;
+        $clients = Client::query()
+        ->where('assoc_id', '=', $associate )
+        ->pluck('id');
+        $onlySoftDeleted = TaxFile::onlyTrashed()
+        ->where('client_id', '=', $clients)
+        ->get();
+        return view('pages.associate.clients.archives',compact([ 'onlySoftDeleted' ]));
+    }
+   
+    public function edit($id)
+    {
+        //
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+    }
+//---------end of assoc upload controls
+
+   
+//------ADMIN ARCHIVE CONTROLS
     public function showForm($id, $client){
         // $fileForms = Tax::find($id);
         // $fileForms->taxFile;
@@ -87,26 +133,6 @@ class FileController extends Controller
         ->get();
         // dd($datas);
         return view('pages.admin.clients.client_files',compact('datas'));
-    }
-
-    public function show($id)
-    {   
-        $client = Client::find($id);
-        $client->clientTaxes;
-        // $client= Client::find($id);
-        // dd($client);
-        return view('pages.associate.clients.add_file')->with(compact('client', $client));
-    }
-
-   
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
     }
    
     public function restore($id) 
@@ -121,7 +147,7 @@ class FileController extends Controller
 
     {   
         $onlySoftDeleted = TaxFile::onlyTrashed()->get();
-        return view('pages.associate.clients.archives',compact([ 'onlySoftDeleted' ]));
+        return view('pages.admin.clients.archives',compact([ 'onlySoftDeleted' ]));
     }
 
     public function archive($id)

@@ -16,6 +16,6 @@ class Requestee extends Model
     
 
     protected $fillable = [
-        'name', 'email','cor'
+        'name', 'email','cor',
     ];
 }
