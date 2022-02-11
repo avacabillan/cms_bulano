@@ -73,19 +73,16 @@
             </a>
           </li>
         </ul>
+        <div class="sidebar-footer">
+          <a href="{{'logout'}}">
+            <i class="fal fa-sign-out-alt"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-power-off"></i>
+          </a>
+        </div><!-- sidebar-footer  -->
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-    <!-- FOOTER -->
-    <div class="sidebar-footer">
-        <a href="#">
-          <i class="fa fa-cog"></i>
-          <span class="badge-sonar"></span>
-        </a>
-        <a href="{{'logout'}}">
-          <i class="fal fa-sign-out-alt"></i>
-        </a>
-      </div>
-      <!-- END OF FOOTER -->
   </aside>

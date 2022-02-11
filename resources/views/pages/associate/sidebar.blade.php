@@ -84,17 +84,19 @@
               </p>
             </a>
           </li>
+            
         </ul>
-        <!-- FOOTER -->
-    <div class="sidebar-footer fixed-bottom">
-      <a href="#">
-        <i class="fa fa-cog"></i>
-        <span class="badge-sonar"></span>
-      </a>
+      <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      
       <a href="{{'logout'}}">
         <i class="fal fa-sign-out-alt"></i>
       </a>
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a>
     </div>
+    <!-- sidebar-footer  -->
       <!-- END OF FOOTER -->
       </nav>
       <!-- /.sidebar-menu -->

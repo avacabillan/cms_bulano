@@ -75,7 +75,9 @@
     <link rel="stylesheet" href="{{asset('css/admin_show_msg.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('css/admin_msg.css')}}"> -->
     
+    <link rel="stylesheet" href="{{asset('css/footer.css')}}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Datatable-->
     <!-- <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('datatable/css/dataTables.bootstrap4.min.css') }}"> -->
@@ -86,30 +88,29 @@
     <!-- Page Wrapper -->
     <div class="wrapper">
     
-    @if (Auth::user()->role=='admin')
-      @include('pages.admin.sidebar')
+        @if (Auth::user()->role=='admin')
+          @include('pages.admin.sidebar')
     
-    @elseif (Auth::user()->role=='associate')
-      @include('pages.associate.sidebar')
+        @elseif (Auth::user()->role=='associate')
+          @include('pages.associate.sidebar')
     
-    @else (Auth::user()->role=='client' )
-      @include('pages.client.sidebar')
-    @endif
+        @else (Auth::user()->role=='client' )
+          @include('pages.client.sidebar')
+        @endif
         @include('shared.navbar')
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
         @yield('content')
-        </div>
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-        </div>
-        <!-- ./wrapper -->
 
-      
+      </div>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+
+    </div><!-- ./wrapper -->
 
     <script defer src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -119,7 +120,7 @@
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
 
-  
+
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->

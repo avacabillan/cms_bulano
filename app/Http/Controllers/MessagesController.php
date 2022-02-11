@@ -16,43 +16,6 @@ class MessagesController extends Controller
     public $users;
     public $recipients;
 
-    // public function adminIndex(){
-    //     $recipients = User::All();
-       
-    //     $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
-        
-    //     $users = DB::table('users')
-    //         ->join('messages', 'users.id', '=', 'messages.sender')
-    //         ->select('users.*','messages.sender')
-    //         ->orderBy('messages.created_at','desc')
-    //         ->get()->groupBy('sender');
-    //     $users->message;
-    //     return view("pages.admin.messages.admin_message")->with("messages", $messages) 
-    //                                                      ->with("users", $users)
-    //                                                      ->with("recipients", $recipients);
-    // }
-
-
-    // public function adminMessageShow(Request $request, $id){
-    //     $message = DB::table('messages')->where('sender',$request->id)
-    //     ->orWhere('receiver',$request->id)
-    //     ->orderBy('created_at', 'asc')->get();
-
-    //     return ($message);
-    // }
-
-    // public function insertAdminMsg(Request $request){
-
-    //     $message = new Message();
-    //     $message->sender = Auth::id();
-    //     $message->message = $request->message;
-    //     $message->receiver = $request->name;
-
-    //     $message->save();
-
-    //     return redirect()->back();
-    // }
-
     public function associateIndex(){
         $recipients = User::All();
 
@@ -62,6 +25,7 @@ class MessagesController extends Controller
             ->join('messages', 'users.id', '=', 'messages.sender')
             ->select('users.*','messages.sender')
             ->orderBy('messages.created_at','desc')
+            ->where('role','client')
             ->get()->groupBy('sender');
             
         return view("pages.associate.message.associate_messages")->with("messages", $messages) 
@@ -122,7 +86,7 @@ class MessagesController extends Controller
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
-        $message->receiver = $request->name;
+        $message->receiver = $request->receiver_id;
         $message->read = 1;    
         
 

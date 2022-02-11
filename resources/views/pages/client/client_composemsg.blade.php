@@ -2,7 +2,7 @@
   <div class="modal-dialog">
 
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-info">
         <h5 class="modal-title" id="staticBackdropLabel">Create New Message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -22,7 +22,7 @@
             </div>
             <div class="mb-3">
                <label for="message-text" class="col-form-label">Message:</label>
-              <textarea class="form-control" name="message" id="message" style="width:100%" required></textarea>
+              <textarea class="form-control" name="message" id="message" style="width:100%" placeholder="Type your message..." required></textarea>
             </div>
             <div class="mb-3">
               <input class="form-control" name="formFile" type="file" id="formFile">
