@@ -75,9 +75,13 @@ class SendReminderEmails extends Command
           
          if( $reminders != ''){
              foreach($clients as $client){
-                  Mail::to($client->email_address)->send(new TaxReminder($reminders, $clients));
-                  dd($client->email_address);
-             }
+                 foreach($reminders as $reminder){
+                    Mail::to($client->email_address)->send(new TaxReminder($reminders, $clients));
+                   
+                 }
+                
+                //   dd($client->email_address);
+             } dd($client->email_address,$reminder->title );
          }
         //  $clients = Client::all();
         //  foreach($clients as $client){
