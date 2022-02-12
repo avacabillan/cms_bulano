@@ -139,7 +139,7 @@ Route::middleware(['logout'])->group(function(){
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
     Route::get('/assoc-clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
     Route::get('/clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
-   
+    Route::get('qrcode/{id}', [Assoc_ClientController::class, 'generate'])->name('generate');
       
     //-------------Assoc Tax Files Route---------------//
     
