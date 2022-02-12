@@ -22,8 +22,7 @@
               @foreach($recipients as $recipient)
                 <tbody>
                     @if($recipient->id == Auth::id())
-
-                    @else
+                    @else                     
                       <tr style="float: left;">
                         <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->email}}</td>
                         <td>
@@ -42,9 +41,9 @@
   </div><!-- /.container -->
 </section><!-- /.content -->
 
-<div class="modal" id="recipient" tabindex="-5" aria-hidden="true" style="display:none;">
+<div class="modal" id="recipient" tabindex="-5" aria-hidden="true" style="display:none; overflow: scroll;">
   <div class="modal-dialog">
-    <div class="modal-content  bg-white">
+    <div class="modal-content bg-white">
       <div class="modal-header bg-muted">
         <div class="avatar">
 					<img src="https://picsum.photos/g/40/40" style="margin-right: 8px; border-radius: 50%;" />
@@ -69,11 +68,11 @@
                 @endif
           @endforeach
       </div><!-- /.clientmsg_card_body -->
-      <div id="reply_msg" class="message_box" >
+      <div id="reply_msg" >
         <form id="Form" action="{{route('client_composemsg')}}" method="post">
           @csrf
           @method('post')
-          <div class="input-group client-compose me-2 ms-2"> 
+          <div class="input-group client-compose me-2 ms-2">
             <input type="hidden" name="receiver" id="receiver">
             <textarea name="message" class="form-control type_msg mb-2" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
             <div class="input-group-append">
@@ -96,7 +95,7 @@
       $('#recipient').fadeOut();  
     });
 
-    $('.recipient-name').click(function(){  
+    $('.recipient-name').click(function(){
       var id = $(this).attr('name');
       $("#receiver").val(id);
       $('#recipient').fadeIn();
