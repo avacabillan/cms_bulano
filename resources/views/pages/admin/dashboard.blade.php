@@ -31,7 +31,51 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div><!-- /.content-header -->
+     
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+  
+          <div class="col-lg-4 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h4 class="pt-3">Registered Guest</h4>
+              </div>
+              <div class="icon pb-2">
+                 <i class="fa fa-user"></i>
+              </div>
+                 <a href="{{route('requestee')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-6">
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h4 class="pt-3">Reminder Calendar</h4>
+              </div>
+              <div class="icon pb-2">
+                 <i class="fas fa-sticky-note"></i>
+              </div>
+                 <a href="{{route('display-calendar')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-6">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h4 class="pt-3">BIR Calendar</h4>
+              </div>
+              <div class="icon pb-2">
+                 <i class="far fa-calendar-alt"></i>
+              </div>
+                 <a href="{{route('bir-calendar')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
 
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 mb-2 ms-2">
+<h3>Associates</h3>
+</div>
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
