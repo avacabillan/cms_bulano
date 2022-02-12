@@ -40,6 +40,7 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h4 class="pt-3">Registered Guest</h4>
+                <span class="info-box-number">41,410</span>
               </div>
               <div class="icon pb-2">
                  <i class="fa fa-user"></i>
@@ -51,9 +52,10 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h4 class="pt-3">Reminder Calendar</h4>
+                <span class="info-box-number">41,410</span>
               </div>
               <div class="icon pb-2">
-                 <i class="fas fa-sticky-note"></i>
+                 <i class="far fa-calendar-alt"></i>
               </div>
                  <a href="{{route('display-calendar')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -62,6 +64,7 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h4 class="pt-3">BIR Calendar</h4>
+                <span class="info-box-number">41,410</span>
               </div>
               <div class="icon pb-2">
                  <i class="far fa-calendar-alt"></i>
