@@ -26,6 +26,9 @@
                     @else
                       <tr style="float: left;">
                         <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->email}}</td>
+                        <td>
+                          <input type="hidden" id="recipient_id" value='{{$recipient->id}}'>
+                        </td>
                       </tr>
                     @endif
                 </tbody>   
@@ -39,7 +42,7 @@
     </div><!-- /.row -->
   </section><!-- /.content -->
 
-<div class="modal" id="recipient" tabindex="-2" aria-hidden="true" style="display:none;">
+<div class="modal" id="recipient" tabindex="-5" aria-hidden="true" style="display:none;">
   <div class="modal-dialog">
     <div class="modal-content  bg-white">
       <div class="modal-header bg-muted">
@@ -68,14 +71,14 @@
       </div><!-- /.associatemsg_card_body -->
 
       <div id="reply_msg">
-        <form id="Form" action="{{route('associate_showmsg', 1)}}" method="post">
+        <form id="Form" action="{{route('associate_composemsg')}}" method="post">
           @csrf
           @method('post')
           <div class="input-group assoc-compose">
-            <input type="text" name="receiver_id" id="receiver_id" style="display:none">
+            <input type="hidden" name="receiver" id="receiver">
             <textarea name="message" class="form-control type_msg ms-2 mb-2" id="message" placeholder="Type your message..."></textarea>
             <div class="input-group-append">
-              <button type="submit" class="btn" id="btn-compose-msg"><i class="fas fa-reply"></i></button>
+              <button type="submit" class="btn" id="btn-compose-msg"><i class="fa fa-paper-plane"></i></button>
             </div>
           </div>
         </form>
@@ -88,18 +91,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
-  $('.user').click(function(){  
-    $('#recipient').fadeIn();  
-  });
+  $(document).ready(function(){
 
-  $('.btn-close').click(function(){  
+    $('.user').click(function(){  
+      $('#recipient').fadeIn();  
+    });
+
+    $('.btn-close').click(function(){  
       $('#recipient').fadeOut();  
     });
  
-  $(".recipient-name").click(function(){
-    $("#recipient").fadeIn();
+    $('.recipient-name').click(function(){  
+      var id = $(this).attr('name');
+      $("#receiver").val(id);
+      $('#recipient').fadeIn();
+    });
   });
-
 </script>
 
 @include('pages.associate.message.associate_composemsg')

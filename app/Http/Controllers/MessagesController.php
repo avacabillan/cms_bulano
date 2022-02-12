@@ -47,7 +47,7 @@ class MessagesController extends Controller
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
-        $message->receiver = $request->name;
+        $message->receiver = $request->receiver;
         $message->read = 1;    
         
 
@@ -86,7 +86,7 @@ class MessagesController extends Controller
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
-        $message->receiver = $request->receiver_id;
+        $message->receiver = $request->receiver;
         $message->read = 1;    
         
 

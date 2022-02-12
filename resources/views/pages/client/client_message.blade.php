@@ -25,9 +25,9 @@
 
                     @else
                       <tr style="float: left;">
-                        <td class="recipient-name"  id="inbox_recipient" style="cursor: pointer;">{{$recipient->email}}</td>
+                        <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->email}}</td>
                         <td>
-                          <input id="recipient_id" value='{{$recipient->id}}'>
+                          <input type="hidden" id="recipient_id" value='{{$recipient->id}}'>
                         </td>
                       </tr>
                     @endif
@@ -74,10 +74,10 @@
           @csrf
           @method('post')
           <div class="input-group client-compose me-2 ms-2"> 
-
+            <input type="hidden" name="receiver" id="receiver">
             <textarea name="message" class="form-control type_msg mb-2" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
             <div class="input-group-append">
-              <button type="submit" class="btn" id="btn-compose-msg"><i class="fas fa-reply"></i></button>
+              <button type="submit" class="btn me-2"><i class="fa fa-paper-plane"></i></button>
             </div>
           </div>
         </form>
@@ -97,12 +97,8 @@
     });
 
     $('.recipient-name').click(function(){  
-      value=$(this).attr('name');
-      $('#recipient_id').attr('value', value);
-      var id=$('#recipient_id').val();
-      $('.client-compose').append(
-       '<input name="receiver_id" value="id" >'
-      );
+      var id = $(this).attr('name');
+      $("#receiver").val(id);
       $('#recipient').fadeIn();
     });
   });
