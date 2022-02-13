@@ -62,6 +62,7 @@
                     <th>Contact Number</th>
                     <th>OCN</th>
                     <th>Action</th>
+                    <th>QR</th>
                   
                   </tr>
                 </thead>
@@ -72,7 +73,8 @@
                     <td>{{$client->email_address}}</td>
                     <td>{{$client->contact_number}}</td>
                     <td>{{$client->ocn}}</td> 
-                    <td><a href="{{route('clientProfile',$client->id)}}" class="btn btn-success btn-sm">View</button></td>
+                    <td><button href="{{route('clientProfile',$client->id)}}" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#viewProfile">View</button></td>
+                    <td><a href="{{ route('generate',$client->id) }}" class="btn btn-danger">Generate</a></td>
                   </tr>
                   @endforeach
                 </tbody>
