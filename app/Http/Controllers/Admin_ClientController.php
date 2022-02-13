@@ -107,6 +107,7 @@ class Admin_ClientController extends Controller
     public function insertClient(Request $request )
     {
         $myuser= new User;
+        $myuser->name= $request->client_name;
         $myuser->role='client';
         $myuser->email=$request->username;
         $myuser->password=Hash::make($request->password);

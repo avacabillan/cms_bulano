@@ -72,7 +72,7 @@
                     <td>{{$client->email_address}}</td>
                     <td>{{$client->contact_number}}</td>
                     <td>{{$client->ocn}}</td> 
-                    <td><button href="{{route('clientProfile',$client->id)}}" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#viewProfile">View</button></td>
+                    <td><a href="{{route('clientProfile',$client->id)}}" class="btn btn-success btn-sm">View</button></td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -88,7 +88,7 @@
   </div>
 
   <!--Profile Modal -->
-  <div class="modal" id="viewProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal" id="viewProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" >
       <div class="modal-content" style="  width: 1000px; min-height: 450px;">
         <div class="modal-header">
@@ -108,28 +108,8 @@
         </div>
       </div>
     </div>
-  </div>
-  <!--Upload File Modal -->
-  <div class="modal" id="uploadFiles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" >
-        <div class="modal-content" style="  width: 1000px; min-height: 450px;">
-          <div class="modal-header">
-            <h5 class="modal-title" id="headingsModal"></h5>
-            <a class="btn btn-primary" data-bs-toggle="modal" href="#viewProfile" role="button">back</a>
-            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-          </div>
-          
-          <div class="modal-body">
-        
-            
-            @include('pages.associate.clients.add_file')    
-                          
-          
-          </div>  
-        </div>
-      </div>
-    </div>
-  </div>
+  </div> -->
+
 
 @stop
 
