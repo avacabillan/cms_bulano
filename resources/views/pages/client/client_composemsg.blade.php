@@ -24,9 +24,7 @@
                <label for="message-text" class="col-form-label">Message:</label>
               <textarea class="form-control" name="message" id="message" style="width:100%" placeholder="Type your message..." required></textarea>
             </div>
-            <div class="mb-3">
-              <input class="form-control" name="formFile" type="file" id="formFile">
-            </div>
+           
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary" id="btn_compose_msg">Send Message</button>
             </div>

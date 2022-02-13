@@ -42,7 +42,7 @@
     </div><!-- /.row -->
   </section><!-- /.content -->
 
-<div class="modal" id="recipient" tabindex="-5" aria-hidden="true" style="display:none;">
+<div class="modal" id="recipient" tabindex="-5" aria-hidden="true" style="display:none; overflow: scroll;">
   <div class="modal-dialog">
     <div class="modal-content  bg-white">
       <div class="modal-header bg-muted">

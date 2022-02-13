@@ -47,7 +47,7 @@ class MessagesController extends Controller
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
-        $message->receiver = $request->receiver;
+        $message->receiver = $request->name;
         $message->read = 1;    
         
 

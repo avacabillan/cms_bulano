@@ -29,7 +29,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="{{route('requestee')}}" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
@@ -55,7 +55,7 @@
                 <span class="right badge badge-info">{{$ddlines}}</span>
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="{{route('assoc_table')}}" class="nav-link">
               <i class="nav-icon far fa-user"></i>

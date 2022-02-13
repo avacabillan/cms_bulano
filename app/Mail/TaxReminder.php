@@ -12,17 +12,22 @@ class TaxReminder extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    private $clients;
-    private $emails;
-    public function __construct($clients, $emails)
+    
+    public $reminders;
+    public $clients;
+   
+    public function __construct($reminders, $clients)
     {   
         
+      
+      
         $this->clients = $clients;
-        $this->subject = $emails->title;
-       
-        
-        // $this->subject('This is Trial!');
-        
+        $this->reminders = $reminders;
+        // $this->to($deadlines);
+        // dd($this->reminders);
+        // and subject
+        // $this->subject('Pay Tax!');
+  
        
     }
 
@@ -32,9 +37,11 @@ class TaxReminder extends Mailable implements ShouldQueue
      * @return $this
      */
     public function build()
-    {
-        return $this->markdown('pages.emails.reminder')
-                    ->with('client', $this->client)
-                    ->subject('subject',$this->subject);
+    { 
+        return $this ->from('bulano@gmail.com')
+        ->markdown('pages.emails.reminder')
+        ->with('reminders')->with('clients');
+      
+                    // ->subject('subject',$this->subject);
     }
 }

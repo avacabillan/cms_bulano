@@ -50,7 +50,7 @@
                         
                         </td>                                         
                     </tr>
-            @endforeach    
+                @endforeach 
           </tbody>
         </table>
         </div><!-- /.card BODY-->
@@ -69,7 +69,7 @@
       </div>
       
       <div class="modal-body">
-      <img src="{{asset('public/files/'.$requestees->cor)}}">
+      <img src="{{asset('public/files/'.$requestee->cor)}}">
       </div>
     </div>
   </div>

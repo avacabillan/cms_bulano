@@ -22,10 +22,9 @@
               @foreach($recipients as $recipient)
                 <tbody>
                     @if($recipient->id == Auth::id())
-
-                    @else
+                    @else                     
                       <tr style="float: left;">
-                        <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->email}}</td>
+                        <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->name}}</td>
                         <td>
                           <input type="hidden" id="recipient_id" value='{{$recipient->id}}'>
                         </td>
@@ -42,14 +41,14 @@
   </div><!-- /.container -->
 </section><!-- /.content -->
 
-<div class="modal" id="recipient" tabindex="-5" aria-hidden="true" style="display:none;">
+<div class="modal" id="recipient" tabindex="-5" aria-hidden="true" style="display:none; overflow: scroll;">
   <div class="modal-dialog">
-    <div class="modal-content  bg-white">
+    <div class="modal-content bg-white">
       <div class="modal-header bg-muted">
         <div class="avatar">
 					<img src="https://picsum.photos/g/40/40" style="margin-right: 8px; border-radius: 50%;" />
 				</div>
-        <h6 class="modal-title pt-2" id="staticBackdropLabel"><b>Sender name</b></h6>
+        <h6 class="modal-title pt-2" id="staticBackdropLabel"><b>{{$recipient->name}}</b></h6>
         <button type="button" class="btn-close pt-3" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="clientmsg_card_body me-4 ms-4 mt-2">
@@ -69,13 +68,14 @@
                 @endif
           @endforeach
       </div><!-- /.clientmsg_card_body -->
-      <div id="reply_msg" class="message_box" >
+      <div id="reply_msg" >
         <form id="Form" action="{{route('client_composemsg')}}" method="post">
           @csrf
           @method('post')
-          <div class="input-group client-compose me-2 ms-2"> 
+          <div class="input-group client-compose me-2 ms-2">
             <input type="hidden" name="receiver" id="receiver">
-            <textarea name="message" class="form-control type_msg mb-2" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
+            <input type="hidden" name="receiver" id="receiver">
+            <i class="fas fa-paperclip pt-3"></i><textarea name="message" class="form-control type_msg mb-2" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
             <div class="input-group-append">
               <button type="submit" class="btn me-2"><i class="fa fa-paper-plane"></i></button>
             </div>
@@ -96,7 +96,7 @@
       $('#recipient').fadeOut();  
     });
 
-    $('.recipient-name').click(function(){  
+    $('.recipient-name').click(function(){
       var id = $(this).attr('name');
       $("#receiver").val(id);
       $('#recipient').fadeIn();
