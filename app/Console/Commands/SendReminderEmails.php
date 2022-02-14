@@ -63,14 +63,19 @@ class SendReminderEmails extends Command
             ->get();
               //Get clients that has  deadline accord to tax forms
             foreach($tax_form_id as $tax){
-                $clients = DB::table('clients')
-                ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
-                ->where('client_taxes.tax_form_id', '=' , $tax->tax_form_id)
-                ->select('email_address')
-                ->get();
+                $clients = 
             }
            
-        //    dd($reminders, $tax_form_id,  $clients);
+            $blocks = array();
+                foreach($clients as $client) { 
+                    $blocks[] = DB::table('clients')
+                            ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
+                            ->where('client_taxes.tax_form_id', '=' , $tax->tax_form_id)
+                            ->select('email_address')
+                            ->get();
+                }
+
+           dd($reminders,  $clients);
     
           
          if( $reminders != ''){

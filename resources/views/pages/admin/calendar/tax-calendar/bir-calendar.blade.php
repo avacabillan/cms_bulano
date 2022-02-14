@@ -6,7 +6,7 @@
 @section('content')
 
 <div class="content"> 
-    <div class="container-fluid" style="height: 40px; width:90%; ">
+    <div class="container-fluid"  >
    
         @if (\Session::has('success'))
             
@@ -16,7 +16,7 @@
         @endif
            
         <div class="row">
-            <div class="mt-2" style ="width: 85%;" >
+            <div class="mt-2" style ="width: 80%;" >
                 <div class="response"></div>
                 <div id='calendar'></div>  
             </div>

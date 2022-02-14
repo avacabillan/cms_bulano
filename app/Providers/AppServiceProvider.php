@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {   view()->composer(['pages.admin.sidebar', 'admin-clients-list',
+    {   view()->composer(['pages.admin.sidebar','pages.admin.dashboard', 'admin-clients-list',
                           'clients-list','show-requestee',
                           'bir-calendar','display-calendar',
                           'assoc_table','archive-list'],function($view){
