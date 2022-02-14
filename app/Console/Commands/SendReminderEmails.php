@@ -68,9 +68,9 @@ class SendReminderEmails extends Command
                 $clients = DB::table('clients')
                 ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
                 ->where('client_taxes.tax_form_id', '=' , $tax->tax_form_id)
-                ->select('email_address')
-                ->get();
-                dd($clients);
+                ->select('email_address', 'company_name')
+                ->get(['email_address', 'company_name']);
+                // dd($clients);
                
             
             }
@@ -88,7 +88,7 @@ class SendReminderEmails extends Command
                     }
                 // dd($client);
                 //   dd($client->email_address);
-               // dd($client->email_address,$reminder->title );
+                //dd($client->email_address,$reminder->title );
                 }
                 // dd($client->email_address,$reminder->title );
             }
