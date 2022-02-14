@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Associate;
@@ -116,6 +117,19 @@ class Assoc_ClientController extends Controller
 
         
         return redirect()->route('dashboard')->with('message', 'Updated Successfully!');
+    }
+
+    public function generate ($id)
+    {
+        
+        $clients = DB::table('clients')
+        ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
+        ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
+        ->where('client_taxes.client_id', '=' , $id)
+        ->select('tax_form_no')
+        ->get();
+        $qrcode = QrCode::size(400)->generate($clients);
+        return view('pages.associate.qrcode',compact('qrcode'));
     }
 
 

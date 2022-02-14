@@ -3,7 +3,7 @@
 @stop
 @section('content')
 
-@include('pages.admin.sidebar')
+<!-- @include('pages.admin.sidebar') -->
 
 <div class="container">
     <div class="col-md-8 offset-md-2">
@@ -23,9 +23,9 @@
           Birthdate<input type="date" value="{{$associate->birth_date}}" class="form-control" style="width: 35rem;" name="assoc_birthdate" >
           Address<input type="text" value="{{$associate->address}}" class="form-control"  style="width: 35rem;"name="assoc_address">
           SSS Number<input type="text" value="{{$associate->sss_no}}" class="form-control" style="width: 35rem;" name="assoc_sss" >
-          Department<input type="text" value="{{$associate->department->department_name}}" style="width: 35rem;" class="form-control" name="department" >
+          Department<input type="text" value="{{$associate->departments->department_name}}" style="width: 35rem;" class="form-control" name="department" >
 
-          Position<input type="text" value="{{$associate->position->position_name}}" class="form-control" style="width: 35rem;" name="position" >
+          Position<input type="text" value="{{$associate->positions->position_name}}" class="form-control" style="width: 35rem;" name="position" >
           
           <input type="submit" value="Update" class=" mt-2 btn btn-success">
         </div>

@@ -12,7 +12,7 @@
 @section('content')
 
   <div class="container mt-3 pt-5"  style="height:50%; width: 70%;">
-  
+  <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_associate')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add New Associate</a>
       <div> 
     
       <div>
