@@ -7,167 +7,186 @@
 @section('content')
 
 
+<div class="content-header">
+  <div class="container-fluid">
+  <div class="row mb-2">
+<div class="col-sm-6">
+<h1>ADD Client</h1>
+</div>
+    <div class="col-md-10 offset-md-1 bg-info mt-3 pt-3">
+      <div class="card-body">
 
-  <div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3">
-    <div class="card-body" >
-      <div class="form-goup" >
         <div class="row ">
-          <div class="col-9 col-sm-4 ms-3">
-            <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
-            <h5 class="addClient_header_text mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
-          </div>
-          <input type="hidden" name="client_id" id="client_id">
 
-          <div class="col-md-4 ml-md-auto form-group mt-5 pb-2">
-            <label class="form-label" style="float: left;"><b>OCN</b></label>
-            <input type="text" class="form-control" value="" name="ocn">
-          </div><br>
-          <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label class="form-label ms-3" style="float: left;"><b>Name</b></label>
+          <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
+
+            <div class="col-9 col-sm-4 ms-3">
+              <h5 class="addClient_header_text text-white mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
+            </div>
+            <input type="hidden" name="client_id" id="client_id">
+            <div class="col-md-4 ms-auto form-group mt-5 pb-2">
+              <label class="form-label"><b>OCN</b></label>
+              <input type="text" class="form-control" value="" name="ocn" style="width: 80%">
+            </div>
+
+            <div class="row ms-5">
+              <div class="col">
+                <label class="form-label"><b>Name</b></label>
                 <input type="text" class="form-control" value="" name="client_name">
               </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label class="form-label" style="float: left;"><b>Email</b></label>
-                <input type="text" class="form-control" value="" name="email">
+              <div class="col">
+                <div class="form-group">
+                  <label class="form-label"><b>Email</b></label>
+                  <input type="text" class="form-control" value="" name="email">
+                </div>
               </div>
             </div>
-            <div class="col">
-              <div class="form-group">
-                <label class="form-label" style="float: left;"><b>TIN</b></label>
-                <input type="text" class="form-control" value="" name="tin">
+
+            <div class="row ms-5">
+              <div class="col">
+                <div class="form-group">
+                  <label class="form-label"><b>TIN</b></label>
+                  <input type="text" class="form-control" value="" name="tin">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label class="form-label"><b>Contact No.</b></label>
+                  <input type="text" class="form-control" value="" name="client_contact">
+                </div>
               </div>
             </div>
-            <div class="col">
-              <div class="form-group">
-                <label class="form-label"><b>Contact No.</b></label>
-                <input type="text" class="form-control" value="" name="client_contact">
-              </div>
+
+            <div class="col-9 col-sm-4 ms-3">
+              <h5 class="addClient_header_text text-white mt-3" style="float: left;">BUSINESS INFORMATION</h5>
             </div>
-            
-          </div>
-          <div class="col-9 col-sm-4 ms-3">
-            <h5 class="addClient_header_text mt-3" style="float: left;">BUSINESS INFORMATION</h5>
-            </div>
-            <div class="row mt-3">
+
+            <div class="row ms-5 mt-3">
               <div class="col">
                 <div class="form-group">
                   <label class="form-label"><b>Registration Date</b></label>
                   <input type="date" class="form-control" name="reg_date">
                 </div>
-              </div>
-              
+              </div> 
               <div class="col">
                 <div class="form-group ms-3">
-                  <label class="form-label" style="float: left;"><b>Trade Name</b></label>
+                  <label class="form-label"><b>Trade Name</b></label>
                   <input type="text" class="form-control" name="trade_name">
                 </div>
               </div><br><br>
+            </div>
+
+            <div class="row ms-5">
               <div class="col">
-              <div class="form-group">
+                <div class="form-group">
                   <label class="form-label"><b>Mode of filing</b></label>
                   <select name="mode" class="form-control">
-                  <option value="">--Select Mode of Filing--</option>
-                      @foreach($modes as $mode)
-                        <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
-                      @endforeach
+                    <option value="">--Select Mode of Filing--</option>
+                    @foreach($modes as $mode)
+                      <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
+                    @endforeach
                   </select>
+                </div>
               </div>
-          </div>
-
-          <div class="col">
-              <div class="form-group">
+              <div class="col">
+                <div class="form-group">
                   <label class="form-label"><b>Associate</b></label>
                   <select name="assoc" class="form-control">
-                  <option value="">--Select Associate--</option>
-                      @foreach($assocs as $assoc)
+                    <option value="">--Select Associate--</option>
+                    @foreach($assocs as $assoc)
                       <?php
                           $countClient = DB::table('clients')
                           ->join('associates', 'clients.assoc_id', '=' , 'associates.id')
                           ->where('clients.assoc_id', $assoc->id)
                           ->count();
                         ?>
-                        <option value="{{$assoc->id}}">{{$assoc->name}} <?php echo " ($countClient clients)";?></option>
-                       
-                      @endforeach
+                        <option value="{{$assoc->id}}">{{$assoc->name}} <?php echo " ($countClient clients)";?></option> 
+                    @endforeach
                   </select>
-              </div>
-          </div>
-          @livewireStyles
-          <div class="row mt-2" style="float: left;" >
-            <div class="col " >
-              <div class="form-group" >
-                <div name="corporate">
-                  <b><livewire:dropdown /></b>
                 </div>
-              </div> 
-            </div> 
-          </div><br>
-          </div><br>
-          @livewireScripts   
-          
-          <div class="col-9 col-sm-4 ms-3">
-          <h5 class="addClient_header_text mt-3" style="float: left;">ADDRESS</h5>
-          </div>    
-          <div class="row">
-            <div class="col-md-6 mt-4" style="float: left;">
-              <label class="form-label" style="float: left;"><b>Unit/House No.</b></label>
-              <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
-            </div><br>
-            <div class="col-md-6 mt-4">
-              <label class="form-label" style="float: left;"><b>Street</b></label>
-              <input type="text" value="" class="form-control" id="inputPassword4" name="street">
-            </div><br><br>
-            <div class="col-12">
-              <label class="form-label" style="float: left;"><b>City/Municipality</b></label>
-              <input type="text" class="form-control" id="inputAddress" name="client_city">
-            </div><br>
-            <div class="col-md-6">
-              <label class="form-label" style="float: left;"><b>Province</b></label>
-              <input type="text" class="form-control" id="inputAddress2" name="client_province">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label" style="float: left;"><b>Postal Code</b></label>
-              <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
-            </div>
-          </div>
-          <h4 class="form-label text-dark">Tax Types</h4>
-          <ul class="checkbox-grid">
-          @foreach($taxForms as $taxForm)
-              <li style="display: block; float: left; width: 25%;">
-                <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]"  >
-                <span class="ml-3 text-sm">{{ $taxForm->tax_form_no }}</span>
-              </li>
-          @endforeach
-
-         
-            <div>
-              
-                <label class="form-label " ><b>Username</b></label>
-                <input type="text" class="form-control" value="" name="username">
-
-                <label class="form-label "><b>Password</b></label>
-                <input type="password" class="form-control" value="" name="password">
-             
               </div>
-         
+            </div>
 
-          </ul>
+            @livewireStyles
+              <div class="row mt-2">
+                <div class="col " >
+                  <div class="form-group" >
+                    <div name="corporate">
+                      <b><livewire:dropdown /></b>
+                    </div>
+                  </div> 
+                </div> 
+              </div>
+            @livewireScripts   
+            <div class="col-9 col-sm-4 ms-3">
+              <h5 class="addClient_header_text text-white mt-3" style="float: left;">ADDRESS</h5>
+            </div>    
+
+            <div class="row ms-5">
+              <div class="col-md-6 mt-4">
+                <label class="form-label"><b>Unit/House No.</b></label>
+                <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no">
+              </div>
+              <div class="col-md-6 mt-4">
+                <label class="form-label"><b>Street</b></label>
+                <input type="text" value="" class="form-control" id="inputPassword4" name="street">
+              </div>
+            </div>
+
+            <div class="row ms-5">
+              <div class="col-md-6">
+                <label class="form-label"><b>City/Municipality</b></label>
+                <input type="text" class="form-control" id="inputAddress" name="client_city">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label"><b>Province</b></label>
+                <input type="text" class="form-control" id="inputAddress2" name="client_province">
+              </div>
+            </div>
+
+            <div class="row ms-5">
+              <div class="col-md-6">
+                <label class="form-label"><b>Postal Code</b></label>
+                <input type="text" class="form-control" id="inputCity" name="client_postal"><br>
+              </div>
+            <div>
+               
+            <div class="col-9 col-sm-4 ms-3 mb-3">
+              <h5 class="addClient_header_text text-white mt-3" style="float: left;"><b>Tax Types</b></h5>
+            </div>
+
+            <ul class="checkbox-grid pt-5">
+              @foreach($taxForms as $taxForm)
+                <li style="display: block; float: left; width: 25%;">
+                  <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]"  >
+                  <span class="ml-3 text-sm">{{ $taxForm->tax_form_no }}</span>
+                </li>
+              @endforeach
+            </ul>
+              <div class="row pt-3" style="float: left;">
+                <div class="col">
+                  <label class="form-label"><b>Username</b></label>
+                  <input type="text" class="form-control" value="" name="username">
+                </div>
+                <div class="col">
+                  <label class="form-label "><b>Password</b></label>
+                  <input type="password" class="form-control" value="" name="password">    
+                </div>      
+              </div>
           
-          <div class="AddClient_btn mt-5">
-            <button class="btn btn-primary" type="submit" name="saveBtn" id="saveBtn" value="createClient">Submit</button>
-            <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
-          </div>
+            <div class="AddClient_btn mt-5">
+              <button class="btn btn-primary" type="submit" name="saveBtn" id="saveBtn" value="createClient">Submit</button>
+              <button class="btn btn-primary" id="close_ClientProfile" type="button">Cancel</button>
+            </div>
+
           </form>
+
         </div>
+
       </div>
     </div>
   </div>
-
-    
+</div>
 
 
 @endsection

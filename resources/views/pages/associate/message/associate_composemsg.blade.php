@@ -22,9 +22,14 @@
             </div>
             <div class="mb-3">
                <label for="message-text" class="col-form-label">Message:</label>
-               <i class="fas fa-paperclip pt-3"></i><textarea class="form-control" name="message" id="message" style="width:100%" required></textarea>
+               </i><textarea class="form-control" name="message" id="message" style="width:100%" required></textarea>
             </div>
-          
+            <div class="col-sm-6 mb-3">
+              <div for="formFileMultiple" class="btn btn-default btn-file">
+                <i class="fas fa-paperclip"></i> Attachment
+                <input class="form-control" type="file" name="file" id="formFileMultiple" multiple>
+              </div>
+            </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary" id="btn_compose_msg">Send Message</button>
             </div>

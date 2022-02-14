@@ -25,7 +25,7 @@
 
                     @else
                       <tr style="float: left;">
-                        <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->email}}</td>
+                        <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->name}}</td>
                         <td>
                           <input type="hidden" id="recipient_id" value='{{$recipient->id}}'>
                         </td>
@@ -76,6 +76,10 @@
           @method('post')
           <div class="input-group assoc-compose">
             <input type="hidden" name="receiver" id="receiver">
+            <div for="formFileMultiple" class="btn btn-default btn-file">
+                <i class="fas fa-paperclip pt-3"></i>
+                <input class="form-control" type="file" name="file" id="formFileMultiple" multiple>
+            </div>
             <textarea name="message" class="form-control type_msg ms-2 mb-2" id="message" placeholder="Type your message..."></textarea>
             <div class="input-group-append">
               <button type="submit" class="btn" id="btn-compose-msg"><i class="fa fa-paper-plane"></i></button>
