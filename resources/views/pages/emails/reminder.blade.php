@@ -1,7 +1,7 @@
 @component('mail::message')
-# Hi {{  $client->company_name }}
 
-You have {{ $reminders }} to follow up.
+
+You have {{ $reminder }} to follow up.
 
 
 Thanks,<br>

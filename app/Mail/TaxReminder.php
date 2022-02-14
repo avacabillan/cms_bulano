@@ -20,9 +20,16 @@ class TaxReminder extends Mailable implements ShouldQueue
     {   
         
       
-      
-        $this->clients = $clients;
-        $this->reminders = $reminders;
+    //   foreach($clients as $client){ 
+         
+          
+    //     }
+    //    foreach($reminders as $reminder){
+    //     $this->reminders = $reminders;
+       
+    //    }
+       $this->clients = $clients;
+       $this->reminders = $reminders;
         // $this->to($deadlines);
         // dd($this->reminders);
         // and subject
