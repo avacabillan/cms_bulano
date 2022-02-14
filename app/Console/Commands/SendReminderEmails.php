@@ -54,44 +54,44 @@ class SendReminderEmails extends Command
             ->where('start_date', '=', $date  )
             ->select('tax_form_id')
             ->get();
-           
+           // dd($date);
               //Get reminder title accord to deadline 
             $reminders = DB::table('clients')
             ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
             ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
             ->where('start_date', '=', $date  )
-            ->select('title')
-            ->get();
-            
+            ->pluck('title');
+           // dd($reminders);
               //Get clients that has  deadline accord to tax forms
             foreach($tax_form_id as $tax){
                 $clients = DB::table('clients')
                 ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
                 ->where('client_taxes.tax_form_id', '=' , $tax->tax_form_id)
-                ->select('email_address', 'company_name')
-                ->get(['email_address', 'company_name']);
-                // dd($clients);
+                
+                ->get(['email_address'])->toArray();
                
-            
-            }
-           
+            }  
+            //dd($clients);
             // if( $reminders != ''){
             //     Mail::to('avacabillan08@gmail.com')->send(new TaxReminder($reminders));
             // }
-          
+       
+            //dd($clients);  
             //send emails
-            if( $reminders != ''){
-                foreach($clients as $client ){
-                    foreach($reminders as $reminder){
-                    Mail::to($client->email_address)->send(new TaxReminder($reminders, $clients));
+            foreach($reminders as $reminder){
+            if( $reminder != ''){
+               
+                   // dd($client);
+                    Mail::send(new TaxReminder($reminder, [$clients]));
                     
                     }
-                // dd($client);
-                //   dd($client->email_address);
+               
+                   //dd($clients );
                 //dd($client->email_address,$reminder->title );
-                }
+               
                 // dd($client->email_address,$reminder->title );
+               // dd($client);
             }
-      
+            
     }
 }
