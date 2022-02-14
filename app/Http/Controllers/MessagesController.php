@@ -55,6 +55,17 @@ class MessagesController extends Controller
 
         return redirect()->back();
     }
+    public function replyAssociate(Request $request){
+        $message = new Message();
+        $message->sender = Auth::id();
+        $message->message = $request->message;
+        $message->receiver = $request->receiver;
+        $message->read = 1;    
+        
+        $message->save();
+
+        return redirect()->back();
+    }
 
     public function clientIndex(){
         $recipients = User::All();
@@ -89,7 +100,17 @@ class MessagesController extends Controller
         $message->receiver = $request->name;
         $message->read = 1;    
         
+        $message->save();
 
+        return redirect()->back();
+    }
+    public function replyClient(Request $request){
+        $message = new Message();
+        $message->sender = Auth::id();
+        $message->message = $request->message;
+        $message->receiver = $request->receiver;
+        $message->read = 1;    
+        
         $message->save();
 
         return redirect()->back();
