@@ -39,8 +39,12 @@
           <div class="col-lg-4 col-6">
             <div class="small-box bg-success">
               <div class="inner">
-                <h4 class="pt-3">Registered Guest</h4>
-                <span class="info-box-number">41,410</span>
+                <h4 class="pt-3">User Registrations</h4>
+                <span class="info-box-number"></span>
+                <div class="inner">
+                <h3>{{$reqs}}</h3>
+                </div>
+                <h5>Requests</h5>
               </div>
               <div class="icon pb-2">
                  <i class="fa fa-user"></i>
@@ -52,7 +56,11 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h4 class="pt-3">Reminder Calendar</h4>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-number"></span>
+                <div class="inner">
+                <h3>{{$ddlines}}</h3>
+                </div>
+                <h5>Reminders</h5>
               </div>
               <div class="icon pb-2">
                  <i class="far fa-calendar-alt"></i>
@@ -64,7 +72,11 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h4 class="pt-3">BIR Calendar</h4>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-number"></span>
+                <div class="inner">
+                <h3>{{$birs}}</h3>
+                </div>
+                <h5>Deadlines</h5>
               </div>
               <div class="icon pb-2">
                  <i class="far fa-calendar-alt"></i>
