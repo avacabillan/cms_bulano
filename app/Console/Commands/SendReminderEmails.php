@@ -47,7 +47,7 @@ class SendReminderEmails extends Command
     {
    
             //Get tax forms accord to deadline 
-            $date =Carbon::yesterday()->format('Y-m-d'); 
+            $date =Carbon::now()->format('Y-m-d'); 
             $tax_form_id = DB::table('clients')
             ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
             ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
@@ -68,7 +68,7 @@ class SendReminderEmails extends Command
                 ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
                 ->where('client_taxes.tax_form_id', '=' , $tax->tax_form_id)
                 
-                ->get(['email_address'])->toArray();
+                ->get()->toArray();
                
             }  
             //dd($clients);
@@ -77,21 +77,61 @@ class SendReminderEmails extends Command
             // }
        
             //dd($clients);  
-            //send emails
+            //send emails (good but repeating emails)
             foreach($reminders as $reminder){
             if( $reminder != ''){
-               
-                   // dd($client);
-                    Mail::send(new TaxReminder($reminder, [$clients]));
+               foreach($clients as  $client ){
+                   Mail::to($client->email_address)->send(new TaxReminder($reminder, [$client]));}
+                  //  dd($client->email_address);
+                    
                     
                     }
-               
+                //  var_dump( Mail:: failures());
+                //      exit; 
                    //dd($clients );
                 //dd($client->email_address,$reminder->title );
                
                 // dd($client->email_address,$reminder->title );
                // dd($client);
             }
+            // foreach($reminders as $reminder){
+            //     $emails =explode (',',$clients);
+            //     //dd( $emails );
+            //     if( $reminder != ''){
+            //         // Mail::to( $emails)->send(new TaxReminder($reminder));
+            //         // dd($clients);
+            //         Mail::send(new TaxReminder($reminder), [], function($message) use ($emails)
+            //         {    
+            //             $message->to($emails['email_address']);    
+
+            //         });
+            //       
+            //     }
+               
+            //     }
             
+            // //send emails
+
+            // // foreach($reminders as $reminder){
+            // // if( $reminder != ''){
+               
+            // //        // dd($client);
+                    
+            // //             // Mail::send(new TaxReminder($reminder, [$clients]));
+            // //             // foreach ([$clients] as $recipient) {
+            // //             //     Mail::to($recipient)->send(new TaxReminder($reminder, [$clients]));
+            // //             // }
+                   
+            // //         $emails =explode (',',$clients);
+            // //          // dd( $emails);
+            // //         Mail::send(new TaxReminder($reminder, $emails), [], function($message) use ($emails)
+            // //         {    
+            // //             $message->to($emails);    
+
+            // //         });
+                    
+                     
+
+
     }
 }

@@ -1,10 +1,10 @@
 @component('mail::message')
 # Hi 
-{{$clients}}
+{{$name->company_name}}
 
 
 You have 
-{{ $reminder}} to follow upsss.
+{{ $reminder}} to follow up.
 
 
 Thanks,<br>
