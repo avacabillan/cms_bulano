@@ -60,9 +60,14 @@ Route::middleware(['logout'])->group(function(){
     /*---------------------- Dashboard Stat--------------*/
     // Route::get('/dashboard', [DashboardController::class, 'getCount'])->name('dashboard');
 
+
+
+
+    Route::view('/taxforms','pages.admin.taxforms')->name('taxforms'); //taxforms
+
+
    
      /*---------------------- EXTRA PAGES --------------*/
-
 
     Route::view('/about','pages.admin.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
