@@ -3,9 +3,9 @@
 @stop
 @section('content')
 
-@include('pages.admin.sidebar')
 
-<div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3" style="width:45rem; margin-left:30rem;">
+
+<div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3" style="width:45rem; margin-left:20rem;">
     <div class="card-body" >
       <div class="form-goup" >
         <div class="row ">

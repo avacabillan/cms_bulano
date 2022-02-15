@@ -1,32 +1,25 @@
 
-@extends('layout.master')
-@section('title')
-  Associate's Profile
-@stop
-@section('content')
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-@include('pages.admin.sidebar')
 
-<a href="{{route('assoc_table')}}" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-left"></i></i></a>
-<div class="d-flex p-4 mt-3" style="margin-left: 20rem;" id="assocprofile" >
+<div class="d-flex p-4 mt-3" style="margin-right: 20rem;" id="assocprofile" >
   <div class="col-sm-4 user-profile" > 
     <input class="form-control" type="hidden" value="{{$associate->id}}" name="associate_id">
-    <div class="card-block text-center text-white">
-      <div class="text-center">
-        <img src="/images/Logo.png" class="user_profile" >
-      </div>
-      <br> 
-        <h2 class="f-w-600">{{$associate->name}}</h2>
-        <p id="name" value="name">{{$associate->email}}</p>         
+    <div class="card-block text-center text-white">      
       </div>
     </div>
 
     <div class="col-sm-8">
       <div class="card-block bg-light"> 
-      <a type="button" class="btn btn-primary" href="{{route('edit',$associate->id)}}"><i class="fas fa-edit"></a></i>
+      <a type="button" class="btn btn-primary" href="{{route('edit',$associate->id)}}"><i class="fas fa-edit">Edit</a></i>
         
         <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
         <hr>
+        <h2 class="f-w-600">{{$associate->name}}</h2>
+        <p id="name" value="name">{{$associate->email}}</p>
 
         <div class="row mt-5">
           <div class="col-sm-6">
@@ -67,4 +60,3 @@
   </div>
 </div>
 
-@endsection
