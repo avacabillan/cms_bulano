@@ -44,8 +44,8 @@ class AdminAssocController extends Controller
 
     public function create()
     {
-        $departments= Department::pluck('department_name');
-        $positions = Position::pluck('position_name');               
+        $departments= Department::all();
+        $positions = Position::all();              
         $associates= Associate::all();
 
         return view ('pages.admin.associates.add_associate')->with('departments', $departments)
