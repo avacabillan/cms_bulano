@@ -56,6 +56,7 @@ class AdminAssocController extends Controller
     public function store(Request $request)
     {
         $myuser=new User;
+        $myuser ->name = $request->assoc_name;
         $myuser->role='associate';
         $myuser->email=$request->username;
         $myuser->password=Hash::make($request->password);
