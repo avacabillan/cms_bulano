@@ -14,29 +14,23 @@
         <div class="card card-dark card-outline">
           <div class="card-header">
             <h3 class="card-title fs-2">Inbox</h3>
-            <div class="card-tools">
+            <!-- <div class="card-tools">
               <div class="input-group input-group-lg">
-                <button type="button" class="btn btn-default bg-primary checkbox-toggle me-1"><i class="far fa-square"></i></button>
+                <button type="checkbox" id="checkAll"><i class="far fa-square"></button>
                 <button type="button" class="btn btn-default bg-danger btn-sm"><i class="far fa-trash-alt"></i></button>
               </div>
-            </div>
+            </div> -->
           </div><!-- /.card-header -->
           <div class="card-body p-0">
             <div class="table-responsive mailbox-messages">
               <table class=" table">
-              @foreach($recipients as $recipient)
-
+                
+                @foreach($recipients as $recipient)
                 <tbody>
                     @if($recipient->first()->id == Auth::id())
 
                     @else
                       <tr style="float: left;">
-                      <td>
-<div class="icheck-primary">
-<input type="checkbox" value="" id="check1">
-<label for="check1"></label>
-</div>
-</td>
                         <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->name}}</td>
                         <td>
                           <input type="hidden" id="recipient_id" value='{{$recipient->id}}'>
@@ -74,6 +68,7 @@
       $("#receiver").val(id);
       $('#recipient').fadeIn();
     });
+
   });
 </script>
 
