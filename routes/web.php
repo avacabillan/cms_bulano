@@ -43,7 +43,7 @@ Route::get('/', function () {
 Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
 Route::get('/show-requestee',[RegisteredClientController:: class, 'requesteeDatatable'])->name('show-requestee');
 Route::post('/store-requestee',[RegisteredClientController:: class, 'storeRequest'])->name('store-requestee');
-
+Route::view('requirements', 'read')->name('read');
 
 
 // Route::get('/dashboard', function () {
