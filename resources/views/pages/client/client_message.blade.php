@@ -74,8 +74,11 @@
           @method('post')
           <div class="input-group client-compose me-2 ms-2">
             <input type="hidden" name="receiver" id="receiver">
-            <input type="hidden" name="receiver" id="receiver">
-            <i class="fas fa-paperclip pt-3"></i><textarea name="message" class="form-control type_msg mb-2" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
+            <!-- <div for="formFileMultiple" class="btn btn-default btn-file">
+                <i class="fas fa-paperclip pt-3"></i>
+                <input class="form-control" type="file" name="file" id="formFileMultiple" multiple>
+            </div> -->
+            <textarea name="message" class="form-control type_msg mb-2" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
             <div class="input-group-append">
               <button type="submit" class="btn me-2"><i class="fa fa-paper-plane"></i></button>
             </div>
