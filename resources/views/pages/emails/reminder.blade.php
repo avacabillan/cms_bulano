@@ -1,10 +1,13 @@
 @component('mail::message')
 # Hi 
-{{$name->company_name}}
+{{$name}}
 
 
-You have 
-{{ $reminder}} to follow up.
+You have
+@foreach($reminds as $rem) 
+{{$rem}}
+
+@endforeach to follow up.
 
 
 Thanks,<br>

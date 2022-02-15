@@ -60,15 +60,15 @@ class SendReminderEmails extends Command
             ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
             ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
             ->where('start_date', '=', $date  )
-            ->pluck('title');
-           // dd($reminders);
+            ->distinct()->get('title');
+            // dd($reminders);
               //Get clients that has  deadline accord to tax forms
             foreach($tax_form_id as $tax){
                 $clients = DB::table('clients')
                 ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
                 ->where('client_taxes.tax_form_id', '=' , $tax->tax_form_id)
                 
-                ->get()->toArray();
+                ->pluck('email_address');
                
             }  
             //dd($clients);
@@ -78,22 +78,58 @@ class SendReminderEmails extends Command
        
             //dd($clients);  
             //send emails (good but repeating emails)
-            foreach($reminders as $reminder){
-            if( $reminder != ''){
-               foreach($clients as  $client ){
-                   Mail::to($client->email_address)->send(new TaxReminder($reminder, [$client]));}
-                  //  dd($client->email_address);
-                    
-                    
-                    }
-                //  var_dump( Mail:: failures());
-                //      exit; 
-                   //dd($clients );
+            
+           
+                   
+               
+                  // dd($client->email_address);
                 //dd($client->email_address,$reminder->title );
                
                 // dd($client->email_address,$reminder->title );
-               // dd($client);
-            }
+                $reminds =explode(',',$reminders);
+                //dd($reminds);
+                if( $reminds != ''){
+                    foreach($clients as $client){
+                         Mail::to($client)->send(new TaxReminder($reminds, [$client]));
+                    }
+                    // dd($reminds->title);
+                }
+           
+           
+           
+
+                //  var_dump( Mail:: failures());
+                //  exit; 
+
+
+
+
+
+
+
+
+
+
+
+
+                // $emails =explode (',',$clients);
+                 
+                    // return '$client';
+                    //  Mail::send(new TaxReminder($reminder, $client), [], function($message) use ( $client)
+                    // {    
+                    //     $message->to( $client);    
+                        
+                    // });
+                    // foreach (['avacabillan08@gmail.com'] as $client) {
+                    //     Mail::to($client)->send(new TaxReminder($reminder, $client));
+                    //     //dd($client);
+                    // }
+                    //Mail::to($client)->send(new TaxReminder($reminder, [$client]));
+                   
+                         
+               
+               
+
             // foreach($reminders as $reminder){
             //     $emails =explode (',',$clients);
             //     //dd( $emails );
