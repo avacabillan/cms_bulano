@@ -42,6 +42,7 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -105,6 +106,7 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         ),
         'R' => 
         array (
+            'RealRashid\\SweetAlert\\' => 22,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
@@ -370,6 +372,10 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'SimpleSoftwareIO\\QrCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/simplesoftwareio/simple-qrcode/src',
+        ),
+        'RealRashid\\SweetAlert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/realrashid/sweet-alert/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -710,6 +716,7 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'App\\Http\\Controllers\\MultiFileUploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/MultiFileUploadController.php',
         'App\\Http\\Controllers\\RegisteredClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisteredClientController.php',
         'App\\Http\\Controllers\\ResourceAssoc_ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResourceAssoc_ClientController.php',
+        'App\\Http\\Controllers\\TaxFormsController' => __DIR__ . '/../..' . '/app/Http/Controllers/TaxFormsController.php',
         'App\\Http\\Controllers\\TestController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Livewire\\Dropdown' => __DIR__ . '/../..' . '/app/Http/Livewire/Dropdown.php',
@@ -731,7 +738,6 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'App\\Http\\Resources\\ModePaymentResource' => __DIR__ . '/../..' . '/app/Http/Resources/ModePaymentResource.php',
         'App\\Jobs\\SendMailJob' => __DIR__ . '/../..' . '/app/Jobs/SendMailJob.php',
         'App\\Mail\\DemoEmail' => __DIR__ . '/../..' . '/app/Mail/DemoEmail.php',
-        'App\\Mail\\NewArrivals' => __DIR__ . '/../..' . '/app/Mail/NewArrivals.php',
         'App\\Mail\\TaxReminder' => __DIR__ . '/../..' . '/app/Mail/TaxReminder.php',
         'App\\Models\\AssocAddress' => __DIR__ . '/../..' . '/app/Models/AssocAddress.php',
         'App\\Models\\AssocCity' => __DIR__ . '/../..' . '/app/Models/AssocCity.php',
@@ -1653,7 +1659,6 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'Faker\\Provider\\nl_BE\\Payment' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Payment.php',
         'Faker\\Provider\\nl_BE\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Person.php',
         'Faker\\Provider\\nl_BE\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/PhoneNumber.php',
-        'Faker\\Provider\\nl_BE\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Text.php',
         'Faker\\Provider\\nl_NL\\Address' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Address.php',
         'Faker\\Provider\\nl_NL\\Color' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Color.php',
         'Faker\\Provider\\nl_NL\\Company' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Company.php',
@@ -5772,6 +5777,13 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'RealRashid\\SweetAlert\\Console\\PublishCommand' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Console/PublishCommand.php',
+        'RealRashid\\SweetAlert\\Facades\\Alert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Facades/Alert.php',
+        'RealRashid\\SweetAlert\\Storage\\AlertSessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/AlertSessionStore.php',
+        'RealRashid\\SweetAlert\\Storage\\SessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/SessionStore.php',
+        'RealRashid\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/SweetAlertServiceProvider.php',
+        'RealRashid\\SweetAlert\\ToSweetAlert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/ToSweetAlert.php',
+        'RealRashid\\SweetAlert\\Toaster' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Toaster.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',

@@ -64,5 +64,6 @@
             </div>
         </div>
         @include('pages.admin.messages.compose')
+        @include('sweetalert::alert')
     </div>
 </div>

@@ -10,9 +10,8 @@
 <body>
 @extends('layout.master')
 @section('content')
-<div style="height:50%;" >
-
-  <div class="page-content mt-5" style="margin-left: 5%;">
+<div class="content">
+    <div class="container-fluid">
 
   <div class="row">
     <div class="col-12">
@@ -24,6 +23,7 @@
             <thead >
               <th >Name</th>
               <th>Email</th>
+              <th>Associate</th>
               <th >Action</th>
             </thead> 
             <tbody>
@@ -53,6 +53,7 @@
             
             {data: 'company_name', name: 'company_name'},
             {data: 'email_address', name: 'email_address'},
+            {data: 'name', name: 'name'},
             {
                 data: 'action', 
                 name: 'action', 

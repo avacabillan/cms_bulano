@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Associate;
@@ -155,6 +156,7 @@ class Admin_ClientController extends Controller
                 }
             
         }
+        Alert::success('Success', 'Client Successfuly Added!');
         return redirect()->route('requestee');
 
 

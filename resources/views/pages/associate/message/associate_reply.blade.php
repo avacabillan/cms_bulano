@@ -46,3 +46,4 @@
     </div>
   </div>
 </div><!-- /.modal-->
+@include('sweetalert::alert')

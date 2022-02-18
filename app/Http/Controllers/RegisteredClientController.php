@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -52,7 +53,7 @@ class RegisteredClientController extends Controller
         
         
         $requestee->save();
-
+        Alert::info('Success', 'Your registration request has been sent, plese wait for the email within 3 days for the approval from the admin!');
         return redirect()->route('login');
     }
     // public function register(){
@@ -65,6 +66,7 @@ class RegisteredClientController extends Controller
         if (!is_null($requestee)){
             $requestee->delete();
         }
+        Alert::success('Success', 'Client Successfuly Rejected!');
         return redirect()->route('requestee');
     }
 }
