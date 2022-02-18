@@ -54,7 +54,7 @@ class SendReminderEmails extends Command
             ->where('start_date', '=', $date  )
             ->select('tax_form_id')
             ->get();
-           // dd($date);
+        //    dd($date);
               //Get reminder title accord to deadline 
             $reminders = DB::table('clients')
             ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
@@ -71,7 +71,7 @@ class SendReminderEmails extends Command
                 ->pluck('email_address');
                
             }  
-            //dd($clients);
+            // dd($clients);
             // if( $reminders != ''){
             //     Mail::to('avacabillan08@gmail.com')->send(new TaxReminder($reminders));
             // }

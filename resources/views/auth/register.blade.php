@@ -82,7 +82,7 @@
                 Read Instruction
                 <li>Please Provide Name</li>
                 <li>Exact Email Address for approval purposes</li>
-                <li>Please attach the Certificate of Registration (COR) for tax review purposes</li>
+                <li>Please attach image format of the Certificate of Registration (COR) for tax review purposes</li>
             
                 
                 
