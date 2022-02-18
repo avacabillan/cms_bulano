@@ -15,8 +15,10 @@
 </div>
     <div class="col-md-10 offset-md-1 bg-info mt-3 pt-3">
       <div class="card-body">
-
-        <div class="row ">
+     
+      <a  class="btn btn-success" id="corImage" href="{{asset('public/files/'.$requestee->cor)}}" data-lightbox="$requestee->cor">View COR</a>
+  
+      <div class="row ">
 
           <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
 
@@ -32,12 +34,12 @@
             <div class="row ms-5">
               <div class="col">
                 <label class="form-label"><b>Name</b></label>
-                <input type="text" class="form-control" value="" name="client_name">
+                <input type="text" class="form-control" value="{{$requestee->name}}" name="client_name">
               </div>
               <div class="col">
                 <div class="form-group">
                   <label class="form-label"><b>Email</b></label>
-                  <input type="text" class="form-control" value="" name="email">
+                  <input type="text" class="form-control" value="{{$requestee->email}}" name="email">
                 </div>
               </div>
             </div>

@@ -16,6 +16,7 @@ use App\Models\RegisteredAddress;
 use App\Models\LocationAddress;
 use App\Models\Group;
 use App\Models\TaxForm;
+use App\Models\Requestee;
 use App\Models\TaxType;
 use App\Models\TaxFile;
 use App\Models\ClientTax;
@@ -81,8 +82,9 @@ class Admin_ClientController extends Controller
         return view('pages.admin.clients.client_profiles', compact('client',$client));
      
     }
-    public function create()
+    public function create($id)
     {
+        $requestee = Requestee::find($id);
         $modes= ModeOfPayment::all();
         $corporates= Corporate::all();
         $taxForms= TaxForm::all();
@@ -94,6 +96,7 @@ class Admin_ClientController extends Controller
         $registered_address = RegisteredAddress::all();
 
         return view ('pages.admin.clients.add_client')
+            ->with('requestee',$requestee)
             ->with('modes',$modes)
             ->with('corporates',$corporates)
             ->with('taxForms',$taxForms)

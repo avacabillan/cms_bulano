@@ -41,9 +41,8 @@ Route::get('/', function () {
     return view('auth.login');
 })->middleware('login');
 Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
-Route::get('/show-requestee',[RegisteredClientController:: class, 'requesteeDatatable'])->name('show-requestee');
 Route::post('/store-requestee',[RegisteredClientController:: class, 'storeRequest'])->name('store-requestee');
-Route::view('requirements', 'read')->name('read');
+// Route::view('requirements', 'read')->name('read');
 
 
 // Route::get('/dashboard', function () {
@@ -124,11 +123,8 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/form/{id}/{client}', [ClientController::class,'showForm'])->name('view-form');
 
 
-    /*---------------------- ASSOCIATE REMINDER CLIENTS --------------*/
 
-    //Reminders 
-    Route::get('/clients/list/Reminders/{id}', [ReminderController::class, 'reminderList'])->name('clientReminder'); //showReminders
-    Route::get('/createReminder', [ReminderController::class, 'reminderNew'])->name('viewReminders'); //addReminder
+  
 
     /*---------------------- ASSOCIATE CRUD CLIENTS --------------*/
 
@@ -152,7 +148,7 @@ Route::middleware(['logout'])->group(function(){
      Route::get('/ajax/clients_list',[Admin_ClientController:: class, 'clientDatatable'])->name('ajax_clients_list');
     Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
 
-    Route::get('/add_client',[Admin_ClientController:: class, 'create'])->name('add_client');
+    Route::get('/add_new_client/requestee/{id}',[Admin_ClientController:: class, 'create'])->name('add_client');
     Route::get('/insertClient',[Admin_ClientController::class, 'insertClient'])->name('insertClient'); //store
     Route::get('/archive-list', [FileController::class,'getArchive'])->name('admin-archive-list');
     Route::get('/restore-file/{id}', [FileController::class,'restore'])->name('restore-file');

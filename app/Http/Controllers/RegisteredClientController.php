@@ -16,31 +16,19 @@ class RegisteredClientController extends Controller
   
     public function index()
     {
-        $requestees = Requestee::all();
-       
-        return view ('pages.admin.requestee')
-        ->with('requestees', $requestees);
+        $requestees = Requestee::where('status',1)->get();
+      // dd( $requestees);
+        return view ('pages.admin.requestee', compact('requestees', $requestees));
     }
-    // public function requesteeDatatable(Request $request) 
-    // {
-    //     if ($request->ajax()) {
-    //         $data = Requestee::latest()->get();
-    //         return Datatables::of($data)
-    //             ->addIndexColumn()
-    //             ->addColumn('action', function($row){
-    //                 $actionBtn = '<a <a href="'.route('add_client').'" class="edit btn btn-danger btn-sm">Preview</a>';
-    //                 return $actionBtn;
-    //             })
-    //             ->rawColumns(['action'])
-    //             ->make(true);
-    //     }
-    // }
+    
+   
     public function storeRequest(Request $request)
     {
 
         $requestee =new Requestee();
         $requestee ->name = $request->name;
         $requestee ->email = $request->email;
+        $requestee ->status =false;
         if ($request->hasfile('cor'))
         {
             $file = $request->file('cor');
@@ -55,10 +43,7 @@ class RegisteredClientController extends Controller
 
         return redirect()->route('login');
     }
-    // public function register(){
-    //     return view('auth.register');
-    // }
-
+    
     public function delete($id){
 
         $requestee = Requestee::find($id);
@@ -67,4 +52,5 @@ class RegisteredClientController extends Controller
         }
         return redirect()->route('requestee');
     }
+    
 }
