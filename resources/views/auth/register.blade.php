@@ -33,7 +33,13 @@
         <h1 class="login text-white text-center mt-3"><b>REGISTER</b></h1><br>
     
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="alert alert-info text-dark" :errors="$errors" /> 
+          <!-- Session Status -->
+        @if(session()->has('message'))
+            <p class="alert alert-info text-dark">
+                {{ session()->get('message') }}
+            </p>
+        @endif
+                <x-auth-validation-errors class="alert alert-info text-dark" :errors="$errors" /> 
         <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data">
             @csrf
             
