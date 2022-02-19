@@ -34,12 +34,15 @@
     
         <!-- Validation Errors -->
           <!-- Session Status -->
-        @if(session()->has('message'))
-            <p class="alert alert-info text-dark">
-                {{ session()->get('message') }}
-            </p>
+        @if(count($errors) > 0)
+            @foreach($errors->all() as $error)
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{$error}}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endforeach
         @endif
-                <x-auth-validation-errors class="alert alert-info text-dark" :errors="$errors" /> 
+               
         <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data">
             @csrf
             
@@ -61,7 +64,7 @@
 
             <div class="mb-3">
                 <label for="formFileSm" class="form-label text-light">Add File</label>
-                 <input class="form-control form-control-sm" name="cor" type="file" style="width:20rem;">
+                 <input class="form-control form-control-sm" name="cor" value="{{ old('cor') }}" type="file" style="width:20rem;">
             </div>
              <x-button class="btn btn-success  mt-1 mb-2 ml-4">
                     {{ __('Register') }}

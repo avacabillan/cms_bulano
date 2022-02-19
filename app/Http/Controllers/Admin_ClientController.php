@@ -25,7 +25,8 @@ use App\Models\Tin;
 use App\Models\User;
 use App\Models\Reminder;
 use DataTables;
-
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class Admin_ClientController extends Controller
 {
@@ -108,15 +109,19 @@ class Admin_ClientController extends Controller
             ->with('myusers',$users)
             ->with('registered_address', $registered_address);
     }
-    public function insertClient(Request $request )
+    public function insertClient(Request $request, $id )
     {
+        $requestee = Requestee::find($id);
+        $requestee->status = true;
+        $requestee->save();
+        
         $myuser= new User;
         $myuser->name= $request->client_name;
         $myuser->role='client';
         $myuser->email=$request->username;
-        $myuser->password=Hash::make($request->password);
+        $myuser->password=Hash::make($request->username);
         $myuser->save();
-
+        
         $client =new Client();
         $client->user_id=$myuser->id;
         $client ->company_name = $request->client_name;
@@ -159,6 +164,8 @@ class Admin_ClientController extends Controller
                 }
             
         }
+        $url = 'http://127.0.0.1:8000/';
+        Mail::to($client['email_address'])->send(new WelcomeMail($myuser, $url));
         Alert::success('Success', 'Client Successfuly Added!');
         return redirect()->route('requestee');
 

@@ -20,7 +20,7 @@
   
       <div class="row ">
 
-          <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
+          <form action="{{route('insertClient', $requestee->id)}}" class="row"  id="addClientForm" name="addClientForm">
 
             <div class="col-9 col-sm-4 ms-3">
               <h5 class="addClient_header_text text-white mt-3" style="float: left;">PERSONAL INFORMATION</h5>        
@@ -172,7 +172,7 @@
                 </div>
                 <div class="col">
                   <label class="form-label "><b>Password</b></label>
-                  <input type="password" class="form-control" value="" name="password">    
+                  <input type="hidden" class="form-control" value="" name="password">    
                 </div>      
               </div>
           
