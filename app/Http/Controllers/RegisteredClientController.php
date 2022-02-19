@@ -12,6 +12,10 @@ use App\Models\User;
 use App\Models\Role;
 use File;
 use Datatable;
+use App\Mail\RejectedMail;
+use Illuminate\Support\Facades\Mail;
+
+
 class RegisteredClientController extends Controller
 {
   
@@ -60,8 +64,10 @@ class RegisteredClientController extends Controller
         if (!is_null($requestee)){
             $requestee->delete();
         }
+        Mail::to($requestee['email'])->send(new RejectedMail($requestee));
         Alert::success('Success', 'Client Successfuly Rejected!');
         return redirect()->route('requestee');
+        
     }
     
 }
