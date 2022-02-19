@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Message;
@@ -52,7 +53,7 @@ class MessagesController extends Controller
         
 
         $message->save();
-
+        Alert::success('Success', 'Message Successfuly Sent!');
         return redirect()->back();
     }
     public function replyAssociate(Request $request){
@@ -63,7 +64,7 @@ class MessagesController extends Controller
         $message->read = 1;    
         
         $message->save();
-
+        Alert::success('Success', 'Message Successfuly Sent!');
         return redirect()->back();
     }
 
@@ -101,7 +102,7 @@ class MessagesController extends Controller
         $message->read = 1;    
         
         $message->save();
-
+        Alert::success('Success', 'Message Successfuly Sent!');
         return redirect()->back();
     }
     public function replyClient(Request $request){
@@ -112,7 +113,7 @@ class MessagesController extends Controller
         $message->read = 1;    
         
         $message->save();
-
+        Alert::success('Success', 'Message Successfuly Sent!');
         return redirect()->back();
     }
 

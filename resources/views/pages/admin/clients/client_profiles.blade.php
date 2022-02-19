@@ -66,7 +66,8 @@
             @foreach ($client->business as $busi)
               <div class="col-sm-6">
                 <p class="m-b-10 f-w-600"><b>Registration Date</b></p>
-                <h6 class="text-muted ms-2 f-w-400">{{$busi->registration_date}} </h6>
+                <h6 class="text-muted ms-2 f-w-400">{{ \Carbon\Carbon::parse($busi->registration_date)->format('F d, Y')}}</h6>
+            
               </div>
               <div class="col-sm-6">
                 <p class="m-b-10 f-w-600"><b>Trade Name</b></p>

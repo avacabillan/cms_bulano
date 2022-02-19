@@ -26,13 +26,8 @@
         <!-- Image -->
     </div>
     <div  id="right">
-        <!-- Session Status -->
-        <!-- @if(session()->has('message'))
-            <p class="alert alert-info text-dark">
-                {{ session()->get('message') }}
-            </p>
-        @endif -->
-
+     
+    @include('sweetalert::alert')
 
         <h1 class="login  text-white text-center mt-3" id="client_login"><b>LOGIN</b></h1><br>
         

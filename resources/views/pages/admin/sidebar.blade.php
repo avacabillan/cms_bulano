@@ -75,6 +75,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('taxforms')}}" class="nav-link">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+              Tax Forms
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('admin-archive-list')}}" class="nav-link">
               <i class="nav-icon fal fa-archive"></i>
               <p>

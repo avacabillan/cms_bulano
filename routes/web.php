@@ -18,6 +18,8 @@ use App\Http\Controllers\MessageController;
 use App\Http\Livewire\Dropdown;
 use App\Http\Controllers\MultiFileUploadController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\TaxFormsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -59,9 +61,16 @@ Route::middleware(['logout'])->group(function(){
     /*---------------------- Dashboard Stat--------------*/
     // Route::get('/dashboard', [DashboardController::class, 'getCount'])->name('dashboard');
 
+
+
+
+    //Route::view('/taxforms',['pages.admin.taxforms'])->name('taxforms'); //taxforms
+     Route::get('/addtaxforms',[TaxFormsController::class, 'addforms'])->name('addtaxforms'); 
+     Route::get('/taxforms',[TaxFormsController::class, 'index'])->name('taxforms'); 
+   
+
    
      /*---------------------- EXTRA PAGES --------------*/
-
 
     Route::view('/about','pages.admin.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
@@ -187,7 +196,7 @@ Route::middleware(['logout'])->group(function(){
    
 
 });
-// Route::get('/try',[TestController::class, 'trial']);
+ Route::view('/try','test');
 //fullcalender
 
  //testing routes   

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\TaxFile;
 use App\Models\TaxType;
@@ -139,7 +140,7 @@ class FileController extends Controller
     {
         $restores = TaxFile::where('id', $id)->withTrashed()->first();
         $restores->restore();
-
+        Alert::success('Success', 'File Successfuly Restored!');
         return redirect()->back();
            
     }
@@ -154,6 +155,7 @@ class FileController extends Controller
     {
         $file = TaxFile::find($id);
         $file->delete();
+        Alert::success('Success', 'File Successfuly Arhcived!');
         return redirect()->back();
     }
 
