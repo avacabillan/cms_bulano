@@ -166,7 +166,9 @@ class Admin_ClientController extends Controller
         }
         $url = 'http://127.0.0.1:8000/';
         Mail::to($client['email_address'])->send(new WelcomeMail($myuser, $url));
-        Alert::success('Success', 'Client Successfuly Added!');
+        if($myuser['name'] == $client['company_name']){
+            Alert::success('Success', 'Client Successfuly Added!');
+        }
         return redirect()->route('requestee');
 
 

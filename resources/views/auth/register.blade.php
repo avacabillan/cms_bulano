@@ -43,32 +43,40 @@
             @endforeach
         @endif
                
-        <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data" style="position: center;">
             @csrf
-            
-
-            <!-- Name -->
-            <div class="form-group">
-                
-                <x-input style="width:20rem;" class="form-control form-control-sm" id="name"  type="text" name="name" placeholder="Name" :value="old('name')" required autofocus />
+            <center>
+            <div class="row">
+                <!-- Name -->
+                <div class="form-group">
+                    
+                    <x-input style="width:20rem; margin-bottom: 1rem;" class="form-control form-control-sm" id="name"  type="text" name="name" placeholder="Name" :value="old('name')" required autofocus />
+                </div>
             </div>
-            
-           
+            <div class="row">
             <!-- Email Address -->
-            <div class="form-group">
-              
-                <x-input style="width:20rem;" class="form-control form-control-sm" id="email"  type="email" placeholder="Email" name="email" :value="old('email')" required />
+                <div class="form-group">
+                
+                    <x-input style="width:20rem; margin-bottom: 1rem;" class="form-control form-control-sm" id="email"  type="email" placeholder="Email" name="email" :value="old('email')" required />
+                </div>
             </div>
-
+            </center>
+            
+            <center>
+            <div class="row">
+            
             <!-- File -->
 
-            <div class="mb-3">
-                <label for="formFileSm" class="form-label text-light">Add File</label>
-                 <input class="form-control form-control-sm" name="cor" value="{{ old('cor') }}" type="file" style="width:20rem;">
+                <div class="mb-3">
+                    
+                    <x-input class="form-control form-control-sm" name="cor" value="{{ old('cor') }}" type="file" style="width:20rem;"/>
+                </div>
             </div>
+           
              <x-button class="btn btn-success  mt-1 mb-2 ml-4">
                     {{ __('Register') }}
-                </x-button>+
+                </x-button>
+                </center>
             <div class="footer_btn">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered? ') }}
