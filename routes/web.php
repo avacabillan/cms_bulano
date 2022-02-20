@@ -153,6 +153,8 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/view-form/{id}/{client}', [FileController::class,'viewForm'])->name('preview-forms');
     Route::get('/archives-list', [FileController::class,'getArchives'])->name('assoc-archive-list');
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
+    Route::get('/assoc-clients', [Admin_ClientController::class, 'getclients'])->name('admin.getclients'); //index
+    Route::get('/transfer-clients', [Admin_ClientController::class, 'transferclient'])->name('admin.transfer'); //index
      Route::get('/clients-list', [Admin_ClientController::class, 'index'])->name('admin-clients-list'); //index
      Route::get('/ajax/clients_list',[Admin_ClientController:: class, 'clientDatatable'])->name('ajax_clients_list');
     Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index

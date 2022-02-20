@@ -189,6 +189,22 @@ class Admin_ClientController extends Controller
         // $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
         // return view('welcome')->with("groups", $groups);
     }
+    public function getclients(Request $req)
+    {
+        $clients=Client::where("assoc_id",$req->id)->get();
+        return $clients;
+
+   }
+
+   public function transferclient(Request $req)
+   {
+    foreach($req->checkbox as $checkbox){
+        $client=Client::find($checkbox);
+        $client->assoc_id=$req->assoc;
+        $client->save();
+    }
+    return redirect()->back();
+  }
     
   
    
