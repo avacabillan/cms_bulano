@@ -171,7 +171,6 @@
                   <input type="text" class="form-control" value="" name="username">
                 </div>
                 <div class="col">
-                  <label class="form-label "><b>Password</b></label>
                   <input type="hidden" class="form-control" value="" name="password">    
                 </div>      
               </div>

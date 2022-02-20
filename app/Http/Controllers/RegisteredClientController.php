@@ -60,6 +60,7 @@ class RegisteredClientController extends Controller
         if (!is_null($requestee)){
             $requestee->delete();
         }
+        
         Alert::success('Success', 'Client Successfuly Rejected!');
         return redirect()->route('requestee');
     }
