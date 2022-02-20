@@ -25,7 +25,7 @@
           </div>
 
           <div class="input-group ">
-            <input class="form-control mt-3" id="inputGroupFile02" name="upload_file" type="file">
+            <input class="form-control mt-3" id="inputGroupFile02" name="file" type="file">
           </div>
             <button class="btn btn-success mt-2 saveBtn" type="submit" value="uploadFile" >Save</button>
     </div>
