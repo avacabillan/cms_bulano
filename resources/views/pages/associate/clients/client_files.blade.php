@@ -48,7 +48,7 @@
     <table class="rwd-table" style="width: 80%; border-radius: .4em;">
         <tbody>
             <tr>
-                <th>File Name</th>
+                <th>File Name</th> 
                 <th>Description</th>
                 <th>File Type</th>
                 <th>Action</th>

@@ -79,7 +79,7 @@ class FileController extends Controller
             $size = $request->file('file')->getSize();
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $filename = $request->name .'file'.'.' . $extension;
-            $file->move('public/files/pdfs', $filename);
+            $file->move('public/files/pdfs', $filename); 
             $taxFile ->file = $filename;
         } 
         $taxFile->save();

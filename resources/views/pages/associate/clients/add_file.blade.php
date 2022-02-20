@@ -17,7 +17,7 @@
                 
                   @endforeach
               </select>
-          </div>
+          </div> 
 
           <div class="form-floating">
             <textarea name="description" class="form-control form-control-sm" placeholder="Leave a Description here" id="floatingTextarea"></textarea>

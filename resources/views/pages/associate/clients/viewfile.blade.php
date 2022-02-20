@@ -12,4 +12,4 @@
 	<iframe height="400"  width="400" src="/public/files/pdfs/{{$file->file}}"></iframe>
  
 </body>
-</html>
+</html> 
