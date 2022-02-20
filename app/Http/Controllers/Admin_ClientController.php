@@ -56,11 +56,15 @@ class Admin_ClientController extends Controller
             $data = Client::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('associates', function ($row) {
+                    $associate=Associate::find($row->assoc_id);
+                    return $associate->name;
+                }) 
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','associates'])
                 ->make(true);
         }
     }

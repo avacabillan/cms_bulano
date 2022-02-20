@@ -11,27 +11,29 @@
 @extends('layout.master')
 @section('content')
 
-  <div class="container mt-3 pt-5"  style="height:50%; width: 70%;">
-  <a type="button" class="btn btn-primary mt-2 mb-2 me-3" href="{{route('add_associate')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add New Associate</a>
-      <div> 
-    
-      <div>
-        <h2>List of Associates</h2><hr>
-      </div>
-      <table class="table table-bordered yajra-datatable" id="assoc" style="height:50%; width: 80%;" >
-          <thead>
-                
-                <th>Name</th>
-                <th>SSS Number</th>
-                <th>Department</th>
-                <th>Action</th>
-          </thead>
-          <tbody>
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-dark card-outline me-2 ms-2">
+        <div class="card-header">
+        <a type="button" class="btn btn-primary mb-5" href="{{route('add_associate')}}" style="float: right;"><i class="fas fa-plus-circle"></i>Add New Associate</a>
 
-          </tbody>
-        </table>
+          <h3 class="card-title">List of All <b>Associates</b></h3><br>
+
+          <hr>
+          <table class="table table-bordered yajra-datatable" >
+            <thead >
+              <th >Name</th>
+              <th>SSS Number</th>
+              <th>Department</th>
+              <th >Action</th>
+            </thead> 
+            <tbody>
+          </table>
+        </div>
+      </div>
     </div>
- 
+  </div>
+
  @endsection  
 </body>
 

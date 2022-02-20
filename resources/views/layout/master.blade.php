@@ -50,7 +50,7 @@
 
      <!-- ASSOCIATE -->
     <link rel="stylesheet" href="{{asset('css/assoc_edit_client.css')}}">
-    <link rel="stylesheet" href="{{asset('css/assoc_profile.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/assoc_profile.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/assoc_add_client.css')}}">
     <!--<link rel="stylesheet" href="{{asset('css/assoc_message.css')}}">
     <link rel="stylesheet" href="{{asset('css/register.css')}}"> -->
@@ -77,7 +77,6 @@
     <link rel="stylesheet" href="{{asset('css/admin_show_msg.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('css/admin_msg.css')}}"> -->
     
-    <link rel="stylesheet" href="{{asset('css/footer.css')}}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Datatable-->
@@ -87,9 +86,10 @@
    
 </head>
 <body>
+
     <!-- Page Wrapper -->
     <div class="wrapper">
-    @include('shared.navbar')
+      @include('shared.navbar')
 
         @if (Auth::user()->role=='admin')
           @include('pages.admin.sidebar')
@@ -105,7 +105,6 @@
       <div class="content-wrapper">
         @yield('content')
       </div>
-
     </div><!-- ./wrapper -->
 
     <script defer src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->

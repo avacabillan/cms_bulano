@@ -53,7 +53,7 @@
             
             {data: 'company_name', name: 'company_name'},
             {data: 'email_address', name: 'email_address'},
-            {data: 'name', name: 'name'},
+            {data: 'associates', name: 'associates'},
             {
                 data: 'action', 
                 name: 'action', 

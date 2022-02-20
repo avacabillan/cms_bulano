@@ -1,62 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associate Profile</title>
 
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css?v=3.2.0">
+
+</head>
+<body>
+@extends('layout.master')
+@section('content')
+
+    <!-- <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                   <h1>Profile</h1>
+                </div>
+
+            </div>
+        </div>
+    </section>  -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">{{$associate->name}}</h3>
+                            <p class="text-muted text-center">{{$associate->email}}</p>
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Position</b> <a class="float-right">{{$associate->positions->position_name}}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Department</b> <a class="float-right">{{$associate->departments->department_name}}</a>
+                                </li>
+
+                            </ul>
+                             <a href="#" class="btn btn-primary btn-block"><b>Message</b></a>
+                        </div>
+
+                    </div>
+                </div>
 
 
-<div class="d-flex p-4 mt-3" style="margin-right: 20rem;" id="assocprofile" >
-  <div class="col-sm-4 user-profile" > 
-    <input class="form-control" type="hidden" value="{{$associate->id}}" name="associate_id">
-    <div class="card-block text-center text-white">      
-      </div>
-    </div>
+                <div class="col-md-8">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header p-2">
+                           <a type="button" class="btn btn-info" href="{{route('edit',$associate->id)}}" style="float: right;"><i class="fas fa-edit">Edit</i></a>
+                            <h5 class="header-title mt-2">Personal Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
 
-    <div class="col-sm-8">
-      <div class="card-block bg-light"> 
-      <a type="button" class="btn btn-primary" href="{{route('edit',$associate->id)}}"><i class="fas fa-edit">Edit</a></i>
-        
-        <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
-        <hr>
-        <h2 class="f-w-600">{{$associate->name}}</h2>
-        <p id="name" value="name">{{$associate->email}}</p>
+                                    <div class="post">
 
-        <div class="row mt-5">
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Cell Phone No.</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$associate->contact_number}}</h6>
-          </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0 text-dark">Cell Phone No.</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                {{$associate->contact_number}}
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0 text-dark">BirthDate</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                {{$associate->birth_date}}
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0 text-dark">Address</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                {{$associate->address}}
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0 text-dark">SSS Number</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                {{$associate->sss_no}}
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </div>
+              
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">BirthDate</p>
-            <h6 class="text-muted ms-2 f-w-400 text-dark">{{$associate->birth_date}}</h6>
-          </div>
-          
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Address</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$associate->address}}</h6>
-          </div>
+            </div>
+        </div>
+    </section>
+    @endsection  
 
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">SSS Number</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$associate->sss_no}}</h6>
-          </div>
+</body>
 
-          
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Department</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$associate->departments->department_name}}</h6>
-          </div>
+<script>
+    
+<script src="../../plugins/jquery/jquery.min.js"></script>
 
-          <div class="col-sm-6">
-            <p class="m-b-10 f-w-600">Position</p>
-            <h6 class="text-muted ms-2 f-w-400">{{$associate->positions->position_name}}</h6>
-          </div>
-                
-      
-      </div> 
-    </div>
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  </div>
-</div>
+<script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
 
+<script src="../../dist/js/demo.js"></script>
+</script>
+</html>
