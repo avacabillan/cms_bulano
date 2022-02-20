@@ -61,9 +61,9 @@
 
     <!-- ADMIN -->
     <link rel="stylesheet" href="{{asset('css/admin_login.css')}}">
-    <!-- <link rel="stylesheet" href="{{asset('css/sidebar.css')}}"> -->
+    <!-- <link rel="stylesheet" href="{{asset('css/sidebar.css')}}"> 
    
-    <!-- <link rel="stylesheet" href="{{asset('css/navbar.css')}}"> -->
+     <link rel="stylesheet" href="{{asset('css/navbar.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('css/admin_dashboard.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/guest_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_add_assoc.css')}}">
@@ -89,7 +89,8 @@
 <body>
     <!-- Page Wrapper -->
     <div class="wrapper">
-    
+    @include('shared.navbar')
+
         @if (Auth::user()->role=='admin')
           @include('pages.admin.sidebar')
     
@@ -99,18 +100,11 @@
         @else (Auth::user()->role=='client' )
           @include('pages.client.sidebar')
         @endif
-        @include('shared.navbar')
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         @yield('content')
-
       </div>
-
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-      </aside>
 
     </div><!-- ./wrapper -->
 
@@ -149,9 +143,9 @@
   
 
     //   <!-- CALENDAR -->
-    <script defer src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
-    <script defer src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script defer src= "https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+      <script defer src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+     <script defer src= "https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     
     // <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
