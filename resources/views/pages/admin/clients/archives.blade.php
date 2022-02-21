@@ -8,7 +8,7 @@
 @section('content')
 
 <div class="siderbar_main toggled">
-  <div class="page-content mt-5" style="margin-top:;10%;">
+  <div class="page-content mt-5" style="margin-top:10%;">
    <div class="container mt-3" style="height:50%">
    <div style="width:90%;">
     <button class="btn btn-info" onClick="window.location.reload();"><i class="fa fa-sync-alt"></i> Refresh Page</button>
@@ -16,7 +16,7 @@
                 @csrf      
                 @method('get')        
                 <div class="col-md-9 offset-md-2">
-                    <div class="input-group mb-3" style="width:60%; margin-left: 60%;">
+                    <div class="input-group" style="width:60%; margin-left: 60%;">
                     <input type="date" class="form-control" id="value1" name="fromDate">
                     <span class="input-group-text">to</span>
                     <input type="date" class="form-control" id="toDate" name="toDate">
@@ -26,8 +26,9 @@
                 </div>
                 
                 
-                </form>
-    </div>
+            </form>
+    </div><br><br><br>
+    <div class="pt-5" style="margin-top: 5%;">
     <table id="assoc-list" class="table table-bordered mt-5"  style="width:100% ">
 
                 <thead >
@@ -62,6 +63,7 @@
                 </tbody>
               
             </table>
+            </div>
     </div>
   </div>
 </div>

@@ -55,14 +55,19 @@ class Admin_ClientController extends Controller
     public function clientDatatable(Request $request) 
     {
         if ($request->ajax()) {
-            $data = Client::latest()->get();
-            return Datatables::of($data)
+            $data = Client::with('associates');
+            return Datatables::eloquent($data)
                 ->addIndexColumn()
+                ->addColumn('associates', function (Client $client) {
+                    return $client->associates->name;
+                })
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>';
+                    $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a> . 
+                                    <a href="'.route('delete_client',$row->id).'" class="edit btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                
+                ->rawColumns(['action', 'associates'])
                 ->make(true);
         }
     }
@@ -113,7 +118,10 @@ class Admin_ClientController extends Controller
     {
         $requestee = Requestee::find($id);
         $requestee->status = true;
-        $requestee->save();
+        if( $requestee->status = true){
+            $requestee->forceDelete();
+        }
+       
         
         $myuser= new User;
         $myuser->name= $request->client_name;
@@ -203,9 +211,24 @@ class Admin_ClientController extends Controller
         $client->assoc_id=$req->assoc;
         $client->save();
     }
+    Alert::success('Success', 'Client Successfuly Transfered!');
     return redirect()->back();
   }
-    
+    public function deleteClient($id){
+        $client = Client::find($id);
+        $client->tin()->delete();
+        $client->business()->delete();
+        $client->registeredAddress()->delete();
+        $client->clientTaxes()->delete();
+        $client->taxFile()->delete();
+        $client->user()->delete();
+        $client->delete();
+        if( $client){
+             Alert::success('Success', 'Clients data Successfuly Deleted!');
+             
+         }
+         return redirect()->back();
+    }
   
    
     

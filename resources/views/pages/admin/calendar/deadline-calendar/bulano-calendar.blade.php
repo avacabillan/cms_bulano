@@ -153,7 +153,7 @@
             </div>
         </div>
     </div>
-
+@include('sweetalert::alert')
 <script>
     document.addEventListener('DOMContentLoaded', function() {       
             $.ajaxSetup({

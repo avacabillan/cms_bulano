@@ -137,7 +137,8 @@
               <thead>
                   <tr>
                       <th><input type="checkbox" class="selectall" id="">Select all</th>
-                      <th>client</th>
+                      <th>Client</th>
+                      <th>Email Address</th>
                   </tr>
               </thead>
               <tbody id="data">
@@ -158,7 +159,7 @@
     </div>
   </div>
 </div>
-
+@include('sweetalert::alert')
 @section('scripts')
 
 <script>
@@ -175,6 +176,7 @@
                     $("#data").append(
                         "<tr>",
                         "<td><input type='checkbox' value='"+clients[i].id+"' name='checkbox[]' class='checkbox'></input></td>",
+                        "<td>"+clients[i].company_name+"</td>",
                         "<td>"+clients[i].email_address+"</td>",
                         "</tr>"
                     );
