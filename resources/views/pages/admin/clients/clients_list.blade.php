@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    
 </head>
 <body>
 @extends('layout.master')
@@ -21,7 +22,7 @@
           <hr>
           <table class="table table-bordered yajra-datatable" >
             <thead >
-              <th >Name</th>
+              <th >Client Name</th>
               <th>Email</th>
               <th>Associate</th>
               <th >Action</th>
@@ -33,6 +34,7 @@
     </div>
   </div>
 </div>
+@include('sweetalert::alert')
 @endsection  
 
 
@@ -41,6 +43,7 @@
 <script defer src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
 <script type="text/javascript">
   $(function () {
@@ -64,6 +67,11 @@
     });
     
   });
+
+ 
+
+  
+
 </script>
 </body>
 </html>

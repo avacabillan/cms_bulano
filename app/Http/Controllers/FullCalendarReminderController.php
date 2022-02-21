@@ -111,7 +111,8 @@ class FullCalendarReminderController extends Controller
             $deadline ->end_date = $request->end_date;
             $deadline ->taxform_id =$request ->taxform;
             $deadline ->save();
-            return redirect()->route('display-calendar')->with('success', 'Deadline has been added');
+            Alert::success('Success', 'Reminder Successfuly Added!');
+            return redirect()->route('display-calendar');
             // return view ('pages.admin.calendar.add-deadline');
         }
         public function editDeadline($id){

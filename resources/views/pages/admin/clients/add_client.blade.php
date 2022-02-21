@@ -20,9 +20,10 @@
     </div>
 
     <div class="card-body">
+    <a  class="btn btn-success" id="corImage" href="{{asset('public/files/'.$requestee->cor)}}" data-lightbox="$requestee->cor">View COR</a>
       <div class="row">
 
-       <form action="{{route('insertClient')}}" class="row"  id="addClientForm" name="addClientForm">
+       <form action="{{route('insertClient',$requestee->id)}}" class="row"  id="addClientForm" name="addClientForm">
 
         <h4 class="text-center mb-3"><b>Personal Information</b></h4>
         <div class="row">
@@ -37,11 +38,11 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control" value="" name="client_name" style="width: 100%;">
+            <input type="text" class="form-control"  value="{{$requestee->name}}"  name="client_name" style="width: 100%;">
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" value="" name="email" style="width: 100%;">
+            <input type="text" class="form-control" value="{{$requestee->email}}" name="email" style="width: 100%;">
           </div>
         </div>
 
@@ -151,21 +152,19 @@
                 </li>
               @endforeach
             </ul>
-          </div>
-
-        <div class="row pt-4">
+          </div> 
+       <div class="row pt-4">
           <div class="col-md-6">
             <div class="form-group" >
-              <label>Username</label>
-              <input type="text" class="form-control" value="" name="username">
+                <label class="form-label"><b>Username</b></label>
+                <input type="text" class="form-control" value="" name="username">
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group" >
-              <label>Passrowd</label>
-              <input type="password" class="form-control" value="" name="password">    
-            </div>
-          </div>
+              <div class="col-md-6">
+                <div class="form-group" >
+                  <input type="hidden" class="form-control" value="" name="password">    
+                </div>      
+              </div>
         </div>
         <div class="AddClient_btn" sytle="float: right;">
               <button class="btn btn-primary" type="submit" name="saveBtn" id="saveBtn" value="createClient">Submit</button>

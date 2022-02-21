@@ -28,7 +28,8 @@ class AppServiceProvider extends ServiceProvider
                           'bir-calendar','display-calendar',
                           'assoc_table','archive-list'],function($view){
 
-                            $reqs= DB::table('requestee')
+                            $reqs= DB::table('requestee')->where('status', 0)
+                            ->where('deleted_at', null)
                             ->count();
                             $birs= DB::table('reminders')
                             ->count();

@@ -48,15 +48,18 @@
     <table class="rwd-table" style="width: 80%; border-radius: .4em;">
         <tbody>
             <tr>
-                <th>File Name</th>
+                <th>File Name</th> 
                 <th>Description</th>
                 <th>File Type</th>
+                <th>Action</th>
             </tr>
             @foreach($datas as $pay)
                 <tr>
                     <td>{{$pay->file_name}}</td>
                     <td>{{$pay->description}}</td>
-                    <td>{{$pay->file_type}}</td>                       
+                    <td>{{$pay->file_type}}</td>
+                    <td><button><a href="{{url('/view',$pay->id)}}">View</a></button></td>
+                                    
                 </tr>
             @endforeach    
         </tbody>

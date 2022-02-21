@@ -60,5 +60,34 @@ class ClientController extends Controller
                 $client->taxFile;
         return view('pages.client.myprofile',compact('client'));
     }
+    public function deadlines(){
+         $client = Auth::user()->clients->id;
+        $date =Carbon::yesterday()->format('Y-m-d'); 
+        $tax_form_id = DB::table('clients')
+        ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
+        ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
+        ->where('start_date', '=', $date  )
+        ->select('tax_form_id')
+        ->get();
+       
+          //Get reminder title accord to deadline 
+        $reminders = DB::table('clients')
+        ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
+        ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
+        ->where('start_date', '=', $date  )
+        ->distinct()->get('title');
+        // dd($reminders);
+          //Get clients that has  deadline accord to tax forms
+        foreach($tax_form_id as $tax){
+            $clients = DB::table('clients')
+            ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
+            ->where('client_taxes.tax_form_id', '=' , $tax->tax_form_id)
+            ->where('clients.id', '=',$client)
+            ->pluck('email_address');
+           
+        }  
+         //dd($clients);
+         return view('read');
+    }
 
 }

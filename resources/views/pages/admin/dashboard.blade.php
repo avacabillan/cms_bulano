@@ -91,7 +91,7 @@
       <div class="container-fluid">
         <div class="row">
           @foreach ($associates as $associate )
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6" onclick="showclient({{$associate->id}})">
             <div class="small-box bg-info"><!-- small box -->
             
               <div class="inner">
@@ -107,11 +107,90 @@
               <div class="icon">
                 <i class="fa fa-users"></i>
               </div>
-              <p class="small-box-footer"><strong>{{$associate->name}}</strong></p>
+              <p class="small-box-footer" ><strong>{{$associate->name}}</strong></p>
             </div>
           </div><!-- ./col -->
           @endforeach        
         </div>
       </div>
     </section>
+    <a href="#" onclick="showclient()"></a>
+
+  <!-- Modal -->
+<div class="modal" id="transfer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary ">
+        <h5 class="modal-title" id="staticBackdropLabel">Transfering Clients</h5>
+        <button type="button" class="btn-close" onclick="$(this).click($('#transfer').fadeOut())"></button>
+      </div>
+      <div class="modal-body bg-light">
+        <form action="{{route('admin.transfer')}}">
+          @csrf
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th><input type="checkbox" class="selectall" id="">Select all</th>
+                      <th>Client</th>
+                      <th>Email Address</th>
+                  </tr>
+              </thead>
+              <tbody id="data">
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td><select name="assoc" id="">
+                  @foreach ($associates as $associate )
+                    <option value="{{$associate->id}}">{{$associate->name}}</option>
+                  @endforeach 
+                  </select></td>
+                  <td><button class="btn btn-success" type="submit">Transfer</button></td>
+                </tr>
+              </tfoot>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@include('sweetalert::alert')
+@section('scripts')
+
+<script>
+  function showclient(id){
+    $("#data").html('');
+    $("#transfer").fadeIn();
+    $.ajax({    
+                type: 'get',
+                url: "{{route('admin.getclients')}}",
+                data:{ id: id},
+            })
+            .done(function(clients){
+              for(i=0;i<clients.length;i++){
+                    $("#data").append(
+                        "<tr>",
+                        "<td><input type='checkbox' value='"+clients[i].id+"' name='checkbox[]' class='checkbox'></input></td>",
+                        "<td>"+clients[i].company_name+"</td>",
+                        "<td>"+clients[i].email_address+"</td>",
+                        "</tr>"
+                    );
+                }
+            });
+  }
+
+  $(document).on('click','.selectall',function(){
+        if(this.checked){
+            $(".checkbox").each(function(){
+                this.checked=true;
+            });
+        }else{
+            $('.checkbox').each(function(){
+                this.checked=false;
+            });
+        }
+    })
+</script>
+
 @stop
+@stop
+

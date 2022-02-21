@@ -17,6 +17,7 @@ use App\Models\RegisteredAddress;
 use App\Models\LocationAddress;
 use App\Models\Group;
 use App\Models\TaxForm;
+use App\Models\Requestee;
 use App\Models\TaxType;
 use App\Models\TaxFile;
 use App\Models\ClientTax;
@@ -24,7 +25,8 @@ use App\Models\Tin;
 use App\Models\User;
 use App\Models\Reminder;
 use DataTables;
-
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class Admin_ClientController extends Controller
 {
@@ -53,18 +55,19 @@ class Admin_ClientController extends Controller
     public function clientDatatable(Request $request) 
     {
         if ($request->ajax()) {
-            $data = Client::latest()->get();
-            return Datatables::of($data)
+            $data = Client::with('associates');
+            return Datatables::eloquent($data)
                 ->addIndexColumn()
-                ->addColumn('associates', function ($row) {
-                    $associate=Associate::find($row->assoc_id);
-                    return $associate->name;
-                }) 
+                ->addColumn('associates', function (Client $client) {
+                    return $client->associates->name;
+                })
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>';
+                    $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a> . 
+                                    <a href="'.route('delete_client',$row->id).'" class="edit btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action','associates'])
+                
+                ->rawColumns(['action', 'associates'])
                 ->make(true);
         }
     }
@@ -86,8 +89,9 @@ class Admin_ClientController extends Controller
         return view('pages.admin.clients.client_profiles', compact('client',$client));
      
     }
-    public function create()
+    public function create($id)
     {
+        $requestee = Requestee::find($id);
         $modes= ModeOfPayment::all();
         $corporates= Corporate::all();
         $taxForms= TaxForm::all();
@@ -99,6 +103,7 @@ class Admin_ClientController extends Controller
         $registered_address = RegisteredAddress::all();
 
         return view ('pages.admin.clients.add_client')
+            ->with('requestee',$requestee)
             ->with('modes',$modes)
             ->with('corporates',$corporates)
             ->with('taxForms',$taxForms)
@@ -109,15 +114,22 @@ class Admin_ClientController extends Controller
             ->with('myusers',$users)
             ->with('registered_address', $registered_address);
     }
-    public function insertClient(Request $request )
+    public function insertClient(Request $request, $id )
     {
+        $requestee = Requestee::find($id);
+        $requestee->status = true;
+        if( $requestee->status = true){
+            $requestee->forceDelete();
+        }
+       
+        
         $myuser= new User;
         $myuser->name= $request->client_name;
         $myuser->role='client';
         $myuser->email=$request->username;
-        $myuser->password=Hash::make($request->password);
+        $myuser->password=Hash::make($request->username);
         $myuser->save();
-
+        
         $client =new Client();
         $client->user_id=$myuser->id;
         $client ->company_name = $request->client_name;
@@ -160,7 +172,11 @@ class Admin_ClientController extends Controller
                 }
             
         }
-        Alert::success('Success', 'Client Successfuly Added!');
+        $url = 'http://127.0.0.1:8000/';
+        Mail::to($client['email_address'])->send(new WelcomeMail($myuser, $url));
+        if($myuser['name'] == $client['company_name']){
+            Alert::success('Success', 'Client Successfuly Added!');
+        }
         return redirect()->route('requestee');
 
 
@@ -181,7 +197,38 @@ class Admin_ClientController extends Controller
         // $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
         // return view('welcome')->with("groups", $groups);
     }
-    
+    public function getclients(Request $req)
+    {
+        $clients=Client::where("assoc_id",$req->id)->get();
+        return $clients;
+
+   }
+
+   public function transferclient(Request $req)
+   {
+    foreach($req->checkbox as $checkbox){
+        $client=Client::find($checkbox);
+        $client->assoc_id=$req->assoc;
+        $client->save();
+    }
+    Alert::success('Success', 'Client Successfuly Transfered!');
+    return redirect()->back();
+  }
+    public function deleteClient($id){
+        $client = Client::find($id);
+        $client->tin()->delete();
+        $client->business()->delete();
+        $client->registeredAddress()->delete();
+        $client->clientTaxes()->delete();
+        $client->taxFile()->delete();
+        $client->user()->delete();
+        $client->delete();
+        if( $client){
+             Alert::success('Success', 'Clients data Successfuly Deleted!');
+             
+         }
+         return redirect()->back();
+    }
   
    
     

@@ -31,6 +31,9 @@ class DashboardController extends Controller
             return view ('pages.client.dashboard', compact('clients'));
         }
     }
+    public function assocClient($id){
+        
+    }
    
   
    

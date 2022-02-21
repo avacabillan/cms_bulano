@@ -13,7 +13,7 @@ class ApprovalMiddleware
         if(auth()->check()){
             if(!auth()->user()->approved){
                 auth()->logout();
-                return redirect()->route('login')->with('message','Your account needs an approval in order to login  ');
+                return redirect()->route('login')->with('message','Your account needs an approval from the admin, wait for email within 3 days ');
             }
         }
         return $next($request);
