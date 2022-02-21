@@ -152,6 +152,7 @@ Route::middleware(['logout'])->group(function(){
     Route::resource('upload', FileController::class);
     Route::get('/view-form/{id}/{client}', [FileController::class,'viewForm'])->name('preview-forms');
     Route::get('/archives-list', [FileController::class,'getArchives'])->name('assoc-archive-list');
+    Route::get('/view/{id}',[FileController::class,'view'])->name('view'); 
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
     Route::get('/assoc-clients', [Admin_ClientController::class, 'getclients'])->name('admin.getclients'); //index
     Route::get('/transfer-clients', [Admin_ClientController::class, 'transferclient'])->name('admin.transfer'); //index

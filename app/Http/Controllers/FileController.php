@@ -67,13 +67,35 @@ class FileController extends Controller
         $taxFile->client_id =$request->client_id;
         $taxFile->file_name =$request->filename;
         $taxFile->description= $request->description;
-        $taxFile->file_type =  $request->file('upload_file')->guessExtension();
+        $taxFile->file_type =  $request->file('file')->guessExtension(); 
+
+        if ($request->hasfile('file'))
+        {
+            $request->validate([
+                'file' => 'required|mimes:image,jpg,png,jpeg,gif,svg,pdf|max:2048',
+            ]);
+            
+            $file = $request->file('file');
+            $size = $request->file('file')->getSize();
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename = $request->name .'file'.'.' . $extension;
+            $file->move('public/files/pdfs', $filename); 
+            $taxFile ->file = $filename;
+        } 
         $taxFile->save();
 
 
       
         return redirect()->back();
 
+    }
+    public function view($id)
+    {
+        $file = TaxFile::find($id);
+ 
+        return view('pages.associate.clients.viewfile',compact('file'));
+ 
+ 
     }
  
 
