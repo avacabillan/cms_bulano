@@ -15,17 +15,19 @@
         </h2>
     </x-slot>
     <div class="card-body">
-      @if (session('status'))
+      <!-- @if (session('status'))
         <div class="alert alert-success" role="alert">
           {{ session('status') }}
         </div>
-      @endif
-        {{ __('You are logged in as Associate!') }}
+      @endif -->
+        
     </div>
 
           <div class="form-group col-md-12">
-            <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
-              <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->associates->name}}</h4>
+            <div class="alert alert-success ms-3 me-3" id="assoc_dash_heading" role="alert">
+              <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->associates->name}} 
+              {{ __('You are logged in as Associate!') }}
+              </h4>
               <input type="hidden" value="{{Auth::user()->associates->id}}" name="assoc_id">
           </div>
         </div>
@@ -62,7 +64,7 @@
                     <th>Contact Number</th>
                     <th>OCN</th>
                     <th>Action</th>
-                    <th>QR</th>
+                    <!-- <th>QR</th> -->
                   
                   </tr>
                 </thead>
@@ -74,7 +76,7 @@
                     <td>{{$client->contact_number}}</td>
                     <td>{{$client->ocn}}</td> 
                     <td><a href="{{route('clientProfile', $client->id)}}" class="btn btn-success btn-sm">View</a></td>
-                    <td><a href="{{ route('generate',$client->id) }}" class="btn btn-danger">Generate</a></td>
+                    <!-- <td><a href="{{ route('generate',$client->id) }}" class="btn btn-danger">Generate</a></td> -->
                   </tr>
                   @endforeach
                 </tbody>
@@ -90,7 +92,13 @@
   </div>
 
 
-
+  <script type="text/javascript">
+        setTimeout(function () {
+  
+            // Closing the alert
+            $('#assoc_dash_heading').alert('close');
+        }, 5000 );
+    </script>
 @stop
 
 

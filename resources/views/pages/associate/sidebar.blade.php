@@ -88,13 +88,13 @@
         </ul>
       <!-- sidebar-content  -->
     <div class="sidebar-footer">
-      
+<!--       
       <a href="{{'logout'}}">
         <i class="fal fa-sign-out-alt"></i>
       </a>
       <a href="#">
         <i class="fa fa-power-off"></i>
-      </a>
+      </a> -->
     </div>
     <!-- sidebar-footer  -->
       <!-- END OF FOOTER -->

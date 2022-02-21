@@ -28,10 +28,9 @@ class MessagesController extends Controller
             ->orderBy('messages.created_at','desc')
             ->where('role','client')
             ->get()->groupBy('sender');
-            
-        return view("pages.associate.message.associate_messages")->with("messages", $messages) 
-                                                         ->with("users", $users)
-                                                         ->with("recipients", $recipients);
+            // dd(Auth::user()->id);
+                                                         
+        return view("pages.associate.message.associate_messages",compact('messages', $messages,'users', $users,'recipients', $recipients));
 
     }
     public function associateMessageShow(Request $request, $id){

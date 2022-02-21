@@ -12,17 +12,18 @@
             {{ __('Dashboard for Admin') }}
         </h2>
       </x-slot>
-      <div class="card-body">
+      <!-- <div class="card-body">
         @if (session('status'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success" id="alert" role="alert">
           {{ session('status') }}
+          
         </div>
         @endif
-          {{ __('You are logged in as Admin!') }}
-      </div>
+        
+      </div> -->
       <div class="form-group col-md-12">
-        <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
-          <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->name}}</h4>
+        <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert" >
+          <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->name}} {{ __('You are logged in as Admin!') }}</h4>
         </div>
       </div>
     </div><!-- /.row -->
@@ -190,6 +191,13 @@
         }
     })
 </script>
+<script type="text/javascript">
+        setTimeout(function () {
+  
+            // Closing the alert
+            $('#admin_dash_heading').alert('close');
+        }, 5000 );
+    </script>
 
 @stop
 @stop

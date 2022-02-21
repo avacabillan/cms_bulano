@@ -1,4 +1,5 @@
-<div class="modal" id="compose_msg" tabindex="-2" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal" id="compose_msg {{Auth::user()->id}}" tabindex="-2" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  
   <div class="modal-dialog">
 
     <div class="modal-content">

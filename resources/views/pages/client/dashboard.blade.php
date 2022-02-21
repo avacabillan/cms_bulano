@@ -14,16 +14,17 @@
             </h2>
           </x-slot>
           <div class="card-body text-dark-800 text-center bg-light">
-            @if (session('status'))
+            <!-- @if (session('status'))
               <div class="alert alert-success" role="alert">
                 {{ session('status') }}
               </div>
-            @endif
-              {{ __('You are logged in as Client!') }}
+            @endif -->
 
             <div class="form-group col-md-12">
-              <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert">
-                <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->clients->company_name}}</h4>
+              <div class="alert alert-success ms-3 me-3" id="client_dash_heading" role="alert">
+                <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->clients->company_name}} {{ __('You are logged in as Client!') }}
+
+                </h4>
               
             </div>
           </div>
@@ -51,6 +52,12 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div><!-- /.content -->
-    
+    <script type="text/javascript">
+        setTimeout(function () {
+  
+            // Closing the alert
+            $('#client_dash_heading').alert('close');
+        }, 5000 );
+    </script>
 
 @stop

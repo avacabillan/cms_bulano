@@ -46,42 +46,15 @@
        <strong class="pb-3" >Legends</strong>
          <div class="cont" id="list">
          
-         <span class="dot2 pb-2"></span><strong>  Automated Email for Reminding</strong><br>
-         <span class="dot3 pb-2"></span><strong>  Sending Email to Client</strong><br>
-         <span class="dot1 pb-2"></span><strong>  Internal Deadline</strong><br>
+         <span class="dot2 pb-2"></span><strong>  Internal Deadline</strong><br>
+         <span class="dot1 pb-2"></span><strong>  BIR Deadline</strong><br>
          </div>
          
            
        </div> 
     </div> 
 
-    <div class="container2 vertical-scrollable" > 
-       
-       <div class="card2  list">
-      
-         <div class="cont" id="list">
-         
-         <div id='external-events'>
-        <p>
-        <strong>Recent Reminders</strong>
-        </p>
-        @foreach ($deadlines as $deadline)
-        <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-            <div class='fc-event-main'>{{$deadline->title}}</div>
-        </div>
-        @endforeach
-         <div>
-         <p>
-            <input type='checkbox' id='drop-remove' />
-            <label for='drop-remove'>remove after drop</label>
-        </p>
-         </div>           
-       
-        </div>
-         
-           
-       </div> 
-    </div> 
+    
 
 
 <!-- Add BIR REMINDER Modal -->
@@ -137,16 +110,7 @@
 
 
 
-                    <!-- <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="form-group col-md-4">
-                        <strong> Select According to Reminder </strong>  
-                        <select name="color" class="form-control">
-                            <option style="background-color: #7f9cdb;" value="#7f9cdb">Automated Email Sending</option>
-                            <option style="background-color: #25df5d;" value="#25df5d">Sending Email Manually</option>
-                            <option style="background-color: #ff0000;" value="#ff0000">Internal Deadline</option>           
-                        </select> 
-                    </div> -->
+                    
                     
                 </form>
                 </div>
@@ -161,21 +125,31 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
             })
-            
-            
-            var Draggable = FullCalendar.Draggable;
-            var containerEl = document.getElementById('external-events');
+            var fcSources = {
+       
+        loadEwsEvents: {
+            url: "/TaxEvent",
+            type: "GET",
+            color: "#FF6347",
+            textColor: "#000000",
+            cache: true,
+            editable: false,
+            disableDragging: true,
+            className: "events",
+            data:  {
+                start: "start",
+                end: "end",
+                id: "id",
+                title: "reminder"
+            },
+            error: function() {
+                console.log("Error in loadEWSEvents: " + data);
+            },
+        }
+    };
+       
             var calendarEl = document.getElementById('calendar');
-            var checkbox = document.getElementById('drop-remove');
-            var calendarEl = document.getElementById('calendar');
-            new Draggable(containerEl, {
-                itemSelector: '.fc-event',
-                eventData: function(eventEl) {
-                return {
-                    title: eventEl.innerText
-                };
-                }
-            });
+        
             var calendar = new FullCalendar.Calendar(calendarEl,{
                 headerToolbar: {
                     start: 'today', 
@@ -183,6 +157,10 @@
                     end: 'prevYear prev,next nextYear'
                 },
                 
+                eventSources: [
+            
+                 fcSources.loadEwsEvents,
+                ],
                 timeZone: 'UTC',
                 initialView: 'dayGridMonth',
                 selectable: true, 
@@ -190,13 +168,7 @@
                 droppable: true,
                 dayMaxEvents: true,
                 overLap:true,
-                drop: function(info) {
-                    // is the "remove after drop" checkbox checked?
-                    if (checkbox.checked) {
-                        // if so, remove the element from the "Draggable Events" list
-                        info.draggedEl.parentNode.removeChild(info.draggedEl);
-                    }
-                }, 
+                
                 select: function(info) {
                     
                     $('#saveBtn').val("createReminder");
@@ -208,23 +180,26 @@
                 },   
                 events:function(info, successCallback, failureCallback){
                    
-                    var containerEl = document.getElementById('external-events');
+                   
                     var title = info.title;
                     var start_date = info.start_date;
                     var end_date = info.end_date;
                     // console.log(reminder,start,end);
                     
-                    $.ajax({
+                    $.ajax(
+                        {
                         url: '/getDeadlines',
                         method: "GET", 
                         contentType: 'application/json',          
-                       data:{
+                        data:{
                            'reminder': title,
                            'start': start_date,
                            'end': end_date ,
                        },
+                      
                         success: function (response) {
                             var events = [];
+                            
                             
                             // console.log(response);
 

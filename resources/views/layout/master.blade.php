@@ -64,10 +64,10 @@
 
     <!-- ADMIN -->
     <link rel="stylesheet" href="{{asset('css/admin_login.css')}}">
-    <!-- <link rel="stylesheet" href="{{asset('css/sidebar.css')}}"> 
    
-     <link rel="stylesheet" href="{{asset('css/navbar.css')}}"> -->
-    <!-- <link rel="stylesheet" href="{{asset('css/admin_dashboard.css')}}"> -->
+   
+     <link rel="stylesheet" href="{{asset('css/navbar.css')}}"> 
+  
     <link rel="stylesheet" href="{{asset('css/guest_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_add_assoc.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_assoc_list.css')}}">
@@ -112,7 +112,7 @@
 
     <script defer src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script  src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script  src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!-- alert toaster -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
@@ -121,7 +121,7 @@
 
 
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
