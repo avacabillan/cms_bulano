@@ -31,9 +31,9 @@
 
                     @else
                       <tr style="float: left;">
-                        <td class="recipient-name" name='{{$recipient->id}}' style="cursor: pointer;">{{$recipient->name}}</td>
+                        <td><a href="{{route('associate_showmsg',$recipient->id)}}" class="recipient-name" name="id" style="cursor: pointer;">{{$recipient->name}}</a></td>
                         <td>
-                          <input type="hidden" id="recipient_id" value='{{$recipient->id}}'>
+                          <!-- <input type="hidden" name="id" id="recipient_id" value='{{$recipient->id}}'> -->
                         </td>
                       </tr>
                     @endif

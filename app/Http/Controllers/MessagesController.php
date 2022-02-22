@@ -35,24 +35,29 @@ class MessagesController extends Controller
     }
     public function associateMessageShow(Request $request, $id){
         $message = DB::table('messages')->where('sender',$request->id)
-        ->orWhere('receiver',$request->id)
-        ->orderBy('created_at', 'asc')->get();
+        
+        ->orderBy('created_at', 'asc')->get('message');
 
-    
-        return view("pages.associate.message.associate_messages")->with("messages", $messages)
-                                                                ->with("users", $users)
-                                                                ->with("sender", $sender);
+        return ($message);
+        dd($message);
+        // dd($request->id);
+        // return view("pages.associate.message.associate_messages")->with("messages", $messages)
+        //                                                         ->with("users", $users)
+        //                                                         ;
     }
     public function insertAssociateMsg(Request $request){
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
         $message->receiver = $request->name;
-        $message->read = 1;    
+        $message->read = 0;    
         
 
         $message->save();
-        Alert::success('Success', 'Message Successfuly Sent!');
+        if($message){
+            Alert::success('Success', 'Message Successfuly Sent!');
+        }
+       
         return redirect()->back();
     }
     public function replyAssociate(Request $request){
@@ -63,24 +68,24 @@ class MessagesController extends Controller
         $message->read = 1;    
         
         $message->save();
-        Alert::success('Success', 'Message Successfuly Sent!');
+        if($message){
+            Alert::success('Success', 'Message Successfuly Sent!');
+        }
         return redirect()->back();
     }
 
-    public function clientIndex(){
-        $recipients = User::All();
 
+
+
+
+
+    public function clientIndex(){
+        $users = User::All();
         $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
         
-        $users = DB::table('users')
-            ->join('messages', 'users.id', '=', 'messages.sender')
-            ->select('users.*','messages.sender')
-            ->orderBy('messages.created_at','desc')
-            ->get()->groupBy('sender');
             
         return view("pages.client.client_message")->with("messages", $messages) 
-                                                         ->with("users", $users)
-                                                         ->with("recipients", $recipients);
+                                                    ->with("users", $users);
 
     }
     public function clientMessageShow(Request $request, $id){
