@@ -26,7 +26,7 @@
           <div class="form-group col-md-12">
             <div class="alert alert-success ms-3 me-3" id="assoc_dash_heading" role="alert">
               <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->associates->name}} 
-              {{ __('You are logged in as Associate!') }}
+              
               </h4>
               <input type="hidden" value="{{Auth::user()->associates->id}}" name="assoc_id">
           </div>
@@ -64,6 +64,8 @@
                     <th>Contact Number</th>
                     <th>OCN</th>
                     <th>Action</th>
+                    <th>Deadlines</th>
+                    
                     <!-- <th>QR</th> -->
                   
                   </tr>
@@ -76,7 +78,9 @@
                     <td>{{$client->contact_number}}</td>
                     <td>{{$client->ocn}}</td> 
                     <td><a href="{{route('clientProfile', $client->id)}}" class="btn btn-success btn-sm">View</a></td>
-                    <!-- <td><a href="{{ route('generate',$client->id) }}" class="btn btn-danger">Generate</a></td> -->
+                    <td><a href="{{ route('generate',$client->id) }}" class="btn btn-info btn-sm"> View Deadlines</a></td> 
+                    
+                     
                   </tr>
                   @endforeach
                 </tbody>
@@ -91,7 +95,7 @@
             
   </div>
 
-
+@include('sweetalert::alert')
   <script type="text/javascript">
         setTimeout(function () {
   

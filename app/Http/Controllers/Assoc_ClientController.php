@@ -22,7 +22,9 @@ use App\Models\ClientTax;
 use App\Models\Tin;
 use App\Models\User;
 use App\Models\Reminder;
-use DataTables;
+use \Yajra\Datatables\Datatables;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 class Assoc_ClientController extends Controller
 {
     
@@ -119,17 +121,34 @@ class Assoc_ClientController extends Controller
         return redirect()->route('dashboard')->with('message', 'Updated Successfully!');
     }
 
-    public function generate ($id)
+    public function clientDeadline($id)
     {
         
-        $clients = DB::table('clients')
-        ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
+        $date =Carbon::now()->format('Y-m-d'); 
+
+        $reminders = DB::table('client_taxes')
+        ->join('clients','client_taxes.client_id' , '=','clients.id' )
+        ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
         ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
-        ->where('client_taxes.client_id', '=' , $id)
-        ->select('tax_form_no')
+        ->where('start_date', '=', $date  )
+        ->where('clients.id', '=',$id)
+        ->where('client_taxes.status', 0)
+        ->select('title', 'start_date','client_tax_forms.tax_form_no', 'client_taxes.status','client_taxes.id')
         ->get();
-        $qrcode = QrCode::size(400)->generate($clients);
-        return view('pages.associate.qrcode',compact('qrcode'));
+        return view('pages.associate.clients.deadlines',compact('reminders'));
+    }
+    public function changeStatus( $id)
+    {
+        $clientTax = ClientTax::find($id);
+        
+        if( $clientTax->status==False){
+            $clientTax->status=1;
+        }else{
+            $clientTax->status=0;
+        }
+        $clientTax->save();
+        
+        return redirect()->back();
     }
 
 
