@@ -15,23 +15,22 @@
 @extends('layout.master')
 @section('content')
 
-    <!-- <section class="content-header">
+    <section class="content-header">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row mb-0">
                 <div class="col-sm-6">
-                   <h1>Profile</h1>
+                    <h5><a href="{{route('associates_list')}}"><b>Associate List</b></a></h5>               
                 </div>
-
             </div>
         </div>
-    </section>  -->
+    </section> 
 
     <section class="content">
         <div class="container-fluid">
             <div class="row">
 
                 <div class="col-md-4">
-                    <div class="card card-primary card-outline">
+                    <div class="card">
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
@@ -55,7 +54,7 @@
 
 
                 <div class="col-md-8">
-                    <div class="card card-primary card-outline">
+                    <div class="card">
                         <div class="card-header p-2">
                            <a type="button" class="btn btn-info" href="{{route('edit',$associate->id)}}" style="float: right;"><i class="fas fa-edit">Edit</i></a>
                             <h5 class="header-title mt-2">Personal Information</h5>
