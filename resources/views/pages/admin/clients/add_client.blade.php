@@ -6,9 +6,9 @@
 
 @section('content')  
 
-<section class="content-header">
+<div class="content-header">
   <div class="container-fluid">
-    <div class="row=">
+    <div class="row">
       <div class="col-sm-6">
         <h1>Add Client</h1>
       </div>
@@ -175,6 +175,6 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 
-@endsection
+@stop
