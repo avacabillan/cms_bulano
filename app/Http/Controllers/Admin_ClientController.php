@@ -24,7 +24,7 @@ use App\Models\ClientTax;
 use App\Models\Tin;
 use App\Models\User;
 use App\Models\Reminder;
-use DataTables;
+use \Yajra\Datatables\Datatables;
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -62,7 +62,7 @@ class Admin_ClientController extends Controller
                     return $client->associates->name;
                 })
                 ->addColumn('action', function($row){
-                    $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a> . 
+                    $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>  
                                     <a href="'.route('delete_client',$row->id).'" class="edit btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
@@ -167,7 +167,7 @@ class Admin_ClientController extends Controller
                 if (in_array($val, $request->taxesChecked)){
                     $client_tax_form->tax_form_id =$request ->taxesChecked[$key];
                     $client_tax_form->client_id =$client->id; 
-                    $client_tax_form->status = 'pending';
+                    $client_tax_form->status = false;
                     $client_tax_form->save();
                 }
             

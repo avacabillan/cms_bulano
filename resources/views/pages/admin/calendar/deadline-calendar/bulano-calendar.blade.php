@@ -127,25 +127,25 @@
             })
             var fcSources = {
        
-        loadEwsEvents: {
-            url: "/TaxEvent",
-            type: "GET",
-            color: "#FF6347",
-            textColor: "#000000",
-            cache: true,
-            editable: false,
-            disableDragging: true,
-            className: "events",
-            data:  {
-                start: "start",
-                end: "end",
-                id: "id",
-                title: "reminder"
-            },
-            error: function() {
-                console.log("Error in loadEWSEvents: " + data);
-            },
-        }
+            loadEwsEvents: {
+                url: "/TaxEvent",
+                type: "GET",
+                color: "#FF6347",
+                textColor: "#000000",
+                cache: true,
+                editable: false,
+                disableDragging: true,
+                className: "events",
+                data:  {
+                    start: "start",
+                    end: "end",
+                    id: "id",
+                    title: "reminder"
+                },
+                error: function() {
+                    console.log("Error in loadEWSEvents: " + data);
+                },
+            }
     };
        
             var calendarEl = document.getElementById('calendar');

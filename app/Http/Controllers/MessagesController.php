@@ -94,9 +94,7 @@ class MessagesController extends Controller
         ->orderBy('created_at', 'asc')->get();
 
     
-        return view("pages.client.client_message")->with("messages", $messages)
-                                                                ->with("users", $users)
-                                                                ->with("sender", $sender);
+        return view("pages.client.client_message")->with("message", $message);
     }
     public function insertClientMsg(Request $request){
         $message = new Message();

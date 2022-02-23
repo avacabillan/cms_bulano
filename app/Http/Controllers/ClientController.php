@@ -23,12 +23,12 @@ use App\Models\Tin;
 use App\Models\User;
 use App\Models\Reminder;
 use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
     public function index(){
-     
+        
         return view('pages.client.dashboard');
     }
 
@@ -61,7 +61,7 @@ class ClientController extends Controller
         return view('pages.client.myprofile',compact('client'));
     }
     public function deadlines(){
-         $client = Auth::user()->clients->id;
+        $client = Auth::user()->clients->id;
         $date =Carbon::yesterday()->format('Y-m-d'); 
         $tax_form_id = DB::table('clients')
         ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')

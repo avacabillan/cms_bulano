@@ -73,14 +73,14 @@
             </a>
           </li>
         </ul>
-        <div class="sidebar-footer">
+        {{-- <div class="sidebar-footer">
           <a href="{{'logout'}}">
             <i class="fal fa-sign-out-alt"></i>
           </a>
           <a href="#">
             <i class="fa fa-power-off"></i>
           </a>
-        </div><!-- sidebar-footer  -->
+        </div><!-- sidebar-footer  --> --}}
       </nav>
       <!-- /.sidebar-menu -->
     </div>
