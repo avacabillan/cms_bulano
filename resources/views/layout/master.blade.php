@@ -65,8 +65,7 @@
     <!-- ADMIN -->
     <link rel="stylesheet" href="{{asset('css/admin_login.css')}}">
    
-   
-     <link rel="stylesheet" href="{{asset('css/navbar.css')}}"> 
+
   
     <link rel="stylesheet" href="{{asset('css/guest_list.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin_add_assoc.css')}}">
@@ -108,7 +107,8 @@
       <div class="content-wrapper">
         @yield('content')
       </div>
-    </div><!-- ./wrapper -->
+    </div>
+    <!-- ./wrapper -->
 
     <script defer src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- used font awesome -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

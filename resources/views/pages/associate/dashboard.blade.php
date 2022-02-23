@@ -78,7 +78,7 @@
                     <td>{{$client->contact_number}}</td>
                     <td>{{$client->ocn}}</td> 
                     <td><a href="{{route('clientProfile', $client->id)}}" class="btn btn-success btn-sm">View</a></td>
-                    <td><a href="{{ route('generate',$client->id) }}" class="btn btn-info btn-sm"> View Deadlines</a></td> 
+                    <td><a href="{{ route('deadlines',$client->id) }}" class="btn btn-info btn-sm"> View Deadlines</a></td> 
                     
                      
                   </tr>

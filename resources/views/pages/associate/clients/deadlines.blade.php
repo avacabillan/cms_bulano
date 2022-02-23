@@ -38,7 +38,7 @@
                       @else 
                         <td><a href="{{route('update-status', $deadline->id)}}" class="btn btn-success btn-sm" >Processed</a></td>
                       @endif
-                    <td><button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#declarationModal">Attach Computation</button></td>
+                    <td><a type="button" class="btn btn-success btn-sm" data-id="{{$deadline->id}}" data-bs-toggle="modal" data-bs-target="#declarationModal">Attach Computation</a></td>
 
                       
                     </tr>
@@ -47,26 +47,7 @@
               
             </table>
 <!--Declaration Attachment Modal -->
-<div class="modal" id="declarationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Attach File</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form action="" method="post">
-            <label for="">Attach Declaration Tax</label><br>
-            <input type="file" name="" id=""><br><br>
-            <button type="submit" class="btn btn-success" style="float: right;">Upload</button>
-            </form>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-    </div>
-  </div>
+<!--  -->
 
 @stop
 

@@ -145,9 +145,10 @@ Route::middleware(['logout'])->group(function(){
     Route::post('/deleteSelectedClient',[Assoc_ClientController::class,'deleteSelectedClient'])->name('delete.selected.client'); //destroy
     Route::get('/assoc-clients-list', [Assoc_ClientController::class, 'index'])->name('assoc-clients-list'); //index
     Route::get('/clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
-    Route::get('view-deadlines/{id}', [Assoc_ClientController::class, 'clientDeadline'])->name('generate');
+    Route::get('view-deadlines/{id}', [Assoc_ClientController::class, 'clientDeadline'])->name('deadlines');
     Route::get('update-status/{id}', [Assoc_ClientController::class, 'changeStatus'])->name('update-status');
-    
+    Route::put('attach-declaration/{id}', [Assoc_ClientController::class, 'declarationAttach'])->name('attach-declaration');
+
       
     //-------------Assoc Tax Files Route---------------//
     
