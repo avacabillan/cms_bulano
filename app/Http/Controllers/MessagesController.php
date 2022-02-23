@@ -18,7 +18,7 @@ class MessagesController extends Controller
     public $recipients;
 
     public function associateIndex(){
-        $recipients = User::All();
+       
 
         $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
         
@@ -30,20 +30,18 @@ class MessagesController extends Controller
             ->get()->groupBy('sender');
             // dd(Auth::user()->id);
                                                          
-        return view("pages.associate.message.associate_messages",compact('messages', $messages,'users', $users,'recipients', $recipients));
+        return view("pages.associate.message.associate_messages",compact('messages', $messages,'users', $users));
 
     }
     public function associateMessageShow(Request $request, $id){
-        $message = DB::table('messages')->where('sender',$request->id)
+        $message = DB::table('messages')->where('sender',$id)
         
         ->orderBy('created_at', 'asc')->get('message');
 
-        return ($message);
-        dd($message);
+        // return ($message);
+       // dd($message);
         // dd($request->id);
-        // return view("pages.associate.message.associate_messages")->with("messages", $messages)
-        //                                                         ->with("users", $users)
-        //                                                         ;
+        return view("pages.associate.message.associate_messages")->with("message", $message) ;
     }
     public function insertAssociateMsg(Request $request){
         $message = new Message();

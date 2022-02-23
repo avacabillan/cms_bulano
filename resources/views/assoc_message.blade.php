@@ -13,7 +13,7 @@
             <div class="doctor-sender mt-5">
                 <div class="card">
                     <div class="card-header">
-                        <h6>CLINIC STAFF</h6>
+                        <h6>CLIENTS</h6>
                     </div>
                     <div class="card-body doctormsg_card_body">
                         @foreach($users as $user)
@@ -21,7 +21,7 @@
 
                             @else
                             <div class="form-group">
-                                <a class="user"  name='{{$user->first()->id}}'>{{$user->first()->username}}</a>
+                                <a class="user"  name='{{$user->first()->id}}'> {{$user->first()->name}}</a>
                             </div>
                             @endif
                         @endforeach

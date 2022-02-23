@@ -23,20 +23,23 @@ class InternalMessagesController extends Controller
     // }
     public function doctorIndex(){
         
-        $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
-        
+        $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
+        $id = Auth::user()->associates->id;
         $users = DB::table('users')
-            ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
-            ->select('users.*','tbl_messages.sender')
-            ->orderBy('tbl_messages.created_at','desc')
-            ->where('rank','patient')
+         
+            ->join('clients', 'users.id', '=', 'clients.user_id'  )
+            ->join('messages', 'users.id', '=', 'messages.sender')
+            ->select('users.*','messages.sender')
+            ->orderBy('messages.created_at','desc')
+            ->where('role','client')
+            ->where('clients.assoc_id',$id )
             ->get()->groupBy('sender');
-            
-        return view("pages.messaging.message-doctor")->with( compact("messages", $messages,
+            // dd($users);
+        return view("assoc_message")->with( compact("messages", $messages,
                                                     "users", $users));
     }
     public function doctorMessageShow(Request $request, $id){
-        $message = DB::table('tbl_messages')->where('sender',$request->id)
+        $message = DB::table('messages')->where('sender',$request->id)
         ->orWhere('receiver',$request->id)
         ->orderBy('created_at', 'asc')->get();
 
@@ -64,15 +67,23 @@ class InternalMessagesController extends Controller
         return redirect()->route('message-doctor');
     }
 
-    public function clientIndex(){
+    public function patientIndex(){
         $users = User::all();
         $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
-
+        $receiver = Auth::user()->associates;
+        // $receiver = Auth::user()->clients->assoc_id;
+        // $rec = db::table('users')
+        // ->join('associates', 'users.id', '=','associates.user_id')
+        // ->join('clients', 'associates.id', '=', 'clients.assoc_id')
+        // ->where('clients.assoc_id', '=',  $receiver)
+        // ->select('associates.user_id')
+        // ->get();
+         dd($receiver);
         return view("client_message")->with("messages", $messages)->with("users", $users);
     }
 
     public function insertClientMsg(Request $request){
-
+        
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
@@ -84,11 +95,10 @@ class InternalMessagesController extends Controller
         //     $image_file->move(public_path('imgfileMessages'), $imagefileName);
         //     $message->img_file = $imagefileName;
         // }
-
+        
         $message->read = 1;
-        $message->receiver = 2;
+        $message->receiver =   2;
         $message->save();
-
         return redirect()->back();
     }
 

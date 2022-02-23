@@ -209,7 +209,11 @@ Route::get('/client_message', [InternalMessagesController::class, "clientIndex"]
 Route::post('/client_composemsg', [InternalMessagesController::class, "insertClientMsg"])->name("client_composemsg");
 // Route::post('/client_showmsg/{id}', [MessagesController::class, "clientMessageShow"])->name("client_showmsg");
 // Route::post('/client_reply', [MessagesController::class, "replyClient"])->name("client_reply");
-
+Route::get('/message-doctor', [InternalMessagesController::class, "doctorIndex"])->name("message-doctor");
+Route::post('/compose-doctormsg', [InternalMessagesController::class, "insertDoctorMsg"])->name("compose-doctormsg");
+Route::get('/show-doctormsg/{id}', [InternalMessagesController::class, "doctorMessageShow"])->name("show-doctormsg");
+Route::post('/compose-patientmsg', [InternalMessagesController::class, "insertPatientMsg"])->name("compose-patientmsg");
+Route::get('/patient-dashboard', [InternalMessagesController::class, "patientIndex"])->name("patient-dashboard");
 
  //testing routes   
 Route::get('testfullcalendar',[AdminCalendarController::class, 'index'])->name('try-calendar');
