@@ -29,6 +29,14 @@
   <!-- fullcalendar -->
   <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
 
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+
+<link rel="stylesheet" href="../../dist/css/adminlte.min.css?v=3.2.0">
+
+
     <!-- Modal css only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -48,13 +56,10 @@
      <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> -->
      
     
-    <link rel="stylesheet" href="{{asset('css/about.css')}}">
     <link rel="stylesheet" href="{{asset('css/service.css')}}">
 
      <!-- ASSOCIATE -->
     <link rel="stylesheet" href="{{asset('css/assoc_edit_client.css')}}">
-    <!-- <link rel="stylesheet" href="{{asset('css/assoc_profile.css')}}"> -->
-    <link rel="stylesheet" href="{{asset('css/assoc_add_client.css')}}">
     <!--<link rel="stylesheet" href="{{asset('css/assoc_message.css')}}">
     <link rel="stylesheet" href="{{asset('css/register.css')}}"> -->
 
@@ -142,6 +147,13 @@
     <script src="../../dist/js/demo.js"></script>
     <!-- page script -->
    
+
+
+
+<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+<script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
+
   
 
        <!-- CALENDAR -->
@@ -156,7 +168,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="{{asset('js/lightbox.js')}}"></script>
     
-    <script src="{{asset('js/sidebar.js')}}"></script>
     <script src="{{asset('js/admin_assoc_list.js')}}"></script>
    
     <script src="{{asset('js/admin_add_assoc.js')}}"></script>

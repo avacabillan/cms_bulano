@@ -1,10 +1,9 @@
+
 @extends('layout.master')
-
 @section('title')
-    Add Client
+    ADD Client
 @endsection
-
-@section('content')  
+@section('content')
 
 <div class="content-header">
   <div class="container-fluid">
@@ -176,5 +175,4 @@
     </div>
   </div>
 </div>
-
 @stop
