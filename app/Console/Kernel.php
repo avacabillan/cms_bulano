@@ -12,7 +12,10 @@ class Kernel extends ConsoleKernel
     protected $commands = [
        
         'App\Console\Commands\SendReminderEmails',
-        // 'App\Console\Commands\NotifyUsers',
+        'App\Console\Commands\ResetStatusAnnualy',
+        'App\Console\Commands\ResetStatusMonthly',
+        'App\Console\Commands\ResetStatusQuarterly',
+        
     ];
 
    
@@ -20,7 +23,15 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('reminder:emails')
-        ->everyMinute();
+        ->timezone('UTC')
+        ->dailyAt('12:00');
+        $schedule->command('reset:annual')
+        ->yearly();
+        $schedule->command('reset:monthly')
+        ->monthlyOn(1, '12:00');
+        $schedule->command('reset:quarterly')
+        ->quarterly();
+        
 
         // $schedule->command('notify:users')
         // ->everyMinute();

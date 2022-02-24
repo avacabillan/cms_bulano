@@ -60,9 +60,9 @@
 
      <!-- ASSOCIATE -->
     <link rel="stylesheet" href="{{asset('css/assoc_edit_client.css')}}">
-    <!--<link rel="stylesheet" href="{{asset('css/assoc_message.css')}}">
-    <link rel="stylesheet" href="{{asset('css/register.css')}}"> -->
-
+    
+    <!--<link rel="stylesheet" href="{{asset('css/register.css')}}"> -->
+    <link rel="stylesheet" href="{{asset('css/assoc_message.css')}}">
     <!-- CLIENT -->
     <!-- <link rel="stylesheet" href="{{asset('css/client_profile.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{asset('css/c_peofile.css')}}"> -->
@@ -169,7 +169,7 @@
     <script src="{{asset('js/lightbox.js')}}"></script>
     
     <script src="{{asset('js/admin_assoc_list.js')}}"></script>
-   
+    
     <script src="{{asset('js/admin_add_assoc.js')}}"></script>
     <script src="{{asset('js/admin_edit_assoc.js')}}"></script>
     <script src="{{asset('js/admin_notification.js')}}"></script>
@@ -188,6 +188,8 @@
     
     <script src="{{asset('js/main.js')}}"></script>
 
+    <!--messaging -->
+    <script src="{{asset('js/assoc_messaging.js')}}"></script>
     @yield('scripts')
 
 </body>

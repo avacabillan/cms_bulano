@@ -145,7 +145,8 @@
                 error: function() {
                     console.log("Error in loadEWSEvents: " + data);
                 },
-            }
+            },
+           
     };
        
             var calendarEl = document.getElementById('calendar');
@@ -160,6 +161,9 @@
                 eventSources: [
             
                  fcSources.loadEwsEvents,
+                 
+
+                 
                 ],
                 timeZone: 'UTC',
                 initialView: 'dayGridMonth',
@@ -215,6 +219,7 @@
                             successCallback(events); 
                                   
                         },
+                        
                                           
                     });                
                 },

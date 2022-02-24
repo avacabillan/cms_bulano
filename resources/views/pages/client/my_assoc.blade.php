@@ -23,7 +23,7 @@
     <div class="col-sm-8">
       <div class="card-block bg-light"> 
       <span style="font-size: 30px;">
-        <a href="#" style="float:right;" ><i class="fas fa-envelope-square"></i></a>
+        <a href="{{route('client_message')}}" style="float:right;" ><i class="fas fa-envelope-square"></i></a>
       </span>
         <h6 class="m-b-20 p-b-5b-b-default f-w-600">Personal Information</h6>
        

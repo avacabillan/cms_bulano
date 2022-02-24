@@ -19,8 +19,13 @@
                                 @foreach($taxTypes as $taxType)
                                 <option class="ml-3 text-sm"  value="{{$taxType->id}}" >{{ $taxType->tax_type }}</option>
                                 @endforeach
+                            </select><br>
+                            <select name="schedule_id"  class="form-control">
+                                <option> Select Deadline</option>
+                                @foreach($schedules as $schedule)
+                                <option class="text-sm" value="{{$schedule->id}}"  >{{ $schedule->declaration}}</option>
+                                @endforeach
                             </select>
-                            
                   
                     </div>
                     <div class="modal-footer">
