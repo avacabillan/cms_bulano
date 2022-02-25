@@ -32,39 +32,24 @@
       </div><!-- /.container-fluid -->
     </div><!-- /.content-header -->
 
-    <!-- Main content -->
-    {{-- <div class="content">
-    <h5 class="pb-2 ms-3">Forms</h5>
-      <div class="container-fluid">
-        <div class="row">
-
-          @foreach($reminders as $deadline)
-          <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box shadow">
-              <span class="info-box-icon bg-warning"><i class="fas fa-folder-open"></i></span>
-              <div class="info-box-content">
-                <h4 class="info-box-text"><b>{{$deadline->title}}</b></h4>
-              </div>
-            </div>
-          </div>
-          @endforeach
-
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div><!-- /.content --> --}}
-
-    <table  class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Title</th>
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-dark card-outline me-2 ms-2">
+        <div class="card-header">
+          <h3 class="card-title">Client Dashboard</h3><br>
+          <hr>
+          <table class="table table-bordered yajra-datatable" >
+            <thead >
+              <tr>
+            <th>Title</th>
           <th>Tax Form No</th>
           <th>Deadline</th>
           <th>Computation</th>
           <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($reminders as $deadline)
+          </tr>
+            </thead> 
+            <tbody>
+            @foreach($reminders as $deadline)
         <tr>
           <td>{{$deadline->title}}</td>
           <td>{{$deadline->tax_form_no}}</td>
@@ -77,8 +62,13 @@
         @endif
         </tr>
         @endforeach
-      </tbody>
-    </table>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
   @include('sweetalert::alert')
 <script type="text/javascript">
     setTimeout(function () {

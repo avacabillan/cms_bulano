@@ -7,25 +7,36 @@
 
 @section('content')
 
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-dark card-outline">
+          <div class="card-header">
 
-  <div class="page-content mt-5"style="margin: top 160px;">
+            <h3 class="card-title">List of Deadlines</h3><br>
+            <hr>
+            <div class="card-tools">
+              <div class="input-group input-group-sm" style="width: 150px;">
+                  <!-- <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-    <div class="container mt-3 pt-5" style="height:50%">
-        <div>
-            <h2>List of <strong>Deadlines</strong></h2><hr>
-        </div>
-
-        <table id="assoc-list" class="table table-bordered mt-5">
-
-                <thead >
-                    <tr>
-                        <th>Title</th>
-                        <th>Tax Form No</th>
-                        <th>Deadline</th>
-                        <th>Status</th>
-                        <th>Tax Declaration</th>
-                    
-                    </tr>
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                  </div> -->
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+              <table id="assoc-list" class="table table-bordered mt-5">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Tax Form No</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                    <th>Tax Declaration</th>
+                    <!-- <th>QR</th> -->
+                  </tr>
                 </thead>
                 <tbody>
                     @foreach($reminders as $deadline)
@@ -44,11 +55,16 @@
                     </tr>
                     @endforeach
                 </tbody>
-              
-            </table>
-<!--Declaration Attachment Modal -->
-<!--  -->
+              </table>
+            </div>
+            <!-- /.card-body -->
 
+          </div>
+        </div>
+      </div>
+    </div>    <!-- /.card -->
+  </div>       
+</section>
 @stop
 
 

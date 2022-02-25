@@ -93,17 +93,7 @@
             </div>
         </div>
     </div>
-
-<!-- <div id="container">
-    <div id="left">
-        Image
-    </div>
-    <div class="" id="right">
-        
-        <h1 class="login text-white text-center mt-3"><b>REGISTER</b></h1><br>
-    
-        <!-- Validation Errors -->
-          <!-- Session Status -->
+       
         @if(count($errors) > 0)
             @foreach($errors->all() as $error)
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -113,68 +103,5 @@
             @endforeach
         @endif
                
-        <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data" style="position: center;">
-            @csrf
-            <center>
-            <div class="row">
-                <!-- Name -->
-                <div class="form-group">
-                    
-                    <x-input style="width:20rem; margin-bottom: 1rem;" class="form-control form-control-sm" id="name"  type="text" name="name" placeholder="Name" :value="old('name')" required autofocus />
-                </div>
-            </div>
-            <div class="row">
-            <!-- Email Address -->
-                <div class="form-group">
-                
-                    <x-input style="width:20rem; margin-bottom: 1rem;" class="form-control form-control-sm" id="email"  type="email" placeholder="Email" name="email" :value="old('email')" required />
-                </div>
-            </div>
-            </center>
-            
-            <center>
-            <div class="row">
-            
-            <!-- File -->
-
-                <div class="mb-3">
-                    
-                    <x-input class="form-control form-control-sm" name="cor" value="{{ old('cor') }}" type="file" style="width:20rem;"/>
-                </div>
-            </div>
-           
-             <x-button class="btn btn-success  mt-1 mb-2 ml-4">
-                    {{ __('Register') }}
-                </x-button>
-                </center>
-            <div class="footer_btn">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered? ') }}
-                </a><br><br>
-                <p>
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                Read Me
-            </a>
-            <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-            <div class="container" > 
-                
-                
-                Read Instruction
-                <li>Please Provide Name</li>
-                <li>Exact Email Address for approval purposes</li>
-                <li>Please attach image format of the Certificate of Registration (COR) for tax review purposes</li>
-            
-                
-                
-            </div> 
-
-            </div>
-            </div>
-            </p>
-            </div>
-            
-        </form> -->
-
 </body>
 </html>
