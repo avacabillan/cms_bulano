@@ -142,4 +142,109 @@ textarea:focus {
   p#break {
     display: inline;
   }
+  
+  /* mia message css */
+
+  .message-patient{
+    padding: 0px;
+    background-color: #fff;
+    width: 25%;
+    height: 65%;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    right: 10px;
+}
+.card{
+    height: 100%;
+}
+.patient-msg h6{
+    width: 50%;
+    float: left;
+}
+.patientmsg_card_body{
+    overflow-y: scroll;
+}
+.patientmsg_card_body p{
+    margin: 0;
+    font-size: 15px;
+}
+.patientmsg_card_body .outbox{
+    padding: 8px ;
+    margin: none;
+    max-width: 70%;
+    background-color: rgb(209, 209, 209);
+    border-radius: 15px;
+}
+.patientmsg_card_body .inbox{
+    padding: 8px;
+    margin: none;
+    max-width: 70%;
+    background-color: rgb(196, 190, 173);
+    border-radius: 15px;
+}
+.input-file{
+    display:none;  
+}
+.file-ups{
+    cursor: pointer;
+}
+.type_msg{
+    max-height: 20px;
+}
+.attach_btn{
+    background: none;
+    border: none;
+}
+
+/* message-doctor css */
+.user{
+    cursor: pointer;
+}
+.doctor-inbox{
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+    position: fixed;
+}
+.doctor-sender{
+    padding: 0px;
+}
+.doctor-sender .card{
+    height: 550px;
+}
+.message-doctor{
+    padding: 0px;
+    /* width: 57%; */
+}
+.doctor-msg .card{
+    height: 550px;
+}
+.doctor-msg h6{
+    width: 50%;
+    float: left;
+}
+.doctormsg_card_body{
+    overflow-y: scroll;
+    border-right: none;
+}
+.doctormsg_card_body p{
+    margin: 0;
+    font-size: 15px;
+}
+.doctormsg_card_body .outbox{
+    padding: 8px ;
+    margin: none;
+    max-width: 70%;
+    background-color: rgb(209, 209, 209);
+    border-radius: 15px;
+}
+.doctormsg_card_body .inbox{
+    padding: 8px;
+    margin: none;
+    max-width: 70%;
+    background-color: rgb(196, 190, 173);
+    border-radius: 15px;
+}
 }

@@ -70,34 +70,18 @@ class InternalMessagesController extends Controller
     public function patientIndex(){
         $users = User::all();
         $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
-        $receiver = Auth::user()->associates;
-        // $receiver = Auth::user()->clients->assoc_id;
-        // $rec = db::table('users')
-        // ->join('associates', 'users.id', '=','associates.user_id')
-        // ->join('clients', 'associates.id', '=', 'clients.assoc_id')
-        // ->where('clients.assoc_id', '=',  $receiver)
-        // ->select('associates.user_id')
-        // ->get();
-         dd($receiver);
+
         return view("client_message")->with("messages", $messages)->with("users", $users);
     }
 
     public function insertClientMsg(Request $request){
         
+        $assoc = Auth::user()->clients->associates->user_id;
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
-
-        // if($request->has('file')){
-
-        //     $image_file = $request->file('file');
-        //     $imagefileName = time().'.'.$image_file->extension();
-        //     $image_file->move(public_path('imgfileMessages'), $imagefileName);
-        //     $message->img_file = $imagefileName;
-        // }
-        
         $message->read = 1;
-        $message->receiver =   2;
+        $message->receiver = $assoc;
         $message->save();
         return redirect()->back();
     }
@@ -105,5 +89,112 @@ class InternalMessagesController extends Controller
     public function delete($id){
         
     }
+
+// JEAN JATI OLD MESSAGE CODE 
+
+
+    public $recipients;
+
+    public function associateIndex(){
+       
+
+        $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
+        
+        $users = DB::table('users')
+            ->join('messages', 'users.id', '=', 'messages.sender')
+            ->select('users.*','messages.sender')
+            ->orderBy('messages.created_at','desc')
+            ->where('role','client')
+            ->get()->groupBy('sender');
+            // dd(Auth::user()->id);
+                                                         
+        return view("pages.associate.message.associate_messages",compact('messages', $messages,'users', $users));
+
+    }
+    public function associateMessageShow(Request $request, $id){
+        $message = DB::table('messages')->where('sender',$id)
+        
+        ->orderBy('created_at', 'asc')->get('message');
+
+        // return ($message);
+       // dd($message);
+        // dd($request->id);
+        return view("pages.associate.message.associate_messages")->with("message", $message) ;
+    }
+    public function insertAssociateMsg(Request $request){
+        $message = new Message();
+        $message->sender = Auth::id();
+        $message->message = $request->message;
+        $message->receiver = $request->name;
+        $message->read = 0;    
+        
+
+        $message->save();
+        if($message){
+            Alert::success('Success', 'Message Successfuly Sent!');
+        }
+       
+        return redirect()->back();
+    }
+    public function replyAssociate(Request $request){
+        $message = new Message();
+        $message->sender = Auth::id();
+        $message->message = $request->message;
+        $message->receiver = $request->receiver;
+        $message->read = 1;    
+        
+        $message->save();
+        if($message){
+            Alert::success('Success', 'Message Successfuly Sent!');
+        }
+        return redirect()->back();
+    }
+
+
+
+
+
+
+    public function clientIndex(){
+        $users = User::All();
+        $messages = DB::table('messages')->orderBy('created_at', 'asc')->get();
+        
+            
+        return view("pages.client.client_message")->with("messages", $messages) 
+                                                    ->with("users", $users);
+
+    }
+    public function clientMessageShow(Request $request, $id){
+        $message = DB::table('messages')->where('sender',$request->id)
+        ->orWhere('receiver',$request->id)
+        ->orderBy('created_at', 'asc')->get();
+
+    
+        return view("pages.client.client_message")->with("message", $message);
+    }
+    public function insertClientMsg(Request $request){
+        $message = new Message();
+        $message->sender = Auth::id();
+        $message->message = $request->message;
+        $message->receiver = $request->name;
+        $message->read = 1;    
+        
+        $message->save();
+        Alert::success('Success', 'Message Successfuly Sent!');
+        return redirect()->back();
+    }
+    public function replyClient(Request $request){
+        $message = new Message();
+        $message->sender = Auth::id();
+        $message->message = $request->message;
+        $message->receiver = $request->receiver;
+        $message->read = 1;    
+        
+        $message->save();
+        Alert::success('Success', 'Message Successfuly Sent!');
+        return redirect()->back();
+    }
+    
+
 
 }

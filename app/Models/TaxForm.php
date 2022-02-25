@@ -21,5 +21,7 @@ class TaxForm extends Model
     public function deadline(){
         return $this-> hasMany(Deadline::class); 
     }
-    
+     public function schedule(){
+        return $this-> belongsTo(Schedule::class); 
+    }
 }

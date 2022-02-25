@@ -55,5 +55,6 @@ class MessageController extends Controller
             return response()->json('Notification will be sent later.', 201);
         }
     }
-}
+
+    }
 
