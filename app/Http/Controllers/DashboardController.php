@@ -16,9 +16,9 @@ class DashboardController extends Controller
 
         if(Auth::user()->role=='admin'){ 
             $associates = Associate::all();
-            if(Auth::user()->role=='admin'){
-                Alert::info('Success', 'You are logged in as Admin!');
-            }
+            // if(Auth::user()->role=='admin'){
+            //     Alert::info('Success', 'You are logged in as Admin!');
+            // }
             return view ('pages.admin.dashboard', compact('associates'));
 
         }elseif (Auth::user()->role=='associate'){
@@ -27,9 +27,9 @@ class DashboardController extends Controller
             ->where('assoc_id', '=', $associate )
             ->get();
             // dd( $clients);
-            if(Auth::user()->role=='associate'){
-                Alert::info('Success', 'You are logged in as Associate!');
-            }
+            // if(Auth::user()->role=='associate'){
+            //     Alert::info('Success', 'You are logged in as Associate!');
+            // }
             return view ('pages.associate.dashboard',compact('clients'));
         }elseif (Auth::user()->role=='client'){ 
  
@@ -46,9 +46,9 @@ class DashboardController extends Controller
         ->where('clients.id', '=',$client)
         ->select('title', 'start_date','client_tax_forms.tax_form_no', 'client_taxes.status')
         ->get();
-        if(Auth::user()->role=='client'){
-            Alert::info('Success', 'You are logged in as Client!');
-        }
+        // if(Auth::user()->role=='client'){
+        //     Alert::info('Success', 'You are logged in as Client!');
+        // }
             return view ('pages.client.dashboard', compact('reminders', [$reminders]));
         }
     }
