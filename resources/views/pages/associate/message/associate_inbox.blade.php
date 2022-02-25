@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Doctor Message
+    Inbox Message
 @stop
 
 @section('content')
@@ -50,15 +50,17 @@
                             @csrf
                             @method('post')
                             <div class="input-group doctor-compose">
-                                <div class="input-group-append file-ups">
+                                {{-- <div class="input-group-append file-ups">
                                     <label for="fileups">
                                         <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
                                     </label>
                                     
                                 </div>
-                                <input type="text" name="receiver_id" id="receiver_id" style="display:none">
-                                <textarea name="message" class="form-control type_msg" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                                <input type="text" name="receiver_id" id="receiver_id" style="display:none"> --}}
+                                
                                 <div class="input-group-append">
+                                   
+                                    <textarea name="message" class="form-control type_msg" id="message" class="form-control type_msg" placeholder="Type your message..." style="width: 30rem;"></textarea>
                                     <button type="submit" class="btn" id="btn-compose-msg"><i class="fas fa-location-arrow"></i></button>
                                 </div>
                             </div>
@@ -114,7 +116,7 @@
                         }
                     }
                 });
-                window.history.pushState('', 'New Page Title', '/message-doctor/'+id);
+                window.history.pushState('', 'New Page Title', '/message-client/'+id);
             });
         })
     })

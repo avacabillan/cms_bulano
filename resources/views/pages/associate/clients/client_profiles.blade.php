@@ -20,6 +20,7 @@
         <div class="container-fluid">
             <div class="row mb-0">
                 <div class="col-sm-6">
+                  
                     <h5><a href="{{route('admin-clients-list')}}"><b>Client List</b></a></h5>               
                 </div>
             </div>
@@ -144,10 +145,10 @@
 
           <div class="modal" id="uploadFiles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" >
-        <div class="modal-content" style="  width: 1000px; min-height: 450px;">
+        <div class="modal-content" style="  width: 100%;">
           <div class="modal-header">
             <h5 class="modal-title" id="headingsModal"></h5>
-            <a class="btn btn-primary" data-bs-toggle="modal" href="{{url()->previous()}}" role="button">back</a>
+            
           </div>
           
           <div class="modal-body">

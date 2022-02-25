@@ -1,7 +1,7 @@
 
 @extends('layout.master')
 @section('title')
-    ADD Client
+    Add Client
 @endsection
 @section('content')
 
@@ -9,7 +9,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6">
-        <h1>Add Client</h1>
+     
       </div>
     </div>
 
@@ -19,7 +19,7 @@
     </div>
 
     <div class="card-body">
-    <a  class="btn btn-success" id="corImage" href="{{asset('public/files/'.$requestee->cor)}}" data-lightbox="$requestee->cor">View COR</a>
+    <a  class="btn btn-success fixed-top text-end" id="corImage" href="{{asset('public/files/'.$requestee->cor)}}" data-lightbox="$requestee->cor" style="width: 30%; float: right;">View COR</a>
       <div class="row">
 
        <form action="{{route('insertClient',$requestee->id)}}" class="row"  id="addClientForm" name="addClientForm">
@@ -147,7 +147,7 @@
               @foreach($taxForms as $taxForm)
                 <li style="display: block; float: left; width: 25%;">
                   <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]"  >
-                  <span class="ml-3 text-sm">{{ $taxForm->tax_form_no }}</span>
+                  <span class="ml-3 text-sm"><h6>{{ $taxForm->tax_form_no }}</h6></span>
                 </li>
               @endforeach
             </ul>

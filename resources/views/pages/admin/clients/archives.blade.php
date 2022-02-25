@@ -17,7 +17,7 @@
                 <form action="{{route('fetch_date')}}" method="post">
                     @csrf      
                     @method('get')        
-                    <div class="col-md-9 offset-md-2">
+                    <div class="col-md-9 offset-md-2" >
                         <div class="input-group">
                             <input type="date" class="form-control" id="value1" name="fromDate">
                             <span class="input-group-text">to</span>

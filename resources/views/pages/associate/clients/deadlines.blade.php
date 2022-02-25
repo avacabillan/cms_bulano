@@ -13,7 +13,6 @@
       <div class="col-12">
         <div class="card card-dark card-outline">
           <div class="card-header">
-
             <h3 class="card-title">List of Deadlines</h3><br>
             <hr>
             <div class="card-tools">
