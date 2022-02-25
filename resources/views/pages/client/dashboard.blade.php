@@ -36,7 +36,7 @@
     <div class="col-12">
       <div class="card card-dark card-outline me-2 ms-2">
         <div class="card-header">
-          <h3 class="card-title">Client Dashboard</h3><br>
+          <h3 class="card-title">Deadlines</h3><br>
           <hr>
           <table class="table table-bordered yajra-datatable" >
             <thead >
@@ -53,7 +53,7 @@
         <tr>
           <td>{{$deadline->title}}</td>
           <td>{{$deadline->tax_form_no}}</td>
-          <td>{{$deadline->start_date}}</td>
+          <td>{{ \Carbon\Carbon::parse($deadline->start_date)->format('F d, Y')}}</td>  
           <td><button class="btn btn-info btn-sm">View</button></td>
           @if($deadline->status == 0)
           <td><button class="btn btn-danger btn-sm" disabled="disabled">Pending</button> </td>
