@@ -151,23 +151,24 @@ class Assoc_ClientController extends Controller
         return redirect()->back();
     }
     public function declarationAttach(Request $request,$id){
-        $declaration = ClientTax::find($id);
+        $clientTax = ClientTax::find($id);
+        $clientTax->file =  $request->file('file')->guessExtension(); 
         
-        if ($request->hasfile('declaration'))
+        if ($request->hasfile('file'))
         {
             $request->validate([
-                'declaration' => 'required|mimes:pdf|max:2048',
-            ]);
+                'file' => 'required|mimes:pdf|max:2048',
+            ]); 
             
-            $file = $request->file('declaration');
+            $file = $request->file('file');
            
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $filename = $request->declaration . '-'.'declaration'.'.' . $extension;
-            $file->move('public/files/pdfs', $filename);
-            $declaration ->declaration = $filename;
+            $file->move('public/files/computedfile', $filename);
+            $clientTax ->file = $filename;
         } 
-        $declaration->save();
-         return redirect()->back();
+        $clientTax->save();
+         return redirect()->back(); 
     }
 
 

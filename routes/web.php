@@ -146,7 +146,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/clients', [Assoc_ClientController::class, 'ajaxClient'])->name('ajax-clients'); //index
     Route::get('view-deadlines/{id}', [Assoc_ClientController::class, 'clientDeadline'])->name('deadlines');
     Route::get('update-status/{id}', [Assoc_ClientController::class, 'changeStatus'])->name('update-status');
-    Route::put('attach-declaration/{id}', [Assoc_ClientController::class, 'declarationAttach'])->name('attach-declaration');
+    Route::post('attach-declaration/{id}', [Assoc_ClientController::class, 'declarationAttach'])->name('attach-declaration');
 
       
     //-------------Assoc Tax Files Route---------------//
