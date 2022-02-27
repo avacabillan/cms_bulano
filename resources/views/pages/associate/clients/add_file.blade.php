@@ -1,5 +1,5 @@
 
-<div class="card-body" >
+<div class="card-body" style="width: 100%;" >
   <form  action="{{route('upload.store')}}" method="POST" enctype="multipart/form-data" id="uploadFile" >
     <input class="form-control" type="hidden" value="{{$client->id}}" name="client_id">
     @csrf

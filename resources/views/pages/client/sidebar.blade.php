@@ -43,7 +43,7 @@
               <i class="nav-icon far fa-envelope"></i>
               <p>
                 Message
-                <span class="right badge badge-danger">2</span>
+                <span class="right badge badge-danger"></span>
               </p>
             </a>
           </li>
