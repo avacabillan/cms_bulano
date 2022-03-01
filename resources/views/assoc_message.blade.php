@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Doctor Message
+    Associate Message
 @stop
 
 @section('content')
@@ -61,8 +61,7 @@
                                 <div class="input-group-append">
                                     <button type="submit" class="btn" id="btn-compose-msg"><i class="fas fa-location-arrow"></i></button>
                                 </div>
-                            </div>
-                        </form>
+                            </div> 
                     </div>
                 </div>
             </div>

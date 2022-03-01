@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Doctor Message
+    Client Message
 @stop
 
 @section('content')
