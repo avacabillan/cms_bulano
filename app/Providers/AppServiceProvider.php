@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Sum;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -34,7 +36,9 @@ class AppServiceProvider extends ServiceProvider
                             $birs= DB::table('reminders')
                             ->count();
                             $ddlines= DB::table('bulano_deadline')
-                            ->count();
+                            ->count() +$birs;
+                            
+                           
                             $assocs= DB::table('associates')
                             ->count();
                             $clients= DB::table('clients')

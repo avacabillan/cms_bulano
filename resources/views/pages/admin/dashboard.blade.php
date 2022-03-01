@@ -34,7 +34,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
   
-          <div class="col-lg-4 col-6">
+          <div class="col-lg-6 col-6">
             <div class="small-box bg-success">
               <div class="inner">
                 <h4 class="pt-3">User Registrations</h4>
@@ -50,7 +50,7 @@
                  <a href="{{route('requestee')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <div class="col-lg-4 col-6">
+          <div class="col-lg-6 col-6">
             <div class="small-box bg-warning">
               <div class="inner">
                 <h4 class="pt-3">Reminder Calendar</h4>
@@ -67,22 +67,7 @@
             </div>
           </div>
           <div class="col-lg-4 col-6">
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h4 class="pt-3">BIR Calendar</h4>
-                <span class="info-box-number"></span>
-                <div class="inner">
-                <h3>{{$birs}}</h3>
-                </div>
-                <h5>Deadlines</h5>
-              </div>
-              <div class="icon pb-2">
-                 <i class="far fa-calendar-alt"></i>
-              </div>
-                 <a href="{{route('bir-calendar')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-
+            
         </div>
       </div>
     </div>

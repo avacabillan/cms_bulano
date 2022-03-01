@@ -3,7 +3,7 @@
   <form  action="{{route('attach-declaration', $deadline->id)}}" method="POST" enctype="multipart/form-data" id="uploadFile" >
     <input class="form-control" type="hidden" value="{{$deadline->id}}" name="client_id">
     @csrf
-    @method('POST')
+    @method('get')
     
           <div class="input-group ">
             <input class="form-control mb-5" id="inputGroupFile02" name="file" type="file">

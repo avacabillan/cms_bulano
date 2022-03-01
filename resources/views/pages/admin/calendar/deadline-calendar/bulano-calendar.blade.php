@@ -60,40 +60,30 @@
 <!-- Add BIR REMINDER Modal -->
 <div class="modal" id="addReminder" tabindex="-1" role="dialog" aria-labelledby="addReminderTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="width: 30rem;">
                 <div class="modal-header">
                 <h5 class="modal-title" id="addReminderTitle">Create Reminder</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="smallBody" style="margin-left: 17%;">
+                <div class="modal-body" id="smallBody" >
+                
                 <form method="POST" action="{{route('store-deadline')}}" >
                     @csrf
                     @method('GET')
-                    <div class="row">
+                    
                                         
-                        <div class="form-group col-md-4">
+                        <div class="form-group ">
                             <label for="Title" class="col-form-label">Title:</label>
-                            <input type="text" class="form-control" name="title">
-                        </div>
-                    </div>
-                
-                    
-                    <div class="row">
-                    
-                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="title"><br>
                             <label for="Start Date" class="col-form-label"> Start Date : </label>  
-                            <input class="date form-control" type="date"  id="startdate" name="start_date">   
-                        </div>
-                    </div>
-                    <div class="row">
-                    
-                        <div class="form-group col-md-4">
+                            <input class="date form-control" type="date"  id="startdate" name="start_date">  
                             <label  for="End Date" class="col-form-label"> End Date : </label>  
                             <input class="date form-control" type="date"   id="enddate" name="end_date">   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-4">
+                        
+                      
+                   
+                   
+                        <div class="form-group ">
                         <strong> Assign Tax Form </strong>  
                         <select name="taxform" class="form-control">
                         <option value="">--Select Tax Form--</option>
@@ -113,6 +103,7 @@
                     
                     
                 </form>
+                
                 </div>
             </div>
         </div>
