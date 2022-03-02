@@ -9,6 +9,7 @@ use Redirect,Response;
 use Calendar;
 use DB;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FullCalendarReminderController extends Controller
 {

@@ -71,11 +71,20 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="" method="post">
-            <label for="">Attach Declaration Tax</label><br>
-            <input type="file" name="" id=""><br><br>
-            <button type="submit" class="btn btn-success" style="float: right;">Upload</button>
-            </form>
+         
+            
+            <div class="card-body" >
+              <form  action="{{route('attach-declaration', $deadline->id)}}" method="POST" enctype="multipart/form-data" id="uploadFile" >
+                <input class="form-control" type="hidden" value="{{$deadline->id}}" name="client_id">
+                @csrf
+                @method('post')
+                
+                      <div class="input-group ">
+                        <input class="form-control mb-5" id="inputGroupFile02" name="file" type="file">
+                      </div>
+                        <button class="btn btn-success mt-5 saveBtn" type="submit" value="uploadFile" >Save</button>
+               </form>      
+            </div>
         </div>
         
       </div>
