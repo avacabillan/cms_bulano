@@ -1,5 +1,6 @@
 
-<!-- Modal -->
+
+
 <div class="modal" id="addforms" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -9,31 +10,42 @@
             </div>
             <div class="modal-body">
                 <form action="{{route('addtaxforms')}}">
-                    <div class="form-group">
-                        <label for=""><b>Tax Form No</b></label><br>
-                        <input type="text" name="tax_form_no" id=""><br>
-                        <label class="form-label"><b>Select Tax Type</b></label>
-                       
-                            <select name="tax_type_id" class="form-control">
-                                <option> Select Tax Type</option>
-                                @foreach($taxTypes as $taxType)
-                                <option class="ml-3 text-sm"  value="{{$taxType->id}}" >{{ $taxType->tax_type }}</option>
-                                @endforeach
-                            </select><br>
-                            <select name="schedule_id"  class="form-control">
-                                <option> Select Deadline</option>
-                                @foreach($schedules as $schedule)
-                                <option class="text-sm" value="{{$schedule->id}}"  >{{ $schedule->declaration}}</option>
-                                @endforeach
-                            </select>
-                  
+                
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Tax Form No</label>
+                                <input type="text" class="form-control" id="" name="tax_form_no" >
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-12">
+                            <h6 style="width: 100;"><b>Select Tax Type<b></h6>
+
+                            <div class="form-group">
+                                <select name="department" class="form-control" >
+                                    <option value=""> Select Tax Type</option>
+                                    @foreach($taxTypes as $taxType)
+                                        <option class="ml-3 text-sm"  value="{{$taxType->id}}" >{{ $taxType->tax_type }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="department" class="form-control" >
+                                    <option> Select Deadline</option>
+                                    @foreach($schedules as $schedule)
+                                        <option class="text-sm" value="{{$schedule->id}}"  >{{ $schedule->declaration}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="modal-footer">
-                       <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+
+                    
                 </form>
             </div>
-           
+            
         </div>
     </div>
 </div>
