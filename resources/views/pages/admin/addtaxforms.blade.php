@@ -20,9 +20,8 @@
                         </div>
                     
                         <div class="col-md-12">
-                            <h6 style="width: 100;"><b>Select Tax Type<b></h6>
-
-                            <div class="form-group">
+                            <label>Select Tax Type</h6>
+                            <div class="form-group mt-2">
                                 <select name="department" class="form-control" >
                                     <option value=""> Select Tax Type</option>
                                     @foreach($taxTypes as $taxType)
@@ -39,7 +38,9 @@
                                 </select>
                             </div>
                         </div>
-
+                        
+                       <button type="submit" class="btn btn-primary ms-3">Save</button>
+                    
                     </div>
 
                     

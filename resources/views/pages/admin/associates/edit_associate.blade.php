@@ -1,7 +1,5 @@
 
   
-
-  
 @extends('layout.master')
 @section('title')
     Edit Associate
