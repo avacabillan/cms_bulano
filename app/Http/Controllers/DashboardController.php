@@ -16,10 +16,22 @@ class DashboardController extends Controller
 
         if(Auth::user()->role=='admin'){ 
             $associates = Associate::all();
+            $date =Carbon::today();
+            $future =  Carbon::today()->addWeeks(3);
+            $clientDeadlines =  DB::table('client_taxes')
+            ->join('clients','client_taxes.client_id' , '=','clients.id' )
+            ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
+            ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
+            ->whereBetween('start_date',[$date, $future ] )
+            ->select('company_name','start_date','tax_form_no' )
+            ->orderBy( 'company_name','asc')
+            ->get();
+            
             // if(Auth::user()->role=='admin'){
             //     Alert::info('Success', 'You are logged in as Admin!');
             // }
-            return view ('pages.admin.dashboard', compact('associates'));
+            //dd($future);
+            return view ('pages.admin.dashboard', compact('associates', 'clientDeadlines'));
 
         }elseif (Auth::user()->role=='associate'){
             $date = Carbon::now()->format('Y-m-d');

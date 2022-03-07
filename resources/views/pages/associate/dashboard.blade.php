@@ -34,9 +34,11 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div><!-- /.content-header -->
+
   <div class="card" style="width: 30rem; margin-left:20px;">
+    
     <div class="card-header">
-      <h6 class="text-danger">Clients with Deadlines Now</h6>
+      <h6 class="text-danger">Clients with Upcoming Deadlines </h6>
     </div>
     <ul class="list-group list-group-flush">
       @foreach($clientDeadlines as $client)
