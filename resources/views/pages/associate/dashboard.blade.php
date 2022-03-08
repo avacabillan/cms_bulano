@@ -14,15 +14,6 @@
             {{ __('Dashboard for Associaate') }}
         </h2>
       </x-slot>
-      <div class="card-body">
-      <!-- @if (session('status'))
-        <div class="alert alert-success" role="alert">
-          {{ session('status') }}
-        </div>
-      @endif -->
-        
-      </div>
-
       <div class="form-group col-md-12">
         <div class="alert alert-success ms-3 me-3" id="assoc_dash_heading" role="alert">
           <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->associates->name}} 
