@@ -9,7 +9,7 @@
 <body>
 
 
-	<iframe height="400"  width="400" src="/public/files/pdfs/{{$file->file}}"></iframe>
+	<iframe height="900px;"  width="820px;" src="/public/files/pdfs/{{$file->file}}"></iframe>
  
 </body>
 </html> 

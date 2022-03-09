@@ -128,7 +128,7 @@
                         <div class="row mt-2">
                           @foreach($client->clientTaxes  as $taxType)
                             <div class="col-sm-6">
-                              <p class="m-b-10 f-w-600"><a href="{{route('show-forms', ['id'=>$taxType->tax_form_id,'client'=>$client->id] )}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType->taxForms->tax_form_no}}</a></p>
+                              <p class="m-b-10 f-w-600"><a href="{{route('preview-forms', ['id'=>$taxType->tax_form_id,'client'=>$client->id] )}}" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax Form's 2551Q, 2550M, 2550Q" data-bs-toggle="modal" data-bs-target="#vatModal"><i class="fa fa-folder me-2 " aria-hidden="true"></i>{{$taxType->taxForms->tax_form_no}}</a></p>
                               <h6 class="text-muted f-w-400"></h6>
                             </div> 
                           @endforeach                                    

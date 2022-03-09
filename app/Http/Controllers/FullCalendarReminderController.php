@@ -34,7 +34,9 @@ class FullCalendarReminderController extends Controller
 
     public function storeEvent(Request $request)
     {  
- 
+        $request->validate([
+            '*' => 'required',
+        ]);
            $reminder= new Reminder();
            $reminder->reminder=$request->title;
            $reminder->start=$request->startdate;
@@ -106,6 +108,9 @@ class FullCalendarReminderController extends Controller
             return view ('pages.admin.calendar.deadline-calendar.add-deadline',compact('taxForms', $taxForms));
         }
         public function storeDeadline(Request $request){
+            $request->validate([
+                '*' => 'The :attribute field is required.',
+            ]);
             $deadline =new Deadline();
             $deadline ->title = $request->title;
             $deadline ->start_date = $request->start_date;

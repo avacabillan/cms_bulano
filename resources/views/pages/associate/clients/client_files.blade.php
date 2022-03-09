@@ -1,8 +1,23 @@
-
-                        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                          
 <title>
   Form
 </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
+
+</head>
+<body>
+
+
 <style>
 .rwd-table {
   margin: auto;
@@ -58,7 +73,10 @@
                     <td>{{$pay->file_name}}</td>
                     <td>{{$pay->description}}</td>
                     <td>{{$pay->file_type}}</td>
-                    <td><button><a href="{{url('/view',$pay->id)}}">View</a></button></td>
+                    {{-- <td><button><a href="{{url('/view',$pay->id)}}">View</a></button></td> --}}
+                    <td><a class="btn btn-info" data-fancybox data-type="iframe" data-src="{{url('/view',$pay->id)}}" href="{{url('/view',$pay->id)}}">
+                      View 
+                  </a></td>
                                     
                 </tr>
             @endforeach    
@@ -66,5 +84,19 @@
     </table>
 </div>
 
-
-                       
+<script>
+  $('[data-fancybox]').fancybox({
+	toolbar  : false,
+	smallBtn : true,
+	iframe : {
+		preload : false,
+    css : {
+            width : '800px'
+            
+        }
+	}
+})
+</script>
+                         
+</body>
+</html>
