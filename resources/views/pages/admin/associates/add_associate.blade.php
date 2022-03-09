@@ -3,7 +3,15 @@
 @stop
 @section('content')
 
-
+@if($errors->any())
+     <div class="alert alert-danger">
+          <ul class="list-unstyled">
+                 @foreach ($errors->all() as $error)
+                       <li>{{ $error }}</li>
+                 @endforeach
+          </ul>
+      </div>
+ @endif
 
 <div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3" style="width:45rem; margin-left:20rem;">
     <div class="card-body" >
@@ -17,8 +25,18 @@
 
                 <label class="form-label">Name</label> 
                 <input type="text" class="form-control" value=""   name="assoc_name"  >
+                  @error('name')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
                 <label class="form-label">Email</label>
-                <input type="text" class="form-control" value="" name="assoc_email">         
+                <input type="text" class="form-control" value="" name="assoc_email">  
+                  @error('email')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror       
                 <label class="form-label">Contact Number</label>
                 <input type="text" class="form-control" value="" name="assoc_contact" > <br>
                 <label class="form-label">SSS Number/Government ID no.</label>
@@ -41,7 +59,13 @@
                       @foreach($departments as $department)
                         <option value="{{$department->id}}">{{$department->department_name}}</option>
                       @endforeach
+                      
                   </select>
+                  @error('department')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                 @enderror
                 </div>
                 <div class="form-group">
                   <label class="form-label"><b>Position</b></label>
@@ -51,11 +75,16 @@
                         <option  value="{{$position->id}}">{{$position->position_name}}</option>
                       @endforeach
                   </select>
+                  @error('position')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
               </div>   
               <label class="form-label">Username</label> 
                 <input type="text" class="form-control" value=""   name="username"  >
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" value="" name="password"> 
+                {{-- <label class="form-label">Password</label>
+                <input type="password" class="form-control" value="" name="password">  --}}
                                                                                             
               </div>        
               </div>      

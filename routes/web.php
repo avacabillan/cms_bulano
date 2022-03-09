@@ -163,7 +163,8 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/clients-profile/{id}', [Admin_ClientController::class, 'ClientProfile'])->name('client-profile'); //index
 
     Route::get('/add_new_client/requestee/{id}',[Admin_ClientController:: class, 'create'])->name('add_client');
-    Route::delete('/delete_client/{id}',[Admin_ClientController:: class, 'deleteClient'])->name('delete_client');
+    Route::get('/delete_client/{id}',[Admin_ClientController:: class, 'deleteClient'])->name('delete_client');
+
     Route::get('/insertClient/{id}',[Admin_ClientController::class, 'insertClient'])->name('insertClient'); //store
     Route::get('/archive-list', [FileController::class,'getArchive'])->name('admin-archive-list');
     Route::get('/restore-file/{id}', [FileController::class,'restore'])->name('restore-file');

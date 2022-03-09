@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Associate;
 use App\Models\Department;
@@ -57,19 +56,23 @@ class AdminAssocController extends Controller
 
     public function store(Request $request)
     {
-         Validator::make($request->all(),[
-            'name' => 'required|unique:posts|max:255',
-            'email' => 'required',
-            
+        $request->validate([
+            '*' => 'required',
+          
+            ],
+            [ '*.required' => 'The :attribute field can not be blank value.']);
 
-        ])->validate();
-       
+
+        $input = $request->all();
+        
+
+     
         
         $myuser=new User;
         $myuser ->name = $request->assoc_name;
         $myuser->role='associate';
         $myuser->email=$request->username;
-        $myuser->password=Hash::make($request->password);
+        $myuser->password=Hash::make($request->username);
         $myuser->save();
 
         $associate =new Associate();
@@ -84,9 +87,10 @@ class AdminAssocController extends Controller
         $associate->position_id = $request->position;
         $associate->save();
      
-        
        
-         return redirect()->route('assoc_table');
+            return redirect()->route('assoc_table');
+        
+         
     }
 
    

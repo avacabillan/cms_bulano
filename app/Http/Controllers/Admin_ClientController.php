@@ -47,7 +47,7 @@ class Admin_ClientController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>  
-                                    <a href="'.route('delete_client',$row->id).'" class="edit btn btn-danger btn-sm">Delete</a>';
+                                    <a href="'.route('delete_client',$row->id).'" class="edit btn btn-danger btn-sm show_confirm">Delete</a>';
                     return $actionBtn;
                 })
                 
@@ -100,9 +100,15 @@ class Admin_ClientController extends Controller
     }
     public function insertClient(Request $request, $id )
     {
-        $request->validate([
+       $request->validate([
             '*' => 'required',
-        ]);
+          
+            ],
+            [ '*.required' => 'The :attribute field can not be blank value.']);
+
+
+        $input = $request->all();
+        
         $requestee = Requestee::find($id);
         $requestee->status = true;
         if( $requestee->status = true){

@@ -2,11 +2,11 @@
 
 @if ($errors->any())
     <div {{ $attributes }}>
-        <div class="font-medium text-red-600">
-            {{ __('Your account needs an approval in order to login') }}
+        <div class="font">
+            {{ __('Invalid Credentials') }}
         </div>
 
-        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+        <ul class="list-disc list-inside text-sm text-red-200">
             @foreach ($errors->all() as $error)
                 <!-- <li>{{ $error }}</li> -->
             @endforeach
