@@ -39,10 +39,10 @@
                 <p class="text-muted text-center">{{$client->email_address}}</p>
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Associate</b> <p class="float-right">{{$client->associates->name}}</p>
+                    <b>Associate</b> <a class="float-right">{{$client->associates->name}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Cell Phone No.</b> <p class="float-right">{{$client->contact_number}}</p>
+                    <b>Cell Phone No.</b> <a class="float-right">{{$client->contact_number}}</a>
                   </li>
                 </ul>
                   <a href="#" class="btn btn-primary btn-block"><b>Message</b></a>

@@ -66,7 +66,7 @@
         </div>
         </div>
         
-        <div class="row"></div>
+        <div class="row">
         <h4 class="text-center mb-5"><b>Business Information</b></h4>
         <div class="col-md-6">
           <div class="form-group">
@@ -120,6 +120,7 @@
         </div>
         
         <h4 class="text-center mb-5"><b>Address Information</b></h4>
+        <div class="row"> 
         <div class="col-md-6">
           <div class="form-group">
             <label>Unit House No.</label>
@@ -141,7 +142,7 @@
             <input type="text" class="form-control" id="inputAddress" name="client_city" style="width: 100%;">
           </div>
         </div>
-
+        </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group" >

@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('title')
+  Add Associate
 @stop
 @section('content')
 
@@ -12,85 +13,105 @@
           </ul>
       </div>
  @endif
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+     
+      </div>
+    </div>
 
-<div class="col-md-10 offset-md-1 bg-light mt-3 pt-3 mb-3" style="width:45rem; margin-left:20rem;">
-    <div class="card-body" >
-      <div class="form-goup" >
-        <div class="row ">
-          <div class="col-9 col-sm-4 ms-3">
-          <h4>Personal Information</h4>
-            <form action="{{route('saveassociate')}}" class="row" style="width:35rem;" id="addAssocForm" name="addAssocForm">
+    <div class="card card-dark card-outline card-default">
+      <div class="card-header">
+        <h3 class="card-title">ADD Associate</h3>
+    </div>
 
-            
+    <div class="card-body">
+      <div class="row">
 
-                <label class="form-label">Name</label> 
-                <input type="text" class="form-control" value=""   name="assoc_name"  >
-                  @error('name')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
-                <label class="form-label">Email</label>
-                <input type="text" class="form-control" value="" name="assoc_email">  
-                  @error('email')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror       
-                <label class="form-label">Contact Number</label>
-                <input type="text" class="form-control" value="" name="assoc_contact" > <br>
-                <label class="form-label">SSS Number/Government ID no.</label>
-                <input type="text" class="form-control" value="" name="assoc_sss"> <br>
-                <label class="form-label">Birth Date</label>
-                <input type="date" class="form-control" value="" name="assoc_birthdate"> <br>
+        <form action="{{route('saveassociate')}}" class="row"  id="addClientForm" name="addClientForm">
 
-                                   
-                    
-                
-                    <label for="inputEmail4" class="form-label">Complete Address</label>
-                    <input type="text" value="" class="form-control" id="inputEmail4" name="assoc_address">
+          <h4 class="text-center mb-3"><b>Personal Information</b></h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control"  value=""  name="assoc_name" style="width: 100%;">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" value="" name="assoc_email" style="width: 100%;">
+              </div>
+            </div>
 
- 
-            <div><h5 class="addAssoc_header_text mt-3" style="float: left;">JOB INFORMATION</h5><br><br> 
-                <div class="form-group">
-                  <label class="form-label"><b>Department</b></label>
-                  <select name="department" class="form-control">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>SSS Number/ Goverment ID No.</label>
+                <input type="text" class="form-control" value="" name="assoc_sss" style="width: 100%;">
+              </div>
+              <div class="form-group">
+                <label>Contact No.</label>
+                <input type="text" class="form-control" value="" name="assoc_contact" style="width: 100%;">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Birthday</label>
+                <input type="date" class="form-control"  value=""  name="assoc_birthdate" style="width: 100%;">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Complete Address</label>
+                <input type="text" class="form-control" value="" name="assoc_address" style="width: 100%;">
+              </div>
+            </div>
+
+          </div>
+
+
+          <h4 class="text-center mb-3"><b>JOB Information</b></h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Department</label>
+                <select name="department" class="form-control" style="width: 100%;">
                   <option value="">--Select Department--</option>
                       @foreach($departments as $department)
                         <option value="{{$department->id}}">{{$department->department_name}}</option>
                       @endforeach
                       
                   </select>
-                  @error('department')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-                 @enderror
-                </div>
-                <div class="form-group">
-                  <label class="form-label"><b>Position</b></label>
-                  <select name="position" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" value="" name="username" style="width: 100%;">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Position</label>
+                <select name="position" class="form-control" style="width: 100%;">
                   <option value="">--Select Position--</option>
                       @foreach($positions as $position)
                         <option  value="{{$position->id}}">{{$position->position_name}}</option>
                       @endforeach
-                  </select>
-                  @error('position')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-              </div>   
-              <label class="form-label">Username</label> 
-                <input type="text" class="form-control" value=""   name="username"  >
-                {{-- <label class="form-label">Password</label>
-                <input type="password" class="form-control" value="" name="password">  --}}
-                                                                                            
-              </div>        
-              </div>      
-              <button class="btn btn-success mt-4 me-5" type="submit" value="add" style="float: right">Submit</button>
-                </form>
-        </div>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="text" class="form-control" value="" name="password" style="width: 100%;">
+              </div>
+            </div>
+          </div>
+       
+          <div class="AddClient_btn" sytle="float: left;">
+            <button class="btn btn-primary" type="submit" name="saveBtn" id="saveBtn" value="createClient">Submit</button>
+          </div>
+        
+        </form>
       </div>
     </div>
   </div>

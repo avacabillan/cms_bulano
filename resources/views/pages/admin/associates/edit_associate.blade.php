@@ -1,5 +1,4 @@
 
-
   
 @extends('layout.master')
 @section('title')
@@ -34,28 +33,43 @@
           </div>
         </div>
 
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Contact Number</label>
-            <input type="text" class="form-control" value="{{$associate->contact_number}}" name="assoc_contact" style="width: 100%;">
-          </div>
-          <div class="form-group">
-            <label>Birthdate</label>
-            <input type="text" class="form-control" value="{{$associate->birth_date}}" name="assoc_birthdate" style="width: 100%;">
-          </div>
-        </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control"  value="{{$associate->name}}"  name="assoc_name" style="width: 100%;">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" value="{{$associate->email}}" name="assoc_email" style="width: 100%;">
+              </div>
+            </div>
 
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Address</label>
-            <input type="text" class="form-control" value="{{$associate->address}}" name="assoc_address" style="width: 100%;">
-          </div>
-          <div class="form-group">
-            <label>SSS Number</label>
-            <input type="text" class="form-control" value="{{$associate->sss_no}}" name="assoc_sss" style="width: 100%;">
-          </div>
-        </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>SSS Number/ Goverment ID No.</label>
+                <input type="text" class="form-control" value="{{$associate->sss_no}}" name="assoc_sss" style="width: 100%;">
+              </div>
+              <div class="form-group">
+                <label>Contact No.</label>
+                <input type="text" class="form-control" value="{{$associate->contact_number}}" name="assoc_contact" style="width: 100%;">
+              </div>
+            </div>
 
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Birthday</label>
+                <input type="date" class="form-control"  value="{{$associate->birth_date}}"  name="assoc_birthdate" style="width: 100%;">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Complete Address</label>
+                <input type="text" class="form-control" value="{{$associate->address}}" name="assoc_address" style="width: 100%;">
+              </div>
+            </div>
+          </div>
+           
         <div class="form-group">
           <label class="form-label"><b>Department</b></label>
           <select name="department" class="form-control" style="width: 100%;">
@@ -77,14 +91,14 @@
           </select>
       </div>   
 
-        
-        <div class="edit_associate" >
-          <input type="submit" value="Update" class=" mt-2 btn btn-success">
-        </div>
-        
-       </form>
+             <div class="edit_associate" >
+              <input type="submit" value="Update" class=" mt-2 btn btn-success">
+            </div>
+          
+        </form>
       </div>
     </div>
+
   </div>
 </div>
 @stop
