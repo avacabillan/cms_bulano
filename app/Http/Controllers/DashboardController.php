@@ -16,35 +16,59 @@ class DashboardController extends Controller
 
         if(Auth::user()->role=='admin'){ 
             $associates = Associate::all();
+            $date =Carbon::today();
+            $future =  Carbon::today()->addWeeks(3);
+            $clientDeadlines =  DB::table('client_taxes')
+            ->join('clients','client_taxes.client_id' , '=','clients.id' )
+            ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
+            ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
+            ->whereBetween('start_date',[$date, $future ] )
+            ->select('company_name','start_date','tax_form_no' )
+            ->orderBy( 'company_name','asc')
+            ->get();
+            
             // if(Auth::user()->role=='admin'){
             //     Alert::info('Success', 'You are logged in as Admin!');
             // }
-            return view ('pages.admin.dashboard', compact('associates'));
+            //dd($future);
+            return view ('pages.admin.dashboard', compact('associates', 'clientDeadlines'));
 
         }elseif (Auth::user()->role=='associate'){
+            $date = Carbon::now()->format('Y-m-d');
             $associate = Auth::user()->associates->id;
             $clients = Client::query()
             ->where('assoc_id', '=', $associate )
             ->get();
-            // dd( $clients);
+            $clientDeadlines =  DB::table('client_taxes')
+            ->join('clients','client_taxes.client_id' , '=','clients.id' )
+            ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
+            ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
+            ->where('start_date','=',$date )
+            ->where('clients.assoc_id', '=',$associate)
+            ->select('company_name','start_date')
+            ->get();
+            //   dd( $clientDeadlines);
             // if(Auth::user()->role=='associate'){
             //     Alert::info('Success', 'You are logged in as Associate!');
             // }
-            return view ('pages.associate.dashboard',compact('clients'));
+            return view ('pages.associate.dashboard',compact('clients','clientDeadlines' ));
         }elseif (Auth::user()->role=='client'){ 
  
-        $date =Carbon::now()->format('Y-m-d'); 
+        
+        $date =Carbon::today();
+        $future =  Carbon::today()->addWeeks(3); 
+        //$month = $date->month()->format('m-d-Y');
         $client = Auth::user()->clients->id;
-
+         //dd( $future);
           //Get reminder title accord to deadline 
-
+        // $declaration = ClientTax::pluck('id');   
         $reminders = DB::table('client_taxes')
         ->join('clients','client_taxes.client_id' , '=','clients.id' )
         ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
         ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
-        ->where('start_date', '=', $date  )
+        ->whereBetween('start_date',[$date, $future ] )
         ->where('clients.id', '=',$client)
-        ->select('title', 'start_date','client_tax_forms.tax_form_no', 'client_taxes.status')
+        ->select('title', 'start_date','client_tax_forms.tax_form_no', 'client_taxes.status', 'client_taxes.id')
         ->get();
         // if(Auth::user()->role=='client'){
         //     Alert::info('Success', 'You are logged in as Client!');

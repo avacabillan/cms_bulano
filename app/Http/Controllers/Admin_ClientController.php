@@ -32,25 +32,9 @@ class Admin_ClientController extends Controller
 {
     public function index (Request $request) {
                         
-        // $modes= ModeOfPayment::all();
-        // $corporates= Corporate::all();
-        // $taxForms= TaxForm::all();
-        // // $clients =Client::all();
-        // $assocs =Associate::all();
-        // $businesses = Business::all();
-        // $tins = Tin::all();
-        // $registered_address = RegisteredAddress::all();
-            
+    
             return view ('pages.admin.clients.clients_list');
-            // ->with('modes',$modes)
-            // ->with('corporates',$corporates)
-            // ->with('taxForms',$taxForms)
-            // // ->with('clients',$clients)
-            // ->with('businesses',$businesses)
-            // ->with('tins',$tins)
-            // ->with('assocs',$assocs)
-            // ->with('registered_address', $registered_address);
-        
+  
     }
     public function clientDatatable(Request $request) 
     {
@@ -116,6 +100,9 @@ class Admin_ClientController extends Controller
     }
     public function insertClient(Request $request, $id )
     {
+        $request->validate([
+            '*' => 'required',
+        ]);
         $requestee = Requestee::find($id);
         $requestee->status = true;
         if( $requestee->status = true){

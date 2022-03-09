@@ -52,7 +52,7 @@
 
                       
                     </tr>
-                    @endforeach
+                    
                 </tbody>
               </table>
             </div>
@@ -83,7 +83,8 @@
                         <input class="form-control mb-5" id="inputGroupFile02" name="file" type="file">
                       </div>
                         <button class="btn btn-success mt-5 saveBtn" type="submit" value="uploadFile" >Save</button>
-               </form>      
+               </form>  
+               @endforeach    
             </div>
         </div>
         

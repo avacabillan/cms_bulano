@@ -29,7 +29,20 @@
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div><!-- /.content-header -->
-
+<div class="card" style="width: 30rem; margin-left:20px;">
+  <div class="card-header">
+    <h6 class="text-danger">Clients with Upcoming Deadlines</h6>
+  </div>
+  <ul class="list-group list-group-flush">
+    
+    @foreach($clientDeadlines as $client)
+    
+   
+    <li class="list-group-item">{{$client->company_name}} - <b>{{$client->tax_form_no}}</b><br> {{\Carbon\Carbon::parse($client->start_date)->format('F d, Y')}}</li>
+   
+ @endforeach
+  </ul>
+</div>
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">

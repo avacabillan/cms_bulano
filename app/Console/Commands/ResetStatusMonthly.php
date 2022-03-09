@@ -45,6 +45,6 @@ class ResetStatusMonthly extends Command
         ->join('client_taxes', 'client_tax_forms.id', '=', 'client_taxes.tax_form_id')
         ->where('schedule_id', 2)
         ->where('status',1)
-        ->update(['status' => 0]);
+        ->update(['status' => 0,'file' =>null  ]);
     }
 }

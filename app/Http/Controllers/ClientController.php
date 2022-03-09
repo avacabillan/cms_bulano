@@ -62,7 +62,8 @@ class ClientController extends Controller
     }
     public function deadlines(){
         $client = Auth::user()->clients->id;
-        $date =Carbon::yesterday()->format('Y-m-d'); 
+        $date =Carbon::now()->format('Y-m-d');
+        //$future = $date->a 
         $tax_form_id = DB::table('clients')
         ->join('client_taxes', 'clients.id', '=', 'client_taxes.client_id')
         ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
