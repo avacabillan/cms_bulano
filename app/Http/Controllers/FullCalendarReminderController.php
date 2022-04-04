@@ -38,11 +38,11 @@ class FullCalendarReminderController extends Controller
             '*' => 'required',
         ]);
            $reminder= new Reminder();
-           $reminder->reminder=$request->title;
+           $reminder->reminder=$request->reminder;
            $reminder->start=$request->startdate;
            $reminder->end=$request->enddate;
            $reminder->save();
-           return redirect()->route('bir-calendar')->with('success', 'Reminder has been added');
+           return redirect()->route('display-calendar')->with('success', 'Reminder has been added');
     }
 
     public function editEvent($id){
@@ -55,7 +55,8 @@ class FullCalendarReminderController extends Controller
         $reminder->start =$request->start_date;
         $reminder->end =$request->end_date;
         $reminder->update();
-        return redirect()->route('view-reminders')->with('success', 'Reminder has been updated');
+        Alert::success('Success', 'Deadline has been updated');
+        return redirect()->route('display-bir-deadlines');
     }
     public function deleteEvent($id)
     {
@@ -90,6 +91,18 @@ class FullCalendarReminderController extends Controller
 
     //-------------------------------------------
                 //BULANO INTERNAL DEADLINE
+        public function listInternalDeadline(){
+            $internals = Deadline::all();
+            $birs = Reminder::all();
+            return view ('pages.admin.calendar.deadline-calendar.internal-list-deadlines',
+                    compact('internals', $internals, 'birs', $birs));
+        } 
+        public function listBIRDeadline(){
+            $internals = Deadline::all();
+            $birs = Reminder::all();
+            return view ('pages.admin.calendar.deadline-calendar.bir-list-deadline',
+                    compact('internals', $internals, 'birs', $birs));
+        }       
         public function indexDeadline(){
             $deadlines = Deadline::all();
             $taxForms = Taxform::all();
@@ -133,7 +146,8 @@ class FullCalendarReminderController extends Controller
             $deadline ->end_date = $request->end_date;
             $deadline->taxform_id =$request->taxform;
             $deadline->update();
-            return redirect()->route('list-deadline')->with('success', 'Deadline has been updated');
+            Alert::success('Success', 'Deadline has been updated');
+            return redirect()->route('display-internal-deadlines')  ;
             // return view ('pages.admin.calendar.edit-deadline');
         }
         public function deleteDeadline($id){
@@ -149,11 +163,11 @@ class FullCalendarReminderController extends Controller
                 ->orderBy('bulano_deadline.taxform_id')
                 ->select ('clients.name')
                 ->get();
-                dd($clients);
+                //dd($clients);
                 // return view('pages.admin.calendar.tax-calendar.bir-calendar')->with('clients', $clients);
             
         }
-        
+     
 
 
 }

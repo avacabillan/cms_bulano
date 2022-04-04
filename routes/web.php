@@ -187,7 +187,9 @@ Route::middleware(['logout'])->group(function(){
     // Route::get('/createTaxEvent',[FullCalendarReminderController::class, 'createTaxEvent'])->name('createTaxEvent');
     Route::get('/result',[FullCalendarReminderController::class, 'resultList'])->name('fetch_date');
     
-    //REMINDER for bulanofullcalendar
+    //REMINDER for bulanofullcalendar 
+    Route::get('/bulano-calendar/deadlines',[FullCalendarReminderController::class, 'listInternalDeadline'])->name('display-internal-deadlines');
+    Route::get('/bulano-calendar/bir/deadlines',[FullCalendarReminderController::class, 'listBIRDeadline'])->name('display-bir-deadlines');
     Route::get('/bulano-calendar',[FullCalendarReminderController::class, 'indexDeadline'])->name('display-calendar');
     Route::get('/getDeadlines',[FullCalendarReminderController::class, 'getReminder'])->name('getReminder');
     Route::get('/create-deadline',[FullCalendarReminderController::class, 'createDeadline'])->name('create-deadline');

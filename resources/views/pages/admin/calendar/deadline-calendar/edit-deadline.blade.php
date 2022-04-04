@@ -9,53 +9,59 @@
 
 
     <div class="container">
-      <br/>
+      
       <form method="POST" action="{{route('update-deadline',$deadline->id)}}">
         @csrf
         @method('PUT')
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="form-group col-md-4">
+        <div class="row row-cols-lg-auto g-3 align-items-center">
+          <div class="col-12"></div>
+          <div class="form-group">
             <label for="Title">Title:</label>
             <input type="text" class="form-control" value="{{$deadline->title}}" name="title">
           </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="form-group col-md-4">
-            <strong> Deadline : </strong>  
-            <input class="date form-control" value="{{$deadline->deadline}}" type="date"  id="deadline" name="deadline">   
-        </div>
-        <div class="row">
-      <div class="col-md-4"></div>
-      <div class="form-group col-md-4">
-        <strong> Assign Tax Form </strong>  
-        <select name="taxform" class="form-control">
-        
-            @foreach($forms as $taxform)
-              <option value="{{$taxform->id}}">{{$taxform->tax_form_no}}</option>
-            @endforeach
-        </select> 
-    </div>
-    </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="form-group col-md-4">
+          
+
+          <div class="col-12"></div>
+          <div class="form-group">
+              <strong> Deadline </strong>  
+              <input class="date form-control" value="{{$deadline->start_date}}" type="date"  id="deadline" name="start_date">   
+          
+          </div>
+          <div class="col-12"></div>
+          <div class="form-group">
+              <strong> Deadline </strong>  
+              <input class="date form-control" value="{{$deadline->end_date}}" type="date"  id="deadline" name="end_date">   
+          
+          </div>
+          
+          <div class="col-12"></div>
+          <div class="form-group">
+              <strong> Assign Tax Form </strong>  
+              <select name="taxform" class="form-control">
+              
+                  @foreach($forms as $taxform)
+                  <option value="{{$taxform['id']}}"  {{ $deadline->taxform_id == $taxform['id'] ? 'selected="selected"' : '' }}>{{$taxform->tax_form_no}}</option>
+                    
+                  @endforeach
+              </select> 
+          </div>
+          
+                
+          <div class="col-12"></div>
+          <div class="form-group">
             <button type="submit" class="btn btn-success">Update Reminder</button>
           </div>
         </div>
       </form>
-    </div>
-    <script type="text/javascript">  
-        $('#startdate').datepicker({ 
-            autoclose: true,   
-            format: 'yyyy-mm-dd'  
-         });
-         $('#enddate').datepicker({ 
-            autoclose: true,   
-            format: 'yyyy-mm-dd'
-         }); 
-    </script>
+  </div>
+<script type="text/javascript">  
+    $('#startdate').datepicker({ 
+        autoclose: true,   
+        format: 'yyyy-mm-dd'  
+      });
+      $('#enddate').datepicker({ 
+        autoclose: true,   
+        format: 'yyyy-mm-dd'
+      }); 
+</script>
 @endsection

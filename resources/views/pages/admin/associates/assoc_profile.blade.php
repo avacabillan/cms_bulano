@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row mb-0">
                 <div class="col-sm-6">
-                    <h5><a href="{{route('associates_list')}}"><b>Associate List</b></a></h5>               
+                    <h5><a href="{{route('assoc_table')}}"><b>Associate List</b></a></h5>               
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Client;
@@ -100,15 +101,29 @@ class Admin_ClientController extends Controller
     }
     public function insertClient(Request $request, $id )
     {
-       $request->validate([
-            '*' => 'required',
+    //    $request->validate([
+    //         '*' => 'required',
           
-            ],
-            [ '*.required' => 'The :attribute field can not be blank value.']);
+    //         ],
+    //         [ '*.required' => 'The :attribute field can not be blank value.']);
 
 
-        $input = $request->all();
+    //     $input = $request->all();
+            /**
+     * Store a new blog post.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+        $validator = Validator::make( $request->all(),[
+
+        ]);
+        if($validator->failed()){
+            Alert::error('Error!', $validator->messages()->first());
+            return redirect()->back();
+        }else
         
+
         $requestee = Requestee::find($id);
         $requestee->status = true;
         if( $requestee->status = true){

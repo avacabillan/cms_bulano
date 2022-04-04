@@ -78,13 +78,15 @@ class Assoc_ClientController extends Controller
     
     public function editClient($id)
     {
-        
+        $taxForms= TaxForm::all();
         $client = Client::find($id);
         $client->modeofpayment;
         $client->tin;
         $client->business;
         $client->registeredAddress;
-        return view('pages.associate.clients.edit_client',compact('client')); 
+        $client->clientTaxes;
+       // dd(  $client->clientTaxes);
+        return view('pages.associate.clients.edit_client',compact('client', 'taxForms', $taxForms)); 
 
        
 

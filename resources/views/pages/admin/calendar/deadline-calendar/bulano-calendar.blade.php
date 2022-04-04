@@ -9,7 +9,12 @@
 
 
 <div class="content"> 
-
+    <div class="d-grid gap-2 d-md-block" style="margin-left: 5%;">
+        <a href="{{route('display-internal-deadlines')}}" class="btn btn-info mt-3" >List of Deadlines</a>
+        <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Add BIR Deadline
+          </button>
+    </div>
     <div class="container-fluid  pr-2" >
    
           
@@ -28,6 +33,7 @@
            
    
         <div class="row">
+            
             <div class="calendar" style ="width:65%; margin-left:2%;" >
             
             
@@ -36,28 +42,68 @@
   
             </div>
         </div>
-        
-   </div> 
-</div>    
+    </div> 
+  
+    
+
 
    <div class="container vertical-scrollable" > 
        
        <div class="card  list">
-       <strong class="pb-3" >Legends</strong>
-         <div class="cont" id="list">
-         
-         <span class="dot2 pb-2"></span><strong>  Internal Deadline</strong><br>
-         <span class="dot1 pb-2"></span><strong>  BIR Deadline</strong><br>
-         </div>
-         
-           
+            <strong class="pb-3" >Legends</strong>
+            <div class="cont" id="list">
+            
+                <span class="dot2 pb-2"></span><strong>  Internal Deadline</strong><br>
+                <span class="dot1 pb-2"></span><strong>  BIR Deadline</strong><br>
+            </div>  
        </div> 
     </div> 
 
-    
-
-
-<!-- Add BIR REMINDER Modal -->
+<!-- Add BIR Deadline Modal -->
+<div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Create BIR Deadline</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{route('post-reminder')}}" id="addReminderForm">
+                @csrf
+                @method('GET')
+                <div class="row row-cols-lg-auto g-3 align-items-center">
+                  <div class="col-12"></div>
+                  <div class="form-group">
+                    <label for="Title">Title:</label>
+                    <input type="text" class="form-control" name="reminder">
+                  </div>
+                
+              
+                  <div class="col-12"></div>
+                  <div class="form-group">
+                    <strong> Start Date : </strong>  
+                    <input class="date form-control" type="date"  id="startdate" name="startdate">   
+                    </div>
+               
+                  <div class="col-12"></div>
+                  <div class="form-group">
+                    <strong> End Date : </strong>  
+                    <input class="date form-control" type="date"   id="enddate" name="enddate">   
+                 </div>
+                </div>
+            
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="Submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+  
+<!-- Add Internal Deadline Modal -->
 <div class="modal" id="addReminder" tabindex="-1" role="dialog" aria-labelledby="addReminderTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="width: 30rem;">
@@ -104,10 +150,11 @@
                     
                 </form>
                 
-                </div>
             </div>
         </div>
     </div>
+</div>
+
 @include('sweetalert::alert')
 <script>
     document.addEventListener('DOMContentLoaded', function() {       
@@ -122,10 +169,6 @@
                 url: "/TaxEvent",
                 type: "GET",
                 color: "#FF6347",
-                textColor: "#000000",
-                cache: true,
-                editable: false,
-                disableDragging: true,
                 className: "events",
                 data:  {
                     start: "start",
@@ -152,17 +195,12 @@
                 eventSources: [
             
                  fcSources.loadEwsEvents,
-                 
 
-                 
                 ],
                 timeZone: 'UTC',
-                initialView: 'dayGridMonth',
-                selectable: true, 
-                editable: true,
-                droppable: true,
-                dayMaxEvents: true,
-                overLap:true,
+                initialView: 'dayGridMonth',   
+ 
+                selectable:true,
                 
                 select: function(info) {
                     
@@ -226,7 +264,12 @@
         
 
     });
-   
+
+
 </script>
+ 
+
+    
+
 
 @endsection

@@ -56,7 +56,7 @@
             <div class="card">
 
               <div class="card-header p-2">
-                <a type="button" class="btn btn-info" href="{{route('editClient', $client->id)}}" style="float: right;"><i class="fas fa-edit">Edit</i></a>
+                <a type="button" class="btn btn-info btn-sm" href="{{route('editClient', $client->id)}}" style="float: right;"><i class="fas fa-edit">Edit</i></a>
                 <button type="button" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#uploadFiles" style="float: right;"> Upload</button>
                 <h5 class="header-title mt-2">Personal Information</h5>
               </div>

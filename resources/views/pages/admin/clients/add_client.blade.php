@@ -4,15 +4,15 @@
     Add Client
 @endsection
 @section('content')
-@if($errors->any())
-     <div class="alert alert-danger">
-          <ul class="list-unstyled">
-                 @foreach ($errors->all() as $error)
-                       <li>{{ $error }}</li>
-                 @endforeach
-          </ul>
-      </div>
- @endif
+{{-- @if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <h6>{{ $error }}</h6>
+        @endforeach
+    </ul>
+</div>
+@endif --}}
 <div class="content-header">
   <div class="container-fluid">
     <div class="row">
@@ -37,7 +37,8 @@
           <div class="col-md-6">
             <div class="form-group" >
               <label>OCN</label>
-              <input type="text" class="form-control" value="" name="ocn" style="width: 100%;">
+              <input type="text" class="form-control" value="" name="ocn" style="width: 100%;" required>
+              <div class="invalid-tooltip">Please fill out this field.</div>
             </div>
           </div>
         </div>
@@ -46,22 +47,22 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control"  value="{{$requestee->name}}"  name="client_name" style="width: 100%;">
+            <input type="text" class="form-control"  value="{{$requestee->name}}"  name="client_name" style="width: 100%;" required>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" value="{{$requestee->email}}" name="email" style="width: 100%;">
+            <input type="text" class="form-control" value="{{$requestee->email}}" name="email" style="width: 100%;" required>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label>TIN</label>
-            <input type="text" class="form-control" value="" name="tin" style="width: 100%;">
+            <input type="text" class="form-control" value="" name="tin" style="width: 100%;" required>
           </div>
           <div class="form-group">
             <label>Contact No.</label>
-            <input type="text" class="form-control" value="" name="client_contact" style="width: 100%;">
+            <input type="text" class="form-control" value="" name="client_contact" style="width: 100%;" required>
           </div>
         </div>
         </div>
@@ -71,11 +72,11 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Registration Date</label>
-            <input type="date" class="form-control" name="reg_date" style="width: 100%;">
+            <input type="date" class="form-control" name="reg_date" style="width: 100%;" required>
           </div>
           <div class="form-group">
             <label>Associate</label>
-            <select name="assoc" class="form-control" style="width: 100%;">
+            <select name="assoc" class="form-control" style="width: 100%;" required>
               <option value="">--Select Associate--</option>
                 @foreach($assocs as $assoc)
                 <?php
@@ -93,7 +94,7 @@
               <div class="row mt-2">
                 <div class="col ">
                   <div class="form-group">
-                    <div name="corporate" >
+                    <div name="corporate" required>
                       <b style="width: 100%;"><livewire:dropdown /></b>
                     </div>
                   </div> 
@@ -105,11 +106,11 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Trade Name</label>
-            <input type="text" class="form-control" name="trade_name" style="width: 100%;">
+            <input type="text" class="form-control" name="trade_name" style="width: 100%;" required>
           </div>
           <div class="form-group">
             <label>Mode of Filing</label>
-            <select name="mode" class="form-control" style="width: 100%;">
+            <select name="mode" class="form-control" style="width: 100%;" required>
               <option value="">--Select Mode of Filing--</option>
               @foreach($modes as $mode)
                 <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
@@ -124,22 +125,22 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Unit House No.</label>
-            <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no" style="width: 100%;">
+            <input type="text" value="" class="form-control" id="inputEmail4" name="unit_house_no" style="width: 100%;" required>
           </div>
           <div class="form-group">
             <label>Street</label>
-            <input type="text" value="" class="form-control" id="inputPassword4" name="street" style="width: 100%;">
+            <input type="text" value="" class="form-control" id="inputPassword4" name="street" style="width: 100%;" required>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label>Province</label>
-            <input type="text" class="form-control" id="inputAddress2" name="client_province" style="width: 100%;">
+            <input type="text" class="form-control" id="inputAddress2" name="client_province" style="width: 100%;" required> 
           </div>
           <div class="form-group">
             <label>City/Municipality</label>
-            <input type="text" class="form-control" id="inputAddress" name="client_city" style="width: 100%;">
+            <input type="text" class="form-control" id="inputAddress" name="client_city" style="width: 100%;" required>
           </div>
         </div>
         </div>
@@ -147,7 +148,7 @@
           <div class="col-md-6">
             <div class="form-group" >
               <label>Postal Code</label>
-              <input type="text" class="form-control" id="inputCity" name="client_postal" style="width: 100%;">
+              <input type="text" class="form-control" id="inputCity" name="client_postal" style="width: 100%;" required>
             </div>
           </div>
         </div>
@@ -157,7 +158,7 @@
             <ul class="checkbox-grid">
               @foreach($taxForms as $taxForm)
                 <li style="display: block; float: left; width: 25%;">
-                  <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]"  >
+                  <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]"  required>
                   <span class="ml-3 text-sm"><h6>{{ $taxForm->tax_form_no }}</h6></span>
                 </li>
               @endforeach
@@ -167,7 +168,7 @@
           <div class="col-md-6">
             <div class="form-group" >
                 <label class="form-label"><b>Username</b></label>
-                <input type="text" class="form-control" value="" name="username">
+                <input type="text" class="form-control" value="" name="username" required>
             </div>
           </div>
               <div class="col-md-6">
