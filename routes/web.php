@@ -72,6 +72,7 @@ Route::middleware(['logout'])->group(function(){
 
    
      /*---------------------- EXTRA PAGES --------------*/
+     Route::view('/welcome_page','shared.welcome_page')->name('welcome');
 
     Route::view('/about','pages.admin.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
