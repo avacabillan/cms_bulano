@@ -34,11 +34,11 @@ class AdminAssocController extends Controller
                 ->addColumn('action', function($row){
                     
                     $actionBtn = '<a href="'.route('assoc-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>
-                        <a href="'.route('associate.delete',$row->id).'" class="edit btn btn-danger btn-sm">Delete</a>';
+                    <a href="'.route('associate.delete',$row->id).'"  onclick="return confirm(`Are you sure  you want to delete this data? `)" class="edit btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
                
-                ->rawColumns(['action','delete','departments'])
+                ->rawColumns(['action','departments'])
                 ->make(true);
         }
     }
@@ -147,6 +147,9 @@ class AdminAssocController extends Controller
         
         $associate=Associate::find($id);
         $associate->delete();
+        if($associate){
+            Alert::success('Success', 'Associate Successfuly Deleted!');
+        }
         return redirect()->back();
     }
     

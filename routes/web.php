@@ -20,6 +20,8 @@ use App\Http\Controllers\MultiFileUploadController;
 use App\Http\Controllers\InternalMessagesController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\TaxFormsController;
+use App\Http\Controllers\AdminController;
+ 
 
 
 /*
@@ -76,7 +78,7 @@ Route::middleware(['logout'])->group(function(){
     Route::view('/about','pages.admin.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
     Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
-    
+    Route::get('/admin', [AdminController::class,'store'])->name('create.admin');
 
     /*---------------------- INTERNAL MESSAGES --------------*/
 
@@ -177,7 +179,7 @@ Route::middleware(['logout'])->group(function(){
 
      //BIRfullcalendar
     Route::get('/taxcalendar',[FullCalendarReminderController::class, 'index'])->name('bir-calendar');
-    Route::get('/TaxEvent',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvent');
+    Route::get('/TaxEvents',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvent');
     Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
     Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');
     // Route::get('/view-reminder',[FullCalendarReminderController::class, 'viewEvent'])->name('view-reminders');

@@ -20,9 +20,10 @@ class FullCalendarReminderController extends Controller
         return view('pages.admin.calendar.tax-calendar.bir-calendar');
     
     }
-    public function getTaxEvent(){
+    public function getTaxEvent(Request $request){
 
-        $reminders = Reminder::select('reminder','start', 'end')->get();
+       // $deadline = Reminder::select('r','start_date', 'end_date')->get();
+         $reminders = Reminder::select('reminder','start', 'end')->get();
         return response()->json($reminders);
   
     }
@@ -39,8 +40,8 @@ class FullCalendarReminderController extends Controller
         ]);
            $reminder= new Reminder();
            $reminder->reminder=$request->reminder;
-           $reminder->start=$request->startdate;
-           $reminder->end=$request->enddate;
+           $reminder->start_dates=$request->startdate;
+           $reminder->end_dates=$request->enddate;
            $reminder->save();
            return redirect()->route('display-calendar')->with('success', 'Reminder has been added');
     }
@@ -52,8 +53,8 @@ class FullCalendarReminderController extends Controller
     public function updateEvent(Request $request, $id){
         $reminder = Reminder::find($id);
         $reminder->reminder =$request->reminder;
-        $reminder->start =$request->start_date;
-        $reminder->end =$request->end_date;
+        $reminder->start_dates =$request->start_date;
+        $reminder->end_dates =$request->end_date;
         $reminder->update();
         Alert::success('Success', 'Deadline has been updated');
         return redirect()->route('display-bir-deadlines');
@@ -111,9 +112,10 @@ class FullCalendarReminderController extends Controller
         
         public function getReminder(Request $request){
             $deadline = Deadline::select('title','start_date', 'end_date')->get();
+            // $reminders = Reminder::select('reminder','start', 'end')->get();
            
             return response()->json($deadline);
-                     
+            
         }
         
         public function createDeadline(){

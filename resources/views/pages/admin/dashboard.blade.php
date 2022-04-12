@@ -152,6 +152,43 @@
     </div>
   </div>
 </div>
+{{-- Add admin modal --}}
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create New Admin</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('create.admin')}}" method="POST" class="row g-3">
+          @csrf
+          @method('GET')
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Name</label>
+            <input name="name" class="form-control" id="inputPassword4">
+          </div>
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" id="inputEmail4">
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="inputPassword4">
+          </div>
+         
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+      
+      </div>
+    </div>
+  </div>
+</div>
+@include('sweetalert::alert')
 @include('sweetalert::alert')
 @section('scripts')
 

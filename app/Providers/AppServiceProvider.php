@@ -37,7 +37,8 @@ class AppServiceProvider extends ServiceProvider
                             ->count();
                             $ddlines= DB::table('bulano_deadline')
                             ->count() +$birs;
-                            
+                            $admins= DB::table('users')->where('role', 'admin')
+                            ->get();
                            
                             $assocs= DB::table('associates')
                             ->count();
@@ -51,7 +52,8 @@ class AppServiceProvider extends ServiceProvider
                                  ->with('ddlines',$ddlines)
                                  ->with('assocs',$assocs)
                                  ->with('clients',$clients)
-                                 ->with('archives',$archives);
+                                 ->with('archives',$archives)
+                                 ->with('admins',$admins);
                         });
 
         Schema::defaultstringLength(191);

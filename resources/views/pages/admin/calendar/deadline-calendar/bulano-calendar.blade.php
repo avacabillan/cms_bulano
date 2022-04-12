@@ -158,110 +158,115 @@
 @include('sweetalert::alert')
 <script>
     document.addEventListener('DOMContentLoaded', function() {       
-            $.ajaxSetup({
+        $.ajaxSetup({
             headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
             }
-            })
-            var fcSources = {
-       
-            loadEwsEvents: {
-                url: "/TaxEvent",
-                type: "GET",
-                color: "#FF6347",
-                className: "events",
-                data:  {
-                    start: "start",
-                    end: "end",
-                    id: "id",
-                    title: "reminder"
-                },
-                error: function() {
-                    console.log("Error in loadEWSEvents: " + data);
-                },
-            },
-           
-    };
-       
-            var calendarEl = document.getElementById('calendar');
+        });
+
         
-            var calendar = new FullCalendar.Calendar(calendarEl,{
-                headerToolbar: {
-                    start: 'today', 
-                    center: 'title',
-                    end: 'prevYear prev,next nextYear'
-                },
-                
-                eventSources: [
+    
+
+    
+        var calendarEl = document.getElementById('calendar');
+    
+        var calendar = new FullCalendar.Calendar(calendarEl,{
+            headerToolbar: {
+                start: 'today', 
+                center: 'title',
+                end: 'prevYear prev next nextYear'
+            },
             
-                 fcSources.loadEwsEvents,
-
-                ],
-                timeZone: 'UTC',
-                initialView: 'dayGridMonth',   
- 
-                selectable:true,
+            eventSources: [
+             
+                {
+                url: '/TaxEvents',
+               // dateType:'json',
+                method: "GET", 
+                contentType: 'application/json', 
                 
-                select: function(info) {
-                    
-                    $('#saveBtn').val("createReminder");
-                    $('#addReminderForm').trigger('reset');
-                    $('#headingsModal').html('Add New Reminder');
-                    $('#addReminder').modal('show');
-
-                      
-                },   
-                events:function(info, successCallback, failureCallback){
-                   
-                   
-                    var title = info.title;
-                    var start_date = info.start_date;
-                    var end_date = info.end_date;
-                    // console.log(reminder,start,end);
-                    
-                    $.ajax(
-                        {
-                        url: '/getDeadlines',
-                        method: "GET", 
-                        contentType: 'application/json',          
-                        data:{
-                           'reminder': title,
-                           'start': start_date,
-                           'end': end_date ,
-                       },
-                      
-                        success: function (response) {
-                            var events = [];
-                            
-                            
-                            // console.log(response);
-
-                            $.each(response, function(index, element) {
-                                events.push({
-                                    title: element.title,
-                                    start: element.start_date,
-                                    end: element.end_date,
-                                    
-
-                                });
-                            });
-                            successCallback(events); 
-                                  
-                        },
-                        
-                                          
-                    });                
-                },
-               
+                color: '#C24641',
+                textColor:'#CFECEC',
+              
+                }
                 
+   
+            ],
          
-            });
+          
+            timeZone: 'UTC',
+            initialView: 'dayGridMonth',   
+
+            selectable:true,
+            eventSourceSuccess: function(content, xhr) {
+             console.log();
+            },
+            select: function(info) {
+                
+                $('#saveBtn').val("createReminder");
+                $('#addReminderForm').trigger('reset');
+                $('#headingsModal').html('Add New Reminder');
+                $('#addReminder').modal('show');
+
+                    
+            },   
+            events:function(info, successCallback, failureCallback){
+                
+                
+                var title = info.title;
+                var start_date = info.start_date;
+                var end_date = info.end_date;
+                // console.log(reminder,start,end);
+                
+                $.ajax(
+                    {
+                    url: '/getDeadlines',
+                    method: "GET", 
+                    contentType: 'application/json',          
+                    data:{
+                        'reminder': title,
+                        'start': start_date,
+                        'end': end_date ,
+                    },
+                    
+                    success: function (response) {
+                        var events = [];
+                        
+                        
+                        // console.log(response);
+
+                        $.each(response, function(index, element) {
+                            events.push({
+                                title: element.title,
+                                start: element.start_date,
+                                end: element.end_date,
+                                
+
+                            });
+                        });
+                        successCallback(events); 
+                                
+                    },
+                    failure: function(response) {
+                        alert('there was an error while fetching events!');
+                    },
+                    
+                    
+                                        
+                });                
+            },
+          
            
             
+            
+        
+        });
+        
+        
         calendar.render();     
         
         calendar.refetchEvents();
-        
+    
 
     });
 

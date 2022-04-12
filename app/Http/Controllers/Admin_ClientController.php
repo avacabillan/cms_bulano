@@ -48,7 +48,7 @@ class Admin_ClientController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>  
-                                    <a href="'.route('delete_client',$row->id).'" class="edit btn btn-danger btn-sm show_confirm">Delete</a>';
+                                    <a href="'.route('delete_client',$row->id).'"  onclick="return confirm(`Are you sure  you want to delete this data? `)" class="edit btn btn-danger btn-sm show_confirm">Delete</a>';
                     return $actionBtn;
                 })
                 
