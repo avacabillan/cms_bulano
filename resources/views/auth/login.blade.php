@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>@yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
 
-
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!-- ADMIN -->
-    <link rel="stylesheet" href="{{asset('css/admin_login.css')}}">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css?v=3.2.0">
     
-   
+    
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
+
+    <script nonce="db65cfe1-726c-406b-98f8-4ccc638bce82"(function(w,d){!function(a,e,t,r){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zaraz={deferred:[]},a.zaraz.q=[],a.zaraz._f=function(e){return function(){var t=Array.prototype.slice.call(arguments);a.zaraz.q.push({m:e,a:t})}};for(const e of["track","set","ecommerce","debug"])a.zaraz[e]=a.zaraz._f(e);a.addEventListener("DOMContentLoaded",(()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r),n=e.getElementsByTagName("title")[0];for(n&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.zarazData.q=[];a.zaraz.q.length;){const e=a.zaraz.q.shift();a.zarazData.q.push(e)}z.defer=!0,z.referrerPolicy="origin",z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)}))}(w,d,0,"script");})(window,document);</script> 
 </head>
-<body>
-<div id="container">
-    <div id="left">
-        <!-- Image -->
-    </div>
-    <div  id="right">
-     
-    @include('sweetalert::alert')
-
-        <h1 class="login  text-white text-center mt-3" id="client_login"><b>LOGIN</b></h1><br>
-        
-         <!-- Validation Errors -->
-    
-        <x-auth-validation-errors class="alert alert-info text-dark text-center" :errors="$errors" /> 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-            <!-- Email Address -->
-            <div class="email text-center pt-5">
-                <x-label class="text-white me-4" for="email" :value="__('Email')" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+ 
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="../../index2.html" class="h1"><b>BULANO</b></a>
             </div>
-            <!-- Password -->
-            <div class="mt-4 text-center">
-                <x-label class="text-white" for="password" :value="__('Password')" />
+            <div class="card">
+                <div class="card-body login-card-body">
+                    <p class="login-box-msg">Sign in to start your session</p>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div class="input-group mb-3">
+                            <input id="email" class="form-control" type="email" name="email" :value="old('email')" placeholder="Enter Your Email" required autofocus>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" id="password" class="form-control" name="password" placeholder="Enter Your Password" required autocomplete="current-password">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
 
-                <x-input 
-                    id="password" 
-                    class="block mt-1 w-full"
-                    type="password"
-                    name="password"
-                    required autocomplete="current-password" />
-            </div>
+                        <div class="row">
+                            <div class="col-8">  
+                                <div class="icheck-primary">
+                                    <input type="checkbox" name="remember" id="remember_me">
+                                    <label for="remember">{{ __('Remember me') }}</label>
+                                </div>
+                            </div>
 
-            <!-- Remember Me -->
-            <div class="block mt-4 text-center">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-light">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+                            <div class="col-4">
+                                <button class="btn btn-info mt-3 ml-4" type="submit" style="width:5rem;">
+                                    {{ __('Login') }}
+                                </button>                            
+                            </div>
+                        </div>
 
-            <div class="flex items-center mt-4">
+                        <div class="flex items-center mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
@@ -69,23 +69,17 @@
                 @endif
                
             </div>
-            <button class="btn btn-info mt-3 ml-4" type="submit" style="width:5rem;">
-                    {{ __('Login') }}
-                </button>
-        </form>
-        <a class="btn btn-info mt-3 ml-4" href="{{ route('register')}}">{{ __('Register') }}</a>
-       
+            
+                    </form>
+
+                    
+                    <p class="mb-0">
+                        <a class="text-center" href="{{ route('register')}}" >Register a new membership</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<script>
-    $('document').ready(function(){
-        @if ($errors->any())
-            $(".alert").fadeIn(500).delay(3000).fadeOut(500);
-        @endif
-       
-    });
-</script> 
 
 </body>
 </html>
-

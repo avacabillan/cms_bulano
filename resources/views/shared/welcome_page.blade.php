@@ -16,7 +16,6 @@
 }
 .link {
   position: relative;
-  
 }
 .link:after {
   content: '';
@@ -109,26 +108,93 @@ padding:1rem;
 font-size:1.5em;
 }
 }
+
+    .service-title h4 {
+    position: relative;
+    display: inline-block;
+}
+.service-icon {
+    position: relative;
+}
+.service-title p {
+    padding: 0 190px;
+    margin-bottom: 10px;
+}
+
+.service-icon i {
+    font-size: 40px;
+    color: #e8bc00;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.service-wrap {
+    border: 1px solid #e6e6e6;
+    padding: 50px 30px;
+      position: relative;
+}
+
+.service-wrap p{
+      position: relative;
+}
+
+.service-wrap:hover {
+    background-image: url(https://i.ibb.co/mykzQks/services1.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: local;
+    transition: all .5s;
+}
+
+.service-wrap:hover:before {
+    background: rgba(0, 0, 0, 0.2901960784313726);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    content: "";
+    top: 0;
+    opacity: 1;
+}
+
+.service-wrap:hover h4,.service-wrap:hover p{
+    color: #fff;
+}
+.service-wrap h4 {
+    font-weight: 600;
+    color: #1e2331;
+    margin-bottom: 17px;
+    font-size: 18px;
+    text-transform: capitalize;
+      position: relative;
+}
+.fixed-top {
+    background-color: #333;
+    height: 15%;
+}
+
+.fixed-top ul li a link {
+  overflow-y: auto;
+}
+
 </style>
 <body background="images/welcome_pg.jpg" style=" background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
-    <nav>
-        <img class="logo-img" src="images/Logo.png" width="80" height="80" ALT="company logo">
+    <nav class="fixed-top">
+        <img class="logo-img" src="images/bulano.png" width="55" height="55" ALT="company logo">
         <ul>
-            <li> <a class="link" href=""> Home </a> </li>
+            <li> <a class="link" href="#HOME"> Home </a> </li>
             <li> <a class="link" href="#ABOUT"> About </a></li>
-            <li> <a class="link" href=""> Services </a></li>
-            <li> <button class="btn btn-dark fw-900"type="submit">LOGIN</button></li>
+            <li> <a class="link" href="#SERVICES"> Services </a></li>
+            <li> <button class="btn btn-dark fw-900" type="submit">LOGIN</button></li>
         </ul>  
     </nav>
 
-    <div class="welcome_pg_content">
+    <div class="welcome_pg_content pt-5 mt-5" id="HOME">
         <h1 class="heading_line">BE PART OF OUR TEAM</h1>
-        <button class="btn btn-dark" style="margin-left: 40%;" type="submit">REGISTER</button>
-        <button type="button" class="btn btn-outline-dark">Primary</button>
+        <button class="btn btn-outline-dark" href="#" style="margin-left: 40%;" type="submit">REGISTER</button>
+        <button type="button" class="btn btn-dark">Learn More.</button>
     </div>
- 
-<br><br><br><br><br><br><br><br><br><br><br>
-    <div class="About_content" id="ABOUT" >
+    <!-- ABOUT -->
+    <div class="About_content" id="ABOUT" style="margin-top:20%;">
         <div class="section4" style="background-color: white;">
             <section>
                 <img src="images/about_img.png" alt="" loading="lazy">
@@ -157,9 +223,9 @@ font-size:1.5em;
                     (2) Business Services, <br>
                     (3) Audit Services and, <br>
                     (4) Management Services. Diosdado C. Bulano is an 
-                    accredited practitioner by Board of Accountancy (BOA), <br>
-                    Philippine Contractors Accreditation Board (PCAB), <br>
-                    Bureau of Internal Revenue (BIR) and <br>
+                    accredited practitioner by <b>B</b>oard <b>o</b>f <b>A</b>ccountancy (BOA), <br>
+                    <b>P</b>hilippine <b>C</b>ontractors <b>A</b>ccreditation <b>B</b>oard (PCAB), <br>
+                    <b>B</b>ureau of <b>I</b>nternal <b>R</b>evenue (BIR) and <br>
                     Cooperative Development Authority (CDA). <br>
                     He is a member in good standing of the Philippine Institute of Certified Public Accountants (PICPA).
                 </p>
@@ -179,6 +245,119 @@ font-size:1.5em;
                 </p>
             </div>
             </section>
+        </div>
+    </div>
+    <!-- SERVICES -->
+    <div class="row" id="SERVICES">
+        <div class="col-12">
+            <!-- Custom Tabs -->
+            <div class="card card-dark card-outline me-2 ms-2 mt-2">
+                <div class="card-header d-flex p-0">
+                    <h3 class="card-title p-3"><b>SERVICES</b></h3>
+                </div><!-- /.card-header -->
+
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+
+                            <section class="service-grid pb-5 pt-5">
+                                <div class="container">
+                
+                                    <div class="row">
+                                        <div class="col-xs-10 col-xs-offset-1 text-center mb-3">
+                                            <div class="service-wrap">
+                                                <h4>Accounting and Tax Services</h4>
+                                                <hr>
+                                                <p>
+                                                    * Assist companies in the application of accounting policies for compliance with acceptable accounting standards 
+                                                      and appropriate accounting procedures for recording, classifying and summarizing and reporting of financial 
+                                                      transactions. At the same time, providing awareness of new developments in accounting and tax standards.<br>
+                                                    * Preparation and filing of annual income tax returns and annual financial statements in
+                                                      accordance with acceptable accounting standards and framework.<br>
+                                                    * Compliance with regulatory bodies through preparation and filing of all tax types
+                                                      registered under the Bureau of Internal Revenue (BIR) as specified in the Certificate of
+                                                      Registration covering monthly, quarterly and annual tax returns and reports in compliance
+                                                      with National Internal Revenue Code, Revenue Regulations, Revenue Memorandum
+                                                      Orders and Revenue Memorandum Circulars.<br>
+                                                    * Regular review and monitoring, even as requested by management, of status of
+                                                      compliance of the Company with the regulatory bodies particularly Securities and
+                                                      Exchange Commission (SEC) and BIR.<br>
+                                                    * Conduct trainings and seminars regarding accounting procedures and regulatory updates<br>
+                                                </p> 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-center mb-3">
+                                            <div class="service-wrap">                         
+                                                <h4>Management Services</h4>
+                                                <hr>
+                                                <p>
+                                                    * Assists in the negotiations with BIR examinations and assessments<br>
+                                                    * Agreed-upon procedures<br>
+                                                    * Assists in the negotiations with Business Bureau of Davao City and other regulatory
+                                                      bodies during examinations and assessments<br>
+                                                    * Provides business process review and recommendations on internal control procedures of
+                                                      the financial operations of the Company<br>
+                                                    * Performs agreed-upon procedures involving review, compilation<br>
+                                                    * Provides verification or certification of financial information of an entity for reporting
+                                                      requirement<br>
+                                                    * Assists entities in setting-up manual accounting system<br>
+                                                 </p>                             
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-center mb-3">
+                                            <div class="service-wrap">                         
+                                                <h4>Business Services</h4>
+                                                <hr>
+                                                <p>
+                                                    * Assists new entities in the preparation and submission of regulatory requirements and
+                                                      registration of the business with Business Bureau of Davao City, SEC or Department of
+                                                      Trade and Industry (DTI) and BIR <br>
+                                                    * Assists entities in obtaining business requirements with Business Bureau of Davao City,
+                                                      SEC or DTI and BIR for branching out, change in business information, dividend
+                                                      declarations, increase in authorized share capital and any other changes or amendments,
+                                                      etc. <br>
+                                                    * Assists retiring companies in the preparation and submission of regulatory requirements
+                                                      with Business Bureau of Davao City, SEC or DTI and BIR for the retirement of business <br>
+                                                </p>                   
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 text-center mb-3">
+                                            <div class="service-wrap">                         
+                                                <h4>Audit Services</h4>
+                                                <hr>
+                                                <p>
+                                                    1. Financial statements audit <br>
+                                                </p>                  
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 text-center mb-3">
+                                            <div class="service-wrap">                         
+                                                <h4>Audit Services</h4>
+                                                <hr>
+                                                <p>
+                                                    2. Internal audit <br>
+                                                </p>                  
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 text-center mb-3">
+                                            <div class="service-wrap">                         
+                                                <h4>Audit Services</h4>
+                                                <hr>
+                                                <p>
+                                                    3. Management audit <br>
+                                                </p>                  
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                            
+                        </div><!-- /.tab-pane -->
+                    </div>
+                </div> 
+                
+            </div>
         </div>
     </div>
 
