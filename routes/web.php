@@ -179,13 +179,13 @@ Route::middleware(['logout'])->group(function(){
 
      //BIRfullcalendar
     Route::get('/taxcalendar',[FullCalendarReminderController::class, 'index'])->name('bir-calendar');
-    Route::get('/TaxEvents',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvent');
+    Route::get('/Taxevents',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvents');
     Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
     Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');
     // Route::get('/view-reminder',[FullCalendarReminderController::class, 'viewEvent'])->name('view-reminders');
     Route::get('/edit-reminder/id={id}',[FullCalendarReminderController::class, 'editEvent'])->name('edit-reminder');
     Route::put('/update-reminder/id={id}',[FullCalendarReminderController::class, 'updateEvent'])->name('update-reminder');
-    Route::get('/delete-reminder/id={id}',[FullCalendarReminderController::class, 'deleteEvent'])->name('delete-reminder');
+    Route::delete('/delete-reminder/id={id}',[FullCalendarReminderController::class, 'deleteEvent'])->name('delete-reminder');
     // Route::get('/createTaxEvent',[FullCalendarReminderController::class, 'createTaxEvent'])->name('createTaxEvent');
     Route::get('/result',[FullCalendarReminderController::class, 'resultList'])->name('fetch_date');
     
@@ -198,7 +198,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/store-deadline',[FullCalendarReminderController::class, 'storeDeadline'])->name('store-deadline');
     Route::get('/edit-deadline/{id}',[FullCalendarReminderController::class, 'editDeadline'])->name('edit-deadline');
     Route::put('/update-deadline/{id}',[FullCalendarReminderController::class, 'updateDeadline'])->name('update-deadline');
-    Route::get('/delete-deadline/{id}',[FullCalendarReminderController::class, 'deleteDeadline'])->name('delete-deadline');
+    Route::delete('/delete-deadline/{id}',[FullCalendarReminderController::class, 'deleteDeadline'])->name('delete-deadline');
 
        
     

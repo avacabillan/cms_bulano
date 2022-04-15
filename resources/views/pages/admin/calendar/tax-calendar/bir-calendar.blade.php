@@ -1,151 +1,94 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script defer src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script defer src= "https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
-@extends('layout.master')
-@section('title')
-    Calendar
-@endsection
-@section('content')
+    <script>
 
-<div class="content"> 
-    <div class="container-fluid"  >
-   
-        @if (\Session::has('success'))
-            
-            <div class="alert alert-success" style="fade: out 0.5;">
-            <p>{{ \Session::get('success') }}</p>
-            </div><br />
-        @endif
-           
-        <div class="row">
-            <div class="mt-2" style ="width: 80%;" >
-                <div class="response"></div>
-                <div id='calendar'></div>  
-            </div>
-        </div>
-    </div>  
-</div>
-
-<!-- Add BIR REMINDER Modal -->
-<div class="modal" id="addBIR" tabindex="-1" role="dialog" aria-labelledby="addBIRTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="addBIRTitle">Create Tax Deadline</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="smallBody" style="margin-left: 17%;">
-                    <div>
-                    <form method="POST" action="{{route('post-reminder')}}" id="addBIRForm">
-                        @csrf
-                        @method('GET')
-                        <div class="row">
-                                        
-                            <div class="form-group col-md-4">
-                                <label for="Title" class="col-form-label">Title:</label>
-                                <input type="text" class="form-control" name="title">
-                            </div>
-                        </div>
-                    
-                        
-                        <div class="row">
-                        
-                            <div class="form-group col-md-4">
-                                <label for="Start Date" class="col-form-label"> Start Date : </label>  
-                                <input class="date form-control" type="date"  id="startdate" name="startdate">   
-                            </div>
-                        </div>
-                        <div class="row">
-                        
-                            <div class="form-group col-md-4">
-                                <label  for="End Date" class="col-form-label"> End Date : </label>  
-                                <input class="date form-control" type="date"   id="enddate" name="enddate">   
-                            </div>
-                        </div>
-                        <div class="row">
-                        
-                        <div class="form-group col-md-6">
-                            <button type="submit" class="btn btn-success saveBtn"  value="createBIR">Save Deadline</button>
-                        </div>
-                        </div>
-                    </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<script>
     document.addEventListener('DOMContentLoaded', function() {       
-            $.ajaxSetup({
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
             }
-            })
+        });
+        
+        
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            timeZone: 'UTC',
+            initialView: 'dayGridMonth',   
+            selectable:true, 
             
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl,{
-                headerToolbar: {
-                    start: 'today', 
-                    center: 'title',
-                    end: 'prevYear prev,next nextYear'
-                },
-                initialView: 'dayGridMonth',
-                selectable: true, 
-                select: function(info) {
-                    
-                    $('#saveBtn').val("createReminder");
-                    $('#addBIRForm').trigger('reset');
-                    $('#headingsModal').html('Add New Reminder');
-                    $('#addBIR').modal('show');
-
-                      
-                },     
-                events:function(info, successCallback, failureCallback){
-                   
-                    
-                    var reminder = info.reminder;
-                    var start = info.start_date;
-                    var end = info.end_date;
-                    // console.log(reminder,start,end);
-                    
-                    $.ajax({
-                        url: '/TaxEvent',
-                        method: "GET", 
-                        contentType: 'application/json',          
-                       data:{
-                           'reminder': reminder,
-                           'start': start,
-                           'end': end ,
-                       },
-                        success: function (response) {
-                            var events = [];
-                            
-                            // console.log(response);
-
+            eventSources: [      
+                {
+                    url: "{{ route('getTaxEvents') }}",
+                    success: function(response) { 
+                        // Instead of returning the raw response, return only the data 
+                        // element Fullcalendar wants
+                        var events = [];
+                
                             $.each(response, function(index, element) {
                                 events.push({
                                     title: element.reminder,
-                                    start: element.start,
-                                    end: element.end,
+                                    start: element.start_time,
+                                    end: element.end_time,
                                     
 
                                 });
                             });
-                            successCallback(events); 
-                                              
-                        },
-                                          
-                    });                
-                },         
-            });
-            
-        calendar.render();     
-        
-        calendar.refetchResources();
-        
+                        return events; 
+                },
+                error: function () {
+                alert('there was an error while fetching events!');
+                },
+                color: '#E5664B',   // a non-ajax option
+                textColor: 'black' // a non-ajax option
+                },
+                {
+                    url: "{{ route('getReminder') }}",
+                    type: 'GET',
+                    /*data: {
+                        custom_param1: 'something',
+                        custom_param2: 'somethingelse'
+                    },*/
+                    success: function(res) { 
+                            // Instead of returning the raw response, return only the data 
+                            // element Fullcalendar wants
+                            var event = [];
+                    
+                                        $.each(res, function(index, element) {
+                                            event.push({
+                                                title: element.title,
+                                                start: element.start_date,
+                                                end: element.end_date,
+                                                
 
+                                            });
+                                        });
+                            return event; 
+                    },
+                    error: function () {
+                        alert('there was an error while fetching events!');
+                    },
+                    color: '#4B98E5',   // a non-ajax option
+                    textColor: 'white' // a non-ajax option
+                }
+            
+               
+            ],
+        });
+        calendar.render();
     });
 
-   
-</script>
-
-@endsection
+    </script>
+  </head>
+  <body>
+    <div id='calendar'></div>
+  </body>
+</html>

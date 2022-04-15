@@ -14,7 +14,7 @@
       <div class="card-header">
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                List of Deadlines
+                Select Deadlines
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="{{route('display-bir-deadlines')}}">BIR Deadline</a></li>
@@ -23,13 +23,14 @@
           </div>
         
         <hr>
-        <table id="assoc-list" class="table table-bordered yajra-datatable mt-3" >
+        <table id="assoc-list" orderable="false" class="table table-bordered mt-3" >
           <thead >
               
             <tr>
               <th class="Client-th text-dark text-center">Event</th>
               <th class="Client-th text-dark text-center">Deadline</th>              
               <th class="Client-th text-dark text-center">Action</th>
+
             </tr>
           </thead> 
           <tbody> 
@@ -38,14 +39,24 @@
 
               <tr>                     
                 <td>{{$internal->title}}</td>
-                <td>{{$internal->start_date}}</td>
+                <td>{{ \Carbon\Carbon::parse($internal->start_date)->format('F d, Y')}} -  {{ \Carbon\Carbon::parse($internal->end_date)->format('F d, Y')}}</td>
+                
                
-               
-                <td class="text-dark"> 
+                <td class="text-dark text-center"> 
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end"> 
                                                   
-                  <a class="btn btn-primary btn-sm" href="{{route('edit-deadline', $internal->id)}}"   data-bs-toggle="tooltip" data-bs-placement="top" >Edit</a>
-                  <a class="btn btn-danger btn-sm" href="{{route('delete-deadline', $internal->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" >Delete</a>                 
-                </td>                                         
+                    <a class="btn btn-primary btn-sm" href="{{route('edit-deadline', $internal->id)}}"   data-bs-toggle="tooltip" data-bs-placement="top" >Edit</a>
+                    <form method="post" action="{{ route('delete-deadline', $internal->id) }}">
+                      @csrf
+                      @method('delete')    
+                      <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" class="btn btn-danger btn-sm me-md-2" onclick="return confirm(`Are you sure  you want to delete this data? `)">Delete</button>
+                      </div>
+                    </form>
+                  </div>
+                
+                </td>
+                                                       
               </tr>
             @endforeach 
           </tbody>
@@ -72,6 +83,6 @@
     </div>
   </div>
 </div>
-
+@include('sweetalert::alert')
 @include('sweetalert::alert')
 @endsection

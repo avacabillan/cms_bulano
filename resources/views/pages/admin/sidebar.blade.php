@@ -73,7 +73,7 @@
               </li>
               @foreach($admins as $admin)
               <li class="nav-item">
-                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link">
+                <a href=""  class="nav-link">
                 <span>  <i class="fas fa-solid fa-user-shield nav-icon"></i><b>{{$admin->name}}</b> </span>
                 </a>
               </li>

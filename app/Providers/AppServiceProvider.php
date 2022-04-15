@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use App\Models\Reminder;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Sum;
 
 class AppServiceProvider extends ServiceProvider
@@ -47,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
                             $archives= DB::table('client_tax_files')
                             ->where('deleted_at', '!=', null)
                             ->count();
+                            
                             $view->with('reqs',$reqs)
                                  ->with('birs',$birs)
                                  ->with('ddlines',$ddlines)
@@ -54,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
                                  ->with('clients',$clients)
                                  ->with('archives',$archives)
                                  ->with('admins',$admins);
+                               
                         });
 
         Schema::defaultstringLength(191);
