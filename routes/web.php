@@ -74,7 +74,7 @@ Route::middleware(['logout'])->group(function(){
 
    
      /*---------------------- EXTRA PAGES --------------*/
-
+     Route::post('/mark-as-read', [Admin_ClientController::class, 'markNotification'])->name('markNotification');
     Route::view('/about','pages.admin.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
     Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
@@ -114,7 +114,7 @@ Route::middleware(['logout'])->group(function(){
      /*---------------------- USER REGISTRATION --------------*/
 
 
-     Route::get('/request/delete/{id}',[RegisteredClientController:: class, 'delete'])->name('delete');
+     Route::delete('/request/delete/{id}',[RegisteredClientController:: class, 'delete'])->name('delete');
     // Route::get('/register-client',[RegisteredClientController:: class, 'register'])->name('subscribe');
     // Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
     // Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');

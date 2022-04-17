@@ -31,8 +31,7 @@ class AdminCalendarController extends Controller
         $event = Deadline::insert($insertArr);   
         return Response::json($event);
     }
-     
- 
+
     public function update(Request $request)
     {   
         $where = array('id' => $request->id);
@@ -44,11 +43,9 @@ class AdminCalendarController extends Controller
         return Response::json($event);
     } 
  
- 
     public function destroy(Request $request)
     {
         $event = Deadline::where('id',$request->id)->delete();
-   
         return Response::json($event);
     } 
   

@@ -54,14 +54,5 @@
         </div>
       </form>
   </div>
-<script type="text/javascript">  
-    $('#startdate').datepicker({ 
-        autoclose: true,   
-        format: 'yyyy-mm-dd'  
-      });
-      $('#enddate').datepicker({ 
-        autoclose: true,   
-        format: 'yyyy-mm-dd'
-      }); 
-</script>
+
 @endsection

@@ -165,9 +165,17 @@
             timeZone: 'UTC',
             initialView: 'dayGridMonth',   
             selectable:true,
+            nextDayThreshold: '09:00:00',
+            dayMaxEventRows:true,
+            views: {
+                timeGrid: {
+                dayMaxEventRows: 3 // adjust to 6 only for timeGridWeek/timeGridDay
+                }
+            },
             eventSources: [      
                 {
                     url: "{{ route('getTaxEvents') }}",
+                    type: 'GET',
                     success: function(response) { 
                         // Instead of returning the raw response, return only the data 
                         // element Fullcalendar wants
@@ -193,10 +201,7 @@
                 {
                     url: "{{ route('getReminder') }}",
                     type: 'GET',
-                    /*data: {
-                        custom_param1: 'something',
-                        custom_param2: 'somethingelse'
-                    },*/
+                 
                     success: function(res) { 
                             // Instead of returning the raw response, return only the data 
                             // element Fullcalendar wants

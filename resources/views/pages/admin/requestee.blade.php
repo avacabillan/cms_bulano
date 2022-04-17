@@ -32,8 +32,14 @@
                   <!-- <button data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="{{asset('public/files/'.$requestee->cor)}}" alt="" width="70px" height="50px"></button> -->
                 </td>
                 <td class="text-dark">                                    
-                  <a class="btn btn-primary btn-sm" href="{{route('add_client',$requestee->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" >Accept</a>
-                  <a class="btn btn-danger btn-sm" href="{{route('delete',$requestee->id)}}" data-bs-toggle="tooltip" data-bs-placement="top" >Reject</a>                 
+                  <a class="btn btn-primary btn-sm" href="{{route('add_client',$requestee->id)}}" >Accept</a>
+                  <form method="post" action="{{ route('delete', $requestee->id) }}">
+                    @csrf
+                    @method('delete')    
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                      <button type="submit" class="btn btn-danger btn-sm me-md-2" onclick="return confirm(`Are you sure  you want to reject this request? `)">Reject</button>
+                    </div>
+                  </form>
                 </td>                                         
               </tr>
             @endforeach 

@@ -33,18 +33,6 @@
           </div>
         </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control"  value="{{$associate->name}}"  name="assoc_name" style="width: 100%;">
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="text" class="form-control" value="{{$associate->email}}" name="assoc_email" style="width: 100%;">
-              </div>
-            </div>
-
             <div class="col-md-6">
               <div class="form-group">
                 <label>SSS Number/ Goverment ID No.</label>

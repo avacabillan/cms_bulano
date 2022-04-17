@@ -119,7 +119,6 @@ class FileController extends Controller
         return view('pages.associate.clients.client_files',compact('datas'));
     }
     public function getArchives() 
-
     {   
         
  
@@ -127,10 +126,10 @@ class FileController extends Controller
         $clients = Client::query()
         ->where('assoc_id', '=', $associate )
         ->pluck('id');
-        $onlySoftDeleted = TaxFile::onlyTrashed()
-        ->where('client_id', '=', $clients)
-        ->get();
-        return view('pages.associate.clients.archives',compact([ 'onlySoftDeleted' ]));
+        $onlySoftDeleted = TaxFile::where('client_id', '=', $clients)
+        ->onlyTrashed();
+        //dd($onlySoftDeleted);
+        return view('pages.associate.clients.archives',compact('onlySoftDeleted' ));
     }
    
     public function edit($id)

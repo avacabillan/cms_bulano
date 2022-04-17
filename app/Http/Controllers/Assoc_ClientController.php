@@ -2,29 +2,13 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Associate;
-use App\Models\Business;
-use App\Models\ClientCity;
-use App\Models\ClientPostal;
-use App\Models\ClientProvince;
-use App\Models\Corporate;
-use App\Models\ModeOfPayment;
-use App\Models\RegisteredAddress;
-use App\Models\LocationAddress;
-use App\Models\Group;
 use App\Models\TaxForm;
-use App\Models\TaxType;
-use App\Models\TaxFile;
 use App\Models\ClientTax;
-use App\Models\Tin;
-use App\Models\User;
-use App\Models\Reminder;
 use \Yajra\Datatables\Datatables;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class Assoc_ClientController extends Controller
 {
     
@@ -85,10 +69,8 @@ class Assoc_ClientController extends Controller
         $client->business;
         $client->registeredAddress;
         $client->clientTaxes;
-       // dd(  $client->clientTaxes);
         return view('pages.associate.clients.edit_client',compact('client', 'taxForms', $taxForms)); 
-
-       
+  
 
     }
     public function updateClient(Request $request, $id)
@@ -100,7 +82,6 @@ class Assoc_ClientController extends Controller
         $client->save();
 
         $business =Client::find($id)->business->first();
-        // dd($business);
         $business->trade_name =$request->trade_name;
         $business->registration_date =$request->reg_date;
         $business->save();
@@ -108,7 +89,6 @@ class Assoc_ClientController extends Controller
         $tin =Client::find($id)->tin->first();
         $tin->tin_no =$request->tin;
         $tin->save();
-        //  dd($tin);
         
         $address =Client::find($id)->registeredAddress->first();
         $address->unit_house_no =$request->unit_house_no;
@@ -117,9 +97,7 @@ class Assoc_ClientController extends Controller
         $address->province_name =$request->client_province;
         $address->postal_no =$request->client_postal;
         $address->save();
-        // dd($address);
-
-        
+  
         return redirect()->route('dashboard')->with('message', 'Updated Successfully!');
     }
 
