@@ -43,8 +43,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 Route::get('/', function () {
-    return view('auth.login');
+    return view('shared.welcome_page');
 })->middleware('login');
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 Route::get('/request',[RegisteredClientController:: class, 'index'])->name('requestee');
 Route::post('/store-requestee',[RegisteredClientController:: class, 'storeRequest'])->name('store-requestee');
 // Route::view('requirements', 'read')->name('read');
@@ -58,6 +61,7 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
 })->name('logout');
+Route::view('/welcome_page','shared.welcome_page')->name('welcome');
 
 Route::middleware(['logout'])->group(function(){
 
@@ -74,7 +78,7 @@ Route::middleware(['logout'])->group(function(){
 
    
      /*---------------------- EXTRA PAGES --------------*/
-     Route::view('/welcome_page','shared.welcome_page')->name('welcome');
+    
 
      Route::post('/mark-as-read', [Admin_ClientController::class, 'markNotification'])->name('markNotification');
     Route::view('/about','pages.admin.about')->name('about');

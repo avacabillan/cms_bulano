@@ -184,13 +184,13 @@ font-size:1.5em;
             <li> <a class="link" href="#HOME"> Home </a> </li>
             <li> <a class="link" href="#ABOUT"> About </a></li>
             <li> <a class="link" href="#SERVICES"> Services </a></li>
-            <li> <button class="btn btn-dark fw-900" type="submit">LOGIN</button></li>
+            <li> <a class="btn btn-dark fw-900" href="{{route('login')}}">LOGIN</a></li>
         </ul>  
     </nav>
 
     <div class="welcome_pg_content pt-5 mt-5" id="HOME">
         <h1 class="heading_line">BE PART OF OUR TEAM</h1>
-        <button class="btn btn-outline-dark" href="#" style="margin-left: 40%;" type="submit">REGISTER</button>
+        <a class="btn btn-outline-dark" href="{{route('register')}}" style="margin-left: 40%;">REGISTER</a>
         <button type="button" class="btn btn-dark">Learn More.</button>
     </div>
     <!-- ABOUT -->
