@@ -689,6 +689,7 @@ class ComposerStaticInite00c50029359aa7e1bf966b6dddc2554
         'App\\Http\\Controllers\\API\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/ClientController.php',
         'App\\Http\\Controllers\\AdminAssocController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminAssocController.php',
         'App\\Http\\Controllers\\AdminCalendarController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminCalendarController.php',
+        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Admin_ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin_ClientController.php',
         'App\\Http\\Controllers\\Assoc_ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Assoc_ClientController.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',

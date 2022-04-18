@@ -10,7 +10,7 @@ use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait;
+
     use HasFactory, Notifiable;
 
     /**
@@ -22,7 +22,10 @@ class User extends Authenticatable
          'email', 'password',
     ];
    
-
+    public function getIsAdminAttribute()
+    {
+        return $this->user()->where('role', 'admin')->exists();
+    }
     public function clients()
     {
         return $this->belongsTo(Client::class,"id", "user_id");
@@ -34,6 +37,10 @@ class User extends Authenticatable
     public function message()
     {
         return $this->belongsTo(Message::class,);
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
     }
     /**
      * The attributes that should be hidden for arrays.

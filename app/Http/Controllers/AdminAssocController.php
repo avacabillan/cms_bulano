@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,9 +14,6 @@ class AdminAssocController extends Controller
   
     
     public function index(){
-
-        
-       
 
         return view ('pages.admin.associates.assoc_table');
                            
@@ -34,11 +30,11 @@ class AdminAssocController extends Controller
                 ->addColumn('action', function($row){
                     
                     $actionBtn = '<a href="'.route('assoc-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>
-                        <a href="'.route('associate.delete',$row->id).'" class="edit btn btn-danger btn-sm">Delete</a>';
+                    <a href="'.route('associate.delete',$row->id).'"  onclick="return confirm(`Are you sure  you want to delete this data? `)" class="edit btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
                
-                ->rawColumns(['action','delete','departments'])
+                ->rawColumns(['action','departments'])
                 ->make(true);
         }
     }
@@ -56,18 +52,8 @@ class AdminAssocController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            '*' => 'required',
-          
-            ],
-            [ '*.required' => 'The :attribute field can not be blank value.']);
 
 
-        $input = $request->all();
-        
-
-     
-        
         $myuser=new User;
         $myuser ->name = $request->assoc_name;
         $myuser->role='associate';
@@ -86,14 +72,11 @@ class AdminAssocController extends Controller
         $associate->department_id = $request->department;
         $associate->position_id = $request->position;
         $associate->save();
-     
-       
+
             return redirect()->route('assoc_table');
         
          
     }
-
-   
     public function show($id)
     {
         $associate = Associate::find($id);        
@@ -103,8 +86,6 @@ class AdminAssocController extends Controller
             return view ('pages.admin.associates.assoc_profile')->with('associate', $associate);
         
     }
-
- 
     public function edit($id)
     {
         $associate = Associate::find($id);
@@ -112,15 +93,11 @@ class AdminAssocController extends Controller
         $associate->position;   
         $departments= Department::all();
         $positions = Position::all();          
-
         return view ('pages.admin.associates.edit_associate')->with('associate', $associate)
         ->with('departments', $departments)
                             ->with ('positions', $positions);
-
-                        
+                   
     }
-
-   
     public function update(Request $request,$id)
     {
            
@@ -140,13 +117,13 @@ class AdminAssocController extends Controller
 
         return redirect()->route('assoc_table');
     }
-
- 
     public function destroy($id)
-    {
-        
+    {   
         $associate=Associate::find($id);
         $associate->delete();
+        if($associate){
+            Alert::success('Success', 'Associate Successfuly Deleted!');
+        }
         return redirect()->back();
     }
     

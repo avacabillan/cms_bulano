@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Deadline;
 
+use App\Models\Reminder;
 class AdminCalendarController extends Controller
 {
     public function index()
@@ -30,8 +31,7 @@ class AdminCalendarController extends Controller
         $event = Deadline::insert($insertArr);   
         return Response::json($event);
     }
-     
- 
+
     public function update(Request $request)
     {   
         $where = array('id' => $request->id);
@@ -43,13 +43,12 @@ class AdminCalendarController extends Controller
         return Response::json($event);
     } 
  
- 
     public function destroy(Request $request)
     {
         $event = Deadline::where('id',$request->id)->delete();
-   
         return Response::json($event);
-    }    
+    } 
+  
 
 
 }

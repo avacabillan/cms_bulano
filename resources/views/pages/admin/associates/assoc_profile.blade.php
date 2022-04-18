@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row mb-0">
                 <div class="col-sm-6">
-                    <h5><a href="{{route('associates_list')}}"><b>Associate List</b></a></h5>               
+                    <h5><a href="{{route('assoc_table')}}"><b>Associate List</b></a></h5>               
                 </div>
             </div>
         </div>
@@ -119,14 +119,12 @@
 
 </body>
 
-<script>
+
     
-<script src="../../plugins/jquery/jquery.min.js"></script>
 
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('dist/js/adminlte.min.js?v=3.2.0')}}"></script>
+<script src="{{asset('dist/js/demo.js')}}"></script>
 
-<script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
-
-<script src="../../dist/js/demo.js"></script>
-</script>
 </html>

@@ -61,9 +61,8 @@ class RegisteredClientController extends Controller
     public function delete($id){
 
         $requestee = Requestee::find($id);
-        if (!is_null($requestee)){
-            $requestee->delete();
-        }
+        $requestee->delete();
+        
         Mail::to($requestee['email'])->send(new RejectedMail($requestee));
         Alert::success('Success', 'Client Successfuly Rejected!');
         return redirect()->route('requestee');

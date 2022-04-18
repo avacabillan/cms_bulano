@@ -2,28 +2,21 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Associate;
 use App\Models\Business;
-use App\Models\ClientCity;
-use App\Models\ClientPostal;
-use App\Models\ClientProvince;
 use App\Models\Corporate;
 use App\Models\ModeOfPayment;
 use App\Models\RegisteredAddress;
-use App\Models\LocationAddress;
-use App\Models\Group;
 use App\Models\TaxForm;
 use App\Models\Requestee;
-use App\Models\TaxType;
 use App\Models\TaxFile;
 use App\Models\ClientTax;
 use App\Models\Tin;
 use App\Models\User;
-use App\Models\Reminder;
 use \Yajra\Datatables\Datatables;
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
@@ -36,6 +29,17 @@ class Admin_ClientController extends Controller
             return view ('pages.admin.clients.clients_list');
   
     }
+    public function markNotification(Request $request)
+    {
+        auth()->user()
+            ->unreadNotifications
+            ->when($request->input('id'), function ($query) use ($request) {
+                return $query->where('id', $request->input('id'));
+            })
+            ->markAsRead();
+
+        return response()->noContent();
+    }
     public function clientDatatable(Request $request) 
     {
         if ($request->ajax()) {
@@ -47,7 +51,7 @@ class Admin_ClientController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $actionBtn = '<a href="'.route('client-profile',$row->id).'" class="edit btn btn-success btn-sm">View</a>  
-                                    <a href="'.route('delete_client',$row->id).'" class="edit btn btn-danger btn-sm show_confirm">Delete</a>';
+                                    <a href="'.route('delete_client',$row->id).'"  onclick="return confirm(`Are you sure  you want to delete this data? `)" class="edit btn btn-danger btn-sm show_confirm">Delete</a>';
                     return $actionBtn;
                 })
                 
@@ -100,15 +104,29 @@ class Admin_ClientController extends Controller
     }
     public function insertClient(Request $request, $id )
     {
-       $request->validate([
-            '*' => 'required',
+    //    $request->validate([
+    //         '*' => 'required',
           
-            ],
-            [ '*.required' => 'The :attribute field can not be blank value.']);
+    //         ],
+    //         [ '*.required' => 'The :attribute field can not be blank value.']);
 
 
-        $input = $request->all();
+    //     $input = $request->all();
+            /**
+     * Store a new blog post.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+        $validator = Validator::make( $request->all(),[
+
+        ]);
+        if($validator->failed()){
+            Alert::error('Error!', $validator->messages()->first());
+            return redirect()->back();
+        }else
         
+
         $requestee = Requestee::find($id);
         $requestee->status = true;
         if( $requestee->status = true){
@@ -181,15 +199,7 @@ class Admin_ClientController extends Controller
         $onlySoftDeleted = TaxFile::onlyTrashed()->get();
         return view('pages.admin.clients.archives',compact([ 'onlySoftDeleted' ]));
     }
-    
   
-   
-     public function showGroups()
-     {
-        //  select corporates that is belong to specific group
-        // $groups = Corporate::orderBy('id','asc')->where('group_id', 1)->get();
-        // return view('welcome')->with("groups", $groups);
-    }
     public function getclients(Request $req)
     {
         $clients=Client::where("assoc_id",$req->id)->get();

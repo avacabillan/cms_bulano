@@ -98,6 +98,18 @@
               </div>
             </div>
           </div>
+          <h4 class="text-center mb-4"><b>Type of Taxes</b></h4>
+          <div class="col-md-12 .offset-md-3">
+            <ul class="checkbox-grid">
+              @foreach($taxForms as $taxForm)
+                <li style="display: block; float: left; width: 25%;">
+                  <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]"  {{  ($taxForm->id == $client->clientTaxes ? ' checked' : '') }} required>
+                  <span class="ml-3 text-sm"><h6>{{ $taxForm->tax_form_no }}</h6></span>
+                </li>
+              @endforeach
+            </ul>
+            
+          </div> 
     
             <button type="submit" class="btn btn-primary" id="btnUpdateSubmit">Update</button>
         

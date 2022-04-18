@@ -7,18 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class AdminNewUserNotification extends Notification
+class NewUserNotification extends Notification
 {
     use Queueable;
-    private $user;
+
     /**
      * Create a new notification instance.
-     *@param User $user
+     *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($requestee)
     {
-       $this->$user = $user;
+        $this->user = $requestee;
     }
 
     /**
@@ -29,7 +29,7 @@ class AdminNewUserNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -40,10 +40,7 @@ class AdminNewUserNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('New user has registered: '. $this->user->name . '('.$this->user->email.')')
-                    ->action('login to approve registration', route ('pages.admin.request_edit', $this->user->id)); 
-              
+        
     }
 
     /**
@@ -55,7 +52,8 @@ class AdminNewUserNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'name' => $this->user->name,
+            'email' => $this->user->email,
         ];
     }
 }

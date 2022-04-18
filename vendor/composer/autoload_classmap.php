@@ -16,6 +16,7 @@ return array(
     'App\\Http\\Controllers\\API\\ClientController' => $baseDir . '/app/Http/Controllers/API/ClientController.php',
     'App\\Http\\Controllers\\AdminAssocController' => $baseDir . '/app/Http/Controllers/AdminAssocController.php',
     'App\\Http\\Controllers\\AdminCalendarController' => $baseDir . '/app/Http/Controllers/AdminCalendarController.php',
+    'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\Admin_ClientController' => $baseDir . '/app/Http/Controllers/Admin_ClientController.php',
     'App\\Http\\Controllers\\Assoc_ClientController' => $baseDir . '/app/Http/Controllers/Assoc_ClientController.php',
     'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => $baseDir . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',

@@ -20,6 +20,8 @@ use App\Http\Controllers\MultiFileUploadController;
 use App\Http\Controllers\InternalMessagesController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\TaxFormsController;
+use App\Http\Controllers\AdminController;
+ 
 
 
 /*
@@ -74,10 +76,11 @@ Route::middleware(['logout'])->group(function(){
      /*---------------------- EXTRA PAGES --------------*/
      Route::view('/welcome_page','shared.welcome_page')->name('welcome');
 
+     Route::post('/mark-as-read', [Admin_ClientController::class, 'markNotification'])->name('markNotification');
     Route::view('/about','pages.admin.about')->name('about');
     Route::view('/services','pages.admin.services')->name('services');
     Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
-    
+    Route::get('/admin', [AdminController::class,'store'])->name('create.admin');
 
     /*---------------------- INTERNAL MESSAGES --------------*/
 
@@ -113,7 +116,7 @@ Route::middleware(['logout'])->group(function(){
      /*---------------------- USER REGISTRATION --------------*/
 
 
-     Route::get('/request/delete/{id}',[RegisteredClientController:: class, 'delete'])->name('delete');
+     Route::delete('/request/delete/{id}',[RegisteredClientController:: class, 'delete'])->name('delete');
     // Route::get('/register-client',[RegisteredClientController:: class, 'register'])->name('subscribe');
     // Route::get('/request/edit/{id}',[RegisteredClientController:: class, 'create'])->name('role-edit');
     // Route::get('/role-update/{id}',[RegisteredClientController:: class, 'roleUpdate'])->name('role-update');
@@ -178,24 +181,26 @@ Route::middleware(['logout'])->group(function(){
 
      //BIRfullcalendar
     Route::get('/taxcalendar',[FullCalendarReminderController::class, 'index'])->name('bir-calendar');
-    Route::get('/TaxEvent',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvent');
+    Route::get('/Taxevents',[FullCalendarReminderController::class, 'getTaxEvent'])->name('getTaxEvents');
     Route::get('/create-reminder',[FullCalendarReminderController::class, 'createEvent'])->name('create-reminder');
     Route::get('/post-reminder',[FullCalendarReminderController::class, 'storeEvent'])->name('post-reminder');
     // Route::get('/view-reminder',[FullCalendarReminderController::class, 'viewEvent'])->name('view-reminders');
     Route::get('/edit-reminder/id={id}',[FullCalendarReminderController::class, 'editEvent'])->name('edit-reminder');
     Route::put('/update-reminder/id={id}',[FullCalendarReminderController::class, 'updateEvent'])->name('update-reminder');
-    Route::get('/delete-reminder/id={id}',[FullCalendarReminderController::class, 'deleteEvent'])->name('delete-reminder');
+    Route::delete('/delete-reminder/id={id}',[FullCalendarReminderController::class, 'deleteEvent'])->name('delete-reminder');
     // Route::get('/createTaxEvent',[FullCalendarReminderController::class, 'createTaxEvent'])->name('createTaxEvent');
     Route::get('/result',[FullCalendarReminderController::class, 'resultList'])->name('fetch_date');
     
-    //REMINDER for bulanofullcalendar
+    //REMINDER for bulanofullcalendar 
+    Route::get('/bulano-calendar/deadlines',[FullCalendarReminderController::class, 'listInternalDeadline'])->name('display-internal-deadlines');
+    Route::get('/bulano-calendar/bir/deadlines',[FullCalendarReminderController::class, 'listBIRDeadline'])->name('display-bir-deadlines');
     Route::get('/bulano-calendar',[FullCalendarReminderController::class, 'indexDeadline'])->name('display-calendar');
     Route::get('/getDeadlines',[FullCalendarReminderController::class, 'getReminder'])->name('getReminder');
     Route::get('/create-deadline',[FullCalendarReminderController::class, 'createDeadline'])->name('create-deadline');
     Route::get('/store-deadline',[FullCalendarReminderController::class, 'storeDeadline'])->name('store-deadline');
     Route::get('/edit-deadline/{id}',[FullCalendarReminderController::class, 'editDeadline'])->name('edit-deadline');
     Route::put('/update-deadline/{id}',[FullCalendarReminderController::class, 'updateDeadline'])->name('update-deadline');
-    Route::get('/delete-deadline/{id}',[FullCalendarReminderController::class, 'deleteDeadline'])->name('delete-deadline');
+    Route::delete('/delete-deadline/{id}',[FullCalendarReminderController::class, 'deleteDeadline'])->name('delete-deadline');
 
        
     

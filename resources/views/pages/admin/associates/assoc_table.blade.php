@@ -20,7 +20,7 @@
           <h3 class="card-title">List of All <b>Associates</b></h3><br>
 
           <hr>
-          <table class="table table-bordered yajra-datatable" >
+          <table class="table table-bordered yajra-datatable" id="yajra-datatable" >
             <thead >
               <th >Name</th>
               <th>SSS Number</th>
@@ -43,7 +43,7 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
   $(function () {
     
@@ -60,13 +60,16 @@
             {
                 data: 'action', 
                 name: 'action', 
-                orderable: true, 
+                orderable: false, 
                 searchable: true
             },
         ]
     });
+   
     
   });
+
 </script>
+
 </html>
    
