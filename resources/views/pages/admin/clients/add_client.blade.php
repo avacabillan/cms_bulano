@@ -12,7 +12,15 @@
      
       </div>
     </div>
-
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+    </div><br />
+    @endif
     <div class="card card-dark card-outline card-default">
       <div class="card-header">
         <h3 class="card-title">Input Client's Data</h3>
@@ -29,13 +37,8 @@
           <div class="col-md-6">
             <div class="form-group" >
               <label for="validationCustom01" class="form-label">OCN</label>
-              <input type="text" class="form-control" value="" name="ocn" style="width: 100%;" id="validationCustom01" value="Mark" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-              <div class="invalid-feedback">
-                Please provide OCN.
-              </div>
+              <input type="text" class="form-control" value="{{old('ocn')}}" name="ocn" style="width: 100%;" required>
+              <div class="invalid-feedback"></div>
             </div>
           </div>
         </div>
@@ -44,46 +47,27 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="validationCustom02" class="form-label">Name</label>
-            <input type="text" class="form-control"  value="{{$requestee->name}}"  name="client_name" style="width: 100%;" id="validationCustom02" value="Mark" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please provide Full name.
-            </div>
+            <input type="text" class="form-control"  value="{{$requestee->name}}"  name="client_name" style="width: 100%;" required>
+            <div class="invalid-feedback"></div>
           </div>
           <div class="form-group">
             <label for="validationCustom03" class="form-label">Email</label>
-            <input type="text" class="form-control" value="{{$requestee->email}}" name="email" style="width: 100%;" id="validationCustom03" value="Mark" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please provide email address.
-            </div>
+            <input type="text" class="form-control" value="{{$requestee->email}}" name="email" style="width: 100%;" required>
+            <div class="invalid-feedback"></div>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="validationCustom04" class="form-label">TIN</label>
-            <input type="text" class="form-control" value="" name="tin" style="width: 100%;" id="validationCustom04" value="Mark" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please provide TIN.
-            </div>
+            <input type="text" class="form-control" value="{{old('tin')}}" name="tin" style="width: 100%;" required>
+            <div class="invalid-feedback"></div>
           </div>
           <div class="form-group">
             <label for="validationCustom05" class="form-label">Contact No.</label>
-            <input type="text" class="form-control" value="" name="client_contact" style="width: 100%;" id="validationCustom05" value="Mark" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please provide contact number.
-            </div>
+            <input type="text" class="form-control" value="{{old('client_contact')}}" name="client_contact" style="width: 100%;" required>
+            <div class="invalid-feedback"></div>
+             
           </div>
         </div>
         </div>
@@ -93,17 +77,12 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="validationCustom06" class="form-label">Registration Date</label>
-            <input type="date" class="form-control" name="reg_date" style="width: 100%;" id="validationCustom06" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please provide Registration Date.
-            </div>
+            <input type="date" class="form-control"  value="{{old('reg_date')}}" name="reg_date" style="width: 100%;" required>
+            <div class="invalid-feedback"></div>
           </div>
           <div class="form-group">
             <label for="validationCustom07" class="form-label">Associate</label>
-            <select  name="assoc" class="form-control" style="width: 100%;" id="validationCustom07" value="Mark" required>
+            <select  name="assoc" class="form-control" style="width: 100%;" required>
               <option selected disabled value="">--Select Associate--</option>
                 @foreach($assocs as $assoc)
                 <?php
@@ -114,13 +93,9 @@
                 ?>
                 <option value="{{$assoc->id}}">{{$assoc->name}} <?php echo " ($countClient clients)";?></option> 
                 @endforeach
+                <div class="invalid-feedback"></div>
             </select>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please assign Associate.
-            </div>
+           
           </div>
 
           @livewireStyles
@@ -139,28 +114,18 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="validationCustom08" class="form-label">Trade Name</label>
-            <input type="text" class="form-control"  value=""  name="trade_name" style="width: 100%;" id="validationCustom08" value="Mark" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please provide Trade Name.
-            </div>
+            <input type="text" class="form-control"  value="{{old('trade_name')}}"  name="trade_name" style="width: 100%;" required>
+            <div class="invalid-feedback"></div>
           </div>
           <div class="form-group">
             <label for="validationCustoms" class="form-label">Mode of Filing</label>
-            <select name="mode" class="form-control" style="width: 100%;" id="validationCustoms" value="Mark" required>
+            <select name="mode" class="form-control" style="width: 100%;" required>
               <option value="">--Select Mode of Filing--</option>
               @foreach($modes as $mode)
                 <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
               @endforeach
             </select>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please select mode of filing.
-            </div>
+            <div class="invalid-feedback"></div>
           </div>
         </div>
         </div>
@@ -170,47 +135,28 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="validationCustom10" class="form-label">Unit house no.</label>
-              <input type="text" value="" class="form-control" name="unit_house_no" style="width: 100%;" id="validationCustom10" value="Mark" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-              <div class="invalid-feedback">
-                Please fill-up accordingly.
-              </div>
+              <input type="text" value="{{old('unit_house_no')}}" class="form-control" name="unit_house_no" style="width: 100%;" required>
+              <div class="invalid-feedback"></div>
             </div>
             <div class="form-group">
               <label for="validationCustom11" class="form-label">Street</label>
-              <input type="text" value="" class="form-control" name="street" style="width: 100%;" id="validationCustom11" value="Mark" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-              <div class="invalid-feedback">
-                Please fill-up accordingly.
-              </div>
-            </div>
+              <input type="text" value="{{old('street')}}" class="form-control" name="street" style="width: 100%;" required>
+              
+                <div class="invalid-feedback"></div>
+            
           </div>
         
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="validationprov" class="form-label">Province</label>
-              <input type="text" value="" class="form-control" name="client_province" style="width: 100%;" id="validationprov" value="Mark" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please fill-up accordingly.
-            </div>
+              <input type="text" value="{{old('client_province')}}" class="form-control" name="client_province" style="width: 100%;" required>
+              <div class="invalid-feedback"></div>
           </div>
           <div class="form-group">
             <label for="validationCustom13" class="form-label">City/Municipality</label>
-            <input type="text" class="form-control"  value=""  name="client_city" style="width: 100%;" id="validationCustom13" value="Mark" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please fill-up accordingly.
-            </div>
+            <input type="text" class="form-control"  value="{{old('client_city')}}"  name="client_city" style="width: 100%;" required>
+            <div class="invalid-feedback"></div>
           </div>
         </div>
         </div>
@@ -218,14 +164,8 @@
           <div class="col-md-6">
             <div class="form-group" >
               <label for="validationCustom14" class="form-label">Postal Code</label>
-              <input type="text" class="form-control"  value=""  name="client_postal" style="width: 100%;" id="validationCustom12" value="Mark" required>
-              <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please fill-up accordingly.
-                </div>
-              </div>
+              <input type="text" class="form-control"  value="{{old('client_postal')}}"  name="client_postal" style="width: 100%;" required>
+              <div class="invalid-feedback"></div>
           </div>
         </div>
         
@@ -236,24 +176,19 @@
             <ul class="checkbox-grid">
               @foreach($taxForms as $taxForm)
                 <li style="display: block; float: left; width: 25%;">
-                  <input type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]" required>
+                  <input  type="checkbox"  value="{{$taxForm->id}}" name="taxesChecked[]" required>
                   <span class="ml-3 text-sm"><h6>{{ $taxForm->tax_form_no }}</h6></span>
                 </li>
               @endforeach
             </ul>
-             
+            <div class="invalid-feedback"></div>
           </div> 
        <div class="row pt-4">
           <div class="col-md-6">
             <div class="form-group" >
                 <label for="validationCustom16" class="form-label"><b>Username</b></label>
-                <input type="text" class="form-control" value="" name="username" id="validationCustom16" value="Mark" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please provide username.
-                </div>
+                <input type="text" class="form-control" value="{{old('username')}}" name="username" placeholder="email@bulano.com" required>
+                <div class="invalid-feedback"></div>
               </div>
               </div>
           
@@ -266,12 +201,7 @@
                   <div for="disabledTextInput" class="form-label" >
                     <label for="" class="form-label"><b>Password</b></label>
                     <input type="password" id="disabledTextInput" class="form-control" placeholder="Default password is same with username">    
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                      Please provide Full name.
-                    </div>
+                   
                   </div>
                   </div>      
                 </div>
@@ -289,25 +219,5 @@
   </div>
 </div>
 
-<script>
-  (function () {
-  'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.need-validation')
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
-</script>
 @stop

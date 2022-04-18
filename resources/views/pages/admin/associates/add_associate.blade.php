@@ -4,20 +4,20 @@
 @stop
 @section('content')
 
-@if($errors->any())
-     <div class="alert alert-danger">
-          <ul class="list-unstyled">
-                 @foreach ($errors->all() as $error)
-                       <li>{{ $error }}</li>
-                 @endforeach
-          </ul>
-      </div>
- @endif
+
 <div class="content-header">
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6">
-     
+        @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+        </div><br />
+        @endif
       </div>
     </div>
 
@@ -36,23 +36,13 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="validationCustom01" class="form-label">Full name</label>
-                <input type="text" class="form-control"  value=""  name="assoc_name" style="width: 100%;" id="validationCustom01" value="Mark" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please provide Full name.
-                </div>
+                <input type="text" class="form-control"  value="{{old('assoc_name')}}"  name="assoc_name" style="width: 100%;" required>
+                
               </div>
               <div class="form-group">
                 <label for="validationCustom02" class="form-label">Email</label>
-                <input type="text" class="form-control" value="" name="assoc_email" style="width: 100%;"  id="validationCustom02" value="Mark" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please provide email.
-                </div>
+                <input type="text" class="form-control" value="{{old('assoc_email')}}" name="assoc_email" style="width: 100%;"  required>
+              
               </div>
               
             </div>
@@ -60,24 +50,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="validationCustom03" class="form-label">SSS Number/ Goverment ID No.</label>
-                <input type="text" class="form-control" value="" name="assoc_sss" style="width: 100%;" id="validationCustom03" value="Mark" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please provide valid SSS no.
-                </div>
+                <input type="text" class="form-control" value="{{old('assoc_sss')}}" name="assoc_sss" style="width: 100%;" required>
+                
               </div>
              
               <div class="form-group">
                 <label for="validationCustom04" class="form-label">Contact No.</label>
-                <input type="text" class="form-control" value="" name="assoc_contact" style="width: 100%;" id="validationCustom04" value="Mark" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please provide Contact no.
-                </div>
+                <input type="text" class="form-control" value="{{old('assoc_contact')}}" name="assoc_contact" style="width: 100%;" required>
+               
               </div>
               
             </div>
@@ -85,26 +65,16 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="validationCustom05" class="form-label">Birthday</label>
-                <input type="date" class="form-control"  value=""  name="assoc_birthdate" style="width: 100%;" id="validationCustom05" value="Mark" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please provide valid input.
-                </div>
+                <input type="date" class="form-control"  value="{{old('assoc_birthdate')}}"  name="assoc_birthdate" style="width: 100%;" required>
+                
               </div>
              
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="validationCustom06" class="form-label">Complete Address</label>
-                <input type="text" class="form-control" value="" name="assoc_address" style="width: 100%;" id="validationCustom06" value="Mark" required> 
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please provide complete address.
-                </div>
+                <input type="text" class="form-control" value="{{old('assoc_address')}}" name="assoc_address" style="width: 100%;" required> 
+                
               </div>
              
             </div>
@@ -117,41 +87,31 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="validationCustom07" class="form-label">Department</label>
-                <select name="department" class="form-control" style="width: 100%;" id="validationCustom07" value="Mark" required>
+                <select name="department" class="form-control" style="width: 100%;" required>
                   <option selected disabled value="">--Select Department--</option>
                       @foreach($departments as $department)
                         <option value="{{$department->id}}">{{$department->department_name}}</option>
                       @endforeach
                       
                   </select>
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
-                  <div class="invalid-feedback">
-                    Please select department.
-                  </div>
+                  
               </div>
               <div class="form-group">
                 <label for="validationCustom08" class="form-label">Username</label>
-                <input type="text" class="form-control" value="" name="username" style="width: 100%;" id="validationCustom08" value="Mark" required>
+                <input type="text" class="form-control" value="{{old('username')}}" name="username" style="width: 100%;" placeholder="email@bulano.com" required>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label for="validationCustom10" class="form-label">Position</label>
-                <select name="position" class="form-control" style="width: 100%;" id="validationCustom10" value="Mark" required>
+                <select name="position" class="form-control" style="width: 100%;" required>
                   <option value="">--Select Position--</option>
                       @foreach($positions as $position)
                         <option  value="{{$position->id}}">{{$position->position_name}}</option>
                       @endforeach
                 </select>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  Please provide position.
-                </div>
+               
               </div>
               
               <div class="form-group">
@@ -173,26 +133,4 @@
     </div>
   </div>
   @include('sweetalert::alert')
-  <script>
-
-(function () {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
-  </script>
 @stop

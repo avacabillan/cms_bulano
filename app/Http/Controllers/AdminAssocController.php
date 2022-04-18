@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\AssocFieldRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Associate;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\User;
 use DataTables;
+use Illuminate\Support\Facades\Validator;
 class AdminAssocController extends Controller
 {
   
@@ -50,10 +52,25 @@ class AdminAssocController extends Controller
                             ->with('associates',$associates);
     }
 
-    public function store(Request $request)
+    public function store(AssocFieldRequest $request)
     {
 
-
+        $validator = Validator::make($request->all(), [
+            'assoc_name' => 'bail|required|ax:255m',
+            'assoc_email' => 'required',
+            'assoc_sss' => 'required',
+            'assoc_contact' => 'required',
+            'assoc_birthdate' => 'required',
+            'assoc_address' => 'required',
+            'username' => 'required',
+            'position' => 'required',
+            
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+    
         $myuser=new User;
         $myuser ->name = $request->assoc_name;
         $myuser->role='associate';

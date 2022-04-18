@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\FieldRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Client;
@@ -102,29 +103,42 @@ class Admin_ClientController extends Controller
             ->with('myusers',$users)
             ->with('registered_address', $registered_address);
     }
-    public function insertClient(Request $request, $id )
+    public function insertClient(FieldRequest $request, $id )
     {
-    //    $request->validate([
-    //         '*' => 'required',
-          
-    //         ],
-    //         [ '*.required' => 'The :attribute field can not be blank value.']);
-
-
-    //     $input = $request->all();
-            /**
+  
+    
+     /**
      * Store a new blog post.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-        $validator = Validator::make( $request->all(),[
+    $validator = Validator::make($request->all(), [
+        'ocn' => 'bail|required|max:255',
+        'client_name' => 'required|min:5',
+        'email' => 'required|email|unique',
+        'tin' => 'required|numeric',
+        'client_contact' => 'required|numeric',
+        'tin_no' => 'required|numeric',
+        'reg_date' => 'required',
+        'trade_name' => 'required',
+        'corporate' => 'required',
+        'assoc' => 'required',
+        'mode' => 'required',
+        'unit_house_no' => 'required',
+        'street' => 'required',
+        'client_city' => 'required',
+        'client_province' => 'required',
+        'client_postal' => 'required',
+        'taxes' =>'required',
+    ]);
 
-        ]);
-        if($validator->failed()){
-            Alert::error('Error!', $validator->messages()->first());
-            return redirect()->back();
-        }else
+    if ($validator->fails()) {
+        return response()->json($validator->errors(), 400);
+    }
+
+       
+
         
 
         $requestee = Requestee::find($id);

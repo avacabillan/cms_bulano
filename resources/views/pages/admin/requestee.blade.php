@@ -31,7 +31,8 @@
                   <a  id="corImage" href="{{asset('public/files/'.$requestee->cor)}}" data-lightbox="$requestee->cor"> <img src="{{asset('public/files/'.$requestee->cor)}}" alt="" width="70px" height="50px"></a>
                   <!-- <button data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="{{asset('public/files/'.$requestee->cor)}}" alt="" width="70px" height="50px"></button> -->
                 </td>
-                <td class="text-dark">                                    
+                <td class="text-dark">      
+                                              
                   <a class="btn btn-primary btn-sm" href="{{route('add_client',$requestee->id)}}" >Accept</a>
                   <form method="post" action="{{ route('delete', $requestee->id) }}">
                     @csrf
@@ -40,6 +41,7 @@
                       <button type="submit" class="btn btn-danger btn-sm me-md-2" onclick="return confirm(`Are you sure  you want to reject this request? `)">Reject</button>
                     </div>
                   </form>
+                  
                 </td>                                         
               </tr>
             @endforeach 

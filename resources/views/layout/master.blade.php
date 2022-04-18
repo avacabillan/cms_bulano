@@ -124,7 +124,7 @@
     <!-- <script  src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!-- alert toaster -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
 
