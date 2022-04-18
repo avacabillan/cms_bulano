@@ -289,7 +289,7 @@
   </div>
 </div>
 
-<script>
+<!-- <script>
   (function () {
   'use strict'
 
@@ -309,5 +309,5 @@
       }, false)
     })
 })()
-</script>
+</script> -->
 @stop
