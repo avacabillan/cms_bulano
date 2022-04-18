@@ -39,7 +39,7 @@
                 <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Full name" :value="old('name')" required autofocus >
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Full name" :value="old('name')" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="file" name="cor" class="form-control ">
+                        <input type="file" name="cor" class="form-control " required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-paperclip"></span>
