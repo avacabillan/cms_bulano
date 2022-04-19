@@ -18,7 +18,7 @@ class NewUserNotification extends Notification
      */
     public function __construct($requestee)
     {
-        $this->user = $requestee;
+        $this->requestee = $requestee;
     }
 
     /**
@@ -32,16 +32,6 @@ class NewUserNotification extends Notification
         return ['database'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        
-    }
 
     /**
      * Get the array representation of the notification.
@@ -52,8 +42,8 @@ class NewUserNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'name' => $this->user->name,
-            'email' => $this->user->email,
+            'name' => $this->requestee->name,
+            'email' => $this->requestee->email,
         ];
     }
 }

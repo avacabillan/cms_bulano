@@ -26,10 +26,9 @@ class FieldRequest extends FormRequest
         return [
         'ocn' => 'bail|required|max:255',
         'client_name' => 'required|min:5',
-        'email' => 'required|email|unique:users',
-        'tin' => 'required|numeric',
+        'email' => 'required|email',
+        'tin' => 'required',
         'client_contact' => 'required|numeric',
-        'tin_no' => 'required|numeric',
         'reg_date' => 'required',
         'trade_name' => 'required',
         'corporate' => 'required',
@@ -40,7 +39,7 @@ class FieldRequest extends FormRequest
         'client_city' => 'required',
         'client_province' => 'required',
         'client_postal' => 'required',
-        'taxesChecked[]' =>'required',
+       
         ];
     }
 }
