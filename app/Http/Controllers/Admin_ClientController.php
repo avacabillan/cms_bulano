@@ -21,6 +21,8 @@ use App\Models\User;
 use \Yajra\Datatables\Datatables;
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\UserApprovedNotification;
 
 class Admin_ClientController extends Controller
 {
@@ -30,7 +32,7 @@ class Admin_ClientController extends Controller
             return view ('pages.admin.clients.clients_list');
   
     }
-    public function markNotification(Request $request)
+    public function adminMarkNotification(Request $request)
     {
         auth()->user()
             ->unreadNotifications
@@ -90,7 +92,7 @@ class Admin_ClientController extends Controller
         $tins = Tin::all();
         $users = User::all();
         $registered_address = RegisteredAddress::all();
-
+       
         return view ('pages.admin.clients.add_client')
             ->with('requestee',$requestee)
             ->with('modes',$modes)
@@ -146,7 +148,8 @@ class Admin_ClientController extends Controller
         'client_city' => 'required',
         'client_province' => 'required',
         'client_postal' => 'required',
-        'taxesChecked' =>'required',
+       
+        
     ]);
 
     if ($validator->fails()) {
@@ -214,6 +217,9 @@ class Admin_ClientController extends Controller
             
         }
         $url = 'http://127.0.0.1:8000/';
+
+        $users = User::where('role', 'associate')->get();
+        Notification::send($users, new UserApprovedNotification ($client));
         Mail::to($client['email_address'])->send(new WelcomeMail($myuser, $url));
         if($myuser['name'] == $client['company_name']){
             Alert::success('Success', 'Client Successfuly Added!');

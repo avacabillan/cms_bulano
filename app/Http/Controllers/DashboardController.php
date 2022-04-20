@@ -7,6 +7,7 @@ use App\Models\Associate;
 use App\Models\Client;
 use App\Models\ClientTax;
 use App\Models\User;
+use Carbon\CarbonStr;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -17,17 +18,21 @@ class DashboardController extends Controller
         if(Auth::user()->role=='admin'){ 
             $associates = Associate::where('status', 0)->get();
             $date =Carbon::today();
-            $future =  Carbon::today()->addWeeks(3);
+            // $ttest =Carbon::now()->format('m');
+            $future =  Carbon::today()->addWeeks(2);
+           
+           
             $notifications = auth()->user()->unreadNotifications;
             $clientDeadlines =  DB::table('client_taxes')
             ->join('clients','client_taxes.client_id' , '=','clients.id' )
             ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
             ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
             ->whereBetween('start_date',[$date, $future ] )
+            ->whereMonth('start_date', '=','$ttest')
             ->select('company_name','start_date','tax_form_no' )
             ->orderBy( 'company_name','asc')
             ->get();
-    
+           // dd($future);
             return view ('pages.admin.dashboard', compact('associates', 'clientDeadlines', 'notifications'));
 
         }elseif (Auth::user()->role=='associate'){

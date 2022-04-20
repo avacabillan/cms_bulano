@@ -1,4 +1,3 @@
-
 @extends('layout.master')
 @section('title')
     Associate Dash
@@ -14,6 +13,24 @@
             {{ __('Dashboard for Associaate') }}
         </h2>
       </x-slot>
+       @if(auth()->user())
+       @forelse(auth()->user()->notifications->whereNull('read_at') as $notification)
+          <div class="alert alert-success" role="alert">
+              [{{ $notification->created_at }}] User {{ $notification->data['name'] }} ({{ $notification->data['email'] }}) has was assigned to you.
+              <a href="{{route('assoc.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+                  Mark as read
+              </a>
+          </div>
+  
+          @if($loop->last)
+              <a href="#" id="mark-all">
+                  Mark all as read
+              </a>
+          @endif
+          @empty
+              There are no new notifications
+          @endforelse
+      @endif
       <div class="form-group col-md-12">
         <div class="alert alert-success ms-3 me-3" id="assoc_dash_heading" role="alert">
           <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->associates->name}} 
@@ -82,13 +99,48 @@
  
 
 @include('sweetalert::alert')
-  <script type="text/javascript">
-        setTimeout(function () {
-  
-            // Closing the alert
-            $('#assoc_dash_heading').alert('close');
-        }, 5000 );
-    </script>
+<script type="text/javascript">
+    setTimeout(function () {
+
+        // Closing the alert
+        $('#assoc_dash_heading').alert('close');
+    }, 5000 );
+</script>
+@if(auth()->user())
+<script>
+document.addEventListener('DOMContentLoaded', function() {       
+    $.ajaxSetup({
+    headers:{
+        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+  function sendMarkRequest(id = null) {
+      return $.ajax("{{ route('assoc.markNotification') }}", {
+          method: 'GET',
+          data: {
+            "_token": "{{ csrf_token() }}",
+            "id": id,
+          }
+      });
+  }
+  $(function() {
+      $('.mark-as-read').click(function() {
+          let request = sendMarkRequest($(this).data('id'));
+          request.done(() => {
+              $(this).parents('div.alert').remove();
+          });
+      });
+      $('#mark-all').click(function() {
+          let request = sendMarkRequest();
+          request.done(() => {
+              $('div.alert').remove();
+          })
+      });
+  });
+});
+</script>
+@endif
+
 @stop
 
 

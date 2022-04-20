@@ -10,10 +10,12 @@ use Yajra\Datatables\Datatables;
 use App\Models\Requestee;
 use App\Models\User;
 use App\Models\Role;
-use File;
+use DB;
 use Datatable;
 use App\Mail\RejectedMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewUserNotification;
 
 
 class RegisteredClientController extends Controller
@@ -21,9 +23,13 @@ class RegisteredClientController extends Controller
   
     public function index()
     {
-        $requestees = Requestee::where('status',0)->get();
-      // dd( $requestees);
-        return view ('pages.admin.requestee', compact('requestees', $requestees));
+        $requestee = DB::table('requestee')->where('status', '=', '0')->get();
+        //$requester = Requestee::all();
+       
+        
+       // dd($users);
+      //dd($requestees);
+        return view ('pages.admin.requestee', compact('requestee', $requestee));
     }
     
    
@@ -47,20 +53,21 @@ class RegisteredClientController extends Controller
             $filename = $request->name . '-'.'COR'.'.' . $extension;
             $file->move('public/files/', $filename);
             $requestee ->cor = $filename;
-        } 
-      
-
-       
+        }       
+   
+    
         $requestee->save();
-       
-
+        $requestee->refresh();
+        $users = User::where('role', 'admin')->get();
+        Notification::send($users, new NewUserNotification ($requestee));
         Alert::info('Success', 'Your registration request has been sent, plese wait for the email within 3 days for the approval from the admin!');
         return redirect()->route('login');
     }
     
     public function delete($id){
 
-        $requestee = Requestee::find($id);
+        $requestee =Requestee::where('id', $id)->delete();
+       // dd(  $requestee);
         $requestee->delete();
         
         Mail::to($requestee['email'])->send(new RejectedMail($requestee));
