@@ -31,7 +31,7 @@ class MessagesController extends Controller
             ->where('clients.assoc_id','=',$id )
             ->where('role','client')
             ->orderBy('messages.created_at','desc')
-            ->get()->groupBy('receiver');
+            ->get()->groupBy('sender');
            //  dd($users);
             $clientUsers = User::all();
             $clients = Client::all();
@@ -46,7 +46,7 @@ class MessagesController extends Controller
             ->select('users.*','messages.sender')
             ->orderBy('messages.created_at','desc')
             ->where('role','client')
-            ->get()->groupBy('receiver');
+            ->get()->groupBy('sender');
             $clientUsers = User::all();
             $clients = Client::all();
 
