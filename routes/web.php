@@ -88,15 +88,14 @@ Route::middleware(['logout'])->group(function(){
 
     /*---------------------- INTERNAL MESSAGES --------------*/
 
-    Route::get('/associate_messages', [MessagesController::class, "associateIndex"])->name("associate_messages");
-    Route::post('/associate_composemsg', [MessagesController::class, "insertAssociateMsg"])->name("associate_composemsg");
-    Route::get('/associate_showmsg/{id}', [MessagesController::class, "associateMessageShow"])->name("associate_showmsg");
-
+    Route::get('/associate_messages', [MessagesController::class, 'associateIndex'])->name('associate_messages');
+    Route::get('/associate_showmsg_create/{id}', [MessagesController::class, 'associateMessageShowCreate'])->name('associate_showmsg_create');
+    Route::post('/associate_composemsg/{id}', [MessagesController::class, 'insertAssociateMsg'])->name('insert_associate_composemsg');
+   
     
     Route::get('/client_message', [MessagesController::class, "clientIndex"])->name("client_message");
     Route::post('/client_composemsg', [MessagesController::class, "insertClientMsg"])->name("client_composemsg");
-
-
+   
 
      /*---------------------- MULTIFILEUPLOAD --------------*/
 

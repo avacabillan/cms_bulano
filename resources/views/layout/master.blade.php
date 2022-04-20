@@ -96,16 +96,17 @@
 
     <!-- Page Wrapper -->
     <div class="wrapper">
-      @include('shared.navbar')
+      
 
         @if (Auth::user()->role=='admin')
           @include('pages.admin.sidebar')
-    
+          @include('shared.navbar')
         @elseif (Auth::user()->role=='associate')
           @include('pages.associate.sidebar')
-    
-        @else (Auth::user()->role=='client' )
+          @include('shared.assoc_navbar')
+        @else (Auth::user()->role=='client')
           @include('pages.client.sidebar')
+          @include('shared.client_navbar')
         @endif
 
       <!-- Content Wrapper. Contains page content -->

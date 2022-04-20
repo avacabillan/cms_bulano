@@ -34,7 +34,7 @@
                 <td class="text-dark">      
                                               
                   <a class="btn btn-primary btn-sm" href="{{route('add_client',$requestee->id)}}" >Accept</a>
-                  <form method="post" action="{{ route('delete', $requestees->id) }}">
+                  <form method="post" action="{{ route('delete', $requestee->id) }}">
                     @csrf
                     @method('delete')    
                     <div class="d-grid gap-2 col-6 mx-auto">

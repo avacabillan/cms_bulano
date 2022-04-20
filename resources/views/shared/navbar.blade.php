@@ -20,7 +20,7 @@
       
         @forelse(auth()->user()->notifications->whereNull('read_at') as $notification)
           <div class="alert alert-success" role="alert">
-              [{{ $notification->created_at }}] User {{ $notification->data['name'] ?? "" }} ({{ $notification->data['email'] ?? ""}}) has just registered.
+              User {{ $notification->data['name'] ?? "" }} ({{ $notification->data['email'] ?? ""}}) has just registered.
               <a href="{{route('admin.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
                   Mark as read
               </a>

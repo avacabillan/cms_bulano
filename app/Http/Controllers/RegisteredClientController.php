@@ -23,13 +23,13 @@ class RegisteredClientController extends Controller
   
     public function index()
     {
-        $requestee = DB::table('requestee')->where('status', '=', '0')->get();
+        $requestees = Requestee::where('status', 0)->get();
         //$requester = Requestee::all();
-       
+      
         
        // dd($users);
       //dd($requestees);
-        return view ('pages.admin.requestee', compact('requestee', $requestee));
+        return view ('pages.admin.requestee', compact('requestees', $requestees));
     }
     
    
@@ -66,9 +66,10 @@ class RegisteredClientController extends Controller
     
     public function delete($id){
 
-        $requestee =Requestee::where('id', $id)->delete();
-       // dd(  $requestee);
+        $requestee =Requestee::find($id);
         $requestee->delete();
+       //dd(  $requestee);
+        //$requestee->delete();
         
         Mail::to($requestee['email'])->send(new RejectedMail($requestee));
         Alert::success('Success', 'Client Successfuly Rejected!');

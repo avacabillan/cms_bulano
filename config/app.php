@@ -164,7 +164,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\ButtonsServiceProvider::class,
         XCrone\LaravelFullcalendar\ServiceProvider::class,
-       
+        Laravolt\Avatar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -232,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Calendar' => XCrone\LaravelFullcalendar\Facades\Calendar::class,
-      
+        'Avatar'    => Laravolt\Avatar\Facade::class,
         
     ],
 

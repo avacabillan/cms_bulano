@@ -13,7 +13,7 @@
             {{ __('Dashboard for Associaate') }}
         </h2>
       </x-slot>
-       @if(auth()->user())
+       {{-- @if(auth()->user())
        @forelse(auth()->user()->notifications->whereNull('read_at') as $notification)
           <div class="alert alert-success" role="alert">
               [{{ $notification->created_at }}] User {{ $notification->data['name'] }} ({{ $notification->data['email'] }}) has was assigned to you.
@@ -30,7 +30,7 @@
           @empty
               There are no new notifications
           @endforelse
-      @endif
+      @endif --}}
       <div class="form-group col-md-12">
         <div class="alert alert-success ms-3 me-3" id="assoc_dash_heading" role="alert">
           <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->associates->name}} 

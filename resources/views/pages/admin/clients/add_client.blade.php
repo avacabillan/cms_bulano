@@ -22,10 +22,13 @@
     </div><br />
     @endif
     <div class="card card-dark card-outline card-default">
+      <div>    <a href="{{url()->previous()}}" class="btn btn-primary btn-sm">Back to requestees</a><br>
+      </div>
       <div class="card-header">
+        
         <h3 class="card-title">Input Client's Data</h3>
     </div>
-
+   
     <div class="card-body">
     <a  class="btn btn-success fixed-top text-end" id="corImage" href="{{asset('public/files/'.$requestee->cor)}}" data-lightbox="$requestee->cor" style="width: 30%; float: right;">View COR</a>
       <div class="row">
