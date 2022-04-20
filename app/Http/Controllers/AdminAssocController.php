@@ -56,7 +56,7 @@ class AdminAssocController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'assoc_name' => 'bail|required|ax:255m',
+            'assoc_name' => 'bail|required|max:255m',
             'assoc_email' => 'required',
             'assoc_sss' => 'required',
             'assoc_contact' => 'required',
@@ -81,6 +81,7 @@ class AdminAssocController extends Controller
         $associate =new Associate();
         $associate->user_id=$myuser->id;
         $associate ->name = $request->assoc_name;
+        $associate ->status = 0;
         $associate ->email = $request->assoc_email;
         $associate ->contact_number = $request->assoc_contact;
         $associate ->birth_date = $request->assoc_birthdate;
@@ -89,7 +90,9 @@ class AdminAssocController extends Controller
         $associate->department_id = $request->department;
         $associate->position_id = $request->position;
         $associate->save();
-
+        if($associate){
+            Alert::success('Success', 'Associate Successfuly Added!');
+        }
             return redirect()->route('assoc_table');
         
          

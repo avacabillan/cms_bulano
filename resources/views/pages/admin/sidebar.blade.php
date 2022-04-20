@@ -29,33 +29,6 @@
             </p>
           </a>
         </li>
-        <!-- <li class="nav-item">
-          <a href="{{route('requestee')}}" class="nav-link">
-            <i class="nav-icon fa fa-user"></i>
-            <p>
-              Registered Guest
-              <span class="right badge badge-info">{{$reqs}}</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{route('bir-calendar')}}" class="nav-link">
-            <i class="nav-icon far fa-calendar-alt"></i>
-            <p>
-            BIR Calendar
-              <span class="right badge badge-danger">{{$birs}}</span>
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{route('display-calendar')}}" class="nav-link">
-            <i class="nav-icon fas fa-sticky-note"></i>
-            <p>
-            Reminder Calendar
-              <span class="right badge badge-info">{{$ddlines}}</span>
-            </p>
-          </a>
-        </li> -->
         <li class="nav-item">
           
             <a href="#" class="nav-link">
@@ -98,6 +71,15 @@
             <p>
             Clients
               <span class="right badge badge-danger">{{$clients}}</span>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('client_companies')}}" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Companies
+              <!-- <span class="right badge badge-danger">New</span> -->
             </p>
           </a>
         </li>

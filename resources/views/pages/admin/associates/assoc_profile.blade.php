@@ -30,19 +30,19 @@
             <div class="row">
 
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card bg-white">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                                <img class="profile-user-img img-fluid img-circle" src="../../dist/img/bulano.png" alt="User profile picture">
                             </div>
-                            <h3 class="profile-username text-center">{{$associate->name}}</h3>
-                            <p class="text-muted text-center">{{$associate->email}}</p>
+                            <h2 class="profile-username text-center">{{$associate->name}}</h2>
+                            <h5 class="text-primary text-center">{{$associate->email}}</h5>
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
-                                    <b>Position</b> <a class="float-right">{{$associate->positions->position_name}}</a>
+                                    <b>Position</b> <a class="float-right text-dark">{{$associate->positions->position_name}}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Department</b> <a class="float-right">{{$associate->departments->department_name}}</a>
+                                    <b>Department</b> <a class="float-right text-dark ">{{$associate->departments->department_name}}</a>
                                 </li>
 
                             </ul>
@@ -54,9 +54,9 @@
 
 
                 <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header p-2">
-                           <a type="button" class="btn btn-info" href="{{route('edit',$associate->id)}}" style="float: right;"><i class="fas fa-edit">Edit</i></a>
+                    <div class="card bg-white">
+                        <div class="card-header bg-info p-2">
+                           <a type="button" class="btn btn-primary" href="{{route('edit',$associate->id)}}" style="float: right;"><i class="fas fa-edit">Edit</i></a>
                             <h5 class="header-title mt-2">Personal Information</h5>
                         </div>
                         <div class="card-body">
@@ -68,36 +68,36 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0 text-dark">Cell Phone No.</h6>
+                                                    <h6 class="mb-0 text-dark"><b>Cell Phone No.</b></h6>
                                                 </div>
-                                                <div class="col-sm-9 text-secondary">
+                                                <div class="col-sm-9 text-dark">
                                                 {{$associate->contact_number}}
                                                 </div>
                                             </div>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0 text-dark">BirthDate</h6>
+                                                    <h6 class="mb-0 text-dark"><b>BirthDate</b></h6>
                                                 </div>
-                                                <div class="col-sm-9 text-secondary">
+                                                <div class="col-sm-9 text-dark">
                                                 {{$associate->birth_date}}
                                                 </div>
                                             </div>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0 text-dark">Address</h6>
+                                                    <h6 class="mb-0 text-dark"><b>Address</b></h6>
                                                 </div>
-                                                <div class="col-sm-9 text-secondary">
+                                                <div class="col-sm-9 text-dark">
                                                 {{$associate->address}}
                                                 </div>
                                             </div>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0 text-dark">SSS Number</h6>
+                                                    <h6 class="mb-0 text-dark"><b>SSS Number</b></h6>
                                                 </div>
-                                                <div class="col-sm-9 text-secondary">
+                                                <div class="col-sm-9 text-dark">
                                                 {{$associate->sss_no}}
                                                 </div>
                                             </div>

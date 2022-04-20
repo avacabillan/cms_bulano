@@ -154,6 +154,7 @@ class FileController extends Controller
         ->where('deleted_at', '=', null)
         ->get();
         // dd($datas);
+        
         return view('pages.admin.clients.client_files',compact('datas'));
     }
    
