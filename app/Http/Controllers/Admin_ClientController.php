@@ -103,6 +103,22 @@ class Admin_ClientController extends Controller
             ->with('myusers',$users)
             ->with('registered_address', $registered_address);
     }
+    public function viewCompany()
+    {
+        $corporates= Corporate::all();
+        $clients =Client::all();
+        $businesses = Business::all();
+        $registered_address = RegisteredAddress::all();
+
+        return view ('pages.admin.clients.add_client')
+            
+            ->with('corporates',$corporates)
+            
+            ->with('clients',$clients)
+            ->with('businesses',$businesses)
+
+            ->with('registered_address', $registered_address);
+    }
     public function insertClient(FieldRequest $request, $id )
     {
   
@@ -115,11 +131,11 @@ class Admin_ClientController extends Controller
      */
     $validator = Validator::make($request->all(), [
         'ocn' => 'bail|required|max:255',
-        'client_name' => 'required|min:5',
-        'email' => 'required|email|unique',
+        'client_name' => 'required',
+        'email' => 'required',
+        'tin' => 'required',
+        'client_contact' => 'required',
         'tin' => 'required|numeric',
-        'client_contact' => 'required|numeric',
-        'tin_no' => 'required|numeric',
         'reg_date' => 'required',
         'trade_name' => 'required',
         'corporate' => 'required',
@@ -130,7 +146,7 @@ class Admin_ClientController extends Controller
         'client_city' => 'required',
         'client_province' => 'required',
         'client_postal' => 'required',
-        'taxes' =>'required',
+        'taxesChecked' =>'required',
     ]);
 
     if ($validator->fails()) {

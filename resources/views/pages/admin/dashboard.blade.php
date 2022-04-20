@@ -12,7 +12,7 @@
             {{ __('Dashboard for Admin') }}
         </h2>
       </x-slot>
-      @if(auth()->user()->role=='admin')
+      <!-- @if(auth()->user()->role=='admin')
       @forelse($notifications as $notification)
           <div class="alert alert-success" role="alert">
               [{{ $notification->created_at }}] User {{ $notification->data['name'] }} ({{ $notification->data['email'] }}) has just registered.
@@ -29,7 +29,7 @@
       @empty
           There are no new notifications
       @endforelse
-  @endif
+  @endif -->
       <div class="form-group col-md-12">
         <div class="alert alert-success ms-3 me-3" id="admin_dash_heading" role="alert" >
           <h4 class="alert-heading" id="heading_text">Welcome to Dashboard, {{Auth::user()->name}}</h4>
@@ -138,12 +138,12 @@
           <table class="table">
               <thead>
                   <tr>
-                      <th><input type="checkbox" class="selectall" >Select all</th>
+                      <th><input type="checkbox" class="selectall"> Select all</th>
                       <th>Client</th>
                       <th>Email Address</th>
                   </tr>
               </thead>
-              <tbody id="data">
+              <tbody class="clnt_name mt-3" id="data">
               </tbody>
               <tfoot>
                 <tr>
@@ -151,8 +151,8 @@
                   @foreach ($associates as $associate )
                     <option value="{{$associate->id}}">{{$associate->name}}</option>
                   @endforeach 
-                  </select></td>
-                  <td><button class="btn btn-success" type="submit">Transfer</button></td>
+                  </select></td><br>
+                  <td><button class="btn btn-success" style="float: right;" type="submit">Transfer</button></td>
                 </tr>
               </tfoot>
           </table>

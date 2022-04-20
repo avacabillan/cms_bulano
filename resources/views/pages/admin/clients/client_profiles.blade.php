@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css?v=3.2.0">
+    
 
 </head>
 <body>
@@ -147,14 +148,14 @@
 
 </body>
 
-<script>
+
     
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script defer src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-<script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
+<script defer src="{{asset('/dist/js/adminlte.min.js?v=3.2.0')}}"></script>
 
-<script src="../../dist/js/demo.js"></script>
-</script>
+<script defer src="{{asset('dist/js/demo.js')}}"></script>
+
 </html>

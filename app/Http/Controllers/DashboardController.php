@@ -53,12 +53,12 @@ class DashboardController extends Controller
         $future =  Carbon::today()->addWeeks(3); 
         $client = Auth::user()->clients->id; 
         $reminders = DB::table('client_taxes')
-        ->join('clients','client_taxes.client_id' , '=','clients.id' )
+        ->join('clients','client_taxes.client_id' , '=','clients.id' )  
         ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
         ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
         ->whereBetween('start_date',[$date, $future ] )
         ->where('clients.id', '=',$client)
-        ->select('title', 'start_date','client_tax_forms.tax_form_no', 'client_taxes.status', 'client_taxes.id')
+        ->select('title', 'start_date','client_tax_forms.tax_form_no', 'client_taxes.status', 'client_taxes.id','bulano_deadline.taxform_id','client_taxes.client_id','client_taxes.id')
         ->get();
             return view ('pages.client.dashboard', compact('reminders', [$reminders]));
         }

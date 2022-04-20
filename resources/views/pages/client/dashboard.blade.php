@@ -55,7 +55,7 @@
           <td>{{$deadline->tax_form_no}}</td>
           <td>{{ \Carbon\Carbon::parse($deadline->start_date)->format('F d, Y')}}</td>  
           
-          <td><a  href="{{$deadline->id}}" class="btn btn-info btn-sm" value="">View</a></td>
+          <td><a  href="{{route('view-form',['id'=>$deadline->id,'client'=>$deadline->client_id])}}" class="btn btn-info btn-sm" value="">View</a></td>
           @if($deadline->status == 0)
           <td><button class="btn btn-danger btn-sm" disabled="disabled">Pending</button> </td>
         @else 

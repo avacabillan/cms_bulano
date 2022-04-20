@@ -65,7 +65,7 @@ class RegisteredClientController extends Controller
         
         Mail::to($requestee['email'])->send(new RejectedMail($requestee));
         Alert::success('Success', 'Client Successfuly Rejected!');
-        return redirect()->route('requestee');
+        return redirect()->back();
         
     }
     

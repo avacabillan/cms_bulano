@@ -25,6 +25,15 @@
                 <a href="../../index2.html" class="h1"><b>BULANO</b></a>
             </div>
             <div class="card">
+                       
+        @if(count($errors) > 0)
+            @foreach($errors->all() as $error)
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{$error}}</strong>
+                <button class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endforeach
+        @endif
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
                     <form method="POST" action="{{ route('login') }}">
