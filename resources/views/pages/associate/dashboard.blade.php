@@ -43,7 +43,7 @@
   </div><!-- /.container-fluid -->
 </div><!-- /.content-header -->
 
-  <div class="card" style="width: 30rem; margin-left:20px;">
+  <div class="card" style="width: 30rem; margin-left:20px; margin-top: -3%;">
     
     <div class="card-header">
       <h6 class="text-danger">Clients with Upcoming Deadlines </h6>
@@ -58,11 +58,11 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12" style="margin-top: -3%;">
         <div class="card card-dark card-outline">
 
           <div class="card-header">
-            <h3 class="card-title">Client List</h3>
+            <h3 class="card-title"><strong>Client List</strong></h3>
           </div><!-- /.card-header -->
 
           <table class="table table-bordered yajra-datatable">
