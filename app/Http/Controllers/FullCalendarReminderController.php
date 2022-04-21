@@ -143,6 +143,45 @@ class FullCalendarReminderController extends Controller
             return redirect()->back();
             
         }
+
+
+
+
+        // ASSOC VIEW ON CALENDAR
+        public function assocgetReminder(Request $request){
+            $deadline = Deadline::select('title','start_date', 'end_date')->get();
+           
+            return response()->json($deadline);
+            
+        }
+        public function assocgetTaxEvent(Request $request){
+
+          
+            $reminders = Reminder::all();
+             return response()->json($reminders);
+              
+       
+         }  
+        public function assoclistInternalDeadline(){
+            $internals = Deadline::all();
+            $birs = Reminder::all();
+            return view ('pages.associate.calendar.deadline-calendar.internal-list-deadlines',
+                    compact('internals', $internals, 'birs', $birs));
+        } 
+        public function assoclistBIRDeadline(){
+            $internals = Deadline::all();
+            $birs = Reminder::all();
+            return view ('pages.associate.calendar.deadline-calendar.bir-list-deadline',
+                    compact('internals', $internals, 'birs', $birs));
+        }       
+       
+         public function associndexDeadline(){
+            $deadlines = Deadline::all();
+            $taxForms = Taxform::all();
+        
+            return view ('pages.associate.calendar.deadline-calendar.bulano-calendar',compact('deadlines', $deadlines, 'taxForms', $taxForms));
+            
+        }
        
 
 

@@ -6,6 +6,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\TaxFile;
 use App\Models\TaxType;
+use App\Models\User;
 use App\Models\Client;
 use App\Models\Associate;
 use App\Models\Business;
@@ -169,14 +170,19 @@ class FileController extends Controller
     public function getArchive() 
 
     {   
-        $onlySoftDeleted = TaxFile::onlyTrashed()->get();
+        $onlySoftDeleted = TaxFile::onlyTrashed()->orderBy('deleted_at', 'desc')->get();
         return view('pages.admin.clients.archives',compact([ 'onlySoftDeleted' ]));
     }
 
-    public function archive($id)
+    public function archive($id, $client)
     {
+        
         $file = TaxFile::find($id);
         $file->delete();
+        // $file->client_id = $client;
+        // $assoc = User::getRelations('clients')->select('company_name', 'user_id')->where('id', $client)->get();
+     //dd($assoc);
+        $user =User::where('role', 'associate');
         Alert::success('Success', 'File Successfuly Arhcived!');
         return redirect()->back();
     }

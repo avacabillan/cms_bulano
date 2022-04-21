@@ -64,7 +64,7 @@ class AdminAssocController extends Controller
             'assoc_address' => 'required',
             'username' => 'required',
             'position' => 'required',
-            
+            'hired_date' => 'required',
         ]);
     
         if ($validator->fails()) {
@@ -81,7 +81,6 @@ class AdminAssocController extends Controller
         $associate =new Associate();
         $associate->user_id=$myuser->id;
         $associate ->name = $request->assoc_name;
-        $associate ->status = 0;
         $associate ->email = $request->assoc_email;
         $associate ->contact_number = $request->assoc_contact;
         $associate ->birth_date = $request->assoc_birthdate;
@@ -89,6 +88,7 @@ class AdminAssocController extends Controller
         $associate ->sss_no = $request->assoc_sss;
         $associate->department_id = $request->department;
         $associate->position_id = $request->position;
+        $associate->hired_date = $request->hired_date;
         $associate->save();
         if($associate){
             Alert::success('Success', 'Associate Successfuly Added!');
@@ -130,6 +130,7 @@ class AdminAssocController extends Controller
         $associate ->sss_no = $request->assoc_sss;
         $associate->department_id = $request->department;
         $associate->position_id = $request->position;
+        $associate->hired_date = $request->hired_date;
         $associate->save();
         if($associate){
             Alert::success('Success', 'Associate Successfuly Updated!');

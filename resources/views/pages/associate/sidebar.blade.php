@@ -59,6 +59,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('assoc-display-calendar')}}" class="nav-link">
+              <i class="nav-icon fal fa-calendar"></i>
+              <p>
+              Calendar
+                <!-- <span class="right badge badge-danger">13</span> -->
+              </p>
+            </a>
+          </li>
           <li class="nav-header">EXTRA</li>
           <li class="nav-item">
             <a href="{{route('about')}}" class="nav-link">

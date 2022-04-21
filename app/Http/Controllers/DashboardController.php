@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index(){
 
         if(Auth::user()->role=='admin'){ 
-            $associates = Associate::where('status', 0)->get();
+            $associates = Associate::all();
             $date =Carbon::today();
             // $ttest =Carbon::now()->format('m');
             $future =  Carbon::today()->addWeeks(2);
@@ -64,6 +64,7 @@ class DashboardController extends Controller
         ->whereBetween('start_date',[$date, $future ] )
         ->where('clients.id', '=',$client)
         ->select('title', 'start_date','client_tax_forms.tax_form_no', 'client_taxes.status', 'client_taxes.id','bulano_deadline.taxform_id','client_taxes.client_id','client_taxes.id')
+        ->orderBy('status', 'asc')
         ->get();
             return view ('pages.client.dashboard', compact('reminders', [$reminders]));
         }

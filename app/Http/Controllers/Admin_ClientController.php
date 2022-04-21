@@ -18,6 +18,7 @@ use App\Models\TaxFile;
 use App\Models\ClientTax;
 use App\Models\Tin;
 use App\Models\User;
+use DB;
 use \Yajra\Datatables\Datatables;
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
@@ -236,10 +237,17 @@ class Admin_ClientController extends Controller
         return view('pages.admin.clients.archives',compact([ 'onlySoftDeleted' ]));
     }
   
-    public function getclients(Request $req)
+    public function getCompanies()
     {
-        $clients=Client::where("assoc_id",$req->id)->get();
-        return $clients;
+       $companies = DB::table('client_business')
+       ->join('client_corporates', 'client_business.corporate_id', '=', 'client_corporates.id')
+       ->join('tbl_groups', 'client_corporates.group_id', '=','tbl_groups.id')
+       ->select('trade_name','corporate_name', 'group_name', 'registration_date')
+     
+       ->get();
+     //  $companies->business;
+      // dd($companies);
+       return view('pages.admin.clients.companies', compact('companies'));
 
    }
 
@@ -268,6 +276,23 @@ class Admin_ClientController extends Controller
          }
          return redirect()->back();
     }
+    public function fetchDate(Request $request)
+    {
+        $fromDates = date("Y-m-d", strtotime($request->fromDate));
+        $toDates = date("Y-m-d", strtotime($request->toDate));
+        // $fetch = DB::table('reminders')->select()
+        // ->where("start", '=', $fromDates)
+        // ->where("end", '=', $toDates)
+        // ->get();  
+        
+        
+        $fetch = DB::table('tax_archived_forms')
+                ->whereBetween('deleted_at', [$fromDates, $toDates])->get();
+                // dd($fetch);
+                  return response()->json($fetch);
+        // dd($fetch);
+    }
+   
   
    
     

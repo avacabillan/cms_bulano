@@ -97,10 +97,11 @@
                   
               </div>
               <div class="form-group">
-                <label for="validationCustom08" class="form-label">Username</label>
-                <input type="text" class="form-control" value="{{old('username')}}" name="username" style="width: 100%;" placeholder="email@bulano.com" required>
+                <label for="validationCustom08" class="form-label">Date Hired</label>
+                <input type="date" class="form-control" value="{{old('hired_date')}}" name="hired_date" style="width: 100%;" required>
               </div>
             </div>
+             
 
             <div class="col-md-6">
               <div class="form-group">
@@ -113,6 +114,11 @@
                 </select>
                
               </div>
+              <div class="form-group">
+                <label for="validationCustom08" class="form-label">Username</label>
+                <input type="text" class="form-control" value="{{old('username')}}" name="username" style="width: 100%;" placeholder="email@bulano.com" required>
+              </div>
+            </div>
               
               <div class="form-group">
                 <fieldset disabled>

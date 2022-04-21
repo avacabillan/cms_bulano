@@ -164,7 +164,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/view/{id}',[FileController::class,'view'])->name('view'); 
 
     /*---------------------- ADMIN ROUTE CLIENTS --------------*/
-    Route::get('/companies',[Admin_ClientController::class, 'getclients'])->name('client_companies');
+    Route::get('/companies',[Admin_ClientController::class, 'getCompanies'])->name('client_companies');
 
     Route::get('/assoc-clients', [Admin_ClientController::class, 'getclients'])->name('admin.getclients'); //index
     Route::get('/transfer-clients', [Admin_ClientController::class, 'transferclient'])->name('admin.transfer'); //index
@@ -178,9 +178,9 @@ Route::middleware(['logout'])->group(function(){
     Route::get('/insertClient/{id}',[Admin_ClientController::class, 'insertClient'])->name('insertClient'); //store
     Route::get('/archive-list', [FileController::class,'getArchive'])->name('admin-archive-list');
     Route::get('/restore-file/{id}', [FileController::class,'restore'])->name('restore-file');
-    Route::get('/archive/{id}', [FileController::class,'archive'])->name('archive');
+    Route::get('/archive/{id}/{client}', [FileController::class,'archive'])->name('archive');
     Route::get('/forms/{id}/{client}', [FileController::class,'showForm'])->name('show-forms');
-  
+    Route::get('/archives-result',[Admin_ClientController::class, 'fetchDate'])->name('fetch_date');
 
   
 
@@ -195,7 +195,7 @@ Route::middleware(['logout'])->group(function(){
     Route::put('/update-reminder/id={id}',[FullCalendarReminderController::class, 'updateEvent'])->name('update-reminder');
     Route::delete('/delete-reminder/id={id}',[FullCalendarReminderController::class, 'deleteEvent'])->name('delete-reminder');
     // Route::get('/createTaxEvent',[FullCalendarReminderController::class, 'createTaxEvent'])->name('createTaxEvent');
-    Route::get('/result',[FullCalendarReminderController::class, 'resultList'])->name('fetch_date');
+   
     
     //REMINDER for bulanofullcalendar 
     Route::get('/bulano-calendar/deadlines',[FullCalendarReminderController::class, 'listInternalDeadline'])->name('display-internal-deadlines');
@@ -208,7 +208,12 @@ Route::middleware(['logout'])->group(function(){
     Route::put('/update-deadline/{id}',[FullCalendarReminderController::class, 'updateDeadline'])->name('update-deadline');
     Route::delete('/delete-deadline/{id}',[FullCalendarReminderController::class, 'deleteDeadline'])->name('delete-deadline');
 
-       
+    // ASSOC VIEW CALENDAR
+    Route::get('/assoc/bulano-calendar',[FullCalendarReminderController::class, 'associndexDeadline'])->name('assoc-display-calendar');
+    Route::get('/assoc/Taxevents',[FullCalendarReminderController::class, 'assocgetTaxEvent'])->name('assoc-getTaxEvents');
+    Route::get('/assoc/getDeadlines',[FullCalendarReminderController::class, 'assocgetReminder'])->name('assoc-getReminder');
+    Route::get('/assoc/bulano-calendar/deadlines',[FullCalendarReminderController::class, 'assoclistInternalDeadline'])->name('assoc-display-internal-deadlines');
+    Route::get('/assoc/bulano-calendar/bir/deadlines',[FullCalendarReminderController::class, 'assoclistBIRDeadline'])->name('assoc-display-bir-deadlines');
     
 
 

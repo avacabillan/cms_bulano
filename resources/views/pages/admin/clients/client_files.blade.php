@@ -26,7 +26,7 @@
                                         <td>{{$pay->file_name}}</td>
                                         <td>{{$pay->description}}</td>
                                         <td>{{$pay->file_type}}</td>                       
-                                        <td><a class="btn btn-lg" href="{{route('archive' ,$pay->id)}}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Archive"><i class="fas fa-archive"></i></a></td>
+                                        <td><a class="btn btn-lg" href="{{route('archive' , ['id'=>$pay->id,'client'=>$pay->client_id])}}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Archive"><i class="fas fa-archive"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

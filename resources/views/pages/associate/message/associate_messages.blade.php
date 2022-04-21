@@ -128,24 +128,37 @@
                 </div>
 
                 <div class="table-responsive mailbox-messages">
+                 @foreach($users as $user)
+                  @foreach($clients as $client)
                     <table class="table table-hover table-striped">
+                     @if($user->first()->id == Auth::id())
+                      @else
                         <tbody>
+                         @if($user->first()->name == $client->company_name)
                             <tr>
                                 <td>
                                     <div class="icheck-primary">
                                         <input type="checkbox" value="" id="check15">
                                         <label for="check15"></label>
                                     </div>
+                                </td>                         
+                                <td class="mailbox-star"><a href="#"></a>{{$user->first()->id}}</td>
+                                <?php 
+                                    $fullname = $client->company_name;
+                                ?>
+                                <td class="mailbox-name"><a href="{{route('associate_showmsg_create', $user->first()->id)}}">{{$client->company_name}}</a>
                                 </td>
-                                <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b>
+                                <td class="mailbox-subject"><b>{{$client->company_name}}</b>
                             </tr>
+                         @endif
                         </tbody>
+                        @endif
                     </table>
+                  @endforeach
+                 @endforeach
                 </div>
             </div>
         </div>
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>

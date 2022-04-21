@@ -44,6 +44,9 @@
                                 <li class="list-group-item">
                                     <b>Department</b> <a class="float-right text-dark ">{{$associate->departments->department_name}}</a>
                                 </li>
+                                <li class="list-group-item">
+                                    <b>Hired date</b> <a class="float-right text-dark ">{{$associate->hired_date}}</a>
+                                </li>
 
                             </ul>
                              <a href="#" class="btn btn-primary btn-block"><b>Message</b></a>

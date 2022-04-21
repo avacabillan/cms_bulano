@@ -32,6 +32,7 @@ class AssocFieldRequest extends FormRequest
             'assoc_address' => 'required',
             'username' => 'required',
             'position' => 'required',
+            'hired_date' => 'required',
         ];
     }
 }

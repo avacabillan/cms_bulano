@@ -34,7 +34,7 @@
                     <th>Deadline</th>
                     <th>Status</th>
                     <th>Tax Declaration</th>
-                    <!-- <th>QR</th> -->
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -48,7 +48,12 @@
                       @else 
                         <td><a href="{{route('update-status', $deadline->id)}}" class="btn btn-success btn-sm" >Processed</a></td>
                       @endif
-                    <td><a type="button" class="btn btn-success btn-sm" data-id="{{$deadline->id}}" data-bs-toggle="modal" data-bs-target="#declarationModal">Attach Computation</a></td>
+                      
+                      <td>
+                    
+                      <a type="button" class="btn btn-success btn-sm" data-id="{{$deadline->id}}" data-bs-toggle="modal" data-bs-target="#declarationModal">Attach Computation</a>
+                      @endforeach
+                    </td>
 
                       
                     </tr>
@@ -63,6 +68,10 @@
       </div>
     </div>    <!-- /.card -->
   </div>
+  <?php 
+  foreach($reminders as $reminder)
+   $id= $reminder->id;
+  ?>
   <div class="modal" id="declarationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -74,7 +83,7 @@
          
             
             <div class="card-body" >
-              <form  action="{{route('attach-declaration', $deadline->id)}}" method="POST" enctype="multipart/form-data" id="uploadFile" >
+              <form  action="{{route('attach-declaration', $id)}}" method="POST" enctype="multipart/form-data" id="uploadFile" >
                 <input class="form-control" type="hidden" value="{{$deadline->id}}" name="client_id">
                 @csrf
                 @method('post')
@@ -83,8 +92,9 @@
                         <input class="form-control mb-5" id="inputGroupFile02" name="file" type="file">
                       </div>
                         <button class="btn btn-success mt-5 saveBtn" type="submit" value="uploadFile" >Save</button>
-               </form>  
-               @endforeach    
+               
+                      </form>  
+             
             </div>
         </div>
         

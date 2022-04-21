@@ -17,6 +17,7 @@ class Associate extends Model
         'birth_date',
         'start_date',
         'address',
+        'hired_date',
 
         
     ];  

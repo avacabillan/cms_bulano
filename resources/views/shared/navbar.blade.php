@@ -7,7 +7,7 @@
       <a href="#" class="nav-link">Bulano Accounting & Auditing Firm</a>
     </li>
   </ul>
-  
+
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="fas fa-bell"></i>
@@ -17,7 +17,7 @@
       @if(auth()->user())
       
         @forelse(auth()->user()->notifications->whereNull('read_at') as $notification)
-          <div class="alert alert-success" role="alert">
+          <div class="alert alert-success me-3" role="alert">
               User {{ $notification->data['name'] ?? "" }} ({{ $notification->data['email'] ?? ""}}) has just registered.
               <a href="{{route('admin.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
                   Mark as read
@@ -36,6 +36,7 @@
     </div>
     </ul>
   </div>
+  
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
       <a class="nav-link" data-widget="fullscreen" href="#" role="button">

@@ -112,7 +112,7 @@ class Assoc_ClientController extends Controller
         ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
         ->where('start_date', '=', $date  )
         ->where('clients.id', '=',$id)
-        ->where('client_taxes.status', 0)
+       // ->where('client_taxes.status', 0)
         ->select('title', 'start_date','client_tax_forms.tax_form_no', 'client_taxes.status','client_taxes.id')
         ->get();
         return view('pages.associate.clients.deadlines',compact('reminders'));
@@ -131,6 +131,7 @@ class Assoc_ClientController extends Controller
         return redirect()->back();
     }
     public function declarationAttach(Request $request,$id){
+        
         $clientTax = ClientTax::find($id);
         $clientTax->file =  $request->file('file')->guessExtension(); 
         

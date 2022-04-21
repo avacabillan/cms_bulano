@@ -76,7 +76,7 @@
         </li>
         <li class="nav-item">
           <a href="{{route('client_companies')}}" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fas-building"></i>
             <p>
               Companies
               <!-- <span class="right badge badge-danger">New</span> -->
