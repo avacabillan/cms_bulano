@@ -78,13 +78,15 @@ Route::middleware(['logout'])->group(function(){
 
    
      /*---------------------- EXTRA PAGES --------------*/
-    
-     Route::get('/admin-mark-as-read', [Admin_ClientController::class, 'adminMarkNotification'])->name('admin.markNotification');
-    Route::get('/mark-as-read', [Admin_ClientController::class, 'markNotification'])->name('assoc.markNotification');
-    Route::view('/about','pages.admin.about')->name('about');
-    Route::view('/services','pages.admin.services')->name('services');
-    Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
-    Route::get('/admin', [AdminController::class,'store'])->name('create.admin');
+     Route::view('/about','pages.admin.about')->name('about');
+     Route::view('/services','pages.admin.services')->name('services');
+     Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
+     Route::get('/admin', [AdminController::class,'store'])->name('create.admin');
+     /*---------------------- NOTIFICATION ROUTES --------------*/
+    Route::get('/admin-mark-as-read', [Admin_ClientController::class, 'adminMarkNotification'])->name('admin.markNotification');
+    Route::get('/assoc-mark-as-read', [Assoc_ClientController::class, 'assocMarkNotification'])->name('assoc.markNotification');
+    Route::get('/client-mark-as-read', [ClientController::class, 'clientMarkNotification'])->name('client.markNotification');
+
 
     /*---------------------- INTERNAL MESSAGES --------------*/
 

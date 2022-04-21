@@ -163,9 +163,7 @@ class Admin_ClientController extends Controller
 
         $requestee = Requestee::find($id);
         $requestee->status = true;
-        if( $requestee->status = true){
-            $requestee->forceDelete();
-        }
+        $requestee->save();
        
         
         $myuser= new User;
@@ -250,6 +248,12 @@ class Admin_ClientController extends Controller
        return view('pages.admin.clients.companies', compact('companies'));
 
    }
+   public function getclients(Request $req)
+   {
+       $clients=Client::where("assoc_id",$req->id)->get();
+       return $clients;
+
+  }
 
    public function transferclient(Request $req)
    {

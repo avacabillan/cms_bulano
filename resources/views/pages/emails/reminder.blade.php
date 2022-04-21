@@ -1,15 +1,19 @@
 @component('mail::message')
-# Hi 
+# Good day!  
 {{$name}}
 
 
 You have
 @foreach($reminds as $rem) 
-{{$rem}}
+<ul>{{$rem}}</ul>
 
 @endforeach to follow up.
+You can check your Bulano Account to see the deadlines.
 
-
-Thanks,<br>
+@component('mail::button', ['url' => $url])
+Follow up now!
+@endcomponent
+Best Regards,<br>
+Bulano Accounting & Auditing Firm
 
 @endcomponent

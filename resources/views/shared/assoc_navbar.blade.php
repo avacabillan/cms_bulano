@@ -17,15 +17,25 @@
       @if(auth()->user())
       
         @forelse(auth()->user()->notifications->whereNull('read_at') as $notification)
-          <div class="alert alert-success" role="alert">
-               User {{ $notification->data['name'] ?? "" }} ({{ $notification->data['email'] ?? ""}}) was assigned to you.
-              <a href="{{route('admin.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
-                  Mark as read
-              </a>
-          </div>
+        @if($notification->type == 'App\Notifications\AssocNewMessageNotification')
+        <div class="alert alert-success" role="alert">
+          Client {{ $notification->data['name'] ?? "" }}  sent a message.
+         <a href="{{route('assoc.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+             Mark as read
+         </a>
+        </div>
+        @else
+        <div class="alert alert-success" role="alert">
+          User {{ $notification->data['name'] ?? "" }} ({{ $notification->data['email'] ?? ""}}) was assigned to you.
+         <a href="{{route('assoc.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+             Mark as read
+         </a>
+     </div>
+        @endif
+        
   
           @if($loop->last)
-              <a href="{{route('admin.markNotification')}}" id="mark-all">
+              <a href="{{route('assoc.markNotification')}}" id="mark-all">
                   Mark all as read
               </a>
           @endif

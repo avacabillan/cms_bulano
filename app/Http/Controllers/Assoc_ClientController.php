@@ -19,6 +19,17 @@ class Assoc_ClientController extends Controller
             return view ('pages.associate.clients.clients_list');
             
     }
+    public function assocMarkNotification(Request $request)
+    {
+        auth()->user()
+            ->unreadNotifications
+            ->when($request->input('id'), function ($query) use ($request) {
+                return $query->where('id', $request->input('id'));
+            })
+            ->markAsRead();
+
+        return response()->noContent();
+    }
     public function ajaxClient(Request $request){
         if ($request->ajax()) {
             $data = Associate::with('client');

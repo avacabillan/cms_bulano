@@ -87,10 +87,11 @@ class SendReminderEmails extends Command
                
                 // dd($client->email_address,$reminder->title );
                 $reminds =explode(',',$reminders);
+                $url = 'http://127.0.0.1:8000/';
                 //dd($reminds);
                 if( $reminds != ''){
                     foreach($clients as $client){
-                         Mail::to($client)->send(new TaxReminder($reminds, [$client]));
+                         Mail::to($client)->send(new TaxReminder($reminds, [$client], $url));
                     }
                     // dd($reminds->title);
                 }

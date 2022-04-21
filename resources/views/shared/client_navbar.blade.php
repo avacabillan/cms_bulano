@@ -17,17 +17,18 @@
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="width:40rem;">
       <div class="mt-2 ml-3">
       @if(auth()->user())
-      
+
         @forelse(auth()->user()->notifications->whereNull('read_at') as $notification)
-          <div class="alert alert-success" role="alert">
-              User {{ $notification->data['name'] ?? "" }} ({{ $notification->data['email'] ?? ""}}) has sent message.
-              <a href="{{route('admin.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+      
+        <div class="alert alert-success" role="alert">
+              {{Auth::user()->clients->associates->name}} has sent a message.
+              <a href="{{route('client.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
                   Mark as read
               </a>
           </div>
   
           @if($loop->last)
-              <a href="{{route('admin.markNotification')}}" id="mark-all">
+              <a href="{{route('client.markNotification')}}" id="mark-all">
                   Mark all as read
               </a>
           @endif

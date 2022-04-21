@@ -15,14 +15,15 @@ class TaxReminder extends Mailable implements ShouldQueue
     
     public $reminds;
   public $client;
-   
-    public function __construct($reminds, $client)
+   public $url;
+
+    public function __construct($reminds, $client, $url)
     {   
         
     //  dd($clients);
       //  foreach($client as $name ){
           $this->name = $client;
-        
+        $this->url = 'http://127.0.0.1:8000/';
       //  }
         // $this->clients = $clients;
         //dd($name->company_name);
@@ -49,11 +50,12 @@ class TaxReminder extends Mailable implements ShouldQueue
        
         $address = config("mail.from.address");
         $name = config("mail.from.name");
+       
       //   dd($address);
         return $this ->from($address, $name)
       //  ->to($emails)
         ->markdown('pages.emails.reminder')
-        ->with('reminds') ->with('name');
+        ->with('reminds') ->with('name')->with('url');
       
                     // ->subject('subject',$this->subject);
     }

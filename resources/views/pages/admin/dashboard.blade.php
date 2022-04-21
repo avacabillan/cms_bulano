@@ -28,9 +28,8 @@
   <ul class="list-group list-group-flush">
     
     @foreach($clientDeadlines as $client)
-    
-   
-    <li class="list-group-item">{{$client->company_name}} - <b>{{$client->tax_form_no}}</b><br> {{\Carbon\Carbon::parse($client->start_date)->format('F d, Y')}}</li>
+ 
+    <li class="list-group-item">{{$client->company_name}} - <b> Form {{$client->tax_form_no}}</b><br> {{\Carbon\Carbon::parse($client->start_date)->format('F d, Y')}}</li>
    
  @endforeach
   </ul>
@@ -127,6 +126,7 @@
                   </tr>
               </thead>
               <tbody class="clnt_name mt-3" id="data">
+                
               </tbody>
               <tfoot>
                 <tr>

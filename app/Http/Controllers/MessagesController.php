@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Client;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AssocNewMessageNotification;
+use App\Notifications\ClientNewMessageNotification;
 class MessagesController extends Controller
 {
 
@@ -23,8 +26,8 @@ class MessagesController extends Controller
 
         $messages = Message::orderBy('created_at', 'asc')->get();
         $id = Auth::user()->associates->id;
+        $recipients = Client::where('assoc_id', $id)->get();
         $users = DB::table('users')
-
             ->join('messages', 'users.id', '=', 'messages.sender')
             ->join('clients', 'users.id', '=', 'clients.user_id')
             ->select('users.*','messages.sender')  
@@ -32,10 +35,13 @@ class MessagesController extends Controller
             ->where('role','client')
             ->orderBy('messages.created_at','desc')
             ->get()->groupBy('sender');
-           //  dd($users);
+         // dd($recepients);
             $clientUsers = User::all();
             $clients = Client::all();
-        return view("pages.associate.message.associate_messages")->with( compact('messages', $messages,'users', $users,'clientUsers', $clientUsers, "clients", $clients));
+        return view("pages.associate.message.associate_messages")
+        ->with( compact('messages', $messages,'users', $users,
+                        'clientUsers', $clientUsers, "clients", $clients,
+                        'recipients', $recipients));
     }
     public function associateMessageShowCreate($id){
 
@@ -76,7 +82,8 @@ class MessagesController extends Controller
         $message->receiver = $id;
         $message->read = 0;
         $message->save();
-
+        $users = User::where('role', 'client')->get();
+        Notification::send($users, new ClientNewMessageNotification ($message));
         return redirect()->back();
     }
 
@@ -89,6 +96,7 @@ class MessagesController extends Controller
 
     public function insertClientMsg(Request $request){
         
+        $id = Auth::user()->id;
         $assoc = Auth::user()->clients->associates->user_id;
         $message = new Message();
         $message->sender = Auth::id();
@@ -96,6 +104,9 @@ class MessagesController extends Controller
         $message->read = 0  ;
         $message->receiver = $assoc;
         $message->save();
+       // dd($message);
+        $user = User::where('id', $assoc)->get();
+        Notification::send($user, new AssocNewMessageNotification ($message));
         return redirect()->back();
     }
 

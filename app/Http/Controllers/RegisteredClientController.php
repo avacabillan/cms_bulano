@@ -57,7 +57,7 @@ class RegisteredClientController extends Controller
    
     
         $requestee->save();
-        $requestee->refresh();
+        // $requestee->refresh();
         $users = User::where('role', 'admin')->get();
         Notification::send($users, new NewUserNotification ($requestee));
         Alert::info('Success', 'Your registration request has been sent, plese wait for the email within 3 days for the approval from the admin!');

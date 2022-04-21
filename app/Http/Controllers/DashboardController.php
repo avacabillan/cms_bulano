@@ -28,7 +28,7 @@ class DashboardController extends Controller
             ->join('bulano_deadline', 'client_taxes.tax_form_id', '=', 'bulano_deadline.taxform_id')
             ->join('client_tax_forms', 'client_taxes.tax_form_id', '=', 'client_tax_forms.id')
             ->whereBetween('start_date',[$date, $future ] )
-            ->whereMonth('start_date', '=','$ttest')
+           // ->whereMonth('start_date', '=','$ttest')
             ->select('company_name','start_date','tax_form_no' )
             ->orderBy( 'company_name','asc')
             ->get();

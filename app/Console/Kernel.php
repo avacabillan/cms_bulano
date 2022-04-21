@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('reminder:emails')
         ->timezone('UTC')
-        ->dailyAt('12:00');
+        ->everyMinute();
         $schedule->command('reset:annual')
         ->yearly();
         $schedule->command('reset:monthly')

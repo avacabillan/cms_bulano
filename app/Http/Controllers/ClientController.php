@@ -3,12 +3,24 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Models\Client;
 class ClientController extends Controller
 {
     public function index(){
         
         return view('pages.client.dashboard');
+    }
+    public function clientMarkNotification(Request $request)
+    {
+        auth()->user()
+            ->unreadNotifications
+            ->when($request->input('id'), function ($query) use ($request) {
+                return $query->where('id', $request->input('id'));
+            })
+            ->markAsRead();
+
+        return response()->noContent();
     }
 
     public function showAssoc(){
