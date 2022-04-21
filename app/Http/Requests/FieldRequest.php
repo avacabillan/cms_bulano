@@ -24,22 +24,23 @@ class FieldRequest extends FormRequest
     public function rules()
     {
         return [
-        'ocn' => 'bail|required|max:255',
-        'client_name' => 'required|min:5',
-        'email' => 'required|email',
-        'tin' => 'required',
-        'client_contact' => 'required|numeric',
-        'reg_date' => 'required',
-        'trade_name' => 'required',
-        'corporate' => 'required',
-        'assoc' => 'required',
-        'mode' => 'required',
-        'unit_house_no' => 'required',
-        'street' => 'required',
-        'client_city' => 'required',
-        'client_province' => 'required',
-        'client_postal' => 'required',
-       
+            'ocn' => 'bail|required|max:255',
+            'client_name' => 'required',
+            'email' => 'required',
+            'tin' => 'required|digits:12',
+            'client_contact' => 'required',
+            'reg_date' => 'required',
+            'trade_name' => 'required',
+            'corporate' => 'required',
+            'assoc' => 'required',
+            'mode' => 'required',
+            'unit_house_no' => 'required',
+            'street' => 'required',
+            'client_city' => 'required',
+            'client_province' => 'required',
+            'client_postal' => 'required',
+           'taxesChecked'=>'required',
+            
         ];
     }
 }

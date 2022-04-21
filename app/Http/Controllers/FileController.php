@@ -86,7 +86,7 @@ class FileController extends Controller
         $taxFile->save();
 
 
-      
+        Alert::success('Success', 'File Uploaded Successfully!');
         return redirect()->back();
 
     }

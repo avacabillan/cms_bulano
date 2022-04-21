@@ -136,9 +136,8 @@ class Admin_ClientController extends Controller
         'ocn' => 'bail|required|max:255',
         'client_name' => 'required',
         'email' => 'required',
-        'tin' => 'required',
+        'tin' => 'required|digits:12',
         'client_contact' => 'required',
-        'tin' => 'required|numeric',
         'reg_date' => 'required',
         'trade_name' => 'required',
         'corporate' => 'required',
@@ -149,7 +148,7 @@ class Admin_ClientController extends Controller
         'client_city' => 'required',
         'client_province' => 'required',
         'client_postal' => 'required',
-       
+       'taxesChecked'=>'required',
         
     ]);
 

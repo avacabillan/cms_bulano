@@ -39,7 +39,7 @@
                 <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Full name" :value="old('name')" required>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Full name" value="{{old('name')}}" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" :value="old('email')" required>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{old('email')}}" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>

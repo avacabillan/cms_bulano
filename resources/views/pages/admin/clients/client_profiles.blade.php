@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row mb-0">
                 <div class="col-sm-6">
-                    <h5><a href="{{route('admin-clients-list')}}"><b>Client List</b></a></h5>               
+                    {{-- <h5><a href="{{route('admin-clients-list')}}"><b>Client List</b></a></h5>                --}}
                 </div>
             </div>
         </div>
