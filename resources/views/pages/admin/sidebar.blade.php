@@ -40,19 +40,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link">
+              <a href="{{route('admin_create')}}" class="nav-link">
               <span> <i class="fas fa-solid fa-user-plus" ></i><p style="margin-left: 12px;">Create New Admin</p> </span>
               </a>
               </li>
-              @foreach($admins as $admin)
+              
+            
+            
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href=""  class="nav-link">
-                <span>  <i class="fas fa-solid fa-user-shield nav-icon"></i><b>{{$admin->name}}</b> </span>
-                </a>
+              <a href="{{route('admin_list')}}" class="nav-link">
+              <span> <i class="fas fa-solid fa-user-plus" ></i><p style="margin-left: 12px;">Admin List</p> </span>
+              </a>
               </li>
-              @endforeach
-            
-            
+
             </ul>
             </li>
         </li>

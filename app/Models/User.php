@@ -34,6 +34,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Associate::class,"id", "user_id");
     }
+    public function admins()
+    {
+        return $this->belongsTo(Admin::class,"id", "user_id");
+    }
     public function message()
     {
         return $this->belongsTo(Message::class,);

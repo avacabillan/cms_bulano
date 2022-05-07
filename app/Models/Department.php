@@ -14,4 +14,7 @@ class Department extends Model
     public function associate(){
         return $this->hasMany(Associate:: class, 'department_id');
     } 
+    public function admins(){
+        return $this->hasMany(Admin:: class, 'department_id');
+    } 
 }

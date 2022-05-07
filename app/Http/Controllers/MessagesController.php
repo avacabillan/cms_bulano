@@ -74,10 +74,12 @@ class MessagesController extends Controller
                 'file' => 'required|mimes:pdf, png,jpeg,jpg|max:2048',
             ]); 
             
-            $image_file = $request->file('file');
-            $imagefileName = time().'.'.$image_file->extension();
-            $image_file->move(public_path('imgfileMessages'), $imagefileName);
-            $message->img_file = $imagefileName;
+            $file = $request->file('file');
+            $size = $request->file('file')->getSize();
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename = $request->name.'filename'. $extension;
+            $file->move('public/imgfileMessages', $filename); 
+            $message ->img_file = $filename;
         }
         $message->receiver = $id;
         $message->read = 0;

@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Associate;
 use App\Models\Client;
-use App\Models\ClientTax;
+use App\Models\Admin;
+use App\Models\Department;
 use App\Models\User;
 use Carbon\CarbonStr;
 use Carbon\Carbon;
@@ -17,6 +18,10 @@ class DashboardController extends Controller
 
         if(Auth::user()->role=='admin'){ 
             $associates = Associate::all();
+            $departments = Department::all();
+            $adminprofile = Admin::all();
+            // $adminprofile->myusers;
+            $admins = User::where('role', 'admin');
             $date =Carbon::today();
             // $ttest =Carbon::now()->format('m');
             $future =  Carbon::today()->addWeeks(2);
@@ -33,7 +38,7 @@ class DashboardController extends Controller
             ->orderBy( 'company_name','asc')
             ->get();
            // dd($future);
-            return view ('pages.admin.dashboard', compact('associates', 'clientDeadlines', 'notifications'));
+            return view ('pages.admin.dashboard', compact('associates','adminprofile', 'clientDeadlines', 'notifications', 'admins', 'departments'));
 
         }elseif (Auth::user()->role=='associate'){
             $date = Carbon::now()->format('Y-m-d');

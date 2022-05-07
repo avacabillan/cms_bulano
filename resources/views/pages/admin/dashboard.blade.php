@@ -21,19 +21,32 @@
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
 </div><!-- /.content-header -->
-<div class="card" style="width: 30rem; margin-left:20px;">
-  <div class="card-header">
-    <h6 class="text-danger">Clients with Upcoming Deadlines</h6>
-  </div>
-  <ul class="list-group list-group-flush">
-    
-    @foreach($clientDeadlines as $client)
- 
-    <li class="list-group-item">{{$client->company_name}} - <b> Form {{$client->tax_form_no}}</b><br> {{\Carbon\Carbon::parse($client->start_date)->format('F d, Y')}}</li>
+<div class="container verticals-scrollable" style="position:sticky; margin-left:10px; width:30%; overflow-y:visible;">
+  <div class="card">
+    <div class="card-header">
+      <h6 class="text-danger">Clients with Upcoming Deadlines</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+      
+      @foreach($clientDeadlines as $client)
    
- @endforeach
-  </ul>
+      <li class="list-group-item">{{$client->company_name}} - <b> Form {{$client->tax_form_no}}</b><br> {{\Carbon\Carbon::parse($client->start_date)->format('F d, Y')}}</li>
+     
+      @endforeach
+    </ul>
+  </div>
 </div>
+{{-- position: absolute;
+padding-left: 10px;
+padding-top: 5px;
+top: 95px;
+left: 75%;
+width: 23%;
+height: 20%;
+overflow-y: scroll;
+border: black 0.5px solid;
+background-color: #f0fff0; --}}
+
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -104,7 +117,10 @@
         </div>
       </div>
     </section>
+   
     <a href="#" onclick="showclient()"></a>
+    
+
 
   <!-- Modal -->
 <div class="modal" id="transfer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -144,42 +160,8 @@
     </div>
   </div>
 </div>
-{{-- Add admin modal --}}
-<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-md-down">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create New Admin</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="{{route('create.admin')}}" method="POST" class="row g-3">
-          @csrf
-          @method('GET')
-          <div class="col-md-6">
-            <label class="form-label">Name</label>
-            <input name="name" class="form-control">
-          </div>
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input name="email" type="email" class="form-control" id="inputEmail4">
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Password</label>
-            <input name="password" type="password" class="form-control" id="inputPassword4">
-          </div>
-         
-     
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Create</button>
-      </form>
-      
-      </div>
-    </div>
-  </div>
-</div>
+
+@include('sweetalert::alert') 
 @include('sweetalert::alert')
 @include('sweetalert::alert')
 @section('scripts')

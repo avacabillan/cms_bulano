@@ -18,6 +18,8 @@
             <tr>
               <th class="Client-th text-dark text-center">Name</th>
               <th class="Client-th text-dark text-center">Email</th>              
+              <th class="Client-th text-dark text-center">Phone</th>   
+              <th class="Client-th text-dark text-center">Inquiry</th>     
               <th class="Client-th text-dark text-center">COR</th>
               <th class="Client-th text-dark text-center">Action</th>
             </tr>
@@ -27,9 +29,11 @@
               <tr>                     
                 <td>{{$requestee->name}}</td>
                 <td>{{$requestee->email}}</td>
+                <td>{{$requestee->phone}}</td>
+                <td>{{$requestee->inquiry}}</td>
                 <td>
                   <a  id="corImage" href="{{asset('public/files/'.$requestee->cor)}}" data-lightbox="$requestee->cor"> <img src="{{asset('public/files/'.$requestee->cor)}}" alt="" width="70px" height="50px"></a>
-                  <!-- <button data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="{{asset('public/files/'.$requestee->cor)}}" alt="" width="70px" height="50px"></button> -->
+                 
                 </td>
                 <td class="text-dark">      
                                               

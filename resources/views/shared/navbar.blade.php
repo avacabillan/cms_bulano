@@ -30,7 +30,7 @@
               </a>
           @endif
           @empty
-              There are no new notifications
+              There are no new notifications 
           @endforelse
       @endif
     </div>

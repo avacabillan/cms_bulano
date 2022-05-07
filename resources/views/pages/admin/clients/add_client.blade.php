@@ -190,7 +190,7 @@
           <div class="col-md-6">
             <div class="form-group" >
                 <label for="validationCustom16" class="form-label"><b>Username</b></label>
-                <input type="text" class="form-control" value="{{old('username')}}" name="username" placeholder="email@bulano.com" required>
+                <input type="text" class="form-control" value="{{$requestee->email}}" name="username" placeholder="email@bulano.com" required>
                 <div class="invalid-feedback"></div>
               </div>
               </div>

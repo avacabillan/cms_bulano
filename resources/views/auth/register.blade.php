@@ -29,12 +29,12 @@
 </head>
 <body class="hold-transition register-page">
 
-    <div class="register-box">
+    <div class="register-box" style="width: 30%;">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <a href="../../index2.html" class="h1"><b>BULANO</b></a>
             </div>
-            <div class="card-body">
+            <div class="card-body" >
                 <p class="login-box-msg">Register a new membership</p>
                 <form method="POST" action="{{ route('store-requestee') }}" enctype="multipart/form-data">
                 @csrf
@@ -43,6 +43,14 @@
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" value="{{old('phone')}}" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
                             </div>
                         </div>
                     </div>
@@ -55,16 +63,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="inquiry" placeholder="Leave a inquiry here" id="floatingTextarea2" style="height: 100px" required></textarea>
+                       
+                      </div>
 
                     <div class="input-group mb-3">
-                        <input type="file" name="cor" class="form-control " required>
+                        <input type="file" name="cor" class="form-control pb-2" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-paperclip"></span>
                             </div>
                         </div>
                     </div>
-                  
+         
 
                     <div class="row">
                         <div class="d-grid gap-2 col-6 mx-auto">
@@ -82,6 +94,8 @@
                                 <h5>Read Instruction</h5>
                                 <hr>
                                 <li>Please Provide Name</li>
+                                <li>Phone Number for verification purposes</li>
+                                <li>Specify registration purpose</li>
                                 <li>Exact Email Address for approval purposes</li>
                                 <li>Please attach image format of the Certificate of Registration (COR) for tax review purposes</li>
                             </div> 

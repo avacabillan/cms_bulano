@@ -47,9 +47,10 @@
                                         <span class="direct-chat-name float-right">{{Auth::user()->associates->name}}</span>
                             </div>
                                         <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="Message User Image">
-                                        <div class="direct-chat-text">{{$message->message}} </div>
-                                    @elseif($message->img_file !== null)
-                                        <div class='d-flex justify-content-end'><div class='img-msg'><a  id="corImage" href="{{asset('imgfileMessages/'.$message->img_file)}}" data-lightbox="$requestee->cor"> <img src="{{asset('public/imgfileMessages/'.$message->img_file)}}" alt="" width="70px" height="50px"></a></div><br>
+                                        <div class="direct-chat-text">{{$message->message}}</div>
+                                    @elseif($message->img_file !== '')
+                                        <div class="direct-chat-text">{{$message->message}}</div>
+                                        <div class='d-flex justify-content-end'> <iframe height="900px;"  width="820px;" src="/imgfileMessages/{{$message->img_file}}"></iframe></div><br>
                                     @endif
                                 @endif
                         </div>

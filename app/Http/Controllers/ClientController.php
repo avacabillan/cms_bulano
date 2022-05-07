@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\ClientTax;
+
 class ClientController extends Controller
 {
     public function index(){
@@ -27,16 +29,13 @@ class ClientController extends Controller
         $id = Auth::user()->clients->id;
            $client = Client::find($id);
            $client->associates;
-        return view('pages.client.my_assoc',compact('client'));
+        return view('pages.client.my_assoc',compact('client')); 
     }
-    public function showForm($id, $client){
-
-        $datas = DB::table('client_tax_files')
-        ->where('client_tax_files.tax_form_id', '=', $id)
-        ->where('client_tax_files.client_id', '=',  $client)
-        ->where('deleted_at', '=', null)
-        ->get();
-        return view('pages.client.client_form',compact('datas'));
+    public function declarationshowForm($id){
+        $showfile=ClientTax::find($id);
+      //  dd( $showfile);
+      
+        return view('pages.client.client_form',compact('showfile', $showfile));
     }
     public function showProfile($id){
         $client = Client::find($id);

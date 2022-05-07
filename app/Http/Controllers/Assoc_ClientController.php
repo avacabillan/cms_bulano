@@ -153,10 +153,10 @@ class Assoc_ClientController extends Controller
             ]); 
             
             $file = $request->file('file');
-           
+            $size = $request->file('file')->getSize();
             $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = $request->file . '-'.'declaration'.'.' . $extension;
-            $file->move('public/files/computedfile', $filename);
+            $filename = $request->name.'filename'. $extension;
+            $file->move('public/files/computedfile', $filename); 
             $clientTax ->file = $filename;
         } 
         $clientTax->save();

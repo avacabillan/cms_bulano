@@ -39,6 +39,8 @@ class RegisteredClientController extends Controller
         $requestee =new Requestee();
         $requestee ->name = $request->name;
         $requestee ->email = $request->email;
+        $requestee ->phone = $request->phone;
+        $requestee->inquiry = $request->inquiry;
         $requestee ->status =false;
        
         if ($request->hasfile('cor'))
