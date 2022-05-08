@@ -125,7 +125,7 @@
             <select name="mode" class="form-control" style="width: 100%;" required>
               <option value="">--Select Mode of Filing--</option>
               @foreach($modes as $mode)
-                <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
+                <option value="{{$mode['id']}}"  {{ $requestee->modeofpayment->id == $mode['id'] ? 'selected="selected"' : '' }}>{{$mode->mode_name}}</option>
               @endforeach
             </select>
             <div class="invalid-feedback"></div>

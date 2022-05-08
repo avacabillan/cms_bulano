@@ -14,4 +14,8 @@ class ModeOfPayment extends Model
     public function clients(){
         return $this->hasMany(Client::class);
     }
+    public function requestee(){
+        return $this->hasMany(Requestee::class);
+    }
+    
 }

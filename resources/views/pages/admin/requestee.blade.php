@@ -19,6 +19,7 @@
               <th class="Client-th text-dark text-center">Name</th>
               <th class="Client-th text-dark text-center">Email</th>              
               <th class="Client-th text-dark text-center">Phone</th>   
+              <th class="Client-th text-dark text-center">Mode Filing</th>   
               <th class="Client-th text-dark text-center">Inquiry</th>     
               <th class="Client-th text-dark text-center">COR</th>
               <th class="Client-th text-dark text-center">Action</th>
@@ -30,7 +31,15 @@
                 <td>{{$requestee->name}}</td>
                 <td>{{$requestee->email}}</td>
                 <td>{{$requestee->phone}}</td>
-                <td>{{$requestee->inquiry}}</td>
+               
+                @if($requestee->mode_filing == 1)
+                  <td>Non-efps</td>
+                @elseif($requestee->mode_filing == 2)
+                  <td>Efps</td>
+                @else
+                  <td>N|A</td>
+                @endif
+                 <td>{{$requestee->inquiry}}</td>
                 <td>
                   <a  id="corImage" href="{{asset('public/files/'.$requestee->cor)}}" data-lightbox="$requestee->cor"> <img src="{{asset('public/files/'.$requestee->cor)}}" alt="" width="70px" height="50px"></a>
                  

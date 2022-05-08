@@ -19,5 +19,8 @@ class Requestee extends Model
     protected $fillable = [
         'name', 'email','cor',
     ];
+    public function modeofpayment(){
+        return $this->belongsTo(ModeofPayment::class,'mode_filing');
+    }
     
 }

@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
-use App\Models\Reminder;
+use App\Models\ModeOfPayment;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Sum;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {   view()->composer(['pages.admin.sidebar','pages.admin.dashboard', 'admin-clients-list',
-                          'clients-list','show-requestee',
+                          'clients-list','show-requestee', 'auth.register',
                           'bir-calendar','display-calendar',
                           'assoc_table','archive-list'],function($view){
 
@@ -48,14 +48,15 @@ class AppServiceProvider extends ServiceProvider
                             $archives= DB::table('client_tax_files')
                             ->where('deleted_at', '!=', null)
                             ->count();
-                            
+                            $modes= ModeOfPayment::all();
                             $view->with('reqs',$reqs)
                                  ->with('birs',$birs)
                                  ->with('ddlines',$ddlines)
                                  ->with('assocs',$assocs)
                                  ->with('clients',$clients)
                                  ->with('archives',$archives)
-                                 ->with('admins',$admins);
+                                 ->with('admins',$admins)
+                                 ->with('modes',$modes);
                                
                         });
 
