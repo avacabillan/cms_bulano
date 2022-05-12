@@ -52,7 +52,7 @@
                       <td>
                     
                       <a type="button" class="btn btn-success btn-sm" data-id="{{$deadline->id}}" data-bs-toggle="modal" data-bs-target="#declarationModal">Attach Computation</a>
-                      @endforeach
+                      
                     </td>
 
                       
@@ -88,13 +88,16 @@
                 @csrf
                 @method('post')
                 
-                      <div class="input-group ">
-                        <input class="form-control mb-5" id="inputGroupFile02" name="file" type="file">
-                      </div>
-                        <button class="btn btn-success mt-5 saveBtn" type="submit" value="uploadFile" >Save</button>
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <input class="form-control mt-3" id="inputGroupFile02" name="file" type="file">
+                </div>
+                <div class="input-group">
+                  <button class="btn btn-success mt-2 saveBtn" type="submit" value="uploadFile">Save</button>
+                </div>
                
                       </form>  
-             
+            @endforeach 
             </div>
         </div>
         

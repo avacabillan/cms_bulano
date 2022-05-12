@@ -65,7 +65,7 @@
             <h3 class="card-title"><strong>Client List</strong></h3>
           </div><!-- /.card-header -->
 
-          <table class="table table-bordered yajra-datatable">
+          <table  id="assoc-list" orderable="false" class="table table-bordered"> 
             <thead>
               <tr>
                 <th>Client Name</th>

@@ -153,14 +153,22 @@ class Assoc_ClientController extends Controller
             ]); 
             
             $file = $request->file('file');
-           
+            $size = $request->file('file')->getSize();
             $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename = $request->file . '-'.'declaration'.'.' . $extension;
+            $filename = $request->name .'declaration'.'.' . $extension;
             $file->move('public/files/computedfile', $filename);
             $clientTax ->file = $filename;
         } 
         $clientTax->save();
          return redirect()->back(); 
+    }
+    public function viewComputed($id)
+    {
+        $file = ClientTax::find($id);
+ 
+        return view('pages.client.viewdeclaration',compact('file'));
+ 
+ 
     }
 
 
