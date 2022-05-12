@@ -24,11 +24,12 @@ class RegisteredClientController extends Controller
     public function index()
     {
         $requestees = Requestee::where('status', 0)->get();
+       
         //$requester = Requestee::all();
       
         
        // dd($users);
-      //dd($requestees);
+     // dd($requestees);
         return view ('pages.admin.requestee', compact('requestees', $requestees));
     }
     
@@ -39,6 +40,9 @@ class RegisteredClientController extends Controller
         $requestee =new Requestee();
         $requestee ->name = $request->name;
         $requestee ->email = $request->email;
+        $requestee ->phone = $request->phone;
+        $requestee->inquiry = $request->inquiry;
+        $requestee->mode_filing = $request->mode;
         $requestee ->status =false;
        
         if ($request->hasfile('cor'))

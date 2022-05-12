@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\AdminFieldRequest;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +13,7 @@ use App\Models\Department;
 use App\Models\Position;
 use DB;
 use \Yajra\Datatables\Datatables;
+use App\Models\Admin;
 
 class AdminController extends Controller
 {
@@ -41,15 +43,35 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminFieldRequest $request)
     {
         $validator = Validator::make( $request->all(),[
-
+            'birth_date' => 'required',
+            'address' => 'required',
+            'hired_date' => 'required|numeric',
+            'contact' => 'required|digits:11',
+            'email' => 'required',
+            'department' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'name' => 'required',
         ]);
         if($validator->failed()){ 
             Alert::error('Error!', $validator->messages()->first());
             return redirect()->back();
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
         }
+        $admin = new Admin;
+        $admin->birth_date = $request->birth_date;
+        $admin->complete_address = $request->address;
+        $admin->hired_date = $request->hired_date;
+        $admin->phone_no = $request->contact;
+        $admin->email_address =$request->email;
+        $admin->department_id = $request->department;
+        $admin->save();
+
+
         $myuser= new User;
         $myuser->name= $request->name;
         $myuser->role='admin';
@@ -58,8 +80,9 @@ class AdminController extends Controller
         $myuser->save();
         if($myuser){
             Alert::success('Success', 'Admin Account Successfuly Added!');
-            return redirect()->route('dashboard');
+           
         }
+        return redirect()->route('dashboard');
     }
 
     /**

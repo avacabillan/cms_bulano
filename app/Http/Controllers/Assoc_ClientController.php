@@ -157,6 +157,8 @@ class Assoc_ClientController extends Controller
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $filename = $request->name .'declaration'.'.' . $extension;
             $file->move('public/files/computedfile', $filename);
+            $filename = $request->name.'filename'. $extension;
+            $file->move('public/files/computedfile', $filename); 
             $clientTax ->file = $filename;
         } 
         $clientTax->save();

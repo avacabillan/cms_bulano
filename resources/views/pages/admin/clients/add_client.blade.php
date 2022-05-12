@@ -68,7 +68,7 @@
           </div>
           <div class="form-group">
             <label for="validationCustom05" class="form-label">Contact No.</label>
-            <input type="text" class="form-control" value="{{old('client_contact')}}" name="client_contact" style="width: 100%;" required>
+            <input type="text" class="form-control" value="{{$requestee->phone}}" name="client_contact" style="width: 100%;" required>
             <div class="invalid-feedback"></div>
              
           </div>
@@ -125,7 +125,7 @@
             <select name="mode" class="form-control" style="width: 100%;" required>
               <option value="">--Select Mode of Filing--</option>
               @foreach($modes as $mode)
-                <option value="{{$mode->id}}">{{$mode->mode_name}}</option>
+                <option value="{{$mode['id']}}"  {{ $requestee->modeofpayment->id == $mode['id'] ? 'selected="selected"' : '' }}>{{$mode->mode_name}}</option>
               @endforeach
             </select>
             <div class="invalid-feedback"></div>
@@ -190,7 +190,7 @@
           <div class="col-md-6">
             <div class="form-group" >
                 <label for="validationCustom16" class="form-label"><b>Username</b></label>
-                <input type="text" class="form-control" value="{{old('username')}}" name="username" placeholder="email@bulano.com" required>
+                <input type="text" class="form-control" value="{{$requestee->email}}" name="username" placeholder="email@bulano.com" required>
                 <div class="invalid-feedback"></div>
               </div>
               </div>

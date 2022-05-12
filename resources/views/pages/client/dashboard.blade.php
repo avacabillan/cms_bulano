@@ -56,6 +56,11 @@
           <td>{{ \Carbon\Carbon::parse($deadline->start_date)->format('F d, Y')}}</td>  
           
           <td><a  href="{{route('viewdeclaration', $deadline->id)}}" class="btn btn-info btn-sm" value="">View</a></td>
+          <td>
+            <a class="btn btn-info btn-sm" href="{{route('view-declaration',['id'=>$deadline->id])}}">
+              View
+           </a>
+            {{-- <a  href="{{route('view-declaration',['id'=>$deadline->id])}}" class="btn btn-info btn-sm" value="">View</a></td> --}}
           @if($deadline->status == 0)
           <td><button class="btn btn-danger btn-sm" disabled="disabled">Pending</button> </td>
         @else 
@@ -71,6 +76,9 @@
   </div>
 
   @include('sweetalert::alert')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
 <script type="text/javascript">
     setTimeout(function () {
 
@@ -78,5 +86,6 @@
         $('#client_dash_heading').alert('close');
     }, 5000 );
 </script>
+
 
 @stop

@@ -20,7 +20,7 @@ use App\Http\Controllers\MultiFileUploadController;
 use App\Http\Controllers\InternalMessagesController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\TaxFormsController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminAccessController;
  
 
 
@@ -89,6 +89,13 @@ Route::middleware(['logout'])->group(function(){
      Route::get('/add_position',[AdminController::class, 'insertPost'])->name('add_position');
      Route::get('/deletePost/{id}',[AdminController::class,'destroyPost'])->name('deletePost');
 
+ 
+    Route::get('/admin/store', [AdminAccessController::class,'store'])->name('admin_store');
+    Route::get('/admin/list', [AdminAccessController::class,'index'])->name('admin_list');
+    Route::get('/admin/create', [AdminAccessController::class,'create'])->name('admin_create');
+    Route::get('/admin/edit/{id}', [AdminAccessController::class,'edit'])->name('admin_edit');
+    Route::get('/admin/profile/{id}', [AdminAccessController::class,'view'])->name('admin_profile');
+    Route::put('/admin/update/{id}', [AdminAccessController::class,'update'])->name('admin_update');
      /*---------------------- NOTIFICATION ROUTES --------------*/
     Route::get('/admin-mark-as-read', [Admin_ClientController::class, 'adminMarkNotification'])->name('admin.markNotification');
     Route::get('/assoc-mark-as-read', [Assoc_ClientController::class, 'assocMarkNotification'])->name('assoc.markNotification');
@@ -108,8 +115,8 @@ Route::middleware(['logout'])->group(function(){
 
      /*---------------------- MULTIFILEUPLOAD --------------*/
 
-    Route::get('files-upload', [MultiFileUploadController::class, 'index']);
-    Route::post('save-multiple-files', [MultiFileUploadController::class, 'store']);
+    //Route::get('files-upload', [MultiFileUploadController::class, 'index']);
+ //   Route::post('save-multiple-files', [MultiFileUploadController::class, 'store']);
     Route::get('/associate_messages', [MessagesController::class, "associateIndex"])->name("associate_messages");
    
 
@@ -144,7 +151,7 @@ Route::middleware(['logout'])->group(function(){
     Route::view('/associate-message','pages.associate.message')->name('associate-message'); 
     Route::get('/my_profile/{id}', [ClientController::class,'showProfile'])->name('client_profile');
     Route::get('/my_associate',[ClientController::class,'showAssoc'])->name('my_associate');
-    Route::get('/form/{id}/{client}', [ClientController::class,'showForm'])->name('view-form');
+    Route::get('/form/{id}', [ClientController::class,'declarationshowForm'])->name('view-declaration');
 
 
 
@@ -243,9 +250,9 @@ Route::post('fullcalendar/delete',[AdminCalendarController::class, 'destroy']) -
 
 
 
-Route::get('/getusers', [MessageController::class, 'getUsers'])->name('getUsers');
-Route::get('/get_messages',  [MessageController::class, 'getMessages'])->name('getMessages');
-Route::post('notifications',  [MessageController::class, 'sendMail'])->name('sendMail');
+// Route::get('/getusers', [MessageController::class, 'getUsers'])->name('getUsers');
+// Route::get('/get_messages',  [MessageController::class, 'getMessages'])->name('getMessages');
+//Route::post('notifications',  [MessageController::class, 'sendMail'])->name('sendMail');
     //try
     Route::view('/duedate','pages.associate.duedateform')->name('duedate'); 
 
