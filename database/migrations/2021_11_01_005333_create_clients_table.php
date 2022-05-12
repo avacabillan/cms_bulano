@@ -21,6 +21,7 @@ class CreateClientsTable extends Migration
             $table->string('ocn');
             $table->foreignId('assoc_id')->constrained();
             $table->foreignId('mode_of_payment_id')->constrained();
+            $table->SoftDeletes();
             $table->timestamps();
 
         });

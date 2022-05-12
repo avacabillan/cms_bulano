@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RegisteredAddress extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     protected $table = 'client_registered_address';
+    protected $dates = ['deleted_at'];
     protected $fillable =['city_name',
                           'province_name',
                           'postal_no',
