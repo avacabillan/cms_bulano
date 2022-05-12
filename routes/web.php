@@ -82,6 +82,13 @@ Route::middleware(['logout'])->group(function(){
      Route::view('/services','pages.admin.services')->name('services');
      Route::view('/guest_list','pages.admin.guest_list')->name('guest_list');
      Route::get('/admin', [AdminController::class,'store'])->name('create.admin');
+     Route::get('/departments',[AdminController::class, 'getDepartments'])->name('departments');
+     Route::get('/add_department',[AdminController::class, 'insertDept'])->name('add_department');
+     Route::get('/deleteDept/{id}',[AdminController::class,'destroyDept'])->name('deleteDept');
+     Route::get('/positions',[AdminController::class, 'getPositions'])->name('positions');
+     Route::get('/add_position',[AdminController::class, 'insertPost'])->name('add_position');
+     Route::get('/deletePost/{id}',[AdminController::class,'destroyPost'])->name('deletePost');
+
      /*---------------------- NOTIFICATION ROUTES --------------*/
     Route::get('/admin-mark-as-read', [Admin_ClientController::class, 'adminMarkNotification'])->name('admin.markNotification');
     Route::get('/assoc-mark-as-read', [Assoc_ClientController::class, 'assocMarkNotification'])->name('assoc.markNotification');
@@ -156,7 +163,7 @@ Route::middleware(['logout'])->group(function(){
     Route::get('view-deadlines/{id}', [Assoc_ClientController::class, 'clientDeadline'])->name('deadlines');
     Route::get('update-status/{id}', [Assoc_ClientController::class, 'changeStatus'])->name('update-status');
     Route::post('attach-declaration/{id}', [Assoc_ClientController::class, 'declarationAttach'])->name('attach-declaration');
-
+    Route::get('viewdeclaration/{id}', [Assoc_ClientController::class, 'viewComputed'])->name('viewdeclaration');
       
     //-------------Assoc Tax Files Route---------------//
     

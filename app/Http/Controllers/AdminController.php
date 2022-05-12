@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Department;
+use App\Models\Position;
+use DB;
+use \Yajra\Datatables\Datatables;
 
 class AdminController extends Controller
 {
@@ -42,7 +46,7 @@ class AdminController extends Controller
         $validator = Validator::make( $request->all(),[
 
         ]);
-        if($validator->failed()){
+        if($validator->failed()){ 
             Alert::error('Error!', $validator->messages()->first());
             return redirect()->back();
         }
@@ -101,5 +105,64 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getDepartments()
+    {
+       $departments = DB::table('departments')
+     
+       ->get();
+
+       return view('pages.admin.departments', compact('departments'));
+
+   }
+    public function insertDept(Request $request)
+    {
+
+        $department =new Department();
+        $department ->department_name = $request->input('deptname');
+        $department->save();
+
+        if($department){
+            Alert::success('Success', 'Department Successfuly Added!');
+        }
+            return redirect()->route('departments');
+    }
+    public function destroyDept($id)
+    {   
+        $department=Department::find($id);
+        $department->delete();
+        if($department){
+            Alert::success('Success', 'Department Successfuly Deleted!');
+        }
+        return redirect()->back();
+    }
+    public function getPositions()
+    {
+       $positions = DB::table('positions')
+     
+       ->get();
+
+       return view('pages.admin.positions', compact('positions'));
+   }
+   public function insertPost(Request $request)
+    {
+
+        $position =new Position();
+        $position ->position_name = $request->input('postname');
+        $position->save();
+
+        if($position){
+            Alert::success('Success', 'Position Successfuly Added!');
+        }
+            return redirect()->route('positions');
+    }
+    public function destroyPost($id)
+    {   
+        $position=Position::find($id);
+        $position->delete();
+        if($position){
+            Alert::success('Success', 'Position Successfuly Deleted!');
+        }
+        return redirect()->back();
     }
 }

@@ -84,6 +84,24 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{route('departments')}}" class="nav-link">
+            <i class="nav-icon fas fas-building"></i>
+            <p>
+              Departments
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('positions')}}" class="nav-link">
+            <i class="nav-icon fas fas-building"></i>
+            <p>
+              Positions
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{route('taxforms')}}" class="nav-link">
             <i class="nav-icon far fa-user"></i>
             <p>
