@@ -1,9 +1,8 @@
 @component('mail::message')
 # Good day!  
-{{$name}}
+{{$name}} We would like to remind you for your tax deadline below are the following;
 
 
-You have
 @foreach($reminds as $rem) 
 <ul>{{$rem}}</ul>
 

@@ -68,7 +68,7 @@
           </div>
           <div class="form-group">
             <label for="validationCustom05" class="form-label">Contact No.</label>
-            <input type="text" class="form-control" value="{{old('client_contact')}}" name="client_contact" style="width: 100%;" required>
+            <input type="text" class="form-control" value="{{$requestee->phone}}" name="client_contact" style="width: 100%;" required>
             <div class="invalid-feedback"></div>
              
           </div>

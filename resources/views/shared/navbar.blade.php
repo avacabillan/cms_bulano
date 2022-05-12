@@ -7,8 +7,41 @@
       <a href="#" class="nav-link">Bulano Accounting & Auditing Firm</a>
     </li>
   </ul>
+  <div></div>
+  <li class="nav-item dropdown">
+    <a class="nav-link" data-toggle="dropdown" href="#">
+    <i class="fas fa-bell fa-lg"></i>
+    @if(auth()->user())
+    @forelse(auth()->user()->notifications->whereNull('read_at') as $notification)
+    <span class="position-absolute top-10 start-60 translate-middle badge rounded-pill bg-danger">{{$notification->where('type', 'App\Notifications\NewUserNotification')->whereNull('read_at')->count()}}</span>&nbsp;&nbsp; 
+    </a>
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+    <span class="dropdown-header">{{$notification->where('type', 'App\Notifications\NewUserNotification')->whereNull('read_at')->count()}} Notifications</span>
+    <div class="dropdown-divider"></div>
+    <a href="#" class="dropdown-item">
+    <div class="mt-2 ml-3">
 
-  <div class="dropdown">
+          <div class="alert alert-success me-3" role="alert" style="padding-bottom: 15%;">
+             <p class="text-dark"> User {{ $notification->data['name'] ?? "" }} ({{ $notification->data['email'] ?? ""}}) <br> has just registered.</p>
+              <a href="{{route('admin.markNotification')}}" class="float-right mark-as-read text-dark" data-id="{{ $notification->id }}">
+                  Mark as read
+              </a>
+          </div>
+  
+          @if($loop->last)
+              <a href="{{route('admin.markNotification')}}" id="mark-all">
+                  Mark all as read
+              </a>
+          @endif
+          @empty
+              There are no new notifications 
+          @endforelse
+      @endif
+    </div>
+
+    
+    </li>
+  {{-- <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="fas fa-bell"></i>
     </button>
@@ -17,7 +50,7 @@
       @if(auth()->user())
       
         @forelse(auth()->user()->notifications->whereNull('read_at') as $notification)
-          <div class="alert alert-success me-3" role="alert">
+          <div class="alert alert-success me-3" role="alert"><span class="badge bg-secondary">{{$notification->where('type', 'App\Notifications\NewUserNotification')->whereNull('read_at')->count()}}</span>
               User {{ $notification->data['name'] ?? "" }} ({{ $notification->data['email'] ?? ""}}) has just registered.
               <a href="{{route('admin.markNotification')}}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
                   Mark as read
@@ -35,7 +68,7 @@
       @endif
     </div>
     </ul>
-  </div>
+  </div> --}}
   
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
